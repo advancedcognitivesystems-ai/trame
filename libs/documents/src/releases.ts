@@ -31,3 +31,16 @@ export const R0_1_1 = release({
   language: "shared",
   serves: [RenderedOnce],
 })
+
+/**
+ * Version 0.2.0
+ */
+export const R0_2_0 = release({
+  owner: "trame",
+  version: "0.2.0",
+  date: "2026-11-27",
+  what: "The renderers: one walk given a syntax, Markdown with Mermaid for files, text for the terminal, the common rendering and its words, the syntax elements of Markdown, Mermaid, the terminal and HTML, the format decisions and the palette",
+  fingerprint: "85e5bed88e2c5ef3",
+  language: "shared",
+  serves: [RenderedOnce],
+})

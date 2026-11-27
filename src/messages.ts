@@ -701,17 +701,6 @@ export const PageWords = catalog({
 })
 
 /**
- * Messages of the renderers
- * The words that the renderers add to the intermediate format: labels, notes, the names of statuses and outcomes.
- * Written in a file: the page, which runs in the browser where nothing is wired, reads it too.
- */
-export const RenderingMessages = catalog({
-  owner: "trame",
-  language: Language,
-  messages: code.file<typeof import("./code/rendering/messages").default>("./code/rendering/messages.ts"),
-})
-
-/**
  * Messages of the platform
  * What the implementations of the ports say (the command line, the terminal, the processes).
  */

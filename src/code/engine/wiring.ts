@@ -10,7 +10,8 @@ import type { CompilerMessages } from "../../messages"
 import type { Sequences, Texts, ValueTypes } from "#std/algebra"
 import type { GraphImpl } from "./graph"
 import type { Api as DriversApi } from "../languages/drivers"
-import type { ReferenceSyntax, StepNames } from "../../conventions"
+import type { StepNames } from "../../conventions"
+import type { ReferenceSyntax } from "#std/engine"
 
 export interface WireHost {
   graph: GraphImpl

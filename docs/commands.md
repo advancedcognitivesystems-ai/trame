@@ -10,12 +10,12 @@
 
 ### The add-ons of a command the engine keeps
 
-`AddOns` · `src/commands.ts:56` · status: **held**
+`AddOns` · `src/commands.ts:58` · status: **held**
 
 The realizations of one of its extension points (std's) that a choice of the project makes, wired in the project's graph in the engine's process, in the order chosen (since g120); each run whatever the others did, what failed said.
 
 - Owner: trame
-- Parameters: `wiring` ← [Wiring](engine.md#Wiring) · `counts` ← [Counts](../std/releases/0.29.1/docs/algebra.md#Counts) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `wiring` ← [Wiring](engine.md#Wiring) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/add-ons.ts` (typescript)
 - Effects: execution, keeps, read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
@@ -26,12 +26,12 @@ The realizations of one of its extension points (std's) that a choice of the pro
 
 ### An amendment prepared
 
-`Amending` · `src/commands.ts:351` · status: **held**
+`Amending` · `src/commands.ts:353` · status: **held**
 
 A chosen value of a node changed by an amendment, compiled first with the graph in memory, the day it comes into force: what it would change, or why it is refused (a value code is built on, a cited one without its source, a value of another type, an error raised). It writes nothing: trame amend and trame dev record it, through the port "Where an amendment goes".
 
 - Owner: trame
-- Parameters: `preparation` ← [Preparation](#Preparation) · `machine` ← [Machine outputs](engine.md#MachineOutputs) · `comparison` ← [Two builds compared](../libs/commands/releases/0.1.2/docs/commands.md#BuildComparison) · `prelude` ← [Prelude](architecture.md#Prelude) · `references` ← [References](engine.md#References) · `project` ← [Project](engine.md#Project) · `specifiers` ← [Node.js module specifiers](../std/releases/0.29.1/docs/system.md#NodeModuleSpecifiers) · `layout` ← [Project layout](conventions.md#Layout) · `values` ← [Types of values](../std/releases/0.29.1/docs/algebra.md#ValueTypes) · `paths` ← [Paths](architecture.md#Paths) · `messages` ← [Messages of the commands](messages.md#CommandMessages) · `naming` ← [How an amendment is named](conventions.md#AmendmentNaming) · `counts` ← [Counts](../std/releases/0.29.1/docs/algebra.md#Counts)
+- Parameters: `preparation` ← [Preparation](#Preparation) · `machine` ← [Machine outputs](engine.md#MachineOutputs) · `comparison` ← [Two builds compared](../libs/commands/releases/0.1.2/docs/commands.md#BuildComparison) · `prelude` ← [Prelude](architecture.md#Prelude) · `references` ← [References](engine.md#References) · `project` ← [Project](engine.md#Project) · `specifiers` ← [Node.js module specifiers](../std/releases/0.30.0/docs/system.md#NodeModuleSpecifiers) · `layout` ← [Project layout](conventions.md#Layout) · `values` ← [Types of values](../std/releases/0.30.0/docs/algebra.md#ValueTypes) · `paths` ← [Paths](architecture.md#Paths) · `messages` ← [Messages of the commands](messages.md#CommandMessages) · `naming` ← [How an amendment is named](conventions.md#AmendmentNaming) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts)
 - Body: `./code/commands/amending.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time
 - Serves: [A single source of truth](product.md#SingleSource)
@@ -42,12 +42,12 @@ A chosen value of a node changed by an amendment, compiled first with the graph 
 
 ### Assembler
 
-`Assembler` · `src/commands.ts:99` · status: **held**
+`Assembler` · `src/commands.ts:101` · status: **held**
 
 The program of a component for an environment, and its infrastructure, ready to write.
 
 - Owner: trame
-- Parameters: `preparation` ← [Preparation](#Preparation) · `assembly` ← [Assembly](engine.md#Assembly) · `layout` ← [Terminal text](text.md#TerminalText) · `punctuation` ← [Punctuation](../libs/documents/releases/0.1.1/docs/language.md#Punctuation) · `texts` ← [Texts](../std/releases/0.29.1/docs/algebra.md#Texts) · `counts` ← [Counts](../std/releases/0.29.1/docs/algebra.md#Counts) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `preparation` ← [Preparation](#Preparation) · `assembly` ← [Assembly](engine.md#Assembly) · `layout` ← [Terminal text](../libs/documents/releases/0.2.0/docs/text.md#TerminalText) · `punctuation` ← [Punctuation](../libs/documents/releases/0.2.0/docs/language.md#Punctuation) · `texts` ← [Texts](../std/releases/0.30.0/docs/algebra.md#Texts) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/assembler.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
@@ -58,12 +58,12 @@ The program of a component for an environment, and its infrastructure, ready to 
 
 ### Rewriting an example
 
-`ExampleRewriting` · `src/commands.ts:505` · status: **held**
+`ExampleRewriting` · `src/commands.ts:507` · status: **held**
 
 An example's output written again where its element's declaration has it: as JSON, or as the lines its array joins.
 
 - Owner: trame
-- Parameters: `ts` ← [TypeScript compiler](architecture.md#TypeScriptCompiler) · `file` ← [Text file](../std/releases/0.29.1/docs/text.md#TextFile) · `sequences` ← [Sequences](../std/releases/0.29.1/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.29.1/docs/algebra.md#Texts) · `syntax` ← [The syntax of the programs Trame writes](typescript.md#TypeScriptSyntax) · `values` ← [Types of values](../std/releases/0.29.1/docs/algebra.md#ValueTypes)
+- Parameters: `ts` ← [TypeScript compiler](architecture.md#TypeScriptCompiler) · `file` ← [Text file](../std/releases/0.30.0/docs/text.md#TextFile) · `sequences` ← [Sequences](../std/releases/0.30.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.30.0/docs/algebra.md#Texts) · `syntax` ← [The syntax of the programs Trame writes](typescript.md#TypeScriptSyntax) · `values` ← [Types of values](../std/releases/0.30.0/docs/algebra.md#ValueTypes)
 - Body: `./code/commands/example-rewriting.ts` (typescript)
 - Effects: read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
@@ -74,12 +74,12 @@ An example's output written again where its element's declaration has it: as JSO
 
 ### Preparation
 
-`Preparation` · `src/commands.ts:71` · status: **held**
+`Preparation` · `src/commands.ts:73` · status: **held**
 
 Reads the options, checks and compiles the project, refuses cleanly: what all commands share. It gives the engine's API (since g124), which the language defines: the project as the dispatch prepared it for a command, another project compiled at a date, each with what a view receives and the graph as a build writes it, where a project's files are, and the engine's reader of languages (since g128). The engine is the running one while it compiles: a library's scenario it plays, or a language of a library it reads, reaches the API then.
 
 - Owner: trame
-- Parameters: `line` ← [Trame's commands](conventions.md#TrameCommands) · `compiler` ← [Compiler](engine.md#Compiler) · `compilationApi` ← [Compilation API](engine.md#CompilationApi) · `laws` ← [Laws](engine.md#Laws) · `views` ← [Views](engine.md#Views) · `lock` ← [Lock](engine.md#Lock) · `common` ← [Common rendering](rendering.md#Common) · `terminal` ← [Terminal](architecture.md#Terminal) · `currentProcess` ← [Process](architecture.md#Process) · `clock` ← [Clock](architecture.md#Clock) · `severityOrder` ← [Sort problems by severity](product.md#SeverityOrder) · `devPort` ← [Port of trame dev](product.md#DevPort) · `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `layout` ← [Terminal text](text.md#TerminalText) · `columns` ← [Columns in the terminal](text.md#TerminalColumns) · `cell` ← [Padded cell](text.md#PaddedCell) · `counts` ← [Counts](../std/releases/0.29.1/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.29.1/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.29.1/docs/algebra.md#Texts) · `messages` ← [Messages of the commands](messages.md#CommandMessages) · `projectLayout` ← [Project layout](conventions.md#Layout) · `uri` ← [URI](../std/releases/0.29.1/docs/web.md#Uri) · `references` ← [References](engine.md#References) · `projectCommands` ← [The project's commands](#ProjectCommands) · `kept` ← [The commands the engine keeps](conventions.md#KeptCommands) · `machine` ← [Machine outputs](engine.md#MachineOutputs) · `paths` ← [Paths](architecture.md#Paths) · `reading` ← [File reading](architecture.md#FileReading) · `specifiers` ← [Node.js module specifiers](../std/releases/0.29.1/docs/system.md#NodeModuleSpecifiers) · `reader` ← [Syntax reader](syntax.md#SyntaxReader)
+- Parameters: `line` ← [Trame's commands](conventions.md#TrameCommands) · `compiler` ← [Compiler](engine.md#Compiler) · `compilationApi` ← [Compilation API](engine.md#CompilationApi) · `laws` ← [Laws](engine.md#Laws) · `views` ← [Views](engine.md#Views) · `lock` ← [Lock](engine.md#Lock) · `common` ← [Common rendering](../libs/documents/releases/0.2.0/docs/rendering.md#Common) · `terminal` ← [Terminal](architecture.md#Terminal) · `currentProcess` ← [Process](architecture.md#Process) · `clock` ← [Clock](architecture.md#Clock) · `severityOrder` ← [Sort problems by severity](product.md#SeverityOrder) · `devPort` ← [Port of trame dev](product.md#DevPort) · `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `layout` ← [Terminal text](../libs/documents/releases/0.2.0/docs/text.md#TerminalText) · `columns` ← [Columns in the terminal](../libs/documents/releases/0.2.0/docs/text.md#TerminalColumns) · `cell` ← [Padded cell](../libs/documents/releases/0.2.0/docs/text.md#PaddedCell) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.30.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.30.0/docs/algebra.md#Texts) · `messages` ← [Messages of the commands](messages.md#CommandMessages) · `projectLayout` ← [Project layout](conventions.md#Layout) · `uri` ← [URI](../std/releases/0.30.0/docs/web.md#Uri) · `references` ← [References](engine.md#References) · `projectCommands` ← [The project's commands](#ProjectCommands) · `kept` ← [The commands the engine keeps](conventions.md#KeptCommands) · `machine` ← [Machine outputs](engine.md#MachineOutputs) · `paths` ← [Paths](architecture.md#Paths) · `reading` ← [File reading](architecture.md#FileReading) · `specifiers` ← [Node.js module specifiers](../std/releases/0.30.0/docs/system.md#NodeModuleSpecifiers) · `reader` ← [Syntax reader](syntax.md#SyntaxReader)
 - Body: `./code/commands/preparation.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
@@ -90,12 +90,12 @@ Reads the options, checks and compiles the project, refuses cleanly: what all co
 
 ### The project's commands
 
-`ProjectCommands` · `src/commands.ts:44` · status: **held**
+`ProjectCommands` · `src/commands.ts:46` · status: **held**
 
 The commands of a project (E3): the entry points a command triggers in the components of its own graph that std's ProgramCommands exposes; and those of them that never run, which a command of the engine or a view answers first, or another command of the project has the name of.
 
 - Owner: trame
-- Parameters: `wiring` ← [Wiring](engine.md#Wiring) · `counts` ← [Counts](../std/releases/0.29.1/docs/algebra.md#Counts) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `wiring` ← [Wiring](engine.md#Wiring) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/project-commands.ts` (typescript)
 - Effects: execution, keeps, read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
@@ -106,12 +106,12 @@ The commands of a project (E3): the entry points a command triggers in the compo
 
 ### A module of references
 
-`ReferencesModule` · `src/commands.ts:414` · status: **held**
+`ReferencesModule` · `src/commands.ts:416` · status: **held**
 
 Writes the packages of Trame a project uses as package nodes, as a person would: trame init writes the first, an advance the example's language.
 
 - Owner: trame
-- Parameters: `syntax` ← [The syntax of the programs Trame writes](typescript.md#TypeScriptSyntax) · `title` ← [Title of a module](typescript.md#ModuleTitle) · `doc` ← [Documentation comment](typescript.md#DocBlock) · `exported` ← [Export](typescript.md#ExportDeclaration) · `constant` ← [Constant](typescript.md#ConstDeclaration) · `call` ← [Call](typescript.md#Call) · `object` ← [Object](typescript.md#ObjectLiteral) · `property` ← [Property](typescript.md#Property) · `text` ← [Text](typescript.md#StringLiteral) · `list` ← [List on one line](typescript.md#InlineArray) · `imports` ← [Import of names](typescript.md#NamedImport) · `texts` ← [Texts](../std/releases/0.29.1/docs/algebra.md#Texts)
+- Parameters: `syntax` ← [The syntax of the programs Trame writes](typescript.md#TypeScriptSyntax) · `title` ← [Title of a module](typescript.md#ModuleTitle) · `doc` ← [Documentation comment](typescript.md#DocBlock) · `exported` ← [Export](typescript.md#ExportDeclaration) · `constant` ← [Constant](typescript.md#ConstDeclaration) · `call` ← [Call](typescript.md#Call) · `object` ← [Object](typescript.md#ObjectLiteral) · `property` ← [Property](typescript.md#Property) · `text` ← [Text](typescript.md#StringLiteral) · `list` ← [List on one line](typescript.md#InlineArray) · `imports` ← [Import of names](typescript.md#NamedImport) · `texts` ← [Texts](../std/releases/0.30.0/docs/algebra.md#Texts)
 - Body: `./code/commands/references.ts` (typescript)
 - Serves: [A single source of truth](product.md#SingleSource)
 - Verified by: [A project started](command-scenarios.md#ProjectStarted)
@@ -121,12 +121,12 @@ Writes the packages of Trame a project uses as package nodes, as a person would:
 
 ### Render a view
 
-`RenderView` · `src/commands.ts:88` · status: **held**
+`RenderView` · `src/commands.ts:90` · status: **held**
 
 A view, rendered for the terminal, in Markdown or in JSON.
 
 - Owner: trame
-- Parameters: `line` ← [Trame's commands](conventions.md#TrameCommands) · `json` ← [JSON formatting](conventions.md#JsonFormatting) · `preparation` ← [Preparation](#Preparation) · `views` ← [Views](engine.md#Views) · `files` ← [Rendering of the files](rendering.md#FileRendering) · `screen` ← [Rendering in the terminal](rendering.md#TerminalRendering) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `line` ← [Trame's commands](conventions.md#TrameCommands) · `json` ← [JSON formatting](conventions.md#JsonFormatting) · `preparation` ← [Preparation](#Preparation) · `views` ← [Views](engine.md#Views) · `files` ← [Rendering of the files](../libs/documents/releases/0.2.0/docs/rendering.md#FileRendering) · `screen` ← [Rendering in the terminal](../libs/documents/releases/0.2.0/docs/rendering.md#TerminalRendering) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/render-view.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
@@ -139,19 +139,19 @@ A view, rendered for the terminal, in Markdown or in JSON.
 
 ### Advance
 
-`Advance` · `src/commands.ts:124` · status: **held**
+`Advance` · `src/commands.ts:126` · status: **held**
 
 The generation in place builds Trame's libraries, the example and Trame's graph, assembles the candidate; the candidate builds them all as it did, reassembles itself to a fixed point, and the laws hold. The requirement "Accept a candidate" decides; with --promote, the candidate becomes the next generation, with a copy of the graph it was assembled from and of its libraries'.
 
 Triggered by `command promote`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `engines` ← [The fingerprint of an engine](engine.md#EngineFingerprint) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `layout` ← [Project layout](conventions.md#Layout) · `advancement` ← [What an advance assembles](generations.md#Advancement) · `accept` ← [Accept a candidate](generations.md#AcceptCandidate) · `example` ← [Example project](platform.md#ExampleRoot) · `day` ← [Day of the scenarios](platform.md#TestDay) · `environment` ← [Trame's environment](conventions.md#TrameEnvironment) · `language` ← [TypeScript](typescript.md#TypeScript) · `programs` ← [Programs](architecture.md#Programs) · `trees` ← [File trees](architecture.md#FileTrees) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `hashing` ← [Hashing](architecture.md#Hashing) · `sha256` ← [SHA-256](../std/releases/0.29.1/docs/algorithms.md#Sha256) · `fingerprint` ← [Length of a fingerprint](engine.md#Fingerprint) · `encodings` ← [Node.js character encodings](../std/releases/0.29.1/docs/system.md#NodeEncodings) · `diff` ← [Unified differences](../std/releases/0.29.1/docs/text.md#UnifiedDiff) · `file` ← [Text file](../std/releases/0.29.1/docs/text.md#TextFile) · `terminal` ← [Terminal](architecture.md#Terminal) · `table` ← [Columns](text.md#Columns) · `columns` ← [Terminal text](text.md#TerminalText) · `laws` ← [Messages of the commands](messages.md#CommandMessages) · `counts` ← [Counts](../std/releases/0.29.1/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.29.1/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.29.1/docs/algebra.md#Texts) · `values` ← [Types of values](../std/releases/0.29.1/docs/algebra.md#ValueTypes) · `messages` ← [Messages of an advance](messages.md#AdvanceMessages) · `pin` ← [The engine a project runs](generations.md#EnginePin) · `sharing` ← [Generations that share the language](generations.md#LanguageSharing) · `releases` ← [Releases of the engine](generations.md#Releases) · `records` ← [Records of the releases](generations.md#ReleaseRecords) · `json` ← [JSON formatting](conventions.md#JsonFormatting) · `specifiers` ← [Node.js module specifiers](../std/releases/0.29.1/docs/system.md#NodeModuleSpecifiers) · `references` ← [Trame references](conventions.md#ReferenceSyntax) · `clock` ← [Clock](architecture.md#Clock) · `project` ← [Project](engine.md#Project) · `packages` ← [Where a package comes from](../std/releases/0.29.1/docs/tooling.md#PackageSources) · `names` ← [The language's names](conventions.md#LanguageNames)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `engines` ← [The fingerprint of an engine](engine.md#EngineFingerprint) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `layout` ← [Project layout](conventions.md#Layout) · `advancement` ← [What an advance assembles](generations.md#Advancement) · `accept` ← [Accept a candidate](generations.md#AcceptCandidate) · `example` ← [Example project](platform.md#ExampleRoot) · `day` ← [Day of the scenarios](platform.md#TestDay) · `environment` ← [Trame's environment](conventions.md#TrameEnvironment) · `language` ← [TypeScript](typescript.md#TypeScript) · `programs` ← [Programs](architecture.md#Programs) · `trees` ← [File trees](architecture.md#FileTrees) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `hashing` ← [Hashing](architecture.md#Hashing) · `sha256` ← [SHA-256](../std/releases/0.30.0/docs/algorithms.md#Sha256) · `fingerprint` ← [Length of a fingerprint](engine.md#Fingerprint) · `encodings` ← [Node.js character encodings](../std/releases/0.30.0/docs/system.md#NodeEncodings) · `diff` ← [Unified differences](../std/releases/0.30.0/docs/text.md#UnifiedDiff) · `file` ← [Text file](../std/releases/0.30.0/docs/text.md#TextFile) · `terminal` ← [Terminal](architecture.md#Terminal) · `table` ← [Columns](../libs/documents/releases/0.2.0/docs/text.md#Columns) · `columns` ← [Terminal text](../libs/documents/releases/0.2.0/docs/text.md#TerminalText) · `laws` ← [Messages of the commands](messages.md#CommandMessages) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.30.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.30.0/docs/algebra.md#Texts) · `values` ← [Types of values](../std/releases/0.30.0/docs/algebra.md#ValueTypes) · `messages` ← [Messages of an advance](messages.md#AdvanceMessages) · `pin` ← [The engine a project runs](generations.md#EnginePin) · `sharing` ← [Generations that share the language](generations.md#LanguageSharing) · `releases` ← [Releases of the engine](generations.md#Releases) · `records` ← [Records of the releases](generations.md#ReleaseRecords) · `json` ← [JSON formatting](conventions.md#JsonFormatting) · `specifiers` ← [Node.js module specifiers](../std/releases/0.30.0/docs/system.md#NodeModuleSpecifiers) · `references` ← [Trame references](../std/releases/0.30.0/docs/engine.md#ReferenceSyntax) · `clock` ← [Clock](architecture.md#Clock) · `project` ← [Project](engine.md#Project) · `packages` ← [Where a package comes from](../std/releases/0.30.0/docs/tooling.md#PackageSources) · `names` ← [The language's names](conventions.md#LanguageNames)
 - Body: `./code/commands/advance.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time, write
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Verified by: [An advance, in memory](command-scenarios.md#AdvanceInMemory)
 - Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory)
 - Applies: [Generations: frozen engines](principles.md#GenerationLayer), [A library is a Trame project, imported by path](principles.md#LibrariesAreProjects), [A package is used by its name](principles.md#PackagesByName), [Trame builds Trame](principles.md#TrameBuildsTrame)
@@ -161,19 +161,19 @@ Triggered by `command promote`
 
 ### Amend
 
-`Amend` · `src/commands.ts:368` · status: **held**
+`Amend` · `src/commands.ts:370` · status: **held**
 
 Changes a chosen value of a node by an amendment: who, why, from when, the value. What it would change is said first (statuses, issues raised, a criterion or a scenario that would fail); unless it raises an error (or --accept), it is recorded where the project's amendments go, and its owner's approval awaited when someone else wrote it. --dry-run only says. A cited value changes only with its source (--source); a value code is built on, never from here.
 
 Triggered by `command amend`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `amending` ← [An amendment prepared](#Amending) · `place` ← [Where an amendment goes](architecture.md#AmendmentPlace) · `paths` ← [Paths](architecture.md#Paths) · `text` ← [Terminal text](text.md#TerminalText) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `amending` ← [An amendment prepared](#Amending) · `place` ← [Where an amendment goes](architecture.md#AmendmentPlace) · `paths` ← [Paths](architecture.md#Paths) · `text` ← [Terminal text](../libs/documents/releases/0.2.0/docs/text.md#TerminalText) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/amend.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time, write
 - Serves: [A single source of truth](product.md#SingleSource)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Verified by: [A value amended](command-scenarios.md#ValueAmended)
 - Used by: [A value amended](command-scenarios.md#ValueAmended)
 
@@ -181,17 +181,17 @@ Triggered by `command amend`
 
 ### Assemble a component
 
-`Assemble` · `src/commands.ts:455` · status: **held**
+`Assemble` · `src/commands.ts:457` · status: **held**
 
 Triggered by `command assemble`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `assembler` ← [Assembler](#Assembler) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `assembler` ← [Assembler](#Assembler) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/assemble.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time, write
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Verified by: [A component assembled](command-scenarios.md#ComponentAssembled)
 - Used by: [A component assembled](command-scenarios.md#ComponentAssembled), [Run a component](#Run)
 
@@ -199,19 +199,19 @@ Triggered by `command assemble`
 
 ### Audit the packages
 
-`Audit` · `src/commands.ts:193` · status: **held**
+`Audit` · `src/commands.ts:195` · status: **held**
 
 Asks the registry about each package of the graph: its known vulnerabilities, its latest version.
 
 Triggered by `command audit`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `reports` ← [Reports on packages](architecture.md#PackageReports) · `audit` ← [Audit of the packages](packages.md#PackageAudit) · `layout` ← [Project layout](conventions.md#Layout) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `versions` ← [Order of versions](packages.md#VersionOrder) · `encodings` ← [Node.js character encodings](../std/releases/0.29.1/docs/system.md#NodeEncodings) · `json` ← [JSON formatting](conventions.md#JsonFormatting) · `terminal` ← [Terminal](architecture.md#Terminal) · `table` ← [Columns](text.md#Columns) · `columns` ← [Terminal text](text.md#TerminalText) · `counts` ← [Counts](../std/releases/0.29.1/docs/algebra.md#Counts) · `values` ← [Types of values](../std/releases/0.29.1/docs/algebra.md#ValueTypes) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `reports` ← [Reports on packages](architecture.md#PackageReports) · `audit` ← [Audit of the packages](packages.md#PackageAudit) · `layout` ← [Project layout](conventions.md#Layout) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `versions` ← [Order of versions](packages.md#VersionOrder) · `encodings` ← [Node.js character encodings](../std/releases/0.30.0/docs/system.md#NodeEncodings) · `json` ← [JSON formatting](conventions.md#JsonFormatting) · `terminal` ← [Terminal](architecture.md#Terminal) · `table` ← [Columns](../libs/documents/releases/0.2.0/docs/text.md#Columns) · `columns` ← [Terminal text](../libs/documents/releases/0.2.0/docs/text.md#TerminalText) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts) · `values` ← [Types of values](../std/releases/0.30.0/docs/algebra.md#ValueTypes) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/audit.ts` (typescript)
 - Effects: execution, keeps, network, process, read, terminal, time, write
 - Serves: [A single source of truth](product.md#SingleSource)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Verified by: [The packages audited](command-scenarios.md#PackagesAudited)
 - Used by: [The packages audited](command-scenarios.md#PackagesAudited)
 
@@ -219,19 +219,19 @@ Triggered by `command audit`
 
 ### Build
 
-`Build` · `src/commands.ts:110` · status: **held**
+`Build` · `src/commands.ts:112` · status: **held**
 
 Checks, writes docs/ in Markdown, graph.json and snapshot.json, shows the summary.
 
 Triggered by `command build`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `layout` ← [Project layout](conventions.md#Layout) · `preparation` ← [Preparation](#Preparation) · `machine` ← [Machine outputs](engine.md#MachineOutputs) · `files` ← [Rendering of the files](rendering.md#FileRendering) · `screen` ← [Rendering in the terminal](rendering.md#TerminalRendering) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `layout` ← [Project layout](conventions.md#Layout) · `preparation` ← [Preparation](#Preparation) · `machine` ← [Machine outputs](engine.md#MachineOutputs) · `files` ← [Rendering of the files](../libs/documents/releases/0.2.0/docs/rendering.md#FileRendering) · `screen` ← [Rendering in the terminal](../libs/documents/releases/0.2.0/docs/rendering.md#TerminalRendering) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/build.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time, write
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Used by: [A build planned](command-scenarios.md#BuildPlanned), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore)
 - Applies: [The graph: the description of a product](principles.md#GraphLayer), [One output for each reader](principles.md#OneOutputPerReader)
 - Verified by: [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore)
@@ -240,19 +240,19 @@ Triggered by `command build`
 
 ### A command of the project, or a view
 
-`CommandOrView` · `src/commands.ts:490` · status: **held**
+`CommandOrView` · `src/commands.ts:492` · status: **held**
 
 Any other word: the name of a view, or of a command of the project (E3), whose component is assembled for its environment and run with the rest of the line, as trame run would. A command of the engine it does not keep is asked here first (since g119): the project's of that name replaces it. A program whose commands run in the engine is imported in the engine's process, with the engine's modules.
 
 Triggered by `command *`
 
 - Owner: trame
-- Parameters: `line` ← [Trame's commands](conventions.md#TrameCommands) · `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `renderView` ← [Render a view](#RenderView) · `compiler` ← [Compiler](engine.md#Compiler) · `views` ← [Views](engine.md#Views) · `assembler` ← [Assembler](#Assembler) · `projectCommands` ← [The project's commands](#ProjectCommands) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `currentProcess` ← [Process](architecture.md#Process) · `posix` ← [POSIX signals and errors](../std/releases/0.29.1/docs/system.md#Posix) · `events` ← [Node.js events](../std/releases/0.29.1/docs/system.md#NodeEvents) · `terminal` ← [Terminal](architecture.md#Terminal) · `counts` ← [Counts](../std/releases/0.29.1/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.29.1/docs/algebra.md#Sequences) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `line` ← [Trame's commands](conventions.md#TrameCommands) · `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `renderView` ← [Render a view](#RenderView) · `compiler` ← [Compiler](engine.md#Compiler) · `views` ← [Views](engine.md#Views) · `assembler` ← [Assembler](#Assembler) · `projectCommands` ← [The project's commands](#ProjectCommands) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `currentProcess` ← [Process](architecture.md#Process) · `posix` ← [POSIX signals and errors](../std/releases/0.30.0/docs/system.md#Posix) · `events` ← [Node.js events](../std/releases/0.30.0/docs/system.md#NodeEvents) · `terminal` ← [Terminal](architecture.md#Terminal) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.30.0/docs/algebra.md#Sequences) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/command-or-view.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time, write
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Verified by: [A command of a library the project chooses](command-scenarios.md#LibraryCommandRun), [A command of the project](command-scenarios.md#ProjectCommandRun), [A view in the terminal](command-scenarios.md#ViewsInTheTerminal)
 - Used by: [A command of a library the project chooses](command-scenarios.md#LibraryCommandRun), [A command of the project](command-scenarios.md#ProjectCommandRun), [A view in the terminal](command-scenarios.md#ViewsInTheTerminal)
 
@@ -260,19 +260,19 @@ Triggered by `command *`
 
 ### Deliver
 
-`Deliver` · `src/commands.ts:230` · status: **held**
+`Deliver` · `src/commands.ts:232` · status: **held**
 
 Writes the deliveries of the project, or the one named: for a page, the component assembled for its environment, its program bundled into one script with the bundler's settings of the page, its style sheets after the variables they use, in one document a browser opens as it is. Refused while the graph is in error.
 
 Triggered by `command deliver`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `assembly` ← [Assembly](engine.md#Assembly) · `assembler` ← [Assembler](#Assembler) · `bundler` ← [Bundler](architecture.md#Bundler) · `led` ← [The names a bundle is led by](delivery.md#NamesLed) · `bundle` ← [Bundle of the page](page.md#PageBundle) · `document` ← [Document of the page](page.md#PageDocument) · `html` ← [HTML](../std/releases/0.29.1/docs/html.md#Html) · `script` ← [Script](html.md#ScriptElement) · `style` ← [Style of a delivered page](delivery.md#DeliveredStyle) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `encodings` ← [Node.js character encodings](../std/releases/0.29.1/docs/system.md#NodeEncodings) · `terminal` ← [Terminal](architecture.md#Terminal) · `sequences` ← [Sequences](../std/releases/0.29.1/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.29.1/docs/algebra.md#Texts) · `values` ← [Types of values](../std/releases/0.29.1/docs/algebra.md#ValueTypes) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `assembly` ← [Assembly](engine.md#Assembly) · `assembler` ← [Assembler](#Assembler) · `bundler` ← [Bundler](architecture.md#Bundler) · `led` ← [The names a bundle is led by](delivery.md#NamesLed) · `bundle` ← [Bundle of the page](page.md#PageBundle) · `document` ← [Document of the page](page.md#PageDocument) · `html` ← [HTML](../std/releases/0.30.0/docs/html.md#Html) · `script` ← [Script](html.md#ScriptElement) · `style` ← [Style of a delivered page](delivery.md#DeliveredStyle) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `encodings` ← [Node.js character encodings](../std/releases/0.30.0/docs/system.md#NodeEncodings) · `terminal` ← [Terminal](architecture.md#Terminal) · `sequences` ← [Sequences](../std/releases/0.30.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.30.0/docs/algebra.md#Texts) · `values` ← [Types of values](../std/releases/0.30.0/docs/algebra.md#ValueTypes) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/deliver.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time, write
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Verified by: [The page delivered](command-scenarios.md#PageDelivered)
 - Used by: [The page delivered](command-scenarios.md#PageDelivered), [Ship](#Ship)
 - Applies: [A product is delivered by a node of the graph](principles.md#DeliveredByTheGraph)
@@ -281,7 +281,7 @@ Triggered by `command deliver`
 
 ### Start trame dev
 
-`Dev` · `src/commands.ts:445` · status: **held**
+`Dev` · `src/commands.ts:447` · status: **held**
 
 Triggered by `command dev`
 
@@ -291,7 +291,7 @@ Triggered by `command dev`
 - Effects: execution, keeps, network, process, read, terminal, time, write
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Verified by: [trame dev](command-scenarios.md#DevFollowsTheGraph)
 - Used by: [trame dev](command-scenarios.md#DevFollowsTheGraph)
 
@@ -299,19 +299,19 @@ Triggered by `command dev`
 
 ### Ask the machine
 
-`Doctor` · `src/commands.ts:318` · status: **held**
+`Doctor` · `src/commands.ts:320` · status: **held**
 
 trame doctor: does this machine run Trame? It says the day, writes a file and reads it back, copies a directory and compares the copy, runs a program with the engine's loader, keeps a run until a file changes, serves HTTP on a port the system gives, waits, and asks the registry about the project's packages: one line for each, and the status of the whole. Run on a machine by a check of Trame's shipment, it proves the realizations no scenario in memory can run.
 
 Triggered by `command doctor`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `engine` ← [What the engine needs of the machine](doctor.md#EngineNeeds) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages) · `addOns` ← [The add-ons of a command the engine keeps](#AddOns)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `engine` ← [What the engine needs of the machine](doctor.md#EngineNeeds) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages) · `addOns` ← [The add-ons of a command the engine keeps](#AddOns)
 - Body: `./code/commands/doctor.ts` (typescript)
 - Effects: asynchronous, execution, keeps, network, process, read, terminal, time, write
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Verified by: [The doctor](command-scenarios.md#DoctorAsks)
 - Used by: [The doctor](command-scenarios.md#DoctorAsks)
 - Runs: [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine)
@@ -320,19 +320,19 @@ Triggered by `command doctor`
 
 ### Payload
 
-`EmitPayload` · `src/commands.ts:182` · status: **held**
+`EmitPayload` · `src/commands.ts:184` · status: **held**
 
 The compiled graph in the intermediate format, at one date or at all of them.
 
 Triggered by `command payload`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `payload` ← [Payload](engine.md#PayloadBuilder) · `files` ← [Rendering of the files](rendering.md#FileRendering) · `screen` ← [Rendering in the terminal](rendering.md#TerminalRendering) · `pageRendering` ← [Rendering in the page](rendering.md#PageRendering) · `terminal` ← [Terminal](architecture.md#Terminal)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `payload` ← [Payload](engine.md#PayloadBuilder) · `files` ← [Rendering of the files](../libs/documents/releases/0.2.0/docs/rendering.md#FileRendering) · `screen` ← [Rendering in the terminal](../libs/documents/releases/0.2.0/docs/rendering.md#TerminalRendering) · `pageRendering` ← [Rendering in the page](rendering.md#PageRendering) · `terminal` ← [Terminal](architecture.md#Terminal)
 - Body: `./code/commands/payload.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Used by: [trame dev](command-scenarios.md#DevFollowsTheGraph), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph)
 - Verified by: [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph)
 
@@ -340,19 +340,19 @@ Triggered by `command payload`
 
 ### Examples
 
-`Examples` · `src/commands.ts:517` · status: **held**
+`Examples` · `src/commands.ts:519` · status: **held**
 
 trame examples [--accept]: the examples of the project's syntax elements not met, with what they write; written again in their declarations with --accept.
 
 Triggered by `command examples`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `rewriting` ← [Rewriting an example](#ExampleRewriting) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `terminal` ← [Terminal](architecture.md#Terminal) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `encodings` ← [Node.js character encodings](../std/releases/0.29.1/docs/system.md#NodeEncodings) · `counts` ← [Counts](../std/releases/0.29.1/docs/algebra.md#Counts) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `rewriting` ← [Rewriting an example](#ExampleRewriting) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `terminal` ← [Terminal](architecture.md#Terminal) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `encodings` ← [Node.js character encodings](../std/releases/0.30.0/docs/system.md#NodeEncodings) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/examples.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time, write
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Verified by: [The examples of a project, met](command-scenarios.md#ExamplesMet)
 - Used by: [The examples of a project, met](command-scenarios.md#ExamplesMet)
 
@@ -360,17 +360,17 @@ Triggered by `command examples`
 
 ### Export the page
 
-`Export` · `src/commands.ts:302` · status: **held**
+`Export` · `src/commands.ts:304` · status: **held**
 
 Triggered by `command export`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `layout` ← [Project layout](conventions.md#Layout) · `preparation` ← [Preparation](#Preparation) · `bundle` ← [Date bundle](engine.md#DateBundle) · `page` ← [Page](page.md#Page) · `project` ← [Project](engine.md#Project) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `layout` ← [Project layout](conventions.md#Layout) · `preparation` ← [Preparation](#Preparation) · `bundle` ← [Date bundle](engine.md#DateBundle) · `page` ← [Page](page.md#Page) · `project` ← [Project](engine.md#Project) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/export.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time, write
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Verified by: [The page exported](command-scenarios.md#PageExported)
 - Used by: [The page exported](command-scenarios.md#PageExported)
 - Produces: [The graph page](sdlc.md#GraphPage)
@@ -379,19 +379,19 @@ Triggered by `command export`
 
 ### Help
 
-`Help` · `src/commands.ts:532` · status: **held**
+`Help` · `src/commands.ts:534` · status: **held**
 
 What a person may type here: the commands of the engine, those of the project with the entry point and the component each runs, and the views.
 
 Triggered by `command help`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `projectCommands` ← [The project's commands](#ProjectCommands) · `views` ← [Views](engine.md#Views) · `terminal` ← [Terminal](architecture.md#Terminal) · `cell` ← [Padded cell](text.md#PaddedCell) · `columns` ← [Columns in the terminal](text.md#TerminalColumns) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `projectCommands` ← [The project's commands](#ProjectCommands) · `views` ← [Views](engine.md#Views) · `terminal` ← [Terminal](architecture.md#Terminal) · `cell` ← [Padded cell](../libs/documents/releases/0.2.0/docs/text.md#PaddedCell) · `columns` ← [Columns in the terminal](../libs/documents/releases/0.2.0/docs/text.md#TerminalColumns) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/help.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Verified by: [A command of a library the project chooses](command-scenarios.md#LibraryCommandRun), [A command of the project](command-scenarios.md#ProjectCommandRun)
 - Used by: [A command of a library the project chooses](command-scenarios.md#LibraryCommandRun), [A command of the project](command-scenarios.md#ProjectCommandRun)
 
@@ -399,19 +399,19 @@ Triggered by `command help`
 
 ### Start a project
 
-`Init` · `src/commands.ts:428` · status: **held**
+`Init` · `src/commands.ts:430` · status: **held**
 
 In an empty directory: its configuration (the generation that runs, the libraries the language's home uses), a first module with the goal it serves, the guide for agents and the skill, then its manifest, by a fresh engine.
 
 Triggered by `command init`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `layout` ← [Project layout](conventions.md#Layout) · `project` ← [Project](engine.md#Project) · `prelude` ← [Prelude](architecture.md#Prelude) · `start` ← [How a project starts](conventions.md#ProjectStart) · `pin` ← [The engine a project runs](generations.md#EnginePin) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `encodings` ← [Node.js character encodings](../std/releases/0.29.1/docs/system.md#NodeEncodings) · `file` ← [Text file](../std/releases/0.29.1/docs/text.md#TextFile) · `json` ← [JSON formatting](conventions.md#JsonFormatting) · `language` ← [TypeScript](typescript.md#TypeScript) · `syntax` ← [The syntax of the programs Trame writes](typescript.md#TypeScriptSyntax) · `title` ← [Title of a module](typescript.md#ModuleTitle) · `doc` ← [Documentation comment](typescript.md#DocBlock) · `exported` ← [Export](typescript.md#ExportDeclaration) · `constant` ← [Constant](typescript.md#ConstDeclaration) · `call` ← [Call](typescript.md#Call) · `object` ← [Object](typescript.md#ObjectLiteral) · `property` ← [Property](typescript.md#Property) · `text` ← [Text](typescript.md#StringLiteral) · `imports` ← [Import of names](typescript.md#NamedImport) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages) · `currentProcess` ← [Process](architecture.md#Process) · `events` ← [Node.js events](../std/releases/0.29.1/docs/system.md#NodeEvents) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `texts` ← [Texts](../std/releases/0.29.1/docs/algebra.md#Texts) · `references` ← [A module of references](#ReferencesModule) · `names` ← [The language's names](conventions.md#LanguageNames) · `specifiers` ← [Node.js module specifiers](../std/releases/0.29.1/docs/system.md#NodeModuleSpecifiers) · `member` ← [Property access](typescript.md#MemberAccess) · `list` ← [List on one line](typescript.md#InlineArray) · `addOns` ← [The add-ons of a command the engine keeps](#AddOns) · `projectCommands` ← [The project's commands](#ProjectCommands) · `values` ← [Types of values](../std/releases/0.29.1/docs/algebra.md#ValueTypes) · `counts` ← [Counts](../std/releases/0.29.1/docs/algebra.md#Counts)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `layout` ← [Project layout](conventions.md#Layout) · `project` ← [Project](engine.md#Project) · `prelude` ← [Prelude](architecture.md#Prelude) · `start` ← [How a project starts](conventions.md#ProjectStart) · `pin` ← [The engine a project runs](generations.md#EnginePin) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `encodings` ← [Node.js character encodings](../std/releases/0.30.0/docs/system.md#NodeEncodings) · `file` ← [Text file](../std/releases/0.30.0/docs/text.md#TextFile) · `json` ← [JSON formatting](conventions.md#JsonFormatting) · `language` ← [TypeScript](typescript.md#TypeScript) · `syntax` ← [The syntax of the programs Trame writes](typescript.md#TypeScriptSyntax) · `title` ← [Title of a module](typescript.md#ModuleTitle) · `doc` ← [Documentation comment](typescript.md#DocBlock) · `exported` ← [Export](typescript.md#ExportDeclaration) · `constant` ← [Constant](typescript.md#ConstDeclaration) · `call` ← [Call](typescript.md#Call) · `object` ← [Object](typescript.md#ObjectLiteral) · `property` ← [Property](typescript.md#Property) · `text` ← [Text](typescript.md#StringLiteral) · `imports` ← [Import of names](typescript.md#NamedImport) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages) · `currentProcess` ← [Process](architecture.md#Process) · `events` ← [Node.js events](../std/releases/0.30.0/docs/system.md#NodeEvents) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `texts` ← [Texts](../std/releases/0.30.0/docs/algebra.md#Texts) · `references` ← [A module of references](#ReferencesModule) · `names` ← [The language's names](conventions.md#LanguageNames) · `specifiers` ← [Node.js module specifiers](../std/releases/0.30.0/docs/system.md#NodeModuleSpecifiers) · `member` ← [Property access](typescript.md#MemberAccess) · `list` ← [List on one line](typescript.md#InlineArray) · `addOns` ← [The add-ons of a command the engine keeps](#AddOns) · `projectCommands` ← [The project's commands](#ProjectCommands) · `values` ← [Types of values](../std/releases/0.30.0/docs/algebra.md#ValueTypes) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts)
 - Body: `./code/commands/init.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time, write
 - Serves: [A single source of truth](product.md#SingleSource)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Verified by: [A project repaired](command-scenarios.md#ProjectRepaired), [A project started](command-scenarios.md#ProjectStarted)
 - Used by: [A project repaired](command-scenarios.md#ProjectRepaired), [A project started](command-scenarios.md#ProjectStarted)
 - Applies: [Who acts is declared](principles.md#ActorsDeclared), [A package is used by its name](principles.md#PackagesByName)
@@ -420,19 +420,19 @@ Triggered by `command init`
 
 ### Plan a build
 
-`Plan` · `src/commands.ts:334` · status: **held**
+`Plan` · `src/commands.ts:336` · status: **held**
 
 trame plan: what a build would change, written nowhere. It compiles the graph now (or at --at) and compares it with graph.json, the last build: nodes added and removed, statuses that change, nodes whose fields, result or edges change, issues raised and resolved, and the shipments whose obligations are touched. A person reads it before building, a review before accepting a change.
 
 Triggered by `command plan`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `layout` ← [Project layout](conventions.md#Layout) · `text` ← [Terminal text](text.md#TerminalText) · `preparation` ← [Preparation](#Preparation) · `machine` ← [Machine outputs](engine.md#MachineOutputs) · `comparison` ← [Two builds compared](../libs/commands/releases/0.1.2/docs/commands.md#BuildComparison) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `encodings` ← [Node.js character encodings](../std/releases/0.29.1/docs/system.md#NodeEncodings) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `layout` ← [Project layout](conventions.md#Layout) · `text` ← [Terminal text](../libs/documents/releases/0.2.0/docs/text.md#TerminalText) · `preparation` ← [Preparation](#Preparation) · `machine` ← [Machine outputs](engine.md#MachineOutputs) · `comparison` ← [Two builds compared](../libs/commands/releases/0.1.2/docs/commands.md#BuildComparison) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `encodings` ← [Node.js character encodings](../std/releases/0.30.0/docs/system.md#NodeEncodings) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/plan.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Verified by: [A build planned](command-scenarios.md#BuildPlanned)
 - Used by: [A build planned](command-scenarios.md#BuildPlanned)
 
@@ -440,19 +440,19 @@ Triggered by `command plan`
 
 ### Publish
 
-`Publish` · `src/commands.ts:168` · status: **held**
+`Publish` · `src/commands.ts:170` · status: **held**
 
 The current declarations enter trame.lock and no longer change.
 
 Triggered by `command publish`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `lock` ← [Lock](engine.md#Lock) · `writing` ← [File writing](architecture.md#FileWriting) · `terminal` ← [Terminal](architecture.md#Terminal) · `layout` ← [Terminal text](text.md#TerminalText) · `columns` ← [Columns in the terminal](text.md#TerminalColumns) · `cell` ← [Padded cell](text.md#PaddedCell) · `texts` ← [Texts](../std/releases/0.29.1/docs/algebra.md#Texts) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `lock` ← [Lock](engine.md#Lock) · `writing` ← [File writing](architecture.md#FileWriting) · `terminal` ← [Terminal](architecture.md#Terminal) · `layout` ← [Terminal text](../libs/documents/releases/0.2.0/docs/text.md#TerminalText) · `columns` ← [Columns in the terminal](../libs/documents/releases/0.2.0/docs/text.md#TerminalColumns) · `cell` ← [Padded cell](../libs/documents/releases/0.2.0/docs/text.md#PaddedCell) · `texts` ← [Texts](../std/releases/0.30.0/docs/algebra.md#Texts) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/publish.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time, write
 - Serves: [A single source of truth](product.md#SingleSource)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Verified by: [Declarations published](command-scenarios.md#DeclarationsPublished), [A published value changed](command-scenarios.md#PublishedValueChanged)
 - Used by: [Declarations published](command-scenarios.md#DeclarationsPublished), [A published value changed](command-scenarios.md#PublishedValueChanged)
 - Applies: [The source carries the history](principles.md#HistoryInTheSource)
@@ -461,19 +461,19 @@ Triggered by `command publish`
 
 ### Record evidence
 
-`RecordEvidence` · `src/commands.ts:269` · status: **held**
+`RecordEvidence` · `src/commands.ts:271` · status: **held**
 
 trame evidence <node> passed|failed --by <name>: what a person gives, attributed to them, on what is there now: a check made by hand (for the artefacts as last built), a review (each row of a dataset in each language, or a node as it is written), where an artefact was deployed. Refused to someone not of the role that signs it, or who reviews their own work when the role forbids it.
 
 Triggered by `command evidence`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `preparation` ← [Preparation](#Preparation) · `sdlc` ← [Evidence of the SDLC](shipping.md#SdlcEvidence) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `terminal` ← [Terminal](architecture.md#Terminal) · `sequences` ← [Sequences](../std/releases/0.29.1/docs/algebra.md#Sequences) · `counts` ← [Counts](../std/releases/0.29.1/docs/algebra.md#Counts) · `values` ← [Types of values](../std/releases/0.29.1/docs/algebra.md#ValueTypes) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `preparation` ← [Preparation](#Preparation) · `sdlc` ← [Evidence of the SDLC](shipping.md#SdlcEvidence) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `terminal` ← [Terminal](architecture.md#Terminal) · `sequences` ← [Sequences](../std/releases/0.30.0/docs/algebra.md#Sequences) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts) · `values` ← [Types of values](../std/releases/0.30.0/docs/algebra.md#ValueTypes) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/evidence.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time, write
 - Serves: [Ship only what holds](shipping.md#ShipOnlyWhatHolds)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Verified by: [Evidence given for someone](command-scenarios.md#EvidenceForSomeone), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun)
 - Used by: [Evidence given for someone](command-scenarios.md#EvidenceForSomeone), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun)
 - Applies: [A version ships through the graph](principles.md#ShippedThroughTheGraph)
@@ -482,19 +482,19 @@ Triggered by `command evidence`
 
 ### Fill the registry
 
-`Registry` · `src/commands.ts:399` · status: **held**
+`Registry` · `src/commands.ts:401` · status: **held**
 
 Publishes to the registry of this machine the generations frozen in the language's home (each with its language) and the releases of its libraries; after a clone, what fills the registry again.
 
 Triggered by `command registry`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `layout` ← [Project layout](conventions.md#Layout) · `project` ← [Project](engine.md#Project) · `packages` ← [Where a package comes from](../std/releases/0.29.1/docs/tooling.md#PackageSources) · `names` ← [The language's names](conventions.md#LanguageNames) · `reading` ← [File reading](architecture.md#FileReading) · `trees` ← [File trees](architecture.md#FileTrees) · `paths` ← [Paths](architecture.md#Paths) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `layout` ← [Project layout](conventions.md#Layout) · `project` ← [Project](engine.md#Project) · `packages` ← [Where a package comes from](../std/releases/0.30.0/docs/tooling.md#PackageSources) · `names` ← [The language's names](conventions.md#LanguageNames) · `reading` ← [File reading](architecture.md#FileReading) · `trees` ← [File trees](architecture.md#FileTrees) · `paths` ← [Paths](architecture.md#Paths) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/registry.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time, write
 - Serves: [A single source of truth](product.md#SingleSource)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Verified by: [The registry filled](command-scenarios.md#RegistryFilled)
 - Used by: [The registry filled](command-scenarios.md#RegistryFilled)
 
@@ -502,19 +502,19 @@ Triggered by `command registry`
 
 ### Release a version
 
-`Release` · `src/commands.ts:285` · status: **held**
+`Release` · `src/commands.ts:287` · status: **held**
 
 Freezes a version of a library under releases/<version>: its graph, its code, and its documents written at that version; links the language at the same place, so that the copy reaches it as the library does; then writes the release in the library's module of releases. Refused when something is left to decide or in error.
 
 Triggered by `command release`
 
 - Owner: trame
-- Parameters: `packages` ← [Where a package comes from](../std/releases/0.29.1/docs/tooling.md#PackageSources) · `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `layout` ← [Project layout](conventions.md#Layout) · `project` ← [Project](engine.md#Project) · `machine` ← [Machine outputs](engine.md#MachineOutputs) · `files` ← [Rendering of the files](rendering.md#FileRendering) · `settled` ← [A release is settled](libraries.md#ReleaseIsSettled) · `names` ← [Names of a library's releases](libraries.md#LibraryReleaseNames) · `releases` ← [Releases of the engine](generations.md#Releases) · `records` ← [Records of the releases](generations.md#ReleaseRecords) · `versions` ← [Semantic versioning](../std/releases/0.29.1/docs/measures.md#SemanticVersioning) · `specifiers` ← [Node.js module specifiers](../std/releases/0.29.1/docs/system.md#NodeModuleSpecifiers) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `trees` ← [File trees](architecture.md#FileTrees) · `paths` ← [Paths](architecture.md#Paths) · `hashing` ← [Hashing](architecture.md#Hashing) · `sha256` ← [SHA-256](../std/releases/0.29.1/docs/algorithms.md#Sha256) · `fingerprint` ← [Length of a fingerprint](engine.md#Fingerprint) · `encodings` ← [Node.js character encodings](../std/releases/0.29.1/docs/system.md#NodeEncodings) · `language` ← [TypeScript](typescript.md#TypeScript) · `clock` ← [Clock](architecture.md#Clock) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages) · `advance` ← [Messages of an advance](messages.md#AdvanceMessages) · `sequences` ← [Sequences](../std/releases/0.29.1/docs/algebra.md#Sequences) · `counts` ← [Counts](../std/releases/0.29.1/docs/algebra.md#Counts) · `drivers` ← [Drivers](languages.md#Drivers) · `text` ← [Text](typescript.md#StringLiteral) · `ship` ← [Ship](#Ship) · `line` ← [Trame's commands](conventions.md#TrameCommands)
+- Parameters: `packages` ← [Where a package comes from](../std/releases/0.30.0/docs/tooling.md#PackageSources) · `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `layout` ← [Project layout](conventions.md#Layout) · `project` ← [Project](engine.md#Project) · `machine` ← [Machine outputs](engine.md#MachineOutputs) · `files` ← [Rendering of the files](../libs/documents/releases/0.2.0/docs/rendering.md#FileRendering) · `settled` ← [A release is settled](libraries.md#ReleaseIsSettled) · `names` ← [Names of a library's releases](libraries.md#LibraryReleaseNames) · `releases` ← [Releases of the engine](generations.md#Releases) · `records` ← [Records of the releases](generations.md#ReleaseRecords) · `versions` ← [Semantic versioning](../std/releases/0.30.0/docs/measures.md#SemanticVersioning) · `specifiers` ← [Node.js module specifiers](../std/releases/0.30.0/docs/system.md#NodeModuleSpecifiers) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `trees` ← [File trees](architecture.md#FileTrees) · `paths` ← [Paths](architecture.md#Paths) · `hashing` ← [Hashing](architecture.md#Hashing) · `sha256` ← [SHA-256](../std/releases/0.30.0/docs/algorithms.md#Sha256) · `fingerprint` ← [Length of a fingerprint](engine.md#Fingerprint) · `encodings` ← [Node.js character encodings](../std/releases/0.30.0/docs/system.md#NodeEncodings) · `language` ← [TypeScript](typescript.md#TypeScript) · `clock` ← [Clock](architecture.md#Clock) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages) · `advance` ← [Messages of an advance](messages.md#AdvanceMessages) · `sequences` ← [Sequences](../std/releases/0.30.0/docs/algebra.md#Sequences) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts) · `drivers` ← [Drivers](languages.md#Drivers) · `text` ← [Text](typescript.md#StringLiteral) · `ship` ← [Ship](#Ship) · `line` ← [Trame's commands](conventions.md#TrameCommands)
 - Body: `./code/commands/release.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time, write
 - Serves: [A single source of truth](product.md#SingleSource)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Verified by: [A library released](command-scenarios.md#LibraryReleased)
 - Used by: [A library released](command-scenarios.md#LibraryReleased)
 - Applies: [A library is imported by its name](principles.md#LibrariesByName)
@@ -523,19 +523,19 @@ Triggered by `command release`
 
 ### Run a component
 
-`Run` · `src/commands.ts:466` · status: **held**
+`Run` · `src/commands.ts:468` · status: **held**
 
 Assembles, then runs the program and exits with its code.
 
 Triggered by `command run`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `assemble` ← [Assemble a component](#Assemble) · `currentProcess` ← [Process](architecture.md#Process) · `posix` ← [POSIX signals and errors](../std/releases/0.29.1/docs/system.md#Posix) · `events` ← [Node.js events](../std/releases/0.29.1/docs/system.md#NodeEvents)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `assemble` ← [Assemble a component](#Assemble) · `currentProcess` ← [Process](architecture.md#Process) · `posix` ← [POSIX signals and errors](../std/releases/0.30.0/docs/system.md#Posix) · `events` ← [Node.js events](../std/releases/0.30.0/docs/system.md#NodeEvents)
 - Body: `./code/commands/run.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time, write
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Verified by: [A component run](command-scenarios.md#ComponentRun)
 - Used by: [A component run](command-scenarios.md#ComponentRun)
 
@@ -543,19 +543,19 @@ Triggered by `command run`
 
 ### Ship
 
-`Ship` · `src/commands.ts:250` · status: **held**
+`Ship` · `src/commands.ts:252` · status: **held**
 
 trame ship <shipment> --by <name>: runs the shipment's pipeline as the engine computes it (the one the view of the pipelines shows): builds its artefacts (and those its checks read), runs the checks a program of the SDLC makes, records what they found as evidence attributed to the person who ships; compiles again, and refuses while an obligation does not hold, saying which and whose (requirement "Ship only what holds"); then runs the programs that deploy it, in order, and writes its dossier. --dry-run stops before deploying. The programs of the SDLC are assembled for the shipment's environment.
 
 Triggered by `command ship`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `preparation` ← [Preparation](#Preparation) · `deliver` ← [Deliver](#Deliver) · `assembly` ← [Assembly](engine.md#Assembly) · `assembler` ← [Assembler](#Assembler) · `sdlc` ← [Evidence of the SDLC](shipping.md#SdlcEvidence) · `runPlan` ← [The plan of a run elsewhere](shipping.md#ShipmentRunPlan) · `holds` ← [Ship only what holds](shipping.md#ShipOnlyWhatHolds) · `bundler` ← [Bundler](architecture.md#Bundler) · `led` ← [The names a bundle is led by](delivery.md#NamesLed) · `programBundle` ← [The fingerprint of a program](shipping.md#ProgramBundle) · `currentProcess` ← [Process](architecture.md#Process) · `projectCommands` ← [The project's commands](#ProjectCommands) · `events` ← [Node.js events](../std/releases/0.29.1/docs/system.md#NodeEvents) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `encodings` ← [Node.js character encodings](../std/releases/0.29.1/docs/system.md#NodeEncodings) · `terminal` ← [Terminal](architecture.md#Terminal) · `sequences` ← [Sequences](../std/releases/0.29.1/docs/algebra.md#Sequences) · `counts` ← [Counts](../std/releases/0.29.1/docs/algebra.md#Counts) · `values` ← [Types of values](../std/releases/0.29.1/docs/algebra.md#ValueTypes) · `engines` ← [The fingerprint of an engine](engine.md#EngineFingerprint) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `preparation` ← [Preparation](#Preparation) · `deliver` ← [Deliver](#Deliver) · `assembly` ← [Assembly](engine.md#Assembly) · `assembler` ← [Assembler](#Assembler) · `sdlc` ← [Evidence of the SDLC](shipping.md#SdlcEvidence) · `runPlan` ← [The plan of a run elsewhere](shipping.md#ShipmentRunPlan) · `holds` ← [Ship only what holds](shipping.md#ShipOnlyWhatHolds) · `bundler` ← [Bundler](architecture.md#Bundler) · `led` ← [The names a bundle is led by](delivery.md#NamesLed) · `programBundle` ← [The fingerprint of a program](shipping.md#ProgramBundle) · `currentProcess` ← [Process](architecture.md#Process) · `projectCommands` ← [The project's commands](#ProjectCommands) · `events` ← [Node.js events](../std/releases/0.30.0/docs/system.md#NodeEvents) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `encodings` ← [Node.js character encodings](../std/releases/0.30.0/docs/system.md#NodeEncodings) · `terminal` ← [Terminal](architecture.md#Terminal) · `sequences` ← [Sequences](../std/releases/0.30.0/docs/algebra.md#Sequences) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts) · `values` ← [Types of values](../std/releases/0.30.0/docs/algebra.md#ValueTypes) · `engines` ← [The fingerprint of an engine](engine.md#EngineFingerprint) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/ship.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time, write
 - Serves: [Ship only what holds](shipping.md#ShipOnlyWhatHolds)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Verified by: [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [Stages shipped in order](command-scenarios.md#StagesShipped)
 - Used by: [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [Stages shipped in order](command-scenarios.md#StagesShipped), [Release a version](#Release)
 - Applies: [A version ships through the graph](principles.md#ShippedThroughTheGraph)
@@ -564,17 +564,17 @@ Triggered by `command ship`
 
 ### Show a view
 
-`ShowView` · `src/commands.ts:476` · status: **held**
+`ShowView` · `src/commands.ts:478` · status: **held**
 
 Triggered by `command view`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `renderView` ← [Render a view](#RenderView)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `renderView` ← [Render a view](#RenderView)
 - Body: `./code/commands/show-view.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Verified by: [A view in the terminal](command-scenarios.md#ViewsInTheTerminal)
 - Used by: [A view in the terminal](command-scenarios.md#ViewsInTheTerminal)
 
@@ -582,17 +582,17 @@ Triggered by `command view`
 
 ### Take the snapshot
 
-`TakeSnapshot` · `src/commands.ts:157` · status: **held**
+`TakeSnapshot` · `src/commands.ts:159` · status: **held**
 
 Triggered by `command snapshot`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `layout` ← [Project layout](conventions.md#Layout) · `preparation` ← [Preparation](#Preparation) · `machine` ← [Machine outputs](engine.md#MachineOutputs) · `files` ← [Rendering of the files](rendering.md#FileRendering) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `layout` ← [Project layout](conventions.md#Layout) · `preparation` ← [Preparation](#Preparation) · `machine` ← [Machine outputs](engine.md#MachineOutputs) · `files` ← [Rendering of the files](../libs/documents/releases/0.2.0/docs/rendering.md#FileRendering) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/snapshot.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time, write
 - Serves: [A single source of truth](product.md#SingleSource)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Verified by: [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken)
 - Used by: [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken)
 - Applies: [One output for each reader](principles.md#OneOutputPerReader)
@@ -601,19 +601,19 @@ Triggered by `command snapshot`
 
 ### Test the laws
 
-`TestKinds` · `src/commands.ts:144` · status: **held**
+`TestKinds` · `src/commands.ts:146` · status: **held**
 
 The laws of kinds and views, and the imports.
 
 Triggered by `command test-kinds`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `compiler` ← [Compiler](engine.md#Compiler) · `views` ← [Views](engine.md#Views) · `laws` ← [Laws](engine.md#Laws) · `terminal` ← [Terminal](architecture.md#Terminal) · `layout` ← [Terminal text](text.md#TerminalText) · `columns` ← [Columns in the terminal](text.md#TerminalColumns) · `cell` ← [Padded cell](text.md#PaddedCell) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `compiler` ← [Compiler](engine.md#Compiler) · `views` ← [Views](engine.md#Views) · `laws` ← [Laws](engine.md#Laws) · `terminal` ← [Terminal](architecture.md#Terminal) · `layout` ← [Terminal text](../libs/documents/releases/0.2.0/docs/text.md#TerminalText) · `columns` ← [Columns in the terminal](../libs/documents/releases/0.2.0/docs/text.md#TerminalColumns) · `cell` ← [Padded cell](../libs/documents/releases/0.2.0/docs/text.md#PaddedCell) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/test-kinds.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Verified by: [The laws, tested by their command](command-scenarios.md#LawsTested)
 - Used by: [The laws, tested by their command](command-scenarios.md#LawsTested)
 - Runs: [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws)
@@ -622,19 +622,19 @@ Triggered by `command test-kinds`
 
 ### Upgrade
 
-`Upgrade` · `src/commands.ts:383` · status: **held**
+`Upgrade` · `src/commands.ts:385` · status: **held**
 
 Moves each package of Trame the project references, or those named, to the newest version its origin holds: the reference written again in its module, then the manifest (C1, since g100).
 
 Triggered by `command upgrade`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `versions` ← [Order of versions](packages.md#VersionOrder) · `text` ← [Text](typescript.md#StringLiteral) · `file` ← [Text file](../std/releases/0.29.1/docs/text.md#TextFile) · `encodings` ← [Node.js character encodings](../std/releases/0.29.1/docs/system.md#NodeEncodings) · `events` ← [Node.js events](../std/releases/0.29.1/docs/system.md#NodeEvents) · `currentProcess` ← [Process](architecture.md#Process) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `values` ← [Types of values](../std/releases/0.29.1/docs/algebra.md#ValueTypes) · `sequences` ← [Sequences](../std/releases/0.29.1/docs/algebra.md#Sequences) · `counts` ← [Counts](../std/releases/0.29.1/docs/algebra.md#Counts) · `texts` ← [Texts](../std/releases/0.29.1/docs/algebra.md#Texts) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `versions` ← [Order of versions](packages.md#VersionOrder) · `text` ← [Text](typescript.md#StringLiteral) · `file` ← [Text file](../std/releases/0.30.0/docs/text.md#TextFile) · `encodings` ← [Node.js character encodings](../std/releases/0.30.0/docs/system.md#NodeEncodings) · `events` ← [Node.js events](../std/releases/0.30.0/docs/system.md#NodeEvents) · `currentProcess` ← [Process](architecture.md#Process) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `values` ← [Types of values](../std/releases/0.30.0/docs/algebra.md#ValueTypes) · `sequences` ← [Sequences](../std/releases/0.30.0/docs/algebra.md#Sequences) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts) · `texts` ← [Texts](../std/releases/0.30.0/docs/algebra.md#Texts) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/upgrade.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time, write
 - Serves: [A single source of truth](product.md#SingleSource)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Verified by: [The packages upgraded](command-scenarios.md#PackagesUpgraded)
 - Used by: [The packages upgraded](command-scenarios.md#PackagesUpgraded)
 
@@ -642,19 +642,19 @@ Triggered by `command upgrade`
 
 ### Write the manifest
 
-`WriteManifest` · `src/commands.ts:211` · status: **held**
+`WriteManifest` · `src/commands.ts:213` · status: **held**
 
 The packages of the graph, at the versions their nodes declare, written as the dependencies of package.json: the graph decides the versions, npm installs them. And the import map: where the name of each library the project imports leads (#std/* to its sources, or to a version it froze), and where the language's names lead (#trame/kernel, #trame/kinds/*: the generation it pins), each package placed by where it comes from.
 
 Triggered by `command manifest`
 
 - Owner: trame
-- Parameters: `exitStatus` ← [Exit status](../std/releases/0.29.1/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `npm` ← [npm's manifest](../std/releases/0.29.1/docs/system.md#NpmManifest) · `layout` ← [Project layout](conventions.md#Layout) · `project` ← [Project](engine.md#Project) · `specifiers` ← [Node.js module specifiers](../std/releases/0.29.1/docs/system.md#NodeModuleSpecifiers) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `packages` ← [Where a package comes from](../std/releases/0.29.1/docs/tooling.md#PackageSources) · `names` ← [The language's names](conventions.md#LanguageNames) · `prelude` ← [Prelude](architecture.md#Prelude) · `pin` ← [The engine a project runs](generations.md#EnginePin) · `values` ← [Types of values](../std/releases/0.29.1/docs/algebra.md#ValueTypes) · `counts` ← [Counts](../std/releases/0.29.1/docs/algebra.md#Counts) · `paths` ← [Paths](architecture.md#Paths) · `encodings` ← [Node.js character encodings](../std/releases/0.29.1/docs/system.md#NodeEncodings) · `installs` ← [Packages installed](architecture.md#PackageInstalls) · `lock` ← [npm's lockfile](packages.md#NpmLockfile) · `file` ← [Text file](../std/releases/0.29.1/docs/text.md#TextFile) · `json` ← [JSON formatting](conventions.md#JsonFormatting) · `language` ← [TypeScript](typescript.md#TypeScript) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages) · `currentProcess` ← [Process](architecture.md#Process) · `events` ← [Node.js events](../std/releases/0.29.1/docs/system.md#NodeEvents) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `texts` ← [Texts](../std/releases/0.29.1/docs/algebra.md#Texts)
+- Parameters: `exitStatus` ← [Exit status](../std/releases/0.30.0/docs/system.md#ExitStatus) · `preparation` ← [Preparation](#Preparation) · `npm` ← [npm's manifest](../std/releases/0.30.0/docs/system.md#NpmManifest) · `layout` ← [Project layout](conventions.md#Layout) · `project` ← [Project](engine.md#Project) · `specifiers` ← [Node.js module specifiers](../std/releases/0.30.0/docs/system.md#NodeModuleSpecifiers) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `packages` ← [Where a package comes from](../std/releases/0.30.0/docs/tooling.md#PackageSources) · `names` ← [The language's names](conventions.md#LanguageNames) · `prelude` ← [Prelude](architecture.md#Prelude) · `pin` ← [The engine a project runs](generations.md#EnginePin) · `values` ← [Types of values](../std/releases/0.30.0/docs/algebra.md#ValueTypes) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts) · `paths` ← [Paths](architecture.md#Paths) · `encodings` ← [Node.js character encodings](../std/releases/0.30.0/docs/system.md#NodeEncodings) · `installs` ← [Packages installed](architecture.md#PackageInstalls) · `lock` ← [npm's lockfile](packages.md#NpmLockfile) · `file` ← [Text file](../std/releases/0.30.0/docs/text.md#TextFile) · `json` ← [JSON formatting](conventions.md#JsonFormatting) · `language` ← [TypeScript](typescript.md#TypeScript) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages) · `currentProcess` ← [Process](architecture.md#Process) · `events` ← [Node.js events](../std/releases/0.30.0/docs/system.md#NodeEvents) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `texts` ← [Texts](../std/releases/0.30.0/docs/algebra.md#Texts)
 - Body: `./code/commands/manifest.ts` (typescript)
 - Effects: execution, keeps, network, process, read, terminal, time, write
 - Serves: [A single source of truth](product.md#SingleSource)
 - Part of: [Trame on the command line](architecture.md#TrameCli)
-- For: [Anyone](../std/releases/0.29.1/docs/access.md#Anyone)
+- For: [Anyone](../std/releases/0.30.0/docs/access.md#Anyone)
 - Verified by: [The manifest written](command-scenarios.md#ManifestWritten)
 - Used by: [The manifest written](command-scenarios.md#ManifestWritten)
 - Applies: [A library is imported by its name](principles.md#LibrariesByName), [A package is used by its name](principles.md#PackagesByName)

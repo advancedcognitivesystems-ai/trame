@@ -77,13 +77,13 @@ Who works on Trame's repository, declared once as actors (C4): every owner of th
 The library the renderers are written with: its structures, its standards, its patterns.
 
 - Name: `std`
-- Version: `0.29.1`
+- Version: `0.30.0`
 - Installed: Not installed in the project: its lockfile lists no std
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `library`
-- Its path: `../../std/releases/0.29.1`
+- Its path: `../../std/releases/0.30.0`
 
 - Owner: trame
 - Serves: [Documents rendered once, for every project](product.md#RenderedOnce)

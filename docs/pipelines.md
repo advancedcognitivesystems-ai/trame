@@ -6,7 +6,7 @@
 
 ## Into the main branch
 
-> **Into the main branch does not ship yet: 52 of 55 obligations hold.**
+> **Into the main branch does not ship yet: 50 of 55 obligations hold.**
 
 For the target main; its programs are assembled for [Local](architecture.md#Local).
 
@@ -14,17 +14,17 @@ Run elsewhere by [The pull requests' workflow](sdlc.md#PullRequestWorkflow), wri
 
 ```mermaid
 flowchart TB
-  n0["The candidate engine<br/><small>Artefact</small>"]:::held
+  n0["The candidate engine<br/><small>Artefact</small>"]:::unknown
   n1["Trame on the command line<br/><small>Component</small>"]:::neutral
   n2["The engine<br/><small>Artefact</small>"]:::unknown
-  n3["The graph page<br/><small>Artefact</small>"]:::held
+  n3["The graph page<br/><small>Artefact</small>"]:::unknown
   n4["Export the page<br/><small>Entry point</small>"]:::held
   n5["The machine has what Trame needs<br/><small>Check</small>"]:::unknown
   n6["trame plan runs in the engine<br/><small>Check</small>"]:::unknown
   n7["Plan<br/><small>Entry point</small>"]:::held
-  n8["The graph page opens<br/><small>Check</small>"]:::held
+  n8["The graph page opens<br/><small>Check</small>"]:::unknown
   n9["Open the graph page<br/><small>Entry point</small>"]:::held
-  n10["The candidate runs on the machine<br/><small>Check</small>"]:::held
+  n10["The candidate runs on the machine<br/><small>Check</small>"]:::unknown
   n11["Ask the machine<br/><small>Entry point</small>"]:::held
   n12["Effects come from the vocabulary<br/><small>Architecture rule</small>"]:::held
   n13["Only commands write<br/><small>Architecture rule</small>"]:::held
@@ -107,13 +107,13 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The candidate engine](sdlc.md#EngineCandidate) · `out/local/trame-cli.ts` | [Trame on the command line](architecture.md#TrameCli) | — | **held** | 27 November 2026 by claude  |
+| 1 | produce | [The candidate engine](sdlc.md#EngineCandidate) · `out/local/trame-cli.ts` | [Trame on the command line](architecture.md#TrameCli) | — | **unknown** | 27 November 2026 by claude  |
 | 2 | produce | [The engine](sdlc.md#TheEngine) · `src` | — | — | **unknown** | 26 November 2026 by claude  |
-| 3 | produce | [The graph page](sdlc.md#GraphPage) · `trame-page.html` | [Export the page](commands.md#Export) | — | **held** | 27 November 2026 by claude  |
+| 3 | produce | [The graph page](sdlc.md#GraphPage) · `trame-page.html` | [Export the page](commands.md#Export) | — | **unknown** | 27 November 2026 by claude  |
 | 4 | check | [The machine has what Trame needs](sdlc.md#MachineAsked) | `trame doctor`, signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** | passed, 26 November 2026 by claude  |
 | 5 | check | [trame plan runs in the engine](sdlc.md#PlanRunsInTheEngine) | [Plan](../libs/commands/releases/0.1.2/docs/commands.md#Plan), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** | passed, 26 November 2026 by claude  |
-| 6 | check | [The graph page opens](sdlc.md#GraphPageOpens) | [Open the graph page](sdlc.md#OpenTheGraphPage), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **held** | passed, 27 November 2026 by claude  |
-| 7 | check | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | [Ask the machine](commands.md#Doctor), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **held** | passed, 27 November 2026 by claude  |
+| 6 | check | [The graph page opens](sdlc.md#GraphPageOpens) | [Open the graph page](sdlc.md#OpenTheGraphPage), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** | passed, 27 November 2026 by claude  |
+| 7 | check | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | [Ask the machine](commands.md#Doctor), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** | passed, 27 November 2026 by claude  |
 | 8 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
 | 9 | prove | [The engine](sdlc.md#TheEngine) | — | the shipment | **unknown** | 26 November 2026 by claude  |
 | 10 | prove | [The machine has what Trame needs](sdlc.md#MachineAsked) | by hand, signed by [Trame's maintainers](sdlc.md#Maintainers) | the shipment | **unknown** | passed, 26 November 2026 by claude  |
@@ -121,7 +121,7 @@ flowchart TB
 | 12 | prove | [Effects come from the vocabulary](architecture.md#KnownEffects) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
 | 13 | prove | [Only commands write](architecture.md#OnlyCommandsWrite) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
 | 14 | prove | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
-| 15 | prove | [The graph page opens](sdlc.md#GraphPageOpens) | [Open the graph page](sdlc.md#OpenTheGraphPage), signed by [Trame's maintainers](sdlc.md#Maintainers) | [The engine is verified](sdlc.md#EngineVerified) via [Amendments sent to trame dev](browser.md#BrowserAmendments) | **held** | passed, 27 November 2026 by claude  |
+| 15 | prove | [The graph page opens](sdlc.md#GraphPageOpens) | [Open the graph page](sdlc.md#OpenTheGraphPage), signed by [Trame's maintainers](sdlc.md#Maintainers) | [The engine is verified](sdlc.md#EngineVerified) via [Amendments sent to trame dev](browser.md#BrowserAmendments) | **unknown** | passed, 27 November 2026 by claude  |
 | 16 | prove | [A project repaired](command-scenarios.md#ProjectRepaired) | — | [The engine is verified](sdlc.md#EngineVerified) via [The add-ons of a command the engine keeps](commands.md#AddOns) | **held** |  |
 | 17 | prove | [An advance, in memory](command-scenarios.md#AdvanceInMemory) | — | [The engine is verified](sdlc.md#EngineVerified) via [Advance](commands.md#Advance) | **held** |  |
 | 18 | prove | [A value amended](command-scenarios.md#ValueAmended) | — | [The engine is verified](sdlc.md#EngineVerified) via [Amend](commands.md#Amend) | **held** |  |
@@ -161,7 +161,7 @@ flowchart TB
 | 52 | prove | [A project judges harder, never softer](scenarios.md#JudgingHarder) | — | [The engine is verified](sdlc.md#EngineVerified) via [Judged harder](engine.md#JudgedHarder) | **held** |  |
 | 53 | prove | [The laws of the kinds hold](scenarios.md#KindLaws) | — | [The engine is verified](sdlc.md#EngineVerified) via [Laws](engine.md#Laws) | **held** |  |
 | 54 | prove | [The page of the graph](command-scenarios.md#PageOfTheGraph) | — | [The engine is verified](sdlc.md#EngineVerified) via [Page](page.md#Page) | **held** |  |
-| 55 | prove | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | [Ask the machine](commands.md#Doctor), signed by [Trame's maintainers](sdlc.md#Maintainers) | [The engine is verified](sdlc.md#EngineVerified) via [System files, for reading](platform.md#DiskReading) | **held** | passed, 27 November 2026 by claude  |
+| 55 | prove | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | [Ask the machine](commands.md#Doctor), signed by [Trame's maintainers](sdlc.md#Maintainers) | [The engine is verified](sdlc.md#EngineVerified) via [System files, for reading](platform.md#DiskReading) | **unknown** | passed, 27 November 2026 by claude  |
 | 56 | prove | [The command line](command-scenarios.md#CommandLineChooses) | — | [The engine is verified](sdlc.md#EngineVerified) via [Terminal in memory](platform.md#MemoryTerminal) | **held** |  |
 | 57 | prove | [A body is read and checked](command-scenarios.md#BodiesReadAndChecked) | — | [The engine is verified](sdlc.md#EngineVerified) via [tree-sitter in WebAssembly](platform.md#WebTreeSitter) | **held** |  |
 | 58 | prove | [Add-ons, in the order chosen](scenarios.md#AddOnsInOrder) | — | [The engine is verified](sdlc.md#EngineVerified) via [The first sample add-on](scenarios.md#FirstSampleAddOn) | **held** |  |
@@ -177,23 +177,23 @@ flowchart TB
 
 ## The next generation
 
-> **The next generation ships: every obligation holds.**
+> **The next generation does not ship yet: 107 of 114 obligations hold.**
 
 For the target generation; its programs are assembled for [Local](architecture.md#Local).
 
 ```mermaid
 flowchart TB
-  n0["The candidate engine<br/><small>Artefact</small>"]:::held
+  n0["The candidate engine<br/><small>Artefact</small>"]:::unknown
   n1["Trame on the command line<br/><small>Component</small>"]:::neutral
-  n2["The page's program<br/><small>Artefact</small>"]:::held
+  n2["The page's program<br/><small>Artefact</small>"]:::unknown
   n3["The page in a browser<br/><small>Component</small>"]:::neutral
-  n4["The graph page<br/><small>Artefact</small>"]:::held
+  n4["The graph page<br/><small>Artefact</small>"]:::unknown
   n5["Export the page<br/><small>Entry point</small>"]:::held
-  n6["The candidate plays the laws<br/><small>Check</small>"]:::held
+  n6["The candidate plays the laws<br/><small>Check</small>"]:::unknown
   n7["Test the laws<br/><small>Entry point</small>"]:::held
-  n8["The candidate runs on the machine<br/><small>Check</small>"]:::held
+  n8["The candidate runs on the machine<br/><small>Check</small>"]:::unknown
   n9["Ask the machine<br/><small>Entry point</small>"]:::held
-  n10["The graph page opens<br/><small>Check</small>"]:::held
+  n10["The graph page opens<br/><small>Check</small>"]:::unknown
   n11["Open the graph page<br/><small>Entry point</small>"]:::held
   n12["The engine: a graph like any product's<br/><small>Architecture decision</small>"]:::held
   n13["The words are in catalogs<br/><small>Architecture decision</small>"]:::held
@@ -223,14 +223,14 @@ flowchart TB
   n37["The laws are requirements<br/><small>Architecture decision</small>"]:::held
   n38["Without evidence, a status is unknown<br/><small>Architecture decision</small>"]:::held
   n39["The source carries the history<br/><small>Architecture decision</small>"]:::held
-  n40["Kinds and views say what; renderers say how<br/><small>Architecture decision</small>"]:::held
-  n41["One output for each reader<br/><small>Architecture decision</small>"]:::held
-  n42["Generations: frozen engines<br/><small>Architecture decision</small>"]:::held
-  n43["Trame builds Trame<br/><small>Architecture decision</small>"]:::held
-  n44["One renderer, its syntax a choice<br/><small>Architecture decision</small>"]:::held
-  n45["A product is delivered by a node of the graph<br/><small>Architecture decision</small>"]:::held
-  n46["A style sheet writes no value<br/><small>Architecture decision</small>"]:::held
-  n47["The page is assembled<br/><small>Architecture decision</small>"]:::held
+  n40["One output for each reader<br/><small>Architecture decision</small>"]:::held
+  n41["Generations: frozen engines<br/><small>Architecture decision</small>"]:::held
+  n42["Trame builds Trame<br/><small>Architecture decision</small>"]:::held
+  n43["A product is delivered by a node of the graph<br/><small>Architecture decision</small>"]:::held
+  n44["A style sheet writes no value<br/><small>Architecture decision</small>"]:::held
+  n45["Kinds and views say what; renderers say how<br/><small>Architecture decision</small>"]:::held
+  n46["Trame's documents, rendered by the library of documents<br/><small>Architecture decision</small>"]:::held
+  n47["The page is assembled<br/><small>Architecture decision</small>"]:::unknown
   n48["Effects come from the vocabulary<br/><small>Architecture rule</small>"]:::held
   n49["Only commands write<br/><small>Architecture rule</small>"]:::held
   n50["Rendering does not read the graph<br/><small>Architecture rule</small>"]:::held
@@ -303,7 +303,7 @@ flowchart TB
   n117["The resolution does not depend on the order<br/><small>Requirement</small>"]:::held
   n118["Without evidence, the status is unknown<br/><small>Requirement</small>"]:::held
   n119["Advance<br/><small>Entry point</small>"]:::held
-  n120["The next generation<br/><small>Shipment</small>"]:::held
+  n120["The next generation<br/><small>Shipment</small>"]:::unknown
   n47 -->|Applied by| n50
   n65 -->|Verifies| n119
   n65 -->|Depends on| n119
@@ -324,9 +324,9 @@ flowchart TB
   n12 -->|Applied by| n50
   n12 -->|Applied by| n49
   n12 -->|Applied by| n48
-  n42 -->|Applied by| n119
-  n42 -->|Applied by| n104
-  n42 -->|Applied by| n77
+  n41 -->|Applied by| n119
+  n41 -->|Applied by| n104
+  n41 -->|Applied by| n77
   n14 -->|Applied by| n107
   n14 -->|Applied by| n119
   n16 -->|Applied by| n108
@@ -334,13 +334,13 @@ flowchart TB
   n31 -->|Applied by| n49
   n26 -->|Applied by| n50
   n18 -->|Applied by| n119
-  n43 -->|Applied by| n119
-  n43 -->|Applied by| n104
-  n43 -->|Applied by| n62
-  n43 -->|Applied by| n77
-  n43 -->|Applied by| n78
+  n42 -->|Applied by| n119
+  n42 -->|Applied by| n104
+  n42 -->|Applied by| n62
+  n42 -->|Applied by| n77
+  n42 -->|Applied by| n78
   n38 -->|Applied by| n78
-  n40 -->|Applied by| n50
+  n45 -->|Applied by| n50
   n6 -->|Checks| n0
   n6 -->|Run by| n7
   n8 -->|Checks| n0
@@ -370,16 +370,16 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The candidate engine](sdlc.md#EngineCandidate) · `out/local/trame-cli.ts` | [Trame on the command line](architecture.md#TrameCli) | — | **held** | 27 November 2026 by claude  |
-| 2 | produce | [The page's program](sdlc.md#PageProgram) · `out/browser/page-app.ts` | [The page in a browser](architecture.md#PageApp) | — | **held** | 27 November 2026 by claude  |
-| 3 | produce | [The graph page](sdlc.md#GraphPage) · `trame-page.html` | [Export the page](commands.md#Export) | — | **held** | 27 November 2026 by claude  |
-| 4 | check | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | [Test the laws](commands.md#TestKinds), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **held** | passed, 27 November 2026 by claude  |
-| 5 | check | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | [Ask the machine](commands.md#Doctor), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **held** | passed, 27 November 2026 by claude  |
-| 6 | check | [The graph page opens](sdlc.md#GraphPageOpens) | [Open the graph page](sdlc.md#OpenTheGraphPage), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **held** | passed, 27 November 2026 by claude  |
+| 1 | produce | [The candidate engine](sdlc.md#EngineCandidate) · `out/local/trame-cli.ts` | [Trame on the command line](architecture.md#TrameCli) | — | **unknown** | 27 November 2026 by claude  |
+| 2 | produce | [The page's program](sdlc.md#PageProgram) · `out/browser/page-app.ts` | [The page in a browser](architecture.md#PageApp) | — | **unknown** | 27 November 2026 by claude  |
+| 3 | produce | [The graph page](sdlc.md#GraphPage) · `trame-page.html` | [Export the page](commands.md#Export) | — | **unknown** | 27 November 2026 by claude  |
+| 4 | check | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | [Test the laws](commands.md#TestKinds), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** | passed, 27 November 2026 by claude  |
+| 5 | check | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | [Ask the machine](commands.md#Doctor), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** | passed, 27 November 2026 by claude  |
+| 6 | check | [The graph page opens](sdlc.md#GraphPageOpens) | [Open the graph page](sdlc.md#OpenTheGraphPage), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** | passed, 27 November 2026 by claude  |
 | 7 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 8 | prove | [The candidate engine](sdlc.md#EngineCandidate) | — | the shipment | **held** | 27 November 2026 by claude  |
-| 9 | prove | [The graph page](sdlc.md#GraphPage) | — | the shipment | **held** | 27 November 2026 by claude  |
-| 10 | prove | [The page's program](sdlc.md#PageProgram) | — | the shipment | **held** | 27 November 2026 by claude  |
+| 8 | prove | [The candidate engine](sdlc.md#EngineCandidate) | — | the shipment | **unknown** | 27 November 2026 by claude  |
+| 9 | prove | [The graph page](sdlc.md#GraphPage) | — | the shipment | **unknown** | 27 November 2026 by claude  |
+| 10 | prove | [The page's program](sdlc.md#PageProgram) | — | the shipment | **unknown** | 27 November 2026 by claude  |
 | 11 | prove | [The engine: a graph like any product's](principles.md#EngineLayer) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Trame on the command line](architecture.md#TrameCli) | **held** |  |
 | 12 | prove | [The words are in catalogs](principles.md#WordsInCatalogs) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Messages of the platform](messages.md#PlatformMessages) | **held** |  |
 | 13 | prove | [A library is a Trame project, imported by path](principles.md#LibrariesAreProjects) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [What belongs to a library](libraries.md#LibraryOfAModule) | **held** |  |
@@ -408,20 +408,20 @@ flowchart TB
 | 36 | prove | [The laws are requirements](engine.md#LawsAreRequirements) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Laws](engine.md#Laws) | **held** |  |
 | 37 | prove | [Without evidence, a status is unknown](principles.md#UnknownWithoutEvidence) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Laws](engine.md#Laws) | **held** |  |
 | 38 | prove | [The source carries the history](principles.md#HistoryInTheSource) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Lock](engine.md#Lock) | **held** |  |
-| 39 | prove | [Kinds and views say what; renderers say how](rendering.md#MeaningThenLook) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Common rendering](rendering.md#Common) | **held** |  |
-| 40 | prove | [One output for each reader](principles.md#OneOutputPerReader) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Machine outputs](engine.md#MachineOutputs) | **held** |  |
-| 41 | prove | [Generations: frozen engines](principles.md#GenerationLayer) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Accept a candidate](generations.md#AcceptCandidate) | **held** |  |
-| 42 | prove | [Trame builds Trame](principles.md#TrameBuildsTrame) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Accept a candidate](generations.md#AcceptCandidate) | **held** |  |
-| 43 | prove | [One renderer, its syntax a choice](rendering.md#OneRendererManySyntaxes) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Rendering of the files](rendering.md#FileRendering) | **held** |  |
-| 44 | prove | [A product is delivered by a node of the graph](principles.md#DeliveredByTheGraph) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Style of a delivered page](delivery.md#DeliveredStyle) | **held** |  |
-| 45 | prove | [A style sheet writes no value](page.md#StyleThroughVariables) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Theme](page.md#Theme) | **held** |  |
-| 46 | prove | [The page is assembled](browser.md#ThePageIsAssembled) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Explorer of a graph](browser.md#ExplorerFigures) | **held** |  |
+| 39 | prove | [One output for each reader](principles.md#OneOutputPerReader) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Machine outputs](engine.md#MachineOutputs) | **held** |  |
+| 40 | prove | [Generations: frozen engines](principles.md#GenerationLayer) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Accept a candidate](generations.md#AcceptCandidate) | **held** |  |
+| 41 | prove | [Trame builds Trame](principles.md#TrameBuildsTrame) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Accept a candidate](generations.md#AcceptCandidate) | **held** |  |
+| 42 | prove | [A product is delivered by a node of the graph](principles.md#DeliveredByTheGraph) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Style of a delivered page](delivery.md#DeliveredStyle) | **held** |  |
+| 43 | prove | [A style sheet writes no value](page.md#StyleThroughVariables) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Theme](page.md#Theme) | **held** |  |
+| 44 | prove | [Kinds and views say what; renderers say how](rendering.md#MeaningThenLook) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Rendering in the page](rendering.md#PageRendering) | **held** |  |
+| 45 | prove | [Trame's documents, rendered by the library of documents](rendering.md#RenderedByTheLibrary) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Rendering in the page](rendering.md#PageRendering) | **held** |  |
+| 46 | prove | [The page is assembled](browser.md#ThePageIsAssembled) | — | [The decisions of the architecture hold](sdlc.md#ArchitectureApplied) via [Explorer of a graph](browser.md#ExplorerFigures) | **unknown** |  |
 | 47 | prove | [Effects come from the vocabulary](architecture.md#KnownEffects) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
 | 48 | prove | [Only commands write](architecture.md#OnlyCommandsWrite) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
 | 49 | prove | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
-| 50 | prove | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | [Test the laws](commands.md#TestKinds), signed by [Trame's maintainers](sdlc.md#Maintainers) | [The candidate is checked by programs](sdlc.md#CandidateChecked) via [The candidate engine](sdlc.md#EngineCandidate) | **held** | passed, 27 November 2026 by claude  |
-| 51 | prove | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | [Ask the machine](commands.md#Doctor), signed by [Trame's maintainers](sdlc.md#Maintainers) | [The candidate is checked by programs](sdlc.md#CandidateChecked) via [The candidate engine](sdlc.md#EngineCandidate) | **held** | passed, 27 November 2026 by claude  |
-| 52 | prove | [The graph page opens](sdlc.md#GraphPageOpens) | [Open the graph page](sdlc.md#OpenTheGraphPage), signed by [Trame's maintainers](sdlc.md#Maintainers) | [The candidate is checked by programs](sdlc.md#CandidateChecked) via [The graph page](sdlc.md#GraphPage) | **held** | passed, 27 November 2026 by claude  |
+| 50 | prove | [The candidate plays the laws](sdlc.md#CandidateKeepsTheLaws) | [Test the laws](commands.md#TestKinds), signed by [Trame's maintainers](sdlc.md#Maintainers) | [The candidate is checked by programs](sdlc.md#CandidateChecked) via [The candidate engine](sdlc.md#EngineCandidate) | **unknown** | passed, 27 November 2026 by claude  |
+| 51 | prove | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | [Ask the machine](commands.md#Doctor), signed by [Trame's maintainers](sdlc.md#Maintainers) | [The candidate is checked by programs](sdlc.md#CandidateChecked) via [The candidate engine](sdlc.md#EngineCandidate) | **unknown** | passed, 27 November 2026 by claude  |
+| 52 | prove | [The graph page opens](sdlc.md#GraphPageOpens) | [Open the graph page](sdlc.md#OpenTheGraphPage), signed by [Trame's maintainers](sdlc.md#Maintainers) | [The candidate is checked by programs](sdlc.md#CandidateChecked) via [The graph page](sdlc.md#GraphPage) | **unknown** | passed, 27 November 2026 by claude  |
 | 53 | prove | [Grammar of TypeScript](packages.md#TypeScriptGrammar) | — | [The packages are safe](sdlc.md#EnginePackagesSafe) via [TypeScript](typescript.md#TypeScript) | **held** | 29 October 2026 by   |
 | 54 | prove | [tsx](packages.md#TsxPackage) | — | [The packages are safe](sdlc.md#EnginePackagesSafe) via [tsx loader](platform.md#TsxLoader) | **held** | 29 October 2026 by   |
 | 55 | prove | [TypeScript](packages.md#TypeScriptPackage) | — | [The packages are safe](sdlc.md#EnginePackagesSafe) via [TypeScript compiler](platform.md#RealTypeScript) | **held** | 29 October 2026 by   |
@@ -456,7 +456,7 @@ flowchart TB
 | 84 | prove | [The engine's API](command-scenarios.md#EngineApiGiven) | — | [The engine is verified](sdlc.md#EngineVerified) via [Preparation](commands.md#Preparation) | **held** |  |
 | 85 | prove | [A value amended](command-scenarios.md#ValueAmended) | — | [The engine is verified](sdlc.md#EngineVerified) via [An amendment prepared](commands.md#Amending) | **held** |  |
 | 86 | prove | [The packages audited](command-scenarios.md#PackagesAudited) | — | [The engine is verified](sdlc.md#EngineVerified) via [Audit the packages](commands.md#Audit) | **held** |  |
-| 87 | prove | [A view in the terminal](command-scenarios.md#ViewsInTheTerminal) | — | [The engine is verified](sdlc.md#EngineVerified) via [Figures as text](rendering.md#TextFigures) | **held** |  |
+| 87 | prove | [A view in the terminal](command-scenarios.md#ViewsInTheTerminal) | — | [The engine is verified](sdlc.md#EngineVerified) via [Render a view](commands.md#RenderView) | **held** |  |
 | 88 | prove | [The page of the graph](command-scenarios.md#PageOfTheGraph) | — | [The engine is verified](sdlc.md#EngineVerified) via [esbuild](platform.md#Esbuild) | **held** |  |
 | 89 | prove | [The page delivered](command-scenarios.md#PageDelivered) | — | [The engine is verified](sdlc.md#EngineVerified) via [The names a bundle is led by](delivery.md#NamesLed) | **held** |  |
 | 90 | prove | [trame dev](command-scenarios.md#DevFollowsTheGraph) | — | [The engine is verified](sdlc.md#EngineVerified) via [Node timer](platform.md#NodeTimer) | **held** |  |
@@ -491,7 +491,7 @@ flowchart TB
 | 119 | prove | [The resolution does not depend on the order](laws.md#OrderFree) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
 | 120 | prove | [Without evidence, the status is unknown](laws.md#UnknownWithoutEvidence) | — | [The language serves what it says](sdlc.md#LanguageServed) via [Complete declaration](laws.md#CompleteDeclaration) | **held** |  |
 | 121 | deploy | [Advance](commands.md#Advance) | itself | — | **held** | 27 November 2026 by claude  |
-| 122 | record | [The next generation](sdlc.md#NextGeneration) | — | — | **held** | 27 November 2026 by claude `evidence/shipments/NextGeneration-2026-11-27-e9fb8deb.json` |
+| 122 | record | [The next generation](sdlc.md#NextGeneration) | — | — | **unknown** | 27 November 2026 by claude `evidence/shipments/NextGeneration-2026-11-27-e9fb8deb.json` |
 
 `trame ship NextGeneration --by <name>`
 
@@ -499,17 +499,17 @@ flowchart TB
 
 ## The repository as decided
 
-> **The repository as decided does not ship yet: 8 of 9 obligations hold.**
+> **The repository as decided does not ship yet: 7 of 9 obligations hold.**
 
 For the target github; its programs are assembled for [Local](architecture.md#Local).
 
 ```mermaid
 flowchart TB
-  n0["The candidate engine<br/><small>Artefact</small>"]:::held
+  n0["The candidate engine<br/><small>Artefact</small>"]:::unknown
   n1["Trame on the command line<br/><small>Component</small>"]:::neutral
   n2["The repository is read from GitHub<br/><small>Check</small>"]:::unknown
   n3["Read the repository's settings<br/><small>Entry point</small>"]:::held
-  n4["The candidate runs on the machine<br/><small>Check</small>"]:::held
+  n4["The candidate runs on the machine<br/><small>Check</small>"]:::unknown
   n5["Ask the machine<br/><small>Entry point</small>"]:::held
   n6["Effects come from the vocabulary<br/><small>Architecture rule</small>"]:::held
   n7["Only commands write<br/><small>Architecture rule</small>"]:::held
@@ -541,16 +541,16 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The candidate engine](sdlc.md#EngineCandidate) · `out/local/trame-cli.ts` | [Trame on the command line](architecture.md#TrameCli) | — | **held** | 27 November 2026 by claude  |
+| 1 | produce | [The candidate engine](sdlc.md#EngineCandidate) · `out/local/trame-cli.ts` | [Trame on the command line](architecture.md#TrameCli) | — | **unknown** | 27 November 2026 by claude  |
 | 2 | check | [The repository is read from GitHub](sdlc.md#RepositoryRead) | [Read the repository's settings](sdlc.md#ReadTheRepositorySettings), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** | passed, 20 November 2026 by claude  |
-| 3 | check | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | [Ask the machine](commands.md#Doctor), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **held** | passed, 27 November 2026 by claude  |
+| 3 | check | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | [Ask the machine](commands.md#Doctor), signed by [Trame's maintainers](sdlc.md#Maintainers) | — | **unknown** | passed, 27 November 2026 by claude  |
 | 4 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
 | 5 | prove | [The repository is read from GitHub](sdlc.md#RepositoryRead) | [Read the repository's settings](sdlc.md#ReadTheRepositorySettings), signed by [Trame's maintainers](sdlc.md#Maintainers) | the shipment | **unknown** | passed, 20 November 2026 by claude  |
 | 6 | prove | [Effects come from the vocabulary](architecture.md#KnownEffects) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
 | 7 | prove | [Only commands write](architecture.md#OnlyCommandsWrite) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
 | 8 | prove | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph) | — | [The rules of the architecture hold](sdlc.md#ArchitectureRuled) | **held** |  |
 | 9 | prove | [The repository is set as the graph decides](sdlc.md#SettingTheRepository) | — | [The engine is verified](sdlc.md#EngineVerified) via [Set the repository's settings](sdlc.md#ApplyTheRepositorySettings) | **held** |  |
-| 10 | prove | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | [Ask the machine](commands.md#Doctor), signed by [Trame's maintainers](sdlc.md#Maintainers) | [The engine is verified](sdlc.md#EngineVerified) via [Node process](platform.md#NodeProcess) | **held** | passed, 27 November 2026 by claude  |
+| 10 | prove | [The candidate runs on the machine](sdlc.md#CandidateRunsOnTheMachine) | [Ask the machine](commands.md#Doctor), signed by [Trame's maintainers](sdlc.md#Maintainers) | [The engine is verified](sdlc.md#EngineVerified) via [Node process](platform.md#NodeProcess) | **unknown** | passed, 27 November 2026 by claude  |
 | 11 | prove | [A generation advanced in one command](sdlc.md#AdvancedInOneCommand) | — | [The engine is verified](sdlc.md#EngineVerified) via [Advance](sdlc.md#AdvanceAGeneration) | **held** |  |
 | 12 | prove | [The graph page is opened as a person would](sdlc.md#OpeningTheGraphPage) | — | [The engine is verified](sdlc.md#EngineVerified) via [What the graph page is asked](sdlc.md#GraphPageSelectors) | **held** |  |
 | 13 | deploy | [Set the repository's settings](sdlc.md#ApplyTheRepositorySettings) | itself | — | **held** |  |

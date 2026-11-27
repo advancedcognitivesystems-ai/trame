@@ -136,7 +136,7 @@ export const VersionOrder = fn({
  * repository, at the version it froze.
  */
 export const StandardLibrary = pkg({
-  owner: "trame", packageName: "std", version: "0.29.1", joins: "library", from: "path", at: "std/releases/0.29.1", serves: [SingleSource],
+  owner: "trame", packageName: "std", version: "0.30.0", joins: "library", from: "path", at: "std/releases/0.30.0", serves: [SingleSource],
 })
 
 /**
@@ -197,9 +197,10 @@ export const GenericCommands = pkg({
 /**
  * The renderers of documents
  * The language the documents are written in, as a port Trame realizes with its Language, and what writes in it
- * (dates, lists, punctuation, units), at the version Trame uses, by its path in the repository; the renderers follow.
+ * (dates, lists, punctuation, units); the renderers of files and of the terminal, which the engine's commands use, and
+ * the one renderer the page gives its syntax: at the version Trame uses, by its path in the repository.
  */
 export const DocumentRenderers = pkg({
-  owner: "trame", packageName: "documents", version: "0.1.1", joins: "library", from: "path", at: "libs/documents/releases/0.1.1",
+  owner: "trame", packageName: "documents", version: "0.2.0", joins: "library", from: "path", at: "libs/documents/releases/0.2.0",
   serves: [SingleSource],
 })

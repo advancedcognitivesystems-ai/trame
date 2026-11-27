@@ -23,7 +23,7 @@ The language Trame speaks to people: British English. Its messages are written i
 - Rejected: French, the language of the first generations; the workspace and its documents moved to English; Several languages at once, nothing asks for it yet: each catalog is written in one language, and a second one would be a second set of catalogs
 - Used by: [Show the graph](browser.md#ShowGraph), [The documents in Trame's language](documents.md#OurDocumentLanguage), [trame dev server](engine.md#DevServer), [Payload](engine.md#PayloadBuilder), [Messages of an advance](#AdvanceMessages), [Messages of the commands](#CommandMessages), [Messages of the compiler](#CompilerMessages), [Messages of trame dev](#DevMessages), [Words of the page](#PageWords), [Messages of the scenarios](#ScenarioMessages), [Messages of the views](#ViewMessages), [Page](page.md#Page), [The documents write in the decided language](scenarios.md#DocumentWords), [Open the graph page](sdlc.md#OpenTheGraphPage)
 - Applies: [The punctuation is the language's](documents.md#PunctuationOfTheLanguage)
-- Language of: [Messages of an advance](#AdvanceMessages), [Messages of the commands](#CommandMessages), [Messages of the compiler](#CompilerMessages), [Messages of trame dev](#DevMessages), [Messages of the drivers](#DriverMessages), [Words of Trame's views](#EngineViewWords), [Words of the kinds](#KindWords), [Messages of the laws](#LawMessages), [Messages of the outputs](#OutputMessages), [Words of the page](#PageWords), [Messages of the platform](#PlatformMessages), [Messages of the renderers](#RenderingMessages), [Messages of the scenarios](#ScenarioMessages), [Messages of the views](#ViewMessages), [Words of the views](#ViewWords), [What the programs of Trame's SDLC say](sdlc.md#SdlcWords), [Roles of a literal](syntax.md#LiteralRoles)
+- Language of: [Messages of an advance](#AdvanceMessages), [Messages of the commands](#CommandMessages), [Messages of the compiler](#CompilerMessages), [Messages of trame dev](#DevMessages), [Messages of the drivers](#DriverMessages), [Words of Trame's views](#EngineViewWords), [Words of the kinds](#KindWords), [Messages of the laws](#LawMessages), [Messages of the outputs](#OutputMessages), [Words of the page](#PageWords), [Messages of the platform](#PlatformMessages), [Messages of the scenarios](#ScenarioMessages), [Messages of the views](#ViewMessages), [Words of the views](#ViewWords), [What the programs of Trame's SDLC say](sdlc.md#SdlcWords), [Roles of a literal](syntax.md#LiteralRoles)
 
 ## Architecture decision
 
@@ -31,7 +31,7 @@ The language Trame speaks to people: British English. Its messages are written i
 
 ### A catalog counts in its language
 
-`CountsInTheLanguage` · `src/messages.ts:1007` · status: **held**
+`CountsInTheLanguage` · `src/messages.ts:996` · status: **held**
 
 A count and its noun follow the plural rules of the language the catalog is written in, with the forms the catalog writes for each category; nothing below the catalogs presumes a language.
 
@@ -46,7 +46,7 @@ Consequences: A catalog that counts receives the decided language and counts by 
 
 - Decided by: trame
 - Serves: [A single source of truth](product.md#SingleSource)
-- Applied by: [Messages of the compiler](#CompilerMessages), [Messages of the views](#ViewMessages), [Messages of trame dev](#DevMessages), [Messages of the commands](#CommandMessages), [Messages of the scenarios](#ScenarioMessages), [Messages of an advance](#AdvanceMessages), [Words of the page](#PageWords), [Lists](../libs/documents/releases/0.1.1/docs/language.md#Lists)
+- Applied by: [Messages of the compiler](#CompilerMessages), [Messages of the views](#ViewMessages), [Messages of trame dev](#DevMessages), [Messages of the commands](#CommandMessages), [Messages of the scenarios](#ScenarioMessages), [Messages of an advance](#AdvanceMessages), [Words of the page](#PageWords), [Lists](../libs/documents/releases/0.2.0/docs/language.md#Lists)
 
 ## Message catalogs
 
@@ -54,7 +54,7 @@ Consequences: A catalog that counts receives the decided language and counts by 
 
 ### Messages of an advance
 
-`AdvanceMessages` · `src/messages.ts:918`
+`AdvanceMessages` · `src/messages.ts:907`
 
 What trame advance says as it goes, and what a generation says of itself.
 
@@ -545,7 +545,7 @@ What the compiler, the wiring and the assembly say: diagnostics on the graph, re
 </details>
 
 - Owner: trame
-- Parameters: `language` ← [Language](#Language) · `lists` ← [Lists](../libs/documents/releases/0.1.1/docs/language.md#Lists)
+- Parameters: `language` ← [Language](#Language) · `lists` ← [Lists](../libs/documents/releases/0.2.0/docs/language.md#Lists)
 - Written in: [Language](#Language)
 - Used by: [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [Assembly](engine.md#Assembly), [Compiler](engine.md#Compiler), [Graph](engine.md#GraphApi), [Judged harder](engine.md#JudgedHarder), [Static reading](engine.md#StaticAnalysis), [Wiring](engine.md#Wiring)
 - Applies: [A catalog counts in its language](#CountsInTheLanguage), [The words are in catalogs](principles.md#WordsInCatalogs)
@@ -580,7 +580,7 @@ What the dev server prints while it watches the project.
 </details>
 
 - Owner: trame
-- Parameters: `language` ← [Language](#Language) · `lists` ← [Lists](../libs/documents/releases/0.1.1/docs/language.md#Lists)
+- Parameters: `language` ← [Language](#Language) · `lists` ← [Lists](../libs/documents/releases/0.2.0/docs/language.md#Lists)
 - Written in: [Language](#Language)
 - Used by: [trame dev server](engine.md#DevServer)
 - Applies: [A catalog counts in its language](#CountsInTheLanguage), [The words are in catalogs](principles.md#WordsInCatalogs)
@@ -817,7 +817,7 @@ The messages are written in `./code/page/words.ts`.
 
 ### Messages of the platform
 
-`PlatformMessages` · `src/messages.ts:718`
+`PlatformMessages` · `src/messages.ts:707`
 
 What the implementations of the ports say (the command line, the terminal, the processes).
 
@@ -853,26 +853,11 @@ What the implementations of the ports say (the command line, the terminal, the p
 - Used by: [The command line](command-scenarios.md#CommandLineChooses), [Example process](platform.md#ExampleProcess), [Files in memory, over the disk](platform.md#MemoryFiles), [A server in memory](platform.md#MemoryHttpServer), [Terminal in memory](platform.md#MemoryTerminal), [Command line](platform.md#NodeCommandLine), [Node terminal](platform.md#NodeTerminal), [tree-sitter in WebAssembly](platform.md#WebTreeSitter)
 - Applies: [The words are in catalogs](principles.md#WordsInCatalogs)
 
-<a id="RenderingMessages"></a>
-
-### Messages of the renderers
-
-`RenderingMessages` · `src/messages.ts:708`
-
-The words that the renderers add to the intermediate format: labels, notes, the names of statuses and outcomes. Written in a file: the page, which runs in the browser where nothing is wired, reads it too.
-
-The messages are written in `./code/rendering/messages.ts`.
-
-- Owner: trame
-- Written in: [Language](#Language)
-- Used by: [Explorer of a graph](browser.md#ExplorerFigures), [Common rendering](rendering.md#Common), [Rendering of the files](rendering.md#FileRendering), [HTML writer](rendering.md#HtmlSyntax), [Markdown writer](rendering.md#MarkdownSyntax), [Mermaid diagrams](rendering.md#MermaidDiagrams), [Rendering in the page](rendering.md#PageRendering), [Plain text writer](rendering.md#PlainTextSyntax), [Figures in SVG](rendering.md#SvgFigures), [Rendering in the terminal](rendering.md#TerminalRendering), [Figures as text](rendering.md#TextFigures)
-- Applies: [The words are in catalogs](principles.md#WordsInCatalogs)
-
 <a id="ScenarioMessages"></a>
 
 ### Messages of the scenarios
 
-`ScenarioMessages` · `src/messages.ts:747`
+`ScenarioMessages` · `src/messages.ts:736`
 
 The names of the checks that the engine's scenarios make.
 

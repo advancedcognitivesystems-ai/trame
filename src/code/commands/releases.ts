@@ -5,7 +5,7 @@
 import { EdgeName, KindName, ReleaseEdge, type ProvidedBy } from "../../../trame/kernel"
 import type * as ts from "../../typescript"
 import type { Releases } from "../../generations"
-import type { ReferenceSyntax } from "../../conventions"
+import type { ReferenceSyntax } from "#std/engine"
 import type { GnuPositions } from "#std/text"
 import type { Texts, ValueTypes } from "#std/algebra"
 

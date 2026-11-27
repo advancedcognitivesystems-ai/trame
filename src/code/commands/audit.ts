@@ -7,7 +7,7 @@ import type { FileReading, FileWriting, Layout, PackageReports, Paths, Terminal 
 import type { CommandMessages } from "../../messages"
 import type { NodeEncodings } from "#std/system"
 import type { PackageAudit, VersionOrder } from "../../packages"
-import type { Columns, TerminalText } from "../../text"
+import type { Columns, TerminalText } from "#documents/text"
 import type { Counts, ValueTypes } from "#std/algebra"
 import type { Api as PreparationApi } from "./preparation"
 

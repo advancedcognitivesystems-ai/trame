@@ -10,7 +10,7 @@
 
 ### Names of the documents
 
-`DocumentIds` · `src/conventions.ts:262`
+`DocumentIds` · `src/conventions.ts:247`
 
 How a document of a view is named: a view of the whole graph by its name; a view of a module by its name and the module ("layers.engine"), except the first view per module, named by the module alone; a view of a node by its name and the reference of the node ("impact:engine.Compiler"), which the page reads back to show it.
 
@@ -56,26 +56,6 @@ Source: Trame, the prelude (trame/internal.ts: frozen)
 - Maintained by: trame
 - Used by: [A component assembled](command-scenarios.md#ComponentAssembled), [A body amended runs amended](scenarios.md#AmendedBodiesRun), [TypeScript writer](typescript.md#TypeScriptWriter)
 - Applies: [The prelude: the runtime of the language](principles.md#PreludeLayer)
-
-<a id="ReferenceSyntax"></a>
-
-### Trame references
-
-`ReferenceSyntax` · `src/conventions.ts:233`
-
-How the language names a node and a field: "module.Identifier", "value.case". An empty path designates the whole node. A module of a library takes the library's name before its own: "std/algebra.Counts".
-
-Source: Trame, the prelude (trame/kernel.ts: refOf, getPath)
-
-| Constant | Value | Meaning |
-|---|---|---|
-| `separator` | `.` | Separates the module from the identifier, and the steps of a path in a field |
-| `library` | `/` | Separates a library's name from the name of one of its modules, in the graph that imports it |
-| `wholeNode` | `""` | The empty path: the whole node, not one of its fields (refines Texts.empty) |
-
-- Maintained by: trame
-- Refines: [Texts](../std/releases/0.29.1/docs/algebra.md#Texts)
-- Used by: [Advance](commands.md#Advance), [Graph](engine.md#GraphApi), [References](engine.md#References), [Wiring](engine.md#Wiring), [Records of the releases](generations.md#ReleaseRecords), [Common rendering](rendering.md#Common), [TypeScript writer](typescript.md#TypeScriptWriter)
 
 <a id="TrameCommands"></a>
 
@@ -201,7 +181,7 @@ The place of a kind or a view that does not declare one, in documents and lists.
 
 ### Documentation comment
 
-`DocComment` · `src/conventions.ts:248`
+`DocComment` · `src/conventions.ts:233`
 
 What the comment before a declaration says: its first lines are the node's title, the following ones its description. The lines of each are joined into one text, by a space.
 
@@ -218,7 +198,7 @@ What the comment before a declaration says: its first lines are the node's title
 
 ### JSON formatting
 
-`JsonFormatting` · `src/conventions.ts:254`
+`JsonFormatting` · `src/conventions.ts:239`
 
 The JSON that Trame writes to be read (the lock, a view in JSON): indented.
 
@@ -305,7 +285,7 @@ Where a Trame project keeps its sources, its documents, its outputs; what its fi
 | launcher | trame.sh |
 
 - Decided by: trame
-- Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A build planned](command-scenarios.md#BuildPlanned), [A component assembled](command-scenarios.md#ComponentAssembled), [Declarations published](command-scenarios.md#DeclarationsPublished), [trame dev](command-scenarios.md#DevFollowsTheGraph), [The engine's API](command-scenarios.md#EngineApiGiven), [Evidence given for someone](command-scenarios.md#EvidenceForSomeone), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The packages upgraded](command-scenarios.md#PackagesUpgraded), [The page exported](command-scenarios.md#PageExported), [A project started](command-scenarios.md#ProjectStarted), [A published value changed](command-scenarios.md#PublishedValueChanged), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [Stages shipped in order](command-scenarios.md#StagesShipped), [Advance](commands.md#Advance), [An amendment prepared](commands.md#Amending), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [Export the page](commands.md#Export), [Start a project](commands.md#Init), [Plan a build](commands.md#Plan), [Preparation](commands.md#Preparation), [Fill the registry](commands.md#Registry), [Release a version](commands.md#Release), [Take the snapshot](commands.md#TakeSnapshot), [Write the manifest](commands.md#WriteManifest), [The installer installs what a manifest names and writes its lockfile](doctor.md#InstallerAnswers), [Assembly](engine.md#Assembly), [Compilation API](engine.md#CompilationApi), [Compiler](engine.md#Compiler), [trame dev server](engine.md#DevServer), [The fingerprint of an engine](engine.md#EngineFingerprint), [Graph](engine.md#GraphApi), [Laws](engine.md#Laws), [Lock](engine.md#Lock), [Payload](engine.md#PayloadBuilder), [Project](engine.md#Project), [Views](engine.md#Views), [Wiring](engine.md#Wiring), [Relative reference](markdown.md#RelativeReference), [Packages from the local registry](platform.md#LocalRegistry), [No installer in test](platform.md#NoInstallsInTest), [Page resources](platform.md#PageResources), [Runs kept on disk](platform.md#RunsOnDisk), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [Advance](sdlc.md#AdvanceAGeneration), [Trame's settings, as std's commands read them](sdlc.md#OurCommandsSettled), [How a version is carried across Trame's repository](sdlc.md#OurPropagation), [How Trame's pull requests are opened](sdlc.md#OurPullRequests), [Evidence of the SDLC](shipping.md#SdlcEvidence), [The plan of a run elsewhere](shipping.md#ShipmentRunPlan), [Syntax reader](syntax.md#SyntaxReader), [Terraform writer](terraform.md#TerraformWriter)
+- Used by: [An advance, in memory](command-scenarios.md#AdvanceInMemory), [A build planned](command-scenarios.md#BuildPlanned), [A component assembled](command-scenarios.md#ComponentAssembled), [Declarations published](command-scenarios.md#DeclarationsPublished), [trame dev](command-scenarios.md#DevFollowsTheGraph), [The engine's API](command-scenarios.md#EngineApiGiven), [Evidence given for someone](command-scenarios.md#EvidenceForSomeone), [A library released](command-scenarios.md#LibraryReleased), [The manifest written](command-scenarios.md#ManifestWritten), [The packages upgraded](command-scenarios.md#PackagesUpgraded), [The page exported](command-scenarios.md#PageExported), [A project started](command-scenarios.md#ProjectStarted), [A published value changed](command-scenarios.md#PublishedValueChanged), [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [The snapshot, taken by its command](command-scenarios.md#SnapshotTaken), [Stages shipped in order](command-scenarios.md#StagesShipped), [Advance](commands.md#Advance), [An amendment prepared](commands.md#Amending), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [Export the page](commands.md#Export), [Start a project](commands.md#Init), [Plan a build](commands.md#Plan), [Preparation](commands.md#Preparation), [Fill the registry](commands.md#Registry), [Release a version](commands.md#Release), [Take the snapshot](commands.md#TakeSnapshot), [Write the manifest](commands.md#WriteManifest), [The installer installs what a manifest names and writes its lockfile](doctor.md#InstallerAnswers), [Assembly](engine.md#Assembly), [Compilation API](engine.md#CompilationApi), [Compiler](engine.md#Compiler), [trame dev server](engine.md#DevServer), [The fingerprint of an engine](engine.md#EngineFingerprint), [Graph](engine.md#GraphApi), [Laws](engine.md#Laws), [Lock](engine.md#Lock), [Payload](engine.md#PayloadBuilder), [Project](engine.md#Project), [Views](engine.md#Views), [Wiring](engine.md#Wiring), [Packages from the local registry](platform.md#LocalRegistry), [No installer in test](platform.md#NoInstallsInTest), [Page resources](platform.md#PageResources), [Runs kept on disk](platform.md#RunsOnDisk), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [Advance](sdlc.md#AdvanceAGeneration), [Trame's settings, as std's commands read them](sdlc.md#OurCommandsSettled), [How a version is carried across Trame's repository](sdlc.md#OurPropagation), [How Trame's pull requests are opened](sdlc.md#OurPullRequests), [Evidence of the SDLC](shipping.md#SdlcEvidence), [The plan of a run elsewhere](shipping.md#ShipmentRunPlan), [Syntax reader](syntax.md#SyntaxReader), [Terraform writer](terraform.md#TerraformWriter)
 
 <a id="PreludeApi"></a>
 
@@ -374,7 +354,7 @@ When two steps of a wiring plan would take the same name, or a step a name that 
 
 ### Order of the view groups
 
-`ViewGroupOrder` · `src/conventions.ts:276`
+`ViewGroupOrder` · `src/conventions.ts:261`
 
 Where the views of each group come in the list of documents: the documents of the modules first, then the other documents, the figures, the summary, and last the views of a node.
 

@@ -53,13 +53,6 @@ Decision · `PageLayout`
 - Decided by: trame
 - Value: { side-width: 300px, page-width: 1320px, measure: 80ch, date-min: 62px, dot-size: 8px, badge-min: 20px, screen-height: 100vh, full: 100%, fraction: 1fr, track-fill: minmax(0, 1fr), indent-compact: 1.1em, indent-doc: 1.2em, date-mark-line: 1.2em }
 
-### Palette
-
-Decision · `Palette`
-
-- Decided by: trame
-- Value: { light: { bg: #f3f5f6, panel: #ffffff, ink: #17202a, muted: #5a6672, line: #d9e0e5, accent: #34509a, accent-soft: #e5ebf7, ok: #26734a, ok-soft: #e1f1e7, warn: #9a6200, warn-soft: #fbf0d9, bad: #ad2a22, bad-soft: #f9e3e1, unk: #65707c, unk-soft: #e9edf0, term-bg: #121820, term-ink: #d8dee5, term-dim: #7f8b97 }, dark: { bg: #0e1217, panel: #151b22, ink: #e4e9ee, muted: #98a3ae, line: #29323c, accent: #93abef, accent-soft: #1e2a44, ok: #7fd19b, ok-soft: #173325, warn: #f2c063, warn-soft: #3a2d12, bad: #f08a80, bad-soft: #3d1c1a, unk: #a5afb9, unk-soft: #222a33, term-bg: #0a0e13, term-ink: #d8dee5, term-dim: #7f8b97 }, statuses: { held: { fill: ok-soft, stroke: ok }, blocked: { fill: warn-soft, stroke: warn }, violated: { fill: bad-soft, stroke: bad }, unknown: { fill: unk-soft, stroke: unk }, neutral: { fill: panel, stroke: muted } }, ink: ink }
-
 ### Radii
 
 Decision · `Radii`
@@ -416,7 +409,7 @@ Environment · `Test`
 
 ### The page is assembled
 
-Architecture decision · `ThePageIsAssembled` · **held**
+Architecture decision · `ThePageIsAssembled` · **unknown**
 
 - Decided by: trame
 - Context: The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.
@@ -427,27 +420,27 @@ Architecture decision · `ThePageIsAssembled` · **held**
 
 ### Explorer of a graph
 
-Function · `ExplorerFigures` · **held**
+Function · `ExplorerFigures` · **unknown**
 
 - Owner: trame
-- Parameters: { html: std/html.Html, svg: std/html.Svg, aria: std/html.Aria, css: std/html.Css, page: page.ThePage, markup: markup.DocumentMarkup, figures: markup.FigureMarkup, explorer: markup.ExplorerMarkup, drawing: appearance.ExplorerDrawing, element: html.HtmlElement, start: html.HtmlStartTag, empty: html.SelfClosingTag, path: html.PathData, declaration: html.CssDeclaration, escape: html.EscapedText, common: rendering.Common, words: messages.PageWords, messages: messages.RenderingMessages, punctuation: documents/language.Punctuation, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
+- Parameters: { html: std/html.Html, svg: std/html.Svg, aria: std/html.Aria, css: std/html.Css, page: page.ThePage, markup: markup.DocumentMarkup, figures: markup.FigureMarkup, explorer: markup.ExplorerMarkup, drawing: appearance.ExplorerDrawing, element: documents/html.HtmlElement, start: documents/html.HtmlStartTag, empty: documents/html.SelfClosingTag, path: html.PathData, declaration: html.CssDeclaration, escape: documents/html.EscapedText, common: documents/rendering.Common, words: messages.PageWords, messages: documents/rendering.RenderingMessages, punctuation: documents/language.Punctuation, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
 - Serves: A specification that runs
-- Depends on: The page, Documents in the page, Figures in the page, The explorer of a graph, Drawing of the explorer, HTML element, Start tag, Self-closing tag, Path data, Declaration, Escaped text, Common rendering, Words of the page, Messages of the renderers
+- Depends on: The page, Documents in the page, Figures in the page, The explorer of a graph, Drawing of the explorer, Path data, Declaration, Words of the page
 
 ### Show the graph
 
-Entry point · `ShowGraph` · **held**
+Entry point · `ShowGraph` · **unknown**
 
 - Owner: trame
 - Trigger: { type: load }
-- Parameters: { window: architecture.PageWindow, memory: architecture.PageMemory, feed: architecture.GraphFeed, unpacking: architecture.Decompression, amendments: architecture.PageAmendments, explorer: browser.ExplorerFigures, common: rendering.Common, page: page.ThePage, regions: page.PageRegions, modes: page.RenderingModes, highlighting: page.MachineHighlighting, markup: markup.DocumentMarkup, around: markup.AroundMarkup, explorerMarkup: markup.ExplorerMarkup, drawing: appearance.ExplorerDrawing, ids: conventions.DocumentIds, slots: rendering.SentenceSlots, punctuation: documents/language.Punctuation, language: messages.Language, html: std/html.Html, aria: std/html.Aria, events: std/web.UiEvents, view: std/web.CssomView, iso: std/measures.Iso8601, file: std/text.TextFile, element: html.HtmlElement, escape: html.EscapedText, attribute: html.AttributeSelector, presence: html.AttributePresence, selectors: html.SelectorList, classSelector: html.ClassSelector, words: messages.PageWords, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
+- Parameters: { window: architecture.PageWindow, memory: architecture.PageMemory, feed: architecture.GraphFeed, unpacking: architecture.Decompression, amendments: architecture.PageAmendments, explorer: browser.ExplorerFigures, common: documents/rendering.Common, page: page.ThePage, regions: page.PageRegions, modes: page.RenderingModes, highlighting: page.MachineHighlighting, markup: markup.DocumentMarkup, around: markup.AroundMarkup, explorerMarkup: markup.ExplorerMarkup, drawing: appearance.ExplorerDrawing, ids: conventions.DocumentIds, slots: documents/rendering.SentenceSlots, punctuation: documents/language.Punctuation, language: messages.Language, html: std/html.Html, aria: std/html.Aria, events: std/web.UiEvents, view: std/web.CssomView, iso: std/measures.Iso8601, file: std/text.TextFile, element: documents/html.HtmlElement, escape: documents/html.EscapedText, attribute: html.AttributeSelector, presence: html.AttributePresence, selectors: html.SelectorList, classSelector: html.ClassSelector, words: messages.PageWords, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
 - Serves: A specification that runs
 - Part of: The page in a browser
-- Depends on: Window of the page, Memory of the page, Feed of the graph, Decompression, Amendments from the page, Explorer of a graph, Common rendering, The page, Regions of the page, The renderings of a document, Files for tools in the page, Documents in the page, Around the documents, The explorer of a graph, Drawing of the explorer, Names of the documents, Places in a sentence, Language, HTML element, Escaped text, Attribute selector, Attribute presence, Selector list, Class selector, Words of the page
+- Depends on: Window of the page, Memory of the page, Feed of the graph, Decompression, Amendments from the page, Explorer of a graph, The page, Regions of the page, The renderings of a document, Files for tools in the page, Documents in the page, Around the documents, The explorer of a graph, Drawing of the explorer, Names of the documents, Language, Attribute selector, Attribute presence, Selector list, Class selector, Words of the page
 
 ### Amendments sent to trame dev
 
-Implementation · `BrowserAmendments` · **held**
+Implementation · `BrowserAmendments` · **unknown**
 
 - Owner: trame
 - Parameters: { page: page.ThePage, service: engine.DevService, http: std/web.Http, media: std/web.MediaTypes }
@@ -456,7 +449,7 @@ Implementation · `BrowserAmendments` · **held**
 
 ### The browser's gzip
 
-Implementation · `BrowserDecompression` · **held**
+Implementation · `BrowserDecompression` · **unknown**
 
 - Owner: trame
 - Parameters: { packing: page.PackedGraph, ecma: std/ecmascript.EcmaScript }
@@ -465,7 +458,7 @@ Implementation · `BrowserDecompression` · **held**
 
 ### The globals of the page, and trame dev
 
-Implementation · `BrowserFeed` · **held**
+Implementation · `BrowserFeed` · **unknown**
 
 - Owner: trame
 - Parameters: { page: page.ThePage, service: engine.DevService, values: std/algebra.ValueTypes }
@@ -474,7 +467,7 @@ Implementation · `BrowserFeed` · **held**
 
 ### Local storage
 
-Implementation · `BrowserMemory` · **held**
+Implementation · `BrowserMemory` · **unknown**
 
 - Owner: trame
 - Parameters: { page: page.ThePage }
@@ -483,7 +476,7 @@ Implementation · `BrowserMemory` · **held**
 
 ### The browser's window
 
-Implementation · `BrowserWindow` · **held**
+Implementation · `BrowserWindow` · **unknown**
 
 - Owner: trame
 - Parameters: { motion: std/web.MediaQueries5, feature: html.MediaFeature, counts: std/algebra.Counts }
@@ -492,7 +485,7 @@ Implementation · `BrowserWindow` · **held**
 
 ### The browser runs the page
 
-Technical choice · `TheBrowserRunsThePage` · **held**
+Technical choice · `TheBrowserRunsThePage` · **unknown**
 
 - Decided by: trame
 - Context: The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.
@@ -943,7 +936,7 @@ Scenario · `ViewsInTheTerminal` · **held**
 
 - Owner: trame
 - Parameters: { show: commands.ShowView, byName: commands.CommandOrView, terminalLog: architecture.TerminalLog, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, samples: command-scenarios.ViewSamples, texts: std/algebra.Texts, counts: std/algebra.Counts, messages: messages.ScenarioMessages }
-- Verifies: Show a view, A command of the project, or a view, Render a view, Rendering in the terminal, Plain text writer, Figures as text
+- Verifies: Show a view, A command of the project, or a view, Render a view
 - In: Test
 - Depends on: Show a view, A command of the project, or a view, Terminal log, Trame's commands, Views asked of the example, Messages of the scenarios
 
@@ -972,9 +965,9 @@ Function · `Amending` · **held**
 Function · `Assembler` · **held**
 
 - Owner: trame
-- Parameters: { preparation: commands.Preparation, assembly: engine.Assembly, layout: text.TerminalText, punctuation: documents/language.Punctuation, texts: std/algebra.Texts, counts: std/algebra.Counts, messages: messages.CommandMessages }
+- Parameters: { preparation: commands.Preparation, assembly: engine.Assembly, layout: documents/text.TerminalText, punctuation: documents/language.Punctuation, texts: std/algebra.Texts, counts: std/algebra.Counts, messages: messages.CommandMessages }
 - Serves: A specification that runs
-- Depends on: Preparation, Assembly, Terminal text, Messages of the commands
+- Depends on: Preparation, Assembly, Messages of the commands
 
 ### Rewriting an example
 
@@ -990,9 +983,9 @@ Function · `ExampleRewriting` · **held**
 Function · `Preparation` · **held**
 
 - Owner: trame
-- Parameters: { line: conventions.TrameCommands, compiler: engine.Compiler, compilationApi: engine.CompilationApi, laws: engine.Laws, views: engine.Views, lock: engine.Lock, common: rendering.Common, terminal: architecture.Terminal, currentProcess: architecture.Process, clock: architecture.Clock, severityOrder: (rule), devPort: product.DevPort, exitStatus: std/system.ExitStatus, layout: text.TerminalText, columns: text.TerminalColumns, cell: text.PaddedCell, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CommandMessages, projectLayout: conventions.Layout, uri: std/web.Uri, references: engine.References, projectCommands: commands.ProjectCommands, kept: conventions.KeptCommands, machine: engine.MachineOutputs, paths: architecture.Paths, reading: architecture.FileReading, specifiers: std/system.NodeModuleSpecifiers, reader: syntax.SyntaxReader }
+- Parameters: { line: conventions.TrameCommands, compiler: engine.Compiler, compilationApi: engine.CompilationApi, laws: engine.Laws, views: engine.Views, lock: engine.Lock, common: documents/rendering.Common, terminal: architecture.Terminal, currentProcess: architecture.Process, clock: architecture.Clock, severityOrder: (rule), devPort: product.DevPort, exitStatus: std/system.ExitStatus, layout: documents/text.TerminalText, columns: documents/text.TerminalColumns, cell: documents/text.PaddedCell, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CommandMessages, projectLayout: conventions.Layout, uri: std/web.Uri, references: engine.References, projectCommands: commands.ProjectCommands, kept: conventions.KeptCommands, machine: engine.MachineOutputs, paths: architecture.Paths, reading: architecture.FileReading, specifiers: std/system.NodeModuleSpecifiers, reader: syntax.SyntaxReader }
 - Serves: A specification that runs
-- Depends on: Trame's commands, Compiler, Compilation API, Laws, Views, Lock, Common rendering, Terminal, Process, Clock, Sort problems by severity, Port of trame dev, Terminal text, Columns in the terminal, Padded cell, Messages of the commands, Project layout, References, The project's commands, The commands the engine keeps, Machine outputs, Paths, File reading, Syntax reader
+- Depends on: Trame's commands, Compiler, Compilation API, Laws, Views, Lock, Terminal, Process, Clock, Sort problems by severity, Port of trame dev, Messages of the commands, Project layout, References, The project's commands, The commands the engine keeps, Machine outputs, Paths, File reading, Syntax reader
 
 ### The project's commands
 
@@ -1017,9 +1010,9 @@ Function · `ReferencesModule` · **held**
 Function · `RenderView` · **held**
 
 - Owner: trame
-- Parameters: { line: conventions.TrameCommands, json: conventions.JsonFormatting, preparation: commands.Preparation, views: engine.Views, files: rendering.FileRendering, screen: rendering.TerminalRendering, terminal: architecture.Terminal, messages: messages.CommandMessages }
+- Parameters: { line: conventions.TrameCommands, json: conventions.JsonFormatting, preparation: commands.Preparation, views: engine.Views, files: documents/rendering.FileRendering, screen: documents/rendering.TerminalRendering, terminal: architecture.Terminal, messages: messages.CommandMessages }
 - Serves: A specification that runs
-- Depends on: Trame's commands, JSON formatting, Preparation, Views, Rendering of the files, Rendering in the terminal, Terminal, Messages of the commands
+- Depends on: Trame's commands, JSON formatting, Preparation, Views, Terminal, Messages of the commands
 
 ### Advance
 
@@ -1027,10 +1020,10 @@ Entry point · `Advance` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: promote }
-- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, engines: engine.EngineFingerprint, line: conventions.TrameCommands, layout: conventions.Layout, advancement: generations.Advancement, accept: (rule), example: platform.ExampleRoot, day: platform.TestDay, environment: conventions.TrameEnvironment, language: typescript.TypeScript, programs: architecture.Programs, trees: architecture.FileTrees, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, hashing: architecture.Hashing, sha256: std/algorithms.Sha256, fingerprint: engine.Fingerprint, encodings: std/system.NodeEncodings, diff: std/text.UnifiedDiff, file: std/text.TextFile, terminal: architecture.Terminal, table: text.Columns, columns: text.TerminalText, laws: messages.CommandMessages, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, values: std/algebra.ValueTypes, messages: messages.AdvanceMessages, pin: generations.EnginePin, sharing: generations.LanguageSharing, releases: generations.Releases, records: generations.ReleaseRecords, json: conventions.JsonFormatting, specifiers: std/system.NodeModuleSpecifiers, references: conventions.ReferenceSyntax, clock: architecture.Clock, project: engine.Project, packages: std/tooling.PackageSources, names: conventions.LanguageNames }
+- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, engines: engine.EngineFingerprint, line: conventions.TrameCommands, layout: conventions.Layout, advancement: generations.Advancement, accept: (rule), example: platform.ExampleRoot, day: platform.TestDay, environment: conventions.TrameEnvironment, language: typescript.TypeScript, programs: architecture.Programs, trees: architecture.FileTrees, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, hashing: architecture.Hashing, sha256: std/algorithms.Sha256, fingerprint: engine.Fingerprint, encodings: std/system.NodeEncodings, diff: std/text.UnifiedDiff, file: std/text.TextFile, terminal: architecture.Terminal, table: documents/text.Columns, columns: documents/text.TerminalText, laws: messages.CommandMessages, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, values: std/algebra.ValueTypes, messages: messages.AdvanceMessages, pin: generations.EnginePin, sharing: generations.LanguageSharing, releases: generations.Releases, records: generations.ReleaseRecords, json: conventions.JsonFormatting, specifiers: std/system.NodeModuleSpecifiers, references: std/engine.ReferenceSyntax, clock: architecture.Clock, project: engine.Project, packages: std/tooling.PackageSources, names: conventions.LanguageNames }
 - Serves: A specification that runs
 - Part of: Trame on the command line
-- Depends on: Preparation, The fingerprint of an engine, Trame's commands, Project layout, What an advance assembles, Accept a candidate, Example project, Day of the scenarios, Trame's environment, TypeScript, Programs, File trees, File reading, File writing, Paths, Hashing, Length of a fingerprint, Terminal, Columns, Terminal text, Messages of the commands, Messages of an advance, The engine a project runs, Generations that share the language, Releases of the engine, Records of the releases, JSON formatting, Trame references, Clock, Project, The language's names
+- Depends on: Preparation, The fingerprint of an engine, Trame's commands, Project layout, What an advance assembles, Accept a candidate, Example project, Day of the scenarios, Trame's environment, TypeScript, Programs, File trees, File reading, File writing, Paths, Hashing, Length of a fingerprint, Terminal, Messages of the commands, Messages of an advance, The engine a project runs, Generations that share the language, Releases of the engine, Records of the releases, JSON formatting, Clock, Project, The language's names
 
 ### Amend
 
@@ -1038,10 +1031,10 @@ Entry point · `Amend` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: amend }
-- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, amending: commands.Amending, place: architecture.AmendmentPlace, paths: architecture.Paths, text: text.TerminalText, terminal: architecture.Terminal, messages: messages.CommandMessages }
+- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, amending: commands.Amending, place: architecture.AmendmentPlace, paths: architecture.Paths, text: documents/text.TerminalText, terminal: architecture.Terminal, messages: messages.CommandMessages }
 - Serves: A single source of truth
 - Part of: Trame on the command line
-- Depends on: Preparation, An amendment prepared, Where an amendment goes, Paths, Terminal text, Terminal, Messages of the commands
+- Depends on: Preparation, An amendment prepared, Where an amendment goes, Paths, Terminal, Messages of the commands
 
 ### Assemble a component
 
@@ -1060,10 +1053,10 @@ Entry point · `Audit` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: audit }
-- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, reports: architecture.PackageReports, audit: packages.PackageAudit, layout: conventions.Layout, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, versions: packages.VersionOrder, encodings: std/system.NodeEncodings, json: conventions.JsonFormatting, terminal: architecture.Terminal, table: text.Columns, columns: text.TerminalText, counts: std/algebra.Counts, values: std/algebra.ValueTypes, messages: messages.CommandMessages }
+- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, reports: architecture.PackageReports, audit: packages.PackageAudit, layout: conventions.Layout, reading: architecture.FileReading, writing: architecture.FileWriting, paths: architecture.Paths, versions: packages.VersionOrder, encodings: std/system.NodeEncodings, json: conventions.JsonFormatting, terminal: architecture.Terminal, table: documents/text.Columns, columns: documents/text.TerminalText, counts: std/algebra.Counts, values: std/algebra.ValueTypes, messages: messages.CommandMessages }
 - Serves: A single source of truth
 - Part of: Trame on the command line
-- Depends on: Preparation, Reports on packages, Audit of the packages, Project layout, File reading, File writing, Paths, Order of versions, JSON formatting, Terminal, Columns, Terminal text, Messages of the commands
+- Depends on: Preparation, Reports on packages, Audit of the packages, Project layout, File reading, File writing, Paths, Order of versions, JSON formatting, Terminal, Messages of the commands
 
 ### Build
 
@@ -1071,10 +1064,10 @@ Entry point · `Build` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: build }
-- Parameters: { exitStatus: std/system.ExitStatus, layout: conventions.Layout, preparation: commands.Preparation, machine: engine.MachineOutputs, files: rendering.FileRendering, screen: rendering.TerminalRendering, writing: architecture.FileWriting, paths: architecture.Paths, terminal: architecture.Terminal, messages: messages.CommandMessages }
+- Parameters: { exitStatus: std/system.ExitStatus, layout: conventions.Layout, preparation: commands.Preparation, machine: engine.MachineOutputs, files: documents/rendering.FileRendering, screen: documents/rendering.TerminalRendering, writing: architecture.FileWriting, paths: architecture.Paths, terminal: architecture.Terminal, messages: messages.CommandMessages }
 - Serves: A specification that runs
 - Part of: Trame on the command line
-- Depends on: Project layout, Preparation, Machine outputs, Rendering of the files, Rendering in the terminal, File writing, Paths, Terminal, Messages of the commands
+- Depends on: Project layout, Preparation, Machine outputs, File writing, Paths, Terminal, Messages of the commands
 
 ### A command of the project, or a view
 
@@ -1126,10 +1119,10 @@ Entry point · `EmitPayload` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: payload }
-- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, payload: engine.PayloadBuilder, files: rendering.FileRendering, screen: rendering.TerminalRendering, pageRendering: rendering.PageRendering, terminal: architecture.Terminal }
+- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, payload: engine.PayloadBuilder, files: documents/rendering.FileRendering, screen: documents/rendering.TerminalRendering, pageRendering: rendering.PageRendering, terminal: architecture.Terminal }
 - Serves: A specification that runs
 - Part of: Trame on the command line
-- Depends on: Preparation, Payload, Rendering of the files, Rendering in the terminal, Rendering in the page, Terminal
+- Depends on: Preparation, Payload, Rendering in the page, Terminal
 
 ### Examples
 
@@ -1159,10 +1152,10 @@ Entry point · `Help` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: help }
-- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, projectCommands: commands.ProjectCommands, views: engine.Views, terminal: architecture.Terminal, cell: text.PaddedCell, columns: text.TerminalColumns, messages: messages.CommandMessages }
+- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, projectCommands: commands.ProjectCommands, views: engine.Views, terminal: architecture.Terminal, cell: documents/text.PaddedCell, columns: documents/text.TerminalColumns, messages: messages.CommandMessages }
 - Serves: A specification that runs
 - Part of: Trame on the command line
-- Depends on: Preparation, The project's commands, Views, Terminal, Padded cell, Columns in the terminal, Messages of the commands
+- Depends on: Preparation, The project's commands, Views, Terminal, Messages of the commands
 
 ### Start a project
 
@@ -1181,10 +1174,10 @@ Entry point · `Plan` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: plan }
-- Parameters: { exitStatus: std/system.ExitStatus, layout: conventions.Layout, text: text.TerminalText, preparation: commands.Preparation, machine: engine.MachineOutputs, comparison: commands/commands.BuildComparison, reading: architecture.FileReading, paths: architecture.Paths, encodings: std/system.NodeEncodings, terminal: architecture.Terminal, messages: messages.CommandMessages }
+- Parameters: { exitStatus: std/system.ExitStatus, layout: conventions.Layout, text: documents/text.TerminalText, preparation: commands.Preparation, machine: engine.MachineOutputs, comparison: commands/commands.BuildComparison, reading: architecture.FileReading, paths: architecture.Paths, encodings: std/system.NodeEncodings, terminal: architecture.Terminal, messages: messages.CommandMessages }
 - Serves: A specification that runs
 - Part of: Trame on the command line
-- Depends on: Project layout, Terminal text, Preparation, Machine outputs, File reading, Paths, Terminal, Messages of the commands
+- Depends on: Project layout, Preparation, Machine outputs, File reading, Paths, Terminal, Messages of the commands
 
 ### Publish
 
@@ -1192,10 +1185,10 @@ Entry point · `Publish` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: publish }
-- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, lock: engine.Lock, writing: architecture.FileWriting, terminal: architecture.Terminal, layout: text.TerminalText, columns: text.TerminalColumns, cell: text.PaddedCell, texts: std/algebra.Texts, messages: messages.CommandMessages }
+- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, lock: engine.Lock, writing: architecture.FileWriting, terminal: architecture.Terminal, layout: documents/text.TerminalText, columns: documents/text.TerminalColumns, cell: documents/text.PaddedCell, texts: std/algebra.Texts, messages: messages.CommandMessages }
 - Serves: A single source of truth
 - Part of: Trame on the command line
-- Depends on: Preparation, Lock, File writing, Terminal, Terminal text, Columns in the terminal, Padded cell, Messages of the commands
+- Depends on: Preparation, Lock, File writing, Terminal, Messages of the commands
 
 ### Record evidence
 
@@ -1225,10 +1218,10 @@ Entry point · `Release` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: release }
-- Parameters: { packages: std/tooling.PackageSources, exitStatus: std/system.ExitStatus, preparation: commands.Preparation, layout: conventions.Layout, project: engine.Project, machine: engine.MachineOutputs, files: rendering.FileRendering, settled: (rule), names: libraries.LibraryReleaseNames, releases: generations.Releases, records: generations.ReleaseRecords, versions: std/measures.SemanticVersioning, specifiers: std/system.NodeModuleSpecifiers, reading: architecture.FileReading, writing: architecture.FileWriting, trees: architecture.FileTrees, paths: architecture.Paths, hashing: architecture.Hashing, sha256: std/algorithms.Sha256, fingerprint: engine.Fingerprint, encodings: std/system.NodeEncodings, language: typescript.TypeScript, clock: architecture.Clock, terminal: architecture.Terminal, messages: messages.CommandMessages, advance: messages.AdvanceMessages, sequences: std/algebra.Sequences, counts: std/algebra.Counts, drivers: languages.Drivers, text: typescript.StringLiteral, ship: commands.Ship, line: conventions.TrameCommands }
+- Parameters: { packages: std/tooling.PackageSources, exitStatus: std/system.ExitStatus, preparation: commands.Preparation, layout: conventions.Layout, project: engine.Project, machine: engine.MachineOutputs, files: documents/rendering.FileRendering, settled: (rule), names: libraries.LibraryReleaseNames, releases: generations.Releases, records: generations.ReleaseRecords, versions: std/measures.SemanticVersioning, specifiers: std/system.NodeModuleSpecifiers, reading: architecture.FileReading, writing: architecture.FileWriting, trees: architecture.FileTrees, paths: architecture.Paths, hashing: architecture.Hashing, sha256: std/algorithms.Sha256, fingerprint: engine.Fingerprint, encodings: std/system.NodeEncodings, language: typescript.TypeScript, clock: architecture.Clock, terminal: architecture.Terminal, messages: messages.CommandMessages, advance: messages.AdvanceMessages, sequences: std/algebra.Sequences, counts: std/algebra.Counts, drivers: languages.Drivers, text: typescript.StringLiteral, ship: commands.Ship, line: conventions.TrameCommands }
 - Serves: A single source of truth
 - Part of: Trame on the command line
-- Depends on: Preparation, Project layout, Project, Machine outputs, Rendering of the files, A release is settled, Names of a library's releases, Releases of the engine, Records of the releases, File reading, File writing, File trees, Paths, Hashing, Length of a fingerprint, TypeScript, Clock, Terminal, Messages of the commands, Messages of an advance, Drivers, Text, Ship, Trame's commands
+- Depends on: Preparation, Project layout, Project, Machine outputs, A release is settled, Names of a library's releases, Releases of the engine, Records of the releases, File reading, File writing, File trees, Paths, Hashing, Length of a fingerprint, TypeScript, Clock, Terminal, Messages of the commands, Messages of an advance, Drivers, Text, Ship, Trame's commands
 
 ### Run a component
 
@@ -1269,10 +1262,10 @@ Entry point · `TakeSnapshot` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: snapshot }
-- Parameters: { exitStatus: std/system.ExitStatus, layout: conventions.Layout, preparation: commands.Preparation, machine: engine.MachineOutputs, files: rendering.FileRendering, writing: architecture.FileWriting, paths: architecture.Paths, terminal: architecture.Terminal, messages: messages.CommandMessages }
+- Parameters: { exitStatus: std/system.ExitStatus, layout: conventions.Layout, preparation: commands.Preparation, machine: engine.MachineOutputs, files: documents/rendering.FileRendering, writing: architecture.FileWriting, paths: architecture.Paths, terminal: architecture.Terminal, messages: messages.CommandMessages }
 - Serves: A single source of truth
 - Part of: Trame on the command line
-- Depends on: Project layout, Preparation, Machine outputs, Rendering of the files, File writing, Paths, Terminal, Messages of the commands
+- Depends on: Project layout, Preparation, Machine outputs, File writing, Paths, Terminal, Messages of the commands
 
 ### Test the laws
 
@@ -1280,10 +1273,10 @@ Entry point · `TestKinds` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: test-kinds }
-- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, compiler: engine.Compiler, views: engine.Views, laws: engine.Laws, terminal: architecture.Terminal, layout: text.TerminalText, columns: text.TerminalColumns, cell: text.PaddedCell, messages: messages.CommandMessages }
+- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, compiler: engine.Compiler, views: engine.Views, laws: engine.Laws, terminal: architecture.Terminal, layout: documents/text.TerminalText, columns: documents/text.TerminalColumns, cell: documents/text.PaddedCell, messages: messages.CommandMessages }
 - Serves: A specification that runs
 - Part of: Trame on the command line
-- Depends on: Preparation, Compiler, Views, Laws, Terminal, Terminal text, Columns in the terminal, Padded cell, Messages of the commands
+- Depends on: Preparation, Compiler, Views, Laws, Terminal, Messages of the commands
 
 ### Upgrade
 
@@ -1324,14 +1317,6 @@ Standard · `FrozenApi`
 - Maintained by: trame
 - Source: Trame, the prelude (trame/internal.ts: frozen)
 - Constants: { name: { value: frozen, meaning: What the prelude exports for frozen programs }, value: { value: value, meaning: The value of a node, read from its declaration (a rule) }, body: { value: body, meaning: The body of a node written inline in its declaration }, data: { value: data, meaning: Sets the data of a node as in force at the date of the assembly, for the rules that read it }, start: { value: start, meaning: Starts the component with its dependencies and its entry points }, limited: { value: limited, meaning: A capability: a realization limited to the methods its consumer uses (since g83) }, amended: { value: amended, meaning: A body as the amendments in force at the date of the assembly make it, in their order (since g105) }, periods: { value: periods, meaning: The periods of a program whose graph changes at known dates, each built when it starts, and the one of the day (since g106) }, dated: { value: dated, meaning: An entry point of such a program: each call answered by the entry of the period of the day (since g106) }, title: { value: title, meaning: The title of an entry point, given to start }, fields: { value: fields, meaning: The simple fields of an entry point, which the kind of the component reads }, entry: { value: value, meaning: What an entry point is, once built }, address: { value: address, meaning: What start gives back when the component answers somewhere }, code: { value: code, meaning: What start gives back when the component ends with an exit code }, leading: { value: leading, meaning: The prelude's module that leads the names of packages for a program Node.js runs (since g99) }, lead: { value: lead, meaning: What that module exports: given where the names lead and the launcher's URL, it leads them } }
-
-### Trame references
-
-Standard · `ReferenceSyntax`
-
-- Maintained by: trame
-- Source: Trame, the prelude (trame/kernel.ts: refOf, getPath)
-- Constants: { separator: { value: ., meaning: Separates the module from the identifier, and the steps of a path in a field }, library: { value: /, meaning: Separates a library's name from the name of one of its modules, in the graph that imports it }, wholeNode: { value: , meaning: The empty path: the whole node, not one of its fields, refines: { node: std/algebra.Texts, name: empty } } }
 
 ### Trame's commands
 
@@ -1585,20 +1570,6 @@ Decision · `LanguageSettings`
 - Decided by: trame
 - Value: { timeline: { before: 14, after: 30 }, catalogue: { examples: 3, frequent: 5, repeated: 40, unrepeated: separator }, assumption: { warnWithin: 60 }, amendment: { warnWithin: 30 }, slo: { percentile: 50, 100 } }
 
-### How Mermaid figures are drawn
-
-Decision · `MermaidFigures`
-
-- Decided by: trame
-- Value: { idPrefix: n, directions: { layers: down, tree: down, path: right }, strokes: { computed: dottedOpen, inferred: dotted, winner: thick, support: thick, other: solid }, defaultStatus: neutral, history: { dashes: 4 3 }, inactive: { opacity: 0.5 }, gantt: { dateFormat: YYYY-MM-DD, axisFormat: %d.%m, milestones: deadline, review } }
-
-### Heading levels of Markdown documents
-
-Decision · `TextRendering`
-
-- Decided by: trame
-- Value: { titleLevel: 1, sectionLevel: 2 }
-
 ### The punctuation is the language's
 
 Architecture decision · `PunctuationOfTheLanguage` · **held**
@@ -1746,9 +1717,9 @@ Function · `DateBundle` · **held**
 Function · `DevServer` · **held**
 
 - Owner: trame
-- Parameters: { service: engine.DevService, uri: std/web.Uri, line: conventions.TrameCommands, nodeEvents: std/system.NodeEvents, layout: conventions.Layout, http: std/web.Http, mediaTypes: std/web.MediaTypes, events: std/web.ServerSentEvents, terminal: architecture.Terminal, codeLines: text.CodeLines, file: std/text.TextFile, clock: architecture.Clock, timer: architecture.Timer, debounce: product.DevDebounce, httpServer: architecture.HttpServer, reading: architecture.FileReading, paths: architecture.Paths, project: engine.Project, bundle: engine.DateBundle, differences: engine.Differences, page: page.Page, pageRendering: rendering.PageRendering, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, dates: documents/language.Dates, language: messages.Language, messages: messages.DevMessages }
+- Parameters: { service: engine.DevService, uri: std/web.Uri, line: conventions.TrameCommands, nodeEvents: std/system.NodeEvents, layout: conventions.Layout, http: std/web.Http, mediaTypes: std/web.MediaTypes, events: std/web.ServerSentEvents, terminal: architecture.Terminal, codeLines: documents/text.CodeLines, file: std/text.TextFile, clock: architecture.Clock, timer: architecture.Timer, debounce: product.DevDebounce, httpServer: architecture.HttpServer, reading: architecture.FileReading, paths: architecture.Paths, project: engine.Project, bundle: engine.DateBundle, differences: engine.Differences, page: page.Page, pageRendering: rendering.PageRendering, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, dates: documents/language.Dates, language: messages.Language, messages: messages.DevMessages }
 - Serves: A specification that runs
-- Depends on: What trame dev serves, Trame's commands, Project layout, Terminal, Code lines, Clock, Timer, Debouncing of saves, HTTP server, File reading, Paths, Project, Date bundle, Differences, Page, Rendering in the page, Language, Messages of trame dev
+- Depends on: What trame dev serves, Trame's commands, Project layout, Terminal, Clock, Timer, Debouncing of saves, HTTP server, File reading, Paths, Project, Date bundle, Differences, Page, Rendering in the page, Language, Messages of trame dev
 
 ### Differences
 
@@ -1790,9 +1761,9 @@ Function · `Generator` · **held**
 Function · `GraphApi` · **held**
 
 - Owner: trame
-- Parameters: { prelude: architecture.Prelude, syntax: conventions.ReferenceSyntax, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CompilerMessages, values: std/algebra.ValueTypes, lists: documents/language.Lists, dates: documents/language.Dates, punctuation: documents/language.Punctuation, positions: engine.Positions, references: engine.References, iso: std/measures.Iso8601, file: std/text.TextFile, settings: documents.LanguageSettings, generator: engine.Generator, structureDraws: product.StructureDraws, layout: conventions.Layout, typescript: typescript.TypeScript, versions: packages.VersionOrder, units: documents/language.Units, visible: documents.VisibleText, fingerprints: engine.Fingerprints }
+- Parameters: { prelude: architecture.Prelude, syntax: std/engine.ReferenceSyntax, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CompilerMessages, values: std/algebra.ValueTypes, lists: documents/language.Lists, dates: documents/language.Dates, punctuation: documents/language.Punctuation, positions: engine.Positions, references: engine.References, iso: std/measures.Iso8601, file: std/text.TextFile, settings: documents.LanguageSettings, generator: engine.Generator, structureDraws: product.StructureDraws, layout: conventions.Layout, typescript: typescript.TypeScript, versions: packages.VersionOrder, units: documents/language.Units, visible: documents.VisibleText, fingerprints: engine.Fingerprints }
 - Serves: A specification that runs
-- Depends on: Prelude, Trame references, Messages of the compiler, Positions, References, Settings of the documents, Pseudo-random generator, Values drawn by the laws of a structure, Project layout, TypeScript, Order of versions, Visible text, Fingerprints
+- Depends on: Prelude, Messages of the compiler, Positions, References, Settings of the documents, Pseudo-random generator, Values drawn by the laws of a structure, Project layout, TypeScript, Order of versions, Visible text, Fingerprints
 
 ### Judged harder
 
@@ -1817,9 +1788,9 @@ Function · `Laws` · **held**
 Function · `Lock` · **held**
 
 - Owner: trame
-- Parameters: { encodings: std/system.NodeEncodings, layout: conventions.Layout, json: conventions.JsonFormatting, textFile: std/text.TextFile, references: engine.References, codeSpan: markdown.CodeSpan, reading: architecture.FileReading, paths: architecture.Paths, prelude: architecture.Prelude, messages: messages.OutputMessages }
+- Parameters: { encodings: std/system.NodeEncodings, layout: conventions.Layout, json: conventions.JsonFormatting, textFile: std/text.TextFile, references: engine.References, codeSpan: documents/markdown.CodeSpan, reading: architecture.FileReading, paths: architecture.Paths, prelude: architecture.Prelude, messages: messages.OutputMessages }
 - Serves: A single source of truth
-- Depends on: Project layout, JSON formatting, References, Code span, File reading, Paths, Prelude, Messages of the outputs
+- Depends on: Project layout, JSON formatting, References, File reading, Paths, Prelude, Messages of the outputs
 
 ### Machine outputs
 
@@ -1872,9 +1843,9 @@ Function · `ProjectRuns` · **held**
 Function · `References` · **held**
 
 - Owner: trame
-- Parameters: { syntax: conventions.ReferenceSyntax, libraryOf: (rule), values: std/algebra.ValueTypes }
+- Parameters: { syntax: std/engine.ReferenceSyntax, libraryOf: (rule), values: std/algebra.ValueTypes }
 - Serves: A specification that runs
-- Depends on: Trame references, What belongs to a library
+- Depends on: What belongs to a library
 
 ### A shipment's pipeline
 
@@ -1909,9 +1880,9 @@ Function · `Views` · **held**
 Function · `Wiring` · **held**
 
 - Owner: trame
-- Parameters: { steps: conventions.StepNames, references: conventions.ReferenceSyntax, values: std/algebra.ValueTypes, layout: conventions.Layout, paths: architecture.Paths, prelude: architecture.Prelude, drivers: languages.Drivers, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CompilerMessages }
+- Parameters: { steps: conventions.StepNames, references: std/engine.ReferenceSyntax, values: std/algebra.ValueTypes, layout: conventions.Layout, paths: architecture.Paths, prelude: architecture.Prelude, drivers: languages.Drivers, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CompilerMessages }
 - Serves: A specification that runs
-- Depends on: Names of steps, Trame references, Project layout, Paths, Prelude, Drivers, Messages of the compiler
+- Depends on: Names of steps, Project layout, Paths, Prelude, Drivers, Messages of the compiler
 
 ## Trame · Generations
 
@@ -1965,11 +1936,11 @@ Acceptance criteria · `AcceptCandidateCriteria` · **held**
 Function · `ReleaseRecords` · **held**
 
 - Owner: trame
-- Parameters: { releases: generations.Releases, syntax: typescript.TypeScriptSyntax, references: conventions.ReferenceSyntax, positions: std/text.GnuPositions, doc: typescript.DocBlock, title: typescript.ModuleTitle, comment: typescript.LineComment, imports: typescript.NamedImport, exported: typescript.ExportDeclaration, constant: typescript.ConstDeclaration, call: typescript.Call, object: typescript.ObjectBlock, property: typescript.Property, text: typescript.StringLiteral, list: typescript.InlineArray, texts: std/algebra.Texts, values: std/algebra.ValueTypes }
+- Parameters: { releases: generations.Releases, syntax: typescript.TypeScriptSyntax, references: std/engine.ReferenceSyntax, positions: std/text.GnuPositions, doc: typescript.DocBlock, title: typescript.ModuleTitle, comment: typescript.LineComment, imports: typescript.NamedImport, exported: typescript.ExportDeclaration, constant: typescript.ConstDeclaration, call: typescript.Call, object: typescript.ObjectBlock, property: typescript.Property, text: typescript.StringLiteral, list: typescript.InlineArray, texts: std/algebra.Texts, values: std/algebra.ValueTypes }
 - Serves: A specification that runs
-- Depends on: Releases of the engine, The syntax of the programs Trame writes, Trame references, Documentation comment, Title of a module, Comment, Import of names, Export, Constant, Call, Object on several lines, Property, Text, List on one line
+- Depends on: Releases of the engine, The syntax of the programs Trame writes, Documentation comment, Title of a module, Comment, Import of names, Export, Constant, Call, Object on several lines, Property, Text, List on one line
 
-## Trame · HTML and CSS
+## Trame · HTML and CSS of the page
 
 ### Attribute presence
 
@@ -2066,30 +2037,6 @@ Syntax element · `Doctype` · **held**
 - Parameters: { standard: std/html.Html }
 - Examples: { input: , output: <!doctype html> }
 
-### Escaped text
-
-Syntax element · `EscapedText` · **held**
-
-- Owner: trame
-- Section: 13.1.4 Character references
-- Address: https://html.spec.whatwg.org/multipage/syntax.html#character-references
-- Marks: { ampersand: { value: &, meaning: Opens a character reference }, quotationMark: { value: ", meaning: Closes the value of an attribute }, amp: { value: &amp;, meaning: The reference written for an ampersand }, lt: { value: &lt;, meaning: The reference written for a less-than sign }, gt: { value: &gt;, meaning: The reference written for a greater-than sign }, quot: { value: &quot;, meaning: The reference written for a quotation mark } }
-- Parameters: { standard: std/html.Html }
-- Examples: { input: a < b & "c" > d, output: a &lt; b &amp; &quot;c&quot; &gt; d }, { input: &lt;, output: &amp;lt; }
-- Read as: { before: <p title=", after: "></p> }
-
-### Attributes
-
-Syntax element · `HtmlAttributes` · **held**
-
-- Owner: trame
-- Section: 13.1.2.3 Attributes
-- Address: https://html.spec.whatwg.org/multipage/syntax.html#attributes-2
-- Marks: { equals: { value: =, meaning: Separates the name of an attribute from its value }, quote: { value: ", meaning: Surrounds the value of an attribute } }
-- Parameters: { standard: std/html.Html, texts: std/algebra.Texts }
-- Examples: { input: { id: Goal }, output:  id="Goal" }, { input: { class: banner, hidden: true }, output:  class="banner" hidden }
-- Read as: { before: <a, after: > }
-
 ### Element over several lines
 
 Syntax element · `HtmlBlock` · **held**
@@ -2098,57 +2045,8 @@ Syntax element · `HtmlBlock` · **held**
 - Section: 13.1.2 Elements
 - Address: https://html.spec.whatwg.org/multipage/syntax.html#elements-2
 - Marks: { indent: { value:   , meaning: Two spaces per level of nesting } }
-- Parameters: { standard: std/html.Html, startTag: html.HtmlStartTag, endTag: html.HtmlEndTag }
+- Parameters: { standard: std/html.Html, startTag: documents/html.HtmlStartTag, endTag: documents/html.HtmlEndTag }
 - Examples: { input: main, {  }, <article class="doc" id="doc"></article>, output: <main>,   <article class="doc" id="doc"></article>, </main> }
-- Depends on: Start tag, End tag
-
-### HTML element
-
-Syntax element · `HtmlElement` · **held**
-
-- Owner: trame
-- Section: 13.1.2 Elements
-- Address: https://html.spec.whatwg.org/multipage/syntax.html#elements-2
-- Marks: {  }
-- Parameters: { standard: std/html.Html, startTag: html.HtmlStartTag, endTag: html.HtmlEndTag }
-- Examples: { input: summary, {  }, The code, output: <summary>The code</summary> }
-- Depends on: Start tag, End tag
-
-### End tag
-
-Syntax element · `HtmlEndTag` · **held**
-
-- Owner: trame
-- Section: 13.1.2.2 End tags
-- Address: https://html.spec.whatwg.org/multipage/syntax.html#end-tags
-- Marks: { slash: { value: /, meaning: After the less-than sign: the tag closes the element } }
-- Parameters: { standard: std/html.Html }
-- Examples: { input: details, output: </details> }
-- Read as: { before: <details>, after:  }
-
-### Heading of a rank
-
-Syntax element · `HtmlHeading` · **held**
-
-- Owner: trame
-- Section: 4.3.6 The h1, h2, h3, h4, h5, and h6 elements
-- Address: https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements
-- Marks: { prefix: { value: h, meaning: Before the rank of a heading: the name of its element } }
-- Parameters: { standard: std/html.Html, element: html.HtmlElement }
-- Examples: { input: 2, {  }, Cards, output: <h2>Cards</h2> }
-- Depends on: HTML element
-
-### Start tag
-
-Syntax element · `HtmlStartTag` · **held**
-
-- Owner: trame
-- Section: 13.1.2.1 Start tags
-- Address: https://html.spec.whatwg.org/multipage/syntax.html#start-tags
-- Marks: {  }
-- Parameters: { standard: std/html.Html, attributes: html.HtmlAttributes }
-- Examples: { input: a, { id: Goal }, output: <a id="Goal"> }
-- Depends on: Attributes
 
 ### JSON in a script
 
@@ -2217,9 +2115,8 @@ Syntax element · `ScriptElement` · **held**
 - Section: 4.12.1.3 Restrictions for contents of script elements
 - Address: https://html.spec.whatwg.org/multipage/scripting.html#restrictions-for-contents-of-script-elements
 - Marks: { tag: { value: script, meaning: The element of code run by the page }, endTagOpen: { value: </script, meaning: What would end the element in its text }, escaped: { value: <\/script, meaning: The same text for the code, which no longer ends the element }, everyCase: { value: gi, meaning: Every occurrence, whatever its case }, commentOpen: { value: <!--, meaning: What would let a later start tag of a script swallow the end of the element }, commentEscaped: { value: <\!--, meaning: The same text for the code: a backslash before a character that needs none } }
-- Parameters: { standard: std/html.Html, element: html.HtmlElement }
+- Parameters: { standard: std/html.Html, element: documents/html.HtmlElement }
 - Examples: { input: const s = "</SCRIPT>", output: <script>const s = "<\/script>"</script> }, { input: const s = "<!--", output: <script>const s = "<\!--"</script> }
-- Depends on: HTML element
 
 ### Selector list
 
@@ -2232,18 +2129,6 @@ Syntax element · `SelectorList` · **held**
 - Parameters: { standard: std/html.Css }
 - Examples: { input: [data-ref], [data-doc], output: [data-ref], [data-doc] }
 - Read as: { before: , after:  {} }
-
-### Self-closing tag
-
-Syntax element · `SelfClosingTag` · **held**
-
-- Owner: trame
-- Section: 13.1.2.1 Start tags (the self-closing flag of foreign elements)
-- Address: https://html.spec.whatwg.org/multipage/syntax.html#start-tags
-- Marks: { slash: { value: /, meaning: Before the greater-than sign: the element has no content and no end tag } }
-- Parameters: { standard: std/html.Html, attributes: html.HtmlAttributes }
-- Examples: { input: path, { d: M7 5v16 }, output: <path d="M7 5v16"/> }
-- Depends on: Attributes
 
 ## Trame · Languages
 
@@ -2459,278 +2344,6 @@ Acceptance criteria · `ReleaseIsSettledCriteria` · **held**
 - Owner: trame
 - Accepts: A release is settled
 
-## Trame · Markdown
-
-### CommonMark
-
-Standard · `CommonMark`
-
-- Maintained by: trame
-- Source: CommonMark Spec 0.31.2 (2024)
-- Address: https://spec.commonmark.org/0.31.2/
-- Constants: { endOfLine: { value: 
-, meaning: Ends a line (§ 2.1: a line feed, U+000A) }, space: { value:  , meaning: Separates a mark from what it introduces (§ 2.1: U+0020) }, backtick: { value: `, meaning: Delimits code, inline or in a block (§ 4.5, § 6.1) }, asterisk: { value: *, meaning: Delimits emphasis (§ 6.2) } }
-
-### GitHub Flavored Markdown
-
-Standard · `Gfm`
-
-- Maintained by: trame
-- Source: GitHub Flavored Markdown Spec 0.29-gfm (2019)
-- Address: https://github.github.com/gfm/
-- Constants: { pipe: { value: |, meaning: Separates the cells of a table, and borders each row (§ 4.10) } }
-
-### Anchor
-
-Syntax element · `Anchor` · **held**
-
-- Owner: trame
-- Section: 4.5.1 The a element; 3.2.6 The id attribute
-- Address: https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element
-- Marks: { tag: { value: a, meaning: The link element, here without content }, attribute: { value: id, meaning: The identifier that the fragment of an address targets } }
-- Parameters: { standard: std/html.Html, element: html.HtmlElement, texts: std/algebra.Texts }
-- Examples: { input: Goal, output: <a id="Goal"></a> }
-- Depends on: HTML element
-
-### Backtick string
-
-Syntax element · `BacktickString` · **held**
-
-- Owner: trame
-- Section: 6.1 Code spans (backtick string); 4.5 Fenced code blocks
-- Address: https://spec.commonmark.org/0.31.2/#backtick-string
-- Marks: {  }
-- Parameters: { standard: markdown.CommonMark, counts: std/algebra.Counts }
-- Examples: { input: trame.json, 1, output: ` }, { input: a`b, 1, output: `` }, { input: const x = 1, 3, output: ``` }, { input: ```ts
-x
-```, 3, output: ```` }
-- Defined by: CommonMark
-- Depends on: CommonMark
-
-### Blank line
-
-Syntax element · `BlankLine` · **held**
-
-- Owner: trame
-- Section: 4.9 Blank lines
-- Address: https://spec.commonmark.org/0.31.2/#blank-lines
-- Marks: { blank: { value: , meaning: A line containing no characters, refines: { node: std/algebra.Texts, name: empty } } }
-- Parameters: { standard: markdown.CommonMark }
-- Examples: { input: # Title, Text, More text, output: # Title, , Text, More text,  }, { input: a, false, b, output: a, , b,  }
-- Defined by: CommonMark
-- Depends on: CommonMark
-
-### Block quote
-
-Syntax element · `BlockQuote` · **held**
-
-- Owner: trame
-- Section: 5.1 Block quotes
-- Address: https://spec.commonmark.org/0.31.2/#block-quotes
-- Marks: { marker: { value: >, meaning: Marks a line of a block quote } }
-- Parameters: { standard: markdown.CommonMark }
-- Examples: { input: All of them apply., output: > All of them apply. }
-- Defined by: CommonMark
-- Depends on: CommonMark
-
-### Sequence of blocks
-
-Syntax element · `Blocks` · **held**
-
-- Owner: trame
-- Section: 4.9 Blank lines
-- Address: https://spec.commonmark.org/0.31.2/#blank-lines
-- Marks: { maxBlankLines: { value: 1, meaning: The number of blank lines that separate two blocks, at most } }
-- Parameters: { standard: markdown.CommonMark, blankLine: markdown.BlankLine, counts: std/algebra.Counts }
-- Examples: { input: # Title, , Text, output: # Title
-
-Text
- }, { input: a, b, output: a
-b
- }
-- Defined by: CommonMark
-- Depends on: CommonMark, Blank line
-
-### Code block
-
-Syntax element · `CodeBlock` · **held**
-
-- Owner: trame
-- Section: 4.5 Fenced code blocks
-- Address: https://spec.commonmark.org/0.31.2/#fenced-code-blocks
-- Marks: { length: { value: 3, meaning: A fence has at least three backticks } }
-- Parameters: { standard: markdown.CommonMark, backtickString: markdown.BacktickString }
-- Examples: { input: ts, const x = 1, output: ```ts, const x = 1, ``` }, { input: md, ```ts, x, ```, output: ````md, ```ts, x, ```, ```` }
-- Defined by: CommonMark
-- Depends on: CommonMark, Backtick string
-
-### Code span
-
-Syntax element · `CodeSpan` · **held**
-
-- Owner: trame
-- Section: 6.1 Code spans
-- Address: https://spec.commonmark.org/0.31.2/#code-spans
-- Marks: { minLength: { value: 1, meaning: A single backtick is enough, if the text contains none } }
-- Parameters: { standard: markdown.CommonMark, backtickString: markdown.BacktickString, texts: std/algebra.Texts }
-- Examples: { input: trame.json, output: `trame.json` }, { input: a`b, output: ``a`b`` }, { input: `written: ${…}`, output: `` `written: ${…}` `` }, { input:  x , output: `  x  ` }
-- Defined by: CommonMark
-- Depends on: CommonMark, Backtick string
-
-### Collapsible block
-
-Syntax element · `Details` · **held**
-
-- Owner: trame
-- Section: 4.11.1 The details element; 4.11.2 The summary element
-- Address: https://html.spec.whatwg.org/multipage/interactive-elements.html#the-details-element
-- Marks: { tag: { value: details, meaning: The collapsible block }, summary: { value: summary, meaning: Its summary, always visible } }
-- Parameters: { standard: std/html.Html, startTag: html.HtmlStartTag, endTag: html.HtmlEndTag, element: html.HtmlElement, blankLine: markdown.BlankLine }
-- Examples: { input: The code, x, output: <details><summary>The code</summary>, , x, , </details> }
-- Depends on: Start tag, End tag, HTML element, Blank line
-
-### Emphasis
-
-Syntax element · `Emphasis` · **held**
-
-- Owner: trame
-- Section: 6.2 Emphasis
-- Address: https://spec.commonmark.org/0.31.2/#emphasis-and-strong-emphasis
-- Marks: { count: { value: 1, meaning: One asterisk on each side } }
-- Parameters: { standard: markdown.CommonMark }
-- Examples: { input: The graph in force, output: *The graph in force* }
-- Defined by: CommonMark
-- Depends on: CommonMark
-
-### Heading
-
-Syntax element · `Heading` · **held**
-
-- Owner: trame
-- Section: 4.2 ATX headings
-- Address: https://spec.commonmark.org/0.31.2/#atx-headings
-- Marks: { hash: { value: #, meaning: Repeated as many times as the level of the heading }, maxLevel: { value: 6, meaning: The deepest level: beyond six hash signs, the line is no longer a heading } }
-- Parameters: { standard: markdown.CommonMark }
-- Examples: { input: 2, Goals, output: ## Goals }, { input: 9, Very deep, output: ###### Very deep }
-- Defined by: CommonMark
-- Depends on: CommonMark
-
-### Link
-
-Syntax element · `Link` · **held**
-
-- Owner: trame
-- Section: 6.3 Links
-- Address: https://spec.commonmark.org/0.31.2/#links
-- Marks: { openText: { value: [, meaning: Opens the text of the link }, closeText: { value: ], meaning: Closes the text of the link }, openDestination: { value: (, meaning: Opens the destination }, closeDestination: { value: ), meaning: Closes the destination } }
-- Parameters: { standard: markdown.CommonMark }
-- Examples: { input: Goal, product.md#Goal, output: [Goal](product.md#Goal) }
-- Defined by: CommonMark
-- Depends on: CommonMark
-
-### List item
-
-Syntax element · `ListItem` · **held**
-
-- Owner: trame
-- Section: 5.2 List items
-- Address: https://spec.commonmark.org/0.31.2/#list-items
-- Marks: { bullet: { value: -, meaning: Marks an item of an unordered list } }
-- Parameters: { standard: markdown.CommonMark }
-- Examples: { input: Owner: trame, output: - Owner: trame }
-- Defined by: CommonMark
-- Depends on: CommonMark
-
-### Relative reference
-
-Syntax element · `RelativeReference` · **held**
-
-- Owner: trame
-- Section: 4.2 Relative reference; 3.5 Fragment; 5.2.4 Remove dot segments
-- Address: https://www.rfc-editor.org/rfc/rfc3986#section-4.2
-- Marks: { segment: { value: /, meaning: Separates the segments of a path }, fragment: { value: #, meaning: Introduces the fragment: the anchor, in the target document }, parent: { value: .., meaning: The segment that goes up one level: from the documents to the project's root } }
-- Parameters: { standard: std/web.Uri, texts: std/algebra.Texts, layout: conventions.Layout }
-- Examples: { input: docs/product.md, Goal, output: product.md#Goal }, { input: none, Graph, output: #Graph }, { input: docs/product.md, output: product.md }, { input: std/docs/algebra.md, Counts, output: ../std/docs/algebra.md#Counts }, { input: ../std/docs/index.md, output: ../../std/docs/index.md }
-- Depends on: Project layout
-
-### Small text
-
-Syntax element · `Small` · **held**
-
-- Owner: trame
-- Section: 4.5.4 The small element
-- Address: https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-small-element
-- Marks: { tag: { value: small, meaning: A side note, in small print } }
-- Parameters: { standard: std/html.Html, element: html.HtmlElement }
-- Examples: { input: Decision, output: <small>Decision</small> }
-- Depends on: HTML element
-
-### Strong emphasis
-
-Syntax element · `StrongEmphasis` · **held**
-
-- Owner: trame
-- Section: 6.2 Strong emphasis
-- Address: https://spec.commonmark.org/0.31.2/#emphasis-and-strong-emphasis
-- Marks: { count: { value: 2, meaning: Two asterisks on each side } }
-- Parameters: { standard: markdown.CommonMark }
-- Examples: { input: held, output: **held** }
-- Defined by: CommonMark
-- Depends on: CommonMark
-
-### Table
-
-Syntax element · `Table` · **held**
-
-- Owner: trame
-- Section: 4.10 Tables
-- Address: https://github.github.com/gfm/#tables-extension-
-- Marks: {  }
-- Parameters: { standard: markdown.Gfm, row: markdown.TableRow, delimiterRow: markdown.TableDelimiterRow }
-- Examples: { input: Name, Role, Ada, author, output: | Name | Role |, |---|---|, | Ada | author | }
-- Defined by: GitHub Flavored Markdown
-- Depends on: GitHub Flavored Markdown, Table row, Delimiter row
-
-### Table cell
-
-Syntax element · `TableCell` · **held**
-
-- Owner: trame
-- Section: 4.10 Tables: a pipe in a cell
-- Address: https://github.github.com/gfm/#tables-extension-
-- Marks: { escape: { value: \, meaning: Comes before a pipe that belongs to the content } }
-- Parameters: { standard: markdown.Gfm, commonMark: markdown.CommonMark }
-- Examples: { input: a | b
-c, output: a \| b c }
-- Defined by: GitHub Flavored Markdown
-- Depends on: GitHub Flavored Markdown, CommonMark
-
-### Delimiter row
-
-Syntax element · `TableDelimiterRow` · **held**
-
-- Owner: trame
-- Section: 4.10 Tables: the delimiter row
-- Address: https://github.github.com/gfm/#tables-extension-
-- Marks: { dash: { value: -, meaning: Fills the delimiter cell of a column }, length: { value: 3, meaning: The number of dashes per column } }
-- Parameters: { standard: markdown.Gfm }
-- Examples: { input: 3, output: |---|---|---| }
-- Defined by: GitHub Flavored Markdown
-- Depends on: GitHub Flavored Markdown
-
-### Table row
-
-Syntax element · `TableRow` · **held**
-
-- Owner: trame
-- Section: 4.10 Tables: a row
-- Address: https://github.github.com/gfm/#tables-extension-
-- Marks: {  }
-- Parameters: { standard: markdown.Gfm, commonMark: markdown.CommonMark }
-- Examples: { input: Name, Role, output: | Name | Role | }
-- Defined by: GitHub Flavored Markdown
-- Depends on: GitHub Flavored Markdown, CommonMark
-
 ## Trame · Documents in the page
 
 ### Around the documents
@@ -2761,186 +2374,6 @@ Decision · `FigureMarkup`
 
 - Decided by: trame
 - Value: { edge: fe, node: fn, nature: n-, role: r-, inactive: inactive, history: hist, focus: focus, box: box, kind: kind, open: open, arrows: { base: arrow, accent: arrow-accent, bad: arrow-bad, warn: arrow-warn }, markers: { base: arrow-base, accent: arrow-to-accent, bad: arrow-to-bad, warn: arrow-to-warn }, defs: figure-defs, legend: legend, samples: { base: lg-base, accent: lg-accent, bad: lg-bad, box: lg-box, open: lg-open }, timeline: tl, grid: grid, tick: tick, period: period, review: review, mark: mark, lane: lane-label, muted: muted, today: today }
-
-## Trame · Mermaid
-
-### Mermaid
-
-Standard · `Mermaid`
-
-- Maintained by: trame
-- Source: Mermaid 11: flowcharts and Gantt charts
-- Address: https://mermaid.js.org/intro/syntax-reference.html
-- Constants: { indent: { value:   , meaning: Shifts a statement inside its block: Mermaid ignores it, it helps reading }, space: { value:  , meaning: Separates a keyword from what it introduces }, quote: { value: ", meaning: Surrounds a label }, language: { value: mermaid, meaning: The name of the language, in the info string of a code block that carries a diagram (GitHub, GitLab) } }
-
-### Class definition
-
-Syntax element · `ClassDefinition` · **held**
-
-- Owner: trame
-- Section: Flowcharts: classes
-- Address: https://mermaid.js.org/syntax/flowchart.html#classes
-- Marks: { keyword: { value: classDef, meaning: Defines a class } }
-- Parameters: { standard: mermaid.Mermaid, styleProperties: mermaid.StyleProperties }
-- Examples: { input: held, { fill: #e1f1e7, stroke: #26734a, textColour: #17202a }, output: classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a }
-- Defined by: Mermaid
-- Depends on: Mermaid, Style properties
-
-### Flowchart
-
-Syntax element · `Flowchart` · **held**
-
-- Owner: trame
-- Section: Flowcharts: direction
-- Address: https://mermaid.js.org/syntax/flowchart.html#direction
-- Marks: { keyword: { value: flowchart, meaning: Opens a flowchart }, down: { value: TB, meaning: From top to bottom }, right: { value: LR, meaning: From left to right }, up: { value: BT, meaning: From bottom to top }, left: { value: RL, meaning: From right to left } }
-- Parameters: { standard: mermaid.Mermaid }
-- Examples: { input: down, n0 --> n1, output: flowchart TB,   n0 --> n1 }
-- Defined by: Mermaid
-- Depends on: Mermaid
-
-### Gantt chart
-
-Syntax element · `Gantt` · **held**
-
-- Owner: trame
-- Section: Gantt: syntax, date format, axis format
-- Address: https://mermaid.js.org/syntax/gantt.html#syntax
-- Marks: { keyword: { value: gantt, meaning: Opens a Gantt chart }, dateFormat: { value: dateFormat, meaning: The format of the dates given to the tasks }, axisFormat: { value: axisFormat, meaning: The format of the dates on the axis }, title: { value: title, meaning: The title of the chart } }
-- Parameters: { standard: mermaid.Mermaid }
-- Examples: { input: YYYY-MM-DD, %d.%m, Around 17 October 2026, section Deadlines, output: gantt,   dateFormat YYYY-MM-DD,   axisFormat %d.%m,   title Around 17 October 2026,   section Deadlines }
-- Defined by: Mermaid
-- Depends on: Mermaid
-
-### Name in a Gantt chart
-
-Syntax element · `GanttName` · **held**
-
-- Owner: trame
-- Section: Gantt: syntax (the name of a task comes before the colon)
-- Address: https://mermaid.js.org/syntax/gantt.html#syntax
-- Marks: { colon: { value: :, meaning: Separates a name from its data: a name cannot contain one } }
-- Parameters: { standard: mermaid.Mermaid }
-- Examples: { input: Review: committee, output: Review  committee }
-- Defined by: Mermaid
-- Depends on: Mermaid
-
-### Section
-
-Syntax element · `GanttSection` · **held**
-
-- Owner: trame
-- Section: Gantt: sections
-- Address: https://mermaid.js.org/syntax/gantt.html#syntax
-- Marks: { keyword: { value: section, meaning: Opens a section } }
-- Parameters: { standard: mermaid.Mermaid, name: mermaid.GanttName }
-- Examples: { input: Period: free, In force : 2026-01-01, 2026-12-31, output: section Period  free,   In force : 2026-01-01, 2026-12-31 }
-- Defined by: Mermaid
-- Depends on: Mermaid, Name in a Gantt chart
-
-### Task
-
-Syntax element · `GanttTask` · **held**
-
-- Owner: trame
-- Section: Gantt: task syntax
-- Address: https://mermaid.js.org/syntax/gantt.html#syntax
-- Marks: { colon: { value: :, meaning: Separates the name of the task from its data }, comma: { value: ,, meaning: Separates the data } }
-- Parameters: { standard: mermaid.Mermaid, name: mermaid.GanttName }
-- Examples: { input: In force, 2026-01-01, 2026-12-31, output: In force : 2026-01-01, 2026-12-31 }
-- Defined by: Mermaid
-- Depends on: Mermaid, Name in a Gantt chart
-
-### Label
-
-Syntax element · `MermaidLabel` · **held**
-
-- Owner: trame
-- Section: Flowcharts: entity codes to escape characters
-- Address: https://mermaid.js.org/syntax/flowchart.html#entity-codes-to-escape-characters
-- Marks: { entity: { value: #quot;, meaning: Replaces a quotation mark in a label } }
-- Parameters: { standard: mermaid.Mermaid }
-- Examples: { input: The "graph", output: The #quot;graph#quot; }
-- Defined by: Mermaid
-- Depends on: Mermaid
-
-### Link
-
-Syntax element · `MermaidLink` · **held**
-
-- Owner: trame
-- Section: Flowcharts: links between nodes
-- Address: https://mermaid.js.org/syntax/flowchart.html#links-between-nodes
-- Marks: { solid: { value: -->, meaning: Solid stroke, with an arrowhead }, dotted: { value: -.->, meaning: Dotted stroke, with an arrowhead }, dottedOpen: { value: -.-, meaning: Dotted stroke, without an arrowhead }, thick: { value: ==>, meaning: Thick stroke, with an arrowhead }, bar: { value: |, meaning: Surrounds the text of the link } }
-- Parameters: { standard: mermaid.Mermaid, label: mermaid.MermaidLabel }
-- Examples: { input: n0, n1, dotted, Depends on, output: n0 -.->|Depends on| n1 }
-- Defined by: Mermaid
-- Depends on: Mermaid, Label
-
-### Node
-
-Syntax element · `MermaidNode` · **held**
-
-- Owner: trame
-- Section: Flowcharts: a node with text; styling: classes
-- Address: https://mermaid.js.org/syntax/flowchart.html#a-node-with-text
-- Marks: { open: { value: [, meaning: Opens the rectangle shape }, close: { value: ], meaning: Closes the rectangle shape }, lineBreak: { value: <br/>, meaning: Starts a new line in a label }, classMark: { value: :::, meaning: Attaches a class to the node } }
-- Parameters: { standard: mermaid.Mermaid, label: mermaid.MermaidLabel }
-- Examples: { input: n0, Palette, <small>Decision</small>, held, output: n0["Palette<br/><small>Decision</small>"]:::held }
-- Defined by: Mermaid
-- Depends on: Mermaid, Label
-
-### Milestone
-
-Syntax element · `Milestone` · **held**
-
-- Owner: trame
-- Section: Gantt: milestones
-- Address: https://mermaid.js.org/syntax/gantt.html#milestones
-- Marks: { tag: { value: milestone, meaning: Makes the task a milestone }, duration: { value: 0d, meaning: No duration } }
-- Parameters: { standard: mermaid.Mermaid, ganttTask: mermaid.GanttTask }
-- Examples: { input: Review, 2026-11-01, output: Review : milestone, 2026-11-01, 0d }
-- Defined by: Mermaid
-- Depends on: Mermaid, Task
-
-### Node style
-
-Syntax element · `NodeStyle` · **held**
-
-- Owner: trame
-- Section: Flowcharts: styling a node
-- Address: https://mermaid.js.org/syntax/flowchart.html#styling-a-node
-- Marks: { keyword: { value: style, meaning: Gives a style to nodes }, comma: { value: ,, meaning: Separates the identifiers of the nodes } }
-- Parameters: { standard: mermaid.Mermaid, styleProperties: mermaid.StyleProperties }
-- Examples: { input: n1, n2, { dashes: 4 3 }, output: style n1,n2 stroke-dasharray:4 3 }
-- Defined by: Mermaid
-- Depends on: Mermaid, Style properties
-
-### Style properties
-
-Syntax element · `StyleProperties` · **held**
-
-- Owner: trame
-- Section: Flowcharts: styling and classes
-- Address: https://mermaid.js.org/syntax/flowchart.html#styling-and-classes
-- Marks: { colon: { value: :, meaning: Separates the name of a property from its value }, comma: { value: ,, meaning: Separates two properties }, fill: { value: fill, meaning: The background colour }, stroke: { value: stroke, meaning: The outline colour }, textColour: { value: color, meaning: The colour of the text }, dashes: { value: stroke-dasharray, meaning: A dashed outline: the length of a dash, then of the gap }, opacity: { value: opacity, meaning: The opacity, from 0 (invisible) to 1 } }
-- Parameters: { standard: mermaid.Mermaid }
-- Examples: { input: { fill: #ffffff, stroke: #5a6672 }, output: fill:#ffffff,stroke:#5a6672 }
-- Defined by: Mermaid
-- Depends on: Mermaid
-
-### Subgraph
-
-Syntax element · `Subgraph` · **held**
-
-- Owner: trame
-- Section: Flowcharts: subgraphs
-- Address: https://mermaid.js.org/syntax/flowchart.html#subgraphs
-- Marks: { start: { value: subgraph, meaning: Opens the group }, end: { value: end, meaning: Closes the group }, open: { value: [, meaning: Opens the title }, close: { value: ], meaning: Closes the title } }
-- Parameters: { standard: mermaid.Mermaid, label: mermaid.MermaidLabel }
-- Examples: { input: engine, Trame · Engine, n0, output: subgraph engine["Trame · Engine"],   n0, end }
-- Defined by: Mermaid
-- Depends on: Mermaid, Label
 
 ## Trame · Messages
 
@@ -3050,13 +2483,6 @@ Message catalog · `PlatformMessages`
 - Owner: trame
 - Written in: Language
 
-### Messages of the renderers
-
-Message catalog · `RenderingMessages`
-
-- Owner: trame
-- Written in: Language
-
 ### Messages of the scenarios
 
 Message catalog · `ScenarioMessages`
@@ -3138,10 +2564,10 @@ Package · `DocumentRenderers`
 
 - Owner: trame
 - Name: documents
-- Version: 0.1.1
+- Version: 0.2.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: libs/documents/releases/0.1.1
+- Its path: libs/documents/releases/0.2.0
 - Serves: A single source of truth
 
 ### esbuild
@@ -3228,10 +2654,10 @@ Package · `StandardLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.29.1
+- Version: 0.30.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: std/releases/0.29.1
+- Its path: std/releases/0.30.0
 - Serves: A single source of truth
 
 ### tsx
@@ -3292,10 +2718,10 @@ Syntax element · `Banner` · **held**
 - Owner: trame
 - Section: Main area
 - Marks: {  }
-- Parameters: { standard: page.ThePage, regions: page.PageRegions, html: std/html.Html, element: html.HtmlElement, texts: std/algebra.Texts }
+- Parameters: { standard: page.ThePage, regions: page.PageRegions, html: std/html.Html, element: documents/html.HtmlElement, texts: std/algebra.Texts }
 - Examples: { input: , output: <div class="banner" id="banner" hidden></div> }
 - Defined by: The page
-- Depends on: The page, Regions of the page, HTML element
+- Depends on: The page, Regions of the page
 
 ### Brand
 
@@ -3304,10 +2730,10 @@ Syntax element · `Brand` · **held**
 - Owner: trame
 - Section: Side bar
 - Marks: { brand: { value: brand, meaning: The class of the brand }, name: { value: brand-name, meaning: The class of the name and its subtitle } }
-- Parameters: { standard: page.ThePage, html: std/html.Html, commands: conventions.TrameCommands, logo: page.Logo, block: html.HtmlBlock, element: html.HtmlElement }
+- Parameters: { standard: page.ThePage, html: std/html.Html, commands: conventions.TrameCommands, logo: page.Logo, block: html.HtmlBlock, element: documents/html.HtmlElement }
 - Examples: { input: graph, output: <div class="brand">,   <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">,     <rect x="0" y="0" width="26" height="26" rx="6" fill="var(--accent-soft)"/>,     <g stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M7 5v16M13 5v16M19 5v16"/></g>,     <g stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M5 9h3M10 9h6M18 9h3M5 17h3M10 17h6M18 17h3"/></g>,   </svg>,   <div class="brand-name">trame <span>graph</span></div>, </div> }
 - Defined by: The page
-- Depends on: The page, Trame's commands, Logo, Element over several lines, HTML element
+- Depends on: The page, Trame's commands, Logo, Element over several lines
 
 ### State of the compilation
 
@@ -3316,10 +2742,10 @@ Syntax element · `CompilationState` · **held**
 - Owner: trame
 - Section: Side bar
 - Marks: {  }
-- Parameters: { standard: page.ThePage, regions: page.PageRegions, html: std/html.Html, element: html.HtmlElement, texts: std/algebra.Texts }
+- Parameters: { standard: page.ThePage, regions: page.PageRegions, html: std/html.Html, element: documents/html.HtmlElement, texts: std/algebra.Texts }
 - Examples: { input: , output: <div class="status" id="status"></div> }
 - Defined by: The page
-- Depends on: The page, Regions of the page, HTML element
+- Depends on: The page, Regions of the page
 
 ### Dates
 
@@ -3328,10 +2754,10 @@ Syntax element · `DatePicker` · **held**
 - Owner: trame
 - Section: Side bar
 - Marks: { paragraph: { value: p, meaning: The label is a paragraph }, labelId: { value: dates-label, meaning: The identifier of the label, which names the group } }
-- Parameters: { standard: page.ThePage, regions: page.PageRegions, html: std/html.Html, aria: std/html.Aria, block: html.HtmlBlock, element: html.HtmlElement, texts: std/algebra.Texts }
+- Parameters: { standard: page.ThePage, regions: page.PageRegions, html: std/html.Html, aria: std/html.Aria, block: html.HtmlBlock, element: documents/html.HtmlElement, texts: std/algebra.Texts }
 - Examples: { input: Graph in force on, output: <div>,   <p class="label" id="dates-label">Graph in force on</p>,   <div class="dates" id="dates" role="group" aria-labelledby="dates-label"></div>,   <div class="date-note" id="date-note"></div>, </div> }
 - Defined by: The page
-- Depends on: The page, Regions of the page, Element over several lines, HTML element
+- Depends on: The page, Regions of the page, Element over several lines
 
 ### Head of the document
 
@@ -3340,10 +2766,10 @@ Syntax element · `DocumentHead` · **held**
 - Owner: trame
 - Section: Main area
 - Marks: { tag: { value: header, meaning: The head of the main content }, head: { value: doc-head, meaning: Its class }, path: { value: path, meaning: The class of the path } }
-- Parameters: { standard: page.ThePage, regions: page.PageRegions, html: std/html.Html, block: html.HtmlBlock, element: html.HtmlElement, toggle: page.RenderingToggle, texts: std/algebra.Texts }
+- Parameters: { standard: page.ThePage, regions: page.PageRegions, html: std/html.Html, block: html.HtmlBlock, element: documents/html.HtmlElement, toggle: page.RenderingToggle, texts: std/algebra.Texts }
 - Examples: { input: Rendering, Rendered, Markdown, Text, output: <header class="doc-head">,   <div class="path" id="doc-path"></div>,   <div class="toggle" id="toggle" role="group" aria-label="Rendering">,     <button type="button" id="view-rendered" aria-pressed="true">Rendered</button>,     <button type="button" id="view-markdown" aria-pressed="false">Markdown</button>,     <button type="button" id="view-text" aria-pressed="false">Text</button>,   </div>, </header> }
 - Defined by: The page
-- Depends on: The page, Regions of the page, Element over several lines, HTML element, Choice of rendering
+- Depends on: The page, Regions of the page, Element over several lines, Choice of rendering
 
 ### Document picker
 
@@ -3352,10 +2778,10 @@ Syntax element · `DocumentPicker` · **held**
 - Owner: trame
 - Section: Side bar
 - Marks: { picker: { value: mobile-pick, meaning: The class of the picker, which the style sheet shows on small screens only }, labelTag: { value: label, meaning: The label of the select }, for: { value: for, meaning: The control a label names }, select: { value: select, meaning: The list of documents } }
-- Parameters: { standard: page.ThePage, regions: page.PageRegions, html: std/html.Html, block: html.HtmlBlock, element: html.HtmlElement, texts: std/algebra.Texts }
+- Parameters: { standard: page.ThePage, regions: page.PageRegions, html: std/html.Html, block: html.HtmlBlock, element: documents/html.HtmlElement, texts: std/algebra.Texts }
 - Examples: { input: Document, output: <div class="mobile-pick">,   <label class="label" for="doc-select">Document</label>,   <select id="doc-select"></select>, </div> }
 - Defined by: The page
-- Depends on: The page, Regions of the page, Element over several lines, HTML element
+- Depends on: The page, Regions of the page, Element over several lines
 
 ### Arrowheads of the figures
 
@@ -3364,10 +2790,10 @@ Syntax element · `FigureMarkers` · **held**
 - Owner: trame
 - Section: Figures
 - Marks: {  }
-- Parameters: { standard: page.ThePage, svg: std/html.Svg, aria: std/html.Aria, html: std/html.Html, figures: markup.FigureMarkup, drawing: appearance.GraphDrawing, counts: std/algebra.Counts, texts: std/algebra.Texts, block: html.HtmlBlock, element: html.HtmlElement, empty: html.SelfClosingTag, path: html.PathData }
+- Parameters: { standard: page.ThePage, svg: std/html.Svg, aria: std/html.Aria, html: std/html.Html, figures: markup.FigureMarkup, drawing: appearance.GraphDrawing, counts: std/algebra.Counts, texts: std/algebra.Texts, block: html.HtmlBlock, element: documents/html.HtmlElement, empty: documents/html.SelfClosingTag, path: html.PathData }
 - Examples: { input: , output: <svg class="figure-defs" width="0" height="0" aria-hidden="true">,   <defs><marker id="arrow-base" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="arrow-to-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow-accent" d="M0,0 L10,5 L0,10 z"/></marker><marker id="arrow-to-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow-bad" d="M0,0 L10,5 L0,10 z"/></marker><marker id="arrow-to-warn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow-warn" d="M0,0 L10,5 L0,10 z"/></marker></defs>, </svg> }
 - Defined by: The page
-- Depends on: The page, Figures in the page, Drawing of a graph, Element over several lines, HTML element, Self-closing tag, Path data
+- Depends on: The page, Figures in the page, Drawing of a graph, Element over several lines, Path data
 
 ### Fonts
 
@@ -3377,9 +2803,8 @@ Syntax element · `FontLinks` · **held**
 - Section: 4.6.7.11 Link type preconnect; 4.6.7.17 Link type stylesheet; 2.5.4 CORS settings attributes
 - Address: https://html.spec.whatwg.org/multipage/links.html#link-type-preconnect
 - Marks: { link: { value: link, meaning: A link from the page to a resource }, rel: { value: rel, meaning: What the resource is to the page }, href: { value: href, meaning: Its address }, preconnect: { value: preconnect, meaning: An origin to connect to before it is asked }, stylesheet: { value: stylesheet, meaning: A style sheet of the page }, crossorigin: { value: crossorigin, meaning: Fetched without credentials } }
-- Parameters: { standard: std/html.Html, startTag: html.HtmlStartTag, texts: std/algebra.Texts }
+- Parameters: { standard: std/html.Html, startTag: documents/html.HtmlStartTag, texts: std/algebra.Texts }
 - Examples: { input: https://fonts.example, https://files.example, https://fonts.example/css, output: <link rel="preconnect" href="https://fonts.example"><link rel="preconnect" href="https://files.example" crossorigin><link rel="stylesheet" href="https://fonts.example/css"> }
-- Depends on: Start tag
 
 ### Logo
 
@@ -3388,10 +2813,10 @@ Syntax element · `Logo` · **held**
 - Owner: trame
 - Section: Brand
 - Marks: { size: { value: 26, meaning: The side of the drawing, in pixels, and of the grid it is drawn on }, radius: { value: 6, meaning: The radius of the corners of the square }, thread: { value: 2.2, meaning: The width of a thread }, warp: { value: M7 5v16M13 5v16M19 5v16, meaning: The warp: three vertical threads }, weft: { value: M5 9h3M10 9h6M18 9h3M5 17h3M10 17h6M18 17h3, meaning: The weft: two horizontal threads, in pieces between the threads of warp }, background: { value: accent-soft, meaning: The colour of the square: the soft accent of the palette }, warpColour: { value: accent, meaning: The colour of the warp: the accent of the palette } }
-- Parameters: { standard: page.ThePage, svg: std/html.Svg, aria: std/html.Aria, palette: appearance.Palette, counts: std/algebra.Counts, block: html.HtmlBlock, element: html.HtmlElement, empty: html.SelfClosingTag, variable: html.CssVariable }
+- Parameters: { standard: page.ThePage, svg: std/html.Svg, aria: std/html.Aria, palette: documents/appearance.Palette, counts: std/algebra.Counts, block: html.HtmlBlock, element: documents/html.HtmlElement, empty: documents/html.SelfClosingTag, variable: html.CssVariable }
 - Examples: { input: , output: <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">,   <rect x="0" y="0" width="26" height="26" rx="6" fill="var(--accent-soft)"/>,   <g stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M7 5v16M13 5v16M19 5v16"/></g>,   <g stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M5 9h3M10 9h6M18 9h3M5 17h3M10 17h6M18 17h3"/></g>, </svg> }
 - Defined by: The page
-- Depends on: The page, Palette, Element over several lines, HTML element, Self-closing tag, Variable
+- Depends on: The page, Element over several lines, Variable
 
 ### Main area
 
@@ -3400,10 +2825,10 @@ Syntax element · `MainArea` · **held**
 - Owner: trame
 - Section: Main area
 - Marks: { tag: { value: main, meaning: The main content of the page }, article: { value: article, meaning: The document } }
-- Parameters: { standard: page.ThePage, regions: page.PageRegions, html: std/html.Html, block: html.HtmlBlock, element: html.HtmlElement, banner: page.Banner, head: page.DocumentHead, texts: std/algebra.Texts }
+- Parameters: { standard: page.ThePage, regions: page.PageRegions, html: std/html.Html, block: html.HtmlBlock, element: documents/html.HtmlElement, banner: page.Banner, head: page.DocumentHead, texts: std/algebra.Texts }
 - Examples: { input: { subtitle: graph, dates: Dates, navigation: Views, document: Document, rendering: Rendering, renderings: Rendered, Markdown, Text }, output: <main>,   <div class="banner" id="banner" hidden></div>,   <header class="doc-head">,     <div class="path" id="doc-path"></div>,     <div class="toggle" id="toggle" role="group" aria-label="Rendering">,       <button type="button" id="view-rendered" aria-pressed="true">Rendered</button>,       <button type="button" id="view-markdown" aria-pressed="false">Markdown</button>,       <button type="button" id="view-text" aria-pressed="false">Text</button>,     </div>,   </header>,   <article class="doc" id="doc"></article>, </main> }
 - Defined by: The page
-- Depends on: The page, Regions of the page, Element over several lines, HTML element, Banner, Head of the document
+- Depends on: The page, Regions of the page, Element over several lines, Banner, Head of the document
 
 ### Rules of a narrow screen
 
@@ -3424,10 +2849,10 @@ Syntax element · `Navigation` · **held**
 - Owner: trame
 - Section: Side bar
 - Marks: { tag: { value: nav, meaning: The region of navigation } }
-- Parameters: { standard: page.ThePage, regions: page.PageRegions, html: std/html.Html, aria: std/html.Aria, element: html.HtmlElement, texts: std/algebra.Texts }
+- Parameters: { standard: page.ThePage, regions: page.PageRegions, html: std/html.Html, aria: std/html.Aria, element: documents/html.HtmlElement, texts: std/algebra.Texts }
 - Examples: { input: Documents and views, output: <nav class="nav" id="nav" aria-label="Documents and views"></nav> }
 - Defined by: The page
-- Depends on: The page, Regions of the page, HTML element
+- Depends on: The page, Regions of the page
 
 ### Document of the page
 
@@ -3436,7 +2861,7 @@ Syntax element · `PageDocument` · **held**
 - Owner: trame
 - Section: Document
 - Marks: { html: { value: html, meaning: The root element }, head: { value: head, meaning: What the document says of itself }, body: { value: body, meaning: What it shows }, title: { value: title, meaning: The title of the document }, style: { value: style, meaning: A style sheet written in the document }, meta: { value: meta, meaning: What the document says of itself, as a name and a content }, name: { value: name, meaning: The name of a meta element }, content: { value: content, meaning: Its content }, charset: { value: charset, meaning: The encoding of the document }, encoding: { value: utf-8, meaning: UTF-8, as the WHATWG Encoding standard labels it }, viewport: { value: viewport, meaning: How a mobile browser lays the page out (CSS Viewport Module Level 1) }, deviceWidth: { value: width=device-width, initial-scale=1, viewport-fit=cover, meaning: As wide as the device, not zoomed, drawn under the notch and the rounded corners }, hostFit: { value: claude:viewport-fit-sides, meaning: What the host that shows the page as an artifact (claude.ai) reads to draw it }, cover: { value: cover, meaning: To the edges of the screen } }
-- Parameters: { standard: page.ThePage, htmlNames: std/html.Html, doctype: html.Doctype, startTag: html.HtmlStartTag, endTag: html.HtmlEndTag, element: html.HtmlElement, file: std/text.TextFile, texts: std/algebra.Texts }
+- Parameters: { standard: page.ThePage, htmlNames: std/html.Html, doctype: html.Doctype, startTag: documents/html.HtmlStartTag, endTag: documents/html.HtmlEndTag, element: documents/html.HtmlElement, file: std/text.TextFile, texts: std/algebra.Texts }
 - Examples: { input: { lang: en-GB, title: Trame graph, fonts: <link>, style: body { margin: 0; }, shell: <div class="app">, </div>, scripts: <script>start()</script> }, output: <!doctype html>
 <html lang="en-GB">
 <head>
@@ -3462,7 +2887,7 @@ Syntax element · `PageDocument` · **held**
 <script>start()</script>
  }
 - Defined by: The page
-- Depends on: The page, DOCTYPE, Start tag, End tag, HTML element
+- Depends on: The page, DOCTYPE
 
 ### Scripts of the page
 
@@ -3483,10 +2908,10 @@ Syntax element · `RenderingToggle` · **held**
 - Owner: trame
 - Section: Main area
 - Marks: {  }
-- Parameters: { standard: page.ThePage, modes: page.RenderingModes, regions: page.PageRegions, html: std/html.Html, aria: std/html.Aria, block: html.HtmlBlock, element: html.HtmlElement, sequences: std/algebra.Sequences }
+- Parameters: { standard: page.ThePage, modes: page.RenderingModes, regions: page.PageRegions, html: std/html.Html, aria: std/html.Aria, block: html.HtmlBlock, element: documents/html.HtmlElement, sequences: std/algebra.Sequences }
 - Examples: { input: Rendering, Rendered, Markdown, Text, output: <div class="toggle" id="toggle" role="group" aria-label="Rendering">,   <button type="button" id="view-rendered" aria-pressed="true">Rendered</button>,   <button type="button" id="view-markdown" aria-pressed="false">Markdown</button>,   <button type="button" id="view-text" aria-pressed="false">Text</button>, </div> }
 - Defined by: The page
-- Depends on: The page, The renderings of a document, Regions of the page, Element over several lines, HTML element
+- Depends on: The page, The renderings of a document, Regions of the page, Element over several lines
 
 ### Shell
 
@@ -3596,9 +3021,9 @@ Architecture decision · `StyleThroughVariables` · **held**
 Function · `Page` · **held**
 
 - Owner: trame
-- Parameters: { pageBundle: page.PageBundle, standalone: page.StandaloneStyle, encodings: std/system.NodeEncodings, file: std/text.TextFile, palette: appearance.Palette, typography: appearance.Typography, narrowScreen: appearance.NarrowScreen, spacing: appearance.Spacing, radii: appearance.Radii, typeScale: appearance.TypeScale, opacities: appearance.Opacities, strokes: appearance.Strokes, motion: appearance.Motion, pageLayout: appearance.PageLayout, resources: architecture.Resources, reading: architecture.FileReading, bundler: architecture.Bundler, compression: architecture.Compression, shell: page.Shell, theme: page.Theme, statusStyle: page.StatusStyle, narrow: page.NarrowScreenRule, fonts: page.FontLinks, scripts: page.PageScripts, document: page.PageDocument, rule: html.CssRule, declaration: html.CssDeclaration, messages: messages.OutputMessages, language: messages.Language, reader: syntax.SyntaxReader, markup: std/languages.HtmlMarkup, sheets: std/languages.CssStyleSheets, gnu: std/text.GnuPositions }
+- Parameters: { pageBundle: page.PageBundle, standalone: page.StandaloneStyle, encodings: std/system.NodeEncodings, file: std/text.TextFile, palette: documents/appearance.Palette, typography: appearance.Typography, narrowScreen: appearance.NarrowScreen, spacing: appearance.Spacing, radii: appearance.Radii, typeScale: appearance.TypeScale, opacities: appearance.Opacities, strokes: appearance.Strokes, motion: appearance.Motion, pageLayout: appearance.PageLayout, resources: architecture.Resources, reading: architecture.FileReading, bundler: architecture.Bundler, compression: architecture.Compression, shell: page.Shell, theme: page.Theme, statusStyle: page.StatusStyle, narrow: page.NarrowScreenRule, fonts: page.FontLinks, scripts: page.PageScripts, document: page.PageDocument, rule: html.CssRule, declaration: html.CssDeclaration, messages: messages.OutputMessages, language: messages.Language, reader: syntax.SyntaxReader, markup: std/languages.HtmlMarkup, sheets: std/languages.CssStyleSheets, gnu: std/text.GnuPositions }
 - Serves: A specification that runs
-- Depends on: Bundle of the page, Style of the standalone document, Palette, Typography, Narrow screen, Spacing, Radii, Type scale, Opacities, Strokes, Motion, Page layout, Page resources, File reading, Bundler, Compression, Shell, Theme, Colours of a status, Rules of a narrow screen, Fonts, Scripts of the page, Document of the page, Rule, Declaration, Messages of the outputs, Language, Syntax reader
+- Depends on: Bundle of the page, Style of the standalone document, Typography, Narrow screen, Spacing, Radii, Type scale, Opacities, Strokes, Motion, Page layout, Page resources, File reading, Bundler, Compression, Shell, Theme, Colours of a status, Rules of a narrow screen, Fonts, Scripts of the page, Document of the page, Rule, Declaration, Messages of the outputs, Language, Syntax reader
 
 ### Style sheet of a narrow screen
 
@@ -3613,7 +3038,7 @@ Style sheet · `NarrowScreenStyle`
 Style sheet · `PageStyle`
 
 - Owner: trame
-- Uses the variables of: Palette, Typography, Spacing, Radii, Type scale, Opacities, Strokes, Motion, Page layout
+- Uses the variables of: Typography, Spacing, Radii, Type scale, Opacities, Strokes, Motion, Page layout
 - Styles: Page
 
 ## Trame · Platform
@@ -3720,14 +3145,14 @@ Function · `StoppedClock` · **held**
 
 ### System files, for reading
 
-Implementation · `DiskReading` · **held**
+Implementation · `DiskReading` · **unknown**
 
 - Owner: trame
 - Implements: File reading
 
 ### Trees on disk
 
-Implementation · `DiskTrees` · **held**
+Implementation · `DiskTrees` · **unknown**
 
 - Owner: trame
 - Parameters: { diff: std/text.UnifiedDiff, node: std/system.NodeCli, events: std/system.NodeEvents }
@@ -3735,7 +3160,7 @@ Implementation · `DiskTrees` · **held**
 
 ### System files, for writing
 
-Implementation · `DiskWriting` · **held**
+Implementation · `DiskWriting` · **unknown**
 
 - Owner: trame
 - Implements: File writing
@@ -3809,7 +3234,7 @@ Implementation · `NodeHashing` · **held**
 
 ### Node HTTP server
 
-Implementation · `NodeHttpServer` · **held**
+Implementation · `NodeHttpServer` · **unknown**
 
 - Owner: trame
 - Implements: HTTP server
@@ -3823,7 +3248,7 @@ Implementation · `NodePaths` · **held**
 
 ### Node process
 
-Implementation · `NodeProcess` · **held**
+Implementation · `NodeProcess` · **unknown**
 
 - Owner: trame
 - Parameters: { argv: std/system.NodeArguments, node: std/system.NodeCli, runner: platform.TypeScriptRunner, variables: conventions.TrameEnvironment, exit: std/system.ExitStatus, values: std/algebra.ValueTypes }
@@ -3832,7 +3257,7 @@ Implementation · `NodeProcess` · **held**
 
 ### Node programs
 
-Implementation · `NodePrograms` · **held**
+Implementation · `NodePrograms` · **unknown**
 
 - Owner: trame
 - Parameters: { node: std/system.NodeCli, runner: platform.TypeScriptRunner, events: std/system.NodeEvents }
@@ -3841,7 +3266,7 @@ Implementation · `NodePrograms` · **held**
 
 ### Node terminal
 
-Implementation · `NodeTerminal` · **held**
+Implementation · `NodeTerminal` · **unknown**
 
 - Owner: trame
 - Parameters: { argv: std/system.NodeArguments, exitStatus: std/system.ExitStatus, events: std/system.NodeEvents, posix: std/system.Posix, messages: messages.PlatformMessages }
@@ -3866,7 +3291,7 @@ Implementation · `NoInstallsInTest` · **held**
 
 ### npm installs
 
-Implementation · `NpmInstall` · **held**
+Implementation · `NpmInstall` · **unknown**
 
 - Owner: trame
 - Parameters: { npm: std/system.NpmCli, node: std/system.NodeCli, events: std/system.NodeEvents, exitStatus: std/system.ExitStatus }
@@ -3874,7 +3299,7 @@ Implementation · `NpmInstall` · **held**
 
 ### npm's reports
 
-Implementation · `NpmReports` · **held**
+Implementation · `NpmReports` · **unknown**
 
 - Owner: trame
 - Parameters: { npm: std/system.NpmCli, values: std/algebra.ValueTypes, counts: std/algebra.Counts, punctuation: documents/language.Punctuation }
@@ -3921,7 +3346,7 @@ Implementation · `RunsInTheProcess` · **held**
 
 ### Runs kept on disk
 
-Implementation · `RunsOnDisk` · **held**
+Implementation · `RunsOnDisk` · **unknown**
 
 - Owner: trame
 - Parameters: { layout: conventions.Layout, files: platform.EngineFiles, engines: engine.EngineFingerprint, scope: engine.KeptRunsScope, encodings: std/system.NodeEncodings }
@@ -3930,7 +3355,7 @@ Implementation · `RunsOnDisk` · **held**
 
 ### System clock
 
-Implementation · `SystemClock` · **held**
+Implementation · `SystemClock` · **unknown**
 
 - Owner: trame
 - Parameters: { iso: std/measures.Iso8601, environment: conventions.TrameEnvironment, sequences: std/algebra.Sequences }
@@ -4037,7 +3462,7 @@ Technical choice · `InMemoryScenarios` · **held**
 
 ### On a machine, Node.js reads, writes and runs
 
-Technical choice · `NodeMachine` · **held**
+Technical choice · `NodeMachine` · **unknown**
 
 - Decided by: trame
 - Context: What changes the world (files written, processes, the terminal, the clock) is real only on a machine; the scenarios keep it in memory.
@@ -4097,7 +3522,7 @@ Technical choice · `RunsKeptInTheProcess` · **held**
 
 ### On a machine, runs are kept on disk
 
-Technical choice · `RunsKeptOnDisk` · **held**
+Technical choice · `RunsKeptOnDisk` · **unknown**
 
 - Decided by: trame
 - Context: The commands of a shipment and of an advance run as separate processes, each compiling the same graph: what one played, the next can find only on disk.
@@ -4416,7 +3841,7 @@ Architecture decision · `PreludeLayer` · **held**
 
 ### A run is kept while what it reads is as it was
 
-Architecture decision · `RunsKept` · **held**
+Architecture decision · `RunsKept` · **unknown**
 
 - Decided by: trame
 - Context: A build of Trame played its scenarios 2,030 times, a hundred of its hundred and forty seconds; a shipment compiled the same graph a dozen times with the same code (g74).
@@ -4438,7 +3863,7 @@ Architecture decision · `SdlcWithStdTooling` · **unknown**
 
 ### A version ships through the graph
 
-Architecture decision · `ShippedThroughTheGraph` · **held**
+Architecture decision · `ShippedThroughTheGraph` · **unknown**
 
 - Decided by: trame
 - Context: Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.
@@ -4449,7 +3874,7 @@ Architecture decision · `ShippedThroughTheGraph` · **held**
 
 ### A technology is chosen in one node
 
-Architecture decision · `TechnologyInOneNode` · **held**
+Architecture decision · `TechnologyInOneNode` · **unknown**
 
 - Decided by: trame
 - Context: Each implementation said which environments it served: the choice of a technology was spread over its realizations, nothing said why, and a test double or a repository over a database port had to be declared as if it touched the platform.
@@ -4506,10 +3931,10 @@ Architecture decision · `WordsInCatalogs` · **held**
 
 - Decided by: trame
 - Context: Words people read change for reasons code does not know (a clearer phrasing, another language), and they hold literals by nature.
-- Consequences: A catalog's text is what it declares: it is not a literal to declare. The page, which runs where nothing is wired, calls the renderers' catalog directly. The reader and the checks of a body hold it: a sentence written in a body is a literal, an error.
+- Consequences: A catalog's text is what it declares: it is not a literal to declare. The page, which runs where nothing is wired, calls the catalog of libs/documents' renderers directly. The reader and the checks of a body hold it: a sentence written in a body is a literal, an error.
 - Rejected: Texts in the code, a sentence to change would mean code to change, and no language could replace another
 - Serves: A single source of truth
-- Applied by: Syntax reader, Checks of a body, Messages of the compiler, Messages of the drivers, Messages of the laws, Messages of the views, Messages of the outputs, Messages of trame dev, Messages of the commands, Messages of an advance, Messages of the renderers, Messages of the platform, Messages of the scenarios
+- Applied by: Syntax reader, Checks of a body, Messages of the compiler, Messages of the drivers, Messages of the laws, Messages of the views, Messages of the outputs, Messages of trame dev, Messages of the commands, Messages of an advance, Messages of the platform, Messages of the scenarios
 
 ## Trame · Product
 
@@ -6416,13 +5841,6 @@ Release · `G99`
 
 ## Trame · Rendering
 
-### Places in a sentence
-
-Decision · `SentenceSlots`
-
-- Decided by: trame
-- Value: { delimiter:   }
-
 ### Kinds and views say what; renderers say how
 
 Architecture decision · `MeaningThenLook` · **held**
@@ -6432,32 +5850,18 @@ Architecture decision · `MeaningThenLook` · **held**
 - Consequences: Three points of extension: a kind says what a node is, a view which question is asked, a syntax in which format the answer comes. Renderers compose the syntax elements of their format and never read the graph.
 - Rejected: Kinds that write Markdown, one format only, and the page would have to parse it back
 - Serves: A specification that runs
-- Applied by: Rendering of the files, Rendering in the terminal, Rendering in the page, Common rendering, Rendering does not read the graph
+- Applied by: Rendering in the page, Rendering does not read the graph
 
-### One renderer, its syntax a choice
+### Trame's documents, rendered by the library of documents
 
-Architecture decision · `OneRendererManySyntaxes` · **held**
+Architecture decision · `RenderedByTheLibrary` · **held**
 
 - Decided by: trame
-- Context: Markdown, the terminal and the page each had their renderer: three walks of the same blocks, three ways of saying a status or an overlap, and the page's outside the graph.
-- Consequences: The words of a document are said once, by the renderer; a new format is a realization of a syntax port and a choice, without touching the renderer. Syntax and figures vary apart: Markdown with figures as text is two choices, not a new renderer.
-- Rejected: A renderer per format, the walk and the words repeated, and drifting; Figures in each syntax, a syntax and a way of drawing tied together, which no longer vary apart
+- Context: The renderers were the engine's: the commands of every project need them (build, view, snapshot), and a project's own command could not reach them (decided 26 November).
+- Consequences: Trame's commands use the library's renderers as they use std's structures; the page's syntax and figures move there with the page.
+- Rejected: Renderers kept in the engine, a command moved out of the engine would lose what writes its documents
 - Serves: A technology is changed in one node
-- Applied by: Rendering of the files, Rendering in the terminal, Rendering in the page, Documents in Markdown, Figures in Mermaid, The terminal in plain text, Figures in the terminal, as text, The page in HTML, The page's figures in SVG
-
-### Figures of the documents written as files
-
-Port · `FileFigures`
-
-- Owner: trame
-- Declared effects: 
-
-### Syntax of the documents written as files
-
-Port · `FileSyntax`
-
-- Owner: trame
-- Declared effects: 
+- Applied by: Rendering in the page, Documents in Markdown, Figures in Mermaid, The terminal in plain text, Figures in the terminal, as text, The page in HTML, The page's figures in SVG
 
 ### Figures of the page
 
@@ -6473,115 +5877,34 @@ Port · `PageSyntax`
 - Owner: trame
 - Declared effects: 
 
-### Figures of the terminal
-
-Port · `TerminalFigures`
-
-- Owner: trame
-- Declared effects: 
-
-### Syntax of the terminal
-
-Port · `TerminalSyntax`
-
-- Owner: trame
-- Declared effects: 
-
-### Common rendering
-
-Function · `Common` · **held**
-
-- Owner: trame
-- Parameters: { values: std/algebra.ValueTypes, syntax: conventions.ReferenceSyntax, slots: rendering.SentenceSlots, dates: documents/language.Dates, lists: documents/language.Lists, texts: std/algebra.Texts, messages: messages.RenderingMessages, units: documents/language.Units }
-- Serves: A specification that runs
-- Depends on: Trame references, Places in a sentence, Messages of the renderers
-
-### Rendering of the files
-
-Function · `FileRendering` · **held**
-
-- Owner: trame
-- Parameters: { common: rendering.Common, syntax: rendering.FileSyntax, values: std/algebra.ValueTypes, texts: std/algebra.Texts, counts: std/algebra.Counts, messages: messages.RenderingMessages }
-- Serves: A specification that runs
-- Depends on: Common rendering, Syntax of the documents written as files, Messages of the renderers
-
 ### HTML writer
 
 Function · `HtmlSyntax` · **held**
 
 - Owner: trame
-- Parameters: { figures: rendering.PageFigures, html: std/html.Html, markup: markup.DocumentMarkup, page: page.ThePage, element: html.HtmlElement, heading: html.HtmlHeading, escape: html.EscapedText, punctuation: documents/language.Punctuation, slots: rendering.SentenceSlots, counts: std/algebra.Counts, texts: std/algebra.Texts, messages: messages.RenderingMessages }
+- Parameters: { figures: rendering.PageFigures, html: std/html.Html, markup: markup.DocumentMarkup, page: page.ThePage, element: documents/html.HtmlElement, heading: documents/html.HtmlHeading, escape: documents/html.EscapedText, punctuation: documents/language.Punctuation, slots: documents/rendering.SentenceSlots, counts: std/algebra.Counts, texts: std/algebra.Texts, messages: documents/rendering.RenderingMessages }
 - Serves: A specification that runs
 - Implements: Syntax of the page
-- Depends on: Figures of the page, Documents in the page, The page, HTML element, Heading of a rank, Escaped text, Places in a sentence, Messages of the renderers
-
-### Markdown writer
-
-Function · `MarkdownSyntax` · **held**
-
-- Owner: trame
-- Parameters: { figures: rendering.FileFigures, textRendering: documents.TextRendering, punctuation: documents/language.Punctuation, blocks: markdown.Blocks, heading: markdown.Heading, listItem: markdown.ListItem, blockQuote: markdown.BlockQuote, codeBlock: markdown.CodeBlock, emphasis: markdown.Emphasis, strong: markdown.StrongEmphasis, codeSpan: markdown.CodeSpan, link: markdown.Link, relativeReference: markdown.RelativeReference, tableCell: markdown.TableCell, table: markdown.Table, anchor: markdown.Anchor, details: markdown.Details, counts: std/algebra.Counts, texts: std/algebra.Texts, messages: messages.RenderingMessages }
-- Serves: A specification that runs
-- Implements: Syntax of the documents written as files
-- Depends on: Figures of the documents written as files, Heading levels of Markdown documents, Sequence of blocks, Heading, List item, Block quote, Code block, Emphasis, Strong emphasis, Code span, Link, Relative reference, Table cell, Table, Anchor, Collapsible block, Messages of the renderers
-
-### Mermaid diagrams
-
-Function · `MermaidDiagrams` · **held**
-
-- Owner: trame
-- Parameters: { mermaid: mermaid.Mermaid, figures: documents.MermaidFigures, palette: appearance.Palette, small: markdown.Small, flowchart: mermaid.Flowchart, node: mermaid.MermaidNode, subgraph: mermaid.Subgraph, link: mermaid.MermaidLink, classDefinition: mermaid.ClassDefinition, nodeStyle: mermaid.NodeStyle, gantt: mermaid.Gantt, ganttSection: mermaid.GanttSection, ganttTask: mermaid.GanttTask, milestone: mermaid.Milestone, counts: std/algebra.Counts, dates: documents/language.Dates, messages: messages.RenderingMessages }
-- Serves: A specification that runs
-- Implements: Figures of the documents written as files
-- Depends on: Mermaid, How Mermaid figures are drawn, Palette, Small text, Flowchart, Node, Subgraph, Link, Class definition, Node style, Gantt chart, Section, Task, Milestone, Messages of the renderers
+- Depends on: Figures of the page, Documents in the page, The page
 
 ### Rendering in the page
 
 Function · `PageRendering` · **held**
 
 - Owner: trame
-- Parameters: { common: rendering.Common, syntax: rendering.PageSyntax, values: std/algebra.ValueTypes, texts: std/algebra.Texts, counts: std/algebra.Counts, messages: messages.RenderingMessages }
+- Parameters: { rendering: documents/rendering.Rendering, syntax: rendering.PageSyntax }
 - Serves: A specification that runs
-- Depends on: Common rendering, Syntax of the page, Messages of the renderers
-
-### Plain text writer
-
-Function · `PlainTextSyntax` · **held**
-
-- Owner: trame
-- Parameters: { figures: rendering.TerminalFigures, layout: text.TerminalText, columns: text.TerminalColumns, punctuation: documents/language.Punctuation, cell: text.PaddedCell, table: text.Columns, item: text.ItemLine, code: text.CodeLines, lines: text.TerminalLines, counts: std/algebra.Counts, texts: std/algebra.Texts, messages: messages.RenderingMessages }
-- Serves: A specification that runs
-- Implements: Syntax of the terminal
-- Depends on: Figures of the terminal, Terminal text, Columns in the terminal, Padded cell, Columns, Item line, Code lines, Lines of the terminal, Messages of the renderers
+- Depends on: Syntax of the page
 
 ### Figures in SVG
 
 Function · `SvgFigures` · **held**
 
 - Owner: trame
-- Parameters: { html: std/html.Html, svg: std/html.Svg, aria: std/html.Aria, css: std/html.Css, markup: markup.DocumentMarkup, figures: markup.FigureMarkup, page: page.ThePage, graph: appearance.GraphDrawing, timeline: appearance.TimelineDrawing, legend: appearance.LegendDrawing, element: html.HtmlElement, empty: html.SelfClosingTag, path: html.PathData, declaration: html.CssDeclaration, escape: html.EscapedText, common: rendering.Common, dates: documents/language.Dates, words: messages.PageWords, messages: messages.RenderingMessages, punctuation: documents/language.Punctuation, iso: std/measures.Iso8601, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
+- Parameters: { html: std/html.Html, svg: std/html.Svg, aria: std/html.Aria, css: std/html.Css, markup: markup.DocumentMarkup, figures: markup.FigureMarkup, page: page.ThePage, graph: appearance.GraphDrawing, timeline: appearance.TimelineDrawing, legend: appearance.LegendDrawing, element: documents/html.HtmlElement, empty: documents/html.SelfClosingTag, path: html.PathData, declaration: html.CssDeclaration, escape: documents/html.EscapedText, common: documents/rendering.Common, dates: documents/language.Dates, words: messages.PageWords, messages: documents/rendering.RenderingMessages, punctuation: documents/language.Punctuation, iso: std/measures.Iso8601, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
 - Serves: A specification that runs
 - Implements: Figures of the page
-- Depends on: Documents in the page, Figures in the page, The page, Drawing of a graph, Drawing of a timeline, Legend of a graph, HTML element, Self-closing tag, Path data, Declaration, Escaped text, Common rendering, Words of the page, Messages of the renderers
-
-### Rendering in the terminal
-
-Function · `TerminalRendering` · **held**
-
-- Owner: trame
-- Parameters: { common: rendering.Common, syntax: rendering.TerminalSyntax, values: std/algebra.ValueTypes, texts: std/algebra.Texts, counts: std/algebra.Counts, messages: messages.RenderingMessages }
-- Serves: A specification that runs
-- Depends on: Common rendering, Syntax of the terminal, Messages of the renderers
-
-### Figures as text
-
-Function · `TextFigures` · **held**
-
-- Owner: trame
-- Parameters: { common: rendering.Common, columns: text.TerminalColumns, punctuation: documents/language.Punctuation, cell: text.PaddedCell, table: text.Columns, branch: text.TreeBranch, step: text.PathStep, dates: documents/language.Dates, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.RenderingMessages }
-- Serves: A specification that runs
-- Implements: Figures of the terminal
-- Depends on: Common rendering, Columns in the terminal, Padded cell, Columns, Tree branch, Path step, Messages of the renderers
+- Depends on: Documents in the page, Figures in the page, The page, Drawing of a graph, Drawing of a timeline, Legend of a graph, Path data, Declaration, Words of the page
 
 ### Documents in Markdown
 
@@ -6591,7 +5914,6 @@ Technical choice · `DocumentsInMarkdown` · **held**
 - Context: The documents are read in reviews, in editors, on forges, and compared line by line by the advance: their syntax must be text that every one of them displays.
 - Consequences: Another syntax for the files is a realization of "Syntax of the documents written as files" and this choice changed: the renderer, the views and the kinds do not change; the figures stay a choice of their own.
 - Rejected: HTML only, unreadable as plain text, and a review no longer compares lines; AsciiDoc or reStructuredText, less well displayed by forges and editors; Plain text, no links, no tables, no figures
-- Chooses: Markdown writer
 - In: Local, Test
 - Serves: A technology is changed in one node
 
@@ -6603,7 +5925,6 @@ Technical choice · `FiguresInMermaid` · **held**
 - Context: A figure of a document must be drawn by the forges and editors that display the document, and stay text that a review compares.
 - Consequences: The Markdown writer puts the lines of a figure in a code block, in the language the drawing says: figures as text in the documents would be the text figures answering "Figures of the documents written as files" too, and this choice changed; the writer does not change.
 - Rejected: Images (SVG, PNG), to regenerate at every change, and silent in a text review; Graphviz (DOT), neither GitHub nor GitLab draws it; PlantUML, needs a rendering server
-- Chooses: Mermaid diagrams
 - In: Local, Test
 - Serves: A technology is changed in one node
 
@@ -6639,7 +5960,6 @@ Technical choice · `TerminalFiguresAsText` · **held**
 - Context: A terminal draws no diagram: a figure must read as lines.
 - Consequences: The terminal syntax indents the lines of a figure like any other content.
 - Rejected: Mermaid in the terminal, its source does not read as a figure
-- Chooses: Figures as text
 - In: Local, Test
 - Serves: A technology is changed in one node
 
@@ -6651,7 +5971,6 @@ Technical choice · `TerminalInText` · **held**
 - Context: A terminal shows characters: marks of a syntax (asterisks, pipes, tags) would be noise there.
 - Consequences: A view printed in Markdown is the --format md option, which renders with the files' renderer; a terminal syntax with colours would be another realization of "Syntax of the terminal".
 - Rejected: Markdown in the terminal, its marks are noise when they are not displayed; ANSI colours, lost in logs and pipes, and the scenarios compare text
-- Chooses: Plain text writer
 - In: Local, Test
 - Serves: A technology is changed in one node
 
@@ -6767,7 +6086,7 @@ Scenario · `BuildLikeBefore` · **held**
 
 - Owner: trame
 - Parameters: { build: commands.Build, exitStatus: std/system.ExitStatus, expected: scenarios.ExpectedDifferences, writeLog: architecture.WriteLog, terminalLog: architecture.TerminalLog, layout: conventions.Layout, reading: architecture.FileReading, paths: architecture.Paths, currentProcess: architecture.Process, encodings: std/system.NodeEncodings, line: conventions.TrameCommands, counts: std/algebra.Counts, commandMessages: messages.CommandMessages, messages: messages.ScenarioMessages }
-- Verifies: Build, Preparation, Compilation API, Views, Rendering of the files, Common rendering, Markdown writer, Mermaid diagrams, Machine outputs, Lock, Files in memory, over the disk, Terminal in memory, Stopped clock
+- Verifies: Build, Preparation, Compilation API, Views, Machine outputs, Lock, Files in memory, over the disk, Terminal in memory, Stopped clock
 - In: Test
 - Depends on: Build, Expected differences on the example, Write log, Terminal log, Project layout, File reading, Paths, Process, Trame's commands, Messages of the commands, Messages of the scenarios
 
@@ -7122,7 +6441,7 @@ Role · `Maintainers`
 
 ### The candidate engine
 
-Artefact · `EngineCandidate` · **held**
+Artefact · `EngineCandidate` · **unknown**
 
 - Owner: trame
 - Path: out/local/trame-cli.ts
@@ -7130,7 +6449,7 @@ Artefact · `EngineCandidate` · **held**
 
 ### The graph page
 
-Artefact · `GraphPage` · **held**
+Artefact · `GraphPage` · **unknown**
 
 - Owner: trame
 - Path: trame-page.html
@@ -7140,7 +6459,7 @@ Artefact · `GraphPage` · **held**
 
 ### The page's program
 
-Artefact · `PageProgram` · **held**
+Artefact · `PageProgram` · **unknown**
 
 - Owner: trame
 - Path: out/browser/page-app.ts
@@ -7167,7 +6486,7 @@ Artefact · `TheEngine` · **unknown**
 
 ### The candidate plays the laws
 
-Check · `CandidateKeepsTheLaws` · **held**
+Check · `CandidateKeepsTheLaws` · **unknown**
 
 - Owner: trame
 - Checks: The candidate engine
@@ -7176,7 +6495,7 @@ Check · `CandidateKeepsTheLaws` · **held**
 
 ### The candidate runs on the machine
 
-Check · `CandidateRunsOnTheMachine` · **held**
+Check · `CandidateRunsOnTheMachine` · **unknown**
 
 - Owner: trame
 - Checks: The candidate engine
@@ -7186,7 +6505,7 @@ Check · `CandidateRunsOnTheMachine` · **held**
 
 ### The graph page opens
 
-Check · `GraphPageOpens` · **held**
+Check · `GraphPageOpens` · **unknown**
 
 - Owner: trame
 - Checks: The graph page
@@ -7231,7 +6550,7 @@ Shipment · `IntoMain` · **unknown**
 
 ### The next generation
 
-Shipment · `NextGeneration` · **held**
+Shipment · `NextGeneration` · **unknown**
 
 - Owner: trame
 - Target: generation
@@ -7654,122 +6973,6 @@ Function · `TerraformWriter` · **held**
 - Parameters: { syntax: terraform.HclSyntax, modules: terraform.TerraformModules, layout: conventions.Layout, specifiers: std/system.NodeModuleSpecifiers, comment: terraform.HclComment, text: terraform.HclString, value: terraform.HclValue, attribute: terraform.HclAttribute, block: terraform.ModuleBlock, paths: architecture.Paths, prelude: architecture.Prelude, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, dates: documents/language.Dates, messages: messages.DriverMessages }
 - Serves: A specification that runs
 - Depends on: HCL, Terraform modules, Project layout, Comment, Text, Value, Attribute, Module call, Paths, Prelude, Messages of the drivers
-
-## Trame · Terminal text
-
-### Box drawing
-
-Standard · `BoxDrawing`
-
-- Maintained by: trame
-- Source: The Unicode Standard, Version 15.1, code chart Box Drawing (U+2500 to U+257F)
-- Address: https://www.unicode.org/charts/PDF/U2500.pdf
-- Constants: { vertical: { value: │, meaning: U+2502 BOX DRAWINGS LIGHT VERTICAL: a line that goes on below }, verticalAndRight: { value: ├, meaning: U+251C BOX DRAWINGS LIGHT VERTICAL AND RIGHT: a branch, with others below it }, upAndRight: { value: └, meaning: U+2514 BOX DRAWINGS LIGHT UP AND RIGHT: the last branch, or a step under the one before } }
-
-### Code lines
-
-Syntax element · `CodeLines` · **held**
-
-- Owner: trame
-- Section: Code
-- Marks: { margin: { value:     , meaning: Four spaces before each line: two steps of indentation } }
-- Parameters: { standard: text.TerminalText, file: std/text.TextFile }
-- Examples: { input:   , const a = 1
-export default a, output:       const a = 1,       export default a }
-- Defined by: Terminal text
-- Depends on: Terminal text
-
-### Columns
-
-Syntax element · `Columns` · **held**
-
-- Owner: trame
-- Section: Columns
-- Marks: {  }
-- Parameters: { standard: text.TerminalText, cell: text.PaddedCell, columns: text.TerminalColumns, texts: std/algebra.Texts, sequences: std/algebra.Sequences }
-- Examples: { input: none, Owner, trame, Review planned, 1 March 2027,   , output:   Owner           trame,   Review planned  1 March 2027 }, { input: Name, Kind, Text, function, , output: NAME  KIND, Text  function }
-- Defined by: Terminal text
-- Depends on: Terminal text, Padded cell, Columns in the terminal
-
-### Item line
-
-Syntax element · `ItemLine` · **held**
-
-- Owner: trame
-- Section: Lists
-- Marks: { bullet: { value: -, meaning: Marks an item of a list } }
-- Parameters: { standard: text.TerminalText }
-- Examples: { input:   , Owner: trame, output:   - Owner: trame }
-- Defined by: Terminal text
-- Depends on: Terminal text
-
-### Padded cell
-
-Syntax element · `PaddedCell` · **held**
-
-- Owner: trame
-- Section: Columns
-- Marks: {  }
-- Parameters: { standard: text.TerminalText, columns: text.TerminalColumns }
-- Examples: { input: held, 8, output: held     }, { input: a long name, 4, output: a long name  }
-- Defined by: Terminal text
-- Depends on: Terminal text, Columns in the terminal
-
-### Path step
-
-Syntax element · `PathStep` · **held**
-
-- Owner: trame
-- Section: Paths
-- Marks: { shift: { value:    , meaning: Three spaces per position: the corner of the step before, its space, and one more } }
-- Parameters: { standard: text.TerminalText, box: text.BoxDrawing }
-- Examples: { input: 0, serves, Bookings (goal), output: └ serves Bookings (goal) }, { input: 2, uses, Store (port), output:       └ uses Store (port) }
-- Defined by: Terminal text
-- Depends on: Terminal text, Box drawing
-
-### Lines of the terminal
-
-Syntax element · `TerminalLines` · **held**
-
-- Owner: trame
-- Section: Lines
-- Marks: {  }
-- Parameters: { standard: text.TerminalText, file: std/text.TextFile, counts: std/algebra.Counts }
-- Examples: { input: Layers, , , , rank 1   Goals,   , output: Layers
-
-rank 1   Goals
- }, { input: a, b, output: a
-b
- }
-- Defined by: Terminal text
-- Depends on: Terminal text
-
-### Tree branch
-
-Syntax element · `TreeBranch` · **held**
-
-- Owner: trame
-- Section: Trees
-- Marks: {  }
-- Parameters: { standard: text.TerminalText, box: text.BoxDrawing }
-- Examples: { input: , false, serves, Bookings (goal), output: { line: ├ serves Bookings (goal), under: │  } }, { input: │ , true, uses, Store (port), output: { line: │ └ uses Store (port), under: │    } }
-- Defined by: Terminal text
-- Depends on: Terminal text, Box drawing
-
-### Columns in the terminal
-
-Decision · `TerminalColumns`
-
-- Decided by: trame
-- Value: { gap: 2, minimumGap: 1, widths: { rank: 9, severity: 15, code: 30, source: 22, name: 14 } }
-
-### Terminal text
-
-Decision · `TerminalText`
-
-- Decided by: trame
-- Value: { space:  , indent:   , maxBlankLines: 1 }
-- Rejected: Markdown, a terminal does not render it: its marks would be read as they are; Colours and control sequences, an output is not always a terminal (a file, a pipe, a test): the text must say everything without them, and it is compared line by line from one generation to the next; Tabs, their width depends on the terminal: columns would no longer line up
 
 ## Trame · TypeScript
 
@@ -8327,6 +7530,6 @@ Decision · `ProgramNames`
 Function · `TypeScriptWriter` · **held**
 
 - Owner: trame
-- Parameters: { language: typescript.TypeScript, syntax: typescript.TypeScriptSyntax, frozen: conventions.FrozenApi, node: std/system.NodeProcessApi, specifiers: std/system.NodeModuleSpecifiers, names: typescript.ProgramNames, stepNames: conventions.StepNames, references: conventions.ReferenceSyntax, comment: typescript.LineComment, text: typescript.StringLiteral, member: typescript.MemberAccess, optional: typescript.OptionalAccess, call: typescript.Call, wait: typescript.Await, group: typescript.Parenthesized, property: typescript.Property, object: typescript.ObjectLiteral, array: typescript.ArrayLiteral, constant: typescript.ConstDeclaration, namedImport: typescript.NamedImport, defaultImport: typescript.DefaultImport, assertion: typescript.AsExpression, optionalProperty: typescript.OptionalPropertySignature, objectType: typescript.ObjectType, union: typescript.UnionType, condition: typescript.IfStatement, differs: typescript.StrictInequality, assignment: typescript.Assignment, inline: typescript.InlineArray, block: typescript.AsyncBlockFunction, environment: conventions.TrameEnvironment, paths: architecture.Paths, prelude: architecture.Prelude, reservedWords: std/ecmascript.EcmaScriptReservedWords, sequences: std/algebra.Sequences, texts: std/algebra.Texts, dates: documents/language.Dates, messages: messages.DriverMessages }
+- Parameters: { language: typescript.TypeScript, syntax: typescript.TypeScriptSyntax, frozen: conventions.FrozenApi, node: std/system.NodeProcessApi, specifiers: std/system.NodeModuleSpecifiers, names: typescript.ProgramNames, stepNames: conventions.StepNames, references: std/engine.ReferenceSyntax, comment: typescript.LineComment, text: typescript.StringLiteral, member: typescript.MemberAccess, optional: typescript.OptionalAccess, call: typescript.Call, wait: typescript.Await, group: typescript.Parenthesized, property: typescript.Property, object: typescript.ObjectLiteral, array: typescript.ArrayLiteral, constant: typescript.ConstDeclaration, namedImport: typescript.NamedImport, defaultImport: typescript.DefaultImport, assertion: typescript.AsExpression, optionalProperty: typescript.OptionalPropertySignature, objectType: typescript.ObjectType, union: typescript.UnionType, condition: typescript.IfStatement, differs: typescript.StrictInequality, assignment: typescript.Assignment, inline: typescript.InlineArray, block: typescript.AsyncBlockFunction, environment: conventions.TrameEnvironment, paths: architecture.Paths, prelude: architecture.Prelude, reservedWords: std/ecmascript.EcmaScriptReservedWords, sequences: std/algebra.Sequences, texts: std/algebra.Texts, dates: documents/language.Dates, messages: messages.DriverMessages }
 - Serves: A specification that runs
-- Depends on: TypeScript, The syntax of the programs Trame writes, The frozen API, Names of a program, Names of steps, Trame references, Comment, Text, Property access, Optional property access, Call, Waiting, Group, Property, Object, List on several lines, Constant, Import of names, Default import, Type assertion, Optional property of a type, Object type, Union type, Condition, Strict inequality, Assignment, List on one line, Async function of a block, Trame's environment, Paths, Prelude, Messages of the drivers
+- Depends on: TypeScript, The syntax of the programs Trame writes, The frozen API, Names of a program, Names of steps, Comment, Text, Property access, Optional property access, Call, Waiting, Group, Property, Object, List on several lines, Constant, Import of names, Default import, Type assertion, Optional property of a type, Object type, Union type, Condition, Strict inequality, Assignment, List on one line, Async function of a block, Trame's environment, Paths, Prelude, Messages of the drivers

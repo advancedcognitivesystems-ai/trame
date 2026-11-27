@@ -1,5 +1,6 @@
 /** Trame · Engine */
 
+import { ReferenceSyntax } from "#std/engine"
 import { code } from "../trame/kernel"
 import { fn } from "../kinds/function"
 import { decision } from "../kinds/decision"
@@ -18,7 +19,7 @@ import { TextFile, GnuPositions } from "#std/text"
 import { TypeScriptApi } from "./standards"
 import { ExitStatus, NodeEncodings, NodeEvents, NodeModuleSpecifiers } from "#std/system"
 import { Iso8601 } from "#std/measures"
-import { Layout, DefaultRank, ReferenceSyntax, DocComment, JsonFormatting, ViewGroupOrder, DocumentIds, TrameCommands, StepNames, PreludeApi, LanguageNames } from "./conventions"
+import { Layout, DefaultRank, DocComment, JsonFormatting, ViewGroupOrder, DocumentIds, TrameCommands, StepNames, PreludeApi, LanguageNames } from "./conventions"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
 import {
   Prelude, FileReading, Paths, ModuleLoader, TypeScriptCompiler, Hashing, KeptResults, Signatures, Process, Terminal, Clock, Timer,
@@ -29,8 +30,8 @@ import { Dates, Lists } from "#documents/language"
 import { Drivers } from "./languages"
 import { LanguageSettings, VisibleText } from "./documents"
 import { Punctuation, Units } from "#documents/language"
-import { CodeSpan } from "./markdown"
-import { CodeLines } from "./text"
+import { CodeSpan } from "#documents/markdown"
+import { CodeLines } from "#documents/text"
 import { Page } from "./page"
 import { PageRendering } from "./rendering"
 import { TypeScript, TypeScriptSyntax, TypeScriptLibraries } from "./typescript"

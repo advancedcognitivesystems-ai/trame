@@ -10,13 +10,35 @@
 |---|---|---|---|---|---|
 | warning | `port-unrealized` | No realization, in any environment | [The project of a scenario](#ProjectOfTheScenario) | trame |  |
 
+## Standard
+
+<a id="ReferenceSyntax"></a>
+
+### Trame references
+
+`ReferenceSyntax` · `src/engine.ts:26`
+
+How the engine names a node and a field: "module.Identifier", "value.case". An empty path designates the whole node. A module of a library takes the library's name before its own: "std/algebra.Counts". The engine gives every reference so (what a view receives, the graph a build writes); what reads one (a command, a renderer) reads it so.
+
+Source: Trame, the prelude (trame/kernel.ts: refOf, getPath)
+
+| Constant | Value | Meaning |
+|---|---|---|
+| `separator` | `.` | Separates the module from the identifier, and the steps of a path in a field |
+| `library` | `/` | Separates a library's name from the name of one of its modules, in the graph that imports it |
+| `wholeNode` | `""` | The empty path: the whole node, not one of its fields (refines Texts.empty) |
+
+- Maintained by: trame
+- Serves: [A published value is cited, not copied](product.md#CitedNotCopied)
+- Refines: [Texts](algebra.md#Texts)
+
 ## Architecture decision
 
 <a id="EngineAsAProvider"></a>
 
 ### The engine is a provider
 
-`EngineAsAProvider` · `src/engine.ts:106` · status: **held**
+`EngineAsAProvider` · `src/engine.ts:125` · status: **held**
 
 What a command needs of the engine (the project compiled at a date, with what a view receives; a language read; later the evidence, the assembly, the publication, the engine's identity) is a port of the library, realized by an adapter that reads the API the language defines; a command, or a language, of a library or a project reaches the engine only through them.
 
@@ -39,7 +61,7 @@ Consequences: Every command reaches the engine the same way, through ports versi
 
 ### Reading a language
 
-`LanguageReading` · `src/engine.ts:86`
+`LanguageReading` · `src/engine.ts:105`
 
 The reader of the languages bodies are written in (tree-sitter): it loads a language's grammar, reads an example of it, and says which predicates of its queries tree-sitter keeps aside. A language node names it as its reader.
 
@@ -59,7 +81,7 @@ The reader of the languages bodies are written in (tree-sitter): it loads a lang
 
 ### The project of a scenario
 
-`ProjectOfTheScenario` · `src/engine.ts:44`
+`ProjectOfTheScenario` · `src/engine.ts:63`
 
 Which project a scenario compiles, and at which day: a project of the library's own, which its scenarios read.
 
@@ -76,7 +98,7 @@ Which project a scenario compiles, and at which day: a project of the library's 
 
 ### The project at hand
 
-`TheProject` · `src/engine.ts:31`
+`TheProject` · `src/engine.ts:50`
 
 The project a command runs for, compiled at the day its command line says: what a view receives of it (the graph, its statuses and issues, the pipelines of its shipments), the graph as a build writes it, and where its files are.
 
@@ -96,7 +118,7 @@ The project a command runs for, compiled at the day its command line says: what 
 
 ### What the engine's adapters say
 
-`EngineWords` · `src/engine.ts:49`
+`EngineWords` · `src/engine.ts:68`
 
 <details><summary>The messages, in code</summary>
 
@@ -119,7 +141,7 @@ The project a command runs for, compiled at the day its command line says: what 
 
 ### A project compiled by the engine that plays the scenario
 
-`ProjectCompiledHere` · `src/engine.ts:75`
+`ProjectCompiledHere` · `src/engine.ts:94`
 
 In a scenario, the project at hand is the one the scenario names (a project of the library's own), compiled at the day it says by the engine that plays the scenario, checked as the dispatch checks one; once. What a command computes from the graph is then played on a real graph, only the platform kept in memory.
 
@@ -133,7 +155,7 @@ In a scenario, the project at hand is the one the scenario names (a project of t
 
 ### The project the engine prepared
 
-`ProjectInTheEngine` · `src/engine.ts:63`
+`ProjectInTheEngine` · `src/engine.ts:82`
 
 On a machine, a command runs in the engine (std's CommandsInTheEngine): the project at hand is the one the engine prepared to find the command, compiled once at the day the line says. Run without an engine, it has none, and says so.
 
@@ -147,7 +169,7 @@ On a machine, a command runs in the engine (std's CommandsInTheEngine): the proj
 
 ### Read by the engine
 
-`ReadByTheEngine` · `src/engine.ts:93` · status: **held**
+`ReadByTheEngine` · `src/engine.ts:112` · status: **held**
 
 A language is read by the engine that compiles the project, with its reader, through the API the language defines (since g128): in a build, in a library's scenarios, wherever the engine runs. Without an engine, it says so.
 

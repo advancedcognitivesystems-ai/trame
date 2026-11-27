@@ -1271,7 +1271,7 @@
       "id": "engine.EngineAsAProvider",
       "kind": "adr",
       "title": "The engine is a provider",
-      "source": "src/engine.ts:106",
+      "source": "src/engine.ts:125",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1288,7 +1288,7 @@
       "id": "engine.EngineWords",
       "kind": "catalog",
       "title": "What the engine's adapters say",
-      "source": "src/engine.ts:49",
+      "source": "src/engine.ts:68",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -1299,7 +1299,7 @@
       "id": "engine.LanguageReading",
       "kind": "port",
       "title": "Reading a language",
-      "source": "src/engine.ts:86",
+      "source": "src/engine.ts:105",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -1313,7 +1313,7 @@
       "id": "engine.ProjectCompiledHere",
       "kind": "implementation",
       "title": "A project compiled by the engine that plays the scenario",
-      "source": "src/engine.ts:75",
+      "source": "src/engine.ts:94",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1331,7 +1331,7 @@
       "id": "engine.ProjectInTheEngine",
       "kind": "implementation",
       "title": "The project the engine prepared",
-      "source": "src/engine.ts:63",
+      "source": "src/engine.ts:82",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1348,7 +1348,7 @@
       "id": "engine.ProjectOfTheScenario",
       "kind": "port",
       "title": "The project of a scenario",
-      "source": "src/engine.ts:44",
+      "source": "src/engine.ts:63",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -1361,7 +1361,7 @@
       "id": "engine.ReadByTheEngine",
       "kind": "implementation",
       "title": "Read by the engine",
-      "source": "src/engine.ts:93",
+      "source": "src/engine.ts:112",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1376,10 +1376,39 @@
       "diagnostics": []
     },
     {
+      "id": "engine.ReferenceSyntax",
+      "kind": "standard",
+      "title": "Trame references",
+      "source": "src/engine.ts:26",
+      "fields": {
+        "owner": "trame",
+        "source": "Trame, the prelude (trame/kernel.ts: refOf, getPath)",
+        "constants": {
+          "separator": {
+            "value": ".",
+            "meaning": "Separates the module from the identifier, and the steps of a path in a field"
+          },
+          "library": {
+            "value": "/",
+            "meaning": "Separates a library's name from the name of one of its modules, in the graph that imports it"
+          },
+          "wholeNode": {
+            "value": "",
+            "meaning": "The empty path: the whole node, not one of its fields",
+            "refines": {
+              "node": "algebra.Texts",
+              "name": "empty"
+            }
+          }
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "engine.TheProject",
       "kind": "port",
       "title": "The project at hand",
-      "source": "src/engine.ts:31",
+      "source": "src/engine.ts:50",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -6329,6 +6358,7 @@
           "engine.ProjectInTheEngine",
           "engine.ProjectOfTheScenario",
           "engine.ReadByTheEngine",
+          "engine.ReferenceSyntax",
           "engine.TheProject",
           "html.Aria",
           "html.Css",
@@ -6646,7 +6676,7 @@
       },
       "result": {
         "path": "src",
-        "code": "b56c0994"
+        "code": "9e1cc143"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -8342,6 +8372,11 @@
       "from": "engine.ReadByTheEngine",
       "to": "engine.EngineWords",
       "kind": "deps"
+    },
+    {
+      "from": "engine.ReferenceSyntax",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
     },
     {
       "from": "html.Aria",
@@ -11517,6 +11552,12 @@
       "from": "web.WebSpeechApi",
       "to": "product.CitedNotCopied",
       "kind": "serves"
+    },
+    {
+      "from": "engine.ReferenceSyntax",
+      "to": "algebra.Texts",
+      "kind": "refines",
+      "inferred": true
     }
   ],
   "resolutions": [],

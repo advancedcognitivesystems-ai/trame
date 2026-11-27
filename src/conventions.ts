@@ -226,21 +226,6 @@ export const StepNames = decision<{ joint: string }>({ owner: "trame", value: { 
 export const DefaultRank = decision<number>({ owner: "trame", value: 100 })
 
 /**
- * Trame references
- * How the language names a node and a field: "module.Identifier", "value.case". An empty path designates the whole node.
- * A module of a library takes the library's name before its own: "std/algebra.Counts".
- */
-export const ReferenceSyntax = standard({
-  owner: "trame",
-  source: "Trame, the prelude (trame/kernel.ts: refOf, getPath)",
-  constants: {
-    separator: { value: ".", meaning: "Separates the module from the identifier, and the steps of a path in a field" },
-    library: { value: "/", meaning: "Separates a library's name from the name of one of its modules, in the graph that imports it" },
-    wholeNode: refines(Texts, "empty", "The empty path: the whole node, not one of its fields"),
-  },
-})
-
-/**
  * Documentation comment
  * What the comment before a declaration says: its first lines are the node's title, the following ones its description.
  * The lines of each are joined into one text, by a space.

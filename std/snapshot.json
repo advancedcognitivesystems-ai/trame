@@ -1176,6 +1176,33 @@
       }
     },
     {
+      "id": "engine.ReferenceSyntax",
+      "kind": "standard",
+      "title": "Trame references",
+      "fields": {
+        "owner": "trame",
+        "source": "Trame, the prelude (trame/kernel.ts: refOf, getPath)",
+        "constants": {
+          "separator": {
+            "value": ".",
+            "meaning": "Separates the module from the identifier, and the steps of a path in a field"
+          },
+          "library": {
+            "value": "/",
+            "meaning": "Separates a library's name from the name of one of its modules, in the graph that imports it"
+          },
+          "wholeNode": {
+            "value": "",
+            "meaning": "The empty path: the whole node, not one of its fields",
+            "refines": {
+              "node": "algebra.Texts",
+              "name": "empty"
+            }
+          }
+        }
+      }
+    },
+    {
       "id": "engine.TheProject",
       "kind": "port",
       "title": "The project at hand",
@@ -6670,6 +6697,11 @@
       "kind": "deps"
     },
     {
+      "from": "engine.ReferenceSyntax",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
       "from": "html.Aria",
       "to": "product.CitedNotCopied",
       "kind": "serves"
@@ -9838,6 +9870,11 @@
       "from": "web.WebSpeechApi",
       "to": "product.CitedNotCopied",
       "kind": "serves"
+    },
+    {
+      "from": "engine.ReferenceSyntax",
+      "to": "algebra.Texts",
+      "kind": "refines"
     }
   ],
   "open": []

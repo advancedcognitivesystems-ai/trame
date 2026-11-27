@@ -11,7 +11,8 @@ import type { DriverMessages } from "../../messages"
 import type { Dates } from "#documents/language"
 import type { Sequences, Texts } from "#std/algebra"
 import type { NodeModuleSpecifiers, NodeProcessApi } from "#std/system"
-import type { FrozenApi, ReferenceSyntax, StepNames, TrameEnvironment } from "../../conventions"
+import type { FrozenApi, StepNames, TrameEnvironment } from "../../conventions"
+import type { ReferenceSyntax } from "#std/engine"
 import type {
   TypeScriptSyntax, ProgramNames, LineComment, StringLiteral, MemberAccess, OptionalAccess, Call, Await, Parenthesized, Property, ObjectLiteral,
   ArrayLiteral, ConstDeclaration, NamedImport, DefaultImport, AsExpression, OptionalPropertySignature, ObjectType, UnionType, IfStatement,

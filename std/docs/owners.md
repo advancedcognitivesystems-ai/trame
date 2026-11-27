@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 6 | 272 |
+| trame | 0 | 0 | 6 | 273 |
 
 <a id="trame"></a>
 
@@ -59,6 +59,7 @@
 | [The project the engine prepared](engine.md#ProjectInTheEngine) | Implementation |  |
 | [The project of a scenario](engine.md#ProjectOfTheScenario) | Port |  |
 | [Read by the engine](engine.md#ReadByTheEngine) | Implementation | **held** |
+| [Trame references](engine.md#ReferenceSyntax) | Standard |  |
 | [The project at hand](engine.md#TheProject) | Port |  |
 | [WAI-ARIA](html.md#Aria) | Standard |  |
 | [CSS](html.md#Css) | Standard |  |

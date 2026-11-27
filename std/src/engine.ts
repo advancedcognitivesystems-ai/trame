@@ -6,14 +6,33 @@
 // own. A command of a library or of a project uses the ports, and works with the graph as freely as the engine's own
 // commands: what it reaches of the engine is what the ports say. They grow as the engine's commands move out of it.
 
-import { code } from "#trame/kernel"
+import { code, refines } from "#trame/kernel"
 import type { CompiledProject, LanguageReader, ProjectLayout } from "#trame/kernel"
 import { port } from "#trame/kinds/port"
+import { standard } from "#trame/kinds/standard"
 import { implementation } from "#trame/kinds/implementation"
 import { catalog } from "#trame/kinds/catalog"
 import { adr } from "#trame/kinds/adr"
-import { RealizedOnce } from "./product"
+import { RealizedOnce, CitedNotCopied } from "./product"
 import { CommandLanguage } from "./tooling"
+import { Texts } from "./algebra"
+
+/**
+ * Trame references
+ * How the engine names a node and a field: "module.Identifier", "value.case". An empty path designates the whole node.
+ * A module of a library takes the library's name before its own: "std/algebra.Counts". The engine gives every reference
+ * so (what a view receives, the graph a build writes); what reads one (a command, a renderer) reads it so.
+ */
+export const ReferenceSyntax = standard({
+  owner: "trame",
+  serves: [CitedNotCopied],
+  source: "Trame, the prelude (trame/kernel.ts: refOf, getPath)",
+  constants: {
+    separator: { value: ".", meaning: "Separates the module from the identifier, and the steps of a path in a field" },
+    library: { value: "/", meaning: "Separates a library's name from the name of one of its modules, in the graph that imports it" },
+    wholeNode: refines(Texts, "empty", "The empty path: the whole node, not one of its fields"),
+  },
+})
 
 /** The project a command runs for. */
 export interface ProjectAtHand {

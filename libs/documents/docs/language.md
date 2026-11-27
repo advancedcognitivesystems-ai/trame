@@ -36,7 +36,7 @@ British English: the library's catalogs are written in it, the language Trame's 
 
 - Decided by: trame
 - Rejected: std's language of its commands, a choice of std's, which may change for std's reasons
-- Language of: [What the scenarios check](scenarios.md#ScenarioWords)
+- Language of: [Words of the renderers](rendering.md#RenderingMessages), [What the scenarios check](scenarios.md#ScenarioWords)
 
 ## Port
 
@@ -72,8 +72,8 @@ Writes a date of the graph (an ISO day, "2026-10-17") as people read it in the l
 - Parameters: `language` ← [The language of the documents](#DocumentLanguage)
 - Body: inline, in the declaration
 - Serves: [Documents rendered once, for every project](product.md#RenderedOnce)
+- Used by: [Common rendering](rendering.md#Common), [Mermaid diagrams](rendering.md#MermaidDiagrams), [Figures as text](rendering.md#TextFigures), [The language of the documents, written](scenarios.md#LanguageWritten)
 - Verified by: [The language of the documents, written](scenarios.md#LanguageWritten)
-- Used by: [The language of the documents, written](scenarios.md#LanguageWritten)
 - Applies: [The documents speak the engine's language](scenarios.md#TheEnginesLanguage)
 
 <a id="Lists"></a>
@@ -88,8 +88,8 @@ Joins the items of a list as people write it in the language of the documents: "
 - Parameters: `language` ← [The language of the documents](#DocumentLanguage)
 - Body: inline, in the declaration
 - Serves: [Documents rendered once, for every project](product.md#RenderedOnce)
+- Used by: [Common rendering](rendering.md#Common), [The language of the documents, written](scenarios.md#LanguageWritten)
 - Verified by: [The language of the documents, written](scenarios.md#LanguageWritten)
-- Used by: [The language of the documents, written](scenarios.md#LanguageWritten)
 - Applies: [The documents speak the engine's language](scenarios.md#TheEnginesLanguage)
 
 <a id="Punctuation"></a>
@@ -104,8 +104,8 @@ The marks of the language of the documents that separate the parts of a line, th
 - Parameters: `language` ← [The language of the documents](#DocumentLanguage)
 - Body: inline, in the declaration
 - Serves: [Documents rendered once, for every project](product.md#RenderedOnce)
+- Used by: [Markdown writer](rendering.md#MarkdownSyntax), [Plain text writer](rendering.md#PlainTextSyntax), [Figures as text](rendering.md#TextFigures), [The language of the documents, written](scenarios.md#LanguageWritten)
 - Verified by: [The language of the documents, written](scenarios.md#LanguageWritten)
-- Used by: [The language of the documents, written](scenarios.md#LanguageWritten)
 - Applies: [The documents speak the engine's language](scenarios.md#TheEnginesLanguage)
 
 <a id="Units"></a>
@@ -120,6 +120,6 @@ A number written in decimal digits; a value of a quantity of the graph in the la
 - Parameters: `display` ← [How a number is written](#NumberDisplay) · `counts` ← [Counts](../.trame/std/docs/algebra.md#Counts) · `values` ← [Types of values](../.trame/std/docs/algebra.md#ValueTypes)
 - Body: inline, in the declaration
 - Serves: [Documents rendered once, for every project](product.md#RenderedOnce)
+- Used by: [Common rendering](rendering.md#Common), [The language of the documents, written](scenarios.md#LanguageWritten)
 - Verified by: [The language of the documents, written](scenarios.md#LanguageWritten)
-- Used by: [The language of the documents, written](scenarios.md#LanguageWritten)
 - Applies: [The documents speak the engine's language](scenarios.md#TheEnginesLanguage)

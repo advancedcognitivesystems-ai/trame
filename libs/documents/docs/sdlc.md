@@ -95,7 +95,10 @@ A version of the renderers, for the projects that import it: shipped by trame re
 |---|---|---|
 | [The renderers of documents](#TheLibrary) | **unknown** | shipped |
 | [The language of the documents, written](scenarios.md#LanguageWritten) | **held** | [Its code verified](#CodeVerified), for [Dates](language.md#Dates) |
+| [The documents, rendered](scenarios.md#DocumentsRendered) | **held** | [Its code verified](#CodeVerified), for [Common rendering](rendering.md#Common) |
 | [The documents speak the engine's language](scenarios.md#TheEnginesLanguage) | **held** | [Its decisions applied](#DecisionsApplied), for [Dates](language.md#Dates) |
+| [One renderer, its syntax a choice](rendering.md#OneRendererManySyntaxes) | **held** | [Its decisions applied](#DecisionsApplied), for [Rendering of the files](rendering.md#FileRendering) |
+| [The scenarios render as a project does](scenarios.md#HowTheScenariosRender) | **held** | [Its decisions applied](#DecisionsApplied), for [Figures in Mermaid](scenarios.md#FiguresInMermaid) |
 
 Shipped 27 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-27-be7866fa.json`.
 

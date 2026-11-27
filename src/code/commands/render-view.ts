@@ -5,7 +5,7 @@ import type { Terminal } from "../../architecture"
 import type { CommandMessages } from "../../messages"
 import type { Api as PreparationApi, Options } from "./preparation"
 import type { Api as ViewsApi } from "../engine/views"
-import type { Api as RenderingApi } from "../rendering/document"
+import type { Api as RenderingApi } from "#documents/code/rendering/document"
 import type { TrameCommands } from "../../conventions"
 
 export interface Deps {

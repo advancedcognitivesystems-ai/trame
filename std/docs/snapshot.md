@@ -284,6 +284,16 @@ Function · `Commands` · **held**
 
 ## Standard library · The engine
 
+### Trame references
+
+Standard · `ReferenceSyntax`
+
+- Maintained by: trame
+- Source: Trame, the prelude (trame/kernel.ts: refOf, getPath)
+- Constants: { separator: { value: ., meaning: Separates the module from the identifier, and the steps of a path in a field }, library: { value: /, meaning: Separates a library's name from the name of one of its modules, in the graph that imports it }, wholeNode: { value: , meaning: The empty path: the whole node, not one of its fields, refines: { node: algebra.Texts, name: empty } } }
+- Serves: A published value is cited, not copied
+- Refines: Texts
+
 ### The engine is a provider
 
 Architecture decision · `EngineAsAProvider` · **held**
