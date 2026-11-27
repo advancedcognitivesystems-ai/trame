@@ -1,6 +1,6 @@
 # Technical choices
 
-*What answers each port in each environment on 30 October 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 27 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
 > **35 technical choices for 64 ports, in 4 environments**
 
@@ -86,7 +86,7 @@
 
 ### The browser runs the page
 
-`TheBrowserRunsThePage` · `src/browser.ts:132` · status: **unknown**
+`TheBrowserRunsThePage` · `src/browser.ts:132` · status: **held**
 
 In the browser, the page loads, writes in its window, keeps the person's place, receives the graph and makes it whole again with what every browser has: the DOM, local storage, fetch and server-sent events, DecompressionStream.
 
@@ -213,7 +213,7 @@ Consequences: Node's built-in modules appear only in these implementations; movi
 
 ### On a machine, Node.js reads, writes and runs
 
-`NodeMachine` · `src/platform.ts:430` · status: **unknown**
+`NodeMachine` · `src/platform.ts:430` · status: **held**
 
 On the machine where trame is started, Node.js reads and writes the files, copies and compares trees, starts processes and other engines, serves HTTP, shows the terminal and gives the time.
 
@@ -345,7 +345,7 @@ Consequences: A scenario is played again only when the code it wires or a file i
 
 ### On a machine, runs are kept on disk
 
-`RunsKeptOnDisk` · `src/platform.ts:497` · status: **unknown**
+`RunsKeptOnDisk` · `src/platform.ts:497` · status: **held**
 
 In [Local](architecture.md#Local):
 
@@ -918,6 +918,7 @@ In [Local](architecture.md#Local):
 |---|---|---|
 | the command build | [Build](../libs/commands/releases/0.3.0/docs/commands.md#Build) | a command of a library |
 | the command plan | [Plan](../libs/commands/releases/0.3.0/docs/commands.md#Plan) | a command of a library |
+| the command snapshot | [Snapshot](../libs/commands/releases/0.3.0/docs/commands.md#Snapshot) | a command of a library |
 | [The project at hand](../std/releases/0.30.0/docs/engine.md#TheProject) | [The project the engine prepared](../std/releases/0.30.0/docs/engine.md#ProjectInTheEngine) | an implementation |
 
 Context: The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.
@@ -929,7 +930,7 @@ Consequences: trame plan, build and snapshot run on a machine and in a session a
 | The engine's own commands, kept | they would stay out of reach of every project's choice, and the engine the only one to reach its modules |
 
 - Decided by: trame
-- Chooses: [Plan](../libs/commands/releases/0.3.0/docs/commands.md#Plan), [Build](../libs/commands/releases/0.3.0/docs/commands.md#Build), [The project the engine prepared](../std/releases/0.30.0/docs/engine.md#ProjectInTheEngine)
+- Chooses: [Plan](../libs/commands/releases/0.3.0/docs/commands.md#Plan), [Build](../libs/commands/releases/0.3.0/docs/commands.md#Build), [Snapshot](../libs/commands/releases/0.3.0/docs/commands.md#Snapshot), [The project the engine prepared](../std/releases/0.30.0/docs/engine.md#ProjectInTheEngine)
 - In: [Local](architecture.md#Local)
 - Follows: [Command](../std/releases/0.30.0/docs/patterns.md#Command)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)

@@ -22,7 +22,7 @@ import { Adapter, Strategy, Command, Plugin } from "#std/patterns"
 import { SystemSupported, NodeRecentEnough, GitInstalled, WhatTheMachineRuns, type MachineRequired } from "#machine/machine"
 import { OpenPullRequest, MergePullRequest, Propagate, PullRequestSettings, PropagationSettings } from "#std/commands"
 import { ProjectInTheEngine } from "#std/engine"
-import { Plan as PlanWrittenOnce, Build as BuildWrittenOnce } from "#commands/commands"
+import { Plan as PlanWrittenOnce, Build as BuildWrittenOnce, Snapshot as SnapshotWrittenOnce } from "#commands/commands"
 import { GitCliBranches, GitHubCliPullRequests, AutoMergeByGitHubCli, AutoMergeInAClaudeSession } from "#std/repository"
 import { Layout, TrameCommands, TrameEnvironment, ProjectStart } from "./conventions"
 import { TypeScript } from "./typescript"
@@ -697,7 +697,7 @@ export const CommandsOfStd = binding({
  */
 export const CommandsWrittenOnce = binding({
   owner: "trame",
-  chooses: [PlanWrittenOnce, BuildWrittenOnce, ProjectInTheEngine],
+  chooses: [PlanWrittenOnce, BuildWrittenOnce, SnapshotWrittenOnce, ProjectInTheEngine],
   environments: [Local],
   follows: [Command],
   serves: [ExecutableSpecification],
