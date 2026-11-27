@@ -126,7 +126,7 @@ Writes the packages of Trame a project uses as package nodes, as a person would:
 A view, rendered for the terminal, in Markdown or in JSON.
 
 - Owner: trame
-- Parameters: `line` ← [Trame's commands](conventions.md#TrameCommands) · `json` ← [JSON formatting](conventions.md#JsonFormatting) · `preparation` ← [Preparation](#Preparation) · `views` ← [Views](engine.md#Views) · `files` ← [Rendering of the files](../libs/documents/releases/0.2.0/docs/rendering.md#FileRendering) · `screen` ← [Rendering in the terminal](../libs/documents/releases/0.2.0/docs/rendering.md#TerminalRendering) · `terminal` ← [Terminal](architecture.md#Terminal) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `line` ← [Trame's commands](conventions.md#TrameCommands) · `json` ← [JSON formatting](conventions.md#JsonFormatting) · `preparation` ← [Preparation](#Preparation) · `views` ← [Views](engine.md#Views) · `files` ← [Rendering of the files](../libs/documents/releases/0.2.0/docs/rendering.md#FileRendering) · `screen` ← [Rendering in the terminal](../libs/documents/releases/0.2.0/docs/rendering.md#TerminalRendering) · `terminal` ← [Terminal](architecture.md#Terminal) · `texts` ← [Texts](../std/releases/0.30.0/docs/algebra.md#Texts) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/commands/render-view.ts` (typescript)
 - Effects: execution, keeps, process, read, terminal, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)

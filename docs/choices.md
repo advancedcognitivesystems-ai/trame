@@ -86,7 +86,7 @@
 
 ### The browser runs the page
 
-`TheBrowserRunsThePage` · `src/browser.ts:132` · status: **held**
+`TheBrowserRunsThePage` · `src/browser.ts:132` · status: **unknown**
 
 In the browser, the page loads, writes in its window, keeps the person's place, receives the graph and makes it whole again with what every browser has: the DOM, local storage, fetch and server-sent events, DecompressionStream.
 
@@ -213,7 +213,7 @@ Consequences: Node's built-in modules appear only in these implementations; movi
 
 ### On a machine, Node.js reads, writes and runs
 
-`NodeMachine` · `src/platform.ts:430` · status: **held**
+`NodeMachine` · `src/platform.ts:430` · status: **unknown**
 
 On the machine where trame is started, Node.js reads and writes the files, copies and compares trees, starts processes and other engines, serves HTTP, shows the terminal and gives the time.
 
@@ -345,7 +345,7 @@ Consequences: A scenario is played again only when the code it wires or a file i
 
 ### On a machine, runs are kept on disk
 
-`RunsKeptOnDisk` · `src/platform.ts:497` · status: **held**
+`RunsKeptOnDisk` · `src/platform.ts:497` · status: **unknown**
 
 In [Local](architecture.md#Local):
 

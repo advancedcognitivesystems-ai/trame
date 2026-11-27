@@ -9,7 +9,7 @@
 // scenarios it plays then reach it too); a program run alone finds none. The API grows as the engine's commands move
 // into libraries, each time with a generation.
 
-import type { Compilation } from "./kernel"
+import type { Compilation, Document } from "./kernel"
 
 /** Where a project's files are, from its root, as the engine reads and writes them. */
 export interface ProjectLayout {
@@ -98,6 +98,42 @@ export interface LanguageReader {
 }
 
 
+// The documents of the views (since g132) ---------------------------------------------------------------------------
+//
+// The views are the language's, and the engine runs them: a command gives people the documents they give, rendered by
+// libs/documents, with where each card is.
+
+/** Where a node's card is: the document that holds it, that document's file when it is written as one, its anchor. */
+export interface Place {
+  readonly doc: string
+  readonly file?: string
+  readonly anchor: string
+}
+
+/**
+ * Where references lead: the card of each node (a node of the project in its documents, a node of a library in the
+ * library's, which the library writes), and the file of each document written as one.
+ */
+export interface Places {
+  readonly locate: Map<string, Place>
+  readonly files: Map<string, string | undefined>
+}
+
+/** The documents the views give, those of each node included, and where each card is. */
+export interface ViewDocuments {
+  readonly documents: readonly Document[]
+  readonly places: Places
+}
+
+/** Why a view asked by its name gives no document: no view of that name, no such node or module, a view that does not apply to the node. */
+export const ViewRefusal = { unknownView: "unknown view", unknownNode: "unknown node", unknownModule: "unknown module", notApplicable: "not applicable" } as const
+export type ViewRefusal = (typeof ViewRefusal)[keyof typeof ViewRefusal]
+
+/** One view's document, or why there is none, with the names that would have been known (the views, the modules). */
+export type ViewAnswer =
+  | { readonly document: Document; readonly refused?: undefined }
+  | { readonly document?: undefined; readonly refused: ViewRefusal; readonly asked?: string; readonly known: readonly string[]; readonly view?: string }
+
 /** A project compiled at a date. */
 export interface CompiledProject {
   /** Its root, as the engine found it. */
@@ -110,6 +146,10 @@ export interface CompiledProject {
   written(): string
   /** The graph as a build writes it into snapshot.json. */
   snapshot(): string
+  /** The documents its views give, those of each node too, and where each card is (since g132); a view that breaks a law refuses. */
+  documents(): Promise<ViewDocuments>
+  /** One view's document, by the view's name and, for a view of a node or a module, its name (since g132). */
+  view(name: string, arg?: string): Promise<ViewAnswer>
 }
 
 /** What a command reaches of the engine that runs it (since g124). */

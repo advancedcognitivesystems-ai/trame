@@ -441,6 +441,8 @@ export const CommandMessages = catalog({
     importRefused: (problem: string) => `refused: ${problem}`,
     kindRefused: (kind: string, laws: string[]) => `kind "${kind}" refused: does not respect ${laws.map((l) => `"${l}"`).join(", ")}`,
     viewRefused: (view: string, law: string, example: string) => `view "${view}" refused: "${law}" (${example})`,
+    /** What refuses the documents a command asks of the engine's API (since g132): each view that breaks a law, one per line. */
+    viewsRefused: (lines: readonly string[]) => lines.join("\n"),
     /** Where to read the details of the kinds refused. */
     kindLawDetails: () => "details: npm run test-kinds",
     /** Followed by the type errors, one per line. */
