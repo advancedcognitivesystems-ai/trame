@@ -250,8 +250,14 @@ where the project's build evaluates, once a binding of the project chooses `Read
 `StdLanguagesRead`, std's `ReadInTheEngine`). The language the documents are written in is the engine's, which the views
 speak: `libs/documents` declares it as a port, `DocumentLanguage` (its tag and its marks), with `Dates`, `Lists`,
 `Punctuation` and `Units` over it; Trame realizes it with its `Language` (`OurDocumentLanguage`, in every environment),
-and the engine's `g.lib`, the renderers and the page read the library's nodes. The renderers move there next (decided 26
-November): the common renderer and its syntaxes, the figures, Markdown and Mermaid, then the page.
+and the engine's `g.lib`, the renderers and the page read the library's nodes. The renderers are the library's since
+g131 (documents 0.2.0): `Rendering`, one walk of a document given a syntax; the ports and renderers of files and of the
+terminal (`FileSyntax`, `FileRendering`; `TerminalSyntax`, `TerminalRendering`) with Markdown and Mermaid, and the
+terminal's text; `Common` and the renderers' words (`RenderingMessages`); the format decisions and the `Palette`, which
+a project amends in its graph. Trame's page declares its own ports and gives the library's renderer its HTML
+(`PageRendering`) until the page moves there, with export, dev and payload. Trame's reference syntax (`module.Name`) is
+std's (`ReferenceSyntax` in `#std/engine`, std 0.30.0). libs/commands writes its lines with the library's
+`TerminalText` (commands 0.2.0).
 
 ## 5. The rules the build enforces
 
@@ -716,11 +722,15 @@ elements), a port answered differently in several environments is answered as in
   (`git stash push -- std`), and bring them back after.
 - A node a program assembled for elsewhere imports (the page's `Dates`) moved to a library leaves that program importing
   it where it was: the scenarios that bundle it fail, and the errors refuse the assembly that would write it again.
-  Re-export the node from where it was for one assembly, then remove the re-export.
+  Re-export the node from where it was for one assembly, then remove the re-export. A body file moved the same way
+  (the renderers' words, `Common`, g131) is bridged by a file at its old path that re-exports the library's body
+  (`export { default } from "#documents/code/rendering/common"`), removed after the assembly.
 - Before g129, a project compiled through the engine's API (a library's scenario compiling its small project) left the
   engine with that project's views: a cold build of Trame lost the documents of its own views (literals, versions). The
   API gives the views back.
 
+- A Markdown link is written from the document it is in (g131: the renderer gives the syntax the document's file,
+  `Target.from`): a document without a file (a view printed with `--format md`) keeps the path from the project's root.
 - A project's decision that adopts a library's names it by its package (`import { CommandsOfALibrary } from
   "#std/commands"`) and still applies its own bindings: adopting alone backs no choice of the project.
 

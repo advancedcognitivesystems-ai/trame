@@ -37,3 +37,19 @@ its own language of words; the decision behind its choices: the documents speak 
 
 - Released by: trame
 - Serves: [Documents rendered once, for every project](product.md#RenderedOnce)
+
+<a id="R0_2_0"></a>
+
+### Version 0.2.0
+
+`R0_2_0` · `src/releases.ts:38`
+
+The renderers: one walk given a syntax, Markdown with Mermaid for files, text for the terminal, the common rendering and its words, the syntax elements of Markdown, Mermaid, the terminal and HTML, the format decisions and the palette
+
+- Version: `0.2.0`
+- Released on: 27 November 2026
+- Fingerprint: `85e5bed88e2c5ef3`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Documents rendered once, for every project](product.md#RenderedOnce)

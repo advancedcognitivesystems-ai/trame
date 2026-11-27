@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 30 October 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 27 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Trame · Appearance
 
@@ -409,7 +409,7 @@ Environment · `Test`
 
 ### The page is assembled
 
-Architecture decision · `ThePageIsAssembled` · **unknown**
+Architecture decision · `ThePageIsAssembled` · **held**
 
 - Decided by: trame
 - Context: The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.
@@ -420,7 +420,7 @@ Architecture decision · `ThePageIsAssembled` · **unknown**
 
 ### Explorer of a graph
 
-Function · `ExplorerFigures` · **unknown**
+Function · `ExplorerFigures` · **held**
 
 - Owner: trame
 - Parameters: { html: std/html.Html, svg: std/html.Svg, aria: std/html.Aria, css: std/html.Css, page: page.ThePage, markup: markup.DocumentMarkup, figures: markup.FigureMarkup, explorer: markup.ExplorerMarkup, drawing: appearance.ExplorerDrawing, element: documents/html.HtmlElement, start: documents/html.HtmlStartTag, empty: documents/html.SelfClosingTag, path: html.PathData, declaration: html.CssDeclaration, escape: documents/html.EscapedText, common: documents/rendering.Common, words: messages.PageWords, messages: documents/rendering.RenderingMessages, punctuation: documents/language.Punctuation, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
@@ -429,7 +429,7 @@ Function · `ExplorerFigures` · **unknown**
 
 ### Show the graph
 
-Entry point · `ShowGraph` · **unknown**
+Entry point · `ShowGraph` · **held**
 
 - Owner: trame
 - Trigger: { type: load }
@@ -440,7 +440,7 @@ Entry point · `ShowGraph` · **unknown**
 
 ### Amendments sent to trame dev
 
-Implementation · `BrowserAmendments` · **unknown**
+Implementation · `BrowserAmendments` · **held**
 
 - Owner: trame
 - Parameters: { page: page.ThePage, service: engine.DevService, http: std/web.Http, media: std/web.MediaTypes }
@@ -449,7 +449,7 @@ Implementation · `BrowserAmendments` · **unknown**
 
 ### The browser's gzip
 
-Implementation · `BrowserDecompression` · **unknown**
+Implementation · `BrowserDecompression` · **held**
 
 - Owner: trame
 - Parameters: { packing: page.PackedGraph, ecma: std/ecmascript.EcmaScript }
@@ -458,7 +458,7 @@ Implementation · `BrowserDecompression` · **unknown**
 
 ### The globals of the page, and trame dev
 
-Implementation · `BrowserFeed` · **unknown**
+Implementation · `BrowserFeed` · **held**
 
 - Owner: trame
 - Parameters: { page: page.ThePage, service: engine.DevService, values: std/algebra.ValueTypes }
@@ -467,7 +467,7 @@ Implementation · `BrowserFeed` · **unknown**
 
 ### Local storage
 
-Implementation · `BrowserMemory` · **unknown**
+Implementation · `BrowserMemory` · **held**
 
 - Owner: trame
 - Parameters: { page: page.ThePage }
@@ -476,7 +476,7 @@ Implementation · `BrowserMemory` · **unknown**
 
 ### The browser's window
 
-Implementation · `BrowserWindow` · **unknown**
+Implementation · `BrowserWindow` · **held**
 
 - Owner: trame
 - Parameters: { motion: std/web.MediaQueries5, feature: html.MediaFeature, counts: std/algebra.Counts }
@@ -485,7 +485,7 @@ Implementation · `BrowserWindow` · **unknown**
 
 ### The browser runs the page
 
-Technical choice · `TheBrowserRunsThePage` · **unknown**
+Technical choice · `TheBrowserRunsThePage` · **held**
 
 - Decided by: trame
 - Context: The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.
@@ -3145,14 +3145,14 @@ Function · `StoppedClock` · **held**
 
 ### System files, for reading
 
-Implementation · `DiskReading` · **unknown**
+Implementation · `DiskReading` · **held**
 
 - Owner: trame
 - Implements: File reading
 
 ### Trees on disk
 
-Implementation · `DiskTrees` · **unknown**
+Implementation · `DiskTrees` · **held**
 
 - Owner: trame
 - Parameters: { diff: std/text.UnifiedDiff, node: std/system.NodeCli, events: std/system.NodeEvents }
@@ -3160,7 +3160,7 @@ Implementation · `DiskTrees` · **unknown**
 
 ### System files, for writing
 
-Implementation · `DiskWriting` · **unknown**
+Implementation · `DiskWriting` · **held**
 
 - Owner: trame
 - Implements: File writing
@@ -3234,7 +3234,7 @@ Implementation · `NodeHashing` · **held**
 
 ### Node HTTP server
 
-Implementation · `NodeHttpServer` · **unknown**
+Implementation · `NodeHttpServer` · **held**
 
 - Owner: trame
 - Implements: HTTP server
@@ -3248,7 +3248,7 @@ Implementation · `NodePaths` · **held**
 
 ### Node process
 
-Implementation · `NodeProcess` · **unknown**
+Implementation · `NodeProcess` · **held**
 
 - Owner: trame
 - Parameters: { argv: std/system.NodeArguments, node: std/system.NodeCli, runner: platform.TypeScriptRunner, variables: conventions.TrameEnvironment, exit: std/system.ExitStatus, values: std/algebra.ValueTypes }
@@ -3257,7 +3257,7 @@ Implementation · `NodeProcess` · **unknown**
 
 ### Node programs
 
-Implementation · `NodePrograms` · **unknown**
+Implementation · `NodePrograms` · **held**
 
 - Owner: trame
 - Parameters: { node: std/system.NodeCli, runner: platform.TypeScriptRunner, events: std/system.NodeEvents }
@@ -3266,7 +3266,7 @@ Implementation · `NodePrograms` · **unknown**
 
 ### Node terminal
 
-Implementation · `NodeTerminal` · **unknown**
+Implementation · `NodeTerminal` · **held**
 
 - Owner: trame
 - Parameters: { argv: std/system.NodeArguments, exitStatus: std/system.ExitStatus, events: std/system.NodeEvents, posix: std/system.Posix, messages: messages.PlatformMessages }
@@ -3291,7 +3291,7 @@ Implementation · `NoInstallsInTest` · **held**
 
 ### npm installs
 
-Implementation · `NpmInstall` · **unknown**
+Implementation · `NpmInstall` · **held**
 
 - Owner: trame
 - Parameters: { npm: std/system.NpmCli, node: std/system.NodeCli, events: std/system.NodeEvents, exitStatus: std/system.ExitStatus }
@@ -3299,7 +3299,7 @@ Implementation · `NpmInstall` · **unknown**
 
 ### npm's reports
 
-Implementation · `NpmReports` · **unknown**
+Implementation · `NpmReports` · **held**
 
 - Owner: trame
 - Parameters: { npm: std/system.NpmCli, values: std/algebra.ValueTypes, counts: std/algebra.Counts, punctuation: documents/language.Punctuation }
@@ -3346,7 +3346,7 @@ Implementation · `RunsInTheProcess` · **held**
 
 ### Runs kept on disk
 
-Implementation · `RunsOnDisk` · **unknown**
+Implementation · `RunsOnDisk` · **held**
 
 - Owner: trame
 - Parameters: { layout: conventions.Layout, files: platform.EngineFiles, engines: engine.EngineFingerprint, scope: engine.KeptRunsScope, encodings: std/system.NodeEncodings }
@@ -3355,7 +3355,7 @@ Implementation · `RunsOnDisk` · **unknown**
 
 ### System clock
 
-Implementation · `SystemClock` · **unknown**
+Implementation · `SystemClock` · **held**
 
 - Owner: trame
 - Parameters: { iso: std/measures.Iso8601, environment: conventions.TrameEnvironment, sequences: std/algebra.Sequences }
@@ -3462,7 +3462,7 @@ Technical choice · `InMemoryScenarios` · **held**
 
 ### On a machine, Node.js reads, writes and runs
 
-Technical choice · `NodeMachine` · **unknown**
+Technical choice · `NodeMachine` · **held**
 
 - Decided by: trame
 - Context: What changes the world (files written, processes, the terminal, the clock) is real only on a machine; the scenarios keep it in memory.
@@ -3522,7 +3522,7 @@ Technical choice · `RunsKeptInTheProcess` · **held**
 
 ### On a machine, runs are kept on disk
 
-Technical choice · `RunsKeptOnDisk` · **unknown**
+Technical choice · `RunsKeptOnDisk` · **held**
 
 - Decided by: trame
 - Context: The commands of a shipment and of an advance run as separate processes, each compiling the same graph: what one played, the next can find only on disk.
@@ -3841,7 +3841,7 @@ Architecture decision · `PreludeLayer` · **held**
 
 ### A run is kept while what it reads is as it was
 
-Architecture decision · `RunsKept` · **unknown**
+Architecture decision · `RunsKept` · **held**
 
 - Decided by: trame
 - Context: A build of Trame played its scenarios 2,030 times, a hundred of its hundred and forty seconds; a shipment compiled the same graph a dozen times with the same code (g74).
@@ -3863,7 +3863,7 @@ Architecture decision · `SdlcWithStdTooling` · **unknown**
 
 ### A version ships through the graph
 
-Architecture decision · `ShippedThroughTheGraph` · **unknown**
+Architecture decision · `ShippedThroughTheGraph` · **held**
 
 - Decided by: trame
 - Context: Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.
@@ -3874,7 +3874,7 @@ Architecture decision · `ShippedThroughTheGraph` · **unknown**
 
 ### A technology is chosen in one node
 
-Architecture decision · `TechnologyInOneNode` · **unknown**
+Architecture decision · `TechnologyInOneNode` · **held**
 
 - Decided by: trame
 - Context: Each implementation said which environments it served: the choice of a technology was spread over its realizations, nothing said why, and a test double or a repository over a database port had to be declared as if it touched the platform.
@@ -4538,6 +4538,20 @@ Release · `G130`
 - Language archived: 59658b2c5f486d08
 - Releases: Trame on the command line
 - Assembled by: Generation 129
+
+### Generation 131
+
+Release · `G131`
+
+- Released by: trame
+- Version: g131
+- Released on: 2026-11-27
+- What changes: The renderers come from libs/documents 0.2.0 (one renderer given a syntax, Markdown with Mermaid, the terminal's text, their words and format decisions, the palette); the page gives the library's renderer its syntax; Trame's reference syntax is std's
+- Fingerprint: c7a44d11238f242f
+- Language: shared
+- Language archived: 59658b2c5f486d08
+- Releases: Trame on the command line
+- Assembled by: Generation 130
 
 ### Generation 14
 
@@ -6441,7 +6455,7 @@ Role · `Maintainers`
 
 ### The candidate engine
 
-Artefact · `EngineCandidate` · **unknown**
+Artefact · `EngineCandidate` · **held**
 
 - Owner: trame
 - Path: out/local/trame-cli.ts
@@ -6449,7 +6463,7 @@ Artefact · `EngineCandidate` · **unknown**
 
 ### The graph page
 
-Artefact · `GraphPage` · **unknown**
+Artefact · `GraphPage` · **held**
 
 - Owner: trame
 - Path: trame-page.html
@@ -6459,7 +6473,7 @@ Artefact · `GraphPage` · **unknown**
 
 ### The page's program
 
-Artefact · `PageProgram` · **unknown**
+Artefact · `PageProgram` · **held**
 
 - Owner: trame
 - Path: out/browser/page-app.ts
@@ -6486,7 +6500,7 @@ Artefact · `TheEngine` · **unknown**
 
 ### The candidate plays the laws
 
-Check · `CandidateKeepsTheLaws` · **unknown**
+Check · `CandidateKeepsTheLaws` · **held**
 
 - Owner: trame
 - Checks: The candidate engine
@@ -6495,7 +6509,7 @@ Check · `CandidateKeepsTheLaws` · **unknown**
 
 ### The candidate runs on the machine
 
-Check · `CandidateRunsOnTheMachine` · **unknown**
+Check · `CandidateRunsOnTheMachine` · **held**
 
 - Owner: trame
 - Checks: The candidate engine
@@ -6505,7 +6519,7 @@ Check · `CandidateRunsOnTheMachine` · **unknown**
 
 ### The graph page opens
 
-Check · `GraphPageOpens` · **unknown**
+Check · `GraphPageOpens` · **held**
 
 - Owner: trame
 - Checks: The graph page
@@ -6550,7 +6564,7 @@ Shipment · `IntoMain` · **unknown**
 
 ### The next generation
 
-Shipment · `NextGeneration` · **unknown**
+Shipment · `NextGeneration` · **held**
 
 - Owner: trame
 - Target: generation

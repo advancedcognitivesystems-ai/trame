@@ -53,3 +53,19 @@ its own language of words; the decision behind its choices, which adopts std's: 
 
 - Released by: trame
 - Serves: [Commands every project runs, written once](product.md#WrittenOnce)
+
+<a id="R0_2_0"></a>
+
+### Version 0.2.0
+
+`R0_2_0` · `src/releases.ts:51`
+
+Indents with libs/documents' terminal text, its own decision gone; std 0.30.0
+
+- Version: `0.2.0`
+- Released on: 27 November 2026
+- Fingerprint: `6700afbbbbfb0996`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Commands every project runs, written once](product.md#WrittenOnce)

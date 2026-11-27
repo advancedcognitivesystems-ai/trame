@@ -1109,8 +1109,8 @@
     "code": "d7aac953",
     "by": "claude",
     "signature": "attribution",
-    "engine": "758896ce908b9ecb",
-    "seal": "92ababf39a4ece559a5630a0eb283a82413c95ea5be0eb1588b9dcb577bd709f"
+    "engine": "3b7e3a62710e8bd0",
+    "seal": "3a0b95913d0b3397b5e2339380da5e8e033a4658357941437697d2cf7beb7d58"
   },
   {
     "node": "sdlc.PullRequestWorkflow",
@@ -1144,6 +1144,17 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "a617df15cd22c7ed0b3a665d077601c3004321363ed130e26a6a57f1f6991c2f"
+  },
+  {
+    "node": "sdlc.RunnersWritten",
+    "at": "2026-11-27",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "c590c412",
+    "url": "evidence/shipments/RunnersWritten-2026-11-27-c590c412.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "e766764f9a1f5ee9a7179e4f3884762ea683f266d98ffd9a0e736857eb90ab9c"
   },
   {
     "node": "sdlc.TheLibrary",

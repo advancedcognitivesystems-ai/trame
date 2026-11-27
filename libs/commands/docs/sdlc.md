@@ -69,13 +69,15 @@ The library as its people write it: what a version freezes, and what projects im
 
 - Path: `src`
 
-Built 27 November 2026 by claude, fingerprint `5dc07eaab63380ad10699314ed08bfa00d0ec47fbe4fb7345f4f7e71a29951df`.
+Built 27 November 2026 by claude, fingerprint `a4e1cc90fe250c32b1af4c5dea86f06c82228e98eef4c9e01a8977583efc0be0`.
 
 Shipped by [The next version](#NextVersion) 26 November 2026, fingerprint `440585b54dad37fd83f2a6a529523e8b4bd6eff94a1fc4bd17f7b483ba28d312`.
 
 Shipped by [The next version](#NextVersion) 26 November 2026, fingerprint `746135fa4d552f3bc78aa9b66bcf670dab72b3ddc48006f3417603a8cacf262d`.
 
 Shipped by [The next version](#NextVersion) 27 November 2026, fingerprint `5dc07eaab63380ad10699314ed08bfa00d0ec47fbe4fb7345f4f7e71a29951df`.
+
+Shipped by [The next version](#NextVersion) 27 November 2026, fingerprint `a4e1cc90fe250c32b1af4c5dea86f06c82228e98eef4c9e01a8977583efc0be0`.
 
 - Owner: trame
 - A version of the project: true
@@ -101,7 +103,7 @@ A version of the commands, for the projects that import it: shipped by trame rel
 | [Without a build, a plan says so](scenarios.md#PlanWithoutABuild) | **held** | [Its code verified](#CodeVerified), for [Plan](commands.md#Plan) |
 | [A command is played on a real graph](scenarios.md#PlayedOnARealGraph) | **held** | [Its decisions applied](#DecisionsApplied), for [Compiled by the engine that plays them](scenarios.md#CompiledByTheEngine) |
 
-Shipped 27 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-27-791a253d.json`.
+Shipped 27 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-27-26b52336.json`.
 
 - Owner: trame
 - Ships: [The commands of every project](#TheLibrary)
@@ -122,7 +124,7 @@ The workflow that checks each pull request, written by trame ship from the graph
 |---|---|---|
 | [The pull requests' workflow](#PullRequestWorkflow) | **held** | shipped |
 
-Shipped 27 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-27-e1e2a100.json`.
+Shipped 27 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-27-bb33289a.json`.
 
 - Owner: trame
 - Ships: [The pull requests' workflow](#PullRequestWorkflow)

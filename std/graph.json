@@ -3325,10 +3325,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "130",
+        "version": "131",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g130"
+        "at": "../generations/g131"
       },
       "diagnostics": []
     },
@@ -4249,6 +4249,21 @@
         "date": "2026-10-26",
         "what": "HTML and CSS: the HTML, WAI-ARIA, SVG and CSS standards move here from Trame, with the elements a page is made of (headings, header, main, footer, nav)",
         "fingerprint": "f69c88114c3c885d",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_30_0",
+      "kind": "release",
+      "title": "Version 0.30.0",
+      "source": "src/releases.ts:467",
+      "fields": {
+        "owner": "trame",
+        "version": "0.30.0",
+        "date": "2026-11-27",
+        "what": "Trame's reference syntax, which the engine gives and renderers read, in the module engine",
+        "fingerprint": "a85cd39da95a106b",
         "language": "shared"
       },
       "diagnostics": []
@@ -6676,7 +6691,7 @@
       },
       "result": {
         "path": "src",
-        "code": "9e1cc143"
+        "code": "cb810e81"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -9766,6 +9781,41 @@
     {
       "from": "releases.R0_3_0",
       "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_30_0",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_30_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_30_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_30_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_30_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_30_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_30_0",
+      "to": "product.VersionsThatHold",
       "kind": "serves"
     },
     {

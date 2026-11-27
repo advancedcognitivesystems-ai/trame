@@ -872,7 +872,7 @@ The workflow and the script that run the preview elsewhere, and the workflow tha
 | [The preview's workflow](#PreviewWorkflow) | **held** | shipped |
 | [The pull requests' workflow](#PullRequestWorkflow) | **held** | shipped |
 
-Shipped 27 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-27-1cf783b9.json`.
+Shipped 27 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-27-32158bf9.json`.
 
 - Owner: ghalaax
 - Ships: [The preview's workflow](#PreviewWorkflow), [The preview's script](#PreviewScript), [The pull requests' workflow](#PullRequestWorkflow)

@@ -785,10 +785,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 130
+- Version: 131
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g130
+- Its path: ../generations/g131
 - Serves: Ports of the platform, realized once
 
 ### The people of the repository
@@ -1431,6 +1431,18 @@ Release · `R0_3_0`
 - Fingerprint: f69c88114c3c885d
 - Language: shared
 - Serves: A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals
+
+### Version 0.30.0
+
+Release · `R0_30_0`
+
+- Released by: trame
+- Version: 0.30.0
+- Released on: 2026-11-27
+- What changes: Trame's reference syntax, which the engine gives and renderers read, in the module engine
+- Fingerprint: a85cd39da95a106b
+- Language: shared
+- Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
 
 ### Version 0.4.0
 

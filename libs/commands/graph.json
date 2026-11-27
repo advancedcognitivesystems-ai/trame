@@ -129,9 +129,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "130",
+        "version": "131",
         "joins": "language",
-        "at": "../../generations/g130"
+        "at": "../../generations/g131"
       },
       "diagnostics": []
     },
@@ -215,6 +215,21 @@
         "date": "2026-11-27",
         "what": "its own language of words; the decision behind its choices, which adopts std's: the engine is a provider",
         "fingerprint": "29350d242a13f4d9",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_2_0",
+      "kind": "release",
+      "title": "Version 0.2.0",
+      "source": "src/releases.ts:51",
+      "fields": {
+        "owner": "trame",
+        "version": "0.2.0",
+        "date": "2026-11-27",
+        "what": "Indents with libs/documents' terminal text, its own decision gone; std 0.30.0",
+        "fingerprint": "6700afbbbbfb0996",
         "language": "shared"
       },
       "diagnostics": []
@@ -610,7 +625,7 @@
       },
       "result": {
         "path": "src",
-        "code": "aea518b9"
+        "code": "23ff5451"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -740,6 +755,11 @@
     },
     {
       "from": "releases.R0_1_2",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_2_0",
       "to": "product.WrittenOnce",
       "kind": "serves"
     },

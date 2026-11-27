@@ -9,14 +9,14 @@ import { AskedOnce } from "./product"
  * Trame
  * The language the library is written in, at the generation the repository runs, by its path.
  */
-export const Language = pkg({ owner: "trame", packageName: "trame", version: "130", joins: "language", at: "../../generations/g130", serves: [AskedOnce] })
+export const Language = pkg({ owner: "trame", packageName: "trame", version: "131", joins: "language", at: "../../generations/g131", serves: [AskedOnce] })
 
 /**
  * std
  * The library the questions are written with: its extension point MachineNeeds, which they realize, and what it says
  * of the platform and of Git.
  */
-export const StandardLibrary = pkg({ owner: "trame", packageName: "std", version: "0.29.1", joins: "library", at: "../../std/releases/0.29.1", serves: [AskedOnce] })
+export const StandardLibrary = pkg({ owner: "trame", packageName: "std", version: "0.30.0", joins: "library", at: "../../std/releases/0.30.0", serves: [AskedOnce] })
 
 /**
  * The library of continuous integration

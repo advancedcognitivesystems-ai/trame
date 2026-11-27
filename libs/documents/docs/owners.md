@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 2 | 111 |
+| trame | 0 | 0 | 2 | 112 |
 
 <a id="trame"></a>
 
@@ -76,6 +76,7 @@
 | [Documents rendered once, for every project](product.md#RenderedOnce) | Goal |  |
 | [Version 0.1.0](releases.md#R0_1_0) | Release |  |
 | [Version 0.1.1](releases.md#R0_1_1) | Release |  |
+| [Version 0.2.0](releases.md#R0_2_0) | Release |  |
 | [Common rendering](rendering.md#Common) | Function | **held** |
 | [Figures of the documents written as files](rendering.md#FileFigures) | Port |  |
 | [Rendering of the files](rendering.md#FileRendering) | Function | **held** |

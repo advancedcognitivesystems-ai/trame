@@ -2713,9 +2713,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "130",
+        "version": "131",
         "joins": "language",
-        "at": "../../generations/g130"
+        "at": "../../generations/g131"
       },
       "diagnostics": []
     },
@@ -2784,6 +2784,21 @@
         "date": "2026-11-27",
         "what": "its own language of words; the decision behind its choices: the documents speak the engine's language",
         "fingerprint": "f0c7ad53400d19af",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_2_0",
+      "kind": "release",
+      "title": "Version 0.2.0",
+      "source": "src/releases.ts:38",
+      "fields": {
+        "owner": "trame",
+        "version": "0.2.0",
+        "date": "2026-11-27",
+        "what": "The renderers: one walk given a syntax, Markdown with Mermaid for files, text for the terminal, the common rendering and its words, the syntax elements of Markdown, Mermaid, the terminal and HTML, the format decisions and the palette",
+        "fingerprint": "85e5bed88e2c5ef3",
         "language": "shared"
       },
       "diagnostics": []
@@ -4254,7 +4269,7 @@
       },
       "result": {
         "path": "src",
-        "code": "bdde3be7"
+        "code": "9a384a24"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -5501,6 +5516,11 @@
     },
     {
       "from": "releases.R0_1_1",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_2_0",
       "to": "product.RenderedOnce",
       "kind": "serves"
     },

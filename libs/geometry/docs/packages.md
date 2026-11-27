@@ -35,7 +35,7 @@ What the standard library writes its own workflow with, which a library it impor
 The language the library is written in, at the generation it pins: from the registry of this machine.
 
 - Name: `trame`
-- Version: `130`
+- Version: `131`
 - Installed: Not installed in the project: its lockfile lists no trame
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
@@ -75,7 +75,7 @@ Who works on Trame's repository, declared once as actors (C4): every owner of th
 The quantities and the units it builds on (Ratio, the symbols of units), at the version it was released against: from the registry of this machine.
 
 - Name: `std`
-- Version: `0.29.1`
+- Version: `0.30.0`
 - Installed: Not installed in the project: its lockfile lists no std
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry

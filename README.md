@@ -603,8 +603,8 @@ the library, and which says what the engine's plan said; code leaves the engine 
 own `plan` and `amend` compare two builds with the library's comparison until they leave too (g130). Reading a language is the engine's too (since g128): the languages it reads for every
 project (HTML and CSS) are std's, read through std's port `LanguageReading`, so the syntax elements of any library can
 name them and have what they write read back. The renderers of documents go into a library of their own,
-`libs/documents`, which starts with the language the documents are written in: the engine's, as a port Trame realizes,
-with the dates, lists, punctuation and units written in it. Governance is rules too: a `rule` applies a requirement of
+`libs/documents`: the language the documents are written in (the engine's, as a port Trame realizes, with the dates,
+lists, punctuation and units written in it), then the renderers of files and of the terminal (g131); the page follows. Governance is rules too: a `rule` applies a requirement of
 `#std/rules` (`Reaches`, `NeverReaches`, `Linked`, `WithoutEffects`, `WordsOf`) with its parameters, and says why
 through what it serves or the ADR that applies it, instead of hiding a function.
 
@@ -799,20 +799,26 @@ Poselia theirs, each published.
 
 ## One renderer, its syntax a choice
 
-Since g36 a document is rendered by one renderer, whatever its format (`src/code/rendering/document.ts`). It walks the
-blocks of the intermediate format, says each piece in words (a value, a status, the sentence of an overlap, the
-validity of a node) and finds where each reference leads; how a piece is written belongs to a syntax, which is a port
-(`rendering.DocumentSyntax`). There is one port per audience, so that each one's format is chosen apart: the files of
-`docs/`, the terminal, the page. The renderer is three nodes with one body (`FileRendering`, `TerminalRendering`,
-`PageRendering`), each receiving its audience's port.
+Since g36 a document is rendered by one renderer, whatever its format; since g131 it is libs/documents' (`Rendering`,
+documents 0.2.0), which the engine's commands use as they use std's structures. It walks the blocks of the
+intermediate format, says each piece in words (a value, a status, the sentence of an overlap, the validity of a node)
+and finds where each reference leads; how a piece is written belongs to a syntax (`DocumentSyntax`), which it is given.
+There is one port per audience, so that each one's format is chosen apart: the files of `docs/` and the terminal are
+the library's (`FileRendering`, `TerminalRendering`, each the renderer given its port's syntax), the page is still
+Trame's (`PageRendering`, the library's renderer given the page's syntax). A Markdown link is written from the document
+it is in: the renderer gives the syntax that document's file, and the relative reference leaves its folder for the
+segments the target does not share.
 
-Three writers answer those ports: Markdown (the elements of the Markdown spec), plain text (those of `text`) and HTML
-(those of `html`, with the names of `markup`). The figures are a second port, which each writer reaches: Mermaid
+Three writers answer those ports: Markdown (the elements of the Markdown spec) and plain text (those of `text`), in
+the library, and HTML (those of `html`, with the names of `markup`), in Trame until the page moves. The figures are a second port, which each writer reaches: Mermaid
 diagrams for the files, figures as text for the terminal, SVG for the page (since g41). Six technical choices bind them (module `rendering`); the writers' choices follow Bridge (each one reaches the figures'
 port), all of them Strategy (functions). Writing the files in AsciiDoc would be a writer that answers "Syntax of the
 documents written as files" and the choice "Documents in Markdown" changed: the renderer, the views and the kinds do
 not move. The Markdown and the terminal text stayed identical, character for character, through the change, which the
-advance checked.
+advance checked; and again when they moved into the library (g131). The library's scenarios render two documents in the
+intermediate format, with every kind of block and piece, as files and at a terminal, line by line as expected. The
+format decisions (the heading levels, the terminal's text and columns, the Mermaid figures, the marks of a sentence)
+and the palette are the library's: a project amends them in its graph.
 
 ## The syntax layer
 

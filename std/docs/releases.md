@@ -470,6 +470,22 @@ HTML and CSS: the HTML, WAI-ARIA, SVG and CSS standards move here from Trame, wi
 - Released by: trame
 - Serves: [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations)
 
+<a id="R0_30_0"></a>
+
+### Version 0.30.0
+
+`R0_30_0` · `src/releases.ts:467`
+
+Trame's reference syntax, which the engine gives and renderers read, in the module engine
+
+- Version: `0.30.0`
+- Released on: 27 November 2026
+- Fingerprint: `a85cd39da95a106b`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Commands chosen, not written again](product.md#ChosenCommands), [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
+
 <a id="R0_4_0"></a>
 
 ### Version 0.4.0

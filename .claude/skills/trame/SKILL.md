@@ -94,6 +94,9 @@ The repository's `AGENTS.md` is the full guide; read it first, then keep to this
   its launcher (`<name>.node.ts`, g99), which leads the names the same way before it runs the program. A reference
   behind the newest version its origin holds is warned: `trame upgrade [package…]` moves it, then runs the manifest,
   which installs the packages when the lockfile disagrees (g100); commit the lockfile, a CI installs with `npm ci`.
+- What renders documents is libs/documents' (`#documents/rendering`: `FileRendering`, `TerminalRendering`, `Common`,
+  the Markdown, Mermaid and terminal syntax elements, the `Palette`): a command of a project renders with it; a new
+  audience is a port of the project given to the library's `Rendering`.
 - A choice is a concept: when someone could do it another way, name a port, its strategies (realizations) and the
   binding that says which applies where; a choice of value stays a decision with what it rejected; what nobody would
   change is just code. Every binding is applied by an architecture decision of its project (`choice-unbacked`

@@ -628,9 +628,9 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 130
+- Version: 131
 - How it joins the graph: language
-- Its path: ../../generations/g130
+- Its path: ../../generations/g131
 - Serves: Documents rendered once, for every project
 
 ### The people of the repository
@@ -687,6 +687,18 @@ Release · `R0_1_1`
 - Released on: 2026-11-27
 - What changes: its own language of words; the decision behind its choices: the documents speak the engine's language
 - Fingerprint: f0c7ad53400d19af
+- Language: shared
+- Serves: Documents rendered once, for every project
+
+### Version 0.2.0
+
+Release · `R0_2_0`
+
+- Released by: trame
+- Version: 0.2.0
+- Released on: 2026-11-27
+- What changes: The renderers: one walk given a syntax, Markdown with Mermaid for files, text for the terminal, the common rendering and its words, the syntax elements of Markdown, Mermaid, the terminal and HTML, the format decisions and the palette
+- Fingerprint: 85e5bed88e2c5ef3
 - Language: shared
 - Serves: Documents rendered once, for every project
 

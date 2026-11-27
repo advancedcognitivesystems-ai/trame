@@ -1,8 +1,8 @@
 # Versions
 
-*The releases of the components on 30 October 2026, newest first. A project runs the release its configuration pins.*
+*The releases of the components on 27 November 2026, newest first. A project runs the release its configuration pins.*
 
-> **130 releases of 1 component; 95 releases on a language of their own**
+> **131 releases of 1 component; 95 releases on a language of their own**
 
 ## Trame on the command line
 
@@ -10,6 +10,7 @@ Each release, newest first: what changed, the release that assembled it, and whe
 
 | Release | Released on | What changes | Assembled by | Language |
 |---|---|---|---|---|
+| [Generation 131](releases.md#G131) | 27 November 2026 | The renderers come from libs/documents 0.2.0 (one renderer given a syntax, Markdown with Mermaid, the terminal's text, their words and format decisions, the palette); the page gives the library's renderer its syntax; Trame's reference syntax is std's | [Generation 130](releases.md#G130) | shared |
 | [Generation 130](releases.md#G130) | 27 November 2026 | Every choice backed by an architecture decision of its project (choice-unbacked), which may adopt a library's; the engine's plan and amend compare builds with libs/commands' comparison, the copy gone | [Generation 129](releases.md#G129) | shared |
 | [Generation 129](releases.md#G129) | 26 November 2026 | std's languages read by the engine, the documents' language from libs/documents; a project compiled through the API gives the views back | [Generation 128](releases.md#G128) | shared |
 | [Generation 128](releases.md#G128) | 26 November 2026 | the engine's API gives its reader of languages; a language's reader may be a port | [Generation 127](releases.md#G127) | shared |

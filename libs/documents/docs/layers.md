@@ -76,70 +76,71 @@ flowchart TB
   subgraph releases["Documents · Releases"]
     n55["Version 0.1.0<br/><small>Release</small>"]:::neutral
     n56["Version 0.1.1<br/><small>Release</small>"]:::neutral
+    n57["Version 0.2.0<br/><small>Release</small>"]:::neutral
   end
   subgraph rendering["Documents · Rendering"]
-    n57["Common rendering<br/><small>Function</small>"]:::held
-    n58["Figures of the documents written as files<br/><small>Port</small>"]:::neutral
-    n59["Rendering of the files<br/><small>Function</small>"]:::held
-    n60["Syntax of the documents written as files<br/><small>Port</small>"]:::neutral
-    n61["Markdown writer<br/><small>Function</small>"]:::held
-    n62["Mermaid diagrams<br/><small>Function</small>"]:::held
-    n63["How Mermaid figures are drawn<br/><small>Decision</small>"]:::neutral
-    n64["One renderer, its syntax a choice<br/><small>Architecture decision</small>"]:::held
-    n65["Plain text writer<br/><small>Function</small>"]:::held
-    n66["The renderer<br/><small>Function</small>"]:::held
-    n67["Words of the renderers<br/><small>Message catalog</small>"]:::neutral
-    n68["Places in a sentence<br/><small>Decision</small>"]:::neutral
-    n69["Figures of the terminal<br/><small>Port</small>"]:::neutral
-    n70["Rendering in the terminal<br/><small>Function</small>"]:::held
-    n71["Syntax of the terminal<br/><small>Port</small>"]:::neutral
-    n72["Figures as text<br/><small>Function</small>"]:::held
-    n73["Heading levels of Markdown documents<br/><small>Decision</small>"]:::neutral
+    n58["Common rendering<br/><small>Function</small>"]:::held
+    n59["Figures of the documents written as files<br/><small>Port</small>"]:::neutral
+    n60["Rendering of the files<br/><small>Function</small>"]:::held
+    n61["Syntax of the documents written as files<br/><small>Port</small>"]:::neutral
+    n62["Markdown writer<br/><small>Function</small>"]:::held
+    n63["Mermaid diagrams<br/><small>Function</small>"]:::held
+    n64["How Mermaid figures are drawn<br/><small>Decision</small>"]:::neutral
+    n65["One renderer, its syntax a choice<br/><small>Architecture decision</small>"]:::held
+    n66["Plain text writer<br/><small>Function</small>"]:::held
+    n67["The renderer<br/><small>Function</small>"]:::held
+    n68["Words of the renderers<br/><small>Message catalog</small>"]:::neutral
+    n69["Places in a sentence<br/><small>Decision</small>"]:::neutral
+    n70["Figures of the terminal<br/><small>Port</small>"]:::neutral
+    n71["Rendering in the terminal<br/><small>Function</small>"]:::held
+    n72["Syntax of the terminal<br/><small>Port</small>"]:::neutral
+    n73["Figures as text<br/><small>Function</small>"]:::held
+    n74["Heading levels of Markdown documents<br/><small>Decision</small>"]:::neutral
   end
   subgraph samples["Documents · Samples"]
-    n74["The documents the scenarios render<br/><small>Decision</small>"]:::neutral
+    n75["The documents the scenarios render<br/><small>Decision</small>"]:::neutral
   end
   subgraph scenarios["Documents · Scenarios"]
-    n75["The documents, rendered<br/><small>Scenario</small>"]:::held
-    n76["What the scenarios read and expect<br/><small>Decision</small>"]:::neutral
-    n77["What the scenarios expect<br/><small>Decision</small>"]:::neutral
-    n78["Figures in Mermaid<br/><small>Technical choice</small>"]:::held
-    n79["Files in Markdown<br/><small>Technical choice</small>"]:::held
-    n80["The scenarios render as a project does<br/><small>Architecture decision</small>"]:::held
-    n81["The scenarios' language<br/><small>Technical choice</small>"]:::held
-    n82["Read by the engine<br/><small>Technical choice</small>"]:::held
-    n83["The language of the documents, written<br/><small>Scenario</small>"]:::held
-    n84["The language of the scenarios<br/><small>Decision</small>"]:::neutral
-    n85["What the scenarios check<br/><small>Message catalog</small>"]:::neutral
-    n86["Figures at a terminal, as text<br/><small>Technical choice</small>"]:::held
-    n87["The terminal in text<br/><small>Technical choice</small>"]:::held
-    n88["Test<br/><small>Environment</small>"]:::neutral
-    n89["The documents speak the engine's language<br/><small>Architecture decision</small>"]:::held
-    n90["Written in the language of the scenarios<br/><small>Function</small>"]:::held
+    n76["The documents, rendered<br/><small>Scenario</small>"]:::held
+    n77["What the scenarios read and expect<br/><small>Decision</small>"]:::neutral
+    n78["What the scenarios expect<br/><small>Decision</small>"]:::neutral
+    n79["Figures in Mermaid<br/><small>Technical choice</small>"]:::held
+    n80["Files in Markdown<br/><small>Technical choice</small>"]:::held
+    n81["The scenarios render as a project does<br/><small>Architecture decision</small>"]:::held
+    n82["The scenarios' language<br/><small>Technical choice</small>"]:::held
+    n83["Read by the engine<br/><small>Technical choice</small>"]:::held
+    n84["The language of the documents, written<br/><small>Scenario</small>"]:::held
+    n85["The language of the scenarios<br/><small>Decision</small>"]:::neutral
+    n86["What the scenarios check<br/><small>Message catalog</small>"]:::neutral
+    n87["Figures at a terminal, as text<br/><small>Technical choice</small>"]:::held
+    n88["The terminal in text<br/><small>Technical choice</small>"]:::held
+    n89["Test<br/><small>Environment</small>"]:::neutral
+    n90["The documents speak the engine's language<br/><small>Architecture decision</small>"]:::held
+    n91["Written in the language of the scenarios<br/><small>Function</small>"]:::held
   end
   subgraph sdlc["Documents · SDLC"]
-    n91["Its code verified<br/><small>Obligation</small>"]:::neutral
-    n92["Its decisions applied<br/><small>Obligation</small>"]:::neutral
-    n93["The next version<br/><small>Shipment</small>"]:::unknown
-    n94["Its packages safe<br/><small>Obligation</small>"]:::neutral
-    n95["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
-    n96["The pull requests' workflow<br/><small>Artefact</small>"]:::held
-    n97["Its requirements held<br/><small>Obligation</small>"]:::neutral
-    n98["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
-    n99["The renderers of documents<br/><small>Artefact</small>"]:::unknown
-    n100["How a version is made<br/><small>Policy</small>"]:::neutral
+    n92["Its code verified<br/><small>Obligation</small>"]:::neutral
+    n93["Its decisions applied<br/><small>Obligation</small>"]:::neutral
+    n94["The next version<br/><small>Shipment</small>"]:::unknown
+    n95["Its packages safe<br/><small>Obligation</small>"]:::neutral
+    n96["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
+    n97["The pull requests' workflow<br/><small>Artefact</small>"]:::held
+    n98["Its requirements held<br/><small>Obligation</small>"]:::neutral
+    n99["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
+    n100["The renderers of documents<br/><small>Artefact</small>"]:::unknown
+    n101["How a version is made<br/><small>Policy</small>"]:::neutral
   end
   subgraph text["Documents · Terminal text"]
-    n101["Box drawing<br/><small>Standard</small>"]:::neutral
-    n102["Code lines<br/><small>Syntax element</small>"]:::held
-    n103["Columns<br/><small>Syntax element</small>"]:::held
-    n104["Item line<br/><small>Syntax element</small>"]:::held
-    n105["Padded cell<br/><small>Syntax element</small>"]:::held
-    n106["Path step<br/><small>Syntax element</small>"]:::held
-    n107["Columns in the terminal<br/><small>Decision</small>"]:::neutral
-    n108["Lines of the terminal<br/><small>Syntax element</small>"]:::held
-    n109["Terminal text<br/><small>Decision</small>"]:::neutral
-    n110["Tree branch<br/><small>Syntax element</small>"]:::held
+    n102["Box drawing<br/><small>Standard</small>"]:::neutral
+    n103["Code lines<br/><small>Syntax element</small>"]:::held
+    n104["Columns<br/><small>Syntax element</small>"]:::held
+    n105["Item line<br/><small>Syntax element</small>"]:::held
+    n106["Padded cell<br/><small>Syntax element</small>"]:::held
+    n107["Path step<br/><small>Syntax element</small>"]:::held
+    n108["Columns in the terminal<br/><small>Decision</small>"]:::neutral
+    n109["Lines of the terminal<br/><small>Syntax element</small>"]:::held
+    n110["Terminal text<br/><small>Decision</small>"]:::neutral
+    n111["Tree branch<br/><small>Syntax element</small>"]:::held
   end
   n3 -->|Depends on| n6
   n3 -->|Depends on| n4
@@ -238,182 +239,183 @@ flowchart TB
   n55 -->|Serves| n54
   n56 -->|Serves| n54
   n57 -->|Serves| n54
-  n57 -->|Depends on| n68
-  n57 -->|Depends on| n8
-  n57 -->|Depends on| n10
-  n57 -->|Depends on| n67
-  n57 -->|Depends on| n13
-  n59 -->|Serves| n54
-  n59 -->|Depends on| n66
-  n59 -->|Depends on| n60
-  n61 -->|Serves| n54
-  n61 -->|Implements| n60
-  n61 -->|Depends on| n58
-  n61 -->|Depends on| n73
-  n61 -->|Depends on| n12
-  n61 -->|Depends on| n19
-  n61 -->|Depends on| n26
-  n61 -->|Depends on| n28
-  n61 -->|Depends on| n18
-  n61 -->|Depends on| n20
-  n61 -->|Depends on| n24
-  n61 -->|Depends on| n31
-  n61 -->|Depends on| n21
-  n61 -->|Depends on| n27
-  n61 -->|Depends on| n29
-  n61 -->|Depends on| n33
-  n61 -->|Depends on| n32
-  n61 -->|Depends on| n15
-  n61 -->|Depends on| n23
-  n61 -->|Depends on| n67
+  n58 -->|Serves| n54
+  n58 -->|Depends on| n69
+  n58 -->|Depends on| n8
+  n58 -->|Depends on| n10
+  n58 -->|Depends on| n68
+  n58 -->|Depends on| n13
+  n60 -->|Serves| n54
+  n60 -->|Depends on| n67
+  n60 -->|Depends on| n61
   n62 -->|Serves| n54
-  n62 -->|Implements| n58
-  n62 -->|Depends on| n42
-  n62 -->|Depends on| n63
-  n62 -->|Depends on| n0
-  n62 -->|Depends on| n30
-  n62 -->|Depends on| n37
-  n62 -->|Depends on| n45
-  n62 -->|Depends on| n49
-  n62 -->|Depends on| n44
-  n62 -->|Depends on| n36
-  n62 -->|Depends on| n47
-  n62 -->|Depends on| n38
-  n62 -->|Depends on| n40
-  n62 -->|Depends on| n41
-  n62 -->|Depends on| n46
-  n62 -->|Depends on| n8
-  n62 -->|Depends on| n67
-  n64 -->|Serves| n54
-  n64 -->|Applied by| n66
-  n64 -->|Applied by| n59
-  n64 -->|Applied by| n70
-  n64 -->|Applied by| n61
-  n64 -->|Applied by| n65
-  n64 -->|Applied by| n62
-  n64 -->|Applied by| n72
+  n62 -->|Implements| n61
+  n62 -->|Depends on| n59
+  n62 -->|Depends on| n74
+  n62 -->|Depends on| n12
+  n62 -->|Depends on| n19
+  n62 -->|Depends on| n26
+  n62 -->|Depends on| n28
+  n62 -->|Depends on| n18
+  n62 -->|Depends on| n20
+  n62 -->|Depends on| n24
+  n62 -->|Depends on| n31
+  n62 -->|Depends on| n21
+  n62 -->|Depends on| n27
+  n62 -->|Depends on| n29
+  n62 -->|Depends on| n33
+  n62 -->|Depends on| n32
+  n62 -->|Depends on| n15
+  n62 -->|Depends on| n23
+  n62 -->|Depends on| n68
+  n63 -->|Serves| n54
+  n63 -->|Implements| n59
+  n63 -->|Depends on| n42
+  n63 -->|Depends on| n64
+  n63 -->|Depends on| n0
+  n63 -->|Depends on| n30
+  n63 -->|Depends on| n37
+  n63 -->|Depends on| n45
+  n63 -->|Depends on| n49
+  n63 -->|Depends on| n44
+  n63 -->|Depends on| n36
+  n63 -->|Depends on| n47
+  n63 -->|Depends on| n38
+  n63 -->|Depends on| n40
+  n63 -->|Depends on| n41
+  n63 -->|Depends on| n46
+  n63 -->|Depends on| n8
+  n63 -->|Depends on| n68
   n65 -->|Serves| n54
-  n65 -->|Implements| n71
-  n65 -->|Depends on| n69
-  n65 -->|Depends on| n109
-  n65 -->|Depends on| n107
-  n65 -->|Depends on| n12
-  n65 -->|Depends on| n105
-  n65 -->|Depends on| n103
-  n65 -->|Depends on| n104
-  n65 -->|Depends on| n102
-  n65 -->|Depends on| n108
-  n65 -->|Depends on| n67
+  n65 -->|Applied by| n67
+  n65 -->|Applied by| n60
+  n65 -->|Applied by| n71
+  n65 -->|Applied by| n62
+  n65 -->|Applied by| n66
+  n65 -->|Applied by| n63
+  n65 -->|Applied by| n73
   n66 -->|Serves| n54
-  n66 -->|Depends on| n57
-  n66 -->|Depends on| n67
-  n67 -->|Written in| n14
-  n70 -->|Serves| n54
-  n70 -->|Depends on| n66
-  n70 -->|Depends on| n71
-  n72 -->|Serves| n54
-  n72 -->|Implements| n69
-  n72 -->|Depends on| n57
-  n72 -->|Depends on| n107
-  n72 -->|Depends on| n12
-  n72 -->|Depends on| n105
-  n72 -->|Depends on| n103
-  n72 -->|Depends on| n110
-  n72 -->|Depends on| n106
-  n72 -->|Depends on| n8
-  n72 -->|Depends on| n67
-  n75 -->|Verifies| n57
-  n75 -->|Verifies| n66
-  n75 -->|Verifies| n59
-  n75 -->|Verifies| n70
-  n75 -->|Verifies| n61
-  n75 -->|Verifies| n65
-  n75 -->|Verifies| n62
-  n75 -->|Verifies| n72
-  n75 -->|In| n88
-  n75 -->|Depends on| n59
-  n75 -->|Depends on| n70
-  n75 -->|Depends on| n57
-  n75 -->|Depends on| n74
-  n75 -->|Depends on| n77
-  n75 -->|Depends on| n85
-  n78 -->|Chooses| n62
-  n78 -->|In| n88
-  n78 -->|Serves| n54
-  n79 -->|Chooses| n61
-  n79 -->|In| n88
+  n66 -->|Implements| n72
+  n66 -->|Depends on| n70
+  n66 -->|Depends on| n110
+  n66 -->|Depends on| n108
+  n66 -->|Depends on| n12
+  n66 -->|Depends on| n106
+  n66 -->|Depends on| n104
+  n66 -->|Depends on| n105
+  n66 -->|Depends on| n103
+  n66 -->|Depends on| n109
+  n66 -->|Depends on| n68
+  n67 -->|Serves| n54
+  n67 -->|Depends on| n58
+  n67 -->|Depends on| n68
+  n68 -->|Written in| n14
+  n71 -->|Serves| n54
+  n71 -->|Depends on| n67
+  n71 -->|Depends on| n72
+  n73 -->|Serves| n54
+  n73 -->|Implements| n70
+  n73 -->|Depends on| n58
+  n73 -->|Depends on| n108
+  n73 -->|Depends on| n12
+  n73 -->|Depends on| n106
+  n73 -->|Depends on| n104
+  n73 -->|Depends on| n111
+  n73 -->|Depends on| n107
+  n73 -->|Depends on| n8
+  n73 -->|Depends on| n68
+  n76 -->|Verifies| n58
+  n76 -->|Verifies| n67
+  n76 -->|Verifies| n60
+  n76 -->|Verifies| n71
+  n76 -->|Verifies| n62
+  n76 -->|Verifies| n66
+  n76 -->|Verifies| n63
+  n76 -->|Verifies| n73
+  n76 -->|In| n89
+  n76 -->|Depends on| n60
+  n76 -->|Depends on| n71
+  n76 -->|Depends on| n58
+  n76 -->|Depends on| n75
+  n76 -->|Depends on| n78
+  n76 -->|Depends on| n86
+  n79 -->|Chooses| n63
+  n79 -->|In| n89
   n79 -->|Serves| n54
+  n80 -->|Chooses| n62
+  n80 -->|In| n89
   n80 -->|Serves| n54
-  n80 -->|Applied by| n79
-  n80 -->|Applied by| n78
-  n80 -->|Applied by| n87
-  n80 -->|Applied by| n86
-  n80 -->|Applied by| n82
-  n81 -->|Chooses| n90
-  n81 -->|In| n88
   n81 -->|Serves| n54
-  n82 -->|In| n88
+  n81 -->|Applied by| n80
+  n81 -->|Applied by| n79
+  n81 -->|Applied by| n88
+  n81 -->|Applied by| n87
+  n81 -->|Applied by| n83
+  n82 -->|Chooses| n91
+  n82 -->|In| n89
   n82 -->|Serves| n54
-  n83 -->|Verifies| n8
-  n83 -->|Verifies| n10
-  n83 -->|Verifies| n12
-  n83 -->|Verifies| n13
-  n83 -->|Verifies| n90
-  n83 -->|In| n88
-  n83 -->|Depends on| n8
-  n83 -->|Depends on| n10
-  n83 -->|Depends on| n12
-  n83 -->|Depends on| n13
-  n83 -->|Depends on| n84
-  n83 -->|Depends on| n76
-  n83 -->|Depends on| n85
-  n85 -->|Written in| n14
-  n86 -->|Chooses| n72
-  n86 -->|In| n88
-  n86 -->|Serves| n54
-  n87 -->|Chooses| n65
-  n87 -->|In| n88
+  n83 -->|In| n89
+  n83 -->|Serves| n54
+  n84 -->|Verifies| n8
+  n84 -->|Verifies| n10
+  n84 -->|Verifies| n12
+  n84 -->|Verifies| n13
+  n84 -->|Verifies| n91
+  n84 -->|In| n89
+  n84 -->|Depends on| n8
+  n84 -->|Depends on| n10
+  n84 -->|Depends on| n12
+  n84 -->|Depends on| n13
+  n84 -->|Depends on| n85
+  n84 -->|Depends on| n77
+  n84 -->|Depends on| n86
+  n86 -->|Written in| n14
+  n87 -->|Chooses| n73
+  n87 -->|In| n89
   n87 -->|Serves| n54
-  n89 -->|Serves| n54
-  n89 -->|Applied by| n8
-  n89 -->|Applied by| n10
-  n89 -->|Applied by| n12
-  n89 -->|Applied by| n13
-  n89 -->|Applied by| n81
-  n90 -->|Implements| n9
-  n90 -->|Depends on| n84
-  n91 -->|Serves| n54
+  n88 -->|Chooses| n66
+  n88 -->|In| n89
+  n88 -->|Serves| n54
+  n90 -->|Serves| n54
+  n90 -->|Applied by| n8
+  n90 -->|Applied by| n10
+  n90 -->|Applied by| n12
+  n90 -->|Applied by| n13
+  n90 -->|Applied by| n82
+  n91 -->|Implements| n9
+  n91 -->|Depends on| n85
   n92 -->|Serves| n54
-  n93 -->|Ships| n99
-  n93 -->|Follows the policy| n100
-  n94 -->|Serves| n54
-  n96 -->|Runs elsewhere| n93
-  n96 -->|Its writer's settings| n95
-  n97 -->|Serves| n54
-  n98 -->|Ships| n96
-  n100 -->|Its obligations| n91
-  n100 -->|Its obligations| n97
-  n100 -->|Its obligations| n92
-  n100 -->|Its obligations| n94
-  n102 -->|Defined by| n109
-  n102 -->|Depends on| n109
-  n103 -->|Defined by| n109
-  n103 -->|Depends on| n109
-  n103 -->|Depends on| n105
-  n103 -->|Depends on| n107
-  n104 -->|Defined by| n109
-  n104 -->|Depends on| n109
-  n105 -->|Defined by| n109
-  n105 -->|Depends on| n109
-  n105 -->|Depends on| n107
-  n106 -->|Defined by| n109
-  n106 -->|Depends on| n109
-  n106 -->|Depends on| n101
-  n108 -->|Defined by| n109
-  n108 -->|Depends on| n109
-  n110 -->|Defined by| n109
-  n110 -->|Depends on| n109
-  n110 -->|Depends on| n101
+  n93 -->|Serves| n54
+  n94 -->|Ships| n100
+  n94 -->|Follows the policy| n101
+  n95 -->|Serves| n54
+  n97 -->|Runs elsewhere| n94
+  n97 -->|Its writer's settings| n96
+  n98 -->|Serves| n54
+  n99 -->|Ships| n97
+  n101 -->|Its obligations| n92
+  n101 -->|Its obligations| n98
+  n101 -->|Its obligations| n93
+  n101 -->|Its obligations| n95
+  n103 -->|Defined by| n110
+  n103 -->|Depends on| n110
+  n104 -->|Defined by| n110
+  n104 -->|Depends on| n110
+  n104 -->|Depends on| n106
+  n104 -->|Depends on| n108
+  n105 -->|Defined by| n110
+  n105 -->|Depends on| n110
+  n106 -->|Defined by| n110
+  n106 -->|Depends on| n110
+  n106 -->|Depends on| n108
+  n107 -->|Defined by| n110
+  n107 -->|Depends on| n110
+  n107 -->|Depends on| n102
+  n109 -->|Defined by| n110
+  n109 -->|Depends on| n110
+  n111 -->|Defined by| n110
+  n111 -->|Depends on| n110
+  n111 -->|Depends on| n102
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a
