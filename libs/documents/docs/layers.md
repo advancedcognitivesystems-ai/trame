@@ -124,9 +124,9 @@ flowchart TB
     n94["The next version<br/><small>Shipment</small>"]:::unknown
     n95["Its packages safe<br/><small>Obligation</small>"]:::neutral
     n96["How a pull request is checked on GitHub<br/><small>Decision</small>"]:::neutral
-    n97["The pull requests' workflow<br/><small>Artefact</small>"]:::held
+    n97["The pull requests' workflow<br/><small>Artefact</small>"]:::unknown
     n98["Its requirements held<br/><small>Obligation</small>"]:::neutral
-    n99["The files that run it elsewhere<br/><small>Shipment</small>"]:::held
+    n99["The files that run it elsewhere<br/><small>Shipment</small>"]:::unknown
     n100["The renderers of documents<br/><small>Artefact</small>"]:::unknown
     n101["How a version is made<br/><small>Policy</small>"]:::neutral
   end

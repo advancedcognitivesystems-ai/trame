@@ -44,3 +44,16 @@ export const R0_2_0 = release({
   language: "shared",
   serves: [RenderedOnce],
 })
+
+/**
+ * Version 0.3.0
+ */
+export const R0_3_0 = release({
+  owner: "trame",
+  version: "0.3.0",
+  date: "2026-11-27",
+  what: "The renderers' context is the kernel's places, which the engine's API gives (g132); generation 132",
+  fingerprint: "70cc1beb5f8ab540",
+  language: "shared",
+  serves: [RenderedOnce],
+})

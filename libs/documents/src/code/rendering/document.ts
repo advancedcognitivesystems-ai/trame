@@ -3,17 +3,14 @@
 // given (what a port chooses for an audience) writes the pieces, and says how deep nested content goes. Pure.
 
 import { BlockType, InlineType } from "#trame/kernel"
-import type { Block, Card, Document, Inline, NodeRef, ProvidedBy } from "#trame/kernel"
+import type { Block, Card, Document, Inline, NodeRef, Places, ProvidedBy } from "#trame/kernel"
 import type { DocumentSyntax, Target, Written } from "../../rendering"
 import type { RenderingMessages } from "../../rendering"
 import type { Counts, Texts, ValueTypes } from "#std/algebra"
-import type { Api as CommonApi, Location } from "./common"
+import type { Api as CommonApi } from "./common"
 
 /** What a syntax that links needs: where the card of each node lives, and the file of each document. */
-export interface RenderingContext {
-  locate: Map<string, Location>
-  files: Map<string, string | undefined>
-}
+export type RenderingContext = Places
 
 export interface Deps {
   common: CommonApi

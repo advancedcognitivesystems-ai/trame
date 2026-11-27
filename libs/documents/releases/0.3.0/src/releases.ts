@@ -1,0 +1,46 @@
+/** Documents · Releases */
+
+// Written by trame release at each version, from the releases already here and the one it freezes: do not edit. A
+// release's own record is written after its sources are copied, so it is not in its own copy.
+
+import { release } from "#trame/kinds/release"
+import { RenderedOnce } from "./product"
+
+/**
+ * Version 0.1.0
+ */
+export const R0_1_0 = release({
+  owner: "trame",
+  version: "0.1.0",
+  date: "2026-11-26",
+  what: "the language of the documents: the port DocumentLanguage, with Dates, Lists, Punctuation and Units over it",
+  fingerprint: "1bba695ab87a7f69",
+  language: "shared",
+  serves: [RenderedOnce],
+})
+
+/**
+ * Version 0.1.1
+ */
+export const R0_1_1 = release({
+  owner: "trame",
+  version: "0.1.1",
+  date: "2026-11-27",
+  what: "its own language of words; the decision behind its choices: the documents speak the engine's language",
+  fingerprint: "f0c7ad53400d19af",
+  language: "shared",
+  serves: [RenderedOnce],
+})
+
+/**
+ * Version 0.2.0
+ */
+export const R0_2_0 = release({
+  owner: "trame",
+  version: "0.2.0",
+  date: "2026-11-27",
+  what: "The renderers: one walk given a syntax, Markdown with Mermaid for files, text for the terminal, the common rendering and its words, the syntax elements of Markdown, Mermaid, the terminal and HTML, the format decisions and the palette",
+  fingerprint: "85e5bed88e2c5ef3",
+  language: "shared",
+  serves: [RenderedOnce],
+})

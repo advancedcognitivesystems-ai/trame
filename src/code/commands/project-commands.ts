@@ -1,5 +1,6 @@
 // The commands of a project (E3, since g116): the entry points a command triggers, in the components of its own graph
-// that std's ProgramCommands exposes. `trame <name>` runs one, its component assembled for its environment; a name the
+// that std's ProgramCommands exposes and that name an environment (a component that names none is offered to other
+// projects, since g133). `trame <name>` runs one, its component assembled for its environment; a name the
 // engine keeps or a view already answers would hide it, which is an error of the graph. Named like another command of
 // the engine, it replaces it for this project (since g119).
 
@@ -52,8 +53,13 @@ const body = (deps: Deps) => {
     const own = g.all(KindName.entry).nodes().flatMap((entry) => {
       const name = commandOf(entry)
       if (entry.library !== undefined || name === undefined) return []
+      // A component that names no environment is offered to other projects (a library's commands, since g133): the
+      // project that declares it has nowhere to assemble it, and the engine's command of that name answers there.
       const components = g.from(entry).out(EdgeName.partOf).nodes().filter(exposed)
-      return components.map((component) => ({ name, entry, component, environments: g.from(component).out(EdgeName.environments).nodes() }))
+      return components.flatMap((component) => {
+        const environments = g.from(component).out(EdgeName.environments).nodes()
+        return deps.counts.any(environments) ? [{ name, entry, component, environments }] : []
+      })
     })
     // A library's commands, each with the environments of the project's choices that take it.
     const choices = g.all(KindName.binding).nodes().filter((b) => b.library === undefined && b.active)
