@@ -1,0 +1,202 @@
+{
+  "shipment": "sdlc.RunnersWritten",
+  "title": "The files that run it elsewhere",
+  "target": "repository",
+  "at": "2026-11-27",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.PullRequestWorkflow",
+      "path": "../.github/workflows/ci-pull-request.yml",
+      "fingerprint": "422ec127391a5a1194ce1f68e39fc314274ef68118e84f1c3c4f4241d7e2ac62"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.PullRequestWorkflow",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "3e3ac63528412d53e6060a55f43590868dd88723beb6638063ef809b7d9bab55",
+          "code": "1eda79a1",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "987e2ef986dc7b6b",
+          "seal": "4557937ed5d610d801a9d44b0f6a973a42879df0f372d76c77c673d20221ec8d"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "3e3ac63528412d53e6060a55f43590868dd88723beb6638063ef809b7d9bab55",
+          "code": "3e6f808d",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "987e2ef986dc7b6b",
+          "seal": "1cbcaf9ddf55b51187f8e61c7812197ec8cec3c62f26f245c08a1aac460bc10c"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "3e3ac63528412d53e6060a55f43590868dd88723beb6638063ef809b7d9bab55",
+          "subject": "sdlc.RunnersWritten",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "5ac3bda706ee1ad0f72cac110edffaf69c3da6e35e0e3414700ec4f5dacb1ee3"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "e5d28a9886b3e76685ac7cd592d4588bbe41b042648fb44e9ee373ee82115f00",
+          "code": "b0ccd0f6",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "840e576a3cb8b6d4",
+          "seal": "baff834184234b15817f5749870bb5911331057a3016898bf57c79597279967d"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-19",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "e5d28a9886b3e76685ac7cd592d4588bbe41b042648fb44e9ee373ee82115f00",
+          "subject": "sdlc.RunnersWritten",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "205a46b238498f81936e5e8b4a7339bf74b1af23116b27a002a414928a2f8b73"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-22",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "422ec127391a5a1194ce1f68e39fc314274ef68118e84f1c3c4f4241d7e2ac62",
+          "code": "9606f6f1",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "473672184a44fd1b",
+          "seal": "1dfcc0be4d7a728b27131cadb08dd1ec2f56a4bcfcfb8d3bb0e0874fd5c18165"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-22",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "422ec127391a5a1194ce1f68e39fc314274ef68118e84f1c3c4f4241d7e2ac62",
+          "subject": "sdlc.RunnersWritten",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "b32e2f27a75ff18d5f6a2df0279bbd2e35f1eda46102631ca95f57d3e819b7ac"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-24",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "422ec127391a5a1194ce1f68e39fc314274ef68118e84f1c3c4f4241d7e2ac62",
+          "code": "9606f6f1",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "ee2fb46b0367efa1",
+          "seal": "9b8b858b04180ab745214235a0b75634e3da265bed38cd706ec320015ee1ced5"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-24",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "422ec127391a5a1194ce1f68e39fc314274ef68118e84f1c3c4f4241d7e2ac62",
+          "subject": "sdlc.RunnersWritten",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "a3748c22c892ff037381383159fce382ae7df591cd0da67e0cd9bd3ec300e71f"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-25",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "422ec127391a5a1194ce1f68e39fc314274ef68118e84f1c3c4f4241d7e2ac62",
+          "code": "9606f6f1",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "204500887a4c33c3",
+          "seal": "f2b1b8263a4f7adc8fcaf9f444f710cdb900a475b298955e6267b4f5b06fd49b"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-25",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "422ec127391a5a1194ce1f68e39fc314274ef68118e84f1c3c4f4241d7e2ac62",
+          "subject": "sdlc.RunnersWritten",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "12ebad6f3905d7cbfddc350f2abc136dcd7c26ceec5641341dbabbd7071161ef"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-26",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "422ec127391a5a1194ce1f68e39fc314274ef68118e84f1c3c4f4241d7e2ac62",
+          "code": "9606f6f1",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "203a6308a3ce37b3",
+          "seal": "4269f55236e5c5153126c2f231bfcf0bf4cf7b8c2ba6e0fc46a79307bed4b7db"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-26",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "422ec127391a5a1194ce1f68e39fc314274ef68118e84f1c3c4f4241d7e2ac62",
+          "subject": "sdlc.RunnersWritten",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "5c2dd65608356ce328bc076eaae650cad99440239791d0b42fe2ef5331ee900b"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-27",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "422ec127391a5a1194ce1f68e39fc314274ef68118e84f1c3c4f4241d7e2ac62",
+          "subject": "sdlc.RunnersWritten",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "20bbcc1af2ce640d785e96881ff356c3ff1f11c10ad5353278c5027f70901877"
+        },
+        {
+          "node": "sdlc.PullRequestWorkflow",
+          "at": "2026-11-27",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "422ec127391a5a1194ce1f68e39fc314274ef68118e84f1c3c4f4241d7e2ac62",
+          "code": "9606f6f1",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "cbca529b66a70907",
+          "seal": "9b368d023afb449a769a1bf723c02bf39f5a31205be2de32a252f401ffdf447d"
+        }
+      ]
+    }
+  ],
+  "deployed": []
+}

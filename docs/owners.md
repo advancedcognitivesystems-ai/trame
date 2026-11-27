@@ -5,7 +5,7 @@
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | Trame's maintainers | 0 | 0 | 3 | 0 |
-| trame | 0 | 0 | 7 | 720 |
+| trame | 0 | 0 | 7 | 723 |
 
 <a id="Trame's maintainers"></a>
 
@@ -512,6 +512,9 @@
 | [Generation 13](releases.md#G13) | Release |  |
 | [Generation 130](releases.md#G130) | Release |  |
 | [Generation 131](releases.md#G131) | Release |  |
+| [Generation 132](releases.md#G132) | Release |  |
+| [Generation 133](releases.md#G133) | Release |  |
+| [Generation 134](releases.md#G134) | Release |  |
 | [Generation 14](releases.md#G14) | Release |  |
 | [Generation 15](releases.md#G15) | Release |  |
 | [Generation 16](releases.md#G16) | Release |  |

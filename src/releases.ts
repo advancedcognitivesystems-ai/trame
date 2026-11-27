@@ -1952,3 +1952,48 @@ export const G131 = release({
   archive: "59658b2c5f486d08",
   assembledBy: G130,
 })
+
+/**
+ * Generation 132
+ */
+export const G132 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g132",
+  date: "2026-11-27",
+  what: "The engine's API gives a compiled project's documents (the views' documents with where each card is) and one view's document or why there is none; the engine's view answers through it",
+  fingerprint: "c8ae3abb70c8704d",
+  language: "shared",
+  archive: "c4eba3cff58c1b7b",
+  assembledBy: G131,
+})
+
+/**
+ * Generation 133
+ */
+export const G133 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g133",
+  date: "2026-11-27",
+  what: "A component that names no environment is offered to other projects: the project that declares it has nowhere to assemble it, and the engine's command of that name answers there",
+  fingerprint: "03060a6259d03b8e",
+  language: "shared",
+  archive: "c4eba3cff58c1b7b",
+  assembledBy: G132,
+})
+
+/**
+ * Generation 134
+ */
+export const G134 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g134",
+  date: "2026-11-27",
+  what: "A project's command named like a command of the engine it does not keep is asked before a view of that name: libs/commands' snapshot replaces the engine's",
+  fingerprint: "a6aa5835fd172aa0",
+  language: "shared",
+  archive: "c4eba3cff58c1b7b",
+  assembledBy: G133,
+})

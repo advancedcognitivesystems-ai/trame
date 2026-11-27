@@ -1,12 +1,13 @@
 // A view, rendered for the terminal (in Markdown with --format md, in JSON with --format json).
 
-import { ViewScope, type Document, type ProvidedBy, type View } from "../../../trame/kernel"
+import { ViewRefusal, type ProvidedBy, type ViewAnswer } from "../../../trame/kernel"
 import type { Terminal } from "../../architecture"
 import type { CommandMessages } from "../../messages"
 import type { Api as PreparationApi, Options } from "./preparation"
 import type { Api as ViewsApi } from "../engine/views"
 import type { Api as RenderingApi } from "#documents/code/rendering/document"
 import type { TrameCommands } from "../../conventions"
+import type { Texts } from "#std/algebra"
 
 export interface Deps {
   line: ProvidedBy<typeof TrameCommands>
@@ -18,33 +19,36 @@ export interface Deps {
   /** The renderer of what the terminal shows. */
   screen: RenderingApi
   terminal: Terminal
+  texts: ProvidedBy<typeof Texts>
   messages: ProvidedBy<typeof CommandMessages>
 }
 
 const body = (deps: Deps) => {
   const { line } = deps
-  const { prepare, refuse, views, renderingContext } = deps.preparation
+  const { prepare, refuse, api } = deps.preparation
+  const { empty } = deps.texts
   const { sortedViews } = deps.views
   const { terminal, messages } = deps
 
-  async function view(o: Options, name: string | undefined, arg: string | undefined) {
-    const { c, comp } = await prepare(o)
-    const def = sortedViews().find((v) => v.name === name)
-    if (!def) return refuse(o, [messages.unknownView(name, sortedViews().map((v) => v.name))])
-    let runArg: { module?: string; node?: View } = {}
-    if (def.per === ViewScope.node) {
-      const node = arg ? comp.node(arg).first() : undefined
-      if (!node) return refuse(o, [messages.unknownNode(arg)])
-      if (def.applies && !def.applies(node, comp)) refuse(o, [messages.viewDoesNotApply(def.label, node.id)])
-      runArg = { node }
-    } else if (def.per === ViewScope.module) {
-      if (!arg || !comp.modules().some((m) => m.id === arg)) refuse(o, [messages.unknownModule(arg, comp.modules().map((m) => m.id))])
-      runArg = { module: arg }
+  /** Why a view gives no document, in the engine's words. */
+  const refusal = (a: Extract<ViewAnswer, { refused: ViewRefusal }>): string => {
+    switch (a.refused) {
+      case ViewRefusal.unknownView: return messages.unknownView(a.asked, [...a.known])
+      case ViewRefusal.unknownNode: return messages.unknownNode(a.asked)
+      case ViewRefusal.notApplicable: return messages.viewDoesNotApply(a.view ?? empty, a.asked ?? empty)
+      case ViewRefusal.unknownModule: return messages.unknownModule(a.asked, [...a.known])
     }
-    const out = def.run(comp, runArg)
-    const d: Document = { id: def.name, view: def.name, group: def.group, title: out.title, intro: out.intro, blocks: out.blocks, arg }
+  }
+
+  async function view(o: Options, name: string | undefined, arg: string | undefined) {
+    const ctx = await prepare(o)
+    if (name === undefined) return refuse(o, [messages.unknownView(name, sortedViews().map((v) => v.name))])
+    const project = api({ o, ctx }).prepared()!
+    const answer = await project.view(name, arg)
+    if (answer.refused !== undefined) return refuse(o, [refusal(answer)])
+    const d = answer.document
     if (o.format === line.json) terminal.write(JSON.stringify(d, null, deps.json.indentation))
-    else if (o.format === line.markdown) terminal.write(deps.files.render(d, renderingContext(views(o, comp), { c, comp })))
+    else if (o.format === line.markdown) terminal.write(deps.files.render(d, (await project.documents()).places))
     else terminal.writeRaw(deps.screen.render(d))
   }
 

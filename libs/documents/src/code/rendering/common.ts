@@ -2,7 +2,7 @@
 // Pure: no dependency on Node. The page uses it too.
 
 import { BlockType, InlineType, OPEN_KEY, Openness, Outcome, ResolutionOutcome, RuleState, Severity, Status, Validity, ValueType, ViewGroup, keyFor, keyOf } from "#trame/kernel"
-import type { Block, Document, Inline, Json, KeyOf, NodeRef, ProvidedBy, ResolutionBlock } from "#trame/kernel"
+import type { Block, Document, Inline, Json, KeyOf, NodeRef, Place, ProvidedBy, ResolutionBlock } from "#trame/kernel"
 import type { RenderingMessages } from "../../rendering"
 import type { Dates, Lists } from "../../language"
 import type { Texts, ValueTypes } from "#std/algebra"
@@ -13,11 +13,8 @@ import type { Units } from "../../language"
 type ValueInline = Extract<Inline, { t: typeof InlineType.value }>
 type ValidityBlock = Extract<Block, { type: "validity" }>
 
-export interface Location {
-  doc: string
-  file?: string
-  anchor: string
-}
+/** Where a node's card is: the kernel's, which the engine's API gives too (since g132). */
+export type Location = Place
 
 export interface Deps {
   values: ProvidedBy<typeof ValueTypes>
@@ -164,7 +161,7 @@ const body = (deps: Deps) => {
   }
 
   /** Where the card of each node lives: the first document that contains it (a module document, first). */
-  function locate(docs: Document[]): Map<string, Location> {
+  function locate(docs: readonly Document[]): Map<string, Location> {
     const map = new Map<string, Location>()
     const isModule = (d: Document) => d.group === ViewGroup.module
     const ordered = [...docs.filter(isModule), ...docs.filter((d) => !isModule(d))]

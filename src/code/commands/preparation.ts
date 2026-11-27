@@ -1,8 +1,8 @@
 // What all commands share: reading the options, checking and compiling the project, refusing cleanly.
 // It started as a port of the bootstrap's command line (trame/cli.ts): same options, same order of checks.
 
-import { withEngine } from "../../../trame/kernel"
-import type { AnyNode, Compilation, CompiledProject, Document, EngineApi, LanguageReader, ProvidedBy, Severity, View } from "../../../trame/kernel"
+import { ViewRefusal, ViewScope, withEngine } from "../../../trame/kernel"
+import type { AnyNode, Compilation, CompiledProject, Document, EngineApi, LanguageReader, ProvidedBy, Severity, View, ViewAnswer } from "../../../trame/kernel"
 import type { Clock, FileReading, Layout, Paths, Process, Terminal } from "../../architecture"
 import type { CommandMessages } from "../../messages"
 import type { Api as CompilerApi, Compiled, Loaded } from "../engine/compiler"
@@ -114,10 +114,13 @@ const body = (deps: Deps) => {
   const { load, compileAt, loadKinds, readEvidence } = deps.compiler
   const { makeCompilation } = deps.compilationApi
   const { checkKinds, checkImports } = deps.laws
-  const { loadViews, runViews, checkViewDecls } = deps.views
+  const { loadViews, runViews, checkViewDecls, sortedViews } = deps.views
   const { checkLock, publishedOf } = deps.lock
   const { locate } = deps.common
   const { terminal, messages } = deps
+
+  /** The commands of the engine, as the last command line read named them: a project's command named like one comes before a view. */
+  let engineCommands: readonly string[] = []
 
   function options(command: string, raw: string[], commands?: string): Options {
     const argv = [...raw]
@@ -156,10 +159,12 @@ const body = (deps: Deps) => {
     const from = take(line.from)
     const until = take(line.until)
     const source = take(line.source)
+    const engine = deps.texts.optional(commands).split(line.separator).filter(Boolean)
+    if (deps.counts.any(engine)) engineCommands = engine
     return {
       root: deps.currentProcess.cwd(), command, today, format, port, fragment, envName, all, history, accept, promote, migrate,
       by, ...(onBehalf === undefined ? {} : { for: onBehalf }), subject, language, note, url, dryRun, why, from, until, source, args: argv,
-      commands: deps.texts.optional(commands).split(line.separator).filter(Boolean),
+      commands: engine,
     }
   }
 
@@ -265,7 +270,7 @@ const body = (deps: Deps) => {
     // A day before today: what was proven then is judged as it was given, the code and the engine of that day unknown.
     const c = await running(read, () => compileAt(read, date, { asGiven: date < deps.clock.today(), ...opts }))
     const lockIssues = checkLock(c, read.root)
-    const hidden = deps.projectCommands.hidden(c, deps.kept, deps.views.sortedViews().map((v) => v.name))
+    const hidden = deps.projectCommands.hidden(c, deps.kept, deps.views.sortedViews().map((v) => v.name), engineCommands)
     c.diags.push(...lockIssues, ...hidden)
     c.diags.sort((a, b) => deps.severityOrder(a.severity) - deps.severityOrder(b.severity))
     const published = publishedOf(c, read.root)
@@ -276,10 +281,58 @@ const body = (deps: Deps) => {
 
   // The engine's API (since g124): what a command, or a scenario the engine plays, reaches of it ------------------------
 
-  /** A project as the API gives it: what a view receives, and the graph as a build writes it. */
-  const project = (root: string, { c, comp }: Ctx): CompiledProject => ({
-    root, today: c.today, graph: comp, written: () => deps.machine.graphJson(c), snapshot: () => deps.machine.snapshotJson(c),
-  })
+  /**
+   * One view's document (since g132): by the view's name, and the node or the module a view of a node or of a module
+   * is for; or why there is none.
+   */
+  function oneView(comp: Compilation, name: string, arg: string | undefined): ViewAnswer {
+    const def = sortedViews().find((v) => v.name === name)
+    if (!def) return { refused: ViewRefusal.unknownView, asked: name, known: sortedViews().map((v) => v.name) }
+    let runArg: { module?: string; node?: View } = {}
+    if (def.per === ViewScope.node) {
+      const node = arg ? comp.node(arg).first() : undefined
+      if (!node) return { refused: ViewRefusal.unknownNode, asked: arg, known: [] }
+      if (def.applies && !def.applies(node, comp)) return { refused: ViewRefusal.notApplicable, asked: node.id, view: def.label, known: [] }
+      runArg = { node }
+    } else if (def.per === ViewScope.module) {
+      if (!arg || !comp.modules().some((m) => m.id === arg)) return { refused: ViewRefusal.unknownModule, asked: arg, known: comp.modules().map((m) => m.id) }
+      runArg = { module: arg }
+    }
+    const out = def.run(comp, runArg)
+    return { document: { id: def.name, view: def.name, group: def.group, title: out.title, intro: out.intro, blocks: out.blocks, arg } }
+  }
+
+  /**
+   * Runs `f` with the views of another project loaded (its own beside the language's), then those of the project being
+   * compiled again: a project the API compiled elsewhere is given its own documents.
+   */
+  async function withViewsOf<T>(elsewhere: string | undefined, compiling: Loaded | undefined, f: () => T): Promise<T> {
+    if (elsewhere === undefined) return f()
+    await loadViews(elsewhere)
+    try {
+      return f()
+    } finally {
+      if (compiling) await loadViews(compiling.root)
+    }
+  }
+
+  /**
+   * A project as the API gives it: what a view receives, the graph as a build writes it, the documents of its views and
+   * one view's (since g132). A project compiled elsewhere has its views loaded while they run.
+   */
+  const project = (root: string, ctx: Ctx, elsewhere?: { compiling: Loaded | undefined }): CompiledProject => {
+    const { c, comp } = ctx
+    const own = elsewhere === undefined ? undefined : root
+    return {
+      root, today: c.today, graph: comp, written: () => deps.machine.graphJson(c), snapshot: () => deps.machine.snapshotJson(c),
+      documents: () => withViewsOf(own, elsewhere?.compiling, () => {
+        const { documents, failures } = runViews(comp, {})
+        if (failures.length) throw new Error(messages.viewsRefused(failures.map((f: ViewFailure) => messages.viewRefused(f.view, f.law, f.example))))
+        return { documents, places: renderingContext(documents, ctx) }
+      }),
+      view: (name, arg) => withViewsOf(own, elsewhere?.compiling, () => oneView(comp, name, arg)),
+    }
+  }
 
   /**
    * Where a project the API is asked to compile is (since g125): a directory from where the engine runs, or, named by a
@@ -308,7 +361,7 @@ const body = (deps: Deps) => {
     try {
       const { refused, read } = await refusals(at, today)
       if (!read) throw new Error(messages.projectRefusedHere(at, refused))
-      return project(at, await compiledAt(read, today, { keep: false }))
+      return project(at, await compiledAt(read, today, { keep: false }), { compiling })
     } finally {
       // The views loaded are a project's (its own beside the language's): the project being compiled gets its own back,
       // or its documents would be the other's (a cold build of Trame lost its literals and its versions, g129).

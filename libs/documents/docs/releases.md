@@ -53,3 +53,19 @@ The renderers: one walk given a syntax, Markdown with Mermaid for files, text fo
 
 - Released by: trame
 - Serves: [Documents rendered once, for every project](product.md#RenderedOnce)
+
+<a id="R0_3_0"></a>
+
+### Version 0.3.0
+
+`R0_3_0` · `src/releases.ts:51`
+
+The renderers' context is the kernel's places, which the engine's API gives (g132); generation 132
+
+- Version: `0.3.0`
+- Released on: 27 November 2026
+- Fingerprint: `70cc1beb5f8ab540`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Documents rendered once, for every project](product.md#RenderedOnce)

@@ -9,7 +9,7 @@ import { AskedOnce } from "./product"
  * Trame
  * The language the library is written in, at the generation the repository runs, by its path.
  */
-export const Language = pkg({ owner: "trame", packageName: "trame", version: "131", joins: "language", at: "../../generations/g131", serves: [AskedOnce] })
+export const Language = pkg({ owner: "trame", packageName: "trame", version: "134", joins: "language", at: "../../generations/g134", serves: [AskedOnce] })
 
 /**
  * std

@@ -779,6 +779,69 @@ Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Ge
 - Released by: trame
 - Releases: [Trame on the command line](architecture.md#TrameCli)
 - Assembled by: [Generation 130](#G130)
+- Assembled: [Generation 132](#G132)
+
+<a id="G132"></a>
+
+### Generation 132
+
+`G132` · `src/releases.ts:1959`
+
+The engine's API gives a compiled project's documents (the views' documents with where each card is) and one view's document or why there is none; the engine's view answers through it
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 131](#G131).
+
+- Version: `g132`
+- Released on: 27 November 2026
+- Fingerprint: `c8ae3abb70c8704d`
+- Language: the repository's, shared
+- Language archived: `c4eba3cff58c1b7b`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 131](#G131)
+- Assembled: [Generation 133](#G133)
+
+<a id="G133"></a>
+
+### Generation 133
+
+`G133` · `src/releases.ts:1974`
+
+A component that names no environment is offered to other projects: the project that declares it has nowhere to assemble it, and the engine's command of that name answers there
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 132](#G132).
+
+- Version: `g133`
+- Released on: 27 November 2026
+- Fingerprint: `03060a6259d03b8e`
+- Language: the repository's, shared
+- Language archived: `c4eba3cff58c1b7b`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 132](#G132)
+- Assembled: [Generation 134](#G134)
+
+<a id="G134"></a>
+
+### Generation 134
+
+`G134` · `src/releases.ts:1989`
+
+A project's command named like a command of the engine it does not keep is asked before a view of that name: libs/commands' snapshot replaces the engine's
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 133](#G133).
+
+- Version: `g134`
+- Released on: 27 November 2026
+- Fingerprint: `a6aa5835fd172aa0`
+- Language: the repository's, shared
+- Language archived: `c4eba3cff58c1b7b`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 133](#G133)
 
 <a id="G14"></a>
 

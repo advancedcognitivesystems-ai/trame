@@ -499,19 +499,21 @@ In [Local](architecture.md#Local):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| the command plan | [Plan](../libs/commands/releases/0.2.0/docs/commands.md#Plan) | a command of a library |
+| the command build | [Build](../libs/commands/releases/0.3.0/docs/commands.md#Build) | a command of a library |
+| the command plan | [Plan](../libs/commands/releases/0.3.0/docs/commands.md#Plan) | a command of a library |
+| the command snapshot | [Snapshot](../libs/commands/releases/0.3.0/docs/commands.md#Snapshot) | a command of a library |
 | [The project at hand](../std/releases/0.30.0/docs/engine.md#TheProject) | [The project the engine prepared](../std/releases/0.30.0/docs/engine.md#ProjectInTheEngine) | an implementation |
 
 Context: The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.
 
-Consequences: trame plan runs on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's plan stays until the generation that removes the commands every project then runs from the library.
+Consequences: trame plan, build and snapshot run on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's own stay until the generation that removes the commands every project then runs from the library.
 
 | Rejected | Why |
 |---|---|
 | The engine's own commands, kept | they would stay out of reach of every project's choice, and the engine the only one to reach its modules |
 
 - Decided by: trame
-- Chooses: [Plan](../libs/commands/releases/0.2.0/docs/commands.md#Plan), [The project the engine prepared](../std/releases/0.30.0/docs/engine.md#ProjectInTheEngine)
+- Chooses: [Plan](../libs/commands/releases/0.3.0/docs/commands.md#Plan), [Build](../libs/commands/releases/0.3.0/docs/commands.md#Build), [Snapshot](../libs/commands/releases/0.3.0/docs/commands.md#Snapshot), [The project the engine prepared](../std/releases/0.30.0/docs/engine.md#ProjectInTheEngine)
 - In: [Local](architecture.md#Local)
 - Follows: [Command](../std/releases/0.30.0/docs/patterns.md#Command)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
@@ -781,7 +783,7 @@ The program of Trame's command line, assembled from the graph for a machine: wha
 
 - Path: `out/local/trame-cli.ts`
 
-Built 27 November 2026 by claude, fingerprint `068fa5579f7f522c42c29fa296f673741d9c1b24d31901552ff47d3981cc77ce`.
+Built 27 November 2026 by claude, fingerprint `0714c92c1a9029df9df909d64607b318396e5eec7326f1a698dd59a3dd233907`.
 
 Shipped by [The next generation](#NextGeneration) 8 November 2026, fingerprint `7b37d575242fcf8f0998170f818ac1b266c2f3408a5dc31f62eedaf3cbf0f2f4`.
 
@@ -841,6 +843,12 @@ Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint 
 
 Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint `068fa5579f7f522c42c29fa296f673741d9c1b24d31901552ff47d3981cc77ce`.
 
+Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint `238436d863fd117d8b88851595afc1695777d45c80e5636db0a7b618b741049a`.
+
+Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint `429cfa57f36d144ee6257ea862bc442747fc0cfaa0432157e52a1aac39db2601`.
+
+Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint `0714c92c1a9029df9df909d64607b318396e5eec7326f1a698dd59a3dd233907`.
+
 - Owner: trame
 - Produced by: [Trame on the command line](architecture.md#TrameCli)
 - Used by: [Advance](#AdvanceAGeneration)
@@ -858,7 +866,7 @@ The page trame export writes of Trame's graph, which a browser opens as it is: i
 - Path: `trame-page.html`
 - Media type: `text/html; charset=utf-8`
 
-Built 27 November 2026 by claude, fingerprint `1c321ed293ef1fe2f28ef1f4231e716e2882e716612bdddfa9e88af90aac0b6b`.
+Built 27 November 2026 by claude, fingerprint `0bc6ca0ad0f9c991a7fa916d989a2c7797fef38b56a9bd2b59b9b9ab7765574f`.
 
 Shipped by [The next generation](#NextGeneration) 8 November 2026, fingerprint `99d138159c0e7fce465ffd74ec828b3cfa1bb501acf7d08ed97f495b21eca67a`.
 
@@ -924,6 +932,18 @@ Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint 
 
 Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint `1c321ed293ef1fe2f28ef1f4231e716e2882e716612bdddfa9e88af90aac0b6b`.
 
+Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint `6b763b6b3a505d91bce4918a942c16924087159addf7ef117b45e5f61f8b507b`.
+
+Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint `162b57d55484a1d485dd861a0c44b264ba523e67ab1c60e572d935497e1dfac2`.
+
+Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint `bf22f7dea5b40ce8cda220b8e5ff8af274ed3c9da7bbfb4d1a76e49de47a15b1`.
+
+Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint `227dc09aad34453c95f97cdc9a8ffe04c37e1c46b717f0d0768448162ca33dc3`.
+
+Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint `3a08d6abc12e938c36295a1a263d1ce72c1013c4c9c8b148747858d57233079b`.
+
+Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint `0bc6ca0ad0f9c991a7fa916d989a2c7797fef38b56a9bd2b59b9b9ab7765574f`.
+
 - Owner: trame
 - Produced by: [Export the page](commands.md#Export)
 - Carries: [The page in a browser](architecture.md#PageApp)
@@ -941,7 +961,7 @@ The component that shows the graph page, assembled for the browser where the eng
 
 - Path: `out/browser/page-app.ts`
 
-Built 27 November 2026 by claude, fingerprint `bb363afe69262e314da07d3924ad2b6b93ff6565749761047e589ee1e541b715`.
+Built 27 November 2026 by claude, fingerprint `c474c7939061681be4310bce1fd5d335a9d114e0ca72fe16d5ecff447e65b633`.
 
 Shipped by [The next generation](#NextGeneration) 8 November 2026, fingerprint `6416e1b80c44d0c602d83fd12a79c6785cb84f3d295f9795ed017ce759e2af04`.
 
@@ -996,6 +1016,10 @@ Shipped by [The next generation](#NextGeneration) 26 November 2026, fingerprint 
 Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint `0c7c9f59978a2526d93d1bb815cfc3a717a1da046b91c98fdaad45d851055d34`.
 
 Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint `bb363afe69262e314da07d3924ad2b6b93ff6565749761047e589ee1e541b715`.
+
+Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint `20d569d6e1b4e7826f02816082a9f70813a490a488dd4099d7595049aea3e098`.
+
+Shipped by [The next generation](#NextGeneration) 27 November 2026, fingerprint `c474c7939061681be4310bce1fd5d335a9d114e0ca72fe16d5ecff447e65b633`.
 
 - Owner: trame
 - Produced by: [The page in a browser](architecture.md#PageApp)
@@ -1134,7 +1158,7 @@ The library's plan, run by the engine that ships, on the project it prepared: wh
 Passed 26 November 2026 by claude.
 
 - Owner: trame
-- Run by: [Plan](../libs/commands/releases/0.2.0/docs/commands.md#Plan)
+- Run by: [Plan](../libs/commands/releases/0.3.0/docs/commands.md#Plan)
 - Signed by: [Trame's maintainers](#Maintainers)
 - Verifies: [The project the engine prepared](../std/releases/0.30.0/docs/engine.md#ProjectInTheEngine)
 - Required by: [Into the main branch](#IntoMain)
@@ -1359,7 +1383,7 @@ The engine as the graph describes it now, frozen into the next generation and pi
 | [The resolution does not depend on the order](laws.md#OrderFree) | **held** | [The language serves what it says](#LanguageServed), for [Complete declaration](laws.md#CompleteDeclaration) |
 | [Without evidence, the status is unknown](laws.md#UnknownWithoutEvidence) | **held** | [The language serves what it says](#LanguageServed), for [Complete declaration](laws.md#CompleteDeclaration) |
 
-Shipped 27 November 2026 by claude; its dossier: `evidence/shipments/NextGeneration-2026-11-27-efaac4ce.json`.
+Shipped 27 November 2026 by claude; its dossier: `evidence/shipments/NextGeneration-2026-11-27-f0ec11dd.json`.
 
 - Owner: trame
 - Ships: [The candidate engine](#EngineCandidate), [The page's program](#PageProgram), [The graph page](#GraphPage)

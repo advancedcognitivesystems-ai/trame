@@ -441,6 +441,8 @@ export const CommandMessages = catalog({
     importRefused: (problem: string) => `refused: ${problem}`,
     kindRefused: (kind: string, laws: string[]) => `kind "${kind}" refused: does not respect ${laws.map((l) => `"${l}"`).join(", ")}`,
     viewRefused: (view: string, law: string, example: string) => `view "${view}" refused: "${law}" (${example})`,
+    /** What refuses the documents a command asks of the engine's API (since g132): each view that breaks a law, one per line. */
+    viewsRefused: (lines: readonly string[]) => lines.join("\n"),
     /** Where to read the details of the kinds refused. */
     kindLawDetails: () => "details: npm run test-kinds",
     /** Followed by the type errors, one per line. */
@@ -855,6 +857,7 @@ export const ScenarioMessages = catalog({
     libraryCommandRun: (name: string) => `trame ${name} runs the library's command the example chose: its component assembled with that command alone, its program run in the engine's process with the rest of the line`,
     helpListsTheLibrary: (name: string) => `trame help lists ${name}, with the library's component that runs it`,
     hiddenCommandRefused: (name: string) => `Were ${name} a command the engine keeps, the project's would never run: an error of the graph`,
+    commandBeforeView: (name: string) => `Were ${name} also the name of a view, the project's command named like the engine's would still be asked first; named like no command of the engine, it would never run`,
     /** A command of the engine the project replaces (since g119). */
     engineCommandReplaced: (name: string) => `Were ${name} also a command of the engine, the project's would run instead, the engine's not`,
     /** A command of the engine the project has none of (since g119). */

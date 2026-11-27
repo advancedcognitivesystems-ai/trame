@@ -57,3 +57,16 @@ export const R0_2_0 = release({
   language: "shared",
   serves: [WrittenOnce],
 })
+
+/**
+ * Version 0.3.0
+ */
+export const R0_3_0 = release({
+  owner: "trame",
+  version: "0.3.0",
+  date: "2026-11-27",
+  what: "trame build and trame snapshot: the documents the engine's views give, written with libs/documents' renderers; documents 0.3.0, generation 133",
+  fingerprint: "f84eccb53ad7bbb8",
+  language: "shared",
+  serves: [WrittenOnce],
+})

@@ -472,7 +472,7 @@ The packages a project's manifest names, installed by npm's command line in the 
 The registry's reports on the packages a project installs, asked of npm's command line.
 
 - Owner: trame
-- Parameters: `npm` ← [npm's command line](../std/releases/0.30.0/docs/system.md#NpmCli) · `values` ← [Types of values](../std/releases/0.30.0/docs/algebra.md#ValueTypes) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts) · `punctuation` ← [Punctuation](../libs/documents/releases/0.2.0/docs/language.md#Punctuation)
+- Parameters: `npm` ← [npm's command line](../std/releases/0.30.0/docs/system.md#NpmCli) · `values` ← [Types of values](../std/releases/0.30.0/docs/algebra.md#ValueTypes) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts) · `punctuation` ← [Punctuation](../libs/documents/releases/0.3.0/docs/language.md#Punctuation)
 - Body: `./code/platform/npm-reports.ts` (typescript)
 - Implements: [Reports on packages](architecture.md#PackageReports)
 - Chosen by: [On a machine, Node.js reads, writes and runs](#NodeMachine)

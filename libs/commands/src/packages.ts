@@ -10,7 +10,7 @@ import { WrittenOnce } from "./product"
  * The language the library is written in, at the generation the repository runs, by its path: the one whose engine
  * gives the API std's ports of the engine read (g124).
  */
-export const Language = pkg({ owner: "trame", packageName: "trame", version: "131", joins: "language", at: "../../generations/g131", serves: [WrittenOnce] })
+export const Language = pkg({ owner: "trame", packageName: "trame", version: "134", joins: "language", at: "../../generations/g134", serves: [WrittenOnce] })
 
 /**
  * std
@@ -44,6 +44,6 @@ export const People = pkg({
  * documents a command renders; at the version the library uses, by its path in Trame's repository.
  */
 export const Documents = pkg({
-  owner: "trame", packageName: "documents", version: "0.2.0", joins: "library", from: "path", at: "../documents/releases/0.2.0",
+  owner: "trame", packageName: "documents", version: "0.3.0", joins: "library", from: "path", at: "../documents/releases/0.3.0",
   serves: [WrittenOnce],
 })

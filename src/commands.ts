@@ -90,7 +90,7 @@ export const Preparation = fn({
 export const RenderView = fn({
   owner: "trame",
   serves: [ExecutableSpecification],
-  deps: { line: TrameCommands, json: JsonFormatting, preparation: Preparation, views: Views, files: FileRendering, screen: TerminalRendering, terminal: Terminal, messages: CommandMessages },
+  deps: { line: TrameCommands, json: JsonFormatting, preparation: Preparation, views: Views, files: FileRendering, screen: TerminalRendering, terminal: Terminal, texts: Texts, messages: CommandMessages },
   body: code.file<typeof import("./code/commands/render-view").default>("./code/commands/render-view.ts"),
 })
 

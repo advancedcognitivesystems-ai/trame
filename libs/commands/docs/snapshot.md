@@ -29,6 +29,17 @@ Function · `BuildComparison` · **held**
 - Serves: Commands every project runs, written once
 - Depends on: What the commands say
 
+### Build
+
+Entry point · `Build` · **held**
+
+- Owner: trame
+- Trigger: { type: command, name: build }
+- Parameters: { project: std/engine.TheProject, files: std/tooling.Files, written: documents/rendering.FileRendering, printed: documents/rendering.TerminalRendering, say: commands.CommandWords, exit: std/system.ExitStatus }
+- Serves: Commands every project runs, written once
+- Part of: The library's commands
+- Depends on: What the commands say
+
 ### Plan
 
 Entry point · `Plan` · **held**
@@ -39,6 +50,17 @@ Entry point · `Plan` · **held**
 - Serves: Commands every project runs, written once
 - Part of: The library's commands
 - Depends on: Two builds compared, What the commands say
+
+### Snapshot
+
+Entry point · `Snapshot` · **held**
+
+- Owner: trame
+- Trigger: { type: command, name: snapshot }
+- Parameters: { project: std/engine.TheProject, files: std/tooling.Files, written: documents/rendering.FileRendering, say: commands.CommandWords, exit: std/system.ExitStatus }
+- Serves: Commands every project runs, written once
+- Part of: The library's commands
+- Depends on: What the commands say
 
 ### What the commands say
 
@@ -69,10 +91,10 @@ Package · `Documents`
 
 - Owner: trame
 - Name: documents
-- Version: 0.2.0
+- Version: 0.3.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ../documents/releases/0.2.0
+- Its path: ../documents/releases/0.3.0
 - Serves: Commands every project runs, written once
 
 ### Trame
@@ -81,9 +103,9 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 131
+- Version: 134
 - How it joins the graph: language
-- Its path: ../../generations/g131
+- Its path: ../../generations/g134
 - Serves: Commands every project runs, written once
 
 ### The people of the repository
@@ -167,6 +189,18 @@ Release · `R0_2_0`
 - Language: shared
 - Serves: Commands every project runs, written once
 
+### Version 0.3.0
+
+Release · `R0_3_0`
+
+- Released by: trame
+- Version: 0.3.0
+- Released on: 2026-11-27
+- What changes: trame build and trame snapshot: the documents the engine's views give, written with libs/documents' renderers; documents 0.3.0, generation 133
+- Fingerprint: f84eccb53ad7bbb8
+- Language: shared
+- Serves: Commands every project runs, written once
+
 ## Commands · Scenarios
 
 ### The small project
@@ -186,6 +220,17 @@ Architecture decision · `PlayedOnARealGraph` · **held**
 - Rejected: A graph written by the scenario, it proves nothing of what the engine gives, which is what the command reads on a machine
 - Serves: Commands every project runs, written once
 - Applied by: Compiled by the engine that plays them, Played on a small project
+
+### A command writes documents as a project does
+
+Architecture decision · `WrittenAsAProjectDoes` · **held**
+
+- Decided by: trame
+- Context: A command that wrote its documents itself would be a second renderer, whose words and layout could drift from the others'.
+- Consequences: What a build writes is what the engine's build wrote, character for character: the same views, the same renderer, the same places.
+- Rejected: A renderer of the commands' own, the walk and the words of the documents repeated
+- Serves: Commands every project runs, written once
+- Applied by: Files in Markdown, the terminal in text, Figures in Mermaid and in text, In the language of libs/documents' scenarios
 
 ### Which project the scenarios compile
 
@@ -212,6 +257,33 @@ Technical choice · `CompiledByTheEngine` · **held**
 - In: Test
 - Serves: Commands every project runs, written once
 
+### Files in Markdown, the terminal in text
+
+Technical choice · `DocumentsAsFiles` · **held**
+
+- Decided by: trame
+- Context: A command writes its documents with the renderers of libs/documents, in the syntaxes a project chooses.
+- In: Test
+- Serves: Commands every project runs, written once
+
+### In the language of libs/documents' scenarios
+
+Technical choice · `DocumentsLanguage` · **held**
+
+- Decided by: trame
+- Context: The documents speak the language of the engine that compiles the graph: in a library's scenarios, a language decided for them.
+- In: Test
+- Serves: Commands every project runs, written once
+
+### Figures in Mermaid and in text
+
+Technical choice · `FiguresOfTheDocuments` · **held**
+
+- Decided by: trame
+- Context: Each syntax reaches its figures through a port of its own, chosen apart.
+- In: Test
+- Serves: Commands every project runs, written once
+
 ### Played on a small project
 
 Technical choice · `PlayedOnASmallProject` · **held**
@@ -228,6 +300,16 @@ Environment · `Test`
 
 - Owner: trame
 - The build evaluates here: true
+
+### A build writes the documents and the graph
+
+Scenario · `BuildWritesTheDocuments` · **held**
+
+- Owner: trame
+- Parameters: { build: commands.Build, project: std/engine.TheProject, files: std/tooling.Files, written: documents/rendering.FileRendering, printed: documents/rendering.TerminalRendering, say: commands.CommandWords, checks: scenarios.ScenarioWords, exit: std/system.ExitStatus }
+- Verifies: Build, Which project the scenarios compile
+- In: Test
+- Depends on: Build, What the commands say, What the scenarios check
 
 ### After a build, nothing changes
 
@@ -258,6 +340,16 @@ Scenario · `PlanWithoutABuild` · **held**
 - Verifies: Plan
 - In: Test
 - Depends on: Plan, What the commands say, What the scenarios check
+
+### A snapshot writes the graph in force
+
+Scenario · `SnapshotTaken` · **held**
+
+- Owner: trame
+- Parameters: { snapshot: commands.Snapshot, project: std/engine.TheProject, files: std/tooling.Files, written: documents/rendering.FileRendering, say: commands.CommandWords, checks: scenarios.ScenarioWords, exit: std/system.ExitStatus, sequences: std/algebra.Sequences }
+- Verifies: Snapshot, Which project the scenarios compile
+- In: Test
+- Depends on: Snapshot, What the commands say, What the scenarios check
 
 ## Commands · SDLC
 

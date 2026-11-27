@@ -11,7 +11,7 @@
 | [The language receives the graph's values](engine.md#TheLanguageReceivesTheGraph) | **held** | [Graph](engine.md#GraphApi), [Views](engine.md#Views) |
 | [The laws are requirements](engine.md#LawsAreRequirements) | **held** | [Laws](engine.md#Laws), [Views](engine.md#Views) |
 | [What a writer writes is read back before it is written](languages.md#ReadBackWhatIsWritten) | **held** | [Drivers](languages.md#Drivers), [Page](page.md#Page) |
-| [A catalog counts in its language](messages.md#CountsInTheLanguage) | **held** | [Lists](../libs/documents/releases/0.2.0/docs/language.md#Lists), [Messages of an advance](messages.md#AdvanceMessages), [Messages of the commands](messages.md#CommandMessages), [Messages of the compiler](messages.md#CompilerMessages), [Messages of trame dev](messages.md#DevMessages), [Words of the page](messages.md#PageWords), [Messages of the scenarios](messages.md#ScenarioMessages), [Messages of the views](messages.md#ViewMessages) |
+| [A catalog counts in its language](messages.md#CountsInTheLanguage) | **held** | [Lists](../libs/documents/releases/0.3.0/docs/language.md#Lists), [Messages of an advance](messages.md#AdvanceMessages), [Messages of the commands](messages.md#CommandMessages), [Messages of the compiler](messages.md#CompilerMessages), [Messages of trame dev](messages.md#DevMessages), [Words of the page](messages.md#PageWords), [Messages of the scenarios](messages.md#ScenarioMessages), [Messages of the views](messages.md#ViewMessages) |
 | [A style sheet writes no value](page.md#StyleThroughVariables) | **held** | [Rules of a narrow screen](page.md#NarrowScreenRule), [Style sheet of a narrow screen](page.md#NarrowScreenStyle), [Page](page.md#Page), [Style sheet of the page](page.md#PageStyle), [Theme](page.md#Theme) |
 | [The graph is written in TypeScript](principles.md#GraphInTypeScript) | **held** | [TypeScript compiler](architecture.md#TypeScriptCompiler), [Documentation comment](conventions.md#DocComment), [Static reading](engine.md#StaticAnalysis), [TypeScript](typescript.md#TypeScript) |
 | [The prelude and the compiler know no kind of node](principles.md#NoKindInTheCore) | **held** | [Compiler](engine.md#Compiler), [Laws](engine.md#Laws), [Project](engine.md#Project) |
@@ -48,7 +48,7 @@
 | [Trame's SDLC runs with std's tooling](principles.md#SdlcWithStdTooling) | **unknown** | [GitHub merges once it holds, asked in a session](sdlc.md#AutoMergeInASession), [GitHub merges once it holds, asked by its command line](sdlc.md#AutoMergeOnTheMachine), [The repository's work on a machine](sdlc.md#RepositoryWorkOnAMachine), [The SDLC on the machine](sdlc.md#SdlcOnTheMachine) |
 | [Trame runs the commands libraries offer](principles.md#CommandsFromLibraries) | **unknown** | [The commands Trame takes from std](sdlc.md#CommandsOfStd), [The commands Trame takes from libs/commands](sdlc.md#CommandsWrittenOnce) |
 | [The engine is a provider, for Trame too](principles.md#EngineProvidesForTrame) | **unknown** | [The commands Trame takes from libs/commands](sdlc.md#CommandsWrittenOnce), [std's languages, read by the engine](syntax.md#StdLanguagesRead) |
-| [Kinds and views say what; renderers say how](rendering.md#MeaningThenLook) | **held** | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph), [Common rendering](../libs/documents/releases/0.2.0/docs/rendering.md#Common), [Rendering of the files](../libs/documents/releases/0.2.0/docs/rendering.md#FileRendering), [Rendering in the terminal](../libs/documents/releases/0.2.0/docs/rendering.md#TerminalRendering), [Rendering in the page](rendering.md#PageRendering) |
+| [Kinds and views say what; renderers say how](rendering.md#MeaningThenLook) | **held** | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph), [Common rendering](../libs/documents/releases/0.3.0/docs/rendering.md#Common), [Rendering of the files](../libs/documents/releases/0.3.0/docs/rendering.md#FileRendering), [Rendering in the terminal](../libs/documents/releases/0.3.0/docs/rendering.md#TerminalRendering), [Rendering in the page](rendering.md#PageRendering) |
 | [Trame's documents, rendered by the library of documents](rendering.md#RenderedByTheLibrary) | **held** | [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [The page in HTML](rendering.md#PageInHtml), [Rendering in the page](rendering.md#PageRendering), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The terminal in plain text](rendering.md#TerminalInText) |
 | [Every language is read alike, with tree-sitter](syntax.md#ReadLanguagesAlike) | **held** | [Syntax trees](architecture.md#SyntaxTrees), [Checks of a body](syntax.md#BodyChecks), [Syntax reader](syntax.md#SyntaxReader) |
 | [tree-sitter says what it keeps aside](syntax.md#PredicatesAsTreeSitterReadsThem) | **held** | [Syntax trees](architecture.md#SyntaxTrees), [Syntax reader](syntax.md#SyntaxReader) |
@@ -171,7 +171,7 @@ Consequences: Each language has its module (how Trame reads it, what Trame write
 
 ### A catalog counts in its language
 
-`CountsInTheLanguage` · `src/messages.ts:996` · status: **held**
+`CountsInTheLanguage` · `src/messages.ts:999` · status: **held**
 
 A count and its noun follow the plural rules of the language the catalog is written in, with the forms the catalog writes for each category; nothing below the catalogs presumes a language.
 
@@ -186,7 +186,7 @@ Consequences: A catalog that counts receives the decided language and counts by 
 
 - Decided by: trame
 - Serves: [A single source of truth](product.md#SingleSource)
-- Applied by: [Messages of the compiler](messages.md#CompilerMessages), [Messages of the views](messages.md#ViewMessages), [Messages of trame dev](messages.md#DevMessages), [Messages of the commands](messages.md#CommandMessages), [Messages of the scenarios](messages.md#ScenarioMessages), [Messages of an advance](messages.md#AdvanceMessages), [Words of the page](messages.md#PageWords), [Lists](../libs/documents/releases/0.2.0/docs/language.md#Lists)
+- Applied by: [Messages of the compiler](messages.md#CompilerMessages), [Messages of the views](messages.md#ViewMessages), [Messages of trame dev](messages.md#DevMessages), [Messages of the commands](messages.md#CommandMessages), [Messages of the scenarios](messages.md#ScenarioMessages), [Messages of an advance](messages.md#AdvanceMessages), [Words of the page](messages.md#PageWords), [Lists](../libs/documents/releases/0.3.0/docs/language.md#Lists)
 
 ## Trame · The page
 
@@ -938,7 +938,7 @@ Consequences: Three points of extension: a kind says what a node is, a view whic
 
 - Decided by: trame
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
-- Applied by: [Rendering of the files](../libs/documents/releases/0.2.0/docs/rendering.md#FileRendering), [Rendering in the terminal](../libs/documents/releases/0.2.0/docs/rendering.md#TerminalRendering), [Rendering in the page](rendering.md#PageRendering), [Common rendering](../libs/documents/releases/0.2.0/docs/rendering.md#Common), [Rendering does not read the graph](architecture.md#RenderingWithoutGraph)
+- Applied by: [Rendering of the files](../libs/documents/releases/0.3.0/docs/rendering.md#FileRendering), [Rendering in the terminal](../libs/documents/releases/0.3.0/docs/rendering.md#TerminalRendering), [Rendering in the page](rendering.md#PageRendering), [Common rendering](../libs/documents/releases/0.3.0/docs/rendering.md#Common), [Rendering does not read the graph](architecture.md#RenderingWithoutGraph)
 
 <a id="RenderedByTheLibrary"></a>
 
@@ -959,7 +959,7 @@ Consequences: Trame's commands use the library's renderers as they use std's str
 - Decided by: trame
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applied by: [Rendering in the page](rendering.md#PageRendering), [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [The terminal in plain text](rendering.md#TerminalInText), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The page in HTML](rendering.md#PageInHtml), [The page's figures in SVG](rendering.md#PageFiguresDrawn)
-- Adopts: [One renderer, its syntax a choice](../libs/documents/releases/0.2.0/docs/rendering.md#OneRendererManySyntaxes)
+- Adopts: [One renderer, its syntax a choice](../libs/documents/releases/0.3.0/docs/rendering.md#OneRendererManySyntaxes)
 
 ## Trame · Syntax
 

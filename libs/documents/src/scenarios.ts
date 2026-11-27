@@ -358,7 +358,7 @@ export const DocumentsRendered = scenario({
   env: Test,
   deps: { files: FileRendering, terminal: TerminalRendering, common: Common, samples: SampleDocuments, expected: ExpectedDocuments, text: TextFile, checks: ScenarioWords },
   body: ({ files, terminal, common, samples, expected, text: { endOfLine }, checks }) => async (check) => {
-    const context = { locate: common.locate([...samples]), files: new Map(samples.map((d) => [d.id, d.file])) }
+    const context = { locate: common.locate(samples), files: new Map(samples.map((d) => [d.id, d.file])) }
     for (const d of samples) {
       check(checks.writtenAsFiles(d.title), files.render(d, context) === expected.files[d.id]?.join(endOfLine))
       check(checks.writtenAtATerminal(d.title), terminal.render(d) === expected.terminal[d.id]?.join(endOfLine))

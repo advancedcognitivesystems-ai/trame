@@ -9,11 +9,14 @@ import { adr } from "#trame/kinds/adr"
 import { fn } from "#trame/kinds/function"
 import { TheProject, ProjectOfTheScenario, ProjectCompiledHere, EngineAsAProvider, type ProjectChosen } from "#std/engine"
 import { Files, FilesInMemory } from "#std/tooling"
-import { Strategy, Adapter } from "#std/patterns"
+import { Strategy, Adapter, Bridge } from "#std/patterns"
 import { ExitStatus } from "#std/system"
-import { Counts } from "#std/algebra"
+import { Counts, Sequences } from "#std/algebra"
+import { DocumentName, ViewGroup } from "#trame/kernel"
+import { MarkdownSyntax, MermaidDiagrams, PlainTextSyntax, TextFigures, FileRendering, TerminalRendering, OneRendererManySyntaxes } from "#documents/rendering"
+import { WrittenForTheScenarios } from "#documents/scenarios"
 import { WrittenOnce } from "./product"
-import { Plan, BuildComparison, CommandWords, WordsLanguage } from "./commands"
+import { Plan, BuildComparison, CommandWords, WordsLanguage, Build as BuildCommand, Snapshot } from "./commands"
 import { TerminalText } from "#documents/text"
 import type { Build } from "./code/comparison"
 
@@ -84,6 +87,10 @@ export const ScenarioWords = catalog({
     planNamesTheStatus: (title: string) => `The plan names the status of ${title}, which the last build did not give`,
     planWithoutABuild: () => "Without graph.json, the plan says there is nothing to compare with, and succeeds",
     planAfterTheSameBuild: () => "Against the graph a build of the same day wrote, the plan counts nothing and says nothing changes",
+    buildWritesTheDocuments: () => "A build writes each document a view writes as a file, in the syntax of files, with where each card is",
+    buildWritesTheGraph: () => "A build writes graph.json and snapshot.json as the engine gives them",
+    buildPrintsTheSummary: () => "A build prints the summary in the syntax of the terminal, then names the files it wrote",
+    snapshotWritesItsDocuments: () => "A snapshot writes snapshot.json and the documents of the snapshot's view, then names them with the day",
   }),
 })
 
@@ -171,4 +178,110 @@ export const PlayedOnARealGraph = adr({
   serves: [WrittenOnce],
   adopts: [EngineAsAProvider],
   appliedBy: [CompiledByTheEngine, PlayedOnASmallProject],
+})
+
+// The documents a command writes ------------------------------------------------------------------------------------
+
+/**
+ * Files in Markdown, the terminal in text
+ * In the library's scenarios, the documents a command writes as files are in Markdown with Mermaid figures, and what it
+ * prints is plain text with figures as text, as libs/documents plays them.
+ */
+export const DocumentsAsFiles = binding({
+  owner: "trame",
+  chooses: [MarkdownSyntax, PlainTextSyntax],
+  environments: [Test],
+  follows: [Bridge, Strategy],
+  serves: [WrittenOnce],
+  context: "A command writes its documents with the renderers of libs/documents, in the syntaxes a project chooses.",
+})
+
+/**
+ * Figures in Mermaid and in text
+ * In the library's scenarios, the figures of the files are Mermaid diagrams, those of the terminal lines of text.
+ */
+export const FiguresOfTheDocuments = binding({
+  owner: "trame",
+  chooses: [MermaidDiagrams, TextFigures],
+  environments: [Test],
+  follows: [Strategy],
+  serves: [WrittenOnce],
+  context: "Each syntax reaches its figures through a port of its own, chosen apart.",
+})
+
+/**
+ * In the language of libs/documents' scenarios
+ * In the library's scenarios, the documents are written in the language libs/documents decided for its own.
+ */
+export const DocumentsLanguage = binding({
+  owner: "trame",
+  chooses: [WrittenForTheScenarios],
+  environments: [Test],
+  follows: [Strategy],
+  serves: [WrittenOnce],
+  context: "The documents speak the language of the engine that compiles the graph: in a library's scenarios, a language decided for them.",
+})
+
+/**
+ * A command writes documents as a project does
+ * The library's commands write the documents the views give with the renderers of libs/documents: one renderer, its
+ * syntax a choice per audience. Its scenarios choose the syntaxes a project chooses.
+ */
+export const WrittenAsAProjectDoes = adr({
+  owner: "trame",
+  context: "A command that wrote its documents itself would be a second renderer, whose words and layout could drift from the others'.",
+  consequences: "What a build writes is what the engine's build wrote, character for character: the same views, the same renderer, the same places.",
+  rejected: { "A renderer of the commands' own": "the walk and the words of the documents repeated" },
+  serves: [WrittenOnce],
+  adopts: [OneRendererManySyntaxes],
+  appliedBy: [DocumentsAsFiles, FiguresOfTheDocuments, DocumentsLanguage],
+})
+
+/**
+ * A build writes the documents and the graph
+ * The small project, built in memory: each document a view writes as a file holds what the renderer of files gives it,
+ * graph.json and snapshot.json what the engine gives, and the build prints the summary, then the files it wrote.
+ */
+export const BuildWritesTheDocuments = scenario({
+  owner: "trame",
+  verifies: [BuildCommand, ProjectCompiledHere, TheSmallProject],
+  env: Test,
+  deps: { build: BuildCommand, project: TheProject, files: Files, written: FileRendering, printed: TerminalRendering, say: CommandWords, checks: ScenarioWords, exit: ExitStatus },
+  body: ({ build, project, files, written, printed, say, checks, exit }) => async (check) => {
+    const answered = await build({ params: {}, body: { args: [] } })
+    const compiled = await project.compiled()
+    const { graph, snapshot } = project.layout()
+    const { documents, places } = await compiled.documents()
+    const filed = documents.filter((d) => d.file !== undefined)
+    check(checks.buildWritesTheDocuments(), answered.status === exit.success && filed.every((d) => files.exists(d.file!) && files.read(d.file!) === written.render(d, places)))
+    check(checks.buildWritesTheGraph(), files.read(graph) === compiled.written() && files.read(snapshot) === compiled.snapshot())
+    const said = [
+      ...documents.filter((d) => d.group === ViewGroup.summary).map((d) => printed.render(d)),
+      say.written([...filed.map((d) => d.file!), graph, snapshot]),
+    ]
+    check(checks.buildPrintsTheSummary(), JSON.stringify(answered.body) === JSON.stringify(said))
+  },
+})
+
+/**
+ * A snapshot writes the graph in force
+ * The small project's snapshot, taken in memory: snapshot.json what the engine gives, the documents of the snapshot's
+ * view what the renderer of files gives them, named with the day of the graph.
+ */
+export const SnapshotTaken = scenario({
+  owner: "trame",
+  verifies: [Snapshot, ProjectCompiledHere, TheSmallProject],
+  env: Test,
+  deps: { snapshot: Snapshot, project: TheProject, files: Files, written: FileRendering, say: CommandWords, checks: ScenarioWords, exit: ExitStatus, sequences: Sequences },
+  body: ({ snapshot, project, files, written, say, checks, exit }) => async (check) => {
+    const answered = await snapshot({ params: {}, body: { args: [] } })
+    const compiled = await project.compiled()
+    const { documents, places } = await compiled.documents()
+    const taken = documents.filter((d) => d.view === DocumentName.snapshot && d.file !== undefined)
+    const file = project.layout().snapshot
+    check(checks.snapshotWritesItsDocuments(),
+      answered.status === exit.success && files.read(file) === compiled.snapshot() &&
+      taken.every((d) => files.read(d.file!) === written.render(d, places)) &&
+      JSON.stringify(answered.body) === JSON.stringify([say.snapshotTaken(compiled.today, [file, ...taken.map((d) => d.file!)])]))
+  },
 })

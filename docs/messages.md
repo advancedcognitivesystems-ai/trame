@@ -31,7 +31,7 @@ The language Trame speaks to people: British English. Its messages are written i
 
 ### A catalog counts in its language
 
-`CountsInTheLanguage` · `src/messages.ts:996` · status: **held**
+`CountsInTheLanguage` · `src/messages.ts:999` · status: **held**
 
 A count and its noun follow the plural rules of the language the catalog is written in, with the forms the catalog writes for each category; nothing below the catalogs presumes a language.
 
@@ -46,7 +46,7 @@ Consequences: A catalog that counts receives the decided language and counts by 
 
 - Decided by: trame
 - Serves: [A single source of truth](product.md#SingleSource)
-- Applied by: [Messages of the compiler](#CompilerMessages), [Messages of the views](#ViewMessages), [Messages of trame dev](#DevMessages), [Messages of the commands](#CommandMessages), [Messages of the scenarios](#ScenarioMessages), [Messages of an advance](#AdvanceMessages), [Words of the page](#PageWords), [Lists](../libs/documents/releases/0.2.0/docs/language.md#Lists)
+- Applied by: [Messages of the compiler](#CompilerMessages), [Messages of the views](#ViewMessages), [Messages of trame dev](#DevMessages), [Messages of the commands](#CommandMessages), [Messages of the scenarios](#ScenarioMessages), [Messages of an advance](#AdvanceMessages), [Words of the page](#PageWords), [Lists](../libs/documents/releases/0.3.0/docs/language.md#Lists)
 
 ## Message catalogs
 
@@ -54,7 +54,7 @@ Consequences: A catalog that counts receives the decided language and counts by 
 
 ### Messages of an advance
 
-`AdvanceMessages` · `src/messages.ts:907`
+`AdvanceMessages` · `src/messages.ts:910`
 
 What trame advance says as it goes, and what a generation says of itself.
 
@@ -180,6 +180,8 @@ What the commands print: summaries, usage, refusals.
     importRefused: (problem: string) => `refused: ${problem}`,
     kindRefused: (kind: string, laws: string[]) => `kind "${kind}" refused: does not respect ${laws.map((l) => `"${l}"`).join(", ")}`,
     viewRefused: (view: string, law: string, example: string) => `view "${view}" refused: "${law}" (${example})`,
+    /** What refuses the documents a command asks of the engine's API (since g132): each view that breaks a law, one per line. */
+    viewsRefused: (lines: readonly string[]) => lines.join("\n"),
     /** Where to read the details of the kinds refused. */
     kindLawDetails: () => "details: npm run test-kinds",
     /** Followed by the type errors, one per line. */
@@ -545,7 +547,7 @@ What the compiler, the wiring and the assembly say: diagnostics on the graph, re
 </details>
 
 - Owner: trame
-- Parameters: `language` ← [Language](#Language) · `lists` ← [Lists](../libs/documents/releases/0.2.0/docs/language.md#Lists)
+- Parameters: `language` ← [Language](#Language) · `lists` ← [Lists](../libs/documents/releases/0.3.0/docs/language.md#Lists)
 - Written in: [Language](#Language)
 - Used by: [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [Assembly](engine.md#Assembly), [Compiler](engine.md#Compiler), [Graph](engine.md#GraphApi), [Judged harder](engine.md#JudgedHarder), [Static reading](engine.md#StaticAnalysis), [Wiring](engine.md#Wiring)
 - Applies: [A catalog counts in its language](#CountsInTheLanguage), [The words are in catalogs](principles.md#WordsInCatalogs)
@@ -580,7 +582,7 @@ What the dev server prints while it watches the project.
 </details>
 
 - Owner: trame
-- Parameters: `language` ← [Language](#Language) · `lists` ← [Lists](../libs/documents/releases/0.2.0/docs/language.md#Lists)
+- Parameters: `language` ← [Language](#Language) · `lists` ← [Lists](../libs/documents/releases/0.3.0/docs/language.md#Lists)
 - Written in: [Language](#Language)
 - Used by: [trame dev server](engine.md#DevServer)
 - Applies: [A catalog counts in its language](#CountsInTheLanguage), [The words are in catalogs](principles.md#WordsInCatalogs)
@@ -648,7 +650,7 @@ What the drivers say about a body: hidden dependencies, access to the platform, 
 
 ### Words of Trame's views
 
-`EngineViewWords` · `src/messages.ts:685`
+`EngineViewWords` · `src/messages.ts:687`
 
 What the views of Trame's own graph say: the catalogue of literals, the versions of the engine.
 
@@ -661,7 +663,7 @@ The messages are written in `../engine-views/words.ts`.
 
 ### Words of the kinds
 
-`KindWords` · `src/messages.ts:665`
+`KindWords` · `src/messages.ts:667`
 
 What the kinds say: their labels, the labels of their fields and edges, what their holes say, what they render. The kinds are files of the language, outside the graph: their words are a catalog all the same, which they call; a kind writes no text of its own.
 
@@ -801,7 +803,7 @@ What the machine outputs, the lock, the payload, the date bundle, the difference
 
 ### Words of the page
 
-`PageWords` · `src/messages.ts:696`
+`PageWords` · `src/messages.ts:698`
 
 What the page says around the documents the engine wrote: the state of the compilation, the dates, the navigation, the banner, the figures, the explorer.
 
@@ -817,7 +819,7 @@ The messages are written in `./code/page/words.ts`.
 
 ### Messages of the platform
 
-`PlatformMessages` · `src/messages.ts:707`
+`PlatformMessages` · `src/messages.ts:709`
 
 What the implementations of the ports say (the command line, the terminal, the processes).
 
@@ -857,7 +859,7 @@ What the implementations of the ports say (the command line, the terminal, the p
 
 ### Messages of the scenarios
 
-`ScenarioMessages` · `src/messages.ts:736`
+`ScenarioMessages` · `src/messages.ts:738`
 
 The names of the checks that the engine's scenarios make.
 
@@ -982,6 +984,7 @@ The names of the checks that the engine's scenarios make.
     libraryCommandRun: (name: string) => `trame ${name} runs the library's command the example chose: its component assembled with that command alone, its program run in the engine's process with the rest of the line`,
     helpListsTheLibrary: (name: string) => `trame help lists ${name}, with the library's component that runs it`,
     hiddenCommandRefused: (name: string) => `Were ${name} a command the engine keeps, the project's would never run: an error of the graph`,
+    commandBeforeView: (name: string) => `Were ${name} also the name of a view, the project's command named like the engine's would still be asked first; named like no command of the engine, it would never run`,
     /** A command of the engine the project replaces (since g119). */
     engineCommandReplaced: (name: string) => `Were ${name} also a command of the engine, the project's would run instead, the engine's not`,
     /** A command of the engine the project has none of (since g119). */
@@ -1101,7 +1104,7 @@ What the loading of views and the compilation API say.
 
 ### Words of the views
 
-`ViewWords` · `src/messages.ts:675`
+`ViewWords` · `src/messages.ts:677`
 
 What the views say: their titles, their introductions, their headings, what they say of the graph.
 

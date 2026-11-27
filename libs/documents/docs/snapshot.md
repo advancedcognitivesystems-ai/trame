@@ -628,9 +628,9 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 131
+- Version: 134
 - How it joins the graph: language
-- Its path: ../../generations/g131
+- Its path: ../../generations/g134
 - Serves: Documents rendered once, for every project
 
 ### The people of the repository
@@ -699,6 +699,18 @@ Release · `R0_2_0`
 - Released on: 2026-11-27
 - What changes: The renderers: one walk given a syntax, Markdown with Mermaid for files, text for the terminal, the common rendering and its words, the syntax elements of Markdown, Mermaid, the terminal and HTML, the format decisions and the palette
 - Fingerprint: 85e5bed88e2c5ef3
+- Language: shared
+- Serves: Documents rendered once, for every project
+
+### Version 0.3.0
+
+Release · `R0_3_0`
+
+- Released by: trame
+- Version: 0.3.0
+- Released on: 2026-11-27
+- What changes: The renderers' context is the kernel's places, which the engine's API gives (g132); generation 132
+- Fingerprint: 70cc1beb5f8ab540
 - Language: shared
 - Serves: Documents rendered once, for every project
 

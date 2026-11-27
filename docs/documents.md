@@ -61,7 +61,7 @@ The language the documents are written in (libs/documents' port, since g129): Tr
 - Owner: trame
 - Parameters: `language` ← [Language](messages.md#Language)
 - Body: inline, in the declaration
-- Implements: [The language of the documents](../libs/documents/releases/0.2.0/docs/language.md#DocumentLanguage)
+- Implements: [The language of the documents](../libs/documents/releases/0.3.0/docs/language.md#DocumentLanguage)
 - Chosen by: [Documents written in Trame's language](#DocumentsInOurLanguage)
 - Applies: [The punctuation is the language's](#PunctuationOfTheLanguage)
 - Verified by: [The documents write in the decided language](scenarios.md#DocumentWords)
@@ -95,7 +95,7 @@ In [Browser](architecture.md#Browser), [Local](architecture.md#Local), [A sessio
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [The language of the documents](../libs/documents/releases/0.2.0/docs/language.md#DocumentLanguage) | [The documents in Trame's language](#OurDocumentLanguage) | a function |
+| [The language of the documents](../libs/documents/releases/0.3.0/docs/language.md#DocumentLanguage) | [The documents in Trame's language](#OurDocumentLanguage) | a function |
 
 Context: The views speak the engine's language: what renders their documents, on a machine, in the scenarios or in the page, writes its dates, lists and marks.
 

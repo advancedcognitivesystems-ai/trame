@@ -1052,7 +1052,10 @@ export const ProjectCommandRun = scenario({
     check(messages.engineCommandKept(line.audit), kept.status === undefined && d.processLog.started().length === after)
     // Named like a command the engine keeps, it would never run: an error of the graph.
     const { c } = await d.preparation.prepare(d.preparation.options(name, [], line.build))
-    check(messages.hiddenCommandRefused(name), d.commands.hidden(c, [name], []).some((x) => x.what === d.said.commandHiddenByEngine(name)))
+    check(messages.hiddenCommandRefused(name), d.commands.hidden(c, [name], [], []).some((x) => x.what === d.said.commandHiddenByEngine(name)))
+    check(messages.commandBeforeView(name),
+      d.commands.hidden(c, [], [name], [name]).every((x) => x.what !== d.said.commandHiddenByView(name)) &&
+      d.commands.hidden(c, [], [name], []).some((x) => x.what === d.said.commandHiddenByView(name)))
   },
 })
 

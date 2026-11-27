@@ -69,7 +69,7 @@ The library as its people write it: what a version freezes, and what projects im
 
 - Path: `src`
 
-Built 27 November 2026 by claude, fingerprint `a4e1cc90fe250c32b1af4c5dea86f06c82228e98eef4c9e01a8977583efc0be0`.
+Built 27 November 2026 by claude, fingerprint `d586dda211403d3ff1b173456e0c7c5ce30b81b49b78b023bbbf32cb0ac14d40`.
 
 Shipped by [The next version](#NextVersion) 26 November 2026, fingerprint `440585b54dad37fd83f2a6a529523e8b4bd6eff94a1fc4bd17f7b483ba28d312`.
 
@@ -78,6 +78,8 @@ Shipped by [The next version](#NextVersion) 26 November 2026, fingerprint `74613
 Shipped by [The next version](#NextVersion) 27 November 2026, fingerprint `5dc07eaab63380ad10699314ed08bfa00d0ec47fbe4fb7345f4f7e71a29951df`.
 
 Shipped by [The next version](#NextVersion) 27 November 2026, fingerprint `a4e1cc90fe250c32b1af4c5dea86f06c82228e98eef4c9e01a8977583efc0be0`.
+
+Shipped by [The next version](#NextVersion) 27 November 2026, fingerprint `d586dda211403d3ff1b173456e0c7c5ce30b81b49b78b023bbbf32cb0ac14d40`.
 
 - Owner: trame
 - A version of the project: true
@@ -98,12 +100,15 @@ A version of the commands, for the projects that import it: shipped by trame rel
 | Obligation | Status | Why |
 |---|---|---|
 | [The commands of every project](#TheLibrary) | **unknown** | shipped |
+| [A build writes the documents and the graph](scenarios.md#BuildWritesTheDocuments) | **held** | [Its code verified](#CodeVerified), for [Build](commands.md#Build) |
 | [After a build, nothing changes](scenarios.md#PlanAfterTheSameBuild) | **held** | [Its code verified](#CodeVerified), for [Two builds compared](commands.md#BuildComparison) |
 | [A plan says what a build would change](scenarios.md#PlanSaysWhatChanges) | **held** | [Its code verified](#CodeVerified), for [Two builds compared](commands.md#BuildComparison) |
 | [Without a build, a plan says so](scenarios.md#PlanWithoutABuild) | **held** | [Its code verified](#CodeVerified), for [Plan](commands.md#Plan) |
+| [A snapshot writes the graph in force](scenarios.md#SnapshotTaken) | **held** | [Its code verified](#CodeVerified), for [Snapshot](commands.md#Snapshot) |
 | [A command is played on a real graph](scenarios.md#PlayedOnARealGraph) | **held** | [Its decisions applied](#DecisionsApplied), for [Compiled by the engine that plays them](scenarios.md#CompiledByTheEngine) |
+| [A command writes documents as a project does](scenarios.md#WrittenAsAProjectDoes) | **held** | [Its decisions applied](#DecisionsApplied), for [Files in Markdown, the terminal in text](scenarios.md#DocumentsAsFiles) |
 
-Shipped 27 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-27-26b52336.json`.
+Shipped 27 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-27-b3495299.json`.
 
 - Owner: trame
 - Ships: [The commands of every project](#TheLibrary)
@@ -124,7 +129,7 @@ The workflow that checks each pull request, written by trame ship from the graph
 |---|---|---|
 | [The pull requests' workflow](#PullRequestWorkflow) | **held** | shipped |
 
-Shipped 27 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-27-bb33289a.json`.
+Shipped 27 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-27-b810d2eb.json`.
 
 - Owner: trame
 - Ships: [The pull requests' workflow](#PullRequestWorkflow)

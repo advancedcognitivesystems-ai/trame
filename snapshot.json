@@ -3148,6 +3148,7 @@
           "files": "documents/rendering.FileRendering",
           "screen": "documents/rendering.TerminalRendering",
           "terminal": "architecture.Terminal",
+          "texts": "std/algebra.Texts",
           "messages": "messages.CommandMessages"
         },
         "body": {
@@ -6598,10 +6599,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "documents",
-        "version": "0.2.0",
+        "version": "0.3.0",
         "joins": "library",
         "from": "path",
-        "at": "libs/documents/releases/0.2.0"
+        "at": "libs/documents/releases/0.3.0"
       }
     },
     {
@@ -6628,10 +6629,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "commands",
-        "version": "0.2.0",
+        "version": "0.3.0",
         "joins": "library",
         "from": "path",
-        "at": "libs/commands/releases/0.2.0"
+        "at": "libs/commands/releases/0.3.0"
       }
     },
     {
@@ -10168,6 +10169,48 @@
       }
     },
     {
+      "id": "releases.G132",
+      "kind": "release",
+      "title": "Generation 132",
+      "fields": {
+        "owner": "trame",
+        "version": "g132",
+        "date": "2026-11-27",
+        "what": "The engine's API gives a compiled project's documents (the views' documents with where each card is) and one view's document or why there is none; the engine's view answers through it",
+        "fingerprint": "c8ae3abb70c8704d",
+        "language": "shared",
+        "archive": "c4eba3cff58c1b7b"
+      }
+    },
+    {
+      "id": "releases.G133",
+      "kind": "release",
+      "title": "Generation 133",
+      "fields": {
+        "owner": "trame",
+        "version": "g133",
+        "date": "2026-11-27",
+        "what": "A component that names no environment is offered to other projects: the project that declares it has nowhere to assemble it, and the engine's command of that name answers there",
+        "fingerprint": "03060a6259d03b8e",
+        "language": "shared",
+        "archive": "c4eba3cff58c1b7b"
+      }
+    },
+    {
+      "id": "releases.G134",
+      "kind": "release",
+      "title": "Generation 134",
+      "fields": {
+        "owner": "trame",
+        "version": "g134",
+        "date": "2026-11-27",
+        "what": "A project's command named like a command of the engine it does not keep is asked before a view of that name: libs/commands' snapshot replaces the engine's",
+        "fingerprint": "a6aa5835fd172aa0",
+        "language": "shared",
+        "archive": "c4eba3cff58c1b7b"
+      }
+    },
+    {
       "id": "releases.G14",
       "kind": "release",
       "title": "Generation 14",
@@ -12333,7 +12376,7 @@
       "fields": {
         "owner": "trame",
         "context": "The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.",
-        "consequences": "trame plan runs on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's plan stays until the generation that removes the commands every project then runs from the library.",
+        "consequences": "trame plan, build and snapshot run on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's own stay until the generation that removes the commands every project then runs from the library.",
         "rejected": {
           "The engine's own commands, kept": "they would stay out of reach of every project's choice, and the engine the only one to reach its modules"
         }
@@ -24604,6 +24647,36 @@
     {
       "from": "releases.G131",
       "to": "releases.G130",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G132",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G132",
+      "to": "releases.G131",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G133",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G133",
+      "to": "releases.G132",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G134",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G134",
+      "to": "releases.G133",
       "kind": "assembledBy"
     },
     {

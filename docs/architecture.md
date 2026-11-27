@@ -42,7 +42,7 @@ The `trame` program: build, views, laws, snapshot, publication, export, dev, ass
 - Deployed in: [Local](#Local), [Test](#Test)
 - Exposes: [Advance](commands.md#Advance), [Amend](commands.md#Amend), [Assemble a component](commands.md#Assemble), [Audit the packages](commands.md#Audit), [Build](commands.md#Build), [A command of the project, or a view](commands.md#CommandOrView), [Deliver](commands.md#Deliver), [Start trame dev](commands.md#Dev), [Ask the machine](commands.md#Doctor), [Payload](commands.md#EmitPayload), [Examples](commands.md#Examples), [Export the page](commands.md#Export), [Help](commands.md#Help), [Start a project](commands.md#Init), [Plan a build](commands.md#Plan), [Publish](commands.md#Publish), [Record evidence](commands.md#RecordEvidence), [Fill the registry](commands.md#Registry), [Release a version](commands.md#Release), [Run a component](commands.md#Run), [Ship](commands.md#Ship), [Show a view](commands.md#ShowView), [Take the snapshot](commands.md#TakeSnapshot), [Test the laws](commands.md#TestKinds), [Upgrade](commands.md#Upgrade), [Write the manifest](commands.md#WriteManifest)
 - Applies: [The engine: a graph like any product's](principles.md#EngineLayer)
-- Released as: [Generation 1](releases.md#G1), [Generation 10](releases.md#G10), [Generation 100](releases.md#G100), [Generation 101](releases.md#G101), [Generation 102](releases.md#G102), [Generation 103](releases.md#G103), [Generation 104](releases.md#G104), [Generation 105](releases.md#G105), [Generation 106](releases.md#G106), [Generation 107](releases.md#G107), [Generation 108](releases.md#G108), [Generation 109](releases.md#G109), [Generation 11](releases.md#G11), [Generation 110](releases.md#G110), [Generation 111](releases.md#G111), [Generation 112](releases.md#G112), [Generation 113](releases.md#G113), [Generation 114](releases.md#G114), [Generation 115](releases.md#G115), [Generation 116](releases.md#G116), [Generation 117](releases.md#G117), [Generation 118](releases.md#G118), [Generation 119](releases.md#G119), [Generation 12](releases.md#G12), [Generation 120](releases.md#G120), [Generation 121](releases.md#G121), [Generation 122](releases.md#G122), [Generation 123](releases.md#G123), [Generation 124](releases.md#G124), [Generation 125](releases.md#G125), [Generation 126](releases.md#G126), [Generation 127](releases.md#G127), [Generation 128](releases.md#G128), [Generation 129](releases.md#G129), [Generation 13](releases.md#G13), [Generation 130](releases.md#G130), [Generation 131](releases.md#G131), [Generation 14](releases.md#G14), [Generation 15](releases.md#G15), [Generation 16](releases.md#G16), [Generation 17](releases.md#G17), [Generation 18](releases.md#G18), [Generation 19](releases.md#G19), [Generation 2](releases.md#G2), [Generation 20](releases.md#G20), [Generation 21](releases.md#G21), [Generation 22](releases.md#G22), [Generation 23](releases.md#G23), [Generation 24](releases.md#G24), [Generation 25](releases.md#G25), [Generation 26](releases.md#G26), [Generation 27](releases.md#G27), [Generation 28](releases.md#G28), [Generation 29](releases.md#G29), [Generation 3](releases.md#G3), [Generation 30](releases.md#G30), [Generation 31](releases.md#G31), [Generation 32](releases.md#G32), [Generation 33](releases.md#G33), [Generation 34](releases.md#G34), [Generation 35](releases.md#G35), [Generation 36](releases.md#G36), [Generation 37](releases.md#G37), [Generation 38](releases.md#G38), [Generation 39](releases.md#G39), [Generation 4](releases.md#G4), [Generation 40](releases.md#G40), [Generation 41](releases.md#G41), [Generation 42](releases.md#G42), [Generation 43](releases.md#G43), [Generation 44](releases.md#G44), [Generation 45](releases.md#G45), [Generation 46](releases.md#G46), [Generation 47](releases.md#G47), [Generation 48](releases.md#G48), [Generation 49](releases.md#G49), [Generation 5](releases.md#G5), [Generation 50](releases.md#G50), [Generation 51](releases.md#G51), [Generation 52](releases.md#G52), [Generation 53](releases.md#G53), [Generation 54](releases.md#G54), [Generation 55](releases.md#G55), [Generation 56](releases.md#G56), [Generation 57](releases.md#G57), [Generation 58](releases.md#G58), [Generation 59](releases.md#G59), [Generation 6](releases.md#G6), [Generation 60](releases.md#G60), [Generation 61](releases.md#G61), [Generation 62](releases.md#G62), [Generation 63](releases.md#G63), [Generation 64](releases.md#G64), [Generation 65](releases.md#G65), [Generation 66](releases.md#G66), [Generation 67](releases.md#G67), [Generation 68](releases.md#G68), [Generation 69](releases.md#G69), [Generation 7](releases.md#G7), [Generation 70](releases.md#G70), [Generation 71](releases.md#G71), [Generation 72](releases.md#G72), [Generation 73](releases.md#G73), [Generation 74](releases.md#G74), [Generation 75](releases.md#G75), [Generation 76](releases.md#G76), [Generation 77](releases.md#G77), [Generation 78](releases.md#G78), [Generation 79](releases.md#G79), [Generation 8](releases.md#G8), [Generation 80](releases.md#G80), [Generation 81](releases.md#G81), [Generation 82](releases.md#G82), [Generation 83](releases.md#G83), [Generation 84](releases.md#G84), [Generation 85](releases.md#G85), [Generation 86](releases.md#G86), [Generation 87](releases.md#G87), [Generation 88](releases.md#G88), [Generation 89](releases.md#G89), [Generation 9](releases.md#G9), [Generation 90](releases.md#G90), [Generation 91](releases.md#G91), [Generation 92](releases.md#G92), [Generation 93](releases.md#G93), [Generation 94](releases.md#G94), [Generation 95](releases.md#G95), [Generation 96](releases.md#G96), [Generation 97](releases.md#G97), [Generation 98](releases.md#G98), [Generation 99](releases.md#G99)
+- Released as: [Generation 1](releases.md#G1), [Generation 10](releases.md#G10), [Generation 100](releases.md#G100), [Generation 101](releases.md#G101), [Generation 102](releases.md#G102), [Generation 103](releases.md#G103), [Generation 104](releases.md#G104), [Generation 105](releases.md#G105), [Generation 106](releases.md#G106), [Generation 107](releases.md#G107), [Generation 108](releases.md#G108), [Generation 109](releases.md#G109), [Generation 11](releases.md#G11), [Generation 110](releases.md#G110), [Generation 111](releases.md#G111), [Generation 112](releases.md#G112), [Generation 113](releases.md#G113), [Generation 114](releases.md#G114), [Generation 115](releases.md#G115), [Generation 116](releases.md#G116), [Generation 117](releases.md#G117), [Generation 118](releases.md#G118), [Generation 119](releases.md#G119), [Generation 12](releases.md#G12), [Generation 120](releases.md#G120), [Generation 121](releases.md#G121), [Generation 122](releases.md#G122), [Generation 123](releases.md#G123), [Generation 124](releases.md#G124), [Generation 125](releases.md#G125), [Generation 126](releases.md#G126), [Generation 127](releases.md#G127), [Generation 128](releases.md#G128), [Generation 129](releases.md#G129), [Generation 13](releases.md#G13), [Generation 130](releases.md#G130), [Generation 131](releases.md#G131), [Generation 132](releases.md#G132), [Generation 133](releases.md#G133), [Generation 134](releases.md#G134), [Generation 14](releases.md#G14), [Generation 15](releases.md#G15), [Generation 16](releases.md#G16), [Generation 17](releases.md#G17), [Generation 18](releases.md#G18), [Generation 19](releases.md#G19), [Generation 2](releases.md#G2), [Generation 20](releases.md#G20), [Generation 21](releases.md#G21), [Generation 22](releases.md#G22), [Generation 23](releases.md#G23), [Generation 24](releases.md#G24), [Generation 25](releases.md#G25), [Generation 26](releases.md#G26), [Generation 27](releases.md#G27), [Generation 28](releases.md#G28), [Generation 29](releases.md#G29), [Generation 3](releases.md#G3), [Generation 30](releases.md#G30), [Generation 31](releases.md#G31), [Generation 32](releases.md#G32), [Generation 33](releases.md#G33), [Generation 34](releases.md#G34), [Generation 35](releases.md#G35), [Generation 36](releases.md#G36), [Generation 37](releases.md#G37), [Generation 38](releases.md#G38), [Generation 39](releases.md#G39), [Generation 4](releases.md#G4), [Generation 40](releases.md#G40), [Generation 41](releases.md#G41), [Generation 42](releases.md#G42), [Generation 43](releases.md#G43), [Generation 44](releases.md#G44), [Generation 45](releases.md#G45), [Generation 46](releases.md#G46), [Generation 47](releases.md#G47), [Generation 48](releases.md#G48), [Generation 49](releases.md#G49), [Generation 5](releases.md#G5), [Generation 50](releases.md#G50), [Generation 51](releases.md#G51), [Generation 52](releases.md#G52), [Generation 53](releases.md#G53), [Generation 54](releases.md#G54), [Generation 55](releases.md#G55), [Generation 56](releases.md#G56), [Generation 57](releases.md#G57), [Generation 58](releases.md#G58), [Generation 59](releases.md#G59), [Generation 6](releases.md#G6), [Generation 60](releases.md#G60), [Generation 61](releases.md#G61), [Generation 62](releases.md#G62), [Generation 63](releases.md#G63), [Generation 64](releases.md#G64), [Generation 65](releases.md#G65), [Generation 66](releases.md#G66), [Generation 67](releases.md#G67), [Generation 68](releases.md#G68), [Generation 69](releases.md#G69), [Generation 7](releases.md#G7), [Generation 70](releases.md#G70), [Generation 71](releases.md#G71), [Generation 72](releases.md#G72), [Generation 73](releases.md#G73), [Generation 74](releases.md#G74), [Generation 75](releases.md#G75), [Generation 76](releases.md#G76), [Generation 77](releases.md#G77), [Generation 78](releases.md#G78), [Generation 79](releases.md#G79), [Generation 8](releases.md#G8), [Generation 80](releases.md#G80), [Generation 81](releases.md#G81), [Generation 82](releases.md#G82), [Generation 83](releases.md#G83), [Generation 84](releases.md#G84), [Generation 85](releases.md#G85), [Generation 86](releases.md#G86), [Generation 87](releases.md#G87), [Generation 88](releases.md#G88), [Generation 89](releases.md#G89), [Generation 9](releases.md#G9), [Generation 90](releases.md#G90), [Generation 91](releases.md#G91), [Generation 92](releases.md#G92), [Generation 93](releases.md#G93), [Generation 94](releases.md#G94), [Generation 95](releases.md#G95), [Generation 96](releases.md#G96), [Generation 97](releases.md#G97), [Generation 98](releases.md#G98), [Generation 99](releases.md#G99)
 - Produces: [The candidate engine](sdlc.md#EngineCandidate)
 
 ## Ports
@@ -65,8 +65,8 @@ An amendment written by trame amend or from the page is recorded where the proje
 | [Local](#Local) | [Amendments in place](platform.md#InPlaceSources) | [Amendments go in the sources](platform.md#AmendmentsInPlace) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Amendments in place](platform.md#InPlaceSources) | [Amendments go in the sources](platform.md#AmendmentsInPlace) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -89,8 +89,8 @@ Gathers the page's program and what it imports into a single module for the brow
 | [Local](#Local) | [esbuild](platform.md#Esbuild) | [esbuild bundles the page's program](platform.md#EsbuildBundles) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [esbuild](platform.md#Esbuild) | [esbuild bundles the page's program](platform.md#EsbuildBundles) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -111,8 +111,8 @@ Gathers the page's program and what it imports into a single module for the brow
 | [Local](#Local) | [System clock](platform.md#SystemClock) | [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Stopped clock](platform.md#StoppedClock) | [Scenarios run in memory](platform.md#InMemoryScenarios) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -135,8 +135,8 @@ Exposes Trame's commands: reads the arguments, calls the command, exits with its
 | [Local](#Local) | [Command line](platform.md#NodeCommandLine) | [NodePlatform](platform.md#NodePlatform) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Command line](platform.md#NodeCommandLine) | [NodePlatform](platform.md#NodePlatform) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -159,8 +159,8 @@ A text made smaller for a page to carry: the browser decompresses it.
 | [Local](#Local) | [gzip, with Node's zlib](platform.md#NodeCompression) | [NodePlatform](platform.md#NodePlatform) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [gzip, with Node's zlib](platform.md#NodeCompression) | [NodePlatform](platform.md#NodePlatform) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -182,8 +182,8 @@ The graph an exported page carries, made whole again by the browser.
 | [Local](#Local) | none | — |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | none | — |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -203,8 +203,8 @@ The graph an exported page carries, made whole again by the browser.
 | [Local](#Local) | [System files, for reading](platform.md#DiskReading) | [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Files in memory, over the disk](platform.md#MemoryFiles) | [Scenarios write in memory, over the disk](platform.md#FilesInMemoryOverTheDisk) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -236,8 +236,8 @@ Copies, links, removes and compares files and directories: what an advance does 
 | [Local](#Local) | [Trees on disk](platform.md#DiskTrees) | [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Files in memory, over the disk](platform.md#MemoryFiles) | [Scenarios write in memory, over the disk](platform.md#FilesInMemoryOverTheDisk) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -258,8 +258,8 @@ Copies, links, removes and compares files and directories: what an advance does 
 | [Local](#Local) | [System files, for writing](platform.md#DiskWriting) | [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Files in memory, over the disk](platform.md#MemoryFiles) | [Scenarios write in memory, over the disk](platform.md#FilesInMemoryOverTheDisk) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -288,8 +288,8 @@ The compiled graph the page shows: carried by an exported page, or given by tram
 | [Local](#Local) | none | — |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | none | — |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -310,8 +310,8 @@ The compiled graph the page shows: carried by an exported page, or given by tram
 | [Local](#Local) | [SHA-256 hashes](platform.md#NodeHashing) | [NodePlatform](platform.md#NodePlatform) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [SHA-256 hashes](platform.md#NodeHashing) | [NodePlatform](platform.md#NodePlatform) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -331,8 +331,8 @@ The compiled graph the page shows: carried by an exported page, or given by tram
 | [Local](#Local) | [Node HTTP server](platform.md#NodeHttpServer) | [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [A server in memory](platform.md#MemoryHttpServer) | [Scenarios run in memory](platform.md#InMemoryScenarios) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -355,8 +355,8 @@ What a computation found, kept under its key while the process runs. Asked again
 | [Local](#Local) | [Results kept in the process](platform.md#ResultsInTheProcess) | [NodePlatform](platform.md#NodePlatform) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Results kept in the process](platform.md#ResultsInTheProcess) | [NodePlatform](platform.md#NodePlatform) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -378,8 +378,8 @@ What a run found (a scenario played), kept under the fingerprint of what it ran:
 | [Local](#Local) | [The runs of a project](engine.md#ProjectRuns) | [A run is kept while what it reads is as it was](platform.md#RunsByWhatTheyRead) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [The runs of a project](engine.md#ProjectRuns) | [A run is kept while what it reads is as it was](platform.md#RunsByWhatTheyRead) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -408,8 +408,8 @@ Runs a module of the graph, of a kind or of a view, and reads what it exports.
 | [Local](#Local) | [tsx loader](platform.md#TsxLoader) | [tsx runs TypeScript](platform.md#TsxRuns) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [tsx loader](platform.md#TsxLoader) | [tsx runs TypeScript](platform.md#TsxRuns) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -432,8 +432,8 @@ Installs the packages a project's manifest names and keeps its lockfile with the
 | [Local](#Local) | [npm installs](platform.md#NpmInstall) | [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [No installer in test](platform.md#NoInstallsInTest) | [Scenarios write in memory, over the disk](platform.md#FilesInMemoryOverTheDisk) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -456,8 +456,8 @@ What the registry says of the packages a project installs: their known vulnerabi
 | [Local](#Local) | [npm's reports](platform.md#NpmReports) | [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [No registry in test](platform.md#NoReportsInTest) | [Scenarios run in memory](platform.md#InMemoryScenarios) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -485,8 +485,8 @@ What a person amends in the page goes to trame dev, which says first what it wou
 | [Local](#Local) | none | — |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | none | — |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -514,8 +514,8 @@ The document, the rendering and the node the person was on, kept for their next 
 | [Local](#Local) | none | — |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | none | — |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -538,8 +538,8 @@ The document the page writes in and hears, and what it asks of the window around
 | [Local](#Local) | none | — |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | none | — |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -562,8 +562,8 @@ Computations on file paths, without touching the files.
 | [Local](#Local) | [Node paths](platform.md#NodePaths) | [NodePlatform](platform.md#NodePlatform) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Node paths](platform.md#NodePaths) | [NodePlatform](platform.md#NodePlatform) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -585,8 +585,8 @@ The registry of nodes and kinds, and the tooling of frozen programs: what the la
 | [Local](#Local) | [Trame's prelude](platform.md#TramePrelude) | [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Trame's prelude](platform.md#TramePrelude) | [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -622,8 +622,8 @@ The current directory, the environment, and starting other processes.
 | [Local](#Local) | [Node process](platform.md#NodeProcess) | [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Example process](platform.md#ExampleProcess) | [Scenarios run in memory](platform.md#InMemoryScenarios) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -646,8 +646,8 @@ In a scenario: where the next commands run, what the programs started answer, an
 | [Local](#Local) | none | — |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Example process](platform.md#ExampleProcess) | [Scenarios run in memory](platform.md#InMemoryScenarios) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -669,8 +669,8 @@ Runs another engine (a frozen generation, a candidate) and reads what it prints.
 | [Local](#Local) | [Node programs](platform.md#NodePrograms) | [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Example process](platform.md#ExampleProcess) | [Scenarios run in memory](platform.md#InMemoryScenarios) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -691,8 +691,8 @@ Runs another engine (a frozen generation, a candidate) and reads what it prints.
 | [Local](#Local) | [Page resources](platform.md#PageResources) | [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Page resources](platform.md#PageResources) | [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -714,8 +714,8 @@ The runs of a project under their keys: in the process (the scenarios of the sce
 | [Local](#Local) | [Runs kept on disk](platform.md#RunsOnDisk) | [On a machine, runs are kept on disk](platform.md#RunsKeptOnDisk) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Runs kept in the process](platform.md#RunsInTheProcess) | [In the scenarios, runs are kept in the process](platform.md#RunsKeptInTheProcess) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -738,8 +738,8 @@ In a scenario: asks the server started in memory for a path.
 | [Local](#Local) | none | — |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [A server in memory](platform.md#MemoryHttpServer) | [Scenarios run in memory](platform.md#InMemoryScenarios) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -759,8 +759,8 @@ In a scenario: asks the server started in memory for a path.
 | [Local](#Local) | [Attribution](shipping.md#Attribution) | [Evidence sealed by attribution](shipping.md#SealedByAttribution) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Attribution](shipping.md#Attribution) | [Evidence sealed by attribution](shipping.md#SealedByAttribution) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -782,8 +782,8 @@ Parses a text with a tree-sitter grammar, and gives back what queries catch in i
 | [Local](#Local) | [tree-sitter in WebAssembly](platform.md#WebTreeSitter) | [tree-sitter reads the bodies](platform.md#TreeSitterReads) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [tree-sitter in WebAssembly](platform.md#WebTreeSitter) | [tree-sitter reads the bodies](platform.md#TreeSitterReads) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -815,8 +815,8 @@ The arguments, the outputs, the exit code.
 | [Local](#Local) | [Node terminal](platform.md#NodeTerminal) | [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Terminal in memory](platform.md#MemoryTerminal) | [Scenarios run in memory](platform.md#InMemoryScenarios) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -839,8 +839,8 @@ What the engine printed, when the terminal is simulated.
 | [Local](#Local) | none | — |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Terminal in memory](platform.md#MemoryTerminal) | [Scenarios run in memory](platform.md#InMemoryScenarios) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -860,8 +860,8 @@ What the engine printed, when the terminal is simulated.
 | [Local](#Local) | [Node timer](platform.md#NodeTimer) | [NodePlatform](platform.md#NodePlatform) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Node timer](platform.md#NodeTimer) | [NodePlatform](platform.md#NodePlatform) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -884,8 +884,8 @@ Reads the code of the graph and checks it.
 | [Local](#Local) | [TypeScript compiler](platform.md#RealTypeScript) | [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations) |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [TypeScript compiler](platform.md#RealTypeScript) | [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -909,8 +909,8 @@ What the engine wrote, when writing is simulated.
 | [Local](#Local) | none | — |
 | [A session of Claude Code](#Session) | none | — |
 | [Test](#Test) | [Files in memory, over the disk](platform.md#MemoryFiles) | [Scenarios write in memory, over the disk](platform.md#FilesInMemoryOverTheDisk) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 

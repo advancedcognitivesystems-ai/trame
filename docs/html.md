@@ -228,7 +228,7 @@ Section: 13.1.2 Elements · `https://html.spec.whatwg.org/multipage/syntax.html#
 | `"main", {}, ["<article class=\"doc\" id=\"doc\"></article>"]` | `["<main>","  <article class=\"doc\" id=\"doc\"></article>","</main>"]` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [HTML](../std/releases/0.30.0/docs/html.md#Html) · `startTag` ← [Start tag](../libs/documents/releases/0.2.0/docs/html.md#HtmlStartTag) · `endTag` ← [End tag](../libs/documents/releases/0.2.0/docs/html.md#HtmlEndTag)
+- Parameters: `standard` ← [HTML](../std/releases/0.30.0/docs/html.md#Html) · `startTag` ← [Start tag](../libs/documents/releases/0.3.0/docs/html.md#HtmlStartTag) · `endTag` ← [End tag](../libs/documents/releases/0.3.0/docs/html.md#HtmlEndTag)
 - Body: inline, in the declaration
 - Defined by: [HTML](../std/releases/0.30.0/docs/html.md#Html)
 - Read in: [HTML markup](../std/releases/0.30.0/docs/languages.md#HtmlMarkup)
@@ -386,7 +386,7 @@ Section: 4.12.1.3 Restrictions for contents of script elements · `https://html.
 | `"const s = \"<!--\""` | `"<script>const s = \"<\\!--\"</script>"` | held, read as HTML markup |
 
 - Owner: trame
-- Parameters: `standard` ← [HTML](../std/releases/0.30.0/docs/html.md#Html) · `element` ← [HTML element](../libs/documents/releases/0.2.0/docs/html.md#HtmlElement)
+- Parameters: `standard` ← [HTML](../std/releases/0.30.0/docs/html.md#Html) · `element` ← [HTML element](../libs/documents/releases/0.3.0/docs/html.md#HtmlElement)
 - Body: inline, in the declaration
 - Defined by: [HTML](../std/releases/0.30.0/docs/html.md#Html)
 - Read in: [HTML markup](../std/releases/0.30.0/docs/languages.md#HtmlMarkup)

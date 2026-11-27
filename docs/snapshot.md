@@ -1010,7 +1010,7 @@ Function · `ReferencesModule` · **held**
 Function · `RenderView` · **held**
 
 - Owner: trame
-- Parameters: { line: conventions.TrameCommands, json: conventions.JsonFormatting, preparation: commands.Preparation, views: engine.Views, files: documents/rendering.FileRendering, screen: documents/rendering.TerminalRendering, terminal: architecture.Terminal, messages: messages.CommandMessages }
+- Parameters: { line: conventions.TrameCommands, json: conventions.JsonFormatting, preparation: commands.Preparation, views: engine.Views, files: documents/rendering.FileRendering, screen: documents/rendering.TerminalRendering, terminal: architecture.Terminal, texts: std/algebra.Texts, messages: messages.CommandMessages }
 - Serves: A specification that runs
 - Depends on: Trame's commands, JSON formatting, Preparation, Views, Terminal, Messages of the commands
 
@@ -2564,10 +2564,10 @@ Package · `DocumentRenderers`
 
 - Owner: trame
 - Name: documents
-- Version: 0.2.0
+- Version: 0.3.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: libs/documents/releases/0.2.0
+- Its path: libs/documents/releases/0.3.0
 - Serves: A single source of truth
 
 ### esbuild
@@ -2586,10 +2586,10 @@ Package · `GenericCommands`
 
 - Owner: trame
 - Name: commands
-- Version: 0.2.0
+- Version: 0.3.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: libs/commands/releases/0.2.0
+- Its path: libs/commands/releases/0.3.0
 - Serves: A single source of truth
 
 ### Grammar of HCL
@@ -4553,6 +4553,48 @@ Release · `G131`
 - Releases: Trame on the command line
 - Assembled by: Generation 130
 
+### Generation 132
+
+Release · `G132`
+
+- Released by: trame
+- Version: g132
+- Released on: 2026-11-27
+- What changes: The engine's API gives a compiled project's documents (the views' documents with where each card is) and one view's document or why there is none; the engine's view answers through it
+- Fingerprint: c8ae3abb70c8704d
+- Language: shared
+- Language archived: c4eba3cff58c1b7b
+- Releases: Trame on the command line
+- Assembled by: Generation 131
+
+### Generation 133
+
+Release · `G133`
+
+- Released by: trame
+- Version: g133
+- Released on: 2026-11-27
+- What changes: A component that names no environment is offered to other projects: the project that declares it has nowhere to assemble it, and the engine's command of that name answers there
+- Fingerprint: 03060a6259d03b8e
+- Language: shared
+- Language archived: c4eba3cff58c1b7b
+- Releases: Trame on the command line
+- Assembled by: Generation 132
+
+### Generation 134
+
+Release · `G134`
+
+- Released by: trame
+- Version: g134
+- Released on: 2026-11-27
+- What changes: A project's command named like a command of the engine it does not keep is asked before a view of that name: libs/commands' snapshot replaces the engine's
+- Fingerprint: a6aa5835fd172aa0
+- Language: shared
+- Language archived: c4eba3cff58c1b7b
+- Releases: Trame on the command line
+- Assembled by: Generation 133
+
 ### Generation 14
 
 Release · `G14`
@@ -6359,7 +6401,7 @@ Technical choice · `CommandsWrittenOnce` · **unknown**
 
 - Decided by: trame
 - Context: The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.
-- Consequences: trame plan runs on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's plan stays until the generation that removes the commands every project then runs from the library.
+- Consequences: trame plan, build and snapshot run on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's own stay until the generation that removes the commands every project then runs from the library.
 - Rejected: The engine's own commands, kept, they would stay out of reach of every project's choice, and the engine the only one to reach its modules
 - In: Local
 - Serves: A specification that runs

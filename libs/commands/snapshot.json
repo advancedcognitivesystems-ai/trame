@@ -2,6 +2,31 @@
   "at": "2026-11-27",
   "nodes": [
     {
+      "id": "commands.Build",
+      "kind": "entry",
+      "title": "Build",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "trigger": {
+          "type": "command",
+          "name": "build"
+        },
+        "deps": {
+          "project": "std/engine.TheProject",
+          "files": "std/tooling.Files",
+          "written": "documents/rendering.FileRendering",
+          "printed": "documents/rendering.TerminalRendering",
+          "say": "commands.CommandWords",
+          "exit": "std/system.ExitStatus"
+        },
+        "body": {
+          "file": "./code/build.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
       "id": "commands.BuildComparison",
       "kind": "function",
       "title": "Two builds compared",
@@ -68,6 +93,30 @@
       }
     },
     {
+      "id": "commands.Snapshot",
+      "kind": "entry",
+      "title": "Snapshot",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "trigger": {
+          "type": "command",
+          "name": "snapshot"
+        },
+        "deps": {
+          "project": "std/engine.TheProject",
+          "files": "std/tooling.Files",
+          "written": "documents/rendering.FileRendering",
+          "say": "commands.CommandWords",
+          "exit": "std/system.ExitStatus"
+        },
+        "body": {
+          "file": "./code/snapshot.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
       "id": "commands.WordsLanguage",
       "kind": "decision",
       "title": "The language the commands speak",
@@ -101,10 +150,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "documents",
-        "version": "0.2.0",
+        "version": "0.3.0",
         "joins": "library",
         "from": "path",
-        "at": "../documents/releases/0.2.0"
+        "at": "../documents/releases/0.3.0"
       }
     },
     {
@@ -114,9 +163,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "131",
+        "version": "134",
         "joins": "language",
-        "at": "../../generations/g131"
+        "at": "../../generations/g134"
       }
     },
     {
@@ -205,6 +254,39 @@
       }
     },
     {
+      "id": "releases.R0_3_0",
+      "kind": "release",
+      "title": "Version 0.3.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.3.0",
+        "date": "2026-11-27",
+        "what": "trame build and trame snapshot: the documents the engine's views give, written with libs/documents' renderers; documents 0.3.0, generation 133",
+        "fingerprint": "f84eccb53ad7bbb8",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "scenarios.BuildWritesTheDocuments",
+      "kind": "scenario",
+      "title": "A build writes the documents and the graph",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "build": "commands.Build",
+          "project": "std/engine.TheProject",
+          "files": "std/tooling.Files",
+          "written": "documents/rendering.FileRendering",
+          "printed": "documents/rendering.TerminalRendering",
+          "say": "commands.CommandWords",
+          "checks": "scenarios.ScenarioWords",
+          "exit": "std/system.ExitStatus"
+        },
+        "body": "(function)"
+      }
+    },
+    {
       "id": "scenarios.CompiledByTheEngine",
       "kind": "binding",
       "title": "Compiled by the engine that plays them",
@@ -215,6 +297,36 @@
         "rejected": {
           "A graph written by the scenario": "it proves nothing of what the engine gives, which is what the command reads on a machine"
         }
+      }
+    },
+    {
+      "id": "scenarios.DocumentsAsFiles",
+      "kind": "binding",
+      "title": "Files in Markdown, the terminal in text",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "A command writes its documents with the renderers of libs/documents, in the syntaxes a project chooses."
+      }
+    },
+    {
+      "id": "scenarios.DocumentsLanguage",
+      "kind": "binding",
+      "title": "In the language of libs/documents' scenarios",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "The documents speak the language of the engine that compiles the graph: in a library's scenarios, a language decided for them."
+      }
+    },
+    {
+      "id": "scenarios.FiguresOfTheDocuments",
+      "kind": "binding",
+      "title": "Figures in Mermaid and in text",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "Each syntax reaches its figures through a port of its own, chosen apart."
       }
     },
     {
@@ -319,6 +431,26 @@
       }
     },
     {
+      "id": "scenarios.SnapshotTaken",
+      "kind": "scenario",
+      "title": "A snapshot writes the graph in force",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "snapshot": "commands.Snapshot",
+          "project": "std/engine.TheProject",
+          "files": "std/tooling.Files",
+          "written": "documents/rendering.FileRendering",
+          "say": "commands.CommandWords",
+          "checks": "scenarios.ScenarioWords",
+          "exit": "std/system.ExitStatus",
+          "sequences": "std/algebra.Sequences"
+        },
+        "body": "(function)"
+      }
+    },
+    {
       "id": "scenarios.Test",
       "kind": "environment",
       "title": "Test",
@@ -338,6 +470,20 @@
           "small": "scenarios.SmallProject"
         },
         "body": "(function)"
+      }
+    },
+    {
+      "id": "scenarios.WrittenAsAProjectDoes",
+      "kind": "adr",
+      "title": "A command writes documents as a project does",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "A command that wrote its documents itself would be a second renderer, whose words and layout could drift from the others'.",
+        "consequences": "What a build writes is what the engine's build wrote, character for character: the same views, the same renderer, the same places.",
+        "rejected": {
+          "A renderer of the commands' own": "the walk and the words of the documents repeated"
+        }
       }
     },
     {
@@ -470,6 +616,21 @@
   ],
   "edges": [
     {
+      "from": "commands.Build",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.Build",
+      "to": "commands.Commands",
+      "kind": "in"
+    },
+    {
+      "from": "commands.Build",
+      "to": "commands.CommandWords",
+      "kind": "deps"
+    },
+    {
       "from": "commands.BuildComparison",
       "to": "product.WrittenOnce",
       "kind": "serves"
@@ -506,6 +667,21 @@
     },
     {
       "from": "commands.Plan",
+      "to": "commands.CommandWords",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Snapshot",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.Snapshot",
+      "to": "commands.Commands",
+      "kind": "in"
+    },
+    {
+      "from": "commands.Snapshot",
       "to": "commands.CommandWords",
       "kind": "deps"
     },
@@ -555,12 +731,77 @@
       "kind": "serves"
     },
     {
+      "from": "releases.R0_3_0",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.BuildWritesTheDocuments",
+      "to": "commands.Build",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.BuildWritesTheDocuments",
+      "to": "scenarios.TheSmallProject",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.BuildWritesTheDocuments",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.BuildWritesTheDocuments",
+      "to": "commands.Build",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.BuildWritesTheDocuments",
+      "to": "commands.CommandWords",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.BuildWritesTheDocuments",
+      "to": "scenarios.ScenarioWords",
+      "kind": "deps"
+    },
+    {
       "from": "scenarios.CompiledByTheEngine",
       "to": "scenarios.Test",
       "kind": "environments"
     },
     {
       "from": "scenarios.CompiledByTheEngine",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.DocumentsAsFiles",
+      "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.DocumentsAsFiles",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.DocumentsLanguage",
+      "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.DocumentsLanguage",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.FiguresOfTheDocuments",
+      "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.FiguresOfTheDocuments",
       "to": "product.WrittenOnce",
       "kind": "serves"
     },
@@ -690,9 +931,59 @@
       "kind": "language"
     },
     {
+      "from": "scenarios.SnapshotTaken",
+      "to": "commands.Snapshot",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.SnapshotTaken",
+      "to": "scenarios.TheSmallProject",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.SnapshotTaken",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.SnapshotTaken",
+      "to": "commands.Snapshot",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.SnapshotTaken",
+      "to": "commands.CommandWords",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.SnapshotTaken",
+      "to": "scenarios.ScenarioWords",
+      "kind": "deps"
+    },
+    {
       "from": "scenarios.TheSmallProject",
       "to": "scenarios.SmallProject",
       "kind": "deps"
+    },
+    {
+      "from": "scenarios.WrittenAsAProjectDoes",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.WrittenAsAProjectDoes",
+      "to": "scenarios.DocumentsAsFiles",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.WrittenAsAProjectDoes",
+      "to": "scenarios.FiguresOfTheDocuments",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.WrittenAsAProjectDoes",
+      "to": "scenarios.DocumentsLanguage",
+      "kind": "appliedBy"
     },
     {
       "from": "sdlc.CallersIdentified",

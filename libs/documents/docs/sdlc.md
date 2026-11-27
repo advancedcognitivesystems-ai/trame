@@ -69,13 +69,15 @@ The library as its people write it: what a version freezes, and what projects im
 
 - Path: `src`
 
-Built 27 November 2026 by claude, fingerprint `11e0d99da70eec189f5b4bbddc376f0b4e2a88a9da0f1934b347afd92d31e00e`.
+Built 27 November 2026 by claude, fingerprint `5c0346d88aa5faf8c803f0855f034e05aa1061e1eee7b8f939cd9a91b5b392e5`.
 
 Shipped by [The next version](#NextVersion) 26 November 2026, fingerprint `c129edb86a12dca60dd21dfcf77b504ac47a7e649c124520e962fb790a76c725`.
 
 Shipped by [The next version](#NextVersion) 27 November 2026, fingerprint `4eb79cc05608f84449153540ba2754042a886f4e6128cbb950858483608b618e`.
 
 Shipped by [The next version](#NextVersion) 27 November 2026, fingerprint `11e0d99da70eec189f5b4bbddc376f0b4e2a88a9da0f1934b347afd92d31e00e`.
+
+Shipped by [The next version](#NextVersion) 27 November 2026, fingerprint `5c0346d88aa5faf8c803f0855f034e05aa1061e1eee7b8f939cd9a91b5b392e5`.
 
 - Owner: trame
 - A version of the project: true
@@ -102,7 +104,7 @@ A version of the renderers, for the projects that import it: shipped by trame re
 | [One renderer, its syntax a choice](rendering.md#OneRendererManySyntaxes) | **held** | [Its decisions applied](#DecisionsApplied), for [Rendering of the files](rendering.md#FileRendering) |
 | [The scenarios render as a project does](scenarios.md#HowTheScenariosRender) | **held** | [Its decisions applied](#DecisionsApplied), for [Figures in Mermaid](scenarios.md#FiguresInMermaid) |
 
-Shipped 27 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-27-b7565110.json`.
+Shipped 27 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-27-61c20f0f.json`.
 
 - Owner: trame
 - Ships: [The renderers of documents](#TheLibrary)
@@ -123,7 +125,7 @@ The workflow that checks each pull request, written by trame ship from the graph
 |---|---|---|
 | [The pull requests' workflow](#PullRequestWorkflow) | **held** | shipped |
 
-Shipped 27 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-27-71f84774.json`.
+Shipped 27 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-27-51b64334.json`.
 
 - Owner: trame
 - Ships: [The pull requests' workflow](#PullRequestWorkflow)

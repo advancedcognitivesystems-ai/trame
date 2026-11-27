@@ -190,7 +190,7 @@ export const Machine = pkg({
  * at the version it uses, by its path in the repository.
  */
 export const GenericCommands = pkg({
-  owner: "trame", packageName: "commands", version: "0.2.0", joins: "library", from: "path", at: "libs/commands/releases/0.2.0",
+  owner: "trame", packageName: "commands", version: "0.3.0", joins: "library", from: "path", at: "libs/commands/releases/0.3.0",
   serves: [SingleSource],
 })
 
@@ -201,6 +201,6 @@ export const GenericCommands = pkg({
  * the one renderer the page gives its syntax: at the version Trame uses, by its path in the repository.
  */
 export const DocumentRenderers = pkg({
-  owner: "trame", packageName: "documents", version: "0.2.0", joins: "library", from: "path", at: "libs/documents/releases/0.2.0",
+  owner: "trame", packageName: "documents", version: "0.3.0", joins: "library", from: "path", at: "libs/documents/releases/0.3.0",
   serves: [SingleSource],
 })

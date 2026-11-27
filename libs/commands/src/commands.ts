@@ -1,6 +1,7 @@
 /** Commands · Commands */
 
 import { TerminalText } from "#documents/text"
+import { FileRendering, TerminalRendering } from "#documents/rendering"
 import { code, plurals } from "#trame/kernel"
 import { component } from "#trame/kinds/component"
 import { entryPoint, command } from "#trame/kinds/entry-point"
@@ -75,6 +76,10 @@ export const CommandWords = catalog({
       planShipments: (shipments: readonly string[]) => (shipments.length ? `shipments touched: ${shipments.join(", ")}` : "no shipment touched"),
       planNothing: () => "nothing changes: a build would write the same graph",
       planNothingBuilt: (file: string) => `no ${file} to compare with: trame build writes it, and every node would be new`,
+      /** The last line of a build: the files it wrote. */
+      written: (files: readonly string[]) => `written: ${files.join(", ")}`,
+      /** What a snapshot wrote, and the day of the graph it took. */
+      snapshotTaken: (date: string, files: readonly string[]) => `snapshot of ${date} · written: ${files.join(", ")}`,
     }
   },
 })
@@ -106,4 +111,34 @@ export const Plan = entryPoint({
   trigger: command("plan"),
   deps: { project: TheProject, files: Files, comparison: BuildComparison, lines: TerminalText, say: CommandWords, exit: ExitStatus, counts: Counts },
   body: code.file("./code/plan.ts"),
+})
+
+/**
+ * Build
+ * trame build [--at <date>]: the documents of the project at hand written for people, its graph for tools and agents.
+ * The engine runs the views at the day the line says: each document a view writes as a file is written in the syntax of
+ * files (libs/documents), with where each card is; graph.json and snapshot.json as the engine gives them; the summary
+ * printed in the syntax of the terminal; then the files written, named.
+ */
+export const Build = entryPoint({
+  owner: "trame",
+  in: Commands, for: Anyone,
+  serves: [WrittenOnce],
+  trigger: command("build"),
+  deps: { project: TheProject, files: Files, written: FileRendering, printed: TerminalRendering, say: CommandWords, exit: ExitStatus },
+  body: code.file("./code/build.ts"),
+})
+
+/**
+ * Snapshot
+ * trame snapshot [--at <date>]: snapshot.json, the graph in force for agents, at the day the line says; then the
+ * documents of the snapshot's view, written in the syntax of files, and the files written, named.
+ */
+export const Snapshot = entryPoint({
+  owner: "trame",
+  in: Commands, for: Anyone,
+  serves: [WrittenOnce],
+  trigger: command("snapshot"),
+  deps: { project: TheProject, files: Files, written: FileRendering, say: CommandWords, exit: ExitStatus },
+  body: code.file("./code/snapshot.ts"),
 })

@@ -24,7 +24,7 @@ Consequences: Three points of extension: a kind says what a node is, a view whic
 
 - Decided by: trame
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
-- Applied by: [Rendering of the files](../libs/documents/releases/0.2.0/docs/rendering.md#FileRendering), [Rendering in the terminal](../libs/documents/releases/0.2.0/docs/rendering.md#TerminalRendering), [Rendering in the page](#PageRendering), [Common rendering](../libs/documents/releases/0.2.0/docs/rendering.md#Common), [Rendering does not read the graph](architecture.md#RenderingWithoutGraph)
+- Applied by: [Rendering of the files](../libs/documents/releases/0.3.0/docs/rendering.md#FileRendering), [Rendering in the terminal](../libs/documents/releases/0.3.0/docs/rendering.md#TerminalRendering), [Rendering in the page](#PageRendering), [Common rendering](../libs/documents/releases/0.3.0/docs/rendering.md#Common), [Rendering does not read the graph](architecture.md#RenderingWithoutGraph)
 
 <a id="RenderedByTheLibrary"></a>
 
@@ -45,7 +45,7 @@ Consequences: Trame's commands use the library's renderers as they use std's str
 - Decided by: trame
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applied by: [Rendering in the page](#PageRendering), [Documents in Markdown](#DocumentsInMarkdown), [Figures in Mermaid](#FiguresInMermaid), [The terminal in plain text](#TerminalInText), [Figures in the terminal, as text](#TerminalFiguresAsText), [The page in HTML](#PageInHtml), [The page's figures in SVG](#PageFiguresDrawn)
-- Adopts: [One renderer, its syntax a choice](../libs/documents/releases/0.2.0/docs/rendering.md#OneRendererManySyntaxes)
+- Adopts: [One renderer, its syntax a choice](../libs/documents/releases/0.3.0/docs/rendering.md#OneRendererManySyntaxes)
 
 ## Ports
 
@@ -61,8 +61,8 @@ Consequences: Trame's commands use the library's renderers as they use std's str
 | [Local](architecture.md#Local) | [Figures in SVG](#SvgFigures) | [The page's figures in SVG](#PageFiguresDrawn) |
 | [A session of Claude Code](architecture.md#Session) | none | — |
 | [Test](architecture.md#Test) | [Figures in SVG](#SvgFigures) | [The page's figures in SVG](#PageFiguresDrawn) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -84,8 +84,8 @@ What the page shows a document in, formatted: the engine writes it, the page put
 | [Local](architecture.md#Local) | [HTML writer](#HtmlSyntax) | [The page in HTML](#PageInHtml) |
 | [A session of Claude Code](architecture.md#Session) | none | — |
 | [Test](architecture.md#Test) | [HTML writer](#HtmlSyntax) | [The page in HTML](#PageInHtml) |
-| [Test](../libs/commands/releases/0.2.0/docs/scenarios.md#Test) | none | — |
-| [Test](../libs/documents/releases/0.2.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/commands/releases/0.3.0/docs/scenarios.md#Test) | none | — |
+| [Test](../libs/documents/releases/0.3.0/docs/scenarios.md#Test) | none | — |
 | [Strict](../std/releases/0.30.0/docs/scenarios.md#Strict) | none | — |
 | [Test](../std/releases/0.30.0/docs/scenarios.md#Test) | none | — |
 
@@ -104,7 +104,7 @@ What the page shows a document in, formatted: the engine writes it, the page put
 A document as the page shows it: the elements of HTML, with the classes and attributes that the page's style sheet and its script know ("Documents in the page"). Its text is escaped; a sentence of the catalog that holds pieces is escaped around them.
 
 - Owner: trame
-- Parameters: `figures` ← [Figures of the page](#PageFigures) · `html` ← [HTML](../std/releases/0.30.0/docs/html.md#Html) · `markup` ← [Documents in the page](markup.md#DocumentMarkup) · `page` ← [The page](page.md#ThePage) · `element` ← [HTML element](../libs/documents/releases/0.2.0/docs/html.md#HtmlElement) · `heading` ← [Heading of a rank](../libs/documents/releases/0.2.0/docs/html.md#HtmlHeading) · `escape` ← [Escaped text](../libs/documents/releases/0.2.0/docs/html.md#EscapedText) · `punctuation` ← [Punctuation](../libs/documents/releases/0.2.0/docs/language.md#Punctuation) · `slots` ← [Places in a sentence](../libs/documents/releases/0.2.0/docs/rendering.md#SentenceSlots) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts) · `texts` ← [Texts](../std/releases/0.30.0/docs/algebra.md#Texts) · `messages` ← [Words of the renderers](../libs/documents/releases/0.2.0/docs/rendering.md#RenderingMessages)
+- Parameters: `figures` ← [Figures of the page](#PageFigures) · `html` ← [HTML](../std/releases/0.30.0/docs/html.md#Html) · `markup` ← [Documents in the page](markup.md#DocumentMarkup) · `page` ← [The page](page.md#ThePage) · `element` ← [HTML element](../libs/documents/releases/0.3.0/docs/html.md#HtmlElement) · `heading` ← [Heading of a rank](../libs/documents/releases/0.3.0/docs/html.md#HtmlHeading) · `escape` ← [Escaped text](../libs/documents/releases/0.3.0/docs/html.md#EscapedText) · `punctuation` ← [Punctuation](../libs/documents/releases/0.3.0/docs/language.md#Punctuation) · `slots` ← [Places in a sentence](../libs/documents/releases/0.3.0/docs/rendering.md#SentenceSlots) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts) · `texts` ← [Texts](../std/releases/0.30.0/docs/algebra.md#Texts) · `messages` ← [Words of the renderers](../libs/documents/releases/0.3.0/docs/rendering.md#RenderingMessages)
 - Body: `./code/rendering/html.ts` (typescript)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Implements: [Syntax of the page](#PageSyntax)
@@ -120,7 +120,7 @@ A document as the page shows it: the elements of HTML, with the classes and attr
 Each document formatted for the page, and the changes the page announces: the library's renderer, in the syntax of the page.
 
 - Owner: trame
-- Parameters: `rendering` ← [The renderer](../libs/documents/releases/0.2.0/docs/rendering.md#Rendering) · `syntax` ← [Syntax of the page](#PageSyntax)
+- Parameters: `rendering` ← [The renderer](../libs/documents/releases/0.3.0/docs/rendering.md#Rendering) · `syntax` ← [Syntax of the page](#PageSyntax)
 - Body: inline, in the declaration
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Verified by: [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph)
@@ -136,7 +136,7 @@ Each document formatted for the page, and the changes the page announces: the li
 A figure of the page, drawn: a graph layer under layer, its nodes under their neighbours, with its legend; a timeline as lanes of bars and marks under the months. A graph too large to be read whole is left to the page, which explores it: its place carries the figure's index in the document.
 
 - Owner: trame
-- Parameters: `html` ← [HTML](../std/releases/0.30.0/docs/html.md#Html) · `svg` ← [SVG](../std/releases/0.30.0/docs/html.md#Svg) · `aria` ← [WAI-ARIA](../std/releases/0.30.0/docs/html.md#Aria) · `css` ← [CSS](../std/releases/0.30.0/docs/html.md#Css) · `markup` ← [Documents in the page](markup.md#DocumentMarkup) · `figures` ← [Figures in the page](markup.md#FigureMarkup) · `page` ← [The page](page.md#ThePage) · `graph` ← [Drawing of a graph](appearance.md#GraphDrawing) · `timeline` ← [Drawing of a timeline](appearance.md#TimelineDrawing) · `legend` ← [Legend of a graph](appearance.md#LegendDrawing) · `element` ← [HTML element](../libs/documents/releases/0.2.0/docs/html.md#HtmlElement) · `empty` ← [Self-closing tag](../libs/documents/releases/0.2.0/docs/html.md#SelfClosingTag) · `path` ← [Path data](html.md#PathData) · `declaration` ← [Declaration](html.md#CssDeclaration) · `escape` ← [Escaped text](../libs/documents/releases/0.2.0/docs/html.md#EscapedText) · `common` ← [Common rendering](../libs/documents/releases/0.2.0/docs/rendering.md#Common) · `dates` ← [Dates](../libs/documents/releases/0.2.0/docs/language.md#Dates) · `words` ← [Words of the page](messages.md#PageWords) · `messages` ← [Words of the renderers](../libs/documents/releases/0.2.0/docs/rendering.md#RenderingMessages) · `punctuation` ← [Punctuation](../libs/documents/releases/0.2.0/docs/language.md#Punctuation) · `iso` ← [ISO 8601 dates](../std/releases/0.30.0/docs/measures.md#Iso8601) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.30.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.30.0/docs/algebra.md#Texts)
+- Parameters: `html` ← [HTML](../std/releases/0.30.0/docs/html.md#Html) · `svg` ← [SVG](../std/releases/0.30.0/docs/html.md#Svg) · `aria` ← [WAI-ARIA](../std/releases/0.30.0/docs/html.md#Aria) · `css` ← [CSS](../std/releases/0.30.0/docs/html.md#Css) · `markup` ← [Documents in the page](markup.md#DocumentMarkup) · `figures` ← [Figures in the page](markup.md#FigureMarkup) · `page` ← [The page](page.md#ThePage) · `graph` ← [Drawing of a graph](appearance.md#GraphDrawing) · `timeline` ← [Drawing of a timeline](appearance.md#TimelineDrawing) · `legend` ← [Legend of a graph](appearance.md#LegendDrawing) · `element` ← [HTML element](../libs/documents/releases/0.3.0/docs/html.md#HtmlElement) · `empty` ← [Self-closing tag](../libs/documents/releases/0.3.0/docs/html.md#SelfClosingTag) · `path` ← [Path data](html.md#PathData) · `declaration` ← [Declaration](html.md#CssDeclaration) · `escape` ← [Escaped text](../libs/documents/releases/0.3.0/docs/html.md#EscapedText) · `common` ← [Common rendering](../libs/documents/releases/0.3.0/docs/rendering.md#Common) · `dates` ← [Dates](../libs/documents/releases/0.3.0/docs/language.md#Dates) · `words` ← [Words of the page](messages.md#PageWords) · `messages` ← [Words of the renderers](../libs/documents/releases/0.3.0/docs/rendering.md#RenderingMessages) · `punctuation` ← [Punctuation](../libs/documents/releases/0.3.0/docs/language.md#Punctuation) · `iso` ← [ISO 8601 dates](../std/releases/0.30.0/docs/measures.md#Iso8601) · `counts` ← [Counts](../std/releases/0.30.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.30.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.30.0/docs/algebra.md#Texts)
 - Body: `./code/rendering/svg-figures.ts` (typescript)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Implements: [Figures of the page](#PageFigures)
@@ -157,7 +157,7 @@ In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [Syntax of the documents written as files](../libs/documents/releases/0.2.0/docs/rendering.md#FileSyntax) | [Markdown writer](../libs/documents/releases/0.2.0/docs/rendering.md#MarkdownSyntax) | a function |
+| [Syntax of the documents written as files](../libs/documents/releases/0.3.0/docs/rendering.md#FileSyntax) | [Markdown writer](../libs/documents/releases/0.3.0/docs/rendering.md#MarkdownSyntax) | a function |
 
 Context: The documents are read in reviews, in editors, on forges, and compared line by line by the advance: their syntax must be text that every one of them displays.
 
@@ -170,7 +170,7 @@ Consequences: Another syntax for the files is a realization of "Syntax of the do
 | Plain text | no links, no tables, no figures |
 
 - Decided by: trame
-- Chooses: [Markdown writer](../libs/documents/releases/0.2.0/docs/rendering.md#MarkdownSyntax)
+- Chooses: [Markdown writer](../libs/documents/releases/0.3.0/docs/rendering.md#MarkdownSyntax)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
 - Follows: [Bridge](../std/releases/0.30.0/docs/patterns.md#Bridge), [Strategy](../std/releases/0.30.0/docs/patterns.md#Strategy)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
@@ -188,7 +188,7 @@ In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [Figures of the documents written as files](../libs/documents/releases/0.2.0/docs/rendering.md#FileFigures) | [Mermaid diagrams](../libs/documents/releases/0.2.0/docs/rendering.md#MermaidDiagrams) | a function |
+| [Figures of the documents written as files](../libs/documents/releases/0.3.0/docs/rendering.md#FileFigures) | [Mermaid diagrams](../libs/documents/releases/0.3.0/docs/rendering.md#MermaidDiagrams) | a function |
 
 Context: A figure of a document must be drawn by the forges and editors that display the document, and stay text that a review compares.
 
@@ -201,7 +201,7 @@ Consequences: The Markdown writer puts the lines of a figure in a code block, in
 | PlantUML | needs a rendering server |
 
 - Decided by: trame
-- Chooses: [Mermaid diagrams](../libs/documents/releases/0.2.0/docs/rendering.md#MermaidDiagrams)
+- Chooses: [Mermaid diagrams](../libs/documents/releases/0.3.0/docs/rendering.md#MermaidDiagrams)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
 - Follows: [Strategy](../std/releases/0.30.0/docs/patterns.md#Strategy)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
@@ -279,7 +279,7 @@ In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [Figures of the terminal](../libs/documents/releases/0.2.0/docs/rendering.md#TerminalFigures) | [Figures as text](../libs/documents/releases/0.2.0/docs/rendering.md#TextFigures) | a function |
+| [Figures of the terminal](../libs/documents/releases/0.3.0/docs/rendering.md#TerminalFigures) | [Figures as text](../libs/documents/releases/0.3.0/docs/rendering.md#TextFigures) | a function |
 
 Context: A terminal draws no diagram: a figure must read as lines.
 
@@ -290,7 +290,7 @@ Consequences: The terminal syntax indents the lines of a figure like any other c
 | Mermaid in the terminal | its source does not read as a figure |
 
 - Decided by: trame
-- Chooses: [Figures as text](../libs/documents/releases/0.2.0/docs/rendering.md#TextFigures)
+- Chooses: [Figures as text](../libs/documents/releases/0.3.0/docs/rendering.md#TextFigures)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
 - Follows: [Strategy](../std/releases/0.30.0/docs/patterns.md#Strategy)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
@@ -308,7 +308,7 @@ In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [Syntax of the terminal](../libs/documents/releases/0.2.0/docs/rendering.md#TerminalSyntax) | [Plain text writer](../libs/documents/releases/0.2.0/docs/rendering.md#PlainTextSyntax) | a function |
+| [Syntax of the terminal](../libs/documents/releases/0.3.0/docs/rendering.md#TerminalSyntax) | [Plain text writer](../libs/documents/releases/0.3.0/docs/rendering.md#PlainTextSyntax) | a function |
 
 Context: A terminal shows characters: marks of a syntax (asterisks, pipes, tags) would be noise there.
 
@@ -320,7 +320,7 @@ Consequences: A view printed in Markdown is the --format md option, which render
 | ANSI colours | lost in logs and pipes, and the scenarios compare text |
 
 - Decided by: trame
-- Chooses: [Plain text writer](../libs/documents/releases/0.2.0/docs/rendering.md#PlainTextSyntax)
+- Chooses: [Plain text writer](../libs/documents/releases/0.3.0/docs/rendering.md#PlainTextSyntax)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
 - Follows: [Bridge](../std/releases/0.30.0/docs/patterns.md#Bridge), [Strategy](../std/releases/0.30.0/docs/patterns.md#Strategy)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)

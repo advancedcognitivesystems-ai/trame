@@ -31,7 +31,7 @@ Never edit `docs/`, `graph.json`, `snapshot.json`, `generations/` or `src/releas
 Run from the project's directory, through the pinned generation:
 
 ```
-./trame.sh build                       # compile, check, write docs/ (the summary lists the open issues)
+./trame.sh build                       # compile, check, write docs/ (the summary lists the open issues; in Trame, libs/commands' since g133)
 ./trame.sh plan [--at <date>]          # what a build would change against graph.json, written nowhere (g73; in Trame, libs/commands' since g124)
 ./trame.sh build --at 2026-10-27        # the graph as it was that day: evidence counts from the day it was given (g75)
 ./trame.sh test-kinds                  # the laws of the kinds and views
@@ -240,7 +240,15 @@ machine (`follows: [Command]`, with `ProjectInTheEngine`), and its `trame plan` 
 process. A check may run such a command (`runs: Plan`, g127: `trame ship` assembles the library's component with the
 commands chosen there): Trame's `PlanRunsInTheEngine` proves `ProjectInTheEngine` in each merge into main. Code leaves
 the engine by a move, never a copy: the engine's own `plan` and `amend` compare two builds with libs/commands'
-`BuildComparison` (g130), the one comparison, until the commands themselves leave.
+`BuildComparison` (g130), the one comparison, until the commands themselves leave. Since g132 a compiled project gives
+the documents of its views (`documents()`: each view's, those of each node too, with `places`, where each card is,
+a library's node in the library's documents) and one view's (`view(name, arg)`: its document, or a word of the
+prelude's `ViewRefusal` with what was asked and what is known, which the command says in its own words); the
+engine's own `view` answers through it. libs/commands 0.3.0 holds `build` and `snapshot`, which write what the views
+give with libs/documents' renderers, character for character what the engine's wrote; Trame takes plan, build and
+snapshot (`CommandsWrittenOnce`). A component that names no environment is offered to other projects (g133): in the
+library that declares it, the engine's command of that name answers. A project's command named like a command of
+the engine it does not keep is asked before a view of that name (g134: `snapshot` is both).
 
 Reading a language is a primitive of the engine too (g128–g129, std 0.29.0): a `language` node's reader may be std's
 port `LanguageReading`, which `ReadByTheEngine` realizes with the engine's reader (`EngineApi.reader`). The languages the
@@ -729,6 +737,12 @@ elements), a port answered differently in several environments is answered as in
   engine with that project's views: a cold build of Trame lost the documents of its own views (literals, versions). The
   API gives the views back.
 
+- A library's version reads the libraries it imports through the library's working tree (`.trame/<name>`, which its
+  `package.json` leads to; a release holds no manifest): moving the library's own reference to a newer version of
+  another library changes what its released versions read in the projects that import them (commands 0.2.0 read
+  documents 0.3.0's `TerminalText`, a node without a name in Trame's graph, found as a difference by g133's advance).
+  Release the library and move the projects that import it together, or keep the link where the released versions
+  expect it until then.
 - A Markdown link is written from the document it is in (g131: the renderer gives the syntax the document's file,
   `Target.from`): a document without a file (a view printed with `--format md`) keeps the path from the project's root.
 - A project's decision that adopts a library's names it by its package (`import { CommandsOfALibrary } from
