@@ -1,6 +1,6 @@
 # Callers
 
-*Who may call each entry point, from where, and the records it reaches that belong to someone, as of 27 November 2026. Its audience says who may call it; its trigger says where from. Records that belong to a person or a tenant ask an audience that carries that identity, or one that reaches every owner's records; until identification comes (C7), nothing checks who calls.*
+*Who may call each entry point, from where, and the records it reaches that belong to someone, as of 30 October 2026. Its audience says who may call it; its trigger says where from. Records that belong to a person or a tenant ask an audience that carries that identity, or one that reaches every owner's records; until identification comes (C7), nothing checks who calls.*
 
 > **31 entry points for 2 audiences; 0 of them reach records that belong to someone**
 

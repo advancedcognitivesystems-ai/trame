@@ -1937,3 +1937,18 @@ export const G130 = release({
   archive: "59658b2c5f486d08",
   assembledBy: G129,
 })
+
+/**
+ * Generation 131
+ */
+export const G131 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g131",
+  date: "2026-11-27",
+  what: "The renderers come from libs/documents 0.2.0 (one renderer given a syntax, Markdown with Mermaid, the terminal's text, their words and format decisions, the palette); the page gives the library's renderer its syntax; Trame's reference syntax is std's",
+  fingerprint: "c7a44d11238f242f",
+  language: "shared",
+  archive: "59658b2c5f486d08",
+  assembledBy: G130,
+})
