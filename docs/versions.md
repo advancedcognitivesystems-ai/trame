@@ -1,8 +1,8 @@
 # Versions
 
-*The releases of the components on 30 October 2026, newest first. A project runs the release its configuration pins.*
+*The releases of the components on 28 November 2026, newest first. A project runs the release its configuration pins.*
 
-> **136 releases of 1 component; 95 releases on a language of their own**
+> **137 releases of 1 component; 95 releases on a language of their own**
 
 ## Trame on the command line
 
@@ -10,6 +10,7 @@ Each release, newest first: what changed, the release that assembled it, and whe
 
 | Release | Released on | What changes | Assembled by | Language |
 |---|---|---|---|---|
+| [Generation 137](releases.md#G137) | 28 November 2026 | The page is libs/documents' (documents 0.5.0): the engine wires the library's page, bundles the program it assembles for Browser from the library's component, makes a page with the engine running; payload, export and dev are libs/commands' (0.5.0), which Trame takes; the engine's own use the library's pieces and std's server and timers; the API says what a project's watch follows and the engine's name; a component whose exposure no environment of its project realizes is offered | [Generation 136](releases.md#G136) | shared |
 | [Generation 136](releases.md#G136) | 28 November 2026 | The engine's API gives what a page and its commands need: a text read back (readText), a project's documents without those of each node, its payload, the dates a page offers, the project at another date, its title, compiled at each date in a fresh process, watched, amended; the page's program bundled | [Generation 135](releases.md#G135) | shared |
 | [Generation 135](releases.md#G135) | 28 November 2026 | trame help <command> presents what a project's command reads on its line; the engine's view writes with the formats chosen on std's AnswerFormats and says a refusal in libs/commands' words; --format is std's option of every command; --at leaves the line forwarded to a project's command | [Generation 134](releases.md#G134) | shared |
 | [Generation 134](releases.md#G134) | 27 November 2026 | A project's command named like a command of the engine it does not keep is asked before a view of that name: libs/commands' snapshot replaces the engine's | [Generation 133](releases.md#G133) | shared |

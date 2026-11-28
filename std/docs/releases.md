@@ -518,6 +518,22 @@ A text read back by the engine (LanguageReading's readText); the page's program,
 - Released by: trame
 - Serves: [Commands chosen, not written again](product.md#ChosenCommands), [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
 
+<a id="R0_33_0"></a>
+
+### Version 0.33.0
+
+`R0_33_0` · `src/releases.ts:506`
+
+The name a person types to run the engine, which the project at hand gives (TheProject's program): what a page's brand writes
+
+- Version: `0.33.0`
+- Released on: 28 November 2026
+- Fingerprint: `0b4e2cab36274fac`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Commands chosen, not written again](product.md#ChosenCommands), [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
+
 <a id="R0_4_0"></a>
 
 ### Version 0.4.0

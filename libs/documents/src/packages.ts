@@ -10,7 +10,7 @@ import { RenderedOnce } from "./product"
  * The language the library is written in, at the generation the repository runs, by its path: the one whose views give
  * the documents the library renders.
  */
-export const Language = pkg({ owner: "trame", packageName: "trame", version: "136", joins: "language", at: "../../generations/g136", serves: [RenderedOnce] })
+export const Language = pkg({ owner: "trame", packageName: "trame", version: "137", joins: "language", at: "../../generations/g137", serves: [RenderedOnce] })
 
 /**
  * std

@@ -2,7 +2,7 @@
 
 *What happened to the project, day by day, the latest first, up to the date of the graph (28 November 2026): the versions released, and the evidence given, each with the node it is about and who gave it.*
 
-> **20 days · 38 versions released · 118 pieces of evidence**
+> **20 days · 39 versions released · 122 pieces of evidence**
 
 ## 28 November 2026
 
@@ -10,11 +10,16 @@
 |---|---|---|
 | Released as 0.31.0 | [Version 0.31.0](releases.md#R0_31_0) | trame |
 | Released as 0.32.0 | [Version 0.32.0](releases.md#R0_32_0) | trame |
+| Released as 0.33.0 | [Version 0.33.0](releases.md#R0_33_0) | trame |
+| Shipped | [The next version](sdlc.md#NextVersion) | claude |
 | Shipped | [The next version](sdlc.md#NextVersion) | claude |
 | Shipped | [The next version](sdlc.md#NextVersion) | claude |
 | Built | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
 | Shipped | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | claude |
 | Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Shipped | [The files that run it elsewhere](sdlc.md#RunnersWritten) | claude |
+| Built | [The standard library](sdlc.md#TheLibrary) | claude |
+| Shipped | [The standard library](sdlc.md#TheLibrary) | claude |
 | Built | [The standard library](sdlc.md#TheLibrary) | claude |
 | Shipped | [The standard library](sdlc.md#TheLibrary) | claude |
 | Built | [The standard library](sdlc.md#TheLibrary) | claude |

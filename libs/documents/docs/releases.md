@@ -101,3 +101,19 @@ The page, Trame's before: its HTML, SVG and CSS, its syntax and figures, its loo
 
 - Released by: trame
 - Serves: [Documents rendered once, for every project](product.md#RenderedOnce), [A graph shown in a page, for every project](product.md#ShownInAPage)
+
+<a id="R0_5_1"></a>
+
+### Version 0.5.1
+
+`R0_5_1` · `src/releases.ts:90`
+
+Page loads the languages it reads back in when a page is first asked, and gives the page as a promise: the reader may be the engine running a command, which runs none while a program is wired
+
+- Version: `0.5.1`
+- Released on: 28 November 2026
+- Fingerprint: `c6a3d29f4adf38f8`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Documents rendered once, for every project](product.md#RenderedOnce), [A graph shown in a page, for every project](product.md#ShownInAPage)

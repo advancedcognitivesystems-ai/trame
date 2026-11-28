@@ -36,13 +36,13 @@ The writers of the files that run a shipment elsewhere (GitHub Actions), at the 
 The language the library is written in, at the generation the repository runs, by its path.
 
 - Name: `trame`
-- Version: `135`
+- Version: `137`
 - Installed: Not installed in the project: its lockfile lists no trame
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `language`
-- Its path: `../../generations/g135`
+- Its path: `../../generations/g137`
 
 - Owner: trame
 - Serves: [The machine is asked once](product.md#AskedOnce)
@@ -77,13 +77,13 @@ Who works on Trame's repository, declared once as actors (C4): every owner of th
 The library the questions are written with: its extension point MachineNeeds, which they realize, and what it says of the platform and of Git.
 
 - Name: `std`
-- Version: `0.31.0`
+- Version: `0.33.0`
 - Installed: Not installed in the project: its lockfile lists no std
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `library`
-- Its path: `../../std/releases/0.31.0`
+- Its path: `../../std/releases/0.33.0`
 
 - Owner: trame
 - Serves: [The machine is asked once](product.md#AskedOnce)

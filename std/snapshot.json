@@ -2662,10 +2662,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "136",
+        "version": "137",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g136"
+        "at": "../generations/g137"
       }
     },
     {
@@ -3496,6 +3496,19 @@
         "date": "2026-11-28",
         "what": "A text read back by the engine (LanguageReading's readText); the page's program, bundled by the engine (TheProject's page); what a command that keeps running asks of the machine (module running: the clock, timers, a server of HTTP, lines printed as it goes, with Node.js's realizations and, for scenarios, a clock stopped, a server asked in memory, the lines kept)",
         "fingerprint": "5ee4f3123d0cc584",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "releases.R0_33_0",
+      "kind": "release",
+      "title": "Version 0.33.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.33.0",
+        "date": "2026-11-28",
+        "what": "The name a person types to run the engine, which the project at hand gives (TheProject's program): what a page's brand writes",
+        "fingerprint": "0b4e2cab36274fac",
         "language": "shared"
       }
     },
@@ -5454,7 +5467,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "../.github/workflows/std-pull-request.yml",
@@ -5481,7 +5494,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -8721,6 +8734,41 @@
     },
     {
       "from": "releases.R0_32_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_33_0",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_33_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_33_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_33_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_33_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_33_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_33_0",
       "to": "product.VersionsThatHold",
       "kind": "serves"
     },

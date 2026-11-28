@@ -394,9 +394,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "136",
+        "version": "137",
         "joins": "language",
-        "at": "../../generations/g136"
+        "at": "../../generations/g137"
       }
     },
     {
@@ -507,6 +507,19 @@
         "date": "2026-11-28",
         "what": "trame view: one view of the project at hand, its arguments declared, its document written in the format the line names; the words of a refused view; std 0.31.0, documents 0.4.0",
         "fingerprint": "752f80d70061f712",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "releases.R0_5_0",
+      "kind": "release",
+      "title": "Version 0.5.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.5.0",
+        "date": "2026-11-28",
+        "what": "The page's commands, the engine's before: payload (the graph at each date a page offers, rendered for files, the terminal and the page), export (libs/documents' page, compiled at each date by the engine in a fresh process, its program the engine's) and dev (the page served, compiled again after each save, amendments prepared by the engine), with what the last change changed, moved here",
+        "fingerprint": "fc96f093bda0ffe4",
         "language": "shared"
       }
     },
@@ -988,7 +1001,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "path": "../../.github/workflows/commands-pull-request.yml",
@@ -1007,7 +1020,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "unknown",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -1256,6 +1269,11 @@
     },
     {
       "from": "releases.R0_4_0",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_5_0",
       "to": "product.WrittenOnce",
       "kind": "serves"
     },

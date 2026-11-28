@@ -1070,9 +1070,9 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 136
+- Version: 137
 - How it joins the graph: language
-- Its path: ../../generations/g136
+- Its path: ../../generations/g137
 - Serves: Documents rendered once, for every project
 
 ### The people of the repository
@@ -1093,9 +1093,9 @@ Package · `StandardLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.32.0
+- Version: 0.33.0
 - How it joins the graph: library
-- Its path: ../../std/releases/0.32.0
+- Its path: ../../std/releases/0.33.0
 - Serves: Documents rendered once, for every project
 
 ## Documents · The page
@@ -1571,6 +1571,18 @@ Release · `R0_5_0`
 - Released on: 2026-11-28
 - What changes: The page, Trame's before: its HTML, SVG and CSS, its syntax and figures, its look, its words, its shell and scripts, Page (given its program by the command, read back by std's reader), its style sheets read beside the library, the graph packed; its program, the component PageApp, offered: each project assembles it for its environment of a browser with the browser's realizations, which the library offers
 - Fingerprint: 6548a54818c5140a
+- Language: shared
+- Serves: Documents rendered once, for every project, A graph shown in a page, for every project
+
+### Version 0.5.1
+
+Release · `R0_5_1`
+
+- Released by: trame
+- Version: 0.5.1
+- Released on: 2026-11-28
+- What changes: Page loads the languages it reads back in when a page is first asked, and gives the page as a promise: the reader may be the engine running a command, which runs none while a program is wired
+- Fingerprint: c6a3d29f4adf38f8
 - Language: shared
 - Serves: Documents rendered once, for every project, A graph shown in a page, for every project
 
@@ -2053,7 +2065,7 @@ Decision · `PullRequestsOnGitHub`
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **unknown**
+Artefact · `PullRequestWorkflow` · **held**
 
 - Owner: trame
 - Path: ../../.github/workflows/documents-pull-request.yml
@@ -2080,7 +2092,7 @@ Shipment · `NextVersion` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **unknown**
+Shipment · `RunnersWritten` · **held**
 
 - Owner: trame
 - Target: repository

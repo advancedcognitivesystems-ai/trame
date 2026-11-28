@@ -187,9 +187,9 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 136
+- Version: 137
 - How it joins the graph: language
-- Its path: ../../generations/g136
+- Its path: ../../generations/g137
 - Serves: Commands every project runs, written once
 
 ### The people of the repository
@@ -294,6 +294,18 @@ Release · `R0_4_0`
 - Released on: 2026-11-28
 - What changes: trame view: one view of the project at hand, its arguments declared, its document written in the format the line names; the words of a refused view; std 0.31.0, documents 0.4.0
 - Fingerprint: 752f80d70061f712
+- Language: shared
+- Serves: Commands every project runs, written once
+
+### Version 0.5.0
+
+Release · `R0_5_0`
+
+- Released by: trame
+- Version: 0.5.0
+- Released on: 2026-11-28
+- What changes: The page's commands, the engine's before: payload (the graph at each date a page offers, rendered for files, the terminal and the page), export (libs/documents' page, compiled at each date by the engine in a fresh process, its program the engine's) and dev (the page served, compiled again after each save, amendments prepared by the engine), with what the last change changed, moved here
+- Fingerprint: fc96f093bda0ffe4
 - Language: shared
 - Serves: Commands every project runs, written once
 
@@ -564,7 +576,7 @@ Decision · `PullRequestsOnGitHub`
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **unknown**
+Artefact · `PullRequestWorkflow` · **held**
 
 - Owner: trame
 - Path: ../../.github/workflows/commands-pull-request.yml
@@ -591,7 +603,7 @@ Shipment · `NextVersion` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **unknown**
+Shipment · `RunnersWritten` · **held**
 
 - Owner: trame
 - Target: repository

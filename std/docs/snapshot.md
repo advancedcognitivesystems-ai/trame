@@ -785,10 +785,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 136
+- Version: 137
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g136
+- Its path: ../generations/g137
 - Serves: Ports of the platform, realized once
 
 ### The people of the repository
@@ -1465,6 +1465,18 @@ Release · `R0_32_0`
 - Released on: 2026-11-28
 - What changes: A text read back by the engine (LanguageReading's readText); the page's program, bundled by the engine (TheProject's page); what a command that keeps running asks of the machine (module running: the clock, timers, a server of HTTP, lines printed as it goes, with Node.js's realizations and, for scenarios, a clock stopped, a server asked in memory, the lines kept)
 - Fingerprint: 5ee4f3123d0cc584
+- Language: shared
+- Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
+
+### Version 0.33.0
+
+Release · `R0_33_0`
+
+- Released by: trame
+- Version: 0.33.0
+- Released on: 2026-11-28
+- What changes: The name a person types to run the engine, which the project at hand gives (TheProject's program): what a page's brand writes
+- Fingerprint: 0b4e2cab36274fac
 - Language: shared
 - Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
 
@@ -2244,7 +2256,7 @@ Decision · `PullRequestsOnGitHub`
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **unknown**
+Artefact · `PullRequestWorkflow` · **held**
 
 - Owner: trame
 - Path: ../.github/workflows/std-pull-request.yml
@@ -2271,7 +2283,7 @@ Shipment · `NextVersion` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **unknown**
+Shipment · `RunnersWritten` · **held**
 
 - Owner: trame
 - Target: repository
