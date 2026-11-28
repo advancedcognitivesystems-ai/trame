@@ -15,6 +15,7 @@ const body: BodyOf<typeof ProjectCompiledHere> = ({ chosen, say }) => {
   return {
     layout: () => api().layout,
     page: () => api().page(),
+    program: () => api().program,
     compiled: () => (compiled ??= api().compile(chosen.root, chosen.today)),
   }
 }

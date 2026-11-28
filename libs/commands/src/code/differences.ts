@@ -1,18 +1,18 @@
 // What the last change changed: the difference between two compilations, in the intermediate format.
-// Pure: the dev server uses it, the page shows it.
+// Pure: trame dev uses it, the page shows it (libs/commands' since 0.5.0, the engine's before).
 
-import { BlockType, InlineType, ResolutionOutcome, ViewGroup, DocumentName } from "../../../trame/kernel"
-import type { ProvidedBy, Block, Document, Inline, Payload } from "../../../trame/kernel"
-import type { OutputMessages } from "../../messages"
+import { BlockType, InlineType, ResolutionOutcome, ViewGroup, DocumentName } from "#trame/kernel"
+import type { ProvidedBy, Block, Document, Inline, Payload } from "#trame/kernel"
 import type { Punctuation } from "#documents/language"
+import type { CommandWords } from "../commands"
 
 export interface Deps {
   punctuation: ProvidedBy<typeof Punctuation>
-  messages: ProvidedBy<typeof OutputMessages>
+  say: ProvidedBy<typeof CommandWords>
 }
 
 const body = (deps: Deps) => {
-  const { messages } = deps
+  const messages = deps.say
   const { parts, items: comma } = deps.punctuation
 
   function diffPayloads(prev: Payload, next: Payload): Document | undefined {

@@ -10,7 +10,7 @@
 
 ### What the doctor writes, runs and waits for
 
-`DoctorProbe` · `src/doctor.ts:29`
+`DoctorProbe` · `src/doctor.ts:30`
 
 A file and its text; a program that prints that text, run with the engine's loader; how long it waits, in milliseconds.
 
@@ -31,7 +31,7 @@ A file and its text; a program that prints that text, run with the engine's load
 
 ### What the engine needs of the machine
 
-`EngineNeeds` · `src/doctor.ts:39`
+`EngineNeeds` · `src/doctor.ts:40`
 
 The extension point of trame doctor for the engine itself: each add-on asks one thing the engine needs to run at all, and answers whether it holds, in one line.
 
@@ -47,10 +47,11 @@ An extension point: every realization chosen in an environment answers it, in th
 | [Local](architecture.md#Local) | [The clock gives the day](#ClockAnswers), [A file written is read back](#FilesAnswer), [A directory copied is the same as the original](#TreesAnswer), [A program runs with the engine's loader, and prints what it says](#ProgramsAnswer), [A run is kept, and given back until a file it read changes](#RunsAnswer), [A server listens on a port the system gives](#ServerAnswers), [The time passes](#TimerAnswers), [The registry answers about the packages](#RegistryAnswers), [The installer installs what a manifest names and writes its lockfile](#InstallerAnswers) | [What the engine asks the machine](#EngineQuestions), [What the engine asks the machine](#EngineQuestions), [What the engine asks the machine](#EngineQuestions), [What the engine asks the machine](#EngineQuestions), [What the engine asks the machine](#EngineQuestions), [What the engine asks the machine](#EngineQuestions), [What the engine asks the machine](#EngineQuestions), [What the engine asks the machine](#EngineQuestions), [What the engine asks the machine](#EngineQuestions) |
 | [A session of Claude Code](architecture.md#Session) | none | — |
 | [Test](architecture.md#Test) | [The clock gives the day](#ClockAnswers), [A file written is read back](#FilesAnswer), [A directory copied is the same as the original](#TreesAnswer), [A program runs with the engine's loader, and prints what it says](#ProgramsAnswer), [A run is kept, and given back until a file it read changes](#RunsAnswer), [A server listens on a port the system gives](#ServerAnswers), [The time passes](#TimerAnswers), [The registry answers about the packages](#RegistryAnswers), [The installer installs what a manifest names and writes its lockfile](#InstallerAnswers) | [What the engine asks the machine](#EngineQuestions), [What the engine asks the machine](#EngineQuestions), [What the engine asks the machine](#EngineQuestions), [What the engine asks the machine](#EngineQuestions), [What the engine asks the machine](#EngineQuestions), [What the engine asks the machine](#EngineQuestions), [What the engine asks the machine](#EngineQuestions), [What the engine asks the machine](#EngineQuestions), [What the engine asks the machine](#EngineQuestions) |
-| [Test](../libs/commands/releases/0.4.0/docs/scenarios.md#Test) | none | — |
+| [Served](../libs/commands/releases/0.5.0/docs/scenarios.md#Served) | none | — |
+| [Test](../libs/commands/releases/0.5.0/docs/scenarios.md#Test) | none | — |
 | [Test](../libs/documents/releases/0.5.1/docs/scenarios.md#Test) | none | — |
-| [Strict](../std/releases/0.32.0/docs/scenarios.md#Strict) | none | — |
-| [Test](../std/releases/0.32.0/docs/scenarios.md#Test) | none | — |
+| [Strict](../std/releases/0.33.0/docs/scenarios.md#Strict) | none | — |
+| [Test](../std/releases/0.33.0/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
 - Extension point: true
@@ -64,7 +65,7 @@ An extension point: every realization chosen in an environment answers it, in th
 
 ### Asking
 
-`Asking` · `src/doctor.ts:48` · status: **held**
+`Asking` · `src/doctor.ts:49` · status: **held**
 
 One question asked: what is asked, and whether it holds; what went wrong, when it broke, said with it.
 
@@ -81,10 +82,10 @@ One question asked: what is asked, and whether it holds; what went wrong, when i
 
 ### The clock gives the day
 
-`ClockAnswers` · `src/doctor.ts:64` · status: **held**
+`ClockAnswers` · `src/doctor.ts:65` · status: **held**
 
 - Owner: trame
-- Parameters: `clock` ← [Clock](architecture.md#Clock) · `iso` ← [ISO 8601 dates](../std/releases/0.32.0/docs/measures.md#Iso8601) · `asking` ← [Asking](#Asking) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `clock` ← [Clock](architecture.md#Clock) · `iso` ← [ISO 8601 dates](../std/releases/0.33.0/docs/measures.md#Iso8601) · `asking` ← [Asking](#Asking) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: inline, in the declaration
 - Effects: read, time
 - Implements: [What the engine needs of the machine](#EngineNeeds)
@@ -95,10 +96,10 @@ One question asked: what is asked, and whether it holds; what went wrong, when i
 
 ### A file written is read back
 
-`FilesAnswer` · `src/doctor.ts:71` · status: **held**
+`FilesAnswer` · `src/doctor.ts:72` · status: **held**
 
 - Owner: trame
-- Parameters: `trees` ← [File trees](architecture.md#FileTrees) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `probe` ← [What the doctor writes, runs and waits for](#DoctorProbe) · `encodings` ← [Node.js character encodings](../std/releases/0.32.0/docs/system.md#NodeEncodings) · `asking` ← [Asking](#Asking) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `trees` ← [File trees](architecture.md#FileTrees) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `paths` ← [Paths](architecture.md#Paths) · `probe` ← [What the doctor writes, runs and waits for](#DoctorProbe) · `encodings` ← [Node.js character encodings](../std/releases/0.33.0/docs/system.md#NodeEncodings) · `asking` ← [Asking](#Asking) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: inline, in the declaration
 - Effects: read, write
 - Implements: [What the engine needs of the machine](#EngineNeeds)
@@ -109,10 +110,10 @@ One question asked: what is asked, and whether it holds; what went wrong, when i
 
 ### The installer installs what a manifest names and writes its lockfile
 
-`InstallerAnswers` · `src/doctor.ts:177` · status: **held**
+`InstallerAnswers` · `src/doctor.ts:178` · status: **held**
 
 - Owner: trame
-- Parameters: `trees` ← [File trees](architecture.md#FileTrees) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `installs` ← [Packages installed](architecture.md#PackageInstalls) · `layout` ← [Project layout](conventions.md#Layout) · `paths` ← [Paths](architecture.md#Paths) · `exitStatus` ← [Exit status](../std/releases/0.32.0/docs/system.md#ExitStatus) · `asking` ← [Asking](#Asking) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `trees` ← [File trees](architecture.md#FileTrees) · `reading` ← [File reading](architecture.md#FileReading) · `writing` ← [File writing](architecture.md#FileWriting) · `installs` ← [Packages installed](architecture.md#PackageInstalls) · `layout` ← [Project layout](conventions.md#Layout) · `paths` ← [Paths](architecture.md#Paths) · `exitStatus` ← [Exit status](../std/releases/0.33.0/docs/system.md#ExitStatus) · `asking` ← [Asking](#Asking) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: inline, in the declaration
 - Effects: network, process, read, write
 - Implements: [What the engine needs of the machine](#EngineNeeds)
@@ -123,10 +124,10 @@ One question asked: what is asked, and whether it holds; what went wrong, when i
 
 ### A program runs with the engine's loader, and prints what it says
 
-`ProgramsAnswer` · `src/doctor.ts:105` · status: **held**
+`ProgramsAnswer` · `src/doctor.ts:106` · status: **held**
 
 - Owner: trame
-- Parameters: `trees` ← [File trees](architecture.md#FileTrees) · `writing` ← [File writing](architecture.md#FileWriting) · `programs` ← [Programs](architecture.md#Programs) · `paths` ← [Paths](architecture.md#Paths) · `probe` ← [What the doctor writes, runs and waits for](#DoctorProbe) · `exitStatus` ← [Exit status](../std/releases/0.32.0/docs/system.md#ExitStatus) · `asking` ← [Asking](#Asking) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `trees` ← [File trees](architecture.md#FileTrees) · `writing` ← [File writing](architecture.md#FileWriting) · `programs` ← [Programs](architecture.md#Programs) · `paths` ← [Paths](architecture.md#Paths) · `probe` ← [What the doctor writes, runs and waits for](#DoctorProbe) · `exitStatus` ← [Exit status](../std/releases/0.33.0/docs/system.md#ExitStatus) · `asking` ← [Asking](#Asking) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: inline, in the declaration
 - Effects: execution, process, read, write
 - Implements: [What the engine needs of the machine](#EngineNeeds)
@@ -137,7 +138,7 @@ One question asked: what is asked, and whether it holds; what went wrong, when i
 
 ### The registry answers about the packages
 
-`RegistryAnswers` · `src/doctor.ts:168` · status: **held**
+`RegistryAnswers` · `src/doctor.ts:169` · status: **held**
 
 - Owner: trame
 - Parameters: `reports` ← [Reports on packages](architecture.md#PackageReports) · `currentProcess` ← [Process](architecture.md#Process) · `asking` ← [Asking](#Asking) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
@@ -151,7 +152,7 @@ One question asked: what is asked, and whether it holds; what went wrong, when i
 
 ### A run is kept, and given back until a file it read changes
 
-`RunsAnswer` · `src/doctor.ts:121` · status: **held**
+`RunsAnswer` · `src/doctor.ts:122` · status: **held**
 
 - Owner: trame
 - Parameters: `trees` ← [File trees](architecture.md#FileTrees) · `writing` ← [File writing](architecture.md#FileWriting) · `runs` ← [Runs kept](architecture.md#KeptRuns) · `paths` ← [Paths](architecture.md#Paths) · `probe` ← [What the doctor writes, runs and waits for](#DoctorProbe) · `asking` ← [Asking](#Asking) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
@@ -165,10 +166,10 @@ One question asked: what is asked, and whether it holds; what went wrong, when i
 
 ### A server listens on a port the system gives
 
-`ServerAnswers` · `src/doctor.ts:141` · status: **held**
+`ServerAnswers` · `src/doctor.ts:142` · status: **held**
 
 - Owner: trame
-- Parameters: `httpServer` ← [HTTP server](architecture.md#HttpServer) · `counts` ← [Counts](../std/releases/0.32.0/docs/algebra.md#Counts) · `asking` ← [Asking](#Asking) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `httpServer` ← [Serving HTTP](../std/releases/0.33.0/docs/running.md#HttpServing) · `counts` ← [Counts](../std/releases/0.33.0/docs/algebra.md#Counts) · `asking` ← [Asking](#Asking) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: inline, in the declaration
 - Effects: network
 - Implements: [What the engine needs of the machine](#EngineNeeds)
@@ -179,10 +180,10 @@ One question asked: what is asked, and whether it holds; what went wrong, when i
 
 ### The time passes
 
-`TimerAnswers` · `src/doctor.ts:156` · status: **held**
+`TimerAnswers` · `src/doctor.ts:157` · status: **held**
 
 - Owner: trame
-- Parameters: `clock` ← [Clock](architecture.md#Clock) · `timer` ← [Timer](architecture.md#Timer) · `probe` ← [What the doctor writes, runs and waits for](#DoctorProbe) · `asking` ← [Asking](#Asking) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `clock` ← [Clock](architecture.md#Clock) · `timer` ← [Timers](../std/releases/0.33.0/docs/running.md#Waiting) · `probe` ← [What the doctor writes, runs and waits for](#DoctorProbe) · `asking` ← [Asking](#Asking) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: inline, in the declaration
 - Effects: read, time
 - Implements: [What the engine needs of the machine](#EngineNeeds)
@@ -193,10 +194,10 @@ One question asked: what is asked, and whether it holds; what went wrong, when i
 
 ### A directory copied is the same as the original
 
-`TreesAnswer` · `src/doctor.ts:87` · status: **held**
+`TreesAnswer` · `src/doctor.ts:88` · status: **held**
 
 - Owner: trame
-- Parameters: `trees` ← [File trees](architecture.md#FileTrees) · `writing` ← [File writing](architecture.md#FileWriting) · `currentProcess` ← [Process](architecture.md#Process) · `paths` ← [Paths](architecture.md#Paths) · `probe` ← [What the doctor writes, runs and waits for](#DoctorProbe) · `texts` ← [Texts](../std/releases/0.32.0/docs/algebra.md#Texts) · `asking` ← [Asking](#Asking) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `trees` ← [File trees](architecture.md#FileTrees) · `writing` ← [File writing](architecture.md#FileWriting) · `currentProcess` ← [Process](architecture.md#Process) · `paths` ← [Paths](architecture.md#Paths) · `probe` ← [What the doctor writes, runs and waits for](#DoctorProbe) · `texts` ← [Texts](../std/releases/0.33.0/docs/algebra.md#Texts) · `asking` ← [Asking](#Asking) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: inline, in the declaration
 - Effects: process, read, write
 - Implements: [What the engine needs of the machine](#EngineNeeds)
@@ -209,7 +210,7 @@ One question asked: what is asked, and whether it holds; what went wrong, when i
 
 ### What the engine asks the machine
 
-`EngineQuestions` · `src/doctor.ts:200` · status: **held**
+`EngineQuestions` · `src/doctor.ts:201` · status: **held**
 
 The questions trame doctor asks for the engine, in this order, on a machine and in the scenarios (where the machine is the one kept in memory). The server and the registry leave with the commands that need them (dev; audit, upgrade).
 
@@ -232,5 +233,5 @@ Context: trame doctor answers in an empty directory and in a project whose graph
 - Decided by: trame
 - Chooses: [The clock gives the day](#ClockAnswers), [A file written is read back](#FilesAnswer), [A directory copied is the same as the original](#TreesAnswer), [A program runs with the engine's loader, and prints what it says](#ProgramsAnswer), [A run is kept, and given back until a file it read changes](#RunsAnswer), [A server listens on a port the system gives](#ServerAnswers), [The time passes](#TimerAnswers), [The registry answers about the packages](#RegistryAnswers), [The installer installs what a manifest names and writes its lockfile](#InstallerAnswers)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Plugin](../std/releases/0.32.0/docs/patterns.md#Plugin)
+- Follows: [Plugin](../std/releases/0.33.0/docs/patterns.md#Plugin)
 - Applies: [Every question of the machine is an add-on](principles.md#MachineQuestionsAsAddOns)

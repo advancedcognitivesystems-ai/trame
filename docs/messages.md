@@ -31,7 +31,7 @@ The language Trame speaks to people: British English. Its messages are written i
 
 ### A catalog counts in its language
 
-`CountsInTheLanguage` · `src/messages.ts:977` · status: **held**
+`CountsInTheLanguage` · `src/messages.ts:961` · status: **held**
 
 A count and its noun follow the plural rules of the language the catalog is written in, with the forms the catalog writes for each category; nothing below the catalogs presumes a language.
 
@@ -54,7 +54,7 @@ Consequences: A catalog that counts receives the decided language and counts by 
 
 ### Messages of an advance
 
-`AdvanceMessages` · `src/messages.ts:888`
+`AdvanceMessages` · `src/messages.ts:872`
 
 What trame advance says as it goes, and what a generation says of itself.
 
@@ -153,7 +153,7 @@ What trame advance says as it goes, and what a generation says of itself.
 
 ### Messages of the commands
 
-`CommandMessages` · `src/messages.ts:402`
+`CommandMessages` · `src/messages.ts:387`
 
 What the commands print: summaries, usage, refusals.
 
@@ -564,7 +564,7 @@ What the compiler, the wiring and the assembly say: diagnostics on the graph, re
 
 ### Messages of trame dev
 
-`DevMessages` · `src/messages.ts:378`
+`DevMessages` · `src/messages.ts:363`
 
 What the dev server prints while it watches the project.
 
@@ -658,7 +658,7 @@ What the drivers say about a body: hidden dependencies, access to the platform, 
 
 ### Words of Trame's views
 
-`EngineViewWords` · `src/messages.ts:677`
+`EngineViewWords` · `src/messages.ts:662`
 
 What the views of Trame's own graph say: the catalogue of literals, the versions of the engine.
 
@@ -671,7 +671,7 @@ The messages are written in `../engine-views/words.ts`.
 
 ### Words of the kinds
 
-`KindWords` · `src/messages.ts:657`
+`KindWords` · `src/messages.ts:642`
 
 What the kinds say: their labels, the labels of their fields and edges, what their holes say, what they render. The kinds are files of the language, outside the graph: their words are a catalog all the same, which they call; a kind writes no text of its own.
 
@@ -764,21 +764,6 @@ What the machine outputs, the lock, the payload, the date bundle, the difference
     compilationFailed: () => "the compilation failed",
     unreadableOutput: (error: string) => `unreadable output: ${error}`,
 
-    // What the last change changed: the pieces of each line, around the nodes, statuses and values it names.
-    changesTitle: () => "What the last change changed",
-    newNode: () => "New node: ",
-    nodeRemoved: (title: string) => `Node removed: ${title}`,
-    statusGoesFrom: () => " goes from ",
-    statusGoesTo: () => " to ",
-    noStatus: () => "no status",
-    issueAdded: () => " added: ",
-    issueResolved: () => " resolved: ",
-    newOverlapOn: () => "New overlap on ",
-    overlapOn: () => "The overlap on ",
-    overlapOf: () => " of ",
-    settledDifferently: () => " is settled differently: ",
-    contested: () => "contested",
-    prevails: (titles: string[]) => `${titles.join(", ")} ${titles.length > 1 ? "prevail" : "prevails"}`,
   })
 ```
 
@@ -786,14 +771,14 @@ What the machine outputs, the lock, the payload, the date bundle, the difference
 
 - Owner: trame
 - Written in: [Language](#Language)
-- Used by: [trame dev](command-scenarios.md#DevFollowsTheGraph), [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph), [A published value changed](command-scenarios.md#PublishedValueChanged), [Date bundle](engine.md#DateBundle), [Differences](engine.md#Differences), [Lock](engine.md#Lock), [Machine outputs](engine.md#MachineOutputs), [Views](engine.md#Views)
+- Used by: [trame dev](command-scenarios.md#DevFollowsTheGraph), [A published value changed](command-scenarios.md#PublishedValueChanged), [Date bundle](engine.md#DateBundle), [Lock](engine.md#Lock), [Machine outputs](engine.md#MachineOutputs), [Views](engine.md#Views)
 - Applies: [The words are in catalogs](principles.md#WordsInCatalogs)
 
 <a id="PlatformMessages"></a>
 
 ### Messages of the platform
 
-`PlatformMessages` · `src/messages.ts:687`
+`PlatformMessages` · `src/messages.ts:672`
 
 What the implementations of the ports say (the command line, the terminal, the processes).
 
@@ -812,7 +797,6 @@ What the implementations of the ports say (the command line, the terminal, the p
     /** In test, a file was read that neither the memory nor the disk holds. */
     noSuchFileInMemory: (path: string) => `No such file, in memory or on the disk: ${path}`,
     /** In test, a page was asked of a server that was never started. */
-    noServerInTest: (url: string) => `In test, ${url} was asked, and no server was started`,
     /** In test, the engine asked to exit (a refusal, most often): the scenario fails with this message. */
     engineExited: (code: number, lastLines: string[]) => `the engine exited with code ${code}: ${lastLines.join(" | ")}`,
     /** A text was to be read with a grammar that was not loaded first. */
@@ -826,14 +810,14 @@ What the implementations of the ports say (the command line, the terminal, the p
 
 - Owner: trame
 - Written in: [Language](#Language)
-- Used by: [The command line](command-scenarios.md#CommandLineChooses), [Example process](platform.md#ExampleProcess), [Files in memory, over the disk](platform.md#MemoryFiles), [A server in memory](platform.md#MemoryHttpServer), [Terminal in memory](platform.md#MemoryTerminal), [Command line](platform.md#NodeCommandLine), [Node terminal](platform.md#NodeTerminal), [tree-sitter in WebAssembly](platform.md#WebTreeSitter)
+- Used by: [The command line](command-scenarios.md#CommandLineChooses), [Example process](platform.md#ExampleProcess), [Files in memory, over the disk](platform.md#MemoryFiles), [Terminal in memory](platform.md#MemoryTerminal), [Command line](platform.md#NodeCommandLine), [Node terminal](platform.md#NodeTerminal), [tree-sitter in WebAssembly](platform.md#WebTreeSitter)
 - Applies: [The words are in catalogs](principles.md#WordsInCatalogs)
 
 <a id="ScenarioMessages"></a>
 
 ### Messages of the scenarios
 
-`ScenarioMessages` · `src/messages.ts:716`
+`ScenarioMessages` · `src/messages.ts:700`
 
 The names of the checks that the engine's scenarios make.
 
@@ -1078,7 +1062,7 @@ What the loading of views and the compilation API say.
 
 ### Words of the views
 
-`ViewWords` · `src/messages.ts:667`
+`ViewWords` · `src/messages.ts:652`
 
 What the views say: their titles, their introductions, their headings, what they say of the graph.
 

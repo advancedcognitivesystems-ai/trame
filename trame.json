@@ -13,8 +13,8 @@
       "version": "0.5.1"
     },
     "commands": {
-      "at": "libs/commands/releases/0.4.0",
-      "version": "0.4.0"
+      "at": "libs/commands/releases/0.5.0",
+      "version": "0.5.0"
     },
     "machine": {
       "at": "libs/machine/releases/0.1.0",
@@ -25,8 +25,8 @@
       "version": "0.1.0"
     },
     "std": {
-      "at": "std/releases/0.32.0",
-      "version": "0.32.0"
+      "at": "std/releases/0.33.0",
+      "version": "0.33.0"
     }
   },
   "engine": "generations/g136"

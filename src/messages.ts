@@ -353,21 +353,6 @@ export const OutputMessages = catalog({
     compilationFailed: () => "the compilation failed",
     unreadableOutput: (error: string) => `unreadable output: ${error}`,
 
-    // What the last change changed: the pieces of each line, around the nodes, statuses and values it names.
-    changesTitle: () => "What the last change changed",
-    newNode: () => "New node: ",
-    nodeRemoved: (title: string) => `Node removed: ${title}`,
-    statusGoesFrom: () => " goes from ",
-    statusGoesTo: () => " to ",
-    noStatus: () => "no status",
-    issueAdded: () => " added: ",
-    issueResolved: () => " resolved: ",
-    newOverlapOn: () => "New overlap on ",
-    overlapOn: () => "The overlap on ",
-    overlapOf: () => " of ",
-    settledDifferently: () => " is settled differently: ",
-    contested: () => "contested",
-    prevails: (titles: string[]) => `${titles.join(", ")} ${titles.length > 1 ? "prevail" : "prevails"}`,
   }),
 })
 
@@ -699,7 +684,6 @@ export const PlatformMessages = catalog({
     /** In test, a file was read that neither the memory nor the disk holds. */
     noSuchFileInMemory: (path: string) => `No such file, in memory or on the disk: ${path}`,
     /** In test, a page was asked of a server that was never started. */
-    noServerInTest: (url: string) => `In test, ${url} was asked, and no server was started`,
     /** In test, the engine asked to exit (a refusal, most often): the scenario fails with this message. */
     engineExited: (code: number, lastLines: string[]) => `the engine exited with code ${code}: ${lastLines.join(" | ")}`,
     /** A text was to be read with a grammar that was not loaded first. */

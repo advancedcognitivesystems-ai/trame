@@ -136,7 +136,7 @@ export const VersionOrder = fn({
  * repository, at the version it froze.
  */
 export const StandardLibrary = pkg({
-  owner: "trame", packageName: "std", version: "0.32.0", joins: "library", from: "path", at: "std/releases/0.32.0", serves: [SingleSource],
+  owner: "trame", packageName: "std", version: "0.33.0", joins: "library", from: "path", at: "std/releases/0.33.0", serves: [SingleSource],
 })
 
 /**
@@ -190,7 +190,7 @@ export const Machine = pkg({
  * at the version it uses, by its path in the repository.
  */
 export const GenericCommands = pkg({
-  owner: "trame", packageName: "commands", version: "0.4.0", joins: "library", from: "path", at: "libs/commands/releases/0.4.0",
+  owner: "trame", packageName: "commands", version: "0.5.0", joins: "library", from: "path", at: "libs/commands/releases/0.5.0",
   serves: [SingleSource],
 })
 

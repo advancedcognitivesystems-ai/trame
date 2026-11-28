@@ -183,8 +183,6 @@ export interface Clock {
   /** Today's date, or the one TRAME_TODAY sets. */
   today(): string
 }
-export type Timer = Pick<typeof globalThis, "setTimeout" | "clearTimeout">
-export type HttpServer = Pick<typeof import("node:http"), "createServer">
 export type Bundler = Pick<typeof import("esbuild"), "build">
 /** A vulnerability the registry knows in a package installed: how many advisories, the worst severity, the first one's title. */
 export interface AuditFinding {
@@ -380,16 +378,6 @@ export const Terminal = port<Terminal>({
 export const Clock = port<Clock>({ owner: "trame", declaredEffects: effects("time", "read") })
 
 /**
- * Timer
- */
-export const Timer = port<Timer>({ owner: "trame", declaredEffects: effects("time") })
-
-/**
- * HTTP server
- */
-export const HttpServer = port<HttpServer>({ owner: "trame", declaredEffects: effects("network") })
-
-/**
  * Bundler
  * Gathers the page's program and what it imports into a single module for the browser.
  */
@@ -519,23 +507,6 @@ export interface ProcessLog {
   /** The programs started so far: what, with which arguments, in which directory. */
   started(): { program: string; args: readonly string[]; cwd: string }[]
 }
-export interface ServerResponseSeen {
-  status: number
-  headers: Readonly<Record<string, string>>
-  /** What was written so far: a stream stays open. */
-  body(): string
-  /** The client goes away. */
-  close(): void
-  /** Once the server has ended its answer (one it gives after some work: an amendment prepared). */
-  ended(): Promise<void>
-}
-export interface ServerLog {
-  /** Asks the server started in memory for a path, as a browser would; with a text, posts it (since g86). */
-  request(url: string, posted?: string): ServerResponseSeen
-  /** The ports it was asked to listen on. */
-  ports(): number[]
-}
-
 /**
  * Write log
  * What the engine wrote, when writing is simulated.
@@ -553,12 +524,6 @@ export const TerminalLog = port<TerminalLog>({ owner: "trame", declaredEffects: 
  * In a scenario: where the next commands run, what the programs started answer, and which were started.
  */
 export const ProcessLog = port<ProcessLog>({ owner: "trame", declaredEffects: effects() })
-
-/**
- * Server log
- * In a scenario: asks the server started in memory for a path.
- */
-export const ServerLog = port<ServerLog>({ owner: "trame", declaredEffects: effects() })
 
 /**
  * Effects come from the vocabulary

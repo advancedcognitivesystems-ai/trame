@@ -1,13 +1,23 @@
-// A server in memory: trame dev starts it as it would a server of Node.js, and a scenario asks it for a path as a
+// A server in memory: a command starts it as it would a server of Node.js, and a scenario asks it for a path as a
 // browser would, reading the status, the headers and what was written (a stream of events stays open until the client
 // goes away). Nothing listens on the network.
 
-import type { BodyOf } from "../../../trame/kernel"
-import type { MemoryHttpServer } from "../../platform"
+import type { ProvidedBy } from "#trame/kernel"
+import type { HttpServer, ServerAsked, RunningWords } from "../../running"
+import type { NodeEvents } from "../../system"
+import type { Http } from "../../web"
+import type { Texts } from "../../algebra"
 
 type Handler = (req: unknown, res: unknown) => void
 
-const body: BodyOf<typeof MemoryHttpServer> = ({ events, http, texts, messages }) => {
+export interface Deps {
+  events: ProvidedBy<typeof NodeEvents>
+  http: ProvidedBy<typeof Http>
+  texts: ProvidedBy<typeof Texts>
+  say: ProvidedBy<typeof RunningWords>
+}
+
+const body = ({ events, http, texts, say }: Deps): HttpServer & ServerAsked => {
   let handler: Handler | undefined
   const ports: number[] = []
   return {
@@ -23,8 +33,8 @@ const body: BodyOf<typeof MemoryHttpServer> = ({ events, http, texts, messages }
       }
       return server
     }) as never,
-    request: (url, posted) => {
-      if (!handler) throw new Error(messages.noServerInTest(url))
+    request: (url: string, posted?: string) => {
+      if (!handler) throw new Error(say.noServer(url))
       const chunks: string[] = []
       const closing: (() => void)[] = []
       let ended: () => void = () => undefined

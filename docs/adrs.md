@@ -26,7 +26,7 @@
 | [A literal in a kind or a view is an error](principles.md#NoLiteralInTheLanguage) | **held** | [Compiler](engine.md#Compiler), [Syntax reader](syntax.md#SyntaxReader) |
 | [A key is made of its parts](principles.md#KeysOfParts) | **held** | [Compilation API](engine.md#CompilationApi), [Compiler](engine.md#Compiler), [Laws](engine.md#Laws), [Payload](engine.md#PayloadBuilder), [Static reading](engine.md#StaticAnalysis) |
 | [Trame builds Trame](principles.md#TrameBuildsTrame) | **held** | [Advance](commands.md#Advance), [Accept a candidate](generations.md#AcceptCandidate), [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore), [The described engine compiles the example](scenarios.md#CompileExample), [The laws of the kinds hold](scenarios.md#KindLaws) |
-| [A technology is chosen in one node](principles.md#TechnologyInOneNode) | **unknown** | [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [esbuild bundles the page's program](platform.md#EsbuildBundles), [Scenarios run in memory](platform.md#InMemoryScenarios), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [NodePlatform](platform.md#NodePlatform), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [The page in HTML](rendering.md#PageInHtml), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The terminal in plain text](rendering.md#TerminalInText), [Abstract Factory](../std/releases/0.32.0/docs/patterns.md#AbstractFactory), [Adapter](../std/releases/0.32.0/docs/patterns.md#Adapter), [Bridge](../std/releases/0.32.0/docs/patterns.md#Bridge), [Repository](../std/releases/0.32.0/docs/patterns.md#Repository), [Strategy](../std/releases/0.32.0/docs/patterns.md#Strategy) |
+| [A technology is chosen in one node](principles.md#TechnologyInOneNode) | **unknown** | [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [esbuild bundles the page's program](platform.md#EsbuildBundles), [Scenarios run in memory](platform.md#InMemoryScenarios), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [NodePlatform](platform.md#NodePlatform), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [The page in HTML](rendering.md#PageInHtml), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The terminal in plain text](rendering.md#TerminalInText), [Abstract Factory](../std/releases/0.33.0/docs/patterns.md#AbstractFactory), [Adapter](../std/releases/0.33.0/docs/patterns.md#Adapter), [Bridge](../std/releases/0.33.0/docs/patterns.md#Bridge), [Repository](../std/releases/0.33.0/docs/patterns.md#Repository), [Strategy](../std/releases/0.33.0/docs/patterns.md#Strategy) |
 | [The prelude: the runtime of the language](principles.md#PreludeLayer) | **held** | [Prelude](architecture.md#Prelude), [The frozen API](conventions.md#FrozenApi), [The prelude's public API](conventions.md#PreludeApi), [Laws](engine.md#Laws) |
 | [Kinds and views: the vocabulary, as reviewed files](principles.md#VocabularyLayer) | **held** | [Laws](engine.md#Laws), [Project](engine.md#Project), [Views](engine.md#Views) |
 | [The graph: the description of a product](principles.md#GraphLayer) | **held** | [Build](commands.md#Build), [Compiler](engine.md#Compiler) |
@@ -105,7 +105,7 @@ Consequences: The Language decision holds the marks of the language with its tag
 
 ### The language receives the graph's values
 
-`TheLanguageReceivesTheGraph` · `src/engine.ts:352` · status: **held**
+`TheLanguageReceivesTheGraph` · `src/engine.ts:351` · status: **held**
 
 The kinds and the views are files, not nodes: what they write is given to them by the engine, from the graph.
 
@@ -126,7 +126,7 @@ Consequences: The engine gives them the graph's values through the graph they re
 
 ### The laws are requirements
 
-`LawsAreRequirements` · `src/engine.ts:370` · status: **held**
+`LawsAreRequirements` · `src/engine.ts:369` · status: **held**
 
 Each law of the kinds and the views is a requirement of the module laws: a pure rule, with its acceptance criteria. The functions "Laws" and "Views" observe a kind on nodes drawn at random, or a view on the graph, and ask the rule whether what they saw keeps the law; they phrase what breaks it.
 
@@ -171,7 +171,7 @@ Consequences: Each language has its module (how Trame reads it, what Trame write
 
 ### A catalog counts in its language
 
-`CountsInTheLanguage` · `src/messages.ts:977` · status: **held**
+`CountsInTheLanguage` · `src/messages.ts:961` · status: **held**
 
 A count and its noun follow the plural rules of the language the catalog is written in, with the forms the catalog writes for each category; nothing below the catalogs presumes a language.
 
@@ -489,7 +489,7 @@ Consequences: A binding chooses the realizations of one or more ports in some en
 
 - Decided by: trame
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
-- Applied by: [NodePlatform](platform.md#NodePlatform), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [Scenarios run in memory](platform.md#InMemoryScenarios), [esbuild bundles the page's program](platform.md#EsbuildBundles), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [The terminal in plain text](rendering.md#TerminalInText), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The page in HTML](rendering.md#PageInHtml), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [Strategy](../std/releases/0.32.0/docs/patterns.md#Strategy), [Adapter](../std/releases/0.32.0/docs/patterns.md#Adapter), [Bridge](../std/releases/0.32.0/docs/patterns.md#Bridge), [Abstract Factory](../std/releases/0.32.0/docs/patterns.md#AbstractFactory), [Repository](../std/releases/0.32.0/docs/patterns.md#Repository)
+- Applied by: [NodePlatform](platform.md#NodePlatform), [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine), [Scenarios run in memory](platform.md#InMemoryScenarios), [esbuild bundles the page's program](platform.md#EsbuildBundles), [tree-sitter reads the bodies](platform.md#TreeSitterReads), [tsx runs TypeScript](platform.md#TsxRuns), [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations), [The engine's own files sit beside its code](platform.md#EngineFilesBesideCode), [Documents in Markdown](rendering.md#DocumentsInMarkdown), [Figures in Mermaid](rendering.md#FiguresInMermaid), [The terminal in plain text](rendering.md#TerminalInText), [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText), [The page in HTML](rendering.md#PageInHtml), [The page's figures in SVG](rendering.md#PageFiguresDrawn), [Strategy](../std/releases/0.33.0/docs/patterns.md#Strategy), [Adapter](../std/releases/0.33.0/docs/patterns.md#Adapter), [Bridge](../std/releases/0.33.0/docs/patterns.md#Bridge), [Abstract Factory](../std/releases/0.33.0/docs/patterns.md#AbstractFactory), [Repository](../std/releases/0.33.0/docs/patterns.md#Repository)
 
 <a id="PreludeLayer"></a>
 
@@ -873,7 +873,7 @@ Consequences: A session of Claude Code merges through its proxy (AutoMergeInASes
 - Decided by: trame
 - Serves: [What is generic is written once](product.md#WrittenOnce)
 - Applied by: [The SDLC on the machine](sdlc.md#SdlcOnTheMachine), [The repository's work on a machine](sdlc.md#RepositoryWorkOnAMachine), [GitHub merges once it holds, asked by its command line](sdlc.md#AutoMergeOnTheMachine), [GitHub merges once it holds, asked in a session](sdlc.md#AutoMergeInASession)
-- Adopts: [The SDLC's tooling is realized once](../std/releases/0.32.0/docs/tooling.md#ToolingAsPorts), [A repository is set by its project's graph](../std/releases/0.32.0/docs/repository.md#RepositoryThroughItsApi)
+- Adopts: [The SDLC's tooling is realized once](../std/releases/0.33.0/docs/tooling.md#ToolingAsPorts), [A repository is set by its project's graph](../std/releases/0.33.0/docs/repository.md#RepositoryThroughItsApi)
 
 <a id="CommandsFromLibraries"></a>
 
@@ -894,7 +894,7 @@ Consequences: A command a library offers changes with a release of the library; 
 - Decided by: trame
 - Serves: [What is generic is written once](product.md#WrittenOnce)
 - Applied by: [The commands Trame takes from std](sdlc.md#CommandsOfStd), [The commands Trame takes from libs/commands](sdlc.md#CommandsWrittenOnce)
-- Adopts: [A library offers commands, a project chooses them](../std/releases/0.32.0/docs/commands.md#CommandsOfALibrary)
+- Adopts: [A library offers commands, a project chooses them](../std/releases/0.33.0/docs/commands.md#CommandsOfALibrary)
 
 <a id="EngineProvidesForTrame"></a>
 
@@ -915,7 +915,7 @@ Consequences: What Trame's commands and std's languages reach of the engine is w
 - Decided by: trame
 - Serves: [What is generic is written once](product.md#WrittenOnce)
 - Applied by: [The commands Trame takes from libs/commands](sdlc.md#CommandsWrittenOnce), [std's languages, read by the engine](syntax.md#StdLanguagesRead)
-- Adopts: [The engine is a provider](../std/releases/0.32.0/docs/engine.md#EngineAsAProvider)
+- Adopts: [The engine is a provider](../std/releases/0.33.0/docs/engine.md#EngineAsAProvider)
 
 ## Trame · Rendering
 

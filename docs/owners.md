@@ -5,7 +5,7 @@
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | Trame's maintainers | 0 | 0 | 6 | 0 |
-| trame | 0 | 0 | 18 | 645 |
+| trame | 0 | 0 | 18 | 636 |
 
 <a id="Trame's maintainers"></a>
 
@@ -60,7 +60,6 @@
 | [File trees](architecture.md#FileTrees) | Port |  |
 | [File writing](architecture.md#FileWriting) | Port |  |
 | [Hashing](architecture.md#Hashing) | Port |  |
-| [HTTP server](architecture.md#HttpServer) | Port |  |
 | [Results kept](architecture.md#KeptResults) | Port |  |
 | [Runs kept](architecture.md#KeptRuns) | Port |  |
 | [Effects come from the vocabulary](architecture.md#KnownEffects) | Architecture rule | **held** |
@@ -77,14 +76,12 @@
 | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph) | Architecture rule | **held** |
 | [Page resources](architecture.md#Resources) | Port |  |
 | [Where runs are kept](architecture.md#RunStore) | Port |  |
-| [Server log](architecture.md#ServerLog) | Port |  |
 | [A session of Claude Code](architecture.md#Session) | Environment |  |
 | [Signatures](architecture.md#Signatures) | Port |  |
 | [Syntax trees](architecture.md#SyntaxTrees) | Port |  |
 | [Terminal](architecture.md#Terminal) | Port |  |
 | [Terminal log](architecture.md#TerminalLog) | Port |  |
 | [Test](architecture.md#Test) | Environment |  |
-| [Timer](architecture.md#Timer) | Port |  |
 | [Trame on the command line](architecture.md#TrameCli) | Component |  |
 | [TypeScript compiler](architecture.md#TypeScriptCompiler) | Port |  |
 | [Write log](architecture.md#WriteLog) | Port |  |
@@ -210,7 +207,6 @@
 | [Cycles](engine.md#Cycles) | Function | **held** |
 | [Date bundle](engine.md#DateBundle) | Function | **held** |
 | [trame dev server](engine.md#DevServer) | Function | **held** |
-| [Differences](engine.md#Differences) | Function | **held** |
 | [Files an editor leaves](engine.md#EditorLeftovers) | Decision |  |
 | [The fingerprint of an engine](engine.md#EngineFingerprint) | Function | **held** |
 | [Length of a fingerprint](engine.md#Fingerprint) | Decision |  |
@@ -327,19 +323,16 @@
 | [Packages from the local registry](platform.md#LocalRegistry) | Implementation |  |
 | [Where the local registry is](platform.md#LocalRegistryPlace) | Decision |  |
 | [Files in memory, over the disk](platform.md#MemoryFiles) | Implementation | **held** |
-| [A server in memory](platform.md#MemoryHttpServer) | Function | **held** |
 | [Temporary directories in memory](platform.md#MemoryTemporary) | Decision |  |
 | [Terminal in memory](platform.md#MemoryTerminal) | Function | **held** |
 | [Command line](platform.md#NodeCommandLine) | Implementation | **held** |
 | [SHA-256 hashes](platform.md#NodeHashing) | Implementation | **held** |
-| [Node HTTP server](platform.md#NodeHttpServer) | Implementation | **unknown** |
 | [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) | Technical choice | **unknown** |
 | [Node paths](platform.md#NodePaths) | Implementation | **held** |
 | [NodePlatform](platform.md#NodePlatform) | Technical choice | **held** |
 | [Node process](platform.md#NodeProcess) | Implementation | **unknown** |
 | [Node programs](platform.md#NodePrograms) | Implementation | **unknown** |
 | [Node terminal](platform.md#NodeTerminal) | Implementation | **unknown** |
-| [Node timer](platform.md#NodeTimer) | Implementation | **held** |
 | [No installer in test](platform.md#NoInstallsInTest) | Implementation | **held** |
 | [No registry in test](platform.md#NoReportsInTest) | Function | **held** |
 | [npm installs](platform.md#NpmInstall) | Implementation | **unknown** |
@@ -401,8 +394,6 @@
 | [The words are in catalogs](principles.md#WordsInCatalogs) | Architecture decision | **held** |
 | [Candidate dates](product.md#CandidateDates) | Decision |  |
 | [Claim sets](product.md#ClaimSets) | Decision |  |
-| [Debouncing of saves](product.md#DevDebounce) | Decision |  |
-| [Port of trame dev](product.md#DevPort) | Decision |  |
 | [A specification that runs](product.md#ExecutableSpecification) | Goal |  |
 | [A technology is changed in one node](product.md#ReplaceableTechnology) | Goal |  |
 | [Nodes drawn per kind](product.md#SampleCount) | Decision |  |

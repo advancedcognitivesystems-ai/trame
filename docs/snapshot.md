@@ -70,13 +70,6 @@ Port · `Hashing`
 - Owner: trame
 - Declared effects: 
 
-### HTTP server
-
-Port · `HttpServer`
-
-- Owner: trame
-- Declared effects: network
-
 ### Results kept
 
 Port · `KeptResults`
@@ -161,13 +154,6 @@ Port · `RunStore`
 - Owner: trame
 - Declared effects: read, keeps
 
-### Server log
-
-Port · `ServerLog`
-
-- Owner: trame
-- Declared effects: 
-
 ### Signatures
 
 Port · `Signatures`
@@ -195,13 +181,6 @@ Port · `TerminalLog`
 
 - Owner: trame
 - Declared effects: 
-
-### Timer
-
-Port · `Timer`
-
-- Owner: trame
-- Declared effects: time
 
 ### TypeScript compiler
 
@@ -465,10 +444,10 @@ Scenario · `DeclarationsPublished` · **held**
 Scenario · `DevFollowsTheGraph` · **held**
 
 - Owner: trame
-- Parameters: { payload: commands.EmitPayload, dev: commands.Dev, processLog: architecture.ProcessLog, serverLog: architecture.ServerLog, terminalLog: architecture.TerminalLog, writing: architecture.FileWriting, timer: architecture.Timer, currentProcess: architecture.Process, paths: architecture.Paths, layout: conventions.Layout, service: documents/page.DevService, sse: std/web.ServerSentEvents, http: std/web.Http, debounce: product.DevDebounce, project: engine.Project, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, output: messages.OutputMessages, pageWords: documents/page.PageWords, texts: std/algebra.Texts, counts: std/algebra.Counts, data: command-scenarios.DevSamples, amendment: command-scenarios.AmendmentSamples, messages: messages.ScenarioMessages }
-- Verifies: Start trame dev, trame dev server, Watching a project, A server in memory, Node timer
+- Parameters: { payload: commands.EmitPayload, dev: commands.Dev, processLog: architecture.ProcessLog, serverLog: std/running.ServerKept, terminalLog: architecture.TerminalLog, writing: architecture.FileWriting, timer: std/running.Waiting, currentProcess: architecture.Process, paths: architecture.Paths, layout: conventions.Layout, service: documents/page.DevService, sse: std/web.ServerSentEvents, http: std/web.Http, debounce: commands/commands.DevDebounce, project: engine.Project, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, output: messages.OutputMessages, pageWords: documents/page.PageWords, texts: std/algebra.Texts, counts: std/algebra.Counts, data: command-scenarios.DevSamples, amendment: command-scenarios.AmendmentSamples, messages: messages.ScenarioMessages }
+- Verifies: Start trame dev, trame dev server, Watching a project
 - In: Test
-- Depends on: Payload, Start trame dev, Process log, Server log, Terminal log, File writing, Timer, Process, Paths, Project layout, Debouncing of saves, Project, Trame's commands, Messages of the outputs, What trame dev is shown in a scenario, What an amendment is checked with, Messages of the scenarios
+- Depends on: Payload, Start trame dev, Process log, Terminal log, File writing, Process, Paths, Project layout, Project, Trame's commands, Messages of the outputs, What trame dev is shown in a scenario, What an amendment is checked with, Messages of the scenarios
 
 ### The doctor
 
@@ -625,10 +604,10 @@ Scenario · `PageOfTheGraph` · **held**
 Scenario · `PayloadOfTheGraph` · **held**
 
 - Owner: trame
-- Parameters: { payload: commands.EmitPayload, differences: engine.Differences, terminalLog: architecture.TerminalLog, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, output: messages.OutputMessages, texts: std/algebra.Texts, counts: std/algebra.Counts, messages: messages.ScenarioMessages, svg: command-scenarios.SvgSample }
-- Verifies: Payload, Payload, Differences
+- Parameters: { payload: commands.EmitPayload, differences: commands/commands.PayloadDifferences, terminalLog: architecture.TerminalLog, line: conventions.TrameCommands, exitStatus: std/system.ExitStatus, output: commands/commands.CommandWords, texts: std/algebra.Texts, counts: std/algebra.Counts, messages: messages.ScenarioMessages, svg: command-scenarios.SvgSample }
+- Verifies: Payload, Payload
 - In: Test
-- Depends on: Payload, Differences, Terminal log, Trame's commands, Messages of the outputs, Messages of the scenarios, What an SVG figure opens with
+- Depends on: Payload, Terminal log, Trame's commands, Messages of the scenarios, What an SVG figure opens with
 
 ### A command of the project
 
@@ -773,9 +752,9 @@ Function · `ExampleRewriting` · **held**
 Function · `Preparation` · **held**
 
 - Owner: trame
-- Parameters: { line: conventions.TrameCommands, compiler: engine.Compiler, compilationApi: engine.CompilationApi, laws: engine.Laws, views: engine.Views, lock: engine.Lock, common: documents/rendering.Common, terminal: architecture.Terminal, currentProcess: architecture.Process, clock: architecture.Clock, severityOrder: (rule), devPort: product.DevPort, exitStatus: std/system.ExitStatus, layout: documents/text.TerminalText, columns: documents/text.TerminalColumns, cell: documents/text.PaddedCell, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CommandMessages, projectLayout: conventions.Layout, uri: std/web.Uri, references: engine.References, projectCommands: commands.ProjectCommands, kept: conventions.KeptCommands, machine: engine.MachineOutputs, paths: architecture.Paths, reading: architecture.FileReading, specifiers: std/system.NodeModuleSpecifiers, reader: syntax.SyntaxReader, long: std/tooling.LongOptions, standard: std/tooling.StandardOptions, payload: engine.PayloadBuilder, dateBundle: engine.DateBundle, watching: engine.Watching, page: page.PageScript, project: engine.Project }
+- Parameters: { line: conventions.TrameCommands, compiler: engine.Compiler, compilationApi: engine.CompilationApi, laws: engine.Laws, views: engine.Views, lock: engine.Lock, common: documents/rendering.Common, terminal: architecture.Terminal, currentProcess: architecture.Process, clock: architecture.Clock, severityOrder: (rule), devPort: commands/commands.DevPort, exitStatus: std/system.ExitStatus, layout: documents/text.TerminalText, columns: documents/text.TerminalColumns, cell: documents/text.PaddedCell, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, messages: messages.CommandMessages, projectLayout: conventions.Layout, uri: std/web.Uri, references: engine.References, projectCommands: commands.ProjectCommands, kept: conventions.KeptCommands, machine: engine.MachineOutputs, paths: architecture.Paths, reading: architecture.FileReading, specifiers: std/system.NodeModuleSpecifiers, reader: syntax.SyntaxReader, long: std/tooling.LongOptions, standard: std/tooling.StandardOptions, payload: engine.PayloadBuilder, dateBundle: engine.DateBundle, watching: engine.Watching, page: page.PageScript, project: engine.Project }
 - Serves: A specification that runs
-- Depends on: Trame's commands, Compiler, Compilation API, Laws, Views, Lock, Terminal, Process, Clock, Sort problems by severity, Port of trame dev, Messages of the commands, Project layout, References, The project's commands, The commands the engine keeps, Machine outputs, Paths, File reading, Syntax reader, Payload, Date bundle, Watching a project, The page's program, bundled, Project
+- Depends on: Trame's commands, Compiler, Compilation API, Laws, Views, Lock, Terminal, Process, Clock, Sort problems by severity, Messages of the commands, Project layout, References, The project's commands, The commands the engine keeps, Machine outputs, Paths, File reading, Syntax reader, Payload, Date bundle, Watching a project, The page's program, bundled, Project
 
 ### The project's commands
 
@@ -909,7 +888,7 @@ Entry point · `EmitPayload` · **held**
 
 - Owner: trame
 - Trigger: { type: command, name: payload }
-- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, payload: engine.PayloadBuilder, files: documents/rendering.FileRendering, screen: documents/rendering.TerminalRendering, pageRendering: documents/rendering.PageRendering, terminal: architecture.Terminal }
+- Parameters: { exitStatus: std/system.ExitStatus, preparation: commands.Preparation, payload: engine.PayloadBuilder, same: commands/commands.SameAsToday, files: documents/rendering.FileRendering, screen: documents/rendering.TerminalRendering, pageRendering: documents/rendering.PageRendering, terminal: architecture.Terminal }
 - Serves: A specification that runs
 - Part of: Trame on the command line
 - Depends on: Preparation, Payload, Terminal
@@ -1304,18 +1283,18 @@ Implementation · `RunsAnswer` · **held**
 Implementation · `ServerAnswers` · **held**
 
 - Owner: trame
-- Parameters: { httpServer: architecture.HttpServer, counts: std/algebra.Counts, asking: doctor.Asking, messages: messages.CommandMessages }
+- Parameters: { httpServer: std/running.HttpServing, counts: std/algebra.Counts, asking: doctor.Asking, messages: messages.CommandMessages }
 - Implements: What the engine needs of the machine
-- Depends on: HTTP server, Asking, Messages of the commands
+- Depends on: Asking, Messages of the commands
 
 ### The time passes
 
 Implementation · `TimerAnswers` · **held**
 
 - Owner: trame
-- Parameters: { clock: architecture.Clock, timer: architecture.Timer, probe: doctor.DoctorProbe, asking: doctor.Asking, messages: messages.CommandMessages }
+- Parameters: { clock: architecture.Clock, timer: std/running.Waiting, probe: doctor.DoctorProbe, asking: doctor.Asking, messages: messages.CommandMessages }
 - Implements: What the engine needs of the machine
-- Depends on: Clock, Timer, What the doctor writes, runs and waits for, Asking, Messages of the commands
+- Depends on: Clock, What the doctor writes, runs and waits for, Asking, Messages of the commands
 
 ### A directory copied is the same as the original
 
@@ -1491,18 +1470,9 @@ Function · `DateBundle` · **held**
 Function · `DevServer` · **held**
 
 - Owner: trame
-- Parameters: { service: documents/page.DevService, uri: std/web.Uri, line: conventions.TrameCommands, nodeEvents: std/system.NodeEvents, layout: conventions.Layout, http: std/web.Http, mediaTypes: std/web.MediaTypes, events: std/web.ServerSentEvents, terminal: architecture.Terminal, codeLines: documents/text.CodeLines, file: std/text.TextFile, clock: architecture.Clock, timer: architecture.Timer, debounce: product.DevDebounce, httpServer: architecture.HttpServer, watching: engine.Watching, paths: architecture.Paths, project: engine.Project, bundle: engine.DateBundle, differences: engine.Differences, page: documents/page.Page, script: page.PageScript, pageRendering: documents/rendering.PageRendering, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, dates: documents/language.Dates, language: messages.Language, messages: messages.DevMessages }
+- Parameters: { service: documents/page.DevService, uri: std/web.Uri, line: conventions.TrameCommands, nodeEvents: std/system.NodeEvents, layout: conventions.Layout, http: std/web.Http, mediaTypes: std/web.MediaTypes, events: std/web.ServerSentEvents, terminal: architecture.Terminal, codeLines: documents/text.CodeLines, file: std/text.TextFile, clock: architecture.Clock, timer: std/running.Waiting, debounce: commands/commands.DevDebounce, httpServer: std/running.HttpServing, watching: engine.Watching, paths: architecture.Paths, project: engine.Project, bundle: engine.DateBundle, differences: commands/commands.PayloadDifferences, page: documents/page.Page, script: page.PageScript, pageRendering: documents/rendering.PageRendering, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts, dates: documents/language.Dates, language: messages.Language, messages: messages.DevMessages }
 - Serves: A specification that runs
-- Depends on: Trame's commands, Project layout, Terminal, Clock, Timer, Debouncing of saves, HTTP server, Watching a project, Paths, Project, Date bundle, Differences, The page's program, bundled, Language, Messages of trame dev
-
-### Differences
-
-Function · `Differences` · **held**
-
-- Owner: trame
-- Parameters: { punctuation: documents/language.Punctuation, messages: messages.OutputMessages }
-- Serves: A specification that runs
-- Depends on: Messages of the outputs
+- Depends on: Trame's commands, Project layout, Terminal, Clock, Watching a project, Paths, Project, Date bundle, The page's program, bundled, Language, Messages of trame dev
 
 ### The fingerprint of an engine
 
@@ -2139,10 +2109,10 @@ Package · `GenericCommands`
 
 - Owner: trame
 - Name: commands
-- Version: 0.4.0
+- Version: 0.5.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: libs/commands/releases/0.4.0
+- Its path: libs/commands/releases/0.5.0
 - Serves: A single source of truth
 
 ### Grammar of HCL
@@ -2207,10 +2177,10 @@ Package · `StandardLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.32.0
+- Version: 0.33.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: std/releases/0.32.0
+- Its path: std/releases/0.33.0
 - Serves: A single source of truth
 
 ### tsx
@@ -2361,15 +2331,6 @@ Function · `ExampleProcess` · **held**
 - Implements: Process, Programs, Process log
 - Depends on: Example project, Paths, Trame's commands, Messages of the platform
 
-### A server in memory
-
-Function · `MemoryHttpServer` · **held**
-
-- Owner: trame
-- Parameters: { events: std/system.NodeEvents, http: std/web.Http, texts: std/algebra.Texts, messages: messages.PlatformMessages }
-- Implements: HTTP server, Server log
-- Depends on: Messages of the platform
-
 ### Terminal in memory
 
 Function · `MemoryTerminal` · **held**
@@ -2475,13 +2436,6 @@ Implementation · `NodeHashing` · **held**
 - Owner: trame
 - Implements: Hashing
 
-### Node HTTP server
-
-Implementation · `NodeHttpServer` · **unknown**
-
-- Owner: trame
-- Implements: HTTP server
-
 ### Node paths
 
 Implementation · `NodePaths` · **held**
@@ -2515,13 +2469,6 @@ Implementation · `NodeTerminal` · **unknown**
 - Parameters: { argv: std/system.NodeArguments, exitStatus: std/system.ExitStatus, events: std/system.NodeEvents, posix: std/system.Posix, messages: messages.PlatformMessages }
 - Implements: Terminal
 - Depends on: Messages of the platform
-
-### Node timer
-
-Implementation · `NodeTimer` · **held**
-
-- Owner: trame
-- Implements: Timer
 
 ### No installer in test
 
@@ -2699,7 +2646,7 @@ Technical choice · `InMemoryScenarios` · **held**
 - Context: A scenario runs the described engine on the example and reads what it wrote and printed; it must give the same result every day and leave nothing behind.
 - Consequences: These realizations touch nothing but the disk they read: the logs a scenario reads come with what writes them, chosen together. The disk, the processes and the server of a machine are verified by the checks the candidate runs on one.
 - Rejected: A temporary directory, slower, and a scenario could read what was written only through the platform; The system clock, the documents of the example would change every day; Commands that refuse in test, the advance, the release, the manifest, the shipment and trame dev would be verified nowhere
-- Chooses: Terminal in memory, Stopped clock, No registry in test, Example process, A server in memory
+- Chooses: Terminal in memory, Stopped clock, No registry in test, Example process
 - In: Test
 - Serves: A technology is changed in one node
 
@@ -2711,7 +2658,7 @@ Technical choice · `NodeMachine` · **unknown**
 - Context: What changes the world (files written, processes, the terminal, the clock) is real only on a machine; the scenarios keep it in memory.
 - Consequences: Writing goes through FileWriting and FileTrees only, which the rule "Only commands write" checks; comparing trees uses GNU diff, through a process.
 - Rejected: A library to compare trees, GNU diff writes the unified format the advance keeps, and is on every machine that runs it
-- Chooses: System files, for reading, System files, for writing, Trees on disk, Node process, Node programs, Node terminal, System clock, npm's reports, npm installs, Node HTTP server
+- Chooses: System files, for reading, System files, for writing, Trees on disk, Node process, Node programs, Node terminal, System clock, npm's reports, npm installs
 - In: Local
 - Serves: A technology is changed in one node
 
@@ -2723,7 +2670,7 @@ Technical choice · `NodePlatform` · **held**
 - Context: The bootstrap ran on Node.js, and the tools Trame uses are npm packages that resolve the Node way: the TypeScript compiler, esbuild, tsx, the tree-sitter grammars.
 - Consequences: Node's built-in modules appear only in these implementations; moving to another runtime is a new family of adapters and this choice changed, the engine untouched.
 - Rejected: Deno, its module resolution and its permissions would change how every package above loads; Bun, faster to start, but the WebAssembly grammars and the TypeScript compiler were not tried on it
-- Chooses: Node paths, SHA-256 hashes, Node timer, Command line, Results kept in the process
+- Chooses: Node paths, SHA-256 hashes, Command line, Results kept in the process
 - In: Local, Test
 - Serves: A technology is changed in one node
 
@@ -3226,21 +3173,6 @@ Decision · `ClaimSets`
 - Decided by: trame
 - Value: 30
 - Allowed range: from 5 to 200
-
-### Debouncing of saves
-
-Decision · `DevDebounce`
-
-- Decided by: trame
-- Value: 150
-- Allowed range: from 50 to 2000
-
-### Port of trame dev
-
-Decision · `DevPort`
-
-- Decided by: trame
-- Value: 4170
 
 ### Nodes drawn per kind
 
@@ -5635,7 +5567,7 @@ Technical choice · `CommandsWrittenOnce` · **unknown**
 
 - Decided by: trame
 - Context: The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.
-- Consequences: trame plan, build, snapshot and view run on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's own stay until the generation that removes the commands every project then runs from the library.
+- Consequences: trame plan, build, snapshot, view, payload, export and dev run on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. trame dev prints as it goes on the standard output and reads the machine's clock. The engine's own stay until the generation that removes the commands every project then runs from the library.
 - Rejected: The engine's own commands, kept, they would stay out of reach of every project's choice, and the engine the only one to reach its modules
 - In: Local
 - Serves: A specification that runs
@@ -5789,7 +5721,7 @@ Check · `CandidateRunsOnTheMachine` · **unknown**
 - Checks: The candidate engine
 - Run by: Ask the machine
 - Signed by: Trame's maintainers
-- Verifies: System files, for reading, System files, for writing, Trees on disk, Node process, Node programs, Node terminal, System clock, npm's reports, npm installs, Node HTTP server, Runs kept on disk
+- Verifies: System files, for reading, System files, for writing, Trees on disk, Node process, Node programs, Node terminal, System clock, npm's reports, npm installs, Runs kept on disk
 
 ### The graph page opens
 

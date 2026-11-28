@@ -75,7 +75,7 @@ The language the documents are written in (libs/documents' port, since g129): Tr
 A text shown so that every character can be seen: in quotes as JSON writes it, the characters JSON leaves as they are written as escapes; or as it is, when nothing in it hides.
 
 - Owner: trame
-- Parameters: `escape` ← [Unicode escape of a text](../std/releases/0.32.0/docs/ecmascript.md#UnicodeEscape) · `invisible` ← [Characters that do not show](../std/releases/0.32.0/docs/text.md#InvisibleCharacters) · `ecma` ← [ECMAScript](../std/releases/0.32.0/docs/ecmascript.md#EcmaScript) · `texts` ← [Texts](../std/releases/0.32.0/docs/algebra.md#Texts)
+- Parameters: `escape` ← [Unicode escape of a text](../std/releases/0.33.0/docs/ecmascript.md#UnicodeEscape) · `invisible` ← [Characters that do not show](../std/releases/0.33.0/docs/text.md#InvisibleCharacters) · `ecma` ← [ECMAScript](../std/releases/0.33.0/docs/ecmascript.md#EcmaScript) · `texts` ← [Texts](../std/releases/0.33.0/docs/algebra.md#Texts)
 - Body: inline, in the declaration
 - Serves: [A single source of truth](product.md#SingleSource)
 - Used by: [Graph](engine.md#GraphApi), [The documents write in the decided language](scenarios.md#DocumentWords)
@@ -102,6 +102,6 @@ Context: The views speak the engine's language: what renders their documents, on
 - Decided by: trame
 - Chooses: [The documents in Trame's language](#OurDocumentLanguage)
 - In: [Local](architecture.md#Local), [A session of Claude Code](architecture.md#Session), [Test](architecture.md#Test), [Browser](architecture.md#Browser)
-- Follows: [Strategy](../std/releases/0.32.0/docs/patterns.md#Strategy)
+- Follows: [Strategy](../std/releases/0.33.0/docs/patterns.md#Strategy)
 - Serves: [A single source of truth](product.md#SingleSource)
 - Applies: [The punctuation is the language's](#PunctuationOfTheLanguage)

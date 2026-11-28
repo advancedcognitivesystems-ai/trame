@@ -3,13 +3,14 @@
 // Each document is also rendered for the files, for the terminal and for the page, by the engine's renderer in each
 // audience's syntax: the page redoes none of them.
 
-import { DocumentName, ViewGroup, movedTo } from "../../../trame/kernel"
+import { DocumentName, ViewGroup } from "../../../trame/kernel"
 import type { Document, Payload } from "../../../trame/kernel"
 import type { Handler } from "../../../kinds/entry-point"
 import type { Terminal } from "../../architecture"
 import type { Api as PreparationApi, Ctx } from "./preparation"
 import type { Api as PayloadApi } from "../engine/payload"
 import type { Api as RenderingApi } from "#documents/code/rendering/document"
+import type { Api as SameApi } from "#commands/code/same-as-today"
 
 export interface Deps {
   /** The status the command returns to the system (POSIX). */
@@ -22,16 +23,9 @@ export interface Deps {
   screen: RenderingApi
   /** The renderer of the page. */
   pageRendering: RenderingApi
+  /** A date's documents as today's: written once, on today's (libs/commands', the one way). */
+  same: SameApi
   terminal: Terminal
-}
-
-/**
- * A date's documents that are as today's but for the date of the graph: written once, on today's, with the order of them
- * all, so that a page of several dates carries what differs only. The page moves them back to their date.
- */
-const sameAs = (p: Payload, today: Payload): Set<string> => {
-  const theirs = new Map(today.documents.map((doc) => [doc.id, movedTo(JSON.stringify(doc), today.date, p.date, p.language)]))
-  return new Set(p.documents.filter((doc) => theirs.get(doc.id) === JSON.stringify(doc)).map((doc) => doc.id))
 }
 
 const body = (deps: Deps): Handler => async (req) => {
@@ -54,7 +48,7 @@ const body = (deps: Deps): Handler => async (req) => {
     const made = deps.payload.makePayload(x.c, x.comp, views(o, x.comp, { perNode: !historyOnly }))
     const daily = (doc: Document) => doc.id !== DocumentName.snapshot && doc.group !== ViewGroup.node
     const p = historyOnly ? { ...made, machine: {}, documents: made.documents.filter(daily) } : made
-    const same = sameAs(p, today)
+    const same = deps.same.asToday(p, today)
     const own = p.documents.filter((doc) => !same.has(doc.id))
     const ctx = renderingContext(p.documents, x)
     return {

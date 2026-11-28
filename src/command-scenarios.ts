@@ -6,11 +6,8 @@ import type { Bundle, Payload, Pipeline } from "../trame/kernel"
 import { AmendmentField, BundleMode, EvidenceSource, KindName, PipelineStage, Severity, ShipmentEdge, Status, TriggerType } from "../trame/kernel"
 import { scenario } from "../kinds/scenario"
 import { decision } from "../kinds/decision"
-import {
-  Process, WriteLog, TerminalLog, ProcessLog, ServerLog, Test, Clock, FileReading, FileWriting, FileTrees, Paths, Timer, CommandLine,
-  Signatures,
-} from "./architecture"
-import { PayloadBuilder, Differences, Assembly, Project, Compiler, Lock, References, DateBundle, DevServer, Watching, ShipmentPipeline, Views, EngineFingerprint, ProjectRuns } from "./engine"
+import { Process, WriteLog, TerminalLog, ProcessLog, Test, Clock, FileReading, FileWriting, FileTrees, Paths, CommandLine, Signatures } from "./architecture"
+import { PayloadBuilder, Assembly, Project, Compiler, Lock, References, DateBundle, DevServer, Watching, ShipmentPipeline, Views, EngineFingerprint, ProjectRuns } from "./engine"
 import {
   ShowView, CommandOrView, RenderView, EmitPayload, Assemble, Assembler, TestKinds, TakeSnapshot, Publish, Audit, Release, WriteManifest, Export, Run, Dev,
   Deliver, Ship, RecordEvidence, Doctor, Advance, Build, Plan, Amend, Amending, Init, ReferencesModule, Registry, Upgrade,
@@ -20,7 +17,8 @@ import { DoctorProbe, Asking, ClockAnswers, FilesAnswer, TreesAnswer, ProgramsAn
 import { SyntaxReader, BodyChecks } from "./syntax"
 import { TypeScript, TypeScriptWriter, StringLiteral } from "./typescript"
 import { TerraformWriter } from "./terraform"
-import { BuildComparison } from "#commands/commands"
+import { BuildComparison, PayloadDifferences, CommandWords, DevDebounce } from "#commands/commands"
+import { ServerKept, Waiting, ServerInMemory, MachineTimers } from "#std/running"
 import { Drivers } from "./languages"
 import { Page, GraphPacking, GzipInBase64, PageWords, SheetsBesideTheLibrary } from "#documents/page"
 import { PageScript } from "./page"
@@ -29,14 +27,10 @@ import { Doctype } from "#documents/html"
 import { NamesLed } from "./delivery"
 import { TerminalRendering, PlainTextSyntax, TextFigures } from "#documents/rendering"
 import { PageRendering, HtmlSyntax, SvgFigures } from "#documents/rendering"
-import {
-  WebTreeSitter, Esbuild, PageResources, StoppedClock, NoReportsInTest, NoInstallsInTest, MemoryHttpServer, NodeTimer, NodeCommandLine, MemoryTerminal,
-  NodeHashing, RunsInTheProcess, InPlaceSources,
-} from "./platform"
+import { WebTreeSitter, Esbuild, PageResources, StoppedClock, NoReportsInTest, NoInstallsInTest, NodeCommandLine, MemoryTerminal, NodeHashing, RunsInTheProcess, InPlaceSources } from "./platform"
 import { ReleaseRecords, EnginePin } from "./generations"
 import { PackageAudit } from "./packages"
 import { SdlcEvidence, ShipmentRunPlan, ShippingRecords, Attribution } from "./shipping"
-import { DevDebounce } from "./product"
 import { ExitStatus, NodeEncodings, NodeModuleSpecifiers } from "#std/system"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
 import { ServerSentEvents, Http } from "#std/web"
@@ -165,10 +159,10 @@ export const SvgSample = decision<{ opening: string }>({ owner: "trame", value: 
  */
 export const PayloadOfTheGraph = scenario({
   owner: "trame",
-  verifies: [EmitPayload, PayloadBuilder, PageRendering, HtmlSyntax, SvgFigures, Differences],
+  verifies: [EmitPayload, PayloadBuilder, PageRendering, HtmlSyntax, SvgFigures, PayloadDifferences],
   env: Test,
   deps: {
-    payload: EmitPayload, differences: Differences, terminalLog: TerminalLog, line: TrameCommands, exitStatus: ExitStatus, output: OutputMessages,
+    payload: EmitPayload, differences: PayloadDifferences, terminalLog: TerminalLog, line: TrameCommands, exitStatus: ExitStatus, output: CommandWords,
     texts: Texts, counts: Counts, messages: ScenarioMessages, svg: SvgSample,
   },
   body: ({ payload, differences, terminalLog, line, exitStatus, output, texts, counts, messages, svg }) => async (check) => {
@@ -822,10 +816,10 @@ export const DevSamples = decision<{ touched: string; content: string; pauses: n
  */
 export const DevFollowsTheGraph = scenario({
   owner: "trame",
-  verifies: [Dev, DevServer, Watching, MemoryHttpServer, NodeTimer],
+  verifies: [Dev, DevServer, Watching, ServerInMemory, MachineTimers],
   env: Test,
   deps: {
-    payload: EmitPayload, dev: Dev, processLog: ProcessLog, serverLog: ServerLog, terminalLog: TerminalLog, writing: FileWriting, timer: Timer,
+    payload: EmitPayload, dev: Dev, processLog: ProcessLog, serverLog: ServerKept, terminalLog: TerminalLog, writing: FileWriting, timer: Waiting,
     currentProcess: Process, paths: Paths, layout: Layout, service: DevService, sse: ServerSentEvents, http: Http, debounce: DevDebounce, project: Project,
     line: TrameCommands, exitStatus: ExitStatus, output: OutputMessages, pageWords: PageWords, texts: Texts, counts: Counts, data: DevSamples, amendment: AmendmentSamples, messages: ScenarioMessages,
   },

@@ -3,14 +3,15 @@
 
 import { BlockType, BundleMode } from "../../../trame/kernel"
 import type { ProvidedBy, Bundle, Payload } from "../../../trame/kernel"
-import type { Clock, HttpServer, Layout, Paths, Terminal, Timer } from "../../architecture"
+import type { Clock, Layout, Paths, Terminal } from "../../architecture"
+import type { HttpServer, Timers } from "#std/running"
 import type { DevMessages } from "../../messages"
 import type { Dates } from "#documents/language"
 import type { ServerResponse } from "node:http"
 import type { Api as ProjectApi } from "./project"
 import type { Api as WatchingApi } from "./watching"
 import type { Api as DateBundleApi } from "./date-bundle"
-import type { Api as DifferencesApi } from "./differences"
+import type { Api as DifferencesApi } from "#commands/code/differences"
 import type { Api as PageApi } from "#documents/code/page/page"
 import type { Api as ScriptApi } from "../page/script"
 import type { Api as RenderingApi } from "#documents/code/rendering/document"
@@ -36,7 +37,7 @@ export interface Deps {
   codeLines: ProvidedBy<typeof CodeLines>
   file: ProvidedBy<typeof TextFile>
   clock: Clock
-  timer: Timer
+  timer: Timers
   debounce: number
   httpServer: HttpServer
   /** Each file the build reads that changes (since g136, the engine's API gives it too). */
@@ -162,7 +163,7 @@ const body = (deps: Deps) => {
     const layout = deps.layout
     terminal.write(messages.watching([...[layout.sources, layout.kinds, layout.views, layout.evidence].map((d) => d + deps.paths.sep), layout.lock]))
 
-    let pending: ReturnType<Timer["setTimeout"]> | undefined
+    let pending: ReturnType<Timers["setTimeout"]> | undefined
     const changed = new Set<string>()
     const schedule = (what: string) => {
       changed.add(what)

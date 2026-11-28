@@ -1271,7 +1271,7 @@
       "id": "engine.EngineAsAProvider",
       "kind": "adr",
       "title": "The engine is a provider",
-      "source": "src/engine.ts:128",
+      "source": "src/engine.ts:130",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1288,7 +1288,7 @@
       "id": "engine.EngineWords",
       "kind": "catalog",
       "title": "What the engine's adapters say",
-      "source": "src/engine.ts:70",
+      "source": "src/engine.ts:72",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -1299,7 +1299,7 @@
       "id": "engine.LanguageReading",
       "kind": "port",
       "title": "Reading a language",
-      "source": "src/engine.ts:108",
+      "source": "src/engine.ts:110",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -1313,7 +1313,7 @@
       "id": "engine.ProjectCompiledHere",
       "kind": "implementation",
       "title": "A project compiled by the engine that plays the scenario",
-      "source": "src/engine.ts:96",
+      "source": "src/engine.ts:98",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1331,7 +1331,7 @@
       "id": "engine.ProjectInTheEngine",
       "kind": "implementation",
       "title": "The project the engine prepared",
-      "source": "src/engine.ts:84",
+      "source": "src/engine.ts:86",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1348,7 +1348,7 @@
       "id": "engine.ProjectOfTheScenario",
       "kind": "port",
       "title": "The project of a scenario",
-      "source": "src/engine.ts:65",
+      "source": "src/engine.ts:67",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -1361,7 +1361,7 @@
       "id": "engine.ReadByTheEngine",
       "kind": "implementation",
       "title": "Read by the engine",
-      "source": "src/engine.ts:115",
+      "source": "src/engine.ts:117",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1408,7 +1408,7 @@
       "id": "engine.TheProject",
       "kind": "port",
       "title": "The project at hand",
-      "source": "src/engine.ts:52",
+      "source": "src/engine.ts:54",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -4280,6 +4280,21 @@
         "date": "2026-11-28",
         "what": "A command's line read by what it declares, std's options apart: the format its documents are written in, an extension point (AnswerFormats) with JSON; the JSON formatting and the media types of Markdown and plain text",
         "fingerprint": "9bd1ced9100e8814",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_32_0",
+      "kind": "release",
+      "title": "Version 0.32.0",
+      "source": "src/releases.ts:493",
+      "fields": {
+        "owner": "trame",
+        "version": "0.32.0",
+        "date": "2026-11-28",
+        "what": "A text read back by the engine (LanguageReading's readText); the page's program, bundled by the engine (TheProject's page); what a command that keeps running asks of the machine (module running: the clock, timers, a server of HTTP, lines printed as it goes, with Node.js's realizations and, for scenarios, a clock stopped, a server asked in memory, the lines kept)",
+        "fingerprint": "5ee4f3123d0cc584",
         "language": "shared"
       },
       "diagnostics": []
@@ -7181,7 +7196,7 @@
       },
       "result": {
         "path": "src",
-        "code": "64bc336d"
+        "code": "2a40a6bf"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -10500,6 +10515,41 @@
     },
     {
       "from": "releases.R0_31_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_32_0",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_32_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_32_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_32_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_32_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_32_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_32_0",
       "to": "product.VersionsThatHold",
       "kind": "serves"
     },

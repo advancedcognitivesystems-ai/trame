@@ -61,16 +61,16 @@ In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [Formats of an answer](../std/releases/0.32.0/docs/tooling.md#AnswerFormats) | [Documents at a terminal](../libs/documents/releases/0.5.1/docs/rendering.md#AnswersAtATerminal) | a function |
-| [Formats of an answer](../std/releases/0.32.0/docs/tooling.md#AnswerFormats) | [Documents in Markdown](../libs/documents/releases/0.5.1/docs/rendering.md#AnswersInMarkdown) | a function |
-| [Formats of an answer](../std/releases/0.32.0/docs/tooling.md#AnswerFormats) | [Documents in JSON](../std/releases/0.32.0/docs/tooling.md#AnswersInJson) | a function |
+| [Formats of an answer](../std/releases/0.33.0/docs/tooling.md#AnswerFormats) | [Documents at a terminal](../libs/documents/releases/0.5.1/docs/rendering.md#AnswersAtATerminal) | a function |
+| [Formats of an answer](../std/releases/0.33.0/docs/tooling.md#AnswerFormats) | [Documents in Markdown](../libs/documents/releases/0.5.1/docs/rendering.md#AnswersInMarkdown) | a function |
+| [Formats of an answer](../std/releases/0.33.0/docs/tooling.md#AnswerFormats) | [Documents in JSON](../std/releases/0.33.0/docs/tooling.md#AnswersInJson) | a function |
 
 Context: --format is an option of every command (std's): the project chooses the formats it offers, its default first.
 
 - Decided by: trame
-- Chooses: [Documents at a terminal](../libs/documents/releases/0.5.1/docs/rendering.md#AnswersAtATerminal), [Documents in Markdown](../libs/documents/releases/0.5.1/docs/rendering.md#AnswersInMarkdown), [Documents in JSON](../std/releases/0.32.0/docs/tooling.md#AnswersInJson)
+- Chooses: [Documents at a terminal](../libs/documents/releases/0.5.1/docs/rendering.md#AnswersAtATerminal), [Documents in Markdown](../libs/documents/releases/0.5.1/docs/rendering.md#AnswersInMarkdown), [Documents in JSON](../std/releases/0.33.0/docs/tooling.md#AnswersInJson)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Plugin](../std/releases/0.32.0/docs/patterns.md#Plugin)
+- Follows: [Plugin](../std/releases/0.33.0/docs/patterns.md#Plugin)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [Trame's documents, rendered by the library of documents](#RenderedByTheLibrary)
 
@@ -101,7 +101,7 @@ Consequences: Another syntax for the files is a realization of "Syntax of the do
 - Decided by: trame
 - Chooses: [Markdown writer](../libs/documents/releases/0.5.1/docs/rendering.md#MarkdownSyntax)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Bridge](../std/releases/0.32.0/docs/patterns.md#Bridge), [Strategy](../std/releases/0.32.0/docs/patterns.md#Strategy)
+- Follows: [Bridge](../std/releases/0.33.0/docs/patterns.md#Bridge), [Strategy](../std/releases/0.33.0/docs/patterns.md#Strategy)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [A technology is chosen in one node](principles.md#TechnologyInOneNode), [Trame's documents, rendered by the library of documents](#RenderedByTheLibrary)
 
@@ -132,7 +132,7 @@ Consequences: The Markdown writer puts the lines of a figure in a code block, in
 - Decided by: trame
 - Chooses: [Mermaid diagrams](../libs/documents/releases/0.5.1/docs/rendering.md#MermaidDiagrams)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Strategy](../std/releases/0.32.0/docs/patterns.md#Strategy)
+- Follows: [Strategy](../std/releases/0.33.0/docs/patterns.md#Strategy)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [A technology is chosen in one node](principles.md#TechnologyInOneNode), [Trame's documents, rendered by the library of documents](#RenderedByTheLibrary)
 
@@ -162,7 +162,7 @@ Consequences: Graphs, legends and timelines are written by the engine, with the 
 - Decided by: trame
 - Chooses: [Figures in SVG](../libs/documents/releases/0.5.1/docs/rendering.md#SvgFigures)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Strategy](../std/releases/0.32.0/docs/patterns.md#Strategy)
+- Follows: [Strategy](../std/releases/0.33.0/docs/patterns.md#Strategy)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [A technology is chosen in one node](principles.md#TechnologyInOneNode), [Trame's documents, rendered by the library of documents](#RenderedByTheLibrary)
 
@@ -192,7 +192,7 @@ Consequences: The payload holds each document in Markdown, in text and in HTML; 
 - Decided by: trame
 - Chooses: [HTML writer](../libs/documents/releases/0.5.1/docs/rendering.md#HtmlSyntax)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Bridge](../std/releases/0.32.0/docs/patterns.md#Bridge), [Strategy](../std/releases/0.32.0/docs/patterns.md#Strategy)
+- Follows: [Bridge](../std/releases/0.33.0/docs/patterns.md#Bridge), [Strategy](../std/releases/0.33.0/docs/patterns.md#Strategy)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [A technology is chosen in one node](principles.md#TechnologyInOneNode), [Trame's documents, rendered by the library of documents](#RenderedByTheLibrary)
 
@@ -221,7 +221,7 @@ Consequences: The terminal syntax indents the lines of a figure like any other c
 - Decided by: trame
 - Chooses: [Figures as text](../libs/documents/releases/0.5.1/docs/rendering.md#TextFigures)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Strategy](../std/releases/0.32.0/docs/patterns.md#Strategy)
+- Follows: [Strategy](../std/releases/0.33.0/docs/patterns.md#Strategy)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [A technology is chosen in one node](principles.md#TechnologyInOneNode), [Trame's documents, rendered by the library of documents](#RenderedByTheLibrary)
 
@@ -251,6 +251,6 @@ Consequences: A view printed in Markdown is the --format md option, which render
 - Decided by: trame
 - Chooses: [Plain text writer](../libs/documents/releases/0.5.1/docs/rendering.md#PlainTextSyntax)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Bridge](../std/releases/0.32.0/docs/patterns.md#Bridge), [Strategy](../std/releases/0.32.0/docs/patterns.md#Strategy)
+- Follows: [Bridge](../std/releases/0.33.0/docs/patterns.md#Bridge), [Strategy](../std/releases/0.33.0/docs/patterns.md#Strategy)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [A technology is chosen in one node](principles.md#TechnologyInOneNode), [Trame's documents, rendered by the library of documents](#RenderedByTheLibrary)

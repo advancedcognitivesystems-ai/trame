@@ -2,7 +2,7 @@
 
 *The values written in code bodies, found by the syntax reader with the queries of each language, on 28 November 2026.*
 
-> **0 literals to declare in 0 bodies, 0 of them already declared by a constant · 1987 declared by a catalog**
+> **0 literals to declare in 0 bodies, 0 of them already declared by a constant · 1968 declared by a catalog**
 
 A literal written in a body is an error of its node: its value belongs in the graph, with its meaning (a standard, a decision, a structure, a catalog), and the body receives it as a parameter. The text of a message catalog is what the catalog declares.
 
@@ -48,11 +48,11 @@ The text written in a message catalog is what the catalog declares: words said t
 | [Messages of the drivers](messages.md#DriverMessages) | 32 | `` `Access to the platform ("${…}"): reserved for implementations; go … `` `` `Hidden dependency: the body imports "${…}"; declare it as a parame… `` `"import() of a computed path"` |
 | [Messages of the views](messages.md#ViewMessages) | 32 | `"?"` `"Complete declaration"` `"Answers on this graph, without crashing"` |
 | [Messages of the laws](messages.md#LawMessages) | 27 | `"Complete declaration"` `"Answers on any value, without crashing"` `"A blocking hole has an owner"` |
-| [Messages of the outputs](messages.md#OutputMessages) | 27 | `"(function)"` `` `${…}: ${…}` `` `"Published element deleted: repeal it instead of removing it from t…` |
 | [Roles of a literal](syntax.md#LiteralRoles) | 21 | `"index"` `"concatenation"` `"arithmetic"` |
 | [What the programs of Trame's SDLC say](sdlc.md#SdlcWords) | 17 | `` `Say who advances: trame advance ${…} <name> [${…}] [${…} "what cha… `` `` `The generation in place assembles ${…}` `` `` `The advance stopped: ${…} could not be assembled` `` |
 | [Messages of trame dev](messages.md#DevMessages) | 15 | `` `trame dev · ${…} · graph of ${…}` `` `` `watching ${…} · Ctrl+C to stop` `` `""` |
-| [Messages of the platform](messages.md#PlatformMessages) | 10 | `` `Unknown command: ${…}` `` `` `warning: a promise was rejected without being awaited (${…})` `` `"In test, the engine starts no process"` |
+| [Messages of the outputs](messages.md#OutputMessages) | 9 | `"(function)"` `` `${…}: ${…}` `` `"Published element deleted: repeal it instead of removing it from t…` |
+| [Messages of the platform](messages.md#PlatformMessages) | 9 | `` `Unknown command: ${…}` `` `` `warning: a promise was rejected without being awaited (${…})` `` `"In test, the engine starts no process"` |
 
 ## By body
 

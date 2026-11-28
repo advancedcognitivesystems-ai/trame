@@ -88,6 +88,6 @@ Context: The page's style sheets are files of libs/documents, which its versions
 - Decided by: trame
 - Chooses: [Style sheets beside the library](../libs/documents/releases/0.5.1/docs/page.md#SheetsBesideTheLibrary), [gzip, in base64](../libs/documents/releases/0.5.1/docs/page.md#GzipInBase64)
 - In: [Local](architecture.md#Local), [Test](architecture.md#Test)
-- Follows: [Adapter](../std/releases/0.32.0/docs/patterns.md#Adapter)
+- Follows: [Adapter](../std/releases/0.33.0/docs/patterns.md#Adapter)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [The page is the library's](#ThePageIsTheLibrarys)

@@ -5,7 +5,7 @@
       "id": "commands.Build",
       "kind": "entry",
       "title": "Build",
-      "source": "src/commands.ts:128",
+      "source": "src/commands.ts:165",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -32,7 +32,7 @@
       "id": "commands.BuildComparison",
       "kind": "function",
       "title": "Two builds compared",
-      "source": "src/commands.ts:98",
+      "source": "src/commands.ts:135",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -50,7 +50,7 @@
       "id": "commands.Commands",
       "kind": "component",
       "title": "The library's commands",
-      "source": "src/commands.ts:28",
+      "source": "src/commands.ts:36",
       "fields": {
         "owner": "trame",
         "language": "typescript",
@@ -64,7 +64,7 @@
       "id": "commands.CommandWords",
       "kind": "catalog",
       "title": "What the commands say",
-      "source": "src/commands.ts:48",
+      "source": "src/commands.ts:56",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -75,10 +75,189 @@
       "diagnostics": []
     },
     {
+      "id": "commands.Dev",
+      "kind": "entry",
+      "title": "Dev",
+      "source": "src/commands.ts:306",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "trigger": {
+          "type": "command",
+          "name": "dev",
+          "help": "The page, compiled again at each save",
+          "options": [
+            {
+              "name": "port",
+              "meaning": "the port it is served on",
+              "takes": "port"
+            }
+          ]
+        },
+        "deps": {
+          "project": "std/engine.TheProject",
+          "page": "documents/page.Page",
+          "rendering": "documents/rendering.PageRendering",
+          "differences": "commands.PayloadDifferences",
+          "service": "documents/page.DevService",
+          "port": "commands.DevPort",
+          "debounce": "commands.DevDebounce",
+          "server": "std/running.HttpServing",
+          "waiting": "std/running.Waiting",
+          "clock": "std/running.TheClock",
+          "printing": "std/running.LinesPrinted",
+          "http": "std/web.Http",
+          "media": "std/web.MediaTypes",
+          "events": "std/web.ServerSentEvents",
+          "node": "std/system.NodeEvents",
+          "uri": "std/web.Uri",
+          "codeLines": "documents/text.CodeLines",
+          "dates": "documents/language.Dates",
+          "lists": "documents/language.Lists",
+          "language": "documents/language.DocumentLanguage",
+          "file": "std/text.TextFile",
+          "say": "commands.CommandWords",
+          "exit": "std/system.ExitStatus",
+          "counts": "std/algebra.Counts",
+          "sequences": "std/algebra.Sequences",
+          "texts": "std/algebra.Texts"
+        },
+        "body": {
+          "file": "./code/dev.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "commands.DevDebounce",
+      "kind": "decision",
+      "title": "Debouncing of saves",
+      "source": "src/commands.ts:257",
+      "fields": {
+        "owner": "trame",
+        "value": 150,
+        "range": [
+          50,
+          2000
+        ]
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "commands.DevPort",
+      "kind": "decision",
+      "title": "The port of trame dev",
+      "source": "src/commands.ts:251",
+      "fields": {
+        "owner": "trame",
+        "value": 4170
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "commands.Export",
+      "kind": "entry",
+      "title": "Export",
+      "source": "src/commands.ts:287",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "trigger": {
+          "type": "command",
+          "name": "export",
+          "help": "A page a browser opens as it is",
+          "arguments": [
+            {
+              "name": "file",
+              "meaning": "where the page goes, from the project's root (the layout's page by default)",
+              "optional": true
+            }
+          ],
+          "options": [
+            {
+              "name": "fragment",
+              "meaning": "without the skeleton of a document, for a host that gives its own"
+            }
+          ]
+        },
+        "deps": {
+          "project": "std/engine.TheProject",
+          "files": "std/tooling.Files",
+          "page": "documents/page.Page",
+          "packing": "documents/page.GraphPacking",
+          "say": "commands.CommandWords",
+          "exit": "std/system.ExitStatus"
+        },
+        "body": {
+          "file": "./code/export.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "commands.Payload",
+      "kind": "entry",
+      "title": "Payload",
+      "source": "src/commands.ts:266",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "trigger": {
+          "type": "command",
+          "name": "payload",
+          "help": "The graph in the intermediate format, for a page",
+          "options": [
+            {
+              "name": "all",
+              "meaning": "at each date a page offers, not only the day of the line"
+            },
+            {
+              "name": "history",
+              "meaning": "with --all, the last days something was given too"
+            }
+          ]
+        },
+        "deps": {
+          "project": "std/engine.TheProject",
+          "written": "documents/rendering.FileRendering",
+          "printed": "documents/rendering.TerminalRendering",
+          "page": "documents/rendering.PageRendering",
+          "same": "commands.SameAsToday",
+          "exit": "std/system.ExitStatus"
+        },
+        "body": {
+          "file": "./code/payload.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "commands.PayloadDifferences",
+      "kind": "function",
+      "title": "What the last change changed",
+      "source": "src/commands.ts:229",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "punctuation": "documents/language.Punctuation",
+          "say": "commands.CommandWords"
+        },
+        "body": {
+          "file": "./code/differences.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "commands.Plan",
       "kind": "entry",
       "title": "Plan",
-      "source": "src/commands.ts:112",
+      "source": "src/commands.ts:149",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -103,10 +282,25 @@
       "diagnostics": []
     },
     {
+      "id": "commands.SameAsToday",
+      "kind": "function",
+      "title": "A date's documents as today's",
+      "source": "src/commands.ts:241",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "body": {
+          "file": "./code/same-as-today.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "commands.Snapshot",
       "kind": "entry",
       "title": "Snapshot",
-      "source": "src/commands.ts:142",
+      "source": "src/commands.ts:179",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -132,7 +326,7 @@
       "id": "commands.View",
       "kind": "entry",
       "title": "View",
-      "source": "src/commands.ts:169",
+      "source": "src/commands.ts:206",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -168,7 +362,7 @@
       "id": "commands.ViewRefused",
       "kind": "function",
       "title": "Why a view gives no document, said",
-      "source": "src/commands.ts:156",
+      "source": "src/commands.ts:193",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -187,7 +381,7 @@
       "id": "commands.WordsLanguage",
       "kind": "decision",
       "title": "The language the commands speak",
-      "source": "src/commands.ts:39",
+      "source": "src/commands.ts:47",
       "fields": {
         "owner": "trame",
         "value": {
@@ -222,10 +416,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "documents",
-        "version": "0.4.0",
+        "version": "0.5.1",
         "joins": "library",
         "from": "path",
-        "at": "../documents/releases/0.4.0"
+        "at": "../documents/releases/0.5.1"
       },
       "diagnostics": []
     },
@@ -237,9 +431,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "135",
+        "version": "136",
         "joins": "language",
-        "at": "../../generations/g135"
+        "at": "../../generations/g136"
       },
       "diagnostics": []
     },
@@ -266,9 +460,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.31.0",
+        "version": "0.33.0",
         "joins": "library",
-        "at": "../../std/releases/0.31.0"
+        "at": "../../std/releases/0.33.0"
       },
       "diagnostics": []
     },
@@ -376,7 +570,7 @@
       "id": "scenarios.BuildWritesTheDocuments",
       "kind": "scenario",
       "title": "A build writes the documents and the graph",
-      "source": "src/scenarios.ts:248",
+      "source": "src/scenarios.ts:429",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -412,7 +606,7 @@
       "id": "scenarios.CompiledByTheEngine",
       "kind": "binding",
       "title": "Compiled by the engine that plays them",
-      "source": "src/scenarios.ts:57",
+      "source": "src/scenarios.ts:70",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -424,10 +618,54 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.DevServesThePage",
+      "kind": "scenario",
+      "title": "trame dev serves the page",
+      "source": "src/scenarios.ts:383",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "dev": "commands.Dev",
+          "project": "std/engine.TheProject",
+          "server": "std/running.ServerKept",
+          "printed": "std/running.LinesKept",
+          "service": "documents/page.DevService",
+          "sample": "scenarios.PageSample",
+          "words": "documents/page.PageWords",
+          "say": "commands.CommandWords",
+          "http": "std/web.Http",
+          "exit": "std/system.ExitStatus",
+          "counts": "std/algebra.Counts",
+          "checks": "scenarios.ScenarioWords"
+        },
+        "body": "(function)"
+      },
+      "result": [
+        {
+          "name": "trame dev serves the page, titled by the project, and the graph as it compiled it",
+          "status": "passed"
+        },
+        {
+          "name": "trame dev opens a stream of compilations, which says first who follows the project",
+          "status": "passed"
+        },
+        {
+          "name": "An amendment the page posts is answered as the engine prepares it",
+          "status": "passed"
+        },
+        {
+          "name": "trame dev says where it listens, what it watches, and when it compiled",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.DocumentsAsFiles",
       "kind": "binding",
       "title": "Files in Markdown, the terminal in text",
-      "source": "src/scenarios.ts:193",
+      "source": "src/scenarios.ts:214",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -439,7 +677,7 @@
       "id": "scenarios.DocumentsLanguage",
       "kind": "binding",
       "title": "In the language of libs/documents' scenarios",
-      "source": "src/scenarios.ts:219",
+      "source": "src/scenarios.ts:240",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -451,7 +689,7 @@
       "id": "scenarios.FiguresOfTheDocuments",
       "kind": "binding",
       "title": "Figures in Mermaid and in text",
-      "source": "src/scenarios.ts:206",
+      "source": "src/scenarios.ts:227",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -460,10 +698,116 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.PageAsAProjectMakesIt",
+      "kind": "binding",
+      "title": "The page, as a project makes it",
+      "source": "src/scenarios.ts:258",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "The page's commands write with libs/documents' page, and run with what std offers a command that keeps running."
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.PageExported",
+      "kind": "scenario",
+      "title": "A page exported",
+      "source": "src/scenarios.ts:362",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "exported": "commands.Export",
+          "project": "std/engine.TheProject",
+          "kept": "std/tooling.FilesKept",
+          "words": "documents/page.PageWords",
+          "say": "commands.CommandWords",
+          "exit": "std/system.ExitStatus",
+          "checks": "scenarios.ScenarioWords"
+        },
+        "body": "(function)"
+      },
+      "result": [
+        {
+          "name": "An export writes the page, titled by the project, the graph packed in it, and says how many dates it offers",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.PageFilesAsOnAMachine",
+      "kind": "binding",
+      "title": "The page's files and its reading, as on a machine",
+      "source": "src/scenarios.ts:272",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "The page's commands write with libs/documents' page, and run with what std offers a command that keeps running."
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.PageSample",
+      "kind": "decision",
+      "title": "The small project's page",
+      "source": "src/scenarios.ts:299",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "program": "trame",
+          "script": "start()",
+          "instant": "2026-11-26T08:00:00.000Z",
+          "watched": [
+            "src/",
+            "trame.lock"
+          ],
+          "refused": "amended nowhere in a scenario",
+          "port": "4171"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.PayloadOfTheSmallProject",
+      "kind": "scenario",
+      "title": "A payload of the graph",
+      "source": "src/scenarios.ts:335",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "payload": "commands.Payload",
+          "differences": "commands.PayloadDifferences",
+          "say": "commands.CommandWords",
+          "exit": "std/system.ExitStatus",
+          "counts": "std/algebra.Counts",
+          "checks": "scenarios.ScenarioWords"
+        },
+        "body": "(function)"
+      },
+      "result": [
+        {
+          "name": "A payload carries the graph at its day, each document rendered for files, for the terminal and for the page",
+          "status": "passed"
+        },
+        {
+          "name": "With --all, the payload holds the 3 dates a page offers, today's whole, another's documents as today's left to it",
+          "status": "passed"
+        },
+        {
+          "name": "Two payloads alike differ in nothing; a node removed, the difference says so",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.PlanAfterTheSameBuild",
       "kind": "scenario",
       "title": "After a build, nothing changes",
-      "source": "src/scenarios.ts:152",
+      "source": "src/scenarios.ts:173",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -490,7 +834,7 @@
       "id": "scenarios.PlanSaysWhatChanges",
       "kind": "scenario",
       "title": "A plan says what a build would change",
-      "source": "src/scenarios.ts:105",
+      "source": "src/scenarios.ts:126",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -522,7 +866,7 @@
       "id": "scenarios.PlanWithoutABuild",
       "kind": "scenario",
       "title": "Without a build, a plan says so",
-      "source": "src/scenarios.ts:137",
+      "source": "src/scenarios.ts:158",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -547,7 +891,7 @@
       "id": "scenarios.PlayedOnARealGraph",
       "kind": "adr",
       "title": "A command is played on a real graph",
-      "source": "src/scenarios.ts:176",
+      "source": "src/scenarios.ts:197",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -563,7 +907,7 @@
       "id": "scenarios.PlayedOnASmallProject",
       "kind": "binding",
       "title": "Played on a small project",
-      "source": "src/scenarios.ts:71",
+      "source": "src/scenarios.ts:84",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -575,7 +919,7 @@
       "id": "scenarios.ScenarioViews",
       "kind": "decision",
       "title": "Views the scenarios ask for",
-      "source": "src/scenarios.ts:296",
+      "source": "src/scenarios.ts:477",
       "fields": {
         "owner": "trame",
         "value": {
@@ -588,7 +932,7 @@
       "id": "scenarios.ScenarioWords",
       "kind": "catalog",
       "title": "What the scenarios check",
-      "source": "src/scenarios.ts:83",
+      "source": "src/scenarios.ts:96",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -596,10 +940,32 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.Served",
+      "kind": "environment",
+      "title": "Served",
+      "source": "src/scenarios.ts:45",
+      "fields": {
+        "owner": "trame"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "scenarios.ServedFromTheSmallProject",
+      "kind": "binding",
+      "title": "The small project, served",
+      "source": "src/scenarios.ts:320",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "A bundle is compiled in a fresh process of the engine on a machine: a scenario makes it in its own."
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.SmallProject",
       "kind": "decision",
       "title": "The small project",
-      "source": "src/scenarios.ts:40",
+      "source": "src/scenarios.ts:53",
       "fields": {
         "owner": "trame",
         "value": {
@@ -613,7 +979,7 @@
       "id": "scenarios.SnapshotTaken",
       "kind": "scenario",
       "title": "A snapshot writes the graph in force",
-      "source": "src/scenarios.ts:274",
+      "source": "src/scenarios.ts:455",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -641,7 +1007,7 @@
       "id": "scenarios.Test",
       "kind": "environment",
       "title": "Test",
-      "source": "src/scenarios.ts:32",
+      "source": "src/scenarios.ts:38",
       "fields": {
         "owner": "trame",
         "evaluates": true
@@ -652,7 +1018,7 @@
       "id": "scenarios.TheSmallProject",
       "kind": "function",
       "title": "Which project the scenarios compile",
-      "source": "src/scenarios.ts:46",
+      "source": "src/scenarios.ts:59",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -664,10 +1030,30 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.TheSmallProjectServed",
+      "kind": "implementation",
+      "title": "The small project, served",
+      "source": "src/scenarios.ts:310",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "chosen": "std/engine.ProjectOfTheScenario",
+          "sample": "scenarios.PageSample",
+          "say": "std/engine.EngineWords"
+        },
+        "body": {
+          "file": "./code/scenarios/small-project-served.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.ViewAnswersItsDocument",
       "kind": "scenario",
       "title": "A view answers its document",
-      "source": "src/scenarios.ts:303",
+      "source": "src/scenarios.ts:484",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -694,10 +1080,22 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.WaitingOnTheMachine",
+      "kind": "binding",
+      "title": "Waiting as a person would",
+      "source": "src/scenarios.ts:285",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "A wait kept in memory would call at once what trame dev waits for."
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.WrittenAsAProjectDoes",
       "kind": "adr",
       "title": "A command writes documents as a project does",
-      "source": "src/scenarios.ts:233",
+      "source": "src/scenarios.ts:414",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -775,6 +1173,21 @@
             "obligation": "sdlc.CodeVerified"
           },
           {
+            "node": "scenarios.DevServesThePage",
+            "via": "commands.Dev",
+            "obligation": "sdlc.CodeVerified"
+          },
+          {
+            "node": "scenarios.PageExported",
+            "via": "commands.Export",
+            "obligation": "sdlc.CodeVerified"
+          },
+          {
+            "node": "scenarios.PayloadOfTheSmallProject",
+            "via": "commands.Payload",
+            "obligation": "sdlc.CodeVerified"
+          },
+          {
             "node": "scenarios.PlanWithoutABuild",
             "via": "commands.Plan",
             "obligation": "sdlc.CodeVerified"
@@ -808,7 +1221,14 @@
           "commands.BuildComparison",
           "commands.Commands",
           "commands.CommandWords",
+          "commands.Dev",
+          "commands.DevDebounce",
+          "commands.DevPort",
+          "commands.Export",
+          "commands.Payload",
+          "commands.PayloadDifferences",
           "commands.Plan",
+          "commands.SameAsToday",
           "commands.Snapshot",
           "commands.View",
           "commands.ViewRefused",
@@ -821,9 +1241,15 @@
           "product.WrittenOnce",
           "scenarios.BuildWritesTheDocuments",
           "scenarios.CompiledByTheEngine",
+          "scenarios.DevServesThePage",
           "scenarios.DocumentsAsFiles",
           "scenarios.DocumentsLanguage",
           "scenarios.FiguresOfTheDocuments",
+          "scenarios.PageAsAProjectMakesIt",
+          "scenarios.PageExported",
+          "scenarios.PageFilesAsOnAMachine",
+          "scenarios.PageSample",
+          "scenarios.PayloadOfTheSmallProject",
           "scenarios.PlanAfterTheSameBuild",
           "scenarios.PlanSaysWhatChanges",
           "scenarios.PlanWithoutABuild",
@@ -831,11 +1257,15 @@
           "scenarios.PlayedOnASmallProject",
           "scenarios.ScenarioViews",
           "scenarios.ScenarioWords",
+          "scenarios.Served",
+          "scenarios.ServedFromTheSmallProject",
           "scenarios.SmallProject",
           "scenarios.SnapshotTaken",
           "scenarios.Test",
           "scenarios.TheSmallProject",
+          "scenarios.TheSmallProjectServed",
           "scenarios.ViewAnswersItsDocument",
+          "scenarios.WaitingOnTheMachine",
           "scenarios.WrittenAsAProjectDoes",
           "sdlc.CallersIdentified",
           "sdlc.CodeVerified",
@@ -899,7 +1329,7 @@
       "kind": "artifact",
       "title": "The pull requests' workflow",
       "source": "src/sdlc.ts:93",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "../../.github/workflows/commands-pull-request.yml",
@@ -909,7 +1339,9 @@
         "path": "../../.github/workflows/commands-pull-request.yml",
         "code": "3b80b5fa"
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+      ]
     },
     {
       "id": "sdlc.RequirementsServed",
@@ -926,7 +1358,7 @@
       "kind": "shipment",
       "title": "The files that run it elsewhere",
       "source": "src/sdlc.ts:107",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -939,7 +1371,9 @@
           "sdlc.PullRequestWorkflow"
         ]
       },
-      "diagnostics": []
+      "diagnostics": [
+        "warning: To ship: The pull requests' workflow is unknown"
+      ]
     },
     {
       "id": "sdlc.TheLibrary",
@@ -954,7 +1388,7 @@
       },
       "result": {
         "path": "src",
-        "code": "9a83a6db"
+        "code": "b91e23e0"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -1043,6 +1477,256 @@
       "kind": "deps"
     },
     {
+      "from": "commands.Dev",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "commands.Commands",
+      "kind": "in"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "std/access.Anyone",
+      "kind": "for"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "std/engine.TheProject",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "documents/page.Page",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "documents/rendering.PageRendering",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "commands.PayloadDifferences",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "documents/page.DevService",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "commands.DevPort",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "commands.DevDebounce",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "std/running.HttpServing",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "std/running.Waiting",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "std/running.TheClock",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "std/running.LinesPrinted",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "std/web.Http",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "std/web.MediaTypes",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "std/web.ServerSentEvents",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "std/system.NodeEvents",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "std/web.Uri",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "documents/text.CodeLines",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "documents/language.Dates",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "documents/language.Lists",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "documents/language.DocumentLanguage",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "std/text.TextFile",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "commands.CommandWords",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "std/system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "std/algebra.Sequences",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Dev",
+      "to": "std/algebra.Texts",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Export",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.Export",
+      "to": "commands.Commands",
+      "kind": "in"
+    },
+    {
+      "from": "commands.Export",
+      "to": "std/access.Anyone",
+      "kind": "for"
+    },
+    {
+      "from": "commands.Export",
+      "to": "std/engine.TheProject",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Export",
+      "to": "std/tooling.Files",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Export",
+      "to": "documents/page.Page",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Export",
+      "to": "documents/page.GraphPacking",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Export",
+      "to": "commands.CommandWords",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Export",
+      "to": "std/system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Payload",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.Payload",
+      "to": "commands.Commands",
+      "kind": "in"
+    },
+    {
+      "from": "commands.Payload",
+      "to": "std/access.Anyone",
+      "kind": "for"
+    },
+    {
+      "from": "commands.Payload",
+      "to": "std/engine.TheProject",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Payload",
+      "to": "documents/rendering.FileRendering",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Payload",
+      "to": "documents/rendering.TerminalRendering",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Payload",
+      "to": "documents/rendering.PageRendering",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Payload",
+      "to": "commands.SameAsToday",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Payload",
+      "to": "std/system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.PayloadDifferences",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.PayloadDifferences",
+      "to": "documents/language.Punctuation",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.PayloadDifferences",
+      "to": "commands.CommandWords",
+      "kind": "deps"
+    },
+    {
       "from": "commands.Plan",
       "to": "product.WrittenOnce",
       "kind": "serves"
@@ -1091,6 +1775,11 @@
       "from": "commands.Plan",
       "to": "std/algebra.Counts",
       "kind": "deps"
+    },
+    {
+      "from": "commands.SameAsToday",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
     },
     {
       "from": "commands.Snapshot",
@@ -1313,6 +2002,111 @@
       "kind": "serves"
     },
     {
+      "from": "scenarios.DevServesThePage",
+      "to": "commands.Dev",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.DevServesThePage",
+      "to": "scenarios.TheSmallProjectServed",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.DevServesThePage",
+      "to": "scenarios.TheSmallProject",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.DevServesThePage",
+      "to": "documents/page.SheetsBesideTheLibrary",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.DevServesThePage",
+      "to": "std/running.ServerInMemory",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.DevServesThePage",
+      "to": "std/running.LinesInMemory",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.DevServesThePage",
+      "to": "std/running.ClockStopped",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.DevServesThePage",
+      "to": "std/running.MachineTimers",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.DevServesThePage",
+      "to": "scenarios.Served",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.DevServesThePage",
+      "to": "commands.Dev",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.DevServesThePage",
+      "to": "std/engine.TheProject",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.DevServesThePage",
+      "to": "std/running.ServerKept",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.DevServesThePage",
+      "to": "std/running.LinesKept",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.DevServesThePage",
+      "to": "documents/page.DevService",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.DevServesThePage",
+      "to": "scenarios.PageSample",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.DevServesThePage",
+      "to": "documents/page.PageWords",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.DevServesThePage",
+      "to": "commands.CommandWords",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.DevServesThePage",
+      "to": "std/web.Http",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.DevServesThePage",
+      "to": "std/system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.DevServesThePage",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.DevServesThePage",
+      "to": "scenarios.ScenarioWords",
+      "kind": "deps"
+    },
+    {
       "from": "scenarios.DocumentsAsFiles",
       "to": "documents/rendering.MarkdownSyntax",
       "kind": "chooses"
@@ -1325,6 +2119,11 @@
     {
       "from": "scenarios.DocumentsAsFiles",
       "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.DocumentsAsFiles",
+      "to": "scenarios.Served",
       "kind": "environments"
     },
     {
@@ -1354,6 +2153,11 @@
     },
     {
       "from": "scenarios.DocumentsLanguage",
+      "to": "scenarios.Served",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.DocumentsLanguage",
       "to": "std/patterns.Strategy",
       "kind": "follows"
     },
@@ -1379,6 +2183,11 @@
     },
     {
       "from": "scenarios.FiguresOfTheDocuments",
+      "to": "scenarios.Served",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.FiguresOfTheDocuments",
       "to": "std/patterns.Strategy",
       "kind": "follows"
     },
@@ -1386,6 +2195,226 @@
       "from": "scenarios.FiguresOfTheDocuments",
       "to": "product.WrittenOnce",
       "kind": "serves"
+    },
+    {
+      "from": "scenarios.PageAsAProjectMakesIt",
+      "to": "documents/rendering.HtmlSyntax",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.PageAsAProjectMakesIt",
+      "to": "documents/rendering.SvgFigures",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.PageAsAProjectMakesIt",
+      "to": "std/running.ServerInMemory",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.PageAsAProjectMakesIt",
+      "to": "std/running.LinesInMemory",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.PageAsAProjectMakesIt",
+      "to": "std/running.ClockStopped",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.PageAsAProjectMakesIt",
+      "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.PageAsAProjectMakesIt",
+      "to": "scenarios.Served",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.PageAsAProjectMakesIt",
+      "to": "std/patterns.Strategy",
+      "kind": "follows"
+    },
+    {
+      "from": "scenarios.PageAsAProjectMakesIt",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.PageExported",
+      "to": "commands.Export",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PageExported",
+      "to": "scenarios.TheSmallProjectServed",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PageExported",
+      "to": "scenarios.TheSmallProject",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PageExported",
+      "to": "documents/page.SheetsBesideTheLibrary",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PageExported",
+      "to": "documents/page.GzipInBase64",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PageExported",
+      "to": "std/engine.ReadByTheEngine",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PageExported",
+      "to": "scenarios.Served",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.PageExported",
+      "to": "commands.Export",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PageExported",
+      "to": "std/engine.TheProject",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PageExported",
+      "to": "std/tooling.FilesKept",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PageExported",
+      "to": "documents/page.PageWords",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PageExported",
+      "to": "commands.CommandWords",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PageExported",
+      "to": "std/system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PageExported",
+      "to": "scenarios.ScenarioWords",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PageFilesAsOnAMachine",
+      "to": "documents/page.SheetsBesideTheLibrary",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.PageFilesAsOnAMachine",
+      "to": "documents/page.GzipInBase64",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.PageFilesAsOnAMachine",
+      "to": "std/engine.ReadByTheEngine",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.PageFilesAsOnAMachine",
+      "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.PageFilesAsOnAMachine",
+      "to": "scenarios.Served",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.PageFilesAsOnAMachine",
+      "to": "std/patterns.Adapter",
+      "kind": "follows"
+    },
+    {
+      "from": "scenarios.PageFilesAsOnAMachine",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "scenarios.PayloadOfTheSmallProject",
+      "to": "commands.Payload",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PayloadOfTheSmallProject",
+      "to": "commands.SameAsToday",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PayloadOfTheSmallProject",
+      "to": "commands.PayloadDifferences",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PayloadOfTheSmallProject",
+      "to": "std/engine.ProjectCompiledHere",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PayloadOfTheSmallProject",
+      "to": "scenarios.TheSmallProject",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PayloadOfTheSmallProject",
+      "to": "documents/rendering.HtmlSyntax",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PayloadOfTheSmallProject",
+      "to": "documents/rendering.SvgFigures",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.PayloadOfTheSmallProject",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.PayloadOfTheSmallProject",
+      "to": "commands.Payload",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PayloadOfTheSmallProject",
+      "to": "commands.PayloadDifferences",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PayloadOfTheSmallProject",
+      "to": "commands.CommandWords",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PayloadOfTheSmallProject",
+      "to": "std/system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PayloadOfTheSmallProject",
+      "to": "std/algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.PayloadOfTheSmallProject",
+      "to": "scenarios.ScenarioWords",
+      "kind": "deps"
     },
     {
       "from": "scenarios.PlanAfterTheSameBuild",
@@ -1584,6 +2613,11 @@
     },
     {
       "from": "scenarios.PlayedOnASmallProject",
+      "to": "scenarios.Served",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.PlayedOnASmallProject",
       "to": "std/patterns.Strategy",
       "kind": "follows"
     },
@@ -1596,6 +2630,26 @@
       "from": "scenarios.ScenarioWords",
       "to": "commands.WordsLanguage",
       "kind": "language"
+    },
+    {
+      "from": "scenarios.ServedFromTheSmallProject",
+      "to": "scenarios.TheSmallProjectServed",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.ServedFromTheSmallProject",
+      "to": "scenarios.Served",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.ServedFromTheSmallProject",
+      "to": "std/patterns.Adapter",
+      "kind": "follows"
+    },
+    {
+      "from": "scenarios.ServedFromTheSmallProject",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
     },
     {
       "from": "scenarios.SnapshotTaken",
@@ -1668,6 +2722,26 @@
       "kind": "deps"
     },
     {
+      "from": "scenarios.TheSmallProjectServed",
+      "to": "std/engine.TheProject",
+      "kind": "implements"
+    },
+    {
+      "from": "scenarios.TheSmallProjectServed",
+      "to": "std/engine.ProjectOfTheScenario",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.TheSmallProjectServed",
+      "to": "scenarios.PageSample",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.TheSmallProjectServed",
+      "to": "std/engine.EngineWords",
+      "kind": "deps"
+    },
+    {
       "from": "scenarios.ViewAnswersItsDocument",
       "to": "commands.View",
       "kind": "verifies"
@@ -1723,6 +2797,31 @@
       "kind": "deps"
     },
     {
+      "from": "scenarios.WaitingOnTheMachine",
+      "to": "std/running.MachineTimers",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.WaitingOnTheMachine",
+      "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.WaitingOnTheMachine",
+      "to": "scenarios.Served",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.WaitingOnTheMachine",
+      "to": "std/patterns.Adapter",
+      "kind": "follows"
+    },
+    {
+      "from": "scenarios.WaitingOnTheMachine",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
       "from": "scenarios.WrittenAsAProjectDoes",
       "to": "product.WrittenOnce",
       "kind": "serves"
@@ -1740,6 +2839,26 @@
     {
       "from": "scenarios.WrittenAsAProjectDoes",
       "to": "scenarios.DocumentsLanguage",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.WrittenAsAProjectDoes",
+      "to": "scenarios.PageAsAProjectMakesIt",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.WrittenAsAProjectDoes",
+      "to": "scenarios.PageFilesAsOnAMachine",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.WrittenAsAProjectDoes",
+      "to": "scenarios.WaitingOnTheMachine",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.WrittenAsAProjectDoes",
+      "to": "scenarios.ServedFromTheSmallProject",
       "kind": "appliedBy"
     },
     {

@@ -3487,6 +3487,19 @@
       }
     },
     {
+      "id": "releases.R0_32_0",
+      "kind": "release",
+      "title": "Version 0.32.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.32.0",
+        "date": "2026-11-28",
+        "what": "A text read back by the engine (LanguageReading's readText); the page's program, bundled by the engine (TheProject's page); what a command that keeps running asks of the machine (module running: the clock, timers, a server of HTTP, lines printed as it goes, with Node.js's realizations and, for scenarios, a clock stopped, a server asked in memory, the lines kept)",
+        "fingerprint": "5ee4f3123d0cc584",
+        "language": "shared"
+      }
+    },
+    {
       "id": "releases.R0_4_0",
       "kind": "release",
       "title": "Version 0.4.0",
@@ -8673,6 +8686,41 @@
     },
     {
       "from": "releases.R0_31_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_32_0",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_32_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_32_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_32_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_32_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_32_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_32_0",
       "to": "product.VersionsThatHold",
       "kind": "serves"
     },

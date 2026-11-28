@@ -4,6 +4,21 @@
 
 ## Commands · Commands
 
+### Debouncing of saves
+
+Decision · `DevDebounce`
+
+- Decided by: trame
+- Value: 150
+- Allowed range: from 50 to 2000
+
+### The port of trame dev
+
+Decision · `DevPort`
+
+- Decided by: trame
+- Value: 4170
+
 ### The language the commands speak
 
 Decision · `WordsLanguage`
@@ -29,6 +44,22 @@ Function · `BuildComparison` · **held**
 - Serves: Commands every project runs, written once
 - Depends on: What the commands say
 
+### What the last change changed
+
+Function · `PayloadDifferences` · **held**
+
+- Owner: trame
+- Parameters: { punctuation: documents/language.Punctuation, say: commands.CommandWords }
+- Serves: Commands every project runs, written once
+- Depends on: What the commands say
+
+### A date's documents as today's
+
+Function · `SameAsToday` · **held**
+
+- Owner: trame
+- Serves: Commands every project runs, written once
+
 ### Why a view gives no document, said
 
 Function · `ViewRefused` · **held**
@@ -48,6 +79,39 @@ Entry point · `Build` · **held**
 - Serves: Commands every project runs, written once
 - Part of: The library's commands
 - Depends on: What the commands say
+
+### Dev
+
+Entry point · `Dev` · **held**
+
+- Owner: trame
+- Trigger: { type: command, name: dev, help: The page, compiled again at each save, options: { name: port, meaning: the port it is served on, takes: port } }
+- Parameters: { project: std/engine.TheProject, page: documents/page.Page, rendering: documents/rendering.PageRendering, differences: commands.PayloadDifferences, service: documents/page.DevService, port: commands.DevPort, debounce: commands.DevDebounce, server: std/running.HttpServing, waiting: std/running.Waiting, clock: std/running.TheClock, printing: std/running.LinesPrinted, http: std/web.Http, media: std/web.MediaTypes, events: std/web.ServerSentEvents, node: std/system.NodeEvents, uri: std/web.Uri, codeLines: documents/text.CodeLines, dates: documents/language.Dates, lists: documents/language.Lists, language: documents/language.DocumentLanguage, file: std/text.TextFile, say: commands.CommandWords, exit: std/system.ExitStatus, counts: std/algebra.Counts, sequences: std/algebra.Sequences, texts: std/algebra.Texts }
+- Serves: Commands every project runs, written once
+- Part of: The library's commands
+- Depends on: What the last change changed, The port of trame dev, Debouncing of saves, What the commands say
+
+### Export
+
+Entry point · `Export` · **held**
+
+- Owner: trame
+- Trigger: { type: command, name: export, help: A page a browser opens as it is, arguments: { name: file, meaning: where the page goes, from the project's root (the layout's page by default), optional: true }, options: { name: fragment, meaning: without the skeleton of a document, for a host that gives its own } }
+- Parameters: { project: std/engine.TheProject, files: std/tooling.Files, page: documents/page.Page, packing: documents/page.GraphPacking, say: commands.CommandWords, exit: std/system.ExitStatus }
+- Serves: Commands every project runs, written once
+- Part of: The library's commands
+- Depends on: What the commands say
+
+### Payload
+
+Entry point · `Payload` · **held**
+
+- Owner: trame
+- Trigger: { type: command, name: payload, help: The graph in the intermediate format, for a page, options: { name: all, meaning: at each date a page offers, not only the day of the line }, { name: history, meaning: with --all, the last days something was given too } }
+- Parameters: { project: std/engine.TheProject, written: documents/rendering.FileRendering, printed: documents/rendering.TerminalRendering, page: documents/rendering.PageRendering, same: commands.SameAsToday, exit: std/system.ExitStatus }
+- Serves: Commands every project runs, written once
+- Part of: The library's commands
+- Depends on: A date's documents as today's
 
 ### Plan
 
@@ -111,10 +175,10 @@ Package · `Documents`
 
 - Owner: trame
 - Name: documents
-- Version: 0.4.0
+- Version: 0.5.1
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ../documents/releases/0.4.0
+- Its path: ../documents/releases/0.5.1
 - Serves: Commands every project runs, written once
 
 ### Trame
@@ -123,9 +187,9 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 135
+- Version: 136
 - How it joins the graph: language
-- Its path: ../../generations/g135
+- Its path: ../../generations/g136
 - Serves: Commands every project runs, written once
 
 ### The people of the repository
@@ -146,9 +210,9 @@ Package · `StandardLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.31.0
+- Version: 0.33.0
 - How it joins the graph: library
-- Its path: ../../std/releases/0.31.0
+- Its path: ../../std/releases/0.33.0
 - Serves: Commands every project runs, written once
 
 ## Commands · Product
@@ -235,6 +299,13 @@ Release · `R0_4_0`
 
 ## Commands · Scenarios
 
+### The small project's page
+
+Decision · `PageSample`
+
+- Decided by: trame
+- Value: { program: trame, script: start(), instant: 2026-11-26T08:00:00.000Z, watched: src/, trame.lock, refused: amended nowhere in a scenario, port: 4171 }
+
 ### Views the scenarios ask for
 
 Decision · `ScenarioViews`
@@ -269,7 +340,7 @@ Architecture decision · `WrittenAsAProjectDoes` · **held**
 - Consequences: What a build writes is what the engine's build wrote, character for character: the same views, the same renderer, the same places.
 - Rejected: A renderer of the commands' own, the walk and the words of the documents repeated
 - Serves: Commands every project runs, written once
-- Applied by: Files in Markdown, the terminal in text, Figures in Mermaid and in text, In the language of libs/documents' scenarios
+- Applied by: Files in Markdown, the terminal in text, Figures in Mermaid and in text, In the language of libs/documents' scenarios, The page, as a project makes it, The page's files and its reading, as on a machine, Waiting as a person would, The small project, served
 
 ### Which project the scenarios compile
 
@@ -285,6 +356,14 @@ Message catalog · `ScenarioWords`
 
 - Owner: trame
 - Written in: The language the commands speak
+
+### The small project, served
+
+Implementation · `TheSmallProjectServed` · **held**
+
+- Owner: trame
+- Parameters: { chosen: std/engine.ProjectOfTheScenario, sample: scenarios.PageSample, say: std/engine.EngineWords }
+- Depends on: The small project's page
 
 ### Compiled by the engine that plays them
 
@@ -302,7 +381,7 @@ Technical choice · `DocumentsAsFiles` · **held**
 
 - Decided by: trame
 - Context: A command writes its documents with the renderers of libs/documents, in the syntaxes a project chooses.
-- In: Test
+- In: Test, Served
 - Serves: Commands every project runs, written once
 
 ### In the language of libs/documents' scenarios
@@ -311,7 +390,7 @@ Technical choice · `DocumentsLanguage` · **held**
 
 - Decided by: trame
 - Context: The documents speak the language of the engine that compiles the graph: in a library's scenarios, a language decided for them.
-- In: Test
+- In: Test, Served
 - Serves: Commands every project runs, written once
 
 ### Figures in Mermaid and in text
@@ -320,7 +399,25 @@ Technical choice · `FiguresOfTheDocuments` · **held**
 
 - Decided by: trame
 - Context: Each syntax reaches its figures through a port of its own, chosen apart.
-- In: Test
+- In: Test, Served
+- Serves: Commands every project runs, written once
+
+### The page, as a project makes it
+
+Technical choice · `PageAsAProjectMakesIt` · **held**
+
+- Decided by: trame
+- Context: The page's commands write with libs/documents' page, and run with what std offers a command that keeps running.
+- In: Test, Served
+- Serves: Commands every project runs, written once
+
+### The page's files and its reading, as on a machine
+
+Technical choice · `PageFilesAsOnAMachine` · **held**
+
+- Decided by: trame
+- Context: The page's commands write with libs/documents' page, and run with what std offers a command that keeps running.
+- In: Test, Served
 - Serves: Commands every project runs, written once
 
 ### Played on a small project
@@ -330,8 +427,33 @@ Technical choice · `PlayedOnASmallProject` · **held**
 - Decided by: trame
 - Context: The library's own project is the one being compiled when its scenarios play: they compile another, small and of the library's own, whose files are read again when they change.
 - Chooses: Which project the scenarios compile
-- In: Test
+- In: Test, Served
 - Serves: Commands every project runs, written once
+
+### The small project, served
+
+Technical choice · `ServedFromTheSmallProject` · **held**
+
+- Decided by: trame
+- Context: A bundle is compiled in a fresh process of the engine on a machine: a scenario makes it in its own.
+- Chooses: The small project, served
+- In: Served
+- Serves: Commands every project runs, written once
+
+### Waiting as a person would
+
+Technical choice · `WaitingOnTheMachine` · **held**
+
+- Decided by: trame
+- Context: A wait kept in memory would call at once what trame dev waits for.
+- In: Test, Served
+- Serves: Commands every project runs, written once
+
+### Served
+
+Environment · `Served`
+
+- Owner: trame
 
 ### Test
 
@@ -349,6 +471,36 @@ Scenario · `BuildWritesTheDocuments` · **held**
 - Verifies: Build, Which project the scenarios compile
 - In: Test
 - Depends on: Build, What the commands say, What the scenarios check
+
+### trame dev serves the page
+
+Scenario · `DevServesThePage` · **held**
+
+- Owner: trame
+- Parameters: { dev: commands.Dev, project: std/engine.TheProject, server: std/running.ServerKept, printed: std/running.LinesKept, service: documents/page.DevService, sample: scenarios.PageSample, words: documents/page.PageWords, say: commands.CommandWords, http: std/web.Http, exit: std/system.ExitStatus, counts: std/algebra.Counts, checks: scenarios.ScenarioWords }
+- Verifies: Dev, The small project, served, Which project the scenarios compile
+- In: Served
+- Depends on: Dev, The small project's page, What the commands say, What the scenarios check
+
+### A page exported
+
+Scenario · `PageExported` · **held**
+
+- Owner: trame
+- Parameters: { exported: commands.Export, project: std/engine.TheProject, kept: std/tooling.FilesKept, words: documents/page.PageWords, say: commands.CommandWords, exit: std/system.ExitStatus, checks: scenarios.ScenarioWords }
+- Verifies: Export, The small project, served, Which project the scenarios compile
+- In: Served
+- Depends on: Export, What the commands say, What the scenarios check
+
+### A payload of the graph
+
+Scenario · `PayloadOfTheSmallProject` · **held**
+
+- Owner: trame
+- Parameters: { payload: commands.Payload, differences: commands.PayloadDifferences, say: commands.CommandWords, exit: std/system.ExitStatus, counts: std/algebra.Counts, checks: scenarios.ScenarioWords }
+- Verifies: Payload, A date's documents as today's, What the last change changed, Which project the scenarios compile
+- In: Test
+- Depends on: Payload, What the last change changed, What the commands say, What the scenarios check
 
 ### After a build, nothing changes
 
@@ -412,7 +564,7 @@ Decision · `PullRequestsOnGitHub`
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **held**
+Artefact · `PullRequestWorkflow` · **unknown**
 
 - Owner: trame
 - Path: ../../.github/workflows/commands-pull-request.yml
@@ -439,7 +591,7 @@ Shipment · `NextVersion` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **held**
+Shipment · `RunnersWritten` · **unknown**
 
 - Owner: trame
 - Target: repository

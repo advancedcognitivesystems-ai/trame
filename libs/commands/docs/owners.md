@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 2 | 50 |
+| trame | 0 | 0 | 4 | 67 |
 
 <a id="trame"></a>
 
@@ -13,6 +13,8 @@
 | Severity | Code | What | Where | Owner | Consequence |
 |---|---|---|---|---|---|
 | warning | `shipment-awaits` | To ship: The commands of every project is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | trame |  |
+| warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | trame |  |
 | warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The commands of every project](sdlc.md#TheLibrary) | trame |  |
 
 ### Owns
@@ -23,7 +25,14 @@
 | [Two builds compared](commands.md#BuildComparison) | Function | **held** |
 | [The library's commands](commands.md#Commands) | Component |  |
 | [What the commands say](commands.md#CommandWords) | Message catalog |  |
+| [Dev](commands.md#Dev) | Entry point | **held** |
+| [Debouncing of saves](commands.md#DevDebounce) | Decision |  |
+| [The port of trame dev](commands.md#DevPort) | Decision |  |
+| [Export](commands.md#Export) | Entry point | **held** |
+| [Payload](commands.md#Payload) | Entry point | **held** |
+| [What the last change changed](commands.md#PayloadDifferences) | Function | **held** |
 | [Plan](commands.md#Plan) | Entry point | **held** |
+| [A date's documents as today's](commands.md#SameAsToday) | Function | **held** |
 | [Snapshot](commands.md#Snapshot) | Entry point | **held** |
 | [View](commands.md#View) | Entry point | **held** |
 | [Why a view gives no document, said](commands.md#ViewRefused) | Function | **held** |
@@ -42,9 +51,15 @@
 | [Version 0.4.0](releases.md#R0_4_0) | Release |  |
 | [A build writes the documents and the graph](scenarios.md#BuildWritesTheDocuments) | Scenario | **held** |
 | [Compiled by the engine that plays them](scenarios.md#CompiledByTheEngine) | Technical choice | **held** |
+| [trame dev serves the page](scenarios.md#DevServesThePage) | Scenario | **held** |
 | [Files in Markdown, the terminal in text](scenarios.md#DocumentsAsFiles) | Technical choice | **held** |
 | [In the language of libs/documents' scenarios](scenarios.md#DocumentsLanguage) | Technical choice | **held** |
 | [Figures in Mermaid and in text](scenarios.md#FiguresOfTheDocuments) | Technical choice | **held** |
+| [The page, as a project makes it](scenarios.md#PageAsAProjectMakesIt) | Technical choice | **held** |
+| [A page exported](scenarios.md#PageExported) | Scenario | **held** |
+| [The page's files and its reading, as on a machine](scenarios.md#PageFilesAsOnAMachine) | Technical choice | **held** |
+| [The small project's page](scenarios.md#PageSample) | Decision |  |
+| [A payload of the graph](scenarios.md#PayloadOfTheSmallProject) | Scenario | **held** |
 | [After a build, nothing changes](scenarios.md#PlanAfterTheSameBuild) | Scenario | **held** |
 | [A plan says what a build would change](scenarios.md#PlanSaysWhatChanges) | Scenario | **held** |
 | [Without a build, a plan says so](scenarios.md#PlanWithoutABuild) | Scenario | **held** |
@@ -52,11 +67,15 @@
 | [Played on a small project](scenarios.md#PlayedOnASmallProject) | Technical choice | **held** |
 | [Views the scenarios ask for](scenarios.md#ScenarioViews) | Decision |  |
 | [What the scenarios check](scenarios.md#ScenarioWords) | Message catalog |  |
+| [Served](scenarios.md#Served) | Environment |  |
+| [The small project, served](scenarios.md#ServedFromTheSmallProject) | Technical choice | **held** |
 | [The small project](scenarios.md#SmallProject) | Decision |  |
 | [A snapshot writes the graph in force](scenarios.md#SnapshotTaken) | Scenario | **held** |
 | [Test](scenarios.md#Test) | Environment |  |
 | [Which project the scenarios compile](scenarios.md#TheSmallProject) | Function | **held** |
+| [The small project, served](scenarios.md#TheSmallProjectServed) | Implementation | **held** |
 | [A view answers its document](scenarios.md#ViewAnswersItsDocument) | Scenario | **held** |
+| [Waiting as a person would](scenarios.md#WaitingOnTheMachine) | Technical choice | **held** |
 | [A command writes documents as a project does](scenarios.md#WrittenAsAProjectDoes) | Architecture decision | **held** |
 | [Its callers identified](sdlc.md#CallersIdentified) | Obligation |  |
 | [Its code verified](sdlc.md#CodeVerified) | Obligation |  |
@@ -64,8 +83,8 @@
 | [The next version](sdlc.md#NextVersion) | Shipment | **unknown** |
 | [Its packages safe](sdlc.md#PackagesSafe) | Obligation |  |
 | [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
-| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **held** |
+| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **unknown** |
 | [Its requirements held](sdlc.md#RequirementsServed) | Obligation |  |
-| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
+| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **unknown** |
 | [The commands of every project](sdlc.md#TheLibrary) | Artefact | **unknown** |
 | [How a version is made](sdlc.md#VersionMode) | Policy |  |

@@ -46,7 +46,7 @@ In [Browser](architecture.md#Browser):
 | [Feed of the graph](../libs/documents/releases/0.5.1/docs/browser.md#GraphFeed) | [The globals of the page, and trame dev](../libs/documents/releases/0.5.1/docs/browser.md#BrowserFeed) | an implementation |
 | [Memory of the page](../libs/documents/releases/0.5.1/docs/browser.md#PageMemory) | [Local storage](../libs/documents/releases/0.5.1/docs/browser.md#BrowserMemory) | an implementation |
 | [Window of the page](../libs/documents/releases/0.5.1/docs/browser.md#PageWindow) | [The browser's window](../libs/documents/releases/0.5.1/docs/browser.md#BrowserWindow) | an implementation |
-| [Loading of a page](../std/releases/0.32.0/docs/platform.md#PageLoading) | [The browser loads the page](../std/releases/0.32.0/docs/platform.md#BrowserLoading) | an implementation |
+| [Loading of a page](../std/releases/0.33.0/docs/platform.md#PageLoading) | [The browser loads the page](../std/releases/0.33.0/docs/platform.md#BrowserLoading) | an implementation |
 
 Context: The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.
 
@@ -58,8 +58,8 @@ Consequences: The browser's globals appear only in these implementations; the en
 | Libraries for storage and decompression | every browser the page targets has local storage and gzip |
 
 - Decided by: trame
-- Chooses: [The browser loads the page](../std/releases/0.32.0/docs/platform.md#BrowserLoading), [The browser's window](../libs/documents/releases/0.5.1/docs/browser.md#BrowserWindow), [Local storage](../libs/documents/releases/0.5.1/docs/browser.md#BrowserMemory), [The globals of the page, and trame dev](../libs/documents/releases/0.5.1/docs/browser.md#BrowserFeed), [Amendments sent to trame dev](../libs/documents/releases/0.5.1/docs/browser.md#BrowserAmendments), [The browser's gzip](../libs/documents/releases/0.5.1/docs/browser.md#BrowserDecompression)
+- Chooses: [The browser loads the page](../std/releases/0.33.0/docs/platform.md#BrowserLoading), [The browser's window](../libs/documents/releases/0.5.1/docs/browser.md#BrowserWindow), [Local storage](../libs/documents/releases/0.5.1/docs/browser.md#BrowserMemory), [The globals of the page, and trame dev](../libs/documents/releases/0.5.1/docs/browser.md#BrowserFeed), [Amendments sent to trame dev](../libs/documents/releases/0.5.1/docs/browser.md#BrowserAmendments), [The browser's gzip](../libs/documents/releases/0.5.1/docs/browser.md#BrowserDecompression)
 - In: [Browser](architecture.md#Browser)
-- Follows: [Adapter](../std/releases/0.32.0/docs/patterns.md#Adapter)
+- Follows: [Adapter](../std/releases/0.33.0/docs/patterns.md#Adapter)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
 - Applies: [Trame's page, assembled](#OurPageAssembled)

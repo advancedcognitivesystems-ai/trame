@@ -12,9 +12,18 @@ engine once every project of the repository runs this library's.
   printed) and `Snapshot` (`trame snapshot`: snapshot.json and the snapshot's documents), since 0.3.0, on the
   documents the engine's API gives (g132); `View` (`trame view <view> [node|module]`, since 0.4.0: its arguments
   declared on its line, its document answered and written in the format std's `--format` names), with `ViewRefused`
-  (why a view gives no document, which the engine's view says too); the words they say (`CommandWords`).
+  (why a view gives no document, which the engine's view says too); since 0.5.0 the page's commands, the engine's
+  before: `Payload` (`trame payload [--all] [--history]`: the graph in the intermediate format at each date a page
+  offers, each document rendered for files, the terminal and the page, with `SameAsToday`), `Export` (`trame export
+  [file] [--fragment]`: libs/documents' page, the project compiled at each date in a fresh process by the engine, its
+  program the engine's, the graph packed) and `Dev` (`trame dev [--port <port>]`: the page served with std's
+  `HttpServing`, compiled again after each save, the open page told on a stream, an amendment prepared and recorded by
+  the engine), with `PayloadDifferences` (what the last change changed), `DevPort` and `DevDebounce`; the words they
+  say (`CommandWords`).
 - `src/scenarios.ts` — the commands played on a real graph: `samples/small`, a project of the library's own, compiled
-  by the engine that plays the scenarios (std's `ProjectCompiledHere`), the files kept in memory.
+  by the engine that plays the scenarios (std's `ProjectCompiledHere`), the files kept in memory; the page's commands
+  in an environment of their own (`Served`), where the small project's bundle is made in the scenario's process and
+  the server, the clock and the lines printed are std's realizations kept in memory.
 - `src/sdlc.ts` — how a version ships (its code verified by the scenarios, its packages safe), and the workflow that
   checks each pull request (job `commands`).
 

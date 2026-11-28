@@ -5,7 +5,7 @@ import { code } from "../trame/kernel"
 import { fn } from "../kinds/function"
 import { decision } from "../kinds/decision"
 import { adr } from "../kinds/adr"
-import { ExecutableSpecification, SingleSource, SampleCount, ClaimSets, DevDebounce, SampledOwners, SampledValues, SeverityOrder, CandidateDates, StructureDraws } from "./product"
+import { ExecutableSpecification, SingleSource, SampleCount, ClaimSets, SampledOwners, SampledValues, SeverityOrder, CandidateDates, StructureDraws } from "./product"
 import {
   CompleteDeclaration, AnswersWithoutCrashing, BlockingHoleHasOwner, HoleHasCode, UnknownWithoutEvidence, SameInputSameAnswer, OrderFree, ClosedResolution,
   CompleteViewDeclaration, IntermediateFormatOnly, TrustedExtensions,
@@ -21,10 +21,7 @@ import { ExitStatus, NodeEncodings, NodeEvents, NodeModuleSpecifiers } from "#st
 import { Iso8601 } from "#std/measures"
 import { Layout, DefaultRank, DocComment, ViewGroupOrder, TrameCommands, StepNames, PreludeApi, LanguageNames } from "./conventions"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
-import {
-  Prelude, FileReading, Paths, ModuleLoader, TypeScriptCompiler, Hashing, KeptResults, Signatures, Process, Terminal, Clock, Timer,
-  HttpServer, KeptRuns, RunStore,
-} from "./architecture"
+import { Prelude, FileReading, Paths, ModuleLoader, TypeScriptCompiler, Hashing, KeptResults, Signatures, Process, Terminal, Clock, KeptRuns, RunStore } from "./architecture"
 import { Language, CompilerMessages, LawMessages, ViewMessages, OutputMessages, DevMessages, CommandMessages } from "./messages"
 import { Dates, Lists } from "#documents/language"
 import { Drivers } from "./languages"
@@ -34,6 +31,8 @@ import { CodeSpan } from "#documents/markdown"
 import { CodeLines } from "#documents/text"
 import { Page, DevService } from "#documents/page"
 import { PageScript } from "./page"
+import { PayloadDifferences, DevDebounce } from "#commands/commands"
+import { Waiting, HttpServing } from "#std/running"
 import { PageRendering, DocumentIds } from "#documents/rendering"
 import { GraphPacking } from "#documents/page"
 import { TypeScript, TypeScriptSyntax, TypeScriptLibraries } from "./typescript"
@@ -497,17 +496,6 @@ export const Watching = fn({
 })
 
 /**
- * Differences
- * What a change altered between two compilations: statuses, holes, overlaps.
- */
-export const Differences = fn({
-  owner: "trame",
-  serves: [ExecutableSpecification],
-  deps: { punctuation: Punctuation, messages: OutputMessages },
-  body: code.file<typeof import("./code/engine/differences").default>("./code/engine/differences.ts"),
-})
-
-/**
  * trame dev server
  * Watches the project, recompiles it at each save, pushes the updated page.
  */
@@ -516,8 +504,8 @@ export const DevServer = fn({
   serves: [ExecutableSpecification],
   deps: { service: DevService, uri: Uri, line: TrameCommands, nodeEvents: NodeEvents, layout: Layout,
     http: Http, mediaTypes: MediaTypes, events: ServerSentEvents,
-    terminal: Terminal, codeLines: CodeLines, file: TextFile, clock: Clock, timer: Timer, debounce: DevDebounce, httpServer: HttpServer,
-    watching: Watching, paths: Paths, project: Project, bundle: DateBundle, differences: Differences, page: Page, script: PageScript, pageRendering: PageRendering,
+    terminal: Terminal, codeLines: CodeLines, file: TextFile, clock: Clock, timer: Waiting, debounce: DevDebounce, httpServer: HttpServing,
+    watching: Watching, paths: Paths, project: Project, bundle: DateBundle, differences: PayloadDifferences, page: Page, script: PageScript, pageRendering: PageRendering,
     counts: Counts, sequences: Sequences, texts: Texts, dates: Dates, language: Language, messages: DevMessages,
   },
   body: code.file<typeof import("./code/engine/dev-server").default>("./code/engine/dev-server.ts"),

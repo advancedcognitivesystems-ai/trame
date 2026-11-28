@@ -499,3 +499,16 @@ export const R0_32_0 = release({
   language: "shared",
   serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
 })
+
+/**
+ * Version 0.33.0
+ */
+export const R0_33_0 = release({
+  owner: "trame",
+  version: "0.33.0",
+  date: "2026-11-28",
+  what: "The name a person types to run the engine, which the project at hand gives (TheProject's program): what a page's brand writes",
+  fingerprint: "0b4e2cab36274fac",
+  language: "shared",
+  serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})

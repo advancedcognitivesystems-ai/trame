@@ -2,15 +2,12 @@
 
 import { code } from "../trame/kernel"
 import { ReferenceSyntax } from "#std/engine"
+import { MachineTimers, NodeHttpServing, ServerInMemory } from "#std/running"
 import { decision } from "../kinds/decision"
 import { implementation } from "../kinds/implementation"
 import { fn } from "../kinds/function"
 import { binding } from "../kinds/binding"
-import {
-  Prelude, FileReading, FileWriting, Paths, ModuleLoader, TypeScriptCompiler, SyntaxTrees, Hashing, KeptResults, Process, Terminal,
-  Clock, Timer, HttpServer, Bundler, Resources, CommandLine, WriteLog, TerminalLog, ProcessLog, ServerLog, Programs, FileTrees, PackageReports, PackageInstalls,
-  Local, Test, Browser, RunStore, AmendmentPlace,
-} from "./architecture"
+import { Prelude, FileReading, FileWriting, Paths, ModuleLoader, TypeScriptCompiler, SyntaxTrees, Hashing, KeptResults, Process, Terminal, Clock, Bundler, Resources, CommandLine, WriteLog, TerminalLog, ProcessLog, Programs, FileTrees, PackageReports, PackageInstalls, Local, Test, Browser, RunStore, AmendmentPlace } from "./architecture"
 import { TypeScriptSyntax, DocBlock, ExportDeclaration, ConstDeclaration, Call, ObjectLiteral, Property, StringLiteral, InlineArray, NamedImport } from "./typescript"
 import { EngineFingerprint, KeptRunsScope, ProjectRuns } from "./engine"
 import { PageLoading } from "#std/platform"
@@ -148,22 +145,6 @@ export const NpmReports = implementation({
   owner: "trame", implements: [PackageReports],
   deps: { npm: NpmCli, values: ValueTypes, counts: Counts, punctuation: Punctuation },
   body: code.file("./code/platform/npm-reports.ts"),
-})
-
-/**
- * Node timer
- */
-export const NodeTimer = implementation({
-  owner: "trame", implements: [Timer],
-  body: code.file("./code/platform/timer.ts"),
-})
-
-/**
- * Node HTTP server
- */
-export const NodeHttpServer = implementation({
-  owner: "trame", implements: [HttpServer],
-  body: code.file("./code/platform/http.ts"),
 })
 
 /**
@@ -316,17 +297,6 @@ export const MemoryFiles = implementation({
 })
 
 /**
- * A server in memory
- * trame dev starts it as a server of Node.js; the scenario asks it for a path as a browser would. Nothing listens on the
- * network.
- */
-export const MemoryHttpServer = fn({
-  owner: "trame", implements: [HttpServer, ServerLog],
-  deps: { events: NodeEvents, http: Http, texts: Texts, messages: PlatformMessages },
-  body: code.file("./code/platform/memory-http.ts"),
-})
-
-/**
  * Lines shown on an exit in test
  * When the engine exits during a scenario, the error says the last lines it printed: enough to see why.
  */
@@ -400,7 +370,7 @@ export const RunsOnDisk = implementation({
 
 export const NodePlatform = binding({
   owner: "trame",
-  chooses: [NodePaths, NodeHashing, NodeTimer, NodeCommandLine, ResultsInTheProcess],
+  chooses: [NodePaths, NodeHashing, MachineTimers, NodeCommandLine, ResultsInTheProcess],
   environments: [Local, Test],
   follows: [Adapter, AbstractFactory],
   serves: [ReplaceableTechnology],
@@ -419,7 +389,7 @@ export const NodePlatform = binding({
  */
 export const NodeMachine = binding({
   owner: "trame",
-  chooses: [DiskReading, DiskWriting, DiskTrees, NodeProcess, NodePrograms, NodeTerminal, SystemClock, NpmReports, NpmInstall, NodeHttpServer],
+  chooses: [DiskReading, DiskWriting, DiskTrees, NodeProcess, NodePrograms, NodeTerminal, SystemClock, NpmReports, NpmInstall, NodeHttpServing],
   environments: [Local],
   follows: [Adapter, AbstractFactory],
   serves: [ReplaceableTechnology],
@@ -452,7 +422,7 @@ export const FilesInMemoryOverTheDisk = binding({
  */
 export const InMemoryScenarios = binding({
   owner: "trame",
-  chooses: [MemoryTerminal, StoppedClock, NoReportsInTest, ExampleProcess, MemoryHttpServer],
+  chooses: [MemoryTerminal, StoppedClock, NoReportsInTest, ExampleProcess, ServerInMemory],
   environments: [Test],
   follows: [Strategy, AbstractFactory],
   serves: [ReplaceableTechnology],

@@ -13,7 +13,8 @@ import { binding } from "../kinds/binding"
 import { extensionPoint } from "../kinds/port"
 import type { MachineNeed } from "../trame/kernel"
 import { ExecutableSpecification } from "./product"
-import { Clock, FileReading, FileWriting, FileTrees, HttpServer, KeptRuns, PackageInstalls, PackageReports, Paths, Process, Programs, Timer, Local, Test } from "./architecture"
+import { Waiting, HttpServing } from "#std/running"
+import { Clock, FileReading, FileWriting, FileTrees, KeptRuns, PackageInstalls, PackageReports, Paths, Process, Programs, Local, Test } from "./architecture"
 import { CommandMessages } from "./messages"
 import { Layout } from "./conventions"
 import { Counts, Texts } from "#std/algebra"
@@ -140,7 +141,7 @@ export const RunsAnswer = implementation({
 /** A server listens on a port the system gives */
 export const ServerAnswers = implementation({
   owner: "trame", implements: [EngineNeeds],
-  deps: { httpServer: HttpServer, counts: Counts, asking: Asking, messages: CommandMessages },
+  deps: { httpServer: HttpServing, counts: Counts, asking: Asking, messages: CommandMessages },
   body: ({ httpServer, counts, asking, messages }) => ({
     ask: () => asking.answer(messages.doctorServer(), () => new Promise<boolean>((done) => {
       const server = httpServer.createServer((_, res) => void res.end())
@@ -155,7 +156,7 @@ export const ServerAnswers = implementation({
 /** The time passes */
 export const TimerAnswers = implementation({
   owner: "trame", implements: [EngineNeeds],
-  deps: { clock: Clock, timer: Timer, probe: DoctorProbe, asking: Asking, messages: CommandMessages },
+  deps: { clock: Clock, timer: Waiting, probe: DoctorProbe, asking: Asking, messages: CommandMessages },
   body: ({ clock, timer, probe, asking, messages }) => ({
     ask: () => asking.answer(messages.doctorTimer(), () => new Promise<boolean>((done) => {
       const before = clock.now().getTime()

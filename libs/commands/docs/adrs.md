@@ -7,7 +7,7 @@
 | Decision | Status | Applied by |
 |---|---|---|
 | [A command is played on a real graph](scenarios.md#PlayedOnARealGraph) | **held** | [Compiled by the engine that plays them](scenarios.md#CompiledByTheEngine), [Played on a small project](scenarios.md#PlayedOnASmallProject) |
-| [A command writes documents as a project does](scenarios.md#WrittenAsAProjectDoes) | **held** | [Files in Markdown, the terminal in text](scenarios.md#DocumentsAsFiles), [In the language of libs/documents' scenarios](scenarios.md#DocumentsLanguage), [Figures in Mermaid and in text](scenarios.md#FiguresOfTheDocuments) |
+| [A command writes documents as a project does](scenarios.md#WrittenAsAProjectDoes) | **held** | [Files in Markdown, the terminal in text](scenarios.md#DocumentsAsFiles), [In the language of libs/documents' scenarios](scenarios.md#DocumentsLanguage), [Figures in Mermaid and in text](scenarios.md#FiguresOfTheDocuments), [The page, as a project makes it](scenarios.md#PageAsAProjectMakesIt), [The page's files and its reading, as on a machine](scenarios.md#PageFilesAsOnAMachine), [The small project, served](scenarios.md#ServedFromTheSmallProject), [Waiting as a person would](scenarios.md#WaitingOnTheMachine) |
 
 ## Commands · Scenarios
 
@@ -15,7 +15,7 @@
 
 ### A command is played on a real graph
 
-`PlayedOnARealGraph` · `src/scenarios.ts:176` · status: **held**
+`PlayedOnARealGraph` · `src/scenarios.ts:197` · status: **held**
 
 What a command computes from a graph is played on one the engine compiles: a small project the library carries in its sources, compiled by the engine that plays the scenarios, only the platform kept in memory. The library adopts std's decision that the engine is a provider, reached through std's ports.
 
@@ -36,7 +36,7 @@ Consequences: The small project travels with each version, named by the library'
 
 ### A command writes documents as a project does
 
-`WrittenAsAProjectDoes` · `src/scenarios.ts:233` · status: **held**
+`WrittenAsAProjectDoes` · `src/scenarios.ts:414` · status: **held**
 
 The library's commands write the documents the views give with the renderers of libs/documents: one renderer, its syntax a choice per audience. Its scenarios choose the syntaxes a project chooses.
 
@@ -50,5 +50,5 @@ Consequences: What a build writes is what the engine's build wrote, character fo
 
 - Decided by: trame
 - Serves: [Commands every project runs, written once](product.md#WrittenOnce)
-- Applied by: [Files in Markdown, the terminal in text](scenarios.md#DocumentsAsFiles), [Figures in Mermaid and in text](scenarios.md#FiguresOfTheDocuments), [In the language of libs/documents' scenarios](scenarios.md#DocumentsLanguage)
+- Applied by: [Files in Markdown, the terminal in text](scenarios.md#DocumentsAsFiles), [Figures in Mermaid and in text](scenarios.md#FiguresOfTheDocuments), [In the language of libs/documents' scenarios](scenarios.md#DocumentsLanguage), [The page, as a project makes it](scenarios.md#PageAsAProjectMakesIt), [The page's files and its reading, as on a machine](scenarios.md#PageFilesAsOnAMachine), [Waiting as a person would](scenarios.md#WaitingOnTheMachine), [The small project, served](scenarios.md#ServedFromTheSmallProject)
 - Adopts: [One renderer, its syntax a choice](../.trame/documents/docs/rendering.md#OneRendererManySyntaxes)

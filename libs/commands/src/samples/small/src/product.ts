@@ -24,9 +24,9 @@ export const Ada = actor({ owner: "ada", handle: "ada", sort: ActorSort.person, 
 
 /**
  * How long a greeting lasts
- * In seconds.
+ * In seconds; reviewed in the middle of December, when guests come in numbers (a date the page offers).
  */
-export const GreetingLength = decision<number>({ owner: "ada", value: 3, rejected: { "Ten seconds": "guests wait" } })
+export const GreetingLength = decision<number>({ owner: "ada", value: 3, rejected: { "Ten seconds": "guests wait" }, review: "2026-12-15" })
 
 /**
  * A greeting is short

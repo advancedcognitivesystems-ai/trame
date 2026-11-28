@@ -7,7 +7,7 @@
     },
     "documents": {
       "at": ".trame/documents",
-      "version": "0.4.0"
+      "version": "0.5.1"
     },
     "team": {
       "at": ".trame/team",
@@ -15,7 +15,7 @@
     },
     "std": {
       "at": ".trame/std",
-      "version": "0.31.0"
+      "version": "0.33.0"
     }
   },
   "engine": ".trame/trame"

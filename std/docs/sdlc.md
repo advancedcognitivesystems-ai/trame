@@ -83,7 +83,7 @@ The library as its people write it: what a version freezes, and what projects im
 
 - Path: `src`
 
-Built 28 November 2026 by claude, fingerprint `d33c8eedcfd2948c34afd26dd3fe86b4ddf6dc8393f0e98643cf8708f09f3182`.
+Built 28 November 2026 by claude, fingerprint `9241a032691a86f2278218e863abb4d1954da6099fde630840f33680ac025acf`.
 
 Shipped by [The next version](#NextVersion) 10 November 2026, fingerprint `899a945c8e6cedd8f5b631d42814486280ce02f0b93c4e2b7dac85775c2c8c9d`.
 
@@ -130,6 +130,8 @@ Shipped by [The next version](#NextVersion) 27 November 2026, fingerprint `f0a23
 Shipped by [The next version](#NextVersion) 27 November 2026, fingerprint `76a8b6405a0b048ef1030d8f0c1c1e9221d791ff6b8a5ddc834b8412345ea2b7`.
 
 Shipped by [The next version](#NextVersion) 28 November 2026, fingerprint `d33c8eedcfd2948c34afd26dd3fe86b4ddf6dc8393f0e98643cf8708f09f3182`.
+
+Shipped by [The next version](#NextVersion) 28 November 2026, fingerprint `9241a032691a86f2278218e863abb4d1954da6099fde630840f33680ac025acf`.
 
 - Owner: trame
 - A version of the project: true
@@ -189,7 +191,7 @@ A version of the standard library, for the projects that import it: shipped by t
 | [Effects a node may not have](rules.md#WithoutEffects) | **held** | [Its requirements held](#RequirementsServed), for [Anyone](access.md#Anyone) |
 | [Words of a vocabulary](rules.md#WordsOf) | **held** | [Its requirements held](#RequirementsServed), for [Anyone](access.md#Anyone) |
 
-Shipped 28 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-28-86d65149.json`.
+Shipped 28 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-28-5dc981f2.json`.
 
 - Owner: trame
 - Ships: [The standard library](#TheLibrary)

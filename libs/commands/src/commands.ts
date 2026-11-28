@@ -1,7 +1,13 @@
 /** Commands · Commands */
 
-import { TerminalText } from "#documents/text"
-import { FileRendering, TerminalRendering } from "#documents/rendering"
+import { TerminalText, CodeLines } from "#documents/text"
+import { FileRendering, TerminalRendering, PageRendering } from "#documents/rendering"
+import { Page, DevService, GraphPacking } from "#documents/page"
+import { Dates, Lists, Punctuation, DocumentLanguage } from "#documents/language"
+import { TheClock, Waiting, HttpServing, LinesPrinted } from "#std/running"
+import { Http, MediaTypes, ServerSentEvents, Uri } from "#std/web"
+import { NodeEvents } from "#std/system"
+import { TextFile } from "#std/text"
 import { code, plurals } from "#trame/kernel"
 import { component } from "#trame/kinds/component"
 import { entryPoint, command } from "#trame/kinds/entry-point"
@@ -12,13 +18,15 @@ import { ProgramCommands, Files } from "#std/tooling"
 import { TheProject } from "#std/engine"
 import { Anyone } from "#std/access"
 import { ExitStatus } from "#std/system"
-import { Counts, Texts } from "#std/algebra"
+import { Counts, Sequences, Texts } from "#std/algebra"
 import { WrittenOnce } from "./product"
 
 // The commands every project runs (E3): each reaches the engine through std's ports (the project at hand, compiled at
 // the day its line says), the files through std's Files, and says what it found in lines, which the program's exposure
 // writes out. The engine keeps its own until the generation that removes them; a project that chooses one of these
-// runs it instead (g119).
+// runs it instead (g119). Since 0.5.0 the page's commands too (payload, export, dev): the page is libs/documents', the
+// engine gives the project at each date and the page's program, std what a command that keeps running asks of the
+// machine.
 
 /**
  * The library's commands
@@ -85,6 +93,35 @@ export const CommandWords = catalog({
       unknownModule: (module: string | undefined, modules: readonly string[]) => `Unknown module: ${module ?? "(none)"}. Modules: ${modules.join(", ")}`,
       /** What a snapshot wrote, and the day of the graph it took. */
       snapshotTaken: (date: string, files: readonly string[]) => `snapshot of ${date} · written: ${files.join(", ")}`,
+      /** What an export wrote: how many dates its page offers, and where it went (0.5.0). */
+      exported: (dates: number, file: string) => `export · ${plural(dates, { one: "date", other: "dates" })} · written: ${file}`,
+      // What trame dev prints while it follows the project (0.5.0, the engine's before).
+      listening: (program: string, address: string, date: string) => `${program} dev · ${address} · graph of ${date}`,
+      /** What the stream of compilations says first, as a comment. */
+      devStream: (program: string) => `${program} dev`,
+      /** What trame dev follows: the paths watched, joined as a list in the language of the documents. */
+      watching: (paths: string) => `watching ${paths} · Ctrl+C to stop`,
+      compilationRefused: (time: string, ms: number) => `✗ ${time}  compilation refused (${ms} ms): the page keeps the last valid graph`,
+      compiled: (time: string, ms: number, dates: number, changes: number, reason: string) =>
+        `✓ ${time}  compiled in ${ms} ms · ${plural(dates, { one: "date", other: "dates" })}${changes ? ` · ${plural(changes, { one: "change", other: "changes" })}` : ""} (${reason})`,
+      startup: () => "startup",
+      filesChanged: (n: number) => plural(n, { one: "file", other: "files" }),
+      changedDuringCompilation: () => "changes during the compilation",
+      // What the last change changed: the pieces of each line, around the nodes, statuses and values it names (0.5.0).
+      changesTitle: () => "What the last change changed",
+      newNode: () => "New node: ",
+      nodeRemoved: (title: string) => `Node removed: ${title}`,
+      statusGoesFrom: () => " goes from ",
+      statusGoesTo: () => " to ",
+      noStatus: () => "no status",
+      issueAdded: () => " added: ",
+      issueResolved: () => " resolved: ",
+      newOverlapOn: () => "New overlap on ",
+      overlapOn: () => "The overlap on ",
+      overlapOf: () => " of ",
+      settledDifferently: () => " is settled differently: ",
+      contested: () => "contested",
+      prevails: (titles: string[]) => `${titles.join(", ")} ${titles.length > 1 ? "prevail" : "prevails"}`,
     }
   },
 })
@@ -179,4 +216,106 @@ export const View = entryPoint({
   }),
   deps: { project: TheProject, refused: ViewRefused, exit: ExitStatus },
   body: code.file("./code/view.ts"),
+})
+
+// The page's commands (0.5.0) ---------------------------------------------------------------------------------------
+
+/**
+ * What the last change changed
+ * Between two payloads of the same day, compiled one after the other: the nodes added and removed, the statuses that
+ * change, the issues raised and resolved, the overlaps new or settled differently; a document the page announces, or
+ * nothing when nothing changed. Pure: trame dev uses it, the engine's own too until it leaves.
+ */
+export const PayloadDifferences = fn({
+  owner: "trame",
+  serves: [WrittenOnce],
+  deps: { punctuation: Punctuation, say: CommandWords },
+  body: code.file<typeof import("./code/differences").default>("./code/differences.ts"),
+})
+
+/**
+ * A date's documents as today's
+ * The documents of another date that are today's but for the date of the graph: a page of several dates carries them
+ * once, on today's, which it moves back to their date. The engine's own payload uses it too until it leaves.
+ */
+export const SameAsToday = fn({
+  owner: "trame",
+  serves: [WrittenOnce],
+  body: code.file<typeof import("./code/same-as-today").default>("./code/same-as-today.ts"),
+})
+
+/**
+ * The port of trame dev
+ * Where the page of trame dev is served on the machine, unless the line says another.
+ */
+export const DevPort = decision<number>({ owner: "trame", value: 4170 })
+
+/**
+ * Debouncing of saves
+ * In trame dev, saves close together trigger a single recompilation. In milliseconds.
+ */
+export const DevDebounce = decision<number>({ owner: "trame", value: 150, range: [50, 2000] })
+
+/**
+ * Payload
+ * trame payload [--all] [--history]: the project at hand in the intermediate format, at the day its line says, each
+ * document rendered for files, for the terminal and for the page, by libs/documents in each audience's syntax; with
+ * --all, at each date a page offers too, a document as today's carried once; with --history, the last days something
+ * was given. What trame export and trame dev compile in a fresh process.
+ */
+export const Payload = entryPoint({
+  owner: "trame",
+  in: Commands, for: Anyone,
+  serves: [WrittenOnce],
+  trigger: command("payload", {
+    help: "The graph in the intermediate format, for a page",
+    options: [
+      { name: "all", meaning: "at each date a page offers, not only the day of the line" },
+      { name: "history", meaning: "with --all, the last days something was given too" },
+    ],
+  }),
+  deps: { project: TheProject, written: FileRendering, printed: TerminalRendering, page: PageRendering, same: SameAsToday, exit: ExitStatus },
+  body: code.file("./code/payload.ts"),
+})
+
+/**
+ * Export
+ * trame export [file] [--fragment]: a page a browser opens as it is, the project compiled at each date it offers (in a
+ * fresh process, with its history), packed in it; its program the engine's, bundled. Without a skeleton with
+ * --fragment, for a host that gives its own.
+ */
+export const Export = entryPoint({
+  owner: "trame",
+  in: Commands, for: Anyone,
+  serves: [WrittenOnce],
+  trigger: command("export", {
+    help: "A page a browser opens as it is",
+    arguments: [{ name: "file", meaning: "where the page goes, from the project's root (the layout's page by default)", optional: true }],
+    options: [{ name: "fragment", meaning: "without the skeleton of a document, for a host that gives its own" }],
+  }),
+  deps: { project: TheProject, files: Files, page: Page, packing: GraphPacking, say: CommandWords, exit: ExitStatus },
+  body: code.file("./code/export.ts"),
+})
+
+/**
+ * Dev
+ * trame dev [--port <port>]: the page served, the project compiled at each date in a fresh process, again at each save
+ * after a pause, the open page told on a stream of events; a compilation refused keeps the last valid graph. The page
+ * may amend a chosen value: the engine prepares the amendment and records it, unless it is refused or only previewed.
+ */
+export const Dev = entryPoint({
+  owner: "trame",
+  in: Commands, for: Anyone,
+  serves: [WrittenOnce],
+  trigger: command("dev", {
+    help: "The page, compiled again at each save",
+    options: [{ name: "port", meaning: "the port it is served on", takes: "port" }],
+  }),
+  deps: {
+    project: TheProject, page: Page, rendering: PageRendering, differences: PayloadDifferences, service: DevService, port: DevPort, debounce: DevDebounce,
+    server: HttpServing, waiting: Waiting, clock: TheClock, printing: LinesPrinted, http: Http, media: MediaTypes, events: ServerSentEvents,
+    node: NodeEvents, uri: Uri, codeLines: CodeLines, dates: Dates, lists: Lists, language: DocumentLanguage, file: TextFile,
+    say: CommandWords, exit: ExitStatus, counts: Counts, sequences: Sequences, texts: Texts,
+  },
+  body: code.file("./code/dev.ts"),
 })

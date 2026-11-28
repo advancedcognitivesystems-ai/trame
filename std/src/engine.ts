@@ -42,6 +42,8 @@ export interface ProjectAtHand {
   compiled(): Promise<CompiledProject>
   /** The page's program, bundled for a browser by the engine (since 0.32.0): what a command that writes a page gives it. */
   page(): Promise<string>
+  /** The name a person types to run the engine (since 0.33.0): what a page's brand writes, what a command names it by. */
+  program(): string
 }
 
 /**

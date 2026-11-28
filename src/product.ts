@@ -150,14 +150,3 @@ export const CandidateDates = decision<{ afterAnEnd: number; beforeTheFirstChang
   owner: "trame",
   value: { afterAnEnd: 1, beforeTheFirstChange: -1 },
 })
-
-/**
- * Port of trame dev
- */
-export const DevPort = decision<number>({ owner: "trame", value: 4170 })
-
-/**
- * Debouncing of saves
- * In trame dev, saves close together trigger a single recompilation. In milliseconds.
- */
-export const DevDebounce = decision<number>({ owner: "trame", value: 150, range: [50, 2000] })

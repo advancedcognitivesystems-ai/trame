@@ -4,13 +4,40 @@
 
 > **Nothing to report**
 
-## Decision
+## Decisions
+
+<a id="DevDebounce"></a>
+
+### Debouncing of saves
+
+`DevDebounce` · `src/commands.ts:257`
+
+In trame dev, saves close together trigger a single recompilation. In milliseconds.
+
+- Value: 150
+- Allowed range: from 50 to 2000
+
+- Decided by: trame
+- Used by: [Dev](#Dev)
+
+<a id="DevPort"></a>
+
+### The port of trame dev
+
+`DevPort` · `src/commands.ts:251`
+
+Where the page of trame dev is served on the machine, unless the line says another.
+
+- Value: 4170
+
+- Decided by: trame
+- Used by: [Dev](#Dev)
 
 <a id="WordsLanguage"></a>
 
 ### The language the commands speak
 
-`WordsLanguage` · `src/commands.ts:39`
+`WordsLanguage` · `src/commands.ts:47`
 
 British English, the language Trame's engine and its documents speak: what a command says sits beside what the engine and the views say, at the same terminal.
 
@@ -29,17 +56,17 @@ British English, the language Trame's engine and its documents speak: what a com
 
 ### The library's commands
 
-`Commands` · `src/commands.ts:28`
+`Commands` · `src/commands.ts:36`
 
 The component whose entry points are the commands the library offers: a program's command line, whose first argument names the command. It names no environment: a project assembles it where its choice holds, in the engine's process.
 
-4 entry points: [Build](#Build), [Plan](#Plan), [Snapshot](#Snapshot), [View](#View)
+7 entry points: [Build](#Build), [Dev](#Dev), [Export](#Export), [Payload](#Payload), [Plan](#Plan), [Snapshot](#Snapshot), [View](#View)
 
 - Owner: trame
 - Language: typescript
 - Startup: `exposure` ← [Commands of a program](../.trame/std/docs/tooling.md#ProgramCommands)
 - Effects: asynchronous, terminal
-- Exposes: [Build](#Build), [Plan](#Plan), [Snapshot](#Snapshot), [View](#View)
+- Exposes: [Build](#Build), [Dev](#Dev), [Export](#Export), [Payload](#Payload), [Plan](#Plan), [Snapshot](#Snapshot), [View](#View)
 
 ## Functions
 
@@ -47,7 +74,7 @@ The component whose entry points are the commands the library offers: a program'
 
 ### Two builds compared
 
-`BuildComparison` · `src/commands.ts:98` · status: **held**
+`BuildComparison` · `src/commands.ts:135` · status: **held**
 
 The nodes added and removed, the statuses that change, the nodes whose fields, result or edges change, the issues raised and resolved, the shipments whose obligations are touched; then said line by line, with the title and the kind of each node as either build knows it.
 
@@ -58,11 +85,40 @@ The nodes added and removed, the statuses that change, the nodes whose fields, r
 - Used by: [Plan](#Plan)
 - Verified by: [After a build, nothing changes](scenarios.md#PlanAfterTheSameBuild), [A plan says what a build would change](scenarios.md#PlanSaysWhatChanges)
 
+<a id="PayloadDifferences"></a>
+
+### What the last change changed
+
+`PayloadDifferences` · `src/commands.ts:229` · status: **held**
+
+Between two payloads of the same day, compiled one after the other: the nodes added and removed, the statuses that change, the issues raised and resolved, the overlaps new or settled differently; a document the page announces, or nothing when nothing changed. Pure: trame dev uses it, the engine's own too until it leaves.
+
+- Owner: trame
+- Parameters: `punctuation` ← [Punctuation](../.trame/documents/docs/language.md#Punctuation) · `say` ← [What the commands say](#CommandWords)
+- Body: `./code/differences.ts` (typescript)
+- Serves: [Commands every project runs, written once](product.md#WrittenOnce)
+- Used by: [Dev](#Dev), [A payload of the graph](scenarios.md#PayloadOfTheSmallProject)
+- Verified by: [A payload of the graph](scenarios.md#PayloadOfTheSmallProject)
+
+<a id="SameAsToday"></a>
+
+### A date's documents as today's
+
+`SameAsToday` · `src/commands.ts:241` · status: **held**
+
+The documents of another date that are today's but for the date of the graph: a page of several dates carries them once, on today's, which it moves back to their date. The engine's own payload uses it too until it leaves.
+
+- Owner: trame
+- Body: `./code/same-as-today.ts` (typescript)
+- Serves: [Commands every project runs, written once](product.md#WrittenOnce)
+- Used by: [Payload](#Payload)
+- Verified by: [A payload of the graph](scenarios.md#PayloadOfTheSmallProject)
+
 <a id="ViewRefused"></a>
 
 ### Why a view gives no document, said
 
-`ViewRefused` · `src/commands.ts:156` · status: **held**
+`ViewRefused` · `src/commands.ts:193` · status: **held**
 
 The reason the engine's API gives (no view of that name, no such node or module, a view that does not apply to the node), in the words of the commands: the library's view and the engine's own say it alike.
 
@@ -79,7 +135,7 @@ The reason the engine's API gives (no view of that name, no such node or module,
 
 ### Build
 
-`Build` · `src/commands.ts:128` · status: **held**
+`Build` · `src/commands.ts:165` · status: **held**
 
 trame build [--at <date>]: the documents of the project at hand written for people, its graph for tools and agents. The engine runs the views at the day the line says: each document a view writes as a file is written in the syntax of files (libs/documents), with where each card is; graph.json and snapshot.json as the engine gives them; the summary printed in the syntax of the terminal; then the files written, named.
 
@@ -95,11 +151,88 @@ Triggered by `command build`
 - Verified by: [A build writes the documents and the graph](scenarios.md#BuildWritesTheDocuments)
 - Used by: [A build writes the documents and the graph](scenarios.md#BuildWritesTheDocuments)
 
+<a id="Dev"></a>
+
+### Dev
+
+`Dev` · `src/commands.ts:306` · status: **held**
+
+trame dev [--port <port>]: the page served, the project compiled at each date in a fresh process, again at each save after a pause, the open page told on a stream of events; a compilation refused keeps the last valid graph. The page may amend a chosen value: the engine prepares the amendment and records it, unless it is refused or only previewed.
+
+Triggered by `command dev`
+
+| Option | Meaning |
+|---|---|
+| `port` | the port it is served on; followed by port |
+
+- Owner: trame
+- Parameters: `project` ← [The project at hand](../.trame/std/docs/engine.md#TheProject) · `page` ← [Page](../.trame/documents/docs/page.md#Page) · `rendering` ← [Rendering in the page](../.trame/documents/docs/rendering.md#PageRendering) · `differences` ← [What the last change changed](#PayloadDifferences) · `service` ← [What trame dev serves](../.trame/documents/docs/page.md#DevService) · `port` ← [The port of trame dev](#DevPort) · `debounce` ← [Debouncing of saves](#DevDebounce) · `server` ← [Serving HTTP](../.trame/std/docs/running.md#HttpServing) · `waiting` ← [Timers](../.trame/std/docs/running.md#Waiting) · `clock` ← [The clock](../.trame/std/docs/running.md#TheClock) · `printing` ← [Printing as it goes](../.trame/std/docs/running.md#LinesPrinted) · `http` ← [HTTP](../.trame/std/docs/web.md#Http) · `media` ← [Media types](../.trame/std/docs/web.md#MediaTypes) · `events` ← [Server-sent events](../.trame/std/docs/web.md#ServerSentEvents) · `node` ← [Node.js events](../.trame/std/docs/system.md#NodeEvents) · `uri` ← [URI](../.trame/std/docs/web.md#Uri) · `codeLines` ← [Code lines](../.trame/documents/docs/text.md#CodeLines) · `dates` ← [Dates](../.trame/documents/docs/language.md#Dates) · `lists` ← [Lists](../.trame/documents/docs/language.md#Lists) · `language` ← [The language of the documents](../.trame/documents/docs/language.md#DocumentLanguage) · `file` ← [Text file](../.trame/std/docs/text.md#TextFile) · `say` ← [What the commands say](#CommandWords) · `exit` ← [Exit status](../.trame/std/docs/system.md#ExitStatus) · `counts` ← [Counts](../.trame/std/docs/algebra.md#Counts) · `sequences` ← [Sequences](../.trame/std/docs/algebra.md#Sequences) · `texts` ← [Texts](../.trame/std/docs/algebra.md#Texts)
+- Body: `./code/dev.ts` (typescript)
+- Effects: asynchronous, network, read, terminal, time
+- Serves: [Commands every project runs, written once](product.md#WrittenOnce)
+- Part of: [The library's commands](#Commands)
+- For: [Anyone](../.trame/std/docs/access.md#Anyone)
+- Verified by: [trame dev serves the page](scenarios.md#DevServesThePage)
+- Used by: [trame dev serves the page](scenarios.md#DevServesThePage)
+
+<a id="Export"></a>
+
+### Export
+
+`Export` · `src/commands.ts:287` · status: **held**
+
+trame export [file] [--fragment]: a page a browser opens as it is, the project compiled at each date it offers (in a fresh process, with its history), packed in it; its program the engine's, bundled. Without a skeleton with --fragment, for a host that gives its own.
+
+Triggered by `command export`
+
+| Argument | Meaning |
+|---|---|
+| `file` | where the page goes, from the project's root (the layout's page by default) (may be left out) |
+
+| Option | Meaning |
+|---|---|
+| `fragment` | without the skeleton of a document, for a host that gives its own |
+
+- Owner: trame
+- Parameters: `project` ← [The project at hand](../.trame/std/docs/engine.md#TheProject) · `files` ← [Project files](../.trame/std/docs/tooling.md#Files) · `page` ← [Page](../.trame/documents/docs/page.md#Page) · `packing` ← [Packing the graph](../.trame/documents/docs/page.md#GraphPacking) · `say` ← [What the commands say](#CommandWords) · `exit` ← [Exit status](../.trame/std/docs/system.md#ExitStatus)
+- Body: `./code/export.ts` (typescript)
+- Effects: asynchronous, read, write
+- Serves: [Commands every project runs, written once](product.md#WrittenOnce)
+- Part of: [The library's commands](#Commands)
+- For: [Anyone](../.trame/std/docs/access.md#Anyone)
+- Verified by: [A page exported](scenarios.md#PageExported)
+- Used by: [A page exported](scenarios.md#PageExported)
+
+<a id="Payload"></a>
+
+### Payload
+
+`Payload` · `src/commands.ts:266` · status: **held**
+
+trame payload [--all] [--history]: the project at hand in the intermediate format, at the day its line says, each document rendered for files, for the terminal and for the page, by libs/documents in each audience's syntax; with --all, at each date a page offers too, a document as today's carried once; with --history, the last days something was given. What trame export and trame dev compile in a fresh process.
+
+Triggered by `command payload`
+
+| Option | Meaning |
+|---|---|
+| `all` | at each date a page offers, not only the day of the line |
+| `history` | with --all, the last days something was given too |
+
+- Owner: trame
+- Parameters: `project` ← [The project at hand](../.trame/std/docs/engine.md#TheProject) · `written` ← [Rendering of the files](../.trame/documents/docs/rendering.md#FileRendering) · `printed` ← [Rendering in the terminal](../.trame/documents/docs/rendering.md#TerminalRendering) · `page` ← [Rendering in the page](../.trame/documents/docs/rendering.md#PageRendering) · `same` ← [A date's documents as today's](#SameAsToday) · `exit` ← [Exit status](../.trame/std/docs/system.md#ExitStatus)
+- Body: `./code/payload.ts` (typescript)
+- Effects: asynchronous, read
+- Serves: [Commands every project runs, written once](product.md#WrittenOnce)
+- Part of: [The library's commands](#Commands)
+- For: [Anyone](../.trame/std/docs/access.md#Anyone)
+- Verified by: [A payload of the graph](scenarios.md#PayloadOfTheSmallProject)
+- Used by: [A payload of the graph](scenarios.md#PayloadOfTheSmallProject)
+
 <a id="Plan"></a>
 
 ### Plan
 
-`Plan` · `src/commands.ts:112` · status: **held**
+`Plan` · `src/commands.ts:149` · status: **held**
 
 trame plan [--at <date>]: what a build would change, written nowhere. The project at hand, compiled by the engine at the day its line says, is compared with graph.json, the last build: the nodes added and removed, the statuses that change, the nodes otherwise changed, the issues raised and resolved, then the shipments touched. Without a build to compare with, it says so.
 
@@ -119,7 +252,7 @@ Triggered by `command plan`
 
 ### Snapshot
 
-`Snapshot` · `src/commands.ts:142` · status: **held**
+`Snapshot` · `src/commands.ts:179` · status: **held**
 
 trame snapshot [--at <date>]: snapshot.json, the graph in force for agents, at the day the line says; then the documents of the snapshot's view, written in the syntax of files, and the files written, named.
 
@@ -139,7 +272,7 @@ Triggered by `command snapshot`
 
 ### View
 
-`View` · `src/commands.ts:169` · status: **held**
+`View` · `src/commands.ts:206` · status: **held**
 
 trame view <view> [node|module] [--at <date>]: one view of the project at hand, at the day the line says, which the engine runs; a view of a node or of a module is given its name. It answers the view's document, written in the format the line names (std's --format: text, Markdown with where each card is, JSON); or why there is none.
 
@@ -166,7 +299,7 @@ Triggered by `command view`
 
 ### What the commands say
 
-`CommandWords` · `src/commands.ts:48`
+`CommandWords` · `src/commands.ts:56`
 
 <details><summary>The messages, in code</summary>
 
@@ -207,6 +340,35 @@ Triggered by `command view`
       unknownModule: (module: string | undefined, modules: readonly string[]) => `Unknown module: ${module ?? "(none)"}. Modules: ${modules.join(", ")}`,
       /** What a snapshot wrote, and the day of the graph it took. */
       snapshotTaken: (date: string, files: readonly string[]) => `snapshot of ${date} · written: ${files.join(", ")}`,
+      /** What an export wrote: how many dates its page offers, and where it went (0.5.0). */
+      exported: (dates: number, file: string) => `export · ${plural(dates, { one: "date", other: "dates" })} · written: ${file}`,
+      // What trame dev prints while it follows the project (0.5.0, the engine's before).
+      listening: (program: string, address: string, date: string) => `${program} dev · ${address} · graph of ${date}`,
+      /** What the stream of compilations says first, as a comment. */
+      devStream: (program: string) => `${program} dev`,
+      /** What trame dev follows: the paths watched, joined as a list in the language of the documents. */
+      watching: (paths: string) => `watching ${paths} · Ctrl+C to stop`,
+      compilationRefused: (time: string, ms: number) => `✗ ${time}  compilation refused (${ms} ms): the page keeps the last valid graph`,
+      compiled: (time: string, ms: number, dates: number, changes: number, reason: string) =>
+        `✓ ${time}  compiled in ${ms} ms · ${plural(dates, { one: "date", other: "dates" })}${changes ? ` · ${plural(changes, { one: "change", other: "changes" })}` : ""} (${reason})`,
+      startup: () => "startup",
+      filesChanged: (n: number) => plural(n, { one: "file", other: "files" }),
+      changedDuringCompilation: () => "changes during the compilation",
+      // What the last change changed: the pieces of each line, around the nodes, statuses and values it names (0.5.0).
+      changesTitle: () => "What the last change changed",
+      newNode: () => "New node: ",
+      nodeRemoved: (title: string) => `Node removed: ${title}`,
+      statusGoesFrom: () => " goes from ",
+      statusGoesTo: () => " to ",
+      noStatus: () => "no status",
+      issueAdded: () => " added: ",
+      issueResolved: () => " resolved: ",
+      newOverlapOn: () => "New overlap on ",
+      overlapOn: () => "The overlap on ",
+      overlapOf: () => " of ",
+      settledDifferently: () => " is settled differently: ",
+      contested: () => "contested",
+      prevails: (titles: string[]) => `${titles.join(", ")} ${titles.length > 1 ? "prevail" : "prevails"}`,
     }
   }
 ```
@@ -216,4 +378,4 @@ Triggered by `command view`
 - Owner: trame
 - Parameters: `language` ← [The language the commands speak](#WordsLanguage)
 - Written in: [The language the commands speak](#WordsLanguage)
-- Used by: [Build](#Build), [Two builds compared](#BuildComparison), [Plan](#Plan), [Snapshot](#Snapshot), [Why a view gives no document, said](#ViewRefused), [A build writes the documents and the graph](scenarios.md#BuildWritesTheDocuments), [After a build, nothing changes](scenarios.md#PlanAfterTheSameBuild), [A plan says what a build would change](scenarios.md#PlanSaysWhatChanges), [Without a build, a plan says so](scenarios.md#PlanWithoutABuild), [A snapshot writes the graph in force](scenarios.md#SnapshotTaken)
+- Used by: [Build](#Build), [Two builds compared](#BuildComparison), [Dev](#Dev), [Export](#Export), [What the last change changed](#PayloadDifferences), [Plan](#Plan), [Snapshot](#Snapshot), [Why a view gives no document, said](#ViewRefused), [A build writes the documents and the graph](scenarios.md#BuildWritesTheDocuments), [trame dev serves the page](scenarios.md#DevServesThePage), [A page exported](scenarios.md#PageExported), [A payload of the graph](scenarios.md#PayloadOfTheSmallProject), [After a build, nothing changes](scenarios.md#PlanAfterTheSameBuild), [A plan says what a build would change](scenarios.md#PlanSaysWhatChanges), [Without a build, a plan says so](scenarios.md#PlanWithoutABuild), [A snapshot writes the graph in force](scenarios.md#SnapshotTaken)
