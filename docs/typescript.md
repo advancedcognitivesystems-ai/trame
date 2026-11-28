@@ -57,7 +57,7 @@ Source: ECMA-262, ECMAScript 2024 (§ 12 lexical grammar, § 13 expressions, § 
 | `commentEnd` | `*/` | Closes a multi-line comment (§ 12.4) |
 
 - Maintained by: trame
-- Refines: [Text file](../std/releases/0.31.0/docs/text.md#TextFile)
+- Refines: [Text file](../std/releases/0.33.0/docs/text.md#TextFile)
 - Used by: [Rewriting an example](commands.md#ExampleRewriting), [Start a project](commands.md#Init), [A module of references](commands.md#ReferencesModule), [Static reading](engine.md#StaticAnalysis), [Records of the releases](generations.md#ReleaseRecords), [Amendments in place](platform.md#InPlaceSources), [List on several lines](#ArrayLiteral), [Type assertion](#AsExpression), [Assignment](#Assignment), [Async function of a block](#AsyncBlockFunction), [Waiting](#Await), [Call](#Call), [Constant](#ConstDeclaration), [Default import](#DefaultImport), [Documentation comment](#DocBlock), [Export](#ExportDeclaration), [Condition](#IfStatement), [List on one line](#InlineArray), [Comment](#LineComment), [Property access](#MemberAccess), [Title of a module](#ModuleTitle), [Import of names](#NamedImport), [Object on several lines](#ObjectBlock), [Object](#ObjectLiteral), [Object type](#ObjectType), [Optional property access](#OptionalAccess), [Optional property of a type](#OptionalPropertySignature), [Group](#Parenthesized), [Property](#Property), [Strict inequality](#StrictInequality), [Text](#StringLiteral), [TypeScript writer](#TypeScriptWriter), [Union type](#UnionType)
 - Defines: [List on several lines](#ArrayLiteral), [Type assertion](#AsExpression), [Assignment](#Assignment), [Async function of a block](#AsyncBlockFunction), [Waiting](#Await), [Call](#Call), [Constant](#ConstDeclaration), [Default import](#DefaultImport), [Documentation comment](#DocBlock), [Export](#ExportDeclaration), [Condition](#IfStatement), [List on one line](#InlineArray), [Comment](#LineComment), [Property access](#MemberAccess), [Title of a module](#ModuleTitle), [Import of names](#NamedImport), [Object on several lines](#ObjectBlock), [Object](#ObjectLiteral), [Object type](#ObjectType), [Optional property access](#OptionalAccess), [Optional property of a type](#OptionalPropertySignature), [Group](#Parenthesized), [Property](#Property), [Strict inequality](#StrictInequality), [Text](#StringLiteral), [Union type](#UnionType)
 
@@ -167,7 +167,7 @@ Section: 13.15 Assignment operators · `https://tc39.es/ecma262/2024/#sec-assign
 - Body: inline, in the declaration
 - Defined by: [The syntax of the programs Trame writes](#TypeScriptSyntax)
 - Read in: [TypeScript](#TypeScript)
-- Used by: [Scripts of the page](page.md#PageScripts), [TypeScript writer](#TypeScriptWriter)
+- Used by: [TypeScript writer](#TypeScriptWriter)
 
 <a id="AsyncBlockFunction"></a>
 
@@ -444,7 +444,7 @@ Section: 13.3.2 Property accessors · `https://tc39.es/ecma262/2024/#sec-propert
 - Read as: { before: (, after: ) }
 - Defined by: [The syntax of the programs Trame writes](#TypeScriptSyntax)
 - Read in: [TypeScript](#TypeScript)
-- Used by: [Start a project](commands.md#Init), [Scripts of the page](page.md#PageScripts), [TypeScript writer](#TypeScriptWriter)
+- Used by: [Start a project](commands.md#Init), [TypeScript writer](#TypeScriptWriter)
 
 <a id="ModuleTitle"></a>
 
@@ -528,7 +528,7 @@ Section: 13.2.5 Object initializer · `https://tc39.es/ecma262/2024/#sec-object-
 | `[]` | `"{}"` | held, read as TypeScript |
 
 - Owner: trame
-- Parameters: `standard` ← [The syntax of the programs Trame writes](#TypeScriptSyntax) · `counts` ← [Counts](../std/releases/0.31.0/docs/algebra.md#Counts)
+- Parameters: `standard` ← [The syntax of the programs Trame writes](#TypeScriptSyntax) · `counts` ← [Counts](../std/releases/0.33.0/docs/algebra.md#Counts)
 - Body: inline, in the declaration
 - Read as: { before: (, after: ) }
 - Defined by: [The syntax of the programs Trame writes](#TypeScriptSyntax)
@@ -930,14 +930,14 @@ Escape sequences open with `\`; named: `\0` "\u0000", `\n` "\n", `\t` "\t", `\r`
 | `interface E {   on: T;   in: Node<"c"> }` | literals [] | held |
 
 - Owner: trame
-- Defined by: [ECMAScript](../std/releases/0.31.0/docs/ecmascript.md#EcmaScript)
-- Queries written in: [tree-sitter queries](../std/releases/0.31.0/docs/languages.md#TreeSitterQueries)
+- Defined by: [ECMAScript](../std/releases/0.33.0/docs/ecmascript.md#EcmaScript)
+- Queries written in: [tree-sitter queries](../std/releases/0.33.0/docs/languages.md#TreeSitterQueries)
 - Read by: [Syntax reader](syntax.md#SyntaxReader)
 - Watches the globals: [Globals that reach outside](#WorldGlobals)
 - Uses: [Grammar of TypeScript](packages.md#TypeScriptGrammar)
 - Used by: [A body is read and checked](command-scenarios.md#BodiesReadAndChecked), [The engine's API](command-scenarios.md#EngineApiGiven), [The manifest written](command-scenarios.md#ManifestWritten), [A project started](command-scenarios.md#ProjectStarted), [The registry filled](command-scenarios.md#RegistryFilled), [Advance](commands.md#Advance), [Start a project](commands.md#Init), [Release a version](commands.md#Release), [Write the manifest](commands.md#WriteManifest), [Assembly](engine.md#Assembly), [The fingerprint of an engine](engine.md#EngineFingerprint), [Graph](engine.md#GraphApi), [Project](engine.md#Project), [Drivers](languages.md#Drivers), [Page resources](platform.md#PageResources), [tsx loader](platform.md#TsxLoader), [Advance](sdlc.md#AdvanceAGeneration), [How a version is carried across Trame's repository](sdlc.md#OurPropagation), [TypeScript writer](#TypeScriptWriter)
-- Reads the elements: [JSON in a script](html.md#JsonInScript), [List on several lines](#ArrayLiteral), [Type assertion](#AsExpression), [Assignment](#Assignment), [Async function of a block](#AsyncBlockFunction), [Waiting](#Await), [Call](#Call), [Constant](#ConstDeclaration), [Default import](#DefaultImport), [Documentation comment](#DocBlock), [Export](#ExportDeclaration), [Condition](#IfStatement), [List on one line](#InlineArray), [Comment](#LineComment), [Property access](#MemberAccess), [Title of a module](#ModuleTitle), [Import of names](#NamedImport), [Object on several lines](#ObjectBlock), [Object](#ObjectLiteral), [Object type](#ObjectType), [Optional property access](#OptionalAccess), [Optional property of a type](#OptionalPropertySignature), [Group](#Parenthesized), [Property](#Property), [Strict inequality](#StrictInequality), [Text](#StringLiteral), [Union type](#UnionType)
 - Applies: [The graph is written in TypeScript](principles.md#GraphInTypeScript)
+- Reads the elements: [List on several lines](#ArrayLiteral), [Type assertion](#AsExpression), [Assignment](#Assignment), [Async function of a block](#AsyncBlockFunction), [Waiting](#Await), [Call](#Call), [Constant](#ConstDeclaration), [Default import](#DefaultImport), [Documentation comment](#DocBlock), [Export](#ExportDeclaration), [Condition](#IfStatement), [List on one line](#InlineArray), [Comment](#LineComment), [Property access](#MemberAccess), [Title of a module](#ModuleTitle), [Import of names](#NamedImport), [Object on several lines](#ObjectBlock), [Object](#ObjectLiteral), [Object type](#ObjectType), [Optional property access](#OptionalAccess), [Optional property of a type](#OptionalPropertySignature), [Group](#Parenthesized), [Property](#Property), [Strict inequality](#StrictInequality), [Text](#StringLiteral), [Union type](#UnionType)
 
 ## Decision
 
@@ -972,7 +972,7 @@ How the TypeScript writer names what a program declares: the result of the start
 Writes the program of an assembled component, always frozen, with the syntax elements above: the build order, the implementation chosen for each port and the values of the graph are written in it; it imports only the bodies, the prelude's tooling and the declarations it must read. What it writes is read back before it is written (Drivers).
 
 - Owner: trame
-- Parameters: `language` ← [TypeScript](#TypeScript) · `syntax` ← [The syntax of the programs Trame writes](#TypeScriptSyntax) · `frozen` ← [The frozen API](conventions.md#FrozenApi) · `node` ← [Node.js process and console](../std/releases/0.31.0/docs/system.md#NodeProcessApi) · `specifiers` ← [Node.js module specifiers](../std/releases/0.31.0/docs/system.md#NodeModuleSpecifiers) · `names` ← [Names of a program](#ProgramNames) · `stepNames` ← [Names of steps](conventions.md#StepNames) · `references` ← [Trame references](../std/releases/0.31.0/docs/engine.md#ReferenceSyntax) · `comment` ← [Comment](#LineComment) · `text` ← [Text](#StringLiteral) · `member` ← [Property access](#MemberAccess) · `optional` ← [Optional property access](#OptionalAccess) · `call` ← [Call](#Call) · `wait` ← [Waiting](#Await) · `group` ← [Group](#Parenthesized) · `property` ← [Property](#Property) · `object` ← [Object](#ObjectLiteral) · `array` ← [List on several lines](#ArrayLiteral) · `constant` ← [Constant](#ConstDeclaration) · `namedImport` ← [Import of names](#NamedImport) · `defaultImport` ← [Default import](#DefaultImport) · `assertion` ← [Type assertion](#AsExpression) · `optionalProperty` ← [Optional property of a type](#OptionalPropertySignature) · `objectType` ← [Object type](#ObjectType) · `union` ← [Union type](#UnionType) · `condition` ← [Condition](#IfStatement) · `differs` ← [Strict inequality](#StrictInequality) · `assignment` ← [Assignment](#Assignment) · `inline` ← [List on one line](#InlineArray) · `block` ← [Async function of a block](#AsyncBlockFunction) · `environment` ← [Trame's environment](conventions.md#TrameEnvironment) · `paths` ← [Paths](architecture.md#Paths) · `prelude` ← [Prelude](architecture.md#Prelude) · `reservedWords` ← [ECMAScript reserved words](../std/releases/0.31.0/docs/ecmascript.md#EcmaScriptReservedWords) · `sequences` ← [Sequences](../std/releases/0.31.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.31.0/docs/algebra.md#Texts) · `dates` ← [Dates](../libs/documents/releases/0.4.0/docs/language.md#Dates) · `messages` ← [Messages of the drivers](messages.md#DriverMessages)
+- Parameters: `language` ← [TypeScript](#TypeScript) · `syntax` ← [The syntax of the programs Trame writes](#TypeScriptSyntax) · `frozen` ← [The frozen API](conventions.md#FrozenApi) · `node` ← [Node.js process and console](../std/releases/0.33.0/docs/system.md#NodeProcessApi) · `specifiers` ← [Node.js module specifiers](../std/releases/0.33.0/docs/system.md#NodeModuleSpecifiers) · `names` ← [Names of a program](#ProgramNames) · `stepNames` ← [Names of steps](conventions.md#StepNames) · `references` ← [Trame references](../std/releases/0.33.0/docs/engine.md#ReferenceSyntax) · `comment` ← [Comment](#LineComment) · `text` ← [Text](#StringLiteral) · `member` ← [Property access](#MemberAccess) · `optional` ← [Optional property access](#OptionalAccess) · `call` ← [Call](#Call) · `wait` ← [Waiting](#Await) · `group` ← [Group](#Parenthesized) · `property` ← [Property](#Property) · `object` ← [Object](#ObjectLiteral) · `array` ← [List on several lines](#ArrayLiteral) · `constant` ← [Constant](#ConstDeclaration) · `namedImport` ← [Import of names](#NamedImport) · `defaultImport` ← [Default import](#DefaultImport) · `assertion` ← [Type assertion](#AsExpression) · `optionalProperty` ← [Optional property of a type](#OptionalPropertySignature) · `objectType` ← [Object type](#ObjectType) · `union` ← [Union type](#UnionType) · `condition` ← [Condition](#IfStatement) · `differs` ← [Strict inequality](#StrictInequality) · `assignment` ← [Assignment](#Assignment) · `inline` ← [List on one line](#InlineArray) · `block` ← [Async function of a block](#AsyncBlockFunction) · `environment` ← [Trame's environment](conventions.md#TrameEnvironment) · `paths` ← [Paths](architecture.md#Paths) · `prelude` ← [Prelude](architecture.md#Prelude) · `reservedWords` ← [ECMAScript reserved words](../std/releases/0.33.0/docs/ecmascript.md#EcmaScriptReservedWords) · `sequences` ← [Sequences](../std/releases/0.33.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.33.0/docs/algebra.md#Texts) · `dates` ← [Dates](../libs/documents/releases/0.5.1/docs/language.md#Dates) · `messages` ← [Messages of the drivers](messages.md#DriverMessages)
 - Body: `./code/typescript/writer.ts` (typescript)
 - Effects: read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)

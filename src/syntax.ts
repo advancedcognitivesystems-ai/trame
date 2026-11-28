@@ -7,7 +7,7 @@ import { catalog } from "../kinds/catalog"
 import { fn } from "../kinds/function"
 import { adr } from "../kinds/adr"
 import { ExecutableSpecification, SingleSource } from "./product"
-import { SyntaxTrees, FileReading, KeptResults, RunStore, Paths, Hashing, Test } from "./architecture"
+import { SyntaxTrees, FileReading, KeptResults, RunStore, Paths, Hashing, Local, Test } from "./architecture"
 import { binding } from "../kinds/binding"
 import { ReadByTheEngine } from "#std/engine"
 import { Adapter } from "#std/patterns"
@@ -327,12 +327,13 @@ export const PredicatesAsTreeSitterReadsThem = adr({
  * std's languages, read by the engine
  * Where Trame's build evaluates, the languages std declares for every project (HTML, CSS: their examples, and what
  * Trame's syntax elements write in them) are read by the engine that compiles Trame, through std's port (since g129):
- * the engine's reader, which its own languages name directly.
+ * the engine's reader, which its own languages name directly. On a machine, what the page writes is read back by the
+ * engine that writes it (since g137), which runs while it does.
  */
 export const StdLanguagesRead = binding({
   owner: "trame",
   chooses: [ReadByTheEngine],
-  environments: [Test],
+  environments: [Local, Test],
   follows: [Adapter],
   serves: [ExecutableSpecification],
   context: "A language std declares names std's port as its reader: the engine that compiles answers it, here as in any project that imports std.",

@@ -37,9 +37,9 @@ their numbers.
 | `docs/laws.md` | The laws every kind and view keeps, as requirements with their acceptance criteria |
 | `docs/literals.md` | The literals written in bodies and in the kinds and views (none: one would be an error) |
 | `docs/packages.md` | The npm packages the engine uses, checked against the lockfile, with the registry's dated reports |
-| `docs/browser.md`, `docs/page.md`, `docs/markup.md` | The page: the component assembled for the browser, its shell, the names its style sheets and program share |
+| `docs/browser.md`, `docs/page.md` | The page as Trame makes it: libs/documents' page component assembled for Browser with the browser's realizations, its program bundled by the engine (the page itself is libs/documents', g137) |
 | `docs/rendering.md` | The renderer and the syntaxes it writes in, per audience |
-| `docs/markdown.md`, `docs/mermaid.md`, `docs/html.md`, `docs/typescript.md`, `docs/terraform.md`, `docs/text.md` | The specs of what Trame writes |
+| `docs/typescript.md`, `docs/terraform.md` | The specs of what Trame writes (Markdown, Mermaid, HTML and text are libs/documents') |
 | `docs/messages.md`, `docs/standards.md` | The language and its catalogs; the standards only the engine needs (the APIs of TypeScript and tree-sitter) |
 | `docs/libraries.md` | What belongs to a library: the rule that keeps a library's nodes, documents and issues apart |
 | `std/docs/` | The standard library's own documents: the structures bodies share instead of writing 0, 1 or `""`, the published standards (HTTP, URIs, ECMAScript, POSIX, Node.js, ISO 8601…), the design patterns |
@@ -55,7 +55,7 @@ compressed and its own program.
 | `kinds/`, `views/` | The kinds and the views, shared by Trame and by the example (`examples/reservations/trame.json`); their words are in catalogs (`kinds/words.ts`, `views/words.ts`) |
 | `engine-views/` | The views of Trame's own graph: the catalogue of literals, the versions |
 | `src/` | Trame's graph, one module per file (`docs/index.md` lists them) |
-| `src/code/` | The bodies: one per node, its dependencies its parameters. This is where the engine, and the page, change |
+| `src/code/` | The bodies: one per node, its dependencies its parameters. This is where the engine changes (the page changes in libs/documents) |
 | `src/releases.ts` | The releases of the engine, written by `trame advance` at each promotion |
 | `evidence/` | Dated evidence the graph reads: the registry's reports on the packages, the SDLC's evidence (`sdlc.json`) and the dossiers of the shipments (`shipments/`) |
 | `generations/` | The frozen generations: `gN/out/local/trame-cli.ts` (the engine), `gN/out/browser/page-app.ts` (its page, since g44), the copy of the graph it was assembled from, its `package.json` and lockfile; `languages/` keeps each language once, by fingerprint (`generations/README.md`) |
@@ -147,7 +147,7 @@ The move took two generations, because the generation that assembles the first E
   platform's, the scenarios', the advance's. A body receives its catalog as a dependency and calls its messages by name,
   with typed parameters (`messages.assemblyRefused(errors)`). Since g40 the language says nothing of its own either:
   the kinds, the views, Trame's views and the page have their catalogs of words (`kinds/words.ts`, `views/words.ts`,
-  `engine-views/words.ts`, `src/code/page/words.ts`).
+  `engine-views/words.ts`, and libs/documents' `PageWords`).
 - **A catalog's text is what it declares.** The `catalog` kind sets `declaresLiterals`: the literals of its body are not
   reported as literals to specify.
 - **The prelude's vocabularies are objects.** Code names a value by its key (`Status.held`, `Severity.error`,
@@ -160,11 +160,11 @@ The move took two generations, because the generation that assembles the first E
 `docs/index.md` lists the modules and what each holds; the page explores them as a map of layers. In short: the
 **principles**; the **product** (its goals, the requirement "Sort problems by severity", the laws' draws); the **laws**
 of kinds and views; the **libraries** (what belongs to one); the **architecture** (the ports, the effects,
-the environments Local, Test and Browser, the components `TrameCli` and `PageApp`, three rules); the **platform** and
-**the page in a browser** (what answers each port, and why); the **standards**; the languages Trame reads and writes
-(**syntax**, **typescript**, **terraform**, **html**, **languages**) and the formats it writes (**markdown**, **mermaid**,
-**text**); the **documents**, the **appearance** and the **markup** they and the page share; the **conventions** and
-the **messages**; the **engine**, the **rendering** and the **page**; the **commands**; the **generations**, the
+the environments Local, Test and Browser, the component `TrameCli`, three rules); the **platform** and **the page in a
+browser** (Trame's environment Browser runs libs/documents' page, with its realizations); the **standards**; the
+languages Trame reads and writes (**syntax**, **typescript**, **terraform**, **languages**); the **documents** (the
+language Trame realizes for libs/documents); the **conventions** and the **messages**; the **engine**, the
+**rendering** (which syntaxes Trame chooses) and the **page** (its program bundled); the **commands**; the **generations**, the
 **releases** and the **packages**; the **scenarios**. The structures bodies share, the published standards and the
 design patterns come from the standard library (below).
 
@@ -609,7 +609,13 @@ own `plan` and `amend` compare two builds with the library's comparison until th
 project (HTML and CSS) are std's, read through std's port `LanguageReading`, so the syntax elements of any library can
 name them and have what they write read back. The renderers of documents go into a library of their own,
 `libs/documents`: the language the documents are written in (the engine's, as a port Trame realizes, with the dates,
-lists, punctuation and units written in it), then the renderers of files and of the terminal (g131); the page follows. Governance is rules too: a `rule` applies a requirement of
+lists, punctuation and units written in it), then the renderers of files and of the terminal (g131), then the page
+(documents 0.5.0, g137): its HTML, CSS and SVG, its look, its words, `Page` and its program, a component the library
+offers, which each project assembles for its environment of a browser (Trame for Browser, with the browser's
+realizations the library offers). Its commands followed into `libs/commands` (0.5.0): `payload`, `export` and `dev`, on
+what the engine's API grew to give (g136: the project's payload, the dates a page offers, the project at another date,
+compiled at each date in a fresh process, watched, amended; the page's program, bundled) and on what std offers a
+command that keeps running (module `running`: the clock, timers, a server of HTTP, lines printed as it goes). Governance is rules too: a `rule` applies a requirement of
 `#std/rules` (`Reaches`, `NeverReaches`, `Linked`, `WithoutEffects`, `WordsOf`) with its parameters, and says why
 through what it serves or the ADR that applies it, instead of hiding a function.
 

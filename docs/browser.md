@@ -6,143 +6,26 @@
 
 ## Architecture decision
 
-<a id="ThePageIsAssembled"></a>
+<a id="OurPageAssembled"></a>
 
-### The page is assembled
+### Trame's page, assembled
 
-`ThePageIsAssembled` · `src/browser.ts:151` · status: **held**
+`OurPageAssembled` · `src/browser.ts:37` · status: **held**
 
-The page's script was the only code of Trame outside the graph: written by hand, wired by hand, its values written in it. It is now a component assembled for the browser, its entry point and its explorer bodies of the graph.
+Trame assembles the library's page for its environment Browser, as the command line for a machine.
 
-Context: The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.
+Context: The page's program is libs/documents' component, which names no environment: a project assembles it where it chooses the browser's realizations.
 
-Consequences: The page's program is written by the assembly, like the command line's: the values of the graph frozen in it, its bodies wired, the browser's implementations chosen for the environment Browser. It carries the modules of the graph its bodies use, which makes it heavier.
+Consequences: Trame's environment Browser chooses the library's realizations; the page's program is assembled there with the engine, and bundled for every page the engine writes.
 
 | Rejected | Why |
 |---|---|
-| Values passed to the script in the page | the script would still build its functions by hand, outside the graph |
-| The page drawn whole by the engine | the explorer's states are too many to draw in advance |
+| Realizations of Trame's own | the browser's are what every project's page needs, written once |
 
 - Decided by: trame
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
-- Applied by: [Show the graph](#ShowGraph), [Explorer of a graph](#ExplorerFigures), [The browser runs the page](#TheBrowserRunsThePage), [Rendering does not read the graph](architecture.md#RenderingWithoutGraph)
-
-## Function
-
-<a id="ExplorerFigures"></a>
-
-### Explorer of a graph
-
-`ExplorerFigures` · `src/browser.ts:42` · status: **held**
-
-Draws the explorer of a graph too large to be read whole, where the engine left its place: the map of its layers, or one node and its neighbours, with the bar that moves in it. Pure: the page keeps where each explorer is.
-
-- Owner: trame
-- Parameters: `html` ← [HTML](../std/releases/0.31.0/docs/html.md#Html) · `svg` ← [SVG](../std/releases/0.31.0/docs/html.md#Svg) · `aria` ← [WAI-ARIA](../std/releases/0.31.0/docs/html.md#Aria) · `css` ← [CSS](../std/releases/0.31.0/docs/html.md#Css) · `page` ← [The page](page.md#ThePage) · `markup` ← [Documents in the page](markup.md#DocumentMarkup) · `figures` ← [Figures in the page](markup.md#FigureMarkup) · `explorer` ← [The explorer of a graph](markup.md#ExplorerMarkup) · `drawing` ← [Drawing of the explorer](appearance.md#ExplorerDrawing) · `element` ← [HTML element](../libs/documents/releases/0.4.0/docs/html.md#HtmlElement) · `start` ← [Start tag](../libs/documents/releases/0.4.0/docs/html.md#HtmlStartTag) · `empty` ← [Self-closing tag](../libs/documents/releases/0.4.0/docs/html.md#SelfClosingTag) · `path` ← [Path data](html.md#PathData) · `declaration` ← [Declaration](html.md#CssDeclaration) · `escape` ← [Escaped text](../libs/documents/releases/0.4.0/docs/html.md#EscapedText) · `common` ← [Common rendering](../libs/documents/releases/0.4.0/docs/rendering.md#Common) · `words` ← [Words of the page](messages.md#PageWords) · `messages` ← [Words of the renderers](../libs/documents/releases/0.4.0/docs/rendering.md#RenderingMessages) · `punctuation` ← [Punctuation](../libs/documents/releases/0.4.0/docs/language.md#Punctuation) · `counts` ← [Counts](../std/releases/0.31.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.31.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.31.0/docs/algebra.md#Texts)
-- Body: `./code/rendering/explorer.ts` (typescript)
-- Serves: [A specification that runs](product.md#ExecutableSpecification)
-- Used by: [Show the graph](#ShowGraph)
-- Applies: [The page is assembled](#ThePageIsAssembled)
-- Verified by: [The graph page opens](sdlc.md#GraphPageOpens)
-
-## Entry point
-
-<a id="ShowGraph"></a>
-
-### Show the graph
-
-`ShowGraph` · `src/browser.ts:58` · status: **held**
-
-When the page loads: the state of the compilation, the dates, the navigation, then the document the person was on, in the rendering they chose; the graph comes packed in an exported page, or from trame dev at each compilation.
-
-Triggered by `the loading of the page`
-
-- Owner: trame
-- Parameters: `window` ← [Window of the page](architecture.md#PageWindow) · `memory` ← [Memory of the page](architecture.md#PageMemory) · `feed` ← [Feed of the graph](architecture.md#GraphFeed) · `unpacking` ← [Decompression](architecture.md#Decompression) · `amendments` ← [Amendments from the page](architecture.md#PageAmendments) · `explorer` ← [Explorer of a graph](#ExplorerFigures) · `common` ← [Common rendering](../libs/documents/releases/0.4.0/docs/rendering.md#Common) · `page` ← [The page](page.md#ThePage) · `regions` ← [Regions of the page](page.md#PageRegions) · `modes` ← [The renderings of a document](page.md#RenderingModes) · `highlighting` ← [Files for tools in the page](page.md#MachineHighlighting) · `markup` ← [Documents in the page](markup.md#DocumentMarkup) · `around` ← [Around the documents](markup.md#AroundMarkup) · `explorerMarkup` ← [The explorer of a graph](markup.md#ExplorerMarkup) · `drawing` ← [Drawing of the explorer](appearance.md#ExplorerDrawing) · `ids` ← [Names of the documents](conventions.md#DocumentIds) · `slots` ← [Places in a sentence](../libs/documents/releases/0.4.0/docs/rendering.md#SentenceSlots) · `punctuation` ← [Punctuation](../libs/documents/releases/0.4.0/docs/language.md#Punctuation) · `language` ← [Language](messages.md#Language) · `html` ← [HTML](../std/releases/0.31.0/docs/html.md#Html) · `aria` ← [WAI-ARIA](../std/releases/0.31.0/docs/html.md#Aria) · `events` ← [UI events](../std/releases/0.31.0/docs/web.md#UiEvents) · `view` ← [CSSOM View](../std/releases/0.31.0/docs/web.md#CssomView) · `iso` ← [ISO 8601 dates](../std/releases/0.31.0/docs/measures.md#Iso8601) · `file` ← [Text file](../std/releases/0.31.0/docs/text.md#TextFile) · `element` ← [HTML element](../libs/documents/releases/0.4.0/docs/html.md#HtmlElement) · `escape` ← [Escaped text](../libs/documents/releases/0.4.0/docs/html.md#EscapedText) · `attribute` ← [Attribute selector](html.md#AttributeSelector) · `presence` ← [Attribute presence](html.md#AttributePresence) · `selectors` ← [Selector list](html.md#SelectorList) · `classSelector` ← [Class selector](html.md#ClassSelector) · `words` ← [Words of the page](messages.md#PageWords) · `counts` ← [Counts](../std/releases/0.31.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.31.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.31.0/docs/algebra.md#Texts)
-- Body: `./code/page/show.ts` (typescript)
-- Effects: asynchronous, display, network, read, write
-- Serves: [A specification that runs](product.md#ExecutableSpecification)
-- Part of: [The page in a browser](architecture.md#PageApp)
-- For: [Anyone](../std/releases/0.31.0/docs/access.md#Anyone)
-- Applies: [The page is assembled](#ThePageIsAssembled)
-- Verified by: [The graph page opens](sdlc.md#GraphPageOpens)
-
-## Implementations
-
-<a id="BrowserAmendments"></a>
-
-### Amendments sent to trame dev
-
-`BrowserAmendments` · `src/browser.ts:111` · status: **held**
-
-Posted as JSON to trame dev's address of amendments; the page can amend only when it follows trame dev.
-
-- Owner: trame
-- Parameters: `page` ← [The page](page.md#ThePage) · `service` ← [What trame dev serves](engine.md#DevService) · `http` ← [HTTP](../std/releases/0.31.0/docs/web.md#Http) · `media` ← [Media types](../std/releases/0.31.0/docs/web.md#MediaTypes)
-- Body: `./code/browser/amendments.ts` (typescript)
-- Implements: [Amendments from the page](architecture.md#PageAmendments)
-- Chosen by: [The browser runs the page](#TheBrowserRunsThePage)
-- Verified by: [The graph page opens](sdlc.md#GraphPageOpens)
-
-<a id="BrowserDecompression"></a>
-
-### The browser's gzip
-
-`BrowserDecompression` · `src/browser.ts:121` · status: **held**
-
-DecompressionStream, after base64: what "A page carries its graph compressed" packed.
-
-- Owner: trame
-- Parameters: `packing` ← [A page carries its graph compressed](page.md#PackedGraph) · `ecma` ← [ECMAScript](../std/releases/0.31.0/docs/ecmascript.md#EcmaScript)
-- Body: `./code/browser/decompression.ts` (typescript)
-- Implements: [Decompression](architecture.md#Decompression)
-- Chosen by: [The browser runs the page](#TheBrowserRunsThePage)
-- Verified by: [The graph page opens](sdlc.md#GraphPageOpens)
-
-<a id="BrowserFeed"></a>
-
-### The globals of the page, and trame dev
-
-`BrowserFeed` · `src/browser.ts:101` · status: **held**
-
-The graph an exported page carries and the mode of trame dev, in the globals the page's scripts assign; in trame dev, the last graph and the stream of compilations, at the addresses of the service.
-
-- Owner: trame
-- Parameters: `page` ← [The page](page.md#ThePage) · `service` ← [What trame dev serves](engine.md#DevService) · `values` ← [Types of values](../std/releases/0.31.0/docs/algebra.md#ValueTypes)
-- Body: `./code/browser/feed.ts` (typescript)
-- Implements: [Feed of the graph](architecture.md#GraphFeed)
-- Chosen by: [The browser runs the page](#TheBrowserRunsThePage)
-- Verified by: [The graph page opens](sdlc.md#GraphPageOpens)
-
-<a id="BrowserMemory"></a>
-
-### Local storage
-
-`BrowserMemory` · `src/browser.ts:90` · status: **held**
-
-The person's place, in the storage of the page's origin, under the name the page decides.
-
-- Owner: trame
-- Parameters: `page` ← [The page](page.md#ThePage)
-- Body: `./code/browser/memory.ts` (typescript)
-- Implements: [Memory of the page](architecture.md#PageMemory)
-- Chosen by: [The browser runs the page](#TheBrowserRunsThePage)
-- Verified by: [The graph page opens](sdlc.md#GraphPageOpens)
-
-<a id="BrowserWindow"></a>
-
-### The browser's window
-
-`BrowserWindow` · `src/browser.ts:80` · status: **held**
-
-The document of the page, CSS.escape, the media query of reduced motion, the scroll of the window.
-
-- Owner: trame
-- Parameters: `motion` ← [Media Queries Level 5](../std/releases/0.31.0/docs/web.md#MediaQueries5) · `feature` ← [Media feature](html.md#MediaFeature) · `counts` ← [Counts](../std/releases/0.31.0/docs/algebra.md#Counts)
-- Body: `./code/browser/window.ts` (typescript)
-- Implements: [Window of the page](architecture.md#PageWindow)
-- Chosen by: [The browser runs the page](#TheBrowserRunsThePage)
-- Verified by: [The graph page opens](sdlc.md#GraphPageOpens)
+- Applied by: [The browser runs the page](#TheBrowserRunsThePage)
+- Adopts: [The page is assembled](../libs/documents/releases/0.5.1/docs/browser.md#ThePageIsAssembled)
 
 ## Technical choice
 
@@ -150,7 +33,7 @@ The document of the page, CSS.escape, the media query of reduced motion, the scr
 
 ### The browser runs the page
 
-`TheBrowserRunsThePage` · `src/browser.ts:132` · status: **held**
+`TheBrowserRunsThePage` · `src/browser.ts:19` · status: **held**
 
 In the browser, the page loads, writes in its window, keeps the person's place, receives the graph and makes it whole again with what every browser has: the DOM, local storage, fetch and server-sent events, DecompressionStream.
 
@@ -158,12 +41,12 @@ In [Browser](architecture.md#Browser):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [Amendments from the page](architecture.md#PageAmendments) | [Amendments sent to trame dev](#BrowserAmendments) | an implementation |
-| [Decompression](architecture.md#Decompression) | [The browser's gzip](#BrowserDecompression) | an implementation |
-| [Feed of the graph](architecture.md#GraphFeed) | [The globals of the page, and trame dev](#BrowserFeed) | an implementation |
-| [Memory of the page](architecture.md#PageMemory) | [Local storage](#BrowserMemory) | an implementation |
-| [Window of the page](architecture.md#PageWindow) | [The browser's window](#BrowserWindow) | an implementation |
-| [Loading of a page](../std/releases/0.31.0/docs/platform.md#PageLoading) | [The browser loads the page](../std/releases/0.31.0/docs/platform.md#BrowserLoading) | an implementation |
+| [Amendments from the page](../libs/documents/releases/0.5.1/docs/browser.md#PageAmendments) | [Amendments sent to trame dev](../libs/documents/releases/0.5.1/docs/browser.md#BrowserAmendments) | an implementation |
+| [Decompression](../libs/documents/releases/0.5.1/docs/browser.md#Decompression) | [The browser's gzip](../libs/documents/releases/0.5.1/docs/browser.md#BrowserDecompression) | an implementation |
+| [Feed of the graph](../libs/documents/releases/0.5.1/docs/browser.md#GraphFeed) | [The globals of the page, and trame dev](../libs/documents/releases/0.5.1/docs/browser.md#BrowserFeed) | an implementation |
+| [Memory of the page](../libs/documents/releases/0.5.1/docs/browser.md#PageMemory) | [Local storage](../libs/documents/releases/0.5.1/docs/browser.md#BrowserMemory) | an implementation |
+| [Window of the page](../libs/documents/releases/0.5.1/docs/browser.md#PageWindow) | [The browser's window](../libs/documents/releases/0.5.1/docs/browser.md#BrowserWindow) | an implementation |
+| [Loading of a page](../std/releases/0.33.0/docs/platform.md#PageLoading) | [The browser loads the page](../std/releases/0.33.0/docs/platform.md#BrowserLoading) | an implementation |
 
 Context: The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.
 
@@ -175,8 +58,8 @@ Consequences: The browser's globals appear only in these implementations; the en
 | Libraries for storage and decompression | every browser the page targets has local storage and gzip |
 
 - Decided by: trame
-- Chooses: [The browser loads the page](../std/releases/0.31.0/docs/platform.md#BrowserLoading), [The browser's window](#BrowserWindow), [Local storage](#BrowserMemory), [The globals of the page, and trame dev](#BrowserFeed), [Amendments sent to trame dev](#BrowserAmendments), [The browser's gzip](#BrowserDecompression)
+- Chooses: [The browser loads the page](../std/releases/0.33.0/docs/platform.md#BrowserLoading), [The browser's window](../libs/documents/releases/0.5.1/docs/browser.md#BrowserWindow), [Local storage](../libs/documents/releases/0.5.1/docs/browser.md#BrowserMemory), [The globals of the page, and trame dev](../libs/documents/releases/0.5.1/docs/browser.md#BrowserFeed), [Amendments sent to trame dev](../libs/documents/releases/0.5.1/docs/browser.md#BrowserAmendments), [The browser's gzip](../libs/documents/releases/0.5.1/docs/browser.md#BrowserDecompression)
 - In: [Browser](architecture.md#Browser)
-- Follows: [Adapter](../std/releases/0.31.0/docs/patterns.md#Adapter)
+- Follows: [Adapter](../std/releases/0.33.0/docs/patterns.md#Adapter)
 - Serves: [A technology is changed in one node](product.md#ReplaceableTechnology)
-- Applies: [The page is assembled](#ThePageIsAssembled)
+- Applies: [Trame's page, assembled](#OurPageAssembled)

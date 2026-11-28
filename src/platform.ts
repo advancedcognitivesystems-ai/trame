@@ -1,18 +1,15 @@
 /** Trame · Platform */
 
 import { code } from "../trame/kernel"
+import { ReferenceSyntax } from "#std/engine"
+import { MachineTimers, NodeHttpServing, ServerInMemory } from "#std/running"
 import { decision } from "../kinds/decision"
 import { implementation } from "../kinds/implementation"
 import { fn } from "../kinds/function"
 import { binding } from "../kinds/binding"
-import {
-  Prelude, FileReading, FileWriting, Paths, ModuleLoader, TypeScriptCompiler, SyntaxTrees, Hashing, KeptResults, Process, Terminal,
-  Clock, Timer, HttpServer, Bundler, Compression, Resources, CommandLine, WriteLog, TerminalLog, ProcessLog, ServerLog, Programs, FileTrees, PackageReports, PackageInstalls,
-  Local, Test, Browser, PageWindow, PageMemory, GraphFeed, Decompression, RunStore, AmendmentPlace,
-} from "./architecture"
+import { Prelude, FileReading, FileWriting, Paths, ModuleLoader, TypeScriptCompiler, SyntaxTrees, Hashing, KeptResults, Process, Terminal, Clock, Bundler, Resources, CommandLine, WriteLog, TerminalLog, ProcessLog, Programs, FileTrees, PackageReports, PackageInstalls, Local, Test, Browser, RunStore, AmendmentPlace } from "./architecture"
 import { TypeScriptSyntax, DocBlock, ExportDeclaration, ConstDeclaration, Call, ObjectLiteral, Property, StringLiteral, InlineArray, NamedImport } from "./typescript"
 import { EngineFingerprint, KeptRunsScope, ProjectRuns } from "./engine"
-import { PackedGraph } from "./page"
 import { PageLoading } from "#std/platform"
 import { PackageSources } from "#std/tooling"
 import { Http } from "#std/web"
@@ -40,9 +37,9 @@ export const ExampleRoot = decision<string>({ owner: "trame", value: "examples/r
  * From the code of the platform: the prelude's internal module (its extension aside, as a program imports it), the
  * root of the engine, where the page's program is found as the assembly writes it, and the page's style sheets.
  */
-export const EngineFiles = decision<{ prelude: string; preludeExtension: string; root: string; pageStyle: string; narrowStyle: string }>({
+export const EngineFiles = decision<{ prelude: string; preludeExtension: string; root: string }>({
   owner: "trame",
-  value: { prelude: "../../../trame/internal", preludeExtension: ".ts", root: "../../../", pageStyle: "../page/page.css", narrowStyle: "../page/narrow.css" },
+  value: { prelude: "../../../trame/internal", preludeExtension: ".ts", root: "../../../" },
 })
 
 /**
@@ -130,16 +127,6 @@ export const NodeHashing = implementation({
 })
 
 /**
- * gzip, with Node's zlib
- * The graph of a page compressed as "A page carries its graph compressed" says: gzip, written in base64.
- */
-export const NodeCompression = implementation({
-  owner: "trame", implements: [Compression],
-  deps: { packing: PackedGraph },
-  body: code.file("./code/platform/compression.ts"),
-})
-
-/**
  * npm installs
  * The packages a project's manifest names, installed by npm's command line in the project's directory, which writes
  * what it installed into the lockfile; without the registry's audit, which trame audit asks.
@@ -161,22 +148,6 @@ export const NpmReports = implementation({
 })
 
 /**
- * Node timer
- */
-export const NodeTimer = implementation({
-  owner: "trame", implements: [Timer],
-  body: code.file("./code/platform/timer.ts"),
-})
-
-/**
- * Node HTTP server
- */
-export const NodeHttpServer = implementation({
-  owner: "trame", implements: [HttpServer],
-  body: code.file("./code/platform/http.ts"),
-})
-
-/**
  * esbuild
  */
 export const Esbuild = implementation({
@@ -192,7 +163,7 @@ export const PageResources = implementation({
   owner: "trame", implements: [Resources],
   deps: {
     files: EngineFiles, layout: Layout, advancement: Advancement, language: TypeScript, specifiers: NodeModuleSpecifiers,
-    texts: Texts, sequences: Sequences,
+    references: ReferenceSyntax, texts: Texts, sequences: Sequences,
   },
   body: code.file("./code/platform/page-resources.ts"),
 })
@@ -326,17 +297,6 @@ export const MemoryFiles = implementation({
 })
 
 /**
- * A server in memory
- * trame dev starts it as a server of Node.js; the scenario asks it for a path as a browser would. Nothing listens on the
- * network.
- */
-export const MemoryHttpServer = fn({
-  owner: "trame", implements: [HttpServer, ServerLog],
-  deps: { events: NodeEvents, http: Http, texts: Texts, messages: PlatformMessages },
-  body: code.file("./code/platform/memory-http.ts"),
-})
-
-/**
  * Lines shown on an exit in test
  * When the engine exits during a scenario, the error says the last lines it printed: enough to see why.
  */
@@ -410,7 +370,7 @@ export const RunsOnDisk = implementation({
 
 export const NodePlatform = binding({
   owner: "trame",
-  chooses: [NodePaths, NodeHashing, NodeCompression, NodeTimer, NodeCommandLine, ResultsInTheProcess],
+  chooses: [NodePaths, NodeHashing, MachineTimers, NodeCommandLine, ResultsInTheProcess],
   environments: [Local, Test],
   follows: [Adapter, AbstractFactory],
   serves: [ReplaceableTechnology],
@@ -429,7 +389,7 @@ export const NodePlatform = binding({
  */
 export const NodeMachine = binding({
   owner: "trame",
-  chooses: [DiskReading, DiskWriting, DiskTrees, NodeProcess, NodePrograms, NodeTerminal, SystemClock, NpmReports, NpmInstall, NodeHttpServer],
+  chooses: [DiskReading, DiskWriting, DiskTrees, NodeProcess, NodePrograms, NodeTerminal, SystemClock, NpmReports, NpmInstall, NodeHttpServing],
   environments: [Local],
   follows: [Adapter, AbstractFactory],
   serves: [ReplaceableTechnology],
@@ -462,7 +422,7 @@ export const FilesInMemoryOverTheDisk = binding({
  */
 export const InMemoryScenarios = binding({
   owner: "trame",
-  chooses: [MemoryTerminal, StoppedClock, NoReportsInTest, ExampleProcess, MemoryHttpServer],
+  chooses: [MemoryTerminal, StoppedClock, NoReportsInTest, ExampleProcess, ServerInMemory],
   environments: [Test],
   follows: [Strategy, AbstractFactory],
   serves: [ReplaceableTechnology],

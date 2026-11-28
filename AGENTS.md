@@ -15,7 +15,7 @@ what the graph guarantees. The README explains why; this file says how.
 | `kinds/`, `views/`, `engine-views/` | The language: what a node can be, which questions are asked of the graph; their words in `words.ts` | you, reviewed |
 | `trame.json` | The project: its libraries (`"libraries"`), the generation it pins (`"engine"`), the kinds and views it carries besides the language's | you |
 | `package.json` | The project as a package: the import map of the language (`#trame/*`) and of its libraries (`#std/*`), the packages of the graph | `trame manifest` |
-| `libs/` | Libraries of a domain (`libs/geometry`: vectors, angles; `libs/data`: the data a product keeps, and its kind `entity`; `libs/team`: the repository's people; `libs/machine`: the questions a project asks of its machine; `libs/commands`: the commands every project runs, on std's ports of the engine; `libs/documents`: what renders a graph's documents, in the language the views speak), each a project of its own | you |
+| `libs/` | Libraries of a domain (`libs/geometry`: vectors, angles; `libs/data`: the data a product keeps, and its kind `entity`; `libs/team`: the repository's people; `libs/machine`: the questions a project asks of its machine; `libs/commands`: the commands every project runs, on std's ports of the engine; `libs/documents`: what renders a graph's documents, in the language the views speak, and the page that shows them), each a project of its own | you |
 | `std/` | The standard library: a Trame project of its own (structures, standards, patterns) that Trame and the example import | you |
 | `ci/` | The library of writers that run a shipment elsewhere (GitHub Actions, Bash), from the plan the engine computes | you |
 | `docs/`, `graph.json`, `snapshot.json` | What a build writes: documents for people, the graph and its snapshot for tools and agents | the build only |
@@ -43,8 +43,8 @@ Run from the project's directory, through the pinned generation:
 ./trame.sh merge [number] --env Local|Session   # std's command Trame takes (std 0.23.0): merges a pull request once its checks passed, then checks the base out
 ./trame.sh propagate --by <name> --env Local|Session   # std's command Trame takes (g117): each project of the repository upgraded, its workflow written again, built
 ./trame.sh examples [--accept]         # the examples of the syntax elements not met; written again in their declarations with --accept (g118)
-./trame.sh dev                         # the page, recompiled at each change
-./trame.sh export page.html            # the page, standalone: the dates the graph changes at, and the last days of its history
+./trame.sh dev [--port <port>]         # the page, recompiled at each change (in Trame, libs/commands' since g137)
+./trame.sh export [page.html] [--fragment]   # the page, standalone: the dates the graph changes at, and the last days of its history (libs/commands')
 ./trame.sh assemble <component> --env <environment>
 ./trame.sh audit                       # the registry's reports on the packages, kept as evidence
 ./trame.sh manifest                    # the packages of the graph and the import map of the language and its libraries, written into package.json; installs them when the lockfile disagrees (g100)
@@ -249,6 +249,24 @@ give with libs/documents' renderers, character for character what the engine's w
 snapshot (`CommandsWrittenOnce`). A component that names no environment is offered to other projects (g133): in the
 library that declares it, the engine's command of that name answers. A project's command named like a command of
 the engine it does not keep is asked before a view of that name (g134: `snapshot` is both).
+
+**The page is libs/documents'** (g136–g137, documents 0.5.0, commands 0.5.0, std 0.32.0–0.33.0). Its HTML, CSS and
+SVG, its look (decisions a project amends: `Typography`, the measures, the drawings), its words (`PageWords`), `Page`
+(given the program by the command, which the engine bundles, the program's name, the graph packed by `GraphPacking`;
+what it writes read back by std's `LanguageReading`, which reads a text too since std 0.32.0: `readText`), and its
+program, the component `PageApp` (`documents/browser.PageApp`), which names no environment: each project assembles it
+for its own environment of a browser with the realizations it chooses (the library offers the browser's), and the
+engine bundles it (`TheProject.page()`). A component whose exposure no environment of its project realizes is offered
+so (the component kind, g137), as a library's commands are. Trame chooses the browser's realizations in Browser
+(`TheBrowserRunsThePage`), the sheets beside the library and gzip on the machine (`PageMadeOnTheMachine`), and std's
+reader in Local too: the engine's own export and dev make a page with the engine running (`asTheEngine`). The page's
+commands are libs/commands': `payload`, `export`, `dev`, on the engine's API (g136: `documents({ perNode })`,
+`payload(documents)`, `candidates(history)`, `at(date)`, `title`, `bundle(mode)` in a fresh process, `watch(changed)`,
+which says what it watches since g137, `amend(asked)` on the project a command runs for; `page()` and `program` on the
+API) and on std's module `running` (`TheClock`, `Waiting`, `HttpServing`, `LinesPrinted`, realized on a machine by
+Node.js, kept in memory in a scenario); what the last change changed (`PayloadDifferences`), a date's documents as
+today's (`SameAsToday`), trame dev's port and pause (`DevPort`, `DevDebounce`) moved there, and the engine's own payload
+and dev use them, with std's server and timers. Trame takes the three commands (`CommandsWrittenOnce`).
 
 **A command declares its line** (g135, std 0.31.0). Its trigger says its help, its arguments in their order and its
 options: `command("view", { help, arguments: [{ name, meaning, optional }], options: [{ name, meaning, takes }] })`;
@@ -759,11 +777,28 @@ elements), a port answered differently in several environments is answered as in
   documents 0.3.0's `TerminalText`, a node without a name in Trame's graph, found as a difference by g133's advance).
   Release the library and move the projects that import it together, or keep the link where the released versions
   expect it until then.
+- Once the candidate engine imports a library at the version Trame's graph reads (documents 0.5.1, the page, g137), the
+  library's modules are loaded once, at the candidate's start, through the library's working tree (`.trame/<name>`): a
+  library whose link leads to an older std gives Trame's graph nodes nobody named (a scenario's wiring looks for a body
+  under Trame's `src/`, a port is called "Port"). Move each library's working tree to the versions the project reads
+  (`trame upgrade std` in the library) before advancing.
 - A function's constants reach its body as its dependencies do, but a body typed `BodyOf<typeof F>` does not see them,
   and one declared `code.file("./x.ts")` without its type gives the node no type (what depends on it reads `unknown`):
   type a function's body by its own `Deps` and declare it `code.file<typeof import("./x").default>("./x.ts")`.
 - A command that declares its line refuses an option nobody declares (g135): the engine's own options (`--env`,
   `--at`) leave the line before it reaches the command; std's (`--format`) are read apart.
+- A library's component that names no environment is assembled by its reference (`trame assemble
+  documents/browser.PageApp --env Browser`): the engine finds a project's components by their name, a library's by
+  their reference. The advance names the page's program so (`Advancement`), and its file by the component's name.
+- A page program assembled before a move imports the old paths: bridge them for one assembly (files that re-export the
+  library's bodies, re-exports of the nodes), assemble the page by its reference, then remove the bridges (g137).
+- A build leaves the documents of a module that is gone: delete them with the module (`docs/html.md`,
+  `docs/markup.md`, `docs/appearance.md` went with the page).
+- A body that reads through the running engine (std's `ReadByTheEngine`) cannot do it while a program is wired, nor in
+  an engine's own command that runs none: `Page` loads its languages when a page is first asked (documents 0.5.1), and
+  the engine's own export and dev run as the engine (`preparation.asTheEngine`).
+- A function cannot depend on a port that writes (Trame's rule "Only commands write"): what records an amendment is
+  handed to the function by the command that asks it (`amending.amend(o, asked, place)`).
 - A Markdown link is written from the document it is in (g131: the renderer gives the syntax the document's file,
   `Target.from`): a document without a file (a view printed with `--format md`) keeps the path from the project's root.
 - A project's decision that adopts a library's names it by its package (`import { CommandsOfALibrary } from

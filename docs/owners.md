@@ -5,7 +5,7 @@
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | Trame's maintainers | 0 | 0 | 3 | 0 |
-| trame | 0 | 0 | 7 | 724 |
+| trame | 0 | 0 | 7 | 637 |
 
 <a id="Trame's maintainers"></a>
 
@@ -37,32 +37,15 @@
 
 | Node | Kind | State |
 |---|---|---|
-| [Drawing of the explorer](appearance.md#ExplorerDrawing) | Decision |  |
-| [Drawing of a graph](appearance.md#GraphDrawing) | Decision |  |
-| [Legend of a graph](appearance.md#LegendDrawing) | Decision |  |
-| [Motion](appearance.md#Motion) | Decision |  |
-| [Narrow screen](appearance.md#NarrowScreen) | Decision |  |
-| [Opacities](appearance.md#Opacities) | Decision |  |
-| [Page layout](appearance.md#PageLayout) | Decision |  |
-| [Radii](appearance.md#Radii) | Decision |  |
-| [Spacing](appearance.md#Spacing) | Decision |  |
-| [Strokes](appearance.md#Strokes) | Decision |  |
-| [Drawing of a timeline](appearance.md#TimelineDrawing) | Decision |  |
-| [Type scale](appearance.md#TypeScale) | Decision |  |
-| [Typography](appearance.md#Typography) | Decision |  |
 | [Where an amendment goes](architecture.md#AmendmentPlace) | Port |  |
 | [Browser](architecture.md#Browser) | Environment |  |
 | [Bundler](architecture.md#Bundler) | Port |  |
 | [Clock](architecture.md#Clock) | Port |  |
 | [Command line](architecture.md#CommandLine) | Port |  |
-| [Compression](architecture.md#Compression) | Port |  |
-| [Decompression](architecture.md#Decompression) | Port |  |
 | [File reading](architecture.md#FileReading) | Port |  |
 | [File trees](architecture.md#FileTrees) | Port |  |
 | [File writing](architecture.md#FileWriting) | Port |  |
-| [Feed of the graph](architecture.md#GraphFeed) | Port |  |
 | [Hashing](architecture.md#Hashing) | Port |  |
-| [HTTP server](architecture.md#HttpServer) | Port |  |
 | [Results kept](architecture.md#KeptResults) | Port |  |
 | [Runs kept](architecture.md#KeptRuns) | Port |  |
 | [Effects come from the vocabulary](architecture.md#KnownEffects) | Architecture rule | **held** |
@@ -71,10 +54,6 @@
 | [Only commands write](architecture.md#OnlyCommandsWrite) | Architecture rule | **held** |
 | [Packages installed](architecture.md#PackageInstalls) | Port |  |
 | [Reports on packages](architecture.md#PackageReports) | Port |  |
-| [Amendments from the page](architecture.md#PageAmendments) | Port |  |
-| [The page in a browser](architecture.md#PageApp) | Component |  |
-| [Memory of the page](architecture.md#PageMemory) | Port |  |
-| [Window of the page](architecture.md#PageWindow) | Port |  |
 | [Paths](architecture.md#Paths) | Port |  |
 | [Prelude](architecture.md#Prelude) | Port |  |
 | [Process](architecture.md#Process) | Port |  |
@@ -83,26 +62,17 @@
 | [Rendering does not read the graph](architecture.md#RenderingWithoutGraph) | Architecture rule | **held** |
 | [Page resources](architecture.md#Resources) | Port |  |
 | [Where runs are kept](architecture.md#RunStore) | Port |  |
-| [Server log](architecture.md#ServerLog) | Port |  |
 | [A session of Claude Code](architecture.md#Session) | Environment |  |
 | [Signatures](architecture.md#Signatures) | Port |  |
 | [Syntax trees](architecture.md#SyntaxTrees) | Port |  |
 | [Terminal](architecture.md#Terminal) | Port |  |
 | [Terminal log](architecture.md#TerminalLog) | Port |  |
 | [Test](architecture.md#Test) | Environment |  |
-| [Timer](architecture.md#Timer) | Port |  |
 | [Trame on the command line](architecture.md#TrameCli) | Component |  |
 | [TypeScript compiler](architecture.md#TypeScriptCompiler) | Port |  |
 | [Write log](architecture.md#WriteLog) | Port |  |
-| [Amendments sent to trame dev](browser.md#BrowserAmendments) | Implementation | **held** |
-| [The browser's gzip](browser.md#BrowserDecompression) | Implementation | **held** |
-| [The globals of the page, and trame dev](browser.md#BrowserFeed) | Implementation | **held** |
-| [Local storage](browser.md#BrowserMemory) | Implementation | **held** |
-| [The browser's window](browser.md#BrowserWindow) | Implementation | **held** |
-| [Explorer of a graph](browser.md#ExplorerFigures) | Function | **held** |
-| [Show the graph](browser.md#ShowGraph) | Entry point | **held** |
+| [Trame's page, assembled](browser.md#OurPageAssembled) | Architecture decision | **held** |
 | [The browser runs the page](browser.md#TheBrowserRunsThePage) | Technical choice | **held** |
-| [The page is assembled](browser.md#ThePageIsAssembled) | Architecture decision | **held** |
 | [An advance, in memory](command-scenarios.md#AdvanceInMemory) | Scenario | **held** |
 | [What the engines an advance starts answer in a scenario](command-scenarios.md#AdvanceSamples) | Decision |  |
 | [What an amendment is checked with](command-scenarios.md#AmendmentSamples) | Decision |  |
@@ -186,7 +156,6 @@
 | [How an amendment is named](conventions.md#AmendmentNaming) | Decision |  |
 | [Default rank](conventions.md#DefaultRank) | Decision |  |
 | [Documentation comment](conventions.md#DocComment) | Decision |  |
-| [Names of the documents](conventions.md#DocumentIds) | Standard |  |
 | [The frozen API](conventions.md#FrozenApi) | Standard |  |
 | [The commands the engine keeps](conventions.md#KeptCommands) | Decision |  |
 | [The language's names](conventions.md#LanguageNames) | Decision |  |
@@ -224,8 +193,7 @@
 | [Cycles](engine.md#Cycles) | Function | **held** |
 | [Date bundle](engine.md#DateBundle) | Function | **held** |
 | [trame dev server](engine.md#DevServer) | Function | **held** |
-| [What trame dev serves](engine.md#DevService) | Decision |  |
-| [Differences](engine.md#Differences) | Function | **held** |
+| [Files an editor leaves](engine.md#EditorLeftovers) | Decision |  |
 | [The fingerprint of an engine](engine.md#EngineFingerprint) | Function | **held** |
 | [Length of a fingerprint](engine.md#Fingerprint) | Decision |  |
 | [Fingerprints](engine.md#Fingerprints) | Function | **held** |
@@ -248,6 +216,7 @@
 | [The language receives the graph's values](engine.md#TheLanguageReceivesTheGraph) | Architecture decision | **held** |
 | [Options of the static reading](engine.md#TypeScriptOptions) | Decision |  |
 | [Views](engine.md#Views) | Function | **held** |
+| [Watching a project](engine.md#Watching) | Function | **held** |
 | [Wiring](engine.md#Wiring) | Function | **held** |
 | [Accept a candidate](generations.md#AcceptCandidate) | Requirement | **held** |
 | [What a candidate needs to be accepted](generations.md#AcceptCandidateCriteria) | Acceptance criteria | **held** |
@@ -256,22 +225,6 @@
 | [Generations that share the language](generations.md#LanguageSharing) | Decision |  |
 | [Records of the releases](generations.md#ReleaseRecords) | Function | **held** |
 | [Releases of the engine](generations.md#Releases) | Decision |  |
-| [Attribute presence](html.md#AttributePresence) | Syntax element | **held** |
-| [Attribute selector](html.md#AttributeSelector) | Syntax element | **held** |
-| [Class selector](html.md#ClassSelector) | Syntax element | **held** |
-| [Declaration](html.md#CssDeclaration) | Syntax element | **held** |
-| [Rule](html.md#CssRule) | Syntax element | **held** |
-| [Variable](html.md#CssVariable) | Syntax element | **held** |
-| [Custom property](html.md#CustomProperty) | Syntax element | **held** |
-| [DOCTYPE](html.md#Doctype) | Syntax element | **held** |
-| [Element over several lines](html.md#HtmlBlock) | Syntax element | **held** |
-| [JSON in a script](html.md#JsonInScript) | Syntax element | **held** |
-| [Media feature](html.md#MediaFeature) | Syntax element | **held** |
-| [Media rule](html.md#MediaRule) | Syntax element | **held** |
-| [Negation](html.md#NegationSelector) | Syntax element | **held** |
-| [Path data](html.md#PathData) | Syntax element | **held** |
-| [Script](html.md#ScriptElement) | Syntax element | **held** |
-| [Selector list](html.md#SelectorList) | Syntax element | **held** |
 | [Drivers](languages.md#Drivers) | Function | **held** |
 | [What a writer writes is read back before it is written](languages.md#ReadBackWhatIsWritten) | Architecture decision | **held** |
 | [Answers without crashing](laws.md#AnswersWithoutCrashing) | Requirement | **held** |
@@ -300,10 +253,6 @@
 | [Names of a library's releases](libraries.md#LibraryReleaseNames) | Decision |  |
 | [A release is settled](libraries.md#ReleaseIsSettled) | Requirement | **held** |
 | [Criteria of a settled release](libraries.md#ReleaseIsSettledCriteria) | Acceptance criteria | **held** |
-| [Around the documents](markup.md#AroundMarkup) | Decision |  |
-| [Documents in the page](markup.md#DocumentMarkup) | Decision |  |
-| [The explorer of a graph](markup.md#ExplorerMarkup) | Decision |  |
-| [Figures in the page](markup.md#FigureMarkup) | Decision |  |
 | [Messages of an advance](messages.md#AdvanceMessages) | Message catalog |  |
 | [Messages of the commands](messages.md#CommandMessages) | Message catalog |  |
 | [Messages of the compiler](messages.md#CompilerMessages) | Message catalog |  |
@@ -315,7 +264,6 @@
 | [Language](messages.md#Language) | Decision |  |
 | [Messages of the laws](messages.md#LawMessages) | Message catalog |  |
 | [Messages of the outputs](messages.md#OutputMessages) | Message catalog |  |
-| [Words of the page](messages.md#PageWords) | Message catalog |  |
 | [Messages of the platform](messages.md#PlatformMessages) | Message catalog |  |
 | [Messages of the scenarios](messages.md#ScenarioMessages) | Message catalog |  |
 | [Messages of the views](messages.md#ViewMessages) | Message catalog |  |
@@ -338,36 +286,10 @@
 | [TypeScript](packages.md#TypeScriptPackage) | Package | **held** |
 | [Order of versions](packages.md#VersionOrder) | Function | **held** |
 | [web-tree-sitter](packages.md#WebTreeSitterPackage) | Package | **held** |
-| [Banner](page.md#Banner) | Syntax element | **held** |
-| [Brand](page.md#Brand) | Syntax element | **held** |
-| [State of the compilation](page.md#CompilationState) | Syntax element | **held** |
-| [Dates](page.md#DatePicker) | Syntax element | **held** |
-| [Head of the document](page.md#DocumentHead) | Syntax element | **held** |
-| [Document picker](page.md#DocumentPicker) | Syntax element | **held** |
-| [Arrowheads of the figures](page.md#FigureMarkers) | Syntax element | **held** |
-| [Fonts](page.md#FontLinks) | Syntax element | **held** |
-| [Logo](page.md#Logo) | Syntax element | **held** |
-| [Files for tools in the page](page.md#MachineHighlighting) | Decision |  |
-| [Main area](page.md#MainArea) | Syntax element | **held** |
-| [Rules of a narrow screen](page.md#NarrowScreenRule) | Syntax element | **held** |
-| [Style sheet of a narrow screen](page.md#NarrowScreenStyle) | Style sheet |  |
-| [Navigation](page.md#Navigation) | Syntax element | **held** |
-| [A page carries its graph compressed](page.md#PackedGraph) | Decision |  |
-| [Page](page.md#Page) | Function | **held** |
 | [Bundle of the page](page.md#PageBundle) | Decision |  |
-| [Document of the page](page.md#PageDocument) | Syntax element | **held** |
-| [Regions of the page](page.md#PageRegions) | Decision |  |
-| [Scripts of the page](page.md#PageScripts) | Syntax element | **held** |
-| [Style sheet of the page](page.md#PageStyle) | Style sheet |  |
-| [The renderings of a document](page.md#RenderingModes) | Vocabulary |  |
-| [Choice of rendering](page.md#RenderingToggle) | Syntax element | **held** |
-| [Shell](page.md#Shell) | Syntax element | **held** |
-| [Side bar](page.md#SideBar) | Syntax element | **held** |
-| [Style of the standalone document](page.md#StandaloneStyle) | Decision |  |
-| [Colours of a status](page.md#StatusStyle) | Syntax element | **held** |
-| [A style sheet writes no value](page.md#StyleThroughVariables) | Architecture decision | **held** |
-| [Theme](page.md#Theme) | Syntax element | **held** |
-| [The page](page.md#ThePage) | Decision |  |
+| [How the engine makes a page](page.md#PageMadeOnTheMachine) | Technical choice | **held** |
+| [The page's program, bundled](page.md#PageScript) | Function | **held** |
+| [The page is the library's](page.md#ThePageIsTheLibrarys) | Architecture decision | **held** |
 | [Amendments go in the sources](platform.md#AmendmentsInPlace) | Technical choice | **held** |
 | [The TypeScript compiler reads the declarations](platform.md#CompilerReadsDeclarations) | Technical choice | **held** |
 | [System files, for reading](platform.md#DiskReading) | Implementation | **held** |
@@ -387,20 +309,16 @@
 | [Packages from the local registry](platform.md#LocalRegistry) | Implementation |  |
 | [Where the local registry is](platform.md#LocalRegistryPlace) | Decision |  |
 | [Files in memory, over the disk](platform.md#MemoryFiles) | Implementation | **held** |
-| [A server in memory](platform.md#MemoryHttpServer) | Function | **held** |
 | [Temporary directories in memory](platform.md#MemoryTemporary) | Decision |  |
 | [Terminal in memory](platform.md#MemoryTerminal) | Function | **held** |
 | [Command line](platform.md#NodeCommandLine) | Implementation | **held** |
-| [gzip, with Node's zlib](platform.md#NodeCompression) | Implementation | **held** |
 | [SHA-256 hashes](platform.md#NodeHashing) | Implementation | **held** |
-| [Node HTTP server](platform.md#NodeHttpServer) | Implementation | **held** |
 | [On a machine, Node.js reads, writes and runs](platform.md#NodeMachine) | Technical choice | **held** |
 | [Node paths](platform.md#NodePaths) | Implementation | **held** |
 | [NodePlatform](platform.md#NodePlatform) | Technical choice | **held** |
 | [Node process](platform.md#NodeProcess) | Implementation | **held** |
 | [Node programs](platform.md#NodePrograms) | Implementation | **held** |
 | [Node terminal](platform.md#NodeTerminal) | Implementation | **held** |
-| [Node timer](platform.md#NodeTimer) | Implementation | **held** |
 | [No installer in test](platform.md#NoInstallsInTest) | Implementation | **held** |
 | [No registry in test](platform.md#NoReportsInTest) | Function | **held** |
 | [npm installs](platform.md#NpmInstall) | Implementation | **held** |
@@ -462,8 +380,6 @@
 | [The words are in catalogs](principles.md#WordsInCatalogs) | Architecture decision | **held** |
 | [Candidate dates](product.md#CandidateDates) | Decision |  |
 | [Claim sets](product.md#ClaimSets) | Decision |  |
-| [Debouncing of saves](product.md#DevDebounce) | Decision |  |
-| [Port of trame dev](product.md#DevPort) | Decision |  |
 | [A specification that runs](product.md#ExecutableSpecification) | Goal |  |
 | [A technology is changed in one node](product.md#ReplaceableTechnology) | Goal |  |
 | [Nodes drawn per kind](product.md#SampleCount) | Decision |  |
@@ -515,6 +431,8 @@
 | [Generation 133](releases.md#G133) | Release |  |
 | [Generation 134](releases.md#G134) | Release |  |
 | [Generation 135](releases.md#G135) | Release |  |
+| [Generation 136](releases.md#G136) | Release |  |
+| [Generation 137](releases.md#G137) | Release |  |
 | [Generation 14](releases.md#G14) | Release |  |
 | [Generation 15](releases.md#G15) | Release |  |
 | [Generation 16](releases.md#G16) | Release |  |
@@ -612,15 +530,10 @@
 | [The formats of a command's documents](rendering.md#AnswersAsChosen) | Technical choice | **held** |
 | [Documents in Markdown](rendering.md#DocumentsInMarkdown) | Technical choice | **held** |
 | [Figures in Mermaid](rendering.md#FiguresInMermaid) | Technical choice | **held** |
-| [HTML writer](rendering.md#HtmlSyntax) | Function | **held** |
 | [Kinds and views say what; renderers say how](rendering.md#MeaningThenLook) | Architecture decision | **held** |
-| [Figures of the page](rendering.md#PageFigures) | Port |  |
 | [The page's figures in SVG](rendering.md#PageFiguresDrawn) | Technical choice | **held** |
 | [The page in HTML](rendering.md#PageInHtml) | Technical choice | **held** |
-| [Rendering in the page](rendering.md#PageRendering) | Function | **held** |
-| [Syntax of the page](rendering.md#PageSyntax) | Port |  |
 | [Trame's documents, rendered by the library of documents](rendering.md#RenderedByTheLibrary) | Architecture decision | **held** |
-| [Figures in SVG](rendering.md#SvgFigures) | Function | **held** |
 | [Figures in the terminal, as text](rendering.md#TerminalFiguresAsText) | Technical choice | **held** |
 | [The terminal in plain text](rendering.md#TerminalInText) | Technical choice | **held** |
 | [Add-ons, in the order chosen](scenarios.md#AddOnsInOrder) | Scenario | **held** |

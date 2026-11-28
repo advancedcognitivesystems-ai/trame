@@ -5,7 +5,7 @@ import { code } from "../trame/kernel"
 import { fn } from "../kinds/function"
 import { decision } from "../kinds/decision"
 import { adr } from "../kinds/adr"
-import { ExecutableSpecification, SingleSource, SampleCount, ClaimSets, DevDebounce, SampledOwners, SampledValues, SeverityOrder, CandidateDates, StructureDraws } from "./product"
+import { ExecutableSpecification, SingleSource, SampleCount, ClaimSets, SampledOwners, SampledValues, SeverityOrder, CandidateDates, StructureDraws } from "./product"
 import {
   CompleteDeclaration, AnswersWithoutCrashing, BlockingHoleHasOwner, HoleHasCode, UnknownWithoutEvidence, SameInputSameAnswer, OrderFree, ClosedResolution,
   CompleteViewDeclaration, IntermediateFormatOnly, TrustedExtensions,
@@ -19,12 +19,9 @@ import { TextFile, GnuPositions, JsonFormatting } from "#std/text"
 import { TypeScriptApi } from "./standards"
 import { ExitStatus, NodeEncodings, NodeEvents, NodeModuleSpecifiers } from "#std/system"
 import { Iso8601 } from "#std/measures"
-import { Layout, DefaultRank, DocComment, ViewGroupOrder, DocumentIds, TrameCommands, StepNames, PreludeApi, LanguageNames } from "./conventions"
+import { Layout, DefaultRank, DocComment, ViewGroupOrder, TrameCommands, StepNames, PreludeApi, LanguageNames } from "./conventions"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
-import {
-  Prelude, FileReading, Paths, ModuleLoader, TypeScriptCompiler, Hashing, KeptResults, Signatures, Process, Terminal, Clock, Timer,
-  HttpServer, KeptRuns, RunStore,
-} from "./architecture"
+import { Prelude, FileReading, Paths, ModuleLoader, TypeScriptCompiler, Hashing, KeptResults, Signatures, Process, Terminal, Clock, KeptRuns, RunStore } from "./architecture"
 import { Language, CompilerMessages, LawMessages, ViewMessages, OutputMessages, DevMessages, CommandMessages } from "./messages"
 import { Dates, Lists } from "#documents/language"
 import { Drivers } from "./languages"
@@ -32,8 +29,12 @@ import { LanguageSettings, VisibleText } from "./documents"
 import { Punctuation, Units } from "#documents/language"
 import { CodeSpan } from "#documents/markdown"
 import { CodeLines } from "#documents/text"
-import { Page } from "./page"
-import { PageRendering } from "./rendering"
+import { Page, DevService } from "#documents/page"
+import { PageScript } from "./page"
+import { PayloadDifferences, DevDebounce } from "#commands/commands"
+import { Waiting, HttpServing } from "#std/running"
+import { PageRendering, DocumentIds } from "#documents/rendering"
+import { GraphPacking } from "#documents/page"
 import { TypeScript, TypeScriptSyntax, TypeScriptLibraries } from "./typescript"
 import { VersionOrder } from "./packages"
 import { LibraryOfAModule } from "./libraries"
@@ -243,6 +244,7 @@ export const EngineFingerprint = fn({
   deps: {
     layout: Layout, advancement: Advancement, language: TypeScript, project: Project, reading: FileReading, paths: Paths, hashing: Hashing,
     sha256: Sha256, encodings: NodeEncodings, fingerprint: Fingerprint, json: JsonFormatting, sequences: Sequences, texts: Texts, values: ValueTypes,
+    references: ReferenceSyntax,
   },
   body: code.file<typeof import("./code/engine/engine-fingerprint").default>("./code/engine/engine-fingerprint.ts"),
 })
@@ -472,27 +474,25 @@ export const DateBundle = fn({
 })
 
 /**
- * Differences
- * What a change altered between two compilations: statuses, holes, overlaps.
+ * Files an editor leaves
+ * The endings of the files an editor leaves while it saves (a backup, a swap file, a temporary file): they change
+ * nothing a build reads, and nobody follows them.
  */
-export const Differences = fn({
+export const EditorLeftovers = decision<{ endings: readonly string[] }>({
   owner: "trame",
-  serves: [ExecutableSpecification],
-  deps: { punctuation: Punctuation, messages: OutputMessages },
-  body: code.file<typeof import("./code/engine/differences").default>("./code/engine/differences.ts"),
+  value: { endings: ["~", ".swp", ".tmp"] },
 })
 
 /**
- * What trame dev serves
- * The paths the page is asked at, the bundle of the graph, the stream of its changes; the events of that stream; the
- * host it answers on; the endings of the files an editor leaves while it saves, which change nothing.
+ * Watching a project
+ * Each file a build reads that changes, from the project's root: its sources, its kinds and views, its evidence, its
+ * lock; what an editor leaves aside. What trame dev follows, and what the engine's API gives (since g136).
  */
-export const DevService = decision<{ page: readonly string[]; bundle: string; events: string; amend: string; compiling: string; ready: string; host: string; ignored: readonly string[] }>({
+export const Watching = fn({
   owner: "trame",
-  value: {
-    page: ["/", "/index.html"], bundle: "/bundle.json", events: "/events", amend: "/amend",
-    compiling: "compiling", ready: "bundle", host: "localhost", ignored: ["~", ".swp", ".tmp"],
-  },
+  serves: [ExecutableSpecification],
+  deps: { reading: FileReading, paths: Paths, layout: Layout, project: Project, leftovers: EditorLeftovers, texts: Texts },
+  body: code.file<typeof import("./code/engine/watching").default>("./code/engine/watching.ts"),
 })
 
 /**
@@ -504,8 +504,8 @@ export const DevServer = fn({
   serves: [ExecutableSpecification],
   deps: { service: DevService, uri: Uri, line: TrameCommands, nodeEvents: NodeEvents, layout: Layout,
     http: Http, mediaTypes: MediaTypes, events: ServerSentEvents,
-    terminal: Terminal, codeLines: CodeLines, file: TextFile, clock: Clock, timer: Timer, debounce: DevDebounce, httpServer: HttpServer,
-    reading: FileReading, paths: Paths, project: Project, bundle: DateBundle, differences: Differences, page: Page, pageRendering: PageRendering,
+    terminal: Terminal, codeLines: CodeLines, file: TextFile, clock: Clock, timer: Waiting, debounce: DevDebounce, httpServer: HttpServing,
+    watching: Watching, paths: Paths, project: Project, bundle: DateBundle, differences: PayloadDifferences, page: Page, script: PageScript, pageRendering: PageRendering,
     counts: Counts, sequences: Sequences, texts: Texts, dates: Dates, language: Language, messages: DevMessages,
   },
   body: code.file<typeof import("./code/engine/dev-server").default>("./code/engine/dev-server.ts"),

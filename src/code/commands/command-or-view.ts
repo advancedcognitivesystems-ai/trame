@@ -6,9 +6,10 @@
 
 import type { ProvidedBy } from "../../../trame/kernel"
 import type { Handler } from "../../../kinds/entry-point"
-import type { FileWriting, Paths, Process, Terminal } from "../../architecture"
+import type { AmendmentPlace, FileWriting, Paths, Process, Terminal } from "../../architecture"
 import type { CommandMessages } from "../../messages"
 import type { Api as PreparationApi } from "./preparation"
+import type { Api as AmendingApi } from "./amending"
 import type { Api as RenderViewApi } from "./render-view"
 import type { Api as AssemblerApi } from "./assembler"
 import type { Api as ProjectCommandsApi } from "./project-commands"
@@ -37,6 +38,9 @@ export interface Deps {
   counts: ProvidedBy<typeof Counts>
   sequences: ProvidedBy<typeof Sequences>
   messages: ProvidedBy<typeof CommandMessages>
+  /** What amends the project a command runs for, which the engine's API gives it (since g136). */
+  amending: AmendingApi
+  place: AmendmentPlace
 }
 
 const body = (deps: Deps): Handler => async (req) => {
@@ -102,7 +106,7 @@ const body = (deps: Deps): Handler => async (req) => {
   // dispatch prepared it (since g124).
   if (deps.projectCommands.inTheEngine(ctx.c, assembly)) {
     const program = (files.find((f) => !f.launches) ?? first).path
-    return { status: await deps.currentProcess.runHere(program, [name, ...forwarded], preparation.api({ o, ctx })), body: undefined }
+    return { status: await deps.currentProcess.runHere(program, [name, ...forwarded], preparation.api({ o, ctx, amend: (asked) => deps.amending.amend(o, asked, deps.place) })), body: undefined }
   }
   // As its own program: its launcher, which leads the names of packages first (since g99).
   const program = (files.find((f) => f.launches) ?? first).path

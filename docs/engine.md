@@ -6,33 +6,26 @@
 
 ## Decisions
 
-<a id="DevService"></a>
+<a id="EditorLeftovers"></a>
 
-### What trame dev serves
+### Files an editor leaves
 
-`DevService` · `src/engine.ts:490`
+`EditorLeftovers` · `src/engine.ts:481`
 
-The paths the page is asked at, the bundle of the graph, the stream of its changes; the events of that stream; the host it answers on; the endings of the files an editor leaves while it saves, which change nothing.
+The endings of the files an editor leaves while it saves (a backup, a swap file, a temporary file): they change nothing a build reads, and nobody follows them.
 
 | Case | Value |
 |---|---|
-| page | /, /index.html |
-| bundle | /bundle.json |
-| events | /events |
-| amend | /amend |
-| compiling | compiling |
-| ready | bundle |
-| host | localhost |
-| ignored | ~, .swp, .tmp |
+| endings | ~, .swp, .tmp |
 
 - Decided by: trame
-- Used by: [Amendments sent to trame dev](browser.md#BrowserAmendments), [The globals of the page, and trame dev](browser.md#BrowserFeed), [trame dev](command-scenarios.md#DevFollowsTheGraph), [trame dev server](#DevServer)
+- Used by: [Watching a project](#Watching)
 
 <a id="Fingerprint"></a>
 
 ### Length of a fingerprint
 
-`Fingerprint` · `src/engine.ts:215`
+`Fingerprint` · `src/engine.ts:216`
 
 How many hexadecimal characters of the SHA-256 digest a lock keeps to fingerprint a declaration: 64 bits.
 
@@ -45,7 +38,7 @@ How many hexadecimal characters of the SHA-256 digest a lock keeps to fingerprin
 
 ### What tells a project's runs apart
 
-`KeptRunsScope` · `src/engine.ts:289`
+`KeptRunsScope` · `src/engine.ts:291`
 
 A run kept (a scenario played) is given back while what it ran and the files the project reads are as they were: every file under its root, its libraries, its kinds and its views, but those of the directories named here. The packages installed are told by the lockfile, which is read; the repository's history is not the project; Trame's own links and runs are what it writes itself; a frozen generation is written once, with the pin that names it. On disk, the newest runs are kept, so many and no more.
 
@@ -62,7 +55,7 @@ A run kept (a scenario played) is given back while what it ran and the files the
 
 ### The days of history a page offers
 
-`PageHistory` · `src/engine.ts:439`
+`PageHistory` · `src/engine.ts:441`
 
 Besides the dates where the graph changes, an export offers the last days something was given (a version released, evidence recorded), each with what was proven by then, judged as it was given: the most recent, so many. Each date is a compilation; its documents and figures that differ from today's but for the date are carried once more, without the views of each node, the snapshot and the outputs for tools.
 
@@ -78,7 +71,7 @@ Besides the dates where the graph changes, an export offers the last days someth
 
 ### Options of the static reading
 
-`TypeScriptOptions` · `src/engine.ts:178`
+`TypeScriptOptions` · `src/engine.ts:179`
 
 The ambient types the TypeScript compiler loads to read the project: Node's (the package
 
@@ -95,7 +88,7 @@ The ambient types the TypeScript compiler loads to read the project: Node's (the
 
 ### The laws are requirements
 
-`LawsAreRequirements` · `src/engine.ts:367` · status: **held**
+`LawsAreRequirements` · `src/engine.ts:369` · status: **held**
 
 Each law of the kinds and the views is a requirement of the module laws: a pure rule, with its acceptance criteria. The functions "Laws" and "Views" observe a kind on nodes drawn at random, or a view on the graph, and ask the rule whether what they saw keeps the law; they phrase what breaks it.
 
@@ -116,7 +109,7 @@ Consequences: A law reads in the graph as a requirement, refines the goal it ser
 
 ### The language receives the graph's values
 
-`TheLanguageReceivesTheGraph` · `src/engine.ts:349` · status: **held**
+`TheLanguageReceivesTheGraph` · `src/engine.ts:351` · status: **held**
 
 The kinds and the views are files, not nodes: what they write is given to them by the engine, from the graph.
 
@@ -144,7 +137,7 @@ Consequences: The engine gives them the graph's values through the graph they re
 The plan of a component for an environment, written as a program by the driver of its language.
 
 - Owner: trame
-- Parameters: `line` ← [Trame's commands](conventions.md#TrameCommands) · `values` ← [Types of values](../std/releases/0.31.0/docs/algebra.md#ValueTypes) · `layout` ← [Project layout](conventions.md#Layout) · `paths` ← [Paths](architecture.md#Paths) · `wiring` ← [Wiring](#Wiring) · `prelude` ← [Prelude](architecture.md#Prelude) · `drivers` ← [Drivers](languages.md#Drivers) · `texts` ← [Texts](../std/releases/0.31.0/docs/algebra.md#Texts) · `messages` ← [Messages of the compiler](messages.md#CompilerMessages) · `names` ← [The language's names](conventions.md#LanguageNames) · `specifiers` ← [Node.js module specifiers](../std/releases/0.31.0/docs/system.md#NodeModuleSpecifiers) · `language` ← [TypeScript](typescript.md#TypeScript)
+- Parameters: `line` ← [Trame's commands](conventions.md#TrameCommands) · `values` ← [Types of values](../std/releases/0.33.0/docs/algebra.md#ValueTypes) · `layout` ← [Project layout](conventions.md#Layout) · `paths` ← [Paths](architecture.md#Paths) · `wiring` ← [Wiring](#Wiring) · `prelude` ← [Prelude](architecture.md#Prelude) · `drivers` ← [Drivers](languages.md#Drivers) · `texts` ← [Texts](../std/releases/0.33.0/docs/algebra.md#Texts) · `messages` ← [Messages of the compiler](messages.md#CompilerMessages) · `names` ← [The language's names](conventions.md#LanguageNames) · `specifiers` ← [Node.js module specifiers](../std/releases/0.33.0/docs/system.md#NodeModuleSpecifiers) · `language` ← [TypeScript](typescript.md#TypeScript)
 - Body: `./code/engine/assembly.ts` (typescript)
 - Effects: execution, keeps, read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
@@ -156,12 +149,12 @@ The plan of a component for an environment, written as a program by the driver o
 
 ### Compilation API
 
-`CompilationApi` · `src/engine.ts:397` · status: **held**
+`CompilationApi` · `src/engine.ts:399` · status: **held**
 
 What a view receives: the graph, plus the holes, the claims, the overlaps, the card of a node.
 
 - Owner: trame
-- Parameters: `values` ← [Types of values](../std/releases/0.31.0/docs/algebra.md#ValueTypes) · `rank` ← [Default rank](conventions.md#DefaultRank) · `positions` ← [Positions](#Positions) · `references` ← [References](#References) · `prelude` ← [Prelude](architecture.md#Prelude) · `counts` ← [Counts](../std/releases/0.31.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.31.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.31.0/docs/algebra.md#Texts) · `punctuation` ← [Punctuation](../libs/documents/releases/0.4.0/docs/language.md#Punctuation) · `ids` ← [Names of the documents](conventions.md#DocumentIds) · `layout` ← [Project layout](conventions.md#Layout) · `uri` ← [URI](../std/releases/0.31.0/docs/web.md#Uri) · `messages` ← [Messages of the views](messages.md#ViewMessages) · `pipeline` ← [A shipment's pipeline](#ShipmentPipeline) · `units` ← [Values with their units](../libs/documents/releases/0.4.0/docs/language.md#Units)
+- Parameters: `values` ← [Types of values](../std/releases/0.33.0/docs/algebra.md#ValueTypes) · `rank` ← [Default rank](conventions.md#DefaultRank) · `positions` ← [Positions](#Positions) · `references` ← [References](#References) · `prelude` ← [Prelude](architecture.md#Prelude) · `counts` ← [Counts](../std/releases/0.33.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.33.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.33.0/docs/algebra.md#Texts) · `punctuation` ← [Punctuation](../libs/documents/releases/0.5.1/docs/language.md#Punctuation) · `ids` ← [Names of the documents](../libs/documents/releases/0.5.1/docs/rendering.md#DocumentIds) · `layout` ← [Project layout](conventions.md#Layout) · `uri` ← [URI](../std/releases/0.33.0/docs/web.md#Uri) · `messages` ← [Messages of the views](messages.md#ViewMessages) · `pipeline` ← [A shipment's pipeline](#ShipmentPipeline) · `units` ← [Values with their units](../libs/documents/releases/0.5.1/docs/language.md#Units)
 - Body: `./code/engine/compilation-api.ts` (typescript)
 - Effects: read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
@@ -173,12 +166,12 @@ What a view receives: the graph, plus the holes, the claims, the overlaps, the c
 
 ### Compiler
 
-`Compiler` · `src/engine.ts:269` · status: **held**
+`Compiler` · `src/engine.ts:271` · status: **held**
 
 Loads the project once (the code of each node fingerprinted), then compiles it at a date: frozen graph, claims, resolution, consolidated graph, evaluation, statuses, holes.
 
 - Owner: trame
-- Parameters: `encodings` ← [Node.js character encodings](../std/releases/0.31.0/docs/system.md#NodeEncodings) · `specifiers` ← [Node.js module specifiers](../std/releases/0.31.0/docs/system.md#NodeModuleSpecifiers) · `values` ← [Types of values](../std/releases/0.31.0/docs/algebra.md#ValueTypes) · `layout` ← [Project layout](conventions.md#Layout) · `severityOrder` ← [Sort problems by severity](product.md#SeverityOrder) · `cycles` ← [Cycles](#Cycles) · `references` ← [References](#References) · `positions` ← [Positions](#Positions) · `loader` ← [Module loader](architecture.md#ModuleLoader) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `analysis` ← [Static reading](#StaticAnalysis) · `project` ← [Project](#Project) · `graph` ← [Graph](#GraphApi) · `wiring` ← [Wiring](#Wiring) · `drivers` ← [Drivers](languages.md#Drivers) · `prelude` ← [Prelude](architecture.md#Prelude) · `counts` ← [Counts](../std/releases/0.31.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.31.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.31.0/docs/algebra.md#Texts) · `messages` ← [Messages of the compiler](messages.md#CompilerMessages) · `fingerprints` ← [Fingerprints](#Fingerprints) · `signatures` ← [Signatures](architecture.md#Signatures) · `engines` ← [The fingerprint of an engine](#EngineFingerprint) · `runs` ← [Runs kept](architecture.md#KeptRuns) · `platform` ← [What the platform may do](../std/releases/0.31.0/docs/effects.md#PlatformEffects) · `names` ← [The language's names](conventions.md#LanguageNames) · `packages` ← [Where a package comes from](../std/releases/0.31.0/docs/tooling.md#PackageSources) · `judged` ← [Judged harder](#JudgedHarder)
+- Parameters: `encodings` ← [Node.js character encodings](../std/releases/0.33.0/docs/system.md#NodeEncodings) · `specifiers` ← [Node.js module specifiers](../std/releases/0.33.0/docs/system.md#NodeModuleSpecifiers) · `values` ← [Types of values](../std/releases/0.33.0/docs/algebra.md#ValueTypes) · `layout` ← [Project layout](conventions.md#Layout) · `severityOrder` ← [Sort problems by severity](product.md#SeverityOrder) · `cycles` ← [Cycles](#Cycles) · `references` ← [References](#References) · `positions` ← [Positions](#Positions) · `loader` ← [Module loader](architecture.md#ModuleLoader) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `analysis` ← [Static reading](#StaticAnalysis) · `project` ← [Project](#Project) · `graph` ← [Graph](#GraphApi) · `wiring` ← [Wiring](#Wiring) · `drivers` ← [Drivers](languages.md#Drivers) · `prelude` ← [Prelude](architecture.md#Prelude) · `counts` ← [Counts](../std/releases/0.33.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.33.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.33.0/docs/algebra.md#Texts) · `messages` ← [Messages of the compiler](messages.md#CompilerMessages) · `fingerprints` ← [Fingerprints](#Fingerprints) · `signatures` ← [Signatures](architecture.md#Signatures) · `engines` ← [The fingerprint of an engine](#EngineFingerprint) · `runs` ← [Runs kept](architecture.md#KeptRuns) · `platform` ← [What the platform may do](../std/releases/0.33.0/docs/effects.md#PlatformEffects) · `names` ← [The language's names](conventions.md#LanguageNames) · `packages` ← [Where a package comes from](../std/releases/0.33.0/docs/tooling.md#PackageSources) · `judged` ← [Judged harder](#JudgedHarder)
 - Body: `./code/engine/compiler.ts` (typescript)
 - Effects: execution, keeps, read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
@@ -190,12 +183,12 @@ Loads the project once (the code of each node fingerprinted), then compiles it a
 
 ### Cycles
 
-`Cycles` · `src/engine.ts:122` · status: **held**
+`Cycles` · `src/engine.ts:123` · status: **held**
 
 Finds the cycles of a relation with a depth-first search: the vertices from which the search closes one.
 
 - Owner: trame
-- Parameters: `search` ← [Depth-first search](../std/releases/0.31.0/docs/algorithms.md#DepthFirstSearch)
+- Parameters: `search` ← [Depth-first search](../std/releases/0.33.0/docs/algorithms.md#DepthFirstSearch)
 - Body: `./code/engine/cycles.ts` (typescript)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Used by: [Compiler](#Compiler), [EngineReckons](scenarios.md#EngineReckons)
@@ -205,17 +198,17 @@ Finds the cycles of a relation with a depth-first search: the vertices from whic
 
 ### Date bundle
 
-`DateBundle` · `src/engine.ts:467` · status: **held**
+`DateBundle` · `src/engine.ts:469` · status: **held**
 
 Compiles the graph at each date where it can change, in a fresh process: the engine relaunches itself.
 
 - Owner: trame
-- Parameters: `line` ← [Trame's commands](conventions.md#TrameCommands) · `encodings` ← [Node.js character encodings](../std/releases/0.31.0/docs/system.md#NodeEncodings) · `events` ← [Node.js events](../std/releases/0.31.0/docs/system.md#NodeEvents) · `clock` ← [Clock](architecture.md#Clock) · `currentProcess` ← [Process](architecture.md#Process) · `exitStatus` ← [Exit status](../std/releases/0.31.0/docs/system.md#ExitStatus) · `texts` ← [Texts](../std/releases/0.31.0/docs/algebra.md#Texts) · `messages` ← [Messages of the outputs](messages.md#OutputMessages)
+- Parameters: `line` ← [Trame's commands](conventions.md#TrameCommands) · `encodings` ← [Node.js character encodings](../std/releases/0.33.0/docs/system.md#NodeEncodings) · `events` ← [Node.js events](../std/releases/0.33.0/docs/system.md#NodeEvents) · `clock` ← [Clock](architecture.md#Clock) · `currentProcess` ← [Process](architecture.md#Process) · `exitStatus` ← [Exit status](../std/releases/0.33.0/docs/system.md#ExitStatus) · `texts` ← [Texts](../std/releases/0.33.0/docs/algebra.md#Texts) · `messages` ← [Messages of the outputs](messages.md#OutputMessages)
 - Body: `./code/engine/date-bundle.ts` (typescript)
 - Effects: process, read, terminal, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Verified by: [The page exported](command-scenarios.md#PageExported)
-- Used by: [Export the page](commands.md#Export), [trame dev server](#DevServer)
+- Used by: [Export the page](commands.md#Export), [Preparation](commands.md#Preparation), [trame dev server](#DevServer)
 
 <a id="DevServer"></a>
 
@@ -226,38 +219,23 @@ Compiles the graph at each date where it can change, in a fresh process: the eng
 Watches the project, recompiles it at each save, pushes the updated page.
 
 - Owner: trame
-- Parameters: `service` ← [What trame dev serves](#DevService) · `uri` ← [URI](../std/releases/0.31.0/docs/web.md#Uri) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `nodeEvents` ← [Node.js events](../std/releases/0.31.0/docs/system.md#NodeEvents) · `layout` ← [Project layout](conventions.md#Layout) · `http` ← [HTTP](../std/releases/0.31.0/docs/web.md#Http) · `mediaTypes` ← [Media types](../std/releases/0.31.0/docs/web.md#MediaTypes) · `events` ← [Server-sent events](../std/releases/0.31.0/docs/web.md#ServerSentEvents) · `terminal` ← [Terminal](architecture.md#Terminal) · `codeLines` ← [Code lines](../libs/documents/releases/0.4.0/docs/text.md#CodeLines) · `file` ← [Text file](../std/releases/0.31.0/docs/text.md#TextFile) · `clock` ← [Clock](architecture.md#Clock) · `timer` ← [Timer](architecture.md#Timer) · `debounce` ← [Debouncing of saves](product.md#DevDebounce) · `httpServer` ← [HTTP server](architecture.md#HttpServer) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `project` ← [Project](#Project) · `bundle` ← [Date bundle](#DateBundle) · `differences` ← [Differences](#Differences) · `page` ← [Page](page.md#Page) · `pageRendering` ← [Rendering in the page](rendering.md#PageRendering) · `counts` ← [Counts](../std/releases/0.31.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.31.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.31.0/docs/algebra.md#Texts) · `dates` ← [Dates](../libs/documents/releases/0.4.0/docs/language.md#Dates) · `language` ← [Language](messages.md#Language) · `messages` ← [Messages of trame dev](messages.md#DevMessages)
+- Parameters: `service` ← [What trame dev serves](../libs/documents/releases/0.5.1/docs/page.md#DevService) · `uri` ← [URI](../std/releases/0.33.0/docs/web.md#Uri) · `line` ← [Trame's commands](conventions.md#TrameCommands) · `nodeEvents` ← [Node.js events](../std/releases/0.33.0/docs/system.md#NodeEvents) · `layout` ← [Project layout](conventions.md#Layout) · `http` ← [HTTP](../std/releases/0.33.0/docs/web.md#Http) · `mediaTypes` ← [Media types](../std/releases/0.33.0/docs/web.md#MediaTypes) · `events` ← [Server-sent events](../std/releases/0.33.0/docs/web.md#ServerSentEvents) · `terminal` ← [Terminal](architecture.md#Terminal) · `codeLines` ← [Code lines](../libs/documents/releases/0.5.1/docs/text.md#CodeLines) · `file` ← [Text file](../std/releases/0.33.0/docs/text.md#TextFile) · `clock` ← [Clock](architecture.md#Clock) · `timer` ← [Timers](../std/releases/0.33.0/docs/running.md#Waiting) · `debounce` ← [Debouncing of saves](../libs/commands/releases/0.5.0/docs/commands.md#DevDebounce) · `httpServer` ← [Serving HTTP](../std/releases/0.33.0/docs/running.md#HttpServing) · `watching` ← [Watching a project](#Watching) · `paths` ← [Paths](architecture.md#Paths) · `project` ← [Project](#Project) · `bundle` ← [Date bundle](#DateBundle) · `differences` ← [What the last change changed](../libs/commands/releases/0.5.0/docs/commands.md#PayloadDifferences) · `page` ← [Page](../libs/documents/releases/0.5.1/docs/page.md#Page) · `script` ← [The page's program, bundled](page.md#PageScript) · `pageRendering` ← [Rendering in the page](../libs/documents/releases/0.5.1/docs/rendering.md#PageRendering) · `counts` ← [Counts](../std/releases/0.33.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.33.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.33.0/docs/algebra.md#Texts) · `dates` ← [Dates](../libs/documents/releases/0.5.1/docs/language.md#Dates) · `language` ← [Language](messages.md#Language) · `messages` ← [Messages of trame dev](messages.md#DevMessages)
 - Body: `./code/engine/dev-server.ts` (typescript)
-- Effects: execution, keeps, network, process, read, terminal, time
+- Effects: asynchronous, network, process, read, terminal, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Verified by: [trame dev](command-scenarios.md#DevFollowsTheGraph)
 - Used by: [Start trame dev](commands.md#Dev)
-
-<a id="Differences"></a>
-
-### Differences
-
-`Differences` · `src/engine.ts:478` · status: **held**
-
-What a change altered between two compilations: statuses, holes, overlaps.
-
-- Owner: trame
-- Parameters: `punctuation` ← [Punctuation](../libs/documents/releases/0.4.0/docs/language.md#Punctuation) · `messages` ← [Messages of the outputs](messages.md#OutputMessages)
-- Body: `./code/engine/differences.ts` (typescript)
-- Serves: [A specification that runs](product.md#ExecutableSpecification)
-- Verified by: [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph)
-- Used by: [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph), [trame dev server](#DevServer)
 
 <a id="EngineFingerprint"></a>
 
 ### The fingerprint of an engine
 
-`EngineFingerprint` · `src/engine.ts:240` · status: **held**
+`EngineFingerprint` · `src/engine.ts:241` · status: **held**
 
 Each file with its SHA-256, as a generation keeps them: what its origin says (its programs, its graph and its code), and the engine itself, as evidence names it (its graph and its code, and its libraries': its programs say the day of their graph). The advance records the second beside a generation it freezes (engine.json); the engine that runs knows its own from where its program is (its generation's record, or its repository's files for a candidate). Evidence a program of the engine records carries it: it holds while the project pins that engine.
 
 - Owner: trame
-- Parameters: `layout` ← [Project layout](conventions.md#Layout) · `advancement` ← [What an advance assembles](generations.md#Advancement) · `language` ← [TypeScript](typescript.md#TypeScript) · `project` ← [Project](#Project) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `hashing` ← [Hashing](architecture.md#Hashing) · `sha256` ← [SHA-256](../std/releases/0.31.0/docs/algorithms.md#Sha256) · `encodings` ← [Node.js character encodings](../std/releases/0.31.0/docs/system.md#NodeEncodings) · `fingerprint` ← [Length of a fingerprint](#Fingerprint) · `json` ← [JSON formatting](../std/releases/0.31.0/docs/text.md#JsonFormatting) · `sequences` ← [Sequences](../std/releases/0.31.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.31.0/docs/algebra.md#Texts) · `values` ← [Types of values](../std/releases/0.31.0/docs/algebra.md#ValueTypes)
+- Parameters: `layout` ← [Project layout](conventions.md#Layout) · `advancement` ← [What an advance assembles](generations.md#Advancement) · `language` ← [TypeScript](typescript.md#TypeScript) · `project` ← [Project](#Project) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `hashing` ← [Hashing](architecture.md#Hashing) · `sha256` ← [SHA-256](../std/releases/0.33.0/docs/algorithms.md#Sha256) · `encodings` ← [Node.js character encodings](../std/releases/0.33.0/docs/system.md#NodeEncodings) · `fingerprint` ← [Length of a fingerprint](#Fingerprint) · `json` ← [JSON formatting](../std/releases/0.33.0/docs/text.md#JsonFormatting) · `sequences` ← [Sequences](../std/releases/0.33.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.33.0/docs/algebra.md#Texts) · `values` ← [Types of values](../std/releases/0.33.0/docs/algebra.md#ValueTypes) · `references` ← [Trame references](../std/releases/0.33.0/docs/engine.md#ReferenceSyntax)
 - Body: `./code/engine/engine-fingerprint.ts` (typescript)
 - Effects: read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
@@ -268,7 +246,7 @@ Each file with its SHA-256, as a generation keeps them: what its origin says (it
 
 ### Fingerprints
 
-`Fingerprints` · `src/engine.ts:145` · status: **held**
+`Fingerprints` · `src/engine.ts:146` · status: **held**
 
 The fingerprint of a value, enough to see that it changed: what a review saw, compared with what is there now. Its JSON with the keys in order, hashed into 32 bits, in hexadecimal.
 
@@ -279,7 +257,7 @@ The fingerprint of a value, enough to see that it changed: what a review saw, co
 | `pad` | `0` | What pads them on the left |
 
 - Owner: trame
-- Parameters: `hash` ← [Multiplicative hashing](../std/releases/0.31.0/docs/algorithms.md#MultiplicativeHash) · `ecma` ← [ECMAScript](../std/releases/0.31.0/docs/ecmascript.md#EcmaScript) · `values` ← [Types of values](../std/releases/0.31.0/docs/algebra.md#ValueTypes) · `texts` ← [Texts](../std/releases/0.31.0/docs/algebra.md#Texts)
+- Parameters: `hash` ← [Multiplicative hashing](../std/releases/0.33.0/docs/algorithms.md#MultiplicativeHash) · `ecma` ← [ECMAScript](../std/releases/0.33.0/docs/ecmascript.md#EcmaScript) · `values` ← [Types of values](../std/releases/0.33.0/docs/algebra.md#ValueTypes) · `texts` ← [Texts](../std/releases/0.33.0/docs/algebra.md#Texts)
 - Body: `./code/engine/fingerprints.ts` (typescript)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Used by: [Compiler](#Compiler), [Graph](#GraphApi), [EngineReckons](scenarios.md#EngineReckons), [Evidence of the SDLC](shipping.md#SdlcEvidence)
@@ -290,12 +268,12 @@ The fingerprint of a value, enough to see that it changed: what a review saw, co
 
 ### Pseudo-random generator
 
-`Generator` · `src/engine.ts:133` · status: **held**
+`Generator` · `src/engine.ts:134` · status: **held**
 
 A reproducible sequence of numbers from a seed: the laws draw their test nodes with it.
 
 - Owner: trame
-- Parameters: `mulberry` ← [Mulberry32](../std/releases/0.31.0/docs/algorithms.md#Mulberry32) · `hash` ← [Multiplicative hashing](../std/releases/0.31.0/docs/algorithms.md#MultiplicativeHash) · `ecma` ← [ECMAScript](../std/releases/0.31.0/docs/ecmascript.md#EcmaScript) · `counts` ← [Counts](../std/releases/0.31.0/docs/algebra.md#Counts)
+- Parameters: `mulberry` ← [Mulberry32](../std/releases/0.33.0/docs/algorithms.md#Mulberry32) · `hash` ← [Multiplicative hashing](../std/releases/0.33.0/docs/algorithms.md#MultiplicativeHash) · `ecma` ← [ECMAScript](../std/releases/0.33.0/docs/ecmascript.md#EcmaScript) · `counts` ← [Counts](../std/releases/0.33.0/docs/algebra.md#Counts)
 - Body: `./code/engine/generator.ts` (typescript)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Used by: [Graph](#GraphApi), [Laws](#Laws), [EngineReckons](scenarios.md#EngineReckons)
@@ -305,12 +283,12 @@ A reproducible sequence of numbers from a seed: the laws draw their test nodes w
 
 ### Graph
 
-`GraphApi` · `src/engine.ts:161` · status: **held**
+`GraphApi` · `src/engine.ts:162` · status: **held**
 
 The traversal API: read-only views on the nodes, queries, the edges, recorded reading.
 
 - Owner: trame
-- Parameters: `prelude` ← [Prelude](architecture.md#Prelude) · `syntax` ← [Trame references](../std/releases/0.31.0/docs/engine.md#ReferenceSyntax) · `counts` ← [Counts](../std/releases/0.31.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.31.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.31.0/docs/algebra.md#Texts) · `messages` ← [Messages of the compiler](messages.md#CompilerMessages) · `values` ← [Types of values](../std/releases/0.31.0/docs/algebra.md#ValueTypes) · `lists` ← [Lists](../libs/documents/releases/0.4.0/docs/language.md#Lists) · `dates` ← [Dates](../libs/documents/releases/0.4.0/docs/language.md#Dates) · `punctuation` ← [Punctuation](../libs/documents/releases/0.4.0/docs/language.md#Punctuation) · `positions` ← [Positions](#Positions) · `references` ← [References](#References) · `iso` ← [ISO 8601 dates](../std/releases/0.31.0/docs/measures.md#Iso8601) · `file` ← [Text file](../std/releases/0.31.0/docs/text.md#TextFile) · `settings` ← [Settings of the documents](documents.md#LanguageSettings) · `generator` ← [Pseudo-random generator](#Generator) · `structureDraws` ← [Values drawn by the laws of a structure](product.md#StructureDraws) · `layout` ← [Project layout](conventions.md#Layout) · `typescript` ← [TypeScript](typescript.md#TypeScript) · `versions` ← [Order of versions](packages.md#VersionOrder) · `units` ← [Values with their units](../libs/documents/releases/0.4.0/docs/language.md#Units) · `visible` ← [Visible text](documents.md#VisibleText) · `fingerprints` ← [Fingerprints](#Fingerprints)
+- Parameters: `prelude` ← [Prelude](architecture.md#Prelude) · `syntax` ← [Trame references](../std/releases/0.33.0/docs/engine.md#ReferenceSyntax) · `counts` ← [Counts](../std/releases/0.33.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.33.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.33.0/docs/algebra.md#Texts) · `messages` ← [Messages of the compiler](messages.md#CompilerMessages) · `values` ← [Types of values](../std/releases/0.33.0/docs/algebra.md#ValueTypes) · `lists` ← [Lists](../libs/documents/releases/0.5.1/docs/language.md#Lists) · `dates` ← [Dates](../libs/documents/releases/0.5.1/docs/language.md#Dates) · `punctuation` ← [Punctuation](../libs/documents/releases/0.5.1/docs/language.md#Punctuation) · `positions` ← [Positions](#Positions) · `references` ← [References](#References) · `iso` ← [ISO 8601 dates](../std/releases/0.33.0/docs/measures.md#Iso8601) · `file` ← [Text file](../std/releases/0.33.0/docs/text.md#TextFile) · `settings` ← [Settings of the documents](documents.md#LanguageSettings) · `generator` ← [Pseudo-random generator](#Generator) · `structureDraws` ← [Values drawn by the laws of a structure](product.md#StructureDraws) · `layout` ← [Project layout](conventions.md#Layout) · `typescript` ← [TypeScript](typescript.md#TypeScript) · `versions` ← [Order of versions](packages.md#VersionOrder) · `units` ← [Values with their units](../libs/documents/releases/0.5.1/docs/language.md#Units) · `visible` ← [Visible text](documents.md#VisibleText) · `fingerprints` ← [Fingerprints](#Fingerprints)
 - Body: `./code/engine/graph.ts` (typescript)
 - Effects: read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
@@ -322,7 +300,7 @@ The traversal API: read-only views on the nodes, queries, the edges, recorded re
 
 ### Judged harder
 
-`JudgedHarder` · `src/engine.ts:257` · status: **held**
+`JudgedHarder` · `src/engine.ts:259` · status: **held**
 
 A project judges harder than the language, never softer (C4, since g112): for each of the project's problems, the severity its way of judging answers (the realization of std's Hardening a binding chooses where its build evaluates) is kept when it is harder, with the one the language gave. A way that would lower a problem, answers what is no severity, or fails, is a problem of the project's judgment, and the language's severity stays.
 
@@ -337,12 +315,12 @@ A project judges harder than the language, never softer (C4, since g112): for ea
 
 ### Laws
 
-`Laws` · `src/engine.ts:317` · status: **held**
+`Laws` · `src/engine.ts:319` · status: **held**
 
 Tests each kind on nodes drawn at random, and its resolution on sets of claims; checks the imports.
 
 - Owner: trame
-- Parameters: `kept` ← [Results kept](architecture.md#KeptResults) · `drivers` ← [Drivers](languages.md#Drivers) · `preludeApi` ← [The prelude's public API](conventions.md#PreludeApi) · `specifiers` ← [Node.js module specifiers](../std/releases/0.31.0/docs/system.md#NodeModuleSpecifiers) · `layout` ← [Project layout](conventions.md#Layout) · `samples` ← [Nodes drawn per kind](product.md#SampleCount) · `claimSets` ← [Claim sets](product.md#ClaimSets) · `generator` ← [Pseudo-random generator](#Generator) · `owners` ← [Owners drawn at random](product.md#SampledOwners) · `sampled` ← [Values drawn by the laws](product.md#SampledValues) · `iso` ← [ISO 8601 dates](../std/releases/0.31.0/docs/measures.md#Iso8601) · `references` ← [References](#References) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `project` ← [Project](#Project) · `graph` ← [Graph](#GraphApi) · `prelude` ← [Prelude](architecture.md#Prelude) · `names` ← [The language's names](conventions.md#LanguageNames) · `counts` ← [Counts](../std/releases/0.31.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.31.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.31.0/docs/algebra.md#Texts) · `messages` ← [Messages of the laws](messages.md#LawMessages) · `declaration` ← [Complete declaration](laws.md#CompleteDeclaration) · `answers` ← [Answers without crashing](laws.md#AnswersWithoutCrashing) · `owned` ← [A blocking hole has an owner](laws.md#BlockingHoleHasOwner) · `coded` ← [A hole says what is wrong by its code](laws.md#HoleHasCode) · `evidence` ← [Without evidence, the status is unknown](laws.md#UnknownWithoutEvidence) · `same` ← [Same input, same answer](laws.md#SameInputSameAnswer) · `orderFree` ← [The resolution does not depend on the order](laws.md#OrderFree) · `closed` ← [The resolution returns only what it is given](laws.md#ClosedResolution)
+- Parameters: `kept` ← [Results kept](architecture.md#KeptResults) · `drivers` ← [Drivers](languages.md#Drivers) · `preludeApi` ← [The prelude's public API](conventions.md#PreludeApi) · `specifiers` ← [Node.js module specifiers](../std/releases/0.33.0/docs/system.md#NodeModuleSpecifiers) · `layout` ← [Project layout](conventions.md#Layout) · `samples` ← [Nodes drawn per kind](product.md#SampleCount) · `claimSets` ← [Claim sets](product.md#ClaimSets) · `generator` ← [Pseudo-random generator](#Generator) · `owners` ← [Owners drawn at random](product.md#SampledOwners) · `sampled` ← [Values drawn by the laws](product.md#SampledValues) · `iso` ← [ISO 8601 dates](../std/releases/0.33.0/docs/measures.md#Iso8601) · `references` ← [References](#References) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `project` ← [Project](#Project) · `graph` ← [Graph](#GraphApi) · `prelude` ← [Prelude](architecture.md#Prelude) · `names` ← [The language's names](conventions.md#LanguageNames) · `counts` ← [Counts](../std/releases/0.33.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.33.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.33.0/docs/algebra.md#Texts) · `messages` ← [Messages of the laws](messages.md#LawMessages) · `declaration` ← [Complete declaration](laws.md#CompleteDeclaration) · `answers` ← [Answers without crashing](laws.md#AnswersWithoutCrashing) · `owned` ← [A blocking hole has an owner](laws.md#BlockingHoleHasOwner) · `coded` ← [A hole says what is wrong by its code](laws.md#HoleHasCode) · `evidence` ← [Without evidence, the status is unknown](laws.md#UnknownWithoutEvidence) · `same` ← [Same input, same answer](laws.md#SameInputSameAnswer) · `orderFree` ← [The resolution does not depend on the order](laws.md#OrderFree) · `closed` ← [The resolution returns only what it is given](laws.md#ClosedResolution)
 - Body: `./code/engine/laws.ts` (typescript)
 - Effects: execution, keeps, read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
@@ -354,12 +332,12 @@ Tests each kind on nodes drawn at random, and its resolution on sets of claims; 
 
 ### Lock
 
-`Lock` · `src/engine.ts:425` · status: **held**
+`Lock` · `src/engine.ts:427` · status: **held**
 
 trame.lock: the fingerprint of each part of a declaration a publication freezes (what its kind says people decide: chosen, cited, stated), and what the code has done to them since.
 
 - Owner: trame
-- Parameters: `encodings` ← [Node.js character encodings](../std/releases/0.31.0/docs/system.md#NodeEncodings) · `layout` ← [Project layout](conventions.md#Layout) · `json` ← [JSON formatting](../std/releases/0.31.0/docs/text.md#JsonFormatting) · `textFile` ← [Text file](../std/releases/0.31.0/docs/text.md#TextFile) · `references` ← [References](#References) · `codeSpan` ← [Code span](../libs/documents/releases/0.4.0/docs/markdown.md#CodeSpan) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `prelude` ← [Prelude](architecture.md#Prelude) · `messages` ← [Messages of the outputs](messages.md#OutputMessages)
+- Parameters: `encodings` ← [Node.js character encodings](../std/releases/0.33.0/docs/system.md#NodeEncodings) · `layout` ← [Project layout](conventions.md#Layout) · `json` ← [JSON formatting](../std/releases/0.33.0/docs/text.md#JsonFormatting) · `textFile` ← [Text file](../std/releases/0.33.0/docs/text.md#TextFile) · `references` ← [References](#References) · `codeSpan` ← [Code span](../libs/documents/releases/0.5.1/docs/markdown.md#CodeSpan) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `prelude` ← [Prelude](architecture.md#Prelude) · `messages` ← [Messages of the outputs](messages.md#OutputMessages)
 - Body: `./code/engine/lock.ts` (typescript)
 - Effects: read
 - Serves: [A single source of truth](product.md#SingleSource)
@@ -371,12 +349,12 @@ trame.lock: the fingerprint of each part of a declaration a publication freezes 
 
 ### Machine outputs
 
-`MachineOutputs` · `src/engine.ts:412` · status: **held**
+`MachineOutputs` · `src/engine.ts:414` · status: **held**
 
 graph.json and snapshot.json.
 
 - Owner: trame
-- Parameters: `values` ← [Types of values](../std/releases/0.31.0/docs/algebra.md#ValueTypes) · `json` ← [JSON formatting](../std/releases/0.31.0/docs/text.md#JsonFormatting) · `positions` ← [Positions](#Positions) · `prelude` ← [Prelude](architecture.md#Prelude) · `counts` ← [Counts](../std/releases/0.31.0/docs/algebra.md#Counts) · `messages` ← [Messages of the outputs](messages.md#OutputMessages)
+- Parameters: `values` ← [Types of values](../std/releases/0.33.0/docs/algebra.md#ValueTypes) · `json` ← [JSON formatting](../std/releases/0.33.0/docs/text.md#JsonFormatting) · `positions` ← [Positions](#Positions) · `prelude` ← [Prelude](architecture.md#Prelude) · `counts` ← [Counts](../std/releases/0.33.0/docs/algebra.md#Counts) · `messages` ← [Messages of the outputs](messages.md#OutputMessages)
 - Body: `./code/engine/machine.ts` (typescript)
 - Effects: read
 - Serves: [A single source of truth](product.md#SingleSource)
@@ -388,29 +366,29 @@ graph.json and snapshot.json.
 
 ### Payload
 
-`PayloadBuilder` · `src/engine.ts:453` · status: **held**
+`PayloadBuilder` · `src/engine.ts:455` · status: **held**
 
 The compiled graph in the intermediate format, for the page. It carries the language, so that the page writes dates as the documents do.
 
 - Owner: trame
-- Parameters: `layout` ← [Project layout](conventions.md#Layout) · `candidateDates` ← [Candidate dates](product.md#CandidateDates) · `history` ← [The days of history a page offers](#PageHistory) · `iso` ← [ISO 8601 dates](../std/releases/0.31.0/docs/measures.md#Iso8601) · `clock` ← [Clock](architecture.md#Clock) · `machine` ← [Machine outputs](#MachineOutputs) · `views` ← [Views](#Views) · `language` ← [Language](messages.md#Language) · `texts` ← [Texts](../std/releases/0.31.0/docs/algebra.md#Texts) · `values` ← [Types of values](../std/releases/0.31.0/docs/algebra.md#ValueTypes) · `counts` ← [Counts](../std/releases/0.31.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.31.0/docs/algebra.md#Sequences)
+- Parameters: `layout` ← [Project layout](conventions.md#Layout) · `candidateDates` ← [Candidate dates](product.md#CandidateDates) · `history` ← [The days of history a page offers](#PageHistory) · `iso` ← [ISO 8601 dates](../std/releases/0.33.0/docs/measures.md#Iso8601) · `clock` ← [Clock](architecture.md#Clock) · `machine` ← [Machine outputs](#MachineOutputs) · `views` ← [Views](#Views) · `language` ← [Language](messages.md#Language) · `texts` ← [Texts](../std/releases/0.33.0/docs/algebra.md#Texts) · `values` ← [Types of values](../std/releases/0.33.0/docs/algebra.md#ValueTypes) · `counts` ← [Counts](../std/releases/0.33.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.33.0/docs/algebra.md#Sequences)
 - Body: `./code/engine/payload.ts` (typescript)
 - Effects: execution, keeps, read, time
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Verified by: [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph)
-- Used by: [Payload](commands.md#EmitPayload)
+- Used by: [Payload](commands.md#EmitPayload), [Preparation](commands.md#Preparation)
 - Applies: [A key is made of its parts](principles.md#KeysOfParts)
 
 <a id="Positions"></a>
 
 ### Positions
 
-`Positions` · `src/engine.ts:106` · status: **held**
+`Positions` · `src/engine.ts:107` · status: **held**
 
 Designates a place in a file as messages do ("file:line"), from what the TypeScript API gives.
 
 - Owner: trame
-- Parameters: `gnu` ← [Positions in a file](../std/releases/0.31.0/docs/text.md#GnuPositions) · `typeScriptApi` ← [TypeScript compiler API](standards.md#TypeScriptApi)
+- Parameters: `gnu` ← [Positions in a file](../std/releases/0.33.0/docs/text.md#GnuPositions) · `typeScriptApi` ← [TypeScript compiler API](standards.md#TypeScriptApi)
 - Body: inline, in the declaration
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Used by: [Compilation API](#CompilationApi), [Compiler](#Compiler), [Graph](#GraphApi), [Machine outputs](#MachineOutputs), [Static reading](#StaticAnalysis), [EngineReckons](scenarios.md#EngineReckons)
@@ -420,16 +398,16 @@ Designates a place in a file as messages do ("file:line"), from what the TypeScr
 
 ### Project
 
-`Project` · `src/engine.ts:222` · status: **held**
+`Project` · `src/engine.ts:223` · status: **held**
 
 Where the kinds and the views of a project are, and the libraries it imports (trame.json): the language's, from the engine that reads it (since g87), and those the project names besides; whether it names the language as a package.
 
 - Owner: trame
-- Parameters: `encodings` ← [Node.js character encodings](../std/releases/0.31.0/docs/system.md#NodeEncodings) · `values` ← [Types of values](../std/releases/0.31.0/docs/algebra.md#ValueTypes) · `layout` ← [Project layout](conventions.md#Layout) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `pin` ← [The engine a project runs](generations.md#EnginePin) · `prelude` ← [Prelude](architecture.md#Prelude) · `names` ← [The language's names](conventions.md#LanguageNames) · `specifiers` ← [Node.js module specifiers](../std/releases/0.31.0/docs/system.md#NodeModuleSpecifiers) · `language` ← [TypeScript](typescript.md#TypeScript)
+- Parameters: `encodings` ← [Node.js character encodings](../std/releases/0.33.0/docs/system.md#NodeEncodings) · `values` ← [Types of values](../std/releases/0.33.0/docs/algebra.md#ValueTypes) · `layout` ← [Project layout](conventions.md#Layout) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `pin` ← [The engine a project runs](generations.md#EnginePin) · `prelude` ← [Prelude](architecture.md#Prelude) · `names` ← [The language's names](conventions.md#LanguageNames) · `specifiers` ← [Node.js module specifiers](../std/releases/0.33.0/docs/system.md#NodeModuleSpecifiers) · `language` ← [TypeScript](typescript.md#TypeScript)
 - Body: `./code/engine/project.ts` (typescript)
 - Effects: read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
-- Used by: [trame dev](command-scenarios.md#DevFollowsTheGraph), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [Advance](commands.md#Advance), [An amendment prepared](commands.md#Amending), [Export the page](commands.md#Export), [Start a project](commands.md#Init), [Fill the registry](commands.md#Registry), [Release a version](commands.md#Release), [Write the manifest](commands.md#WriteManifest), [Compiler](#Compiler), [trame dev server](#DevServer), [The fingerprint of an engine](#EngineFingerprint), [Laws](#Laws), [Views](#Views), [The plan of a run elsewhere](shipping.md#ShipmentRunPlan)
+- Used by: [trame dev](command-scenarios.md#DevFollowsTheGraph), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [Advance](commands.md#Advance), [An amendment prepared](commands.md#Amending), [Export the page](commands.md#Export), [Start a project](commands.md#Init), [Preparation](commands.md#Preparation), [Fill the registry](commands.md#Registry), [Release a version](commands.md#Release), [Write the manifest](commands.md#WriteManifest), [Compiler](#Compiler), [trame dev server](#DevServer), [The fingerprint of an engine](#EngineFingerprint), [Laws](#Laws), [Views](#Views), [Watching a project](#Watching), [The plan of a run elsewhere](shipping.md#ShipmentRunPlan)
 - Verified by: [A library carries kinds](command-scenarios.md#KindsCarried), [The described engine compiles the example](scenarios.md#CompileExample)
 - Applies: [A library is a Trame project, imported by path](principles.md#LibrariesAreProjects), [A library is imported by its name](principles.md#LibrariesByName), [The prelude and the compiler know no kind of node](principles.md#NoKindInTheCore), [A package is used by its name](principles.md#PackagesByName), [Kinds and views: the vocabulary, as reviewed files](principles.md#VocabularyLayer)
 
@@ -437,12 +415,12 @@ Where the kinds and the views of a project are, and the libraries it imports (tr
 
 ### The runs of a project
 
-`ProjectRuns` · `src/engine.ts:304` · status: **held**
+`ProjectRuns` · `src/engine.ts:306` · status: **held**
 
 A run kept under the fingerprint of what it ran and of the files the project reads as they are, except those the code of its nodes covers (the fingerprint of what each run wires tells them apart): changing a body plays again only the runs that wire it. Where the runs are kept is a port of its own: in the process, or on disk beyond it.
 
 - Owner: trame
-- Parameters: `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `hashing` ← [Hashing](architecture.md#Hashing) · `sha256` ← [SHA-256](../std/releases/0.31.0/docs/algorithms.md#Sha256) · `encodings` ← [Node.js character encodings](../std/releases/0.31.0/docs/system.md#NodeEncodings) · `scope` ← [What tells a project's runs apart](#KeptRunsScope) · `store` ← [Where runs are kept](architecture.md#RunStore)
+- Parameters: `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `hashing` ← [Hashing](architecture.md#Hashing) · `sha256` ← [SHA-256](../std/releases/0.33.0/docs/algorithms.md#Sha256) · `encodings` ← [Node.js character encodings](../std/releases/0.33.0/docs/system.md#NodeEncodings) · `scope` ← [What tells a project's runs apart](#KeptRunsScope) · `store` ← [Where runs are kept](architecture.md#RunStore)
 - Body: `./code/engine/kept-runs.ts` (typescript)
 - Effects: keeps, read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
@@ -454,12 +432,12 @@ A run kept under the fingerprint of what it ran and of the files the project rea
 
 ### References
 
-`References` · `src/engine.ts:47` · status: **held**
+`References` · `src/engine.ts:48` · status: **held**
 
 Reads a reference ("module.Identifier") and a path in a field ("value.case"), following the syntax of the language; names a library's module in the graph that imports it ("std/algebra"), and says which library a module belongs to.
 
 - Owner: trame
-- Parameters: `syntax` ← [Trame references](../std/releases/0.31.0/docs/engine.md#ReferenceSyntax) · `libraryOf` ← [What belongs to a library](libraries.md#LibraryOfAModule) · `values` ← [Types of values](../std/releases/0.31.0/docs/algebra.md#ValueTypes)
+- Parameters: `syntax` ← [Trame references](../std/releases/0.33.0/docs/engine.md#ReferenceSyntax) · `libraryOf` ← [What belongs to a library](libraries.md#LibraryOfAModule) · `values` ← [Types of values](../std/releases/0.33.0/docs/algebra.md#ValueTypes)
 - Body: inline, in the declaration
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Used by: [A published value changed](command-scenarios.md#PublishedValueChanged), [An amendment prepared](commands.md#Amending), [Preparation](commands.md#Preparation), [Compilation API](#CompilationApi), [Compiler](#Compiler), [Graph](#GraphApi), [Laws](#Laws), [Lock](#Lock), [Static reading](#StaticAnalysis), [EngineReckons](scenarios.md#EngineReckons)
@@ -470,12 +448,12 @@ Reads a reference ("module.Identifier") and a path in a field ("value.case"), fo
 
 ### A shipment's pipeline
 
-`ShipmentPipeline` · `src/engine.ts:386` · status: **held**
+`ShipmentPipeline` · `src/engine.ts:388` · status: **held**
 
 The steps trame ship runs for a shipment, computed once, which the views show: each artefact produced (by what, where it lives, as the artefact's kind says), each check a program makes and the artefacts it reads, each obligation to prove, each entry point that deploys, in order, then the dossier; and what keeps it from running (an artefact that says nowhere where it lives, programs to run with no environment to assemble them for).
 
 - Owner: trame
-- Parameters: `sequences` ← [Sequences](../std/releases/0.31.0/docs/algebra.md#Sequences) · `values` ← [Types of values](../std/releases/0.31.0/docs/algebra.md#ValueTypes) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
+- Parameters: `sequences` ← [Sequences](../std/releases/0.33.0/docs/algebra.md#Sequences) · `values` ← [Types of values](../std/releases/0.33.0/docs/algebra.md#ValueTypes) · `messages` ← [Messages of the commands](messages.md#CommandMessages)
 - Body: `./code/engine/pipeline.ts` (typescript)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Verified by: [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [Stages shipped in order](command-scenarios.md#StagesShipped)
@@ -485,7 +463,7 @@ The steps trame ship runs for a shipment, computed once, which the views show: e
 
 ### Static reading
 
-`StaticAnalysis` · `src/engine.ts:185` · status: **held**
+`StaticAnalysis` · `src/engine.ts:186` · status: **held**
 
 The TypeScript compiler reads the sources without running them: titles, lines, properties, references, type errors. A program read again in the same process, every file the compiler read as it was, gives the reading kept.
 
@@ -494,7 +472,7 @@ The TypeScript compiler reads the sources without running them: titles, lines, p
 | `commandDepth` | `3` | How deep the type of a cast is searched for a command: itself, a member or what a function gives, and one step further |
 
 - Owner: trame
-- Parameters: `specifiers` ← [Node.js module specifiers](../std/releases/0.31.0/docs/system.md#NodeModuleSpecifiers) · `syntax` ← [The syntax of the programs Trame writes](typescript.md#TypeScriptSyntax) · `references` ← [References](#References) · `file` ← [Text file](../std/releases/0.31.0/docs/text.md#TextFile) · `options` ← [Options of the static reading](#TypeScriptOptions) · `ts` ← [TypeScript compiler](architecture.md#TypeScriptCompiler) · `kept` ← [Results kept](architecture.md#KeptResults) · `runs` ← [Where runs are kept](architecture.md#RunStore) · `hashing` ← [Hashing](architecture.md#Hashing) · `sha256` ← [SHA-256](../std/releases/0.31.0/docs/algorithms.md#Sha256) · `encodings` ← [Node.js character encodings](../std/releases/0.31.0/docs/system.md#NodeEncodings) · `paths` ← [Paths](architecture.md#Paths) · `positions` ← [Positions](#Positions) · `docComment` ← [Documentation comment](conventions.md#DocComment) · `counts` ← [Counts](../std/releases/0.31.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.31.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.31.0/docs/algebra.md#Texts) · `messages` ← [Messages of the compiler](messages.md#CompilerMessages) · `textAsCode` ← [Text run as code](../std/releases/0.31.0/docs/ecmascript.md#TextAsCode) · `libraries` ← [TypeScript's libraries of types](typescript.md#TypeScriptLibraries) · `prelude` ← [The prelude's public API](conventions.md#PreludeApi) · `running` ← [Prelude](architecture.md#Prelude)
+- Parameters: `specifiers` ← [Node.js module specifiers](../std/releases/0.33.0/docs/system.md#NodeModuleSpecifiers) · `syntax` ← [The syntax of the programs Trame writes](typescript.md#TypeScriptSyntax) · `references` ← [References](#References) · `file` ← [Text file](../std/releases/0.33.0/docs/text.md#TextFile) · `options` ← [Options of the static reading](#TypeScriptOptions) · `ts` ← [TypeScript compiler](architecture.md#TypeScriptCompiler) · `kept` ← [Results kept](architecture.md#KeptResults) · `runs` ← [Where runs are kept](architecture.md#RunStore) · `hashing` ← [Hashing](architecture.md#Hashing) · `sha256` ← [SHA-256](../std/releases/0.33.0/docs/algorithms.md#Sha256) · `encodings` ← [Node.js character encodings](../std/releases/0.33.0/docs/system.md#NodeEncodings) · `paths` ← [Paths](architecture.md#Paths) · `positions` ← [Positions](#Positions) · `docComment` ← [Documentation comment](conventions.md#DocComment) · `counts` ← [Counts](../std/releases/0.33.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.33.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.33.0/docs/algebra.md#Texts) · `messages` ← [Messages of the compiler](messages.md#CompilerMessages) · `textAsCode` ← [Text run as code](../std/releases/0.33.0/docs/ecmascript.md#TextAsCode) · `libraries` ← [TypeScript's libraries of types](typescript.md#TypeScriptLibraries) · `prelude` ← [The prelude's public API](conventions.md#PreludeApi) · `running` ← [Prelude](architecture.md#Prelude)
 - Body: `./code/engine/static-analysis.ts` (typescript)
 - Effects: keeps, read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
@@ -506,12 +484,12 @@ The TypeScript compiler reads the sources without running them: titles, lines, p
 
 ### Views
 
-`Views` · `src/engine.ts:334` · status: **held**
+`Views` · `src/engine.ts:336` · status: **held**
 
 Loads them, lists their instances, runs them under their laws.
 
 - Owner: trame
-- Parameters: `drivers` ← [Drivers](languages.md#Drivers) · `rank` ← [Default rank](conventions.md#DefaultRank) · `groupOrder` ← [Order of the view groups](conventions.md#ViewGroupOrder) · `ids` ← [Names of the documents](conventions.md#DocumentIds) · `uri` ← [URI](../std/releases/0.31.0/docs/web.md#Uri) · `layout` ← [Project layout](conventions.md#Layout) · `loader` ← [Module loader](architecture.md#ModuleLoader) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `prelude` ← [Prelude](architecture.md#Prelude) · `project` ← [Project](#Project) · `output` ← [Messages of the outputs](messages.md#OutputMessages) · `messages` ← [Messages of the views](messages.md#ViewMessages) · `declaration` ← [Complete declaration of a view](laws.md#CompleteViewDeclaration) · `answers` ← [Answers without crashing](laws.md#AnswersWithoutCrashing) · `same` ← [Same input, same answer](laws.md#SameInputSameAnswer) · `serial` ← [Produces only the intermediate format](laws.md#IntermediateFormatOnly)
+- Parameters: `drivers` ← [Drivers](languages.md#Drivers) · `rank` ← [Default rank](conventions.md#DefaultRank) · `groupOrder` ← [Order of the view groups](conventions.md#ViewGroupOrder) · `ids` ← [Names of the documents](../libs/documents/releases/0.5.1/docs/rendering.md#DocumentIds) · `uri` ← [URI](../std/releases/0.33.0/docs/web.md#Uri) · `layout` ← [Project layout](conventions.md#Layout) · `loader` ← [Module loader](architecture.md#ModuleLoader) · `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `prelude` ← [Prelude](architecture.md#Prelude) · `project` ← [Project](#Project) · `output` ← [Messages of the outputs](messages.md#OutputMessages) · `messages` ← [Messages of the views](messages.md#ViewMessages) · `declaration` ← [Complete declaration of a view](laws.md#CompleteViewDeclaration) · `answers` ← [Answers without crashing](laws.md#AnswersWithoutCrashing) · `same` ← [Same input, same answer](laws.md#SameInputSameAnswer) · `serial` ← [Produces only the intermediate format](laws.md#IntermediateFormatOnly)
 - Body: `./code/engine/views.ts` (typescript)
 - Effects: execution, keeps, read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
@@ -519,16 +497,32 @@ Loads them, lists their instances, runs them under their laws.
 - Applies: [The laws are requirements](#LawsAreRequirements), [The language receives the graph's values](#TheLanguageReceivesTheGraph), [The traversal API is the only way to read the graph](principles.md#OneWayToRead), [Kinds and views: the vocabulary, as reviewed files](principles.md#VocabularyLayer)
 - Verified by: [The build writes the same documents as the engine in place](scenarios.md#BuildLikeBefore)
 
+<a id="Watching"></a>
+
+### Watching a project
+
+`Watching` · `src/engine.ts:491` · status: **held**
+
+Each file a build reads that changes, from the project's root: its sources, its kinds and views, its evidence, its lock; what an editor leaves aside. What trame dev follows, and what the engine's API gives (since g136).
+
+- Owner: trame
+- Parameters: `reading` ← [File reading](architecture.md#FileReading) · `paths` ← [Paths](architecture.md#Paths) · `layout` ← [Project layout](conventions.md#Layout) · `project` ← [Project](#Project) · `leftovers` ← [Files an editor leaves](#EditorLeftovers) · `texts` ← [Texts](../std/releases/0.33.0/docs/algebra.md#Texts)
+- Body: `./code/engine/watching.ts` (typescript)
+- Effects: read
+- Serves: [A specification that runs](product.md#ExecutableSpecification)
+- Verified by: [trame dev](command-scenarios.md#DevFollowsTheGraph)
+- Used by: [Preparation](commands.md#Preparation), [trame dev server](#DevServer)
+
 <a id="Wiring"></a>
 
 ### Wiring
 
-`Wiring` · `src/engine.ts:204` · status: **held**
+`Wiring` · `src/engine.ts:205` · status: **held**
 
 The plan: what to build, in which order, with which implementation for each port; then its execution.
 
 - Owner: trame
-- Parameters: `steps` ← [Names of steps](conventions.md#StepNames) · `references` ← [Trame references](../std/releases/0.31.0/docs/engine.md#ReferenceSyntax) · `values` ← [Types of values](../std/releases/0.31.0/docs/algebra.md#ValueTypes) · `layout` ← [Project layout](conventions.md#Layout) · `paths` ← [Paths](architecture.md#Paths) · `prelude` ← [Prelude](architecture.md#Prelude) · `drivers` ← [Drivers](languages.md#Drivers) · `sequences` ← [Sequences](../std/releases/0.31.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.31.0/docs/algebra.md#Texts) · `messages` ← [Messages of the compiler](messages.md#CompilerMessages)
+- Parameters: `steps` ← [Names of steps](conventions.md#StepNames) · `references` ← [Trame references](../std/releases/0.33.0/docs/engine.md#ReferenceSyntax) · `values` ← [Types of values](../std/releases/0.33.0/docs/algebra.md#ValueTypes) · `layout` ← [Project layout](conventions.md#Layout) · `paths` ← [Paths](architecture.md#Paths) · `prelude` ← [Prelude](architecture.md#Prelude) · `drivers` ← [Drivers](languages.md#Drivers) · `sequences` ← [Sequences](../std/releases/0.33.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.33.0/docs/algebra.md#Texts) · `messages` ← [Messages of the compiler](messages.md#CompilerMessages)
 - Body: `./code/engine/wiring.ts` (typescript)
 - Effects: execution, keeps, read
 - Serves: [A specification that runs](product.md#ExecutableSpecification)

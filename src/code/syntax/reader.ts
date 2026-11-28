@@ -12,7 +12,7 @@ import type { NodeEncodings } from "#std/system"
 import type { TreeSitterApi } from "../../standards"
 import type { BodySource, Captures, GlobalRead, ImportRead, LiteralCategories, LiteralDisplay, LiteralRead, LiteralRoles, Pattern, Reading } from "../../syntax"
 import type { Counts, Sequences, Texts } from "#std/algebra"
-import type { Escapes, ExampleReading, LanguageDescription } from "../../../trame/kernel"
+import type { Escapes, ExampleReading, LanguageDescription, TextReading } from "../../../trame/kernel"
 
 export interface Deps {
   trees: SyntaxTrees
@@ -391,6 +391,12 @@ const body = (deps: Deps) => {
       }
       kept.set(id, reading)
       return reading
+    },
+
+    /** A text written in the language, read back once, nothing kept (since g136): the names it reads and declares, where it breaks the grammar. */
+    readText(language: LanguageDescription, text: string): TextReading {
+      const r = read(language, text)
+      return { parameters: r.parameters.map((x) => x.name), outputs: r.outputs.map((x) => x.name), errors: r.errors }
     },
   }
 }

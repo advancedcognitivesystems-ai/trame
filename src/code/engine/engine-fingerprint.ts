@@ -2,6 +2,7 @@
 // programs, its graph and its code), and what evidence names it by (its graph and its code, and its libraries'), which
 // the advance records beside a generation it freezes; the engine that runs knows its own from where its program is.
 
+import type { ReferenceSyntax } from "#std/engine"
 import type { ProvidedBy } from "../../../trame/kernel"
 import type { FileReading, Hashing, Layout, Paths } from "../../architecture"
 import type { NodeEncodings } from "#std/system"
@@ -27,6 +28,8 @@ export interface Deps {
   sequences: ProvidedBy<typeof Sequences>
   texts: ProvidedBy<typeof Texts>
   values: ProvidedBy<typeof ValueTypes>
+  /** How a library's component is named by its reference (the page's): the program is named by its name. */
+  references: ProvidedBy<typeof ReferenceSyntax>
 }
 
 const body = (deps: Deps) => {
@@ -38,7 +41,7 @@ const body = (deps: Deps) => {
 
   /** A component's program under a directory, as the assembly names it. */
   const programOf = (component: string, environment: string) => (base: string) =>
-    join(base, layout.output, lowerWords(environment, layout.wordJoint), lowerWords(component, layout.wordJoint) + optional(head(deps.language.extensions)))
+    join(base, layout.output, lowerWords(environment, layout.wordJoint), lowerWords(optional(deps.sequences.last(component.split(deps.references.separator))), layout.wordJoint) + optional(head(deps.language.extensions)))
   const programIn = programOf(advancement.component, advancement.environment)
   const pageIn = programOf(advancement.page.component, advancement.page.environment)
   const hash = (data: string | Buffer) => hashing.createHash(sha256.algorithm).update(data).digest(encodings.hex)

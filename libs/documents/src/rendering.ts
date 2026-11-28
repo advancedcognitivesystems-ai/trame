@@ -7,13 +7,14 @@ import { port } from "#trame/kinds/port"
 import { decision } from "#trame/kinds/decision"
 import { catalog } from "#trame/kinds/catalog"
 import { adr } from "#trame/kinds/adr"
+import { standard } from "#trame/kinds/standard"
 import { ReferenceSyntax } from "#std/engine"
 import { AnswerFormats } from "#std/tooling"
 import { MediaTypes } from "#std/web"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
-import { RenderedOnce } from "./product"
+import { RenderedOnce, ShownInAPage } from "./product"
 import { Dates, Lists, Punctuation, Units, WordsLanguage } from "./language"
-import { Palette } from "./appearance"
+import { Palette, GraphDrawing, TimelineDrawing, LegendDrawing } from "./appearance"
 import {
   Blocks, Heading, ListItem, BlockQuote, CodeBlock, Emphasis, StrongEmphasis, CodeSpan, Link, RelativeReference,
   TableCell, Table, Anchor, Details, Small,
@@ -23,6 +24,11 @@ import {
   Gantt, GanttSection, GanttTask, Milestone,
 } from "./mermaid"
 import { TerminalText, TerminalColumns, PaddedCell, Columns, ItemLine, CodeLines, TerminalLines, TreeBranch, PathStep } from "./text"
+import { HtmlElement, HtmlHeading, EscapedText, SelfClosingTag, PathData, CssDeclaration } from "./html"
+import { DocumentMarkup, FigureMarkup } from "./markup"
+import { ThePage, PageWords } from "./page"
+import { Html, Svg, Aria, Css } from "#std/html"
+import { Iso8601 } from "#std/measures"
 
 type Direction = Parameters<ProvidedBy<typeof Flowchart>>[0]
 type Stroke = Parameters<ProvidedBy<typeof MermaidLink>>[2]
@@ -30,10 +36,10 @@ type Style = Parameters<ProvidedBy<typeof StyleProperties>>[0]
 
 // A document is rendered by one renderer, whatever its format: it walks the blocks of the intermediate format, says
 // each piece in words (a value, a status, the sentence of an overlap) and finds where each reference leads; how a piece
-// is written is the syntax's, a port. Markdown and the terminal's text are two realizations of it, here; a project
-// writes others (Trame's page, in HTML) for the ports it declares. The figures are a second port, which each syntax
-// reaches: syntax and figures are chosen apart (Bridge). The renderer receives only the intermediate format: what the
-// views of a graph give, never the graph.
+// is written is the syntax's, a port. Markdown, the terminal's text and the page's HTML (since 0.5.0) are three
+// realizations of it, here; a project writes others for the ports it declares. The figures are a second port, which
+// each syntax reaches: syntax and figures are chosen apart (Bridge). The renderer receives only the intermediate format:
+// what the views of a graph give, never the graph.
 
 /**
  * Places in a sentence
@@ -356,6 +362,85 @@ export const TerminalRendering = fn({
   body: ({ rendering, syntax }) => rendering(syntax),
 })
 
+// The page (documents 0.5.0) ---------------------------------------------------------------------------------------
+
+/**
+ * Names of the documents
+ * How a document of a view is named: a view of the whole graph by its name; a view of a module by its name and the
+ * module ("layers.engine"), except the first view per module, named by the module alone; a view of a node by its name
+ * and the reference of the node ("impact:engine.Compiler"), which the page reads back to show it.
+ */
+export const DocumentIds = standard({
+  owner: "trame",
+  source: "Trame, the documents of its views (the engine names them, the page reads them)",
+  serves: [ShownInAPage],
+  constants: {
+    ofModule: { value: ".", meaning: "Between the name of a view and the module it shows" },
+    ofNode: { value: ":", meaning: "Between the name of a view and the reference of the node it shows" },
+  },
+})
+
+/**
+ * Syntax of the page
+ * What the page shows a document in, formatted: the engine writes it, the page puts it in place.
+ */
+export const PageSyntax = port<DocumentSyntax>({ owner: "trame", declaredEffects: [] })
+
+/**
+ * Figures of the page
+ */
+export const PageFigures = port<FigureSyntax>({ owner: "trame", declaredEffects: [] })
+
+/**
+ * Figures in SVG
+ * A figure of the page, drawn: a graph layer under layer, its nodes under their neighbours, with its legend; a timeline
+ * as lanes of bars and marks under the months. A graph too large to be read whole is left to the page, which explores
+ * it: its place carries the figure's index in the document.
+ */
+export const SvgFigures = fn({
+  owner: "trame",
+  implements: [PageFigures],
+  serves: [ShownInAPage],
+  deps: {
+    html: Html, svg: Svg, aria: Aria, css: Css, markup: DocumentMarkup, figures: FigureMarkup, page: ThePage,
+    graph: GraphDrawing, timeline: TimelineDrawing, legend: LegendDrawing,
+    element: HtmlElement, empty: SelfClosingTag, path: PathData, declaration: CssDeclaration, escape: EscapedText,
+    common: Common, dates: Dates, words: PageWords, messages: RenderingMessages, punctuation: Punctuation, iso: Iso8601,
+    counts: Counts, sequences: Sequences, texts: Texts,
+  },
+  body: code.file<typeof import("./code/rendering/svg-figures").default>("./code/rendering/svg-figures.ts"),
+})
+
+/**
+ * HTML writer
+ * A document as the page shows it: the elements of HTML, with the classes and attributes that the page's style sheet
+ * and its script know ("Documents in the page"). Its text is escaped; a sentence of the catalog that holds pieces is
+ * escaped around them.
+ */
+export const HtmlSyntax = fn({
+  owner: "trame",
+  implements: [PageSyntax],
+  serves: [ShownInAPage],
+  deps: { figures: PageFigures,
+    html: Html, markup: DocumentMarkup, page: ThePage, element: HtmlElement, heading: HtmlHeading, escape: EscapedText,
+    punctuation: Punctuation, slots: SentenceSlots,
+    counts: Counts, texts: Texts, messages: RenderingMessages,
+  },
+  body: code.file<typeof import("./code/rendering/html").default>("./code/rendering/html.ts"),
+})
+
+/**
+ * Rendering in the page
+ * Each document formatted for the page, and the changes the page announces: the library's renderer, in the syntax of
+ * the page.
+ */
+export const PageRendering = fn({
+  owner: "trame",
+  serves: [ShownInAPage],
+  deps: { rendering: Rendering, syntax: PageSyntax },
+  body: ({ rendering, syntax }) => rendering(syntax),
+})
+
 /**
  * One renderer, its syntax a choice
  * A document is rendered by one renderer, which says each piece in words and finds where references lead; the syntax
@@ -364,13 +449,13 @@ export const TerminalRendering = fn({
 export const OneRendererManySyntaxes = adr({
   owner: "trame",
   context: "Markdown, the terminal and the page each had their renderer: three walks of the same blocks, three ways of saying a status or an overlap, and the page's outside the graph.",
-  consequences: "The words of a document are said once, by the renderer; a new format is a realization of a syntax port and a choice, without touching the renderer. Syntax and figures vary apart: Markdown with figures as text is two choices, not a new renderer. A project that declares a port of its own for another audience (Trame's page) gives the same renderer its syntax.",
+  consequences: "The words of a document are said once, by the renderer; a new format is a realization of a syntax port and a choice, without touching the renderer. Syntax and figures vary apart: Markdown with figures as text is two choices, not a new renderer. A project that declares a port of its own for another audience gives the same renderer its syntax, as the page does (since 0.5.0).",
   rejected: {
     "A renderer per format": "the walk and the words repeated, and drifting",
     "Figures in each syntax": "a syntax and a way of drawing tied together, which no longer vary apart",
   },
   serves: [RenderedOnce],
-  appliedBy: [Rendering, FileRendering, TerminalRendering, MarkdownSyntax, PlainTextSyntax, MermaidDiagrams, TextFigures],
+  appliedBy: [Rendering, FileRendering, TerminalRendering, PageRendering, MarkdownSyntax, PlainTextSyntax, HtmlSyntax, MermaidDiagrams, TextFigures, SvgFigures],
 })
 
 // The formats a command's documents are written in (documents 0.4.0) -----------------------------------------------

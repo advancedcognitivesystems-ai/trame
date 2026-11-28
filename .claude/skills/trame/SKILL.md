@@ -94,6 +94,10 @@ The repository's `AGENTS.md` is the full guide; read it first, then keep to this
   its launcher (`<name>.node.ts`, g99), which leads the names the same way before it runs the program. A reference
   behind the newest version its origin holds is warned: `trame upgrade [package…]` moves it, then runs the manifest,
   which installs the packages when the lockfile disagrees (g100); commit the lockfile, a CI installs with `npm ci`.
+- The page is libs/documents' (documents 0.5.0): `Page`, its look, its words and its program `PageApp`, offered (no
+  environment): a project assembles it for its browser environment with the browser's realizations the library offers;
+  the engine bundles it (`TheProject.page()`). `trame payload`, `export` and `dev` are libs/commands' (0.5.0), on the
+  engine's API (g136–g137) and std's `running` ports. Change the page in libs/documents, never in Trame.
 - A command declares its line in its trigger (`command("view", { help, arguments, options })`): std reads it, hands
   the body `arguments` and `options` by name, and writes an answer of documents (`{ documents, places? }`) in the format
   `--format` names (std's option of every command, formats chosen on `AnswerFormats`). Never declare `--format` again.

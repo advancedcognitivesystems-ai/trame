@@ -36,7 +36,8 @@ British English: the library's catalogs are written in it, the language Trame's 
 
 - Decided by: trame
 - Rejected: std's language of its commands, a choice of std's, which may change for std's reasons
-- Language of: [Words of the renderers](rendering.md#RenderingMessages), [What the scenarios check](scenarios.md#ScenarioWords)
+- Language of: [Words of the page](page.md#PageWords), [Words of the renderers](rendering.md#RenderingMessages), [What the scenarios check](scenarios.md#ScenarioWords)
+- Used by: [Words of the page](page.md#PageWords)
 
 ## Port
 
@@ -55,7 +56,7 @@ The language the documents are written in, which the views speak: its tag and it
 | [Test](../.trame/std/docs/scenarios.md#Test) | none | — |
 
 - Owner: trame
-- Used by: [Dates](#Dates), [Lists](#Lists), [Punctuation](#Punctuation)
+- Used by: [Show the graph](browser.md#ShowGraph), [Dates](#Dates), [Lists](#Lists), [Punctuation](#Punctuation), [Page](page.md#Page)
 - Implemented by: [Written in the language of the scenarios](scenarios.md#WrittenForTheScenarios)
 
 ## Functions
@@ -72,7 +73,7 @@ Writes a date of the graph (an ISO day, "2026-10-17") as people read it in the l
 - Parameters: `language` ← [The language of the documents](#DocumentLanguage)
 - Body: inline, in the declaration
 - Serves: [Documents rendered once, for every project](product.md#RenderedOnce)
-- Used by: [Common rendering](rendering.md#Common), [Mermaid diagrams](rendering.md#MermaidDiagrams), [Figures as text](rendering.md#TextFigures), [The language of the documents, written](scenarios.md#LanguageWritten)
+- Used by: [Common rendering](rendering.md#Common), [Mermaid diagrams](rendering.md#MermaidDiagrams), [Figures in SVG](rendering.md#SvgFigures), [Figures as text](rendering.md#TextFigures), [The language of the documents, written](scenarios.md#LanguageWritten)
 - Verified by: [The language of the documents, written](scenarios.md#LanguageWritten)
 - Applies: [The documents speak the engine's language](scenarios.md#TheEnginesLanguage)
 
@@ -104,7 +105,7 @@ The marks of the language of the documents that separate the parts of a line, th
 - Parameters: `language` ← [The language of the documents](#DocumentLanguage)
 - Body: inline, in the declaration
 - Serves: [Documents rendered once, for every project](product.md#RenderedOnce)
-- Used by: [Markdown writer](rendering.md#MarkdownSyntax), [Plain text writer](rendering.md#PlainTextSyntax), [Figures as text](rendering.md#TextFigures), [The language of the documents, written](scenarios.md#LanguageWritten)
+- Used by: [Explorer of a graph](browser.md#ExplorerFigures), [Show the graph](browser.md#ShowGraph), [HTML writer](rendering.md#HtmlSyntax), [Markdown writer](rendering.md#MarkdownSyntax), [Plain text writer](rendering.md#PlainTextSyntax), [Figures in SVG](rendering.md#SvgFigures), [Figures as text](rendering.md#TextFigures), [The language of the documents, written](scenarios.md#LanguageWritten)
 - Verified by: [The language of the documents, written](scenarios.md#LanguageWritten)
 - Applies: [The documents speak the engine's language](scenarios.md#TheEnginesLanguage)
 

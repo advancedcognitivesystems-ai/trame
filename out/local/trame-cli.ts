@@ -4,37 +4,36 @@
 // It does not compile the graph at startup. No dated change of the graph after its date reaches it.
 
 import { frozen } from "../../trame/internal"
-import { CommandWords } from "../../libs/commands/releases/0.4.0/src/commands.ts"
-import { EscapedText, HtmlAttributes, HtmlElement, HtmlEndTag, HtmlHeading, HtmlStartTag, SelfClosingTag } from "../../libs/documents/releases/0.4.0/src/html.ts"
-import { Dates, Lists, Punctuation, Units } from "../../libs/documents/releases/0.4.0/src/language.ts"
-import { Anchor, BacktickString, BlankLine, BlockQuote, Blocks, CodeBlock, CodeSpan, Details, Emphasis, Heading, Link, ListItem, RelativeReference, Small, StrongEmphasis, Table, TableCell, TableDelimiterRow, TableRow } from "../../libs/documents/releases/0.4.0/src/markdown.ts"
-import { ClassDefinition, Flowchart, Gantt, GanttName, GanttSection, GanttTask, MermaidLabel, MermaidLink, MermaidNode, Milestone, NodeStyle, StyleProperties, Subgraph } from "../../libs/documents/releases/0.4.0/src/mermaid.ts"
-import { FileRendering, TerminalRendering } from "../../libs/documents/releases/0.4.0/src/rendering.ts"
-import { CodeLines, Columns, ItemLine, PaddedCell, PathStep, TerminalLines, TreeBranch } from "../../libs/documents/releases/0.4.0/src/text.ts"
+import { CommandWords } from "../../libs/commands/releases/0.5.0/src/commands.ts"
+import { AttributeSelector, ClassSelector, CssDeclaration, CssRule, CssVariable, CustomProperty, Doctype, EscapedText, GlobalAssignment, HtmlAttributes, HtmlBlock, HtmlElement, HtmlEndTag, HtmlHeading, HtmlStartTag, JsonInScript, MediaFeature, MediaRule, NegationSelector, PathData, ScriptElement, SelfClosingTag } from "../../libs/documents/releases/0.5.1/src/html.ts"
+import { Dates, Lists, Punctuation, Units } from "../../libs/documents/releases/0.5.1/src/language.ts"
+import { Anchor, BacktickString, BlankLine, BlockQuote, Blocks, CodeBlock, CodeSpan, Details, Emphasis, Heading, Link, ListItem, RelativeReference, Small, StrongEmphasis, Table, TableCell, TableDelimiterRow, TableRow } from "../../libs/documents/releases/0.5.1/src/markdown.ts"
+import { ClassDefinition, Flowchart, Gantt, GanttName, GanttSection, GanttTask, MermaidLabel, MermaidLink, MermaidNode, Milestone, NodeStyle, StyleProperties, Subgraph } from "../../libs/documents/releases/0.5.1/src/mermaid.ts"
+import { Banner, Brand, CompilationState, DatePicker, DocumentHead, DocumentPicker, FigureMarkers, FontLinks, Logo, MainArea, NarrowScreenRule, Navigation, PageDocument, PageScripts, RenderingToggle, Shell, SideBar, StatusStyle, Theme } from "../../libs/documents/releases/0.5.1/src/page.ts"
+import { FileRendering, PageRendering, TerminalRendering } from "../../libs/documents/releases/0.5.1/src/rendering.ts"
+import { CodeLines, Columns, ItemLine, PaddedCell, PathStep, TerminalLines, TreeBranch } from "../../libs/documents/releases/0.5.1/src/text.ts"
 import { TrameCli } from "../../src/architecture.ts"
 import { DeliveredStyle } from "../../src/delivery.ts"
 import { Asking, ClockAnswers, FilesAnswer, InstallerAnswers, ProgramsAnswer, RegistryAnswers, RunsAnswer, ServerAnswers, TimerAnswers, TreesAnswer } from "../../src/doctor.ts"
 import { OurDocumentLanguage, VisibleText } from "../../src/documents.ts"
 import { Positions, References } from "../../src/engine.ts"
 import { AcceptCandidate } from "../../src/generations.ts"
-import { AttributeSelector, ClassSelector, CssDeclaration, CssRule, CssVariable, CustomProperty, Doctype, HtmlBlock, JsonInScript, MediaFeature, MediaRule, NegationSelector, PathData, ScriptElement } from "../../src/html.ts"
 import { AnswersWithoutCrashing, BlockingHoleHasOwner, ClosedResolution, CompleteDeclaration, CompleteViewDeclaration, HoleHasCode, IntermediateFormatOnly, OrderFree, SameInputSameAnswer, UnknownWithoutEvidence } from "../../src/laws.ts"
 import { LibraryOfAModule, ReleaseIsSettled } from "../../src/libraries.ts"
 import { AdvanceMessages, CommandMessages, CompilerMessages, DevMessages, DriverMessages, LawMessages, OutputMessages, PlatformMessages, ViewMessages } from "../../src/messages.ts"
 import { VersionOrder } from "../../src/packages.ts"
-import { Banner, Brand, CompilationState, DatePicker, DocumentHead, DocumentPicker, FigureMarkers, FontLinks, Logo, MainArea, NarrowScreenRule, Navigation, PageDocument, PageScripts, RenderingToggle, Shell, SideBar, StatusStyle, Theme } from "../../src/page.ts"
 import { SeverityOrder } from "../../src/product.ts"
-import { PageRendering } from "../../src/rendering.ts"
 import { ShipOnlyWhatHolds } from "../../src/shipping.ts"
 import { LiteralRoles } from "../../src/syntax.ts"
 import { HclAttribute, HclComment, HclString, HclValue, ModuleBlock } from "../../src/terraform.ts"
 import { ArrayLiteral, AsExpression, Assignment, AsyncBlockFunction, Await, Call, ConstDeclaration, DefaultImport, DocBlock, ExportDeclaration, IfStatement, InlineArray, LineComment, MemberAccess, ModuleTitle, NamedImport, ObjectBlock, ObjectLiteral, ObjectType, OptionalAccess, OptionalPropertySignature, Parenthesized, Property, StrictInequality, StringLiteral, UnionType } from "../../src/typescript.ts"
-import { LineWords } from "../../std/releases/0.31.0/src/tooling.ts"
+import { EngineWords } from "../../std/releases/0.33.0/src/engine.ts"
+import { LineWords } from "../../std/releases/0.33.0/src/tooling.ts"
 import body_nodeTerminal from "../../src/code/platform/terminal.ts"
 import body_nodeCommandLine from "../../src/code/platform/command-line.ts"
-import body_valueTypes from "../../std/releases/0.31.0/src/code/algebra/values.ts"
+import body_valueTypes from "../../std/releases/0.33.0/src/code/algebra/values.ts"
 import body_cycles from "../../src/code/engine/cycles.ts"
-import body_counts from "../../std/releases/0.31.0/src/code/algebra/counts.ts"
+import body_counts from "../../std/releases/0.33.0/src/code/algebra/counts.ts"
 import body_tramePrelude from "../../src/code/platform/prelude.ts"
 import body_tsxLoader from "../../src/code/platform/tsx-loader.ts"
 import body_diskReading from "../../src/code/platform/disk-reading.ts"
@@ -43,8 +42,8 @@ import body_realTypeScript from "../../src/code/platform/typescript.ts"
 import body_resultsInTheProcess from "../../src/code/platform/kept-results.ts"
 import body_project from "../../src/code/engine/project.ts"
 import body_nodeHashing from "../../src/code/platform/hashing.ts"
-import body_sequences from "../../std/releases/0.31.0/src/code/algebra/sequences.ts"
-import body_texts from "../../std/releases/0.31.0/src/code/algebra/texts.ts"
+import body_sequences from "../../std/releases/0.33.0/src/code/algebra/sequences.ts"
+import body_texts from "../../std/releases/0.33.0/src/code/algebra/texts.ts"
 import body_engineFingerprint from "../../src/code/engine/engine-fingerprint.ts"
 import body_runsOnDisk from "../../src/code/platform/runs-on-disk.ts"
 import body_staticAnalysis from "../../src/code/engine/static-analysis.ts"
@@ -72,17 +71,23 @@ import body_compilationApi from "../../src/code/engine/compilation-api.ts"
 import body_laws from "../../src/code/engine/laws.ts"
 import body_views from "../../src/code/engine/views.ts"
 import body_lock from "../../src/code/engine/lock.ts"
-import body_renderingMessages from "../../libs/documents/releases/0.4.0/src/code/rendering/messages.ts"
-import body_common from "../../libs/documents/releases/0.4.0/src/code/rendering/common.ts"
+import body_renderingMessages from "../../libs/documents/releases/0.5.1/src/code/rendering/messages.ts"
+import body_common from "../../libs/documents/releases/0.5.1/src/code/rendering/common.ts"
 import body_nodeProcess from "../../src/code/platform/process.ts"
 import body_systemClock from "../../src/code/platform/system-clock.ts"
 import body_projectCommands from "../../src/code/commands/project-commands.ts"
 import body_machineOutputs from "../../src/code/engine/machine.ts"
+import body_payloadBuilder from "../../src/code/engine/payload.ts"
+import body_dateBundle from "../../src/code/engine/date-bundle.ts"
+import body_watching from "../../src/code/engine/watching.ts"
+import body_pageResources from "../../src/code/platform/page-resources.ts"
+import body_esbuild from "../../src/code/platform/esbuild.ts"
+import body_pageScript from "../../src/code/page/script.ts"
 import body_preparation from "../../src/code/commands/preparation.ts"
 import body_nodePrograms from "../../src/code/platform/programs.ts"
 import body_releaseRecords from "../../src/code/commands/releases.ts"
 import body_advance from "../../src/code/commands/advance.ts"
-import body_buildComparison from "../../libs/commands/releases/0.4.0/src/code/comparison.ts"
+import body_buildComparison from "../../libs/commands/releases/0.5.0/src/code/comparison.ts"
 import body_amending from "../../src/code/commands/amending.ts"
 import body_inPlaceSources from "../../src/code/platform/in-place-sources.ts"
 import body_amend from "../../src/code/commands/amend.ts"
@@ -91,40 +96,39 @@ import body_assembler from "../../src/code/commands/assembler.ts"
 import body_assemble from "../../src/code/commands/assemble.ts"
 import body_npmReports from "../../src/code/platform/npm-reports.ts"
 import body_audit from "../../src/code/commands/audit.ts"
-import body_rendering from "../../libs/documents/releases/0.4.0/src/code/rendering/document.ts"
-import body_mermaidDiagrams from "../../libs/documents/releases/0.4.0/src/code/rendering/mermaid.ts"
-import body_markdownSyntax from "../../libs/documents/releases/0.4.0/src/code/rendering/markdown.ts"
-import body_textFigures from "../../libs/documents/releases/0.4.0/src/code/rendering/text-figures.ts"
-import body_plainTextSyntax from "../../libs/documents/releases/0.4.0/src/code/rendering/text.ts"
+import body_rendering from "../../libs/documents/releases/0.5.1/src/code/rendering/document.ts"
+import body_mermaidDiagrams from "../../libs/documents/releases/0.5.1/src/code/rendering/mermaid.ts"
+import body_markdownSyntax from "../../libs/documents/releases/0.5.1/src/code/rendering/markdown.ts"
+import body_textFigures from "../../libs/documents/releases/0.5.1/src/code/rendering/text-figures.ts"
+import body_plainTextSyntax from "../../libs/documents/releases/0.5.1/src/code/rendering/text.ts"
 import body_build from "../../src/code/commands/build.ts"
-import body_answersAtATerminal from "../../libs/documents/releases/0.4.0/src/code/rendering/answers-at-a-terminal.ts"
-import body_answersInMarkdown from "../../libs/documents/releases/0.4.0/src/code/rendering/answers-in-markdown.ts"
-import body_answersInJson from "../../std/releases/0.31.0/src/code/tooling/answers-in-json.ts"
-import body_viewRefused from "../../libs/commands/releases/0.4.0/src/code/view-refused.ts"
+import body_answersAtATerminal from "../../libs/documents/releases/0.5.1/src/code/rendering/answers-at-a-terminal.ts"
+import body_answersInMarkdown from "../../libs/documents/releases/0.5.1/src/code/rendering/answers-in-markdown.ts"
+import body_answersInJson from "../../std/releases/0.33.0/src/code/tooling/answers-in-json.ts"
+import body_viewRefused from "../../libs/commands/releases/0.5.0/src/code/view-refused.ts"
 import body_renderView from "../../src/code/commands/render-view.ts"
 import body_commandOrView from "../../src/code/commands/command-or-view.ts"
-import body_esbuild from "../../src/code/platform/esbuild.ts"
 import body_namesLed from "../../src/code/delivery/names-led.ts"
 import body_deliver from "../../src/code/commands/deliver.ts"
-import body_nodeTimer from "../../src/code/platform/timer.ts"
-import body_nodeHttpServer from "../../src/code/platform/http.ts"
-import body_dateBundle from "../../src/code/engine/date-bundle.ts"
-import body_differences from "../../src/code/engine/differences.ts"
-import body_pageResources from "../../src/code/platform/page-resources.ts"
-import body_nodeCompression from "../../src/code/platform/compression.ts"
-import body_page from "../../src/code/page/page.ts"
-import body_pageWords from "../../src/code/page/words.ts"
-import body_svgFigures from "../../src/code/rendering/svg-figures.ts"
-import body_htmlSyntax from "../../src/code/rendering/html.ts"
+import body_machineTimers from "../../std/releases/0.33.0/src/code/running/machine-timers.ts"
+import body_nodeHttpServing from "../../std/releases/0.33.0/src/code/running/node-http.ts"
+import body_payloadDifferences from "../../libs/commands/releases/0.5.0/src/code/differences.ts"
+import body_sheetsBesideTheLibrary from "../../libs/documents/releases/0.5.1/src/code/page/sheets.ts"
+import body_pageWords from "../../libs/documents/releases/0.5.1/src/code/page/words.ts"
+import body_readByTheEngine from "../../std/releases/0.33.0/src/code/engine/read-by-the-engine.ts"
+import body_page from "../../libs/documents/releases/0.5.1/src/code/page/page.ts"
+import body_svgFigures from "../../libs/documents/releases/0.5.1/src/code/rendering/svg-figures.ts"
+import body_htmlSyntax from "../../libs/documents/releases/0.5.1/src/code/rendering/html.ts"
 import body_devServer from "../../src/code/engine/dev-server.ts"
 import body_dev from "../../src/code/commands/dev.ts"
 import body_npmInstall from "../../src/code/platform/npm-install.ts"
 import body_addOns from "../../src/code/commands/add-ons.ts"
 import body_doctor from "../../src/code/commands/doctor.ts"
-import body_payloadBuilder from "../../src/code/engine/payload.ts"
+import body_sameAsToday from "../../libs/commands/releases/0.5.0/src/code/same-as-today.ts"
 import body_emitPayload from "../../src/code/commands/payload.ts"
 import body_exampleRewriting from "../../src/code/commands/example-rewriting.ts"
 import body_examples from "../../src/code/commands/examples.ts"
+import body_gzipInBase64 from "../../libs/documents/releases/0.5.1/src/code/page/gzip.ts"
 import body_export from "../../src/code/commands/export.ts"
 import body_help from "../../src/code/commands/help.ts"
 import body_referencesModule from "../../src/code/commands/references.ts"
@@ -193,7 +197,7 @@ const typeScriptApi = {"firstLine":0}
 // "Positions" · function
 const positions = await frozen.body(Positions)({ gnu: gnuPositions, typeScriptApi })
 // "Where the engine's own files are" · decision
-const engineFiles = {"prelude":"../../../trame/internal","preludeExtension":".ts","root":"../../../","pageStyle":"../page/page.css","narrowStyle":"../page/narrow.css"}
+const engineFiles = {"prelude":"../../../trame/internal","preludeExtension":".ts","root":"../../../"}
 // "Trame's prelude" · implementation, for "Prelude"
 const tramePrelude = await body_tramePrelude({ files: engineFiles })
 // "The language's names" · decision
@@ -217,7 +221,7 @@ const realTypeScript = await body_realTypeScript({})
 // "Results kept in the process" · implementation, for "Results kept"
 const resultsInTheProcess = await body_resultsInTheProcess({})
 // "What an advance assembles" · decision
-const advancement = {"component":"TrameCli","environment":"Local","page":{"component":"PageApp","environment":"Browser"},"terminal":"terminal.txt","saves":{"reference":"reference","candidate":"candidate","second":"second"},"shown":12}
+const advancement = {"component":"TrameCli","environment":"Local","page":{"component":"documents/browser.PageApp","environment":"Browser"},"terminal":"terminal.txt","saves":{"reference":"reference","candidate":"candidate","second":"second"},"shown":12}
 // "The engine a project runs" · decision
 const enginePin = {"key":"engine"}
 // "Project" · function
@@ -237,7 +241,7 @@ const sequences = await body_sequences({ ecma: ecmaScript, counts })
 // "Texts" · algebraic structure
 const texts = await body_texts({ empty: "", space: " ", ellipsis: "…", wordBoundary: "(\\p{Ll}|\\p{Nd})(\\p{Lu})", everyWord: "gu", sequences })
 // "The fingerprint of an engine" · function
-const engineFingerprint = await body_engineFingerprint({ layout, advancement, language: typeScript, project, reading: frozen.limited(diskReading, ["existsSync","readFileSync","readdirSync","statSync"]), paths: frozen.limited(nodePaths, ["dirname","join","relative"]), hashing: frozen.limited(nodeHashing, ["createHash"]), sha256, encodings: nodeEncodings, fingerprint, json: jsonFormatting, sequences, texts, values: valueTypes })
+const engineFingerprint = await body_engineFingerprint({ layout, advancement, language: typeScript, project, reading: frozen.limited(diskReading, ["existsSync","readFileSync","readdirSync","statSync"]), paths: frozen.limited(nodePaths, ["dirname","join","relative"]), hashing: frozen.limited(nodeHashing, ["createHash"]), sha256, encodings: nodeEncodings, fingerprint, json: jsonFormatting, sequences, texts, values: valueTypes, references: referenceSyntax })
 // "What tells a project's runs apart" · decision
 const keptRunsScope = {"skipped":["node_modules",".git",".trame","generations"],"kept":10000}
 // "Runs kept on disk" · implementation, for "Where runs are kept"
@@ -494,7 +498,7 @@ const typeScriptRunner = "tsx"
 const nodeProcess = await body_nodeProcess({ argv: nodeArguments, node: nodeCli, runner: typeScriptRunner, variables: trameEnvironment, exit: exitStatus, values: valueTypes })
 // "System clock" · implementation, for "Clock"
 const systemClock = await body_systemClock({ iso: iso8601, environment: trameEnvironment, sequences })
-// "Port of trame dev" · decision
+// "The port of trame dev" · decision
 const devPort = 4170
 // "Terminal text" · decision
 const terminalText = {"space":" ","indent":"  ","maxBlankLines":1}
@@ -510,8 +514,28 @@ const machineOutputs = await body_machineOutputs({ values: valueTypes, json: jso
 const longOptions = {"prefix":"--"}
 // "The options of every command" · decision
 const standardOptions = {"format":{"name":"format","meaning":"the format the documents a command answers are written in","takes":"the word of a format the project chose"}}
+// "Candidate dates" · decision
+const candidateDates = {"afterAnEnd":1,"beforeTheFirstChange":-1}
+// "The days of history a page offers" · decision
+const pageHistory = {"days":7}
+// "Payload" · function
+const payloadBuilder = await body_payloadBuilder({ layout, candidateDates, history: pageHistory, iso: iso8601, clock: frozen.limited(systemClock, ["now"]), machine: machineOutputs, views, language, texts, values: valueTypes, counts, sequences })
+// "Date bundle" · function
+const dateBundle = await body_dateBundle({ line: trameCommands, encodings: nodeEncodings, events: nodeEvents, clock: frozen.limited(systemClock, ["now"]), currentProcess: frozen.limited(nodeProcess, ["relaunch"]), exitStatus, texts, messages: outputMessages })
+// "Files an editor leaves" · decision
+const editorLeftovers = {"endings":["~",".swp",".tmp"]}
+// "Watching a project" · function
+const watching = await body_watching({ reading: frozen.limited(diskReading, ["existsSync","watch"]), paths: frozen.limited(nodePaths, ["join","relative","sep"]), layout, project, leftovers: editorLeftovers, texts })
+// "Bundle of the page" · decision
+const pageBundle = {"format":"esm","target":"es2022","legalComments":"none","charset":"utf8"}
+// "Page resources" · implementation, for "Page resources"
+const pageResources = await body_pageResources({ files: engineFiles, layout, advancement, language: typeScript, specifiers: nodeModuleSpecifiers, references: referenceSyntax, texts, sequences })
+// "esbuild" · implementation, for "Bundler"
+const esbuild = await body_esbuild({})
+// "The page's program, bundled" · function
+const pageScript = await body_pageScript({ pageBundle, resources: frozen.limited(pageResources, ["script"]), bundler: frozen.limited(esbuild, ["build"]) })
 // "Preparation" · function
-const preparation = await body_preparation({ line: trameCommands, compiler, compilationApi, laws, views, lock, common, terminal: frozen.limited(nodeTerminal, ["error","exit","write"]), currentProcess: frozen.limited(nodeProcess, ["cwd"]), clock: frozen.limited(systemClock, ["today"]), severityOrder, devPort, exitStatus, layout: terminalText, columns: terminalColumns, cell: paddedCell, counts, sequences, texts, messages: commandMessages, projectLayout: layout, uri, references, projectCommands, kept: keptCommands, machine: machineOutputs, paths: frozen.limited(nodePaths, ["basename","join","resolve"]), reading: frozen.limited(diskReading, ["existsSync"]), specifiers: nodeModuleSpecifiers, reader: syntaxReader, long: longOptions, standard: standardOptions })
+const preparation = await body_preparation({ line: trameCommands, compiler, compilationApi, laws, views, lock, common, terminal: frozen.limited(nodeTerminal, ["error","exit","write"]), currentProcess: frozen.limited(nodeProcess, ["cwd"]), clock: frozen.limited(systemClock, ["today"]), severityOrder, devPort, exitStatus, layout: terminalText, columns: terminalColumns, cell: paddedCell, counts, sequences, texts, messages: commandMessages, projectLayout: layout, uri, references, projectCommands, kept: keptCommands, machine: machineOutputs, paths: frozen.limited(nodePaths, ["basename","join","resolve"]), reading: frozen.limited(diskReading, ["existsSync"]), specifiers: nodeModuleSpecifiers, reader: syntaxReader, long: longOptions, standard: standardOptions, payload: payloadBuilder, dateBundle, watching, page: pageScript, project })
 // "Accept a candidate" · requirement
 const acceptCandidate = await frozen.body(AcceptCandidate)({})
 // "Example project" · decision
@@ -549,11 +573,11 @@ const buildComparison = await body_buildComparison({ say: commandWords })
 // "How an amendment is named" · decision
 const amendmentNaming = {"suffix":"Amendment","first":2}
 // "An amendment prepared" · function
-const amending = await body_amending({ preparation, machine: machineOutputs, comparison: buildComparison, prelude: frozen.limited(tramePrelude, ["internal"]), references, project, specifiers: nodeModuleSpecifiers, layout, values: valueTypes, paths: frozen.limited(nodePaths, ["dirname","join","sep"]), messages: commandMessages, naming: amendmentNaming, counts })
+const amending = await body_amending({ preparation, machine: machineOutputs, comparison: buildComparison, prelude: frozen.limited(tramePrelude, ["internal"]), references, project, specifiers: nodeModuleSpecifiers, layout, values: valueTypes, paths: frozen.limited(nodePaths, ["dirname","join","relative","sep"]), messages: commandMessages, naming: amendmentNaming, counts })
 // "Amendments in place" · implementation, for "Where an amendment goes"
 const inPlaceSources = await body_inPlaceSources({ reading: frozen.limited(diskReading, ["readFileSync"]), writing: frozen.limited(diskWriting, ["writeFileSync"]), encodings: nodeEncodings, syntax: typeScriptSyntax, doc: docBlock, exported: exportDeclaration, constant: constDeclaration, call, object: objectLiteral, property, text: stringLiteral, list: inlineArray, imports: namedImport, values: valueTypes, texts, counts })
 // "Amend" · entry point
-const amend = await body_amend({ exitStatus, preparation, amending, place: frozen.limited(inPlaceSources, ["record"]), paths: frozen.limited(nodePaths, ["relative"]), text: terminalText, terminal: frozen.limited(nodeTerminal, ["write"]), messages: commandMessages })
+const amend = await body_amend({ exitStatus, preparation, amending, place: frozen.limited(inPlaceSources, ["record"]), text: terminalText, texts, terminal: frozen.limited(nodeTerminal, ["write"]), messages: commandMessages })
 // "Assembly" · function
 const assembly = await body_assembly({ line: trameCommands, values: valueTypes, layout, paths: frozen.limited(nodePaths, ["join"]), wiring, prelude: frozen.limited(tramePrelude, ["internal","path","root"]), drivers, texts, messages: compilerMessages, names: languageNames, specifiers: nodeModuleSpecifiers, language: typeScript })
 // "Assembler" · function
@@ -693,15 +717,11 @@ const lineWords = await frozen.body(LineWords)({})
 // "Render a view" · function
 const renderView = await body_renderView({ preparation, views, formats: frozen.limited(answerFormats, ["word","media","write"]), refused: viewRefused, terminal: frozen.limited(nodeTerminal, ["write"]), lineWords })
 // "A command of the project, or a view" · entry point
-const commandOrView = await body_commandOrView({ line: trameCommands, exitStatus, preparation, renderView, compiler, views, assembler, projectCommands, writing: frozen.limited(diskWriting, ["mkdirSync","writeFileSync"]), paths: frozen.limited(nodePaths, ["dirname"]), currentProcess: frozen.limited(nodeProcess, ["onSignal","runHere","runTs"]), posix, events: nodeEvents, terminal: frozen.limited(nodeTerminal, ["error"]), counts, sequences, messages: commandMessages })
-// "esbuild" · implementation, for "Bundler"
-const esbuild = await body_esbuild({})
+const commandOrView = await body_commandOrView({ line: trameCommands, exitStatus, preparation, renderView, compiler, views, assembler, projectCommands, writing: frozen.limited(diskWriting, ["mkdirSync","writeFileSync"]), paths: frozen.limited(nodePaths, ["dirname"]), currentProcess: frozen.limited(nodeProcess, ["onSignal","runHere","runTs"]), posix, events: nodeEvents, terminal: frozen.limited(nodeTerminal, ["error"]), counts, sequences, messages: commandMessages, amending, place: frozen.limited(inPlaceSources, ["record"]) })
 // "How a bundle is led" · decision
 const bundlerLeading = {"plugin":"trame-names","names":"^#"}
 // "The names a bundle is led by" · function
 const namesLed = await body_namesLed({ loader: frozen.limited(tsxLoader, ["resolve"]), leading: bundlerLeading })
-// "Bundle of the page" · decision
-const pageBundle = {"format":"esm","target":"es2022","legalComments":"none","charset":"utf8"}
 // "The page" · decision
 const thePage = {"label":"label","themeAttribute":"data-theme","themes":{"light":"light","dark":"dark"},"statusClass":"st-","globals":{"packedBundle":"TRAME_BUNDLE_GZIP","dev":"TRAME_DEV"},"memory":"trame-page","machine":"machine","nodeView":"impact","prompt":"$ "}
 // "DOCTYPE" · syntax element
@@ -723,21 +743,19 @@ const deliveredStyle = await frozen.body(DeliveredStyle)({ root: ":root", standa
 // "Deliver" · entry point
 const deliver = await body_deliver({ exitStatus, preparation, assembly, assembler, bundler: frozen.limited(esbuild, ["build"]), led: namesLed, bundle: pageBundle, document: pageDocument, html, script: scriptElement, style: deliveredStyle, reading: frozen.limited(diskReading, ["readFileSync"]), writing: frozen.limited(diskWriting, ["mkdirSync","writeFileSync"]), paths: frozen.limited(nodePaths, ["dirname","join","relative"]), encodings: nodeEncodings, terminal: frozen.limited(nodeTerminal, ["write"]), sequences, texts, values: valueTypes, messages: commandMessages })
 // "What trame dev serves" · decision
-const devService = {"page":["/","/index.html"],"bundle":"/bundle.json","events":"/events","amend":"/amend","compiling":"compiling","ready":"bundle","host":"localhost","ignored":["~",".swp",".tmp"]}
+const devService = {"page":["/","/index.html"],"bundle":"/bundle.json","events":"/events","amend":"/amend","compiling":"compiling","ready":"bundle","host":"localhost"}
 // "HTTP" · standard
 const http = {"scheme":"http","ok":200,"noContent":204,"notFound":404,"serverError":500,"unavailable":503,"post":"POST","contentType":"content-type","cacheControl":"cache-control","connection":"connection","authorization":"authorization","bearer":"Bearer ","noCache":"no-cache","keepAlive":"keep-alive"}
 // "Server-sent events" · standard
 const serverSentEvents = {"eventField":"event: ","dataField":"data: ","endOfLine":"\n","comment":": ","endOfMessage":"\n\n"}
-// "Node timer" · implementation, for "Timer"
-const nodeTimer = await body_nodeTimer({})
+// "The machine's timers" · implementation, for "Timers"
+const machineTimers = await body_machineTimers({})
 // "Debouncing of saves" · decision
 const devDebounce = 150
-// "Node HTTP server" · implementation, for "HTTP server"
-const nodeHttpServer = await body_nodeHttpServer({})
-// "Date bundle" · function
-const dateBundle = await body_dateBundle({ line: trameCommands, encodings: nodeEncodings, events: nodeEvents, clock: frozen.limited(systemClock, ["now"]), currentProcess: frozen.limited(nodeProcess, ["relaunch"]), exitStatus, texts, messages: outputMessages })
-// "Differences" · function
-const differences = await body_differences({ punctuation, messages: outputMessages })
+// "A server of Node.js" · implementation, for "Serving HTTP"
+const nodeHttpServing = await body_nodeHttpServing({})
+// "What the last change changed" · function
+const payloadDifferences = await body_payloadDifferences({ punctuation, say: commandWords })
 // "Style of the standalone document" · decision
 const standaloneStyle = {":root":{"padding-top":"env(safe-area-inset-top,0px)","padding-bottom":"env(safe-area-inset-bottom,0px)"},"body":{"margin":"0"},"[hidden]":{"display":"none!important"},"img":{"max-width":"100%"}}
 // "Typography" · decision
@@ -758,12 +776,10 @@ const strokes = {"line-width":"1px","focus-width":"2px","focus-offset":"2px","un
 const motion = {"duration-pulse":"1s","duration-flash":"1.6s"}
 // "Page layout" · decision
 const pageLayout = {"side-width":"300px","page-width":"1320px","measure":"80ch","date-min":"62px","dot-size":"8px","badge-min":"20px","screen-height":"100vh","full":"100%","fraction":"1fr","track-fill":"minmax(0, 1fr)","indent-compact":"1.1em","indent-doc":"1.2em","date-mark-line":"1.2em"}
-// "Page resources" · implementation, for "Page resources"
-const pageResources = await body_pageResources({ files: engineFiles, layout, advancement, language: typeScript, specifiers: nodeModuleSpecifiers, texts, sequences })
-// "A page carries its graph compressed" · decision
-const packedGraph = {"format":"gzip","encoding":"base64"}
-// "gzip, with Node's zlib" · implementation, for "Compression"
-const nodeCompression = await body_nodeCompression({ packing: packedGraph })
+// "Where the page's style sheets are" · decision
+const pageSheetFiles = {"style":"./page.css","narrow":"./narrow.css"}
+// "Style sheets beside the library" · implementation, for "The page's style sheets"
+const sheetsBesideTheLibrary = await body_sheetsBesideTheLibrary({ files: pageSheetFiles, encodings: nodeEncodings })
 // "Element over several lines" · syntax element
 const htmlBlock = await frozen.body(HtmlBlock)({ indent: "  ", standard: html, startTag: htmlStartTag, endTag: htmlEndTag })
 // "SVG" · standard
@@ -777,7 +793,7 @@ const cssVariable = await frozen.body(CssVariable)({ notation: "var", dashes: "-
 // "Logo" · syntax element
 const logo = await frozen.body(Logo)({ size: 26, radius: 6, thread: 2.2, warp: "M7 5v16M13 5v16M19 5v16", weft: "M5 9h3M10 9h6M18 9h3M5 17h3M10 17h6M18 17h3", background: "accent-soft", warpColour: "accent", standard: thePage, svg, aria, palette, counts, block: htmlBlock, element: htmlElement, empty: selfClosingTag, variable: cssVariable })
 // "Brand" · syntax element
-const brand = await frozen.body(Brand)({ brand: "brand", name: "brand-name", standard: thePage, html, commands: trameCommands, logo, block: htmlBlock, element: htmlElement })
+const brand = await frozen.body(Brand)({ brand: "brand", name: "brand-name", standard: thePage, html, logo, block: htmlBlock, element: htmlElement })
 // "Regions of the page" · decision
 const pageRegions = {"status":"status","dates":"dates","dateNote":"date-note","nav":"nav","documents":"doc-select","nodes":"node-select","banner":"banner","bannerClose":"banner-close","toggle":"toggle","rendering":"view-","path":"doc-path","doc":"doc"}
 // "State of the compilation" · syntax element
@@ -830,12 +846,22 @@ const narrowScreenRule = await frozen.body(NarrowScreenRule)({ maxWidth: "max-wi
 const fontLinks = await frozen.body(FontLinks)({ link: "link", rel: "rel", href: "href", preconnect: "preconnect", stylesheet: "stylesheet", crossorigin: "crossorigin", standard: html, startTag: htmlStartTag, texts })
 // "JSON in a script" · syntax element
 const jsonInScript = await frozen.body(JsonInScript)({ escape: "\\u003c", standard: html })
+// "A global assigned" · syntax element
+const globalAssignment = await frozen.body(GlobalAssignment)({ dot: ".", equals: " = ", standard: ecmaScript })
 // "Scripts of the page" · syntax element
-const pageScripts = await frozen.body(PageScripts)({ standard: thePage, html, script: scriptElement, json: jsonInScript, member: memberAccess, assignment, texts })
+const pageScripts = await frozen.body(PageScripts)({ standard: thePage, html, script: scriptElement, json: jsonInScript, assignment: globalAssignment, texts })
+// "The language of the library's words" · decision
+const documents_language_wordsLanguage = {"tag":"en-GB"}
+// "Words of the page" · message catalog
+const pageWords = await body_pageWords({ language: documents_language_wordsLanguage })
+// "What the engine's adapters say" · message catalog
+const engineWords = await frozen.body(EngineWords)({})
+// "Read by the engine" · implementation, for "Reading a language"
+const readByTheEngine = await body_readByTheEngine({ say: engineWords })
 // "HTML markup" · language
 const htmlMarkup = {"name":"HtmlMarkup","tag":"html","grammar":{"module":"tree-sitter-html/tree-sitter-html.wasm"},"extensions":[".html"],"queries":{"values":"\n(quoted_attribute_value) @literal.text\n(attribute (attribute_value) @literal.text)\n(text) @literal.text\n(entity) @literal.text","parts":"\n(attribute_value) @literal.part\n(text) @literal.part\n(entity) @literal.escape","names":"\n((attribute (attribute_name) @_name) @name (#any-of? @_name \"class\" \"id\" \"for\" \"aria-labelledby\" \"aria-describedby\" \"aria-controls\"))","roles":"\n(attribute (quoted_attribute_value) @role.attribute)\n(attribute (attribute_value) @role.attribute)\n(element (text) @role.content)\n(element (entity) @role.content)"},"escapes":{"mark":"&","single":{"amp;":"&","lt;":"<","gt;":">","quot;":"\"","apos;":"'","nbsp;":" "},"numeric":[{"prefix":"#x","radix":16,"close":";"},{"prefix":"#X","radix":16,"close":";"},{"prefix":"#","radix":10,"close":";"}],"keepUnknown":true}}
 // "Page" · function
-const page = await body_page({ pageBundle, standalone: standaloneStyle, encodings: nodeEncodings, file: textFile, palette, typography, narrowScreen, spacing, radii, typeScale, opacities, strokes, motion, pageLayout, resources: frozen.limited(pageResources, ["narrowStyle","script","style"]), reading: frozen.limited(diskReading, ["readFileSync"]), bundler: frozen.limited(esbuild, ["build"]), compression: frozen.limited(nodeCompression, ["pack"]), shell, theme, statusStyle, narrow: narrowScreenRule, fonts: fontLinks, scripts: pageScripts, document: pageDocument, rule: cssRule, declaration: cssDeclaration, messages: outputMessages, language, reader: syntaxReader, markup: htmlMarkup, sheets: cssStyleSheets, gnu: gnuPositions })
+const page = await body_page({ standalone: standaloneStyle, file: textFile, palette, typography, narrowScreen, spacing, radii, typeScale, opacities, strokes, motion, pageLayout, sheets: frozen.limited(sheetsBesideTheLibrary, ["narrow","style"]), shell, theme, statusStyle, narrow: narrowScreenRule, fonts: fontLinks, scripts: pageScripts, document: pageDocument, rule: cssRule, declaration: cssDeclaration, words: pageWords, language: frozen.limited(ourDocumentLanguage, ["tag"]), reading: frozen.limited(readByTheEngine, ["load","readText"]), markup: htmlMarkup, css: cssStyleSheets, gnu: gnuPositions })
 // "Documents in the page" · decision
 const documentMarkup = {"classes":{"reference":"ref","open":"open","rule":"rule","pill":"pill","published":"pub","severity":"sev","person":"person","card":"card","history":"history","repealed":"repealed","meta":"meta","views":"views","viewButton":"chip-btn","nature":"nature","inactive":"inactive","facts":"facts","resolution":"resolution","child":"child","tableWrap":"table-wrap","code":"code","codeSource":"code-source","checksTitle":"checks-title","validity":"validity","summary":"summary","intro":"intro","figure":"figure","figureScroll":"figure-scroll","amendButton":"amend-btn"},"prefixes":{"outcome":"oc-","validity":"va-","severity":"sev-"},"attributes":{"reference":"data-ref","doc":"data-doc","view":"data-view","node":"data-node","figure":"data-figure","amend":"data-amend","value":"data-value","way":"data-way","units":"data-units"},"headings":{"title":1,"section":2,"card":3,"nested":4}}
 // "Drawing of a timeline" · decision
@@ -844,8 +870,6 @@ const timelineDrawing = {"width":920,"label":240,"row":36,"top":40,"pad":18,"nar
 const legendDrawing = {"line":{"width":26,"height":8,"stroke":2},"box":{"width":18,"height":12,"inset":1,"radius":2,"faded":"0.45"},"dot":{"size":12,"radius":5},"dashes":{"inferred":"2 3","computed":"6 4","discarded":"5 4","history":"3 2"}}
 // "Escaped text" · syntax element
 const escapedText = await frozen.body(EscapedText)({ ampersand: "&", quotationMark: "\"", amp: "&amp;", lt: "&lt;", gt: "&gt;", quot: "&quot;", standard: html })
-// "Words of the page" · message catalog
-const pageWords = await body_pageWords({ language })
 // "Figures in SVG" · function, for "Figures of the page"
 const svgFigures = await body_svgFigures({ html, svg, aria, css, markup: documentMarkup, figures: figureMarkup, page: thePage, graph: graphDrawing, timeline: timelineDrawing, legend: legendDrawing, element: htmlElement, empty: selfClosingTag, path: pathData, declaration: cssDeclaration, escape: escapedText, common, dates, words: pageWords, messages: renderingMessages, punctuation, iso: iso8601, counts, sequences, texts })
 // "Heading of a rank" · syntax element
@@ -857,9 +881,9 @@ const pageRendering = await frozen.body(PageRendering)({ rendering, syntax: froz
 // "Messages of trame dev" · message catalog
 const devMessages = await frozen.body(DevMessages)({ language, lists })
 // "trame dev server" · function
-const devServer = await body_devServer({ service: devService, uri, line: trameCommands, nodeEvents, layout, http, mediaTypes, events: serverSentEvents, terminal: frozen.limited(nodeTerminal, ["write"]), codeLines, file: textFile, clock: frozen.limited(systemClock, ["now"]), timer: frozen.limited(nodeTimer, ["clearTimeout","setTimeout"]), debounce: devDebounce, httpServer: frozen.limited(nodeHttpServer, ["createServer"]), reading: frozen.limited(diskReading, ["existsSync","watch"]), paths: frozen.limited(nodePaths, ["join","relative","sep"]), project, bundle: dateBundle, differences, page, pageRendering, counts, sequences, texts, dates, language, messages: devMessages })
+const devServer = await body_devServer({ service: devService, uri, line: trameCommands, nodeEvents, layout, http, mediaTypes, events: serverSentEvents, terminal: frozen.limited(nodeTerminal, ["write"]), codeLines, file: textFile, clock: frozen.limited(systemClock, ["now"]), timer: frozen.limited(machineTimers, ["clearTimeout","setTimeout"]), debounce: devDebounce, httpServer: frozen.limited(nodeHttpServing, ["createServer"]), watching, paths: frozen.limited(nodePaths, ["sep"]), project, bundle: dateBundle, differences: payloadDifferences, page, script: pageScript, pageRendering, counts, sequences, texts, dates, language, messages: devMessages })
 // "Start trame dev" · entry point
-const dev = await body_dev({ preparation, devServer, amending, place: frozen.limited(inPlaceSources, ["record"]), paths: frozen.limited(nodePaths, ["relative"]) })
+const dev = await body_dev({ preparation, devServer, amending, place: frozen.limited(inPlaceSources, ["record"]) })
 // "Asking" · function
 const asking = await frozen.body(Asking)({ messages: commandMessages })
 // "The clock gives the day" · implementation, for "What the engine needs of the machine"
@@ -875,9 +899,9 @@ const programsAnswer = await frozen.body(ProgramsAnswer)({ trees: frozen.limited
 // "A run is kept, and given back until a file it read changes" · implementation, for "What the engine needs of the machine"
 const runsAnswer = await frozen.body(RunsAnswer)({ trees: frozen.limited(diskTrees, ["remove","temporary"]), writing: frozen.limited(diskWriting, ["writeFileSync"]), runs: frozen.limited(projectRuns, ["open"]), paths: frozen.limited(nodePaths, ["join"]), probe: doctorProbe, asking, messages: commandMessages })
 // "A server listens on a port the system gives" · implementation, for "What the engine needs of the machine"
-const serverAnswers = await frozen.body(ServerAnswers)({ httpServer: frozen.limited(nodeHttpServer, ["createServer"]), counts, asking, messages: commandMessages })
+const serverAnswers = await frozen.body(ServerAnswers)({ httpServer: frozen.limited(nodeHttpServing, ["createServer"]), counts, asking, messages: commandMessages })
 // "The time passes" · implementation, for "What the engine needs of the machine"
-const timerAnswers = await frozen.body(TimerAnswers)({ clock: frozen.limited(systemClock, ["now"]), timer: frozen.limited(nodeTimer, ["setTimeout"]), probe: doctorProbe, asking, messages: commandMessages })
+const timerAnswers = await frozen.body(TimerAnswers)({ clock: frozen.limited(systemClock, ["now"]), timer: frozen.limited(machineTimers, ["setTimeout"]), probe: doctorProbe, asking, messages: commandMessages })
 // "The registry answers about the packages" · implementation, for "What the engine needs of the machine"
 const registryAnswers = await frozen.body(RegistryAnswers)({ reports: frozen.limited(npmReports, ["audit"]), currentProcess: frozen.limited(nodeProcess, ["cwd"]), asking, messages: commandMessages })
 // "npm installs" · implementation, for "Packages installed"
@@ -890,20 +914,20 @@ const engineNeeds = [clockAnswers, filesAnswer, treesAnswer, programsAnswer, run
 const addOns = await body_addOns({ wiring, counts, messages: commandMessages })
 // "Ask the machine" · entry point
 const doctor = await body_doctor({ exitStatus, preparation, engine: frozen.limited(engineNeeds, ["ask"]), terminal: frozen.limited(nodeTerminal, ["write"]), messages: commandMessages, addOns })
-// "Candidate dates" · decision
-const candidateDates = {"afterAnEnd":1,"beforeTheFirstChange":-1}
-// "The days of history a page offers" · decision
-const pageHistory = {"days":7}
-// "Payload" · function
-const payloadBuilder = await body_payloadBuilder({ layout, candidateDates, history: pageHistory, iso: iso8601, clock: frozen.limited(systemClock, ["now"]), machine: machineOutputs, views, language, texts, values: valueTypes, counts, sequences })
+// "A date's documents as today's" · function
+const sameAsToday = await body_sameAsToday({})
 // "Payload" · entry point
-const emitPayload = await body_emitPayload({ exitStatus, preparation, payload: payloadBuilder, files: fileRendering, screen: terminalRendering, pageRendering, terminal: frozen.limited(nodeTerminal, ["args","write","writeRaw","error","exit"]) })
+const emitPayload = await body_emitPayload({ exitStatus, preparation, payload: payloadBuilder, same: sameAsToday, files: fileRendering, screen: terminalRendering, pageRendering, terminal: frozen.limited(nodeTerminal, ["args","write","writeRaw","error","exit"]) })
 // "Rewriting an example" · function
 const exampleRewriting = await body_exampleRewriting({ ts: frozen.limited(realTypeScript, ["ScriptTarget","createSourceFile","forEachChild","isArrayLiteralExpression","isCallExpression","isIdentifier","isObjectLiteralExpression","isPropertyAccessExpression","isPropertyAssignment","isStringLiteral","isVariableDeclaration"]), file: textFile, sequences, texts, syntax: typeScriptSyntax, values: valueTypes })
 // "Examples" · entry point
 const examples = await body_examples({ exitStatus, preparation, rewriting: exampleRewriting, reading: frozen.limited(diskReading, ["readFileSync"]), writing: frozen.limited(diskWriting, ["writeFileSync"]), paths: frozen.limited(nodePaths, ["relative","resolve"]), terminal: frozen.limited(nodeTerminal, ["error","write"]), line: trameCommands, encodings: nodeEncodings, counts, messages: commandMessages })
+// "A page carries its graph compressed" · decision
+const packedGraph = {"format":"gzip","encoding":"base64"}
+// "gzip, in base64" · implementation, for "Packing the graph"
+const gzipInBase64 = await body_gzipInBase64({ packing: packedGraph })
 // "Export the page" · entry point
-const commands_export = await body_export({ exitStatus, layout, preparation, bundle: dateBundle, page, project, writing: frozen.limited(diskWriting, ["writeFileSync"]), paths: frozen.limited(nodePaths, ["resolve"]), terminal: frozen.limited(nodeTerminal, ["write"]), messages: commandMessages })
+const commands_export = await body_export({ exitStatus, layout, preparation, bundle: dateBundle, page, script: pageScript, packing: frozen.limited(gzipInBase64, ["pack"]), line: trameCommands, project, writing: frozen.limited(diskWriting, ["writeFileSync"]), paths: frozen.limited(nodePaths, ["resolve"]), terminal: frozen.limited(nodeTerminal, ["write"]), messages: commandMessages })
 // "Help" · entry point
 const help = await body_help({ exitStatus, preparation, projectCommands, views, terminal: frozen.limited(nodeTerminal, ["write"]), cell: paddedCell, columns: terminalColumns, messages: commandMessages, long: longOptions, standard: standardOptions })
 // "How a project starts" · decision

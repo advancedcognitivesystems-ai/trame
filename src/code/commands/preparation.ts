@@ -2,7 +2,7 @@
 // It started as a port of the bootstrap's command line (trame/cli.ts): same options, same order of checks.
 
 import { ViewRefusal, ViewScope, withEngine } from "../../../trame/kernel"
-import type { AnyNode, Compilation, CompiledProject, Document, EngineApi, LanguageReader, ProvidedBy, Severity, View, ViewAnswer } from "../../../trame/kernel"
+import type { AmendmentAnswer, AmendmentAsked, AnyNode, Compilation, CompiledProject, Document, EngineApi, LanguageReader, TextReader, ProvidedBy, Severity, View, ViewAnswer } from "../../../trame/kernel"
 import type { Clock, FileReading, Layout, Paths, Process, Terminal } from "../../architecture"
 import type { CommandMessages } from "../../messages"
 import type { Api as CompilerApi, Compiled, Loaded } from "../engine/compiler"
@@ -20,6 +20,11 @@ import type { References } from "../../engine"
 import type { PaddedCell, TerminalColumns, TerminalText } from "#documents/text"
 import type { Api as ProjectCommandsApi } from "./project-commands"
 import type { Api as MachineApi } from "../engine/machine"
+import type { Api as PayloadApi } from "../engine/payload"
+import type { Api as DateBundleApi } from "../engine/date-bundle"
+import type { Api as WatchingApi } from "../engine/watching"
+import type { Api as PageApi } from "../page/script"
+import type { Api as ProjectApi } from "../engine/project"
 
 export interface Deps {
   /** How a long option is written, and std's options of every command (since g135: --format). */
@@ -61,10 +66,19 @@ export interface Deps {
   /** How a project the API is asked to compile is named by a package and a path in it (since g125). */
   specifiers: ProvidedBy<typeof NodeModuleSpecifiers>
   /** The engine's reader of languages, which the API gives (since g128). */
-  reader: LanguageReader
+  reader: LanguageReader & TextReader
   /** The commands the engine keeps, whatever the project says (since g119): a command of the project never takes their names. */
   kept: readonly string[]
+  /** What the API gives of a project for a page (since g136): what it calls itself, the graph as a page receives it, compiled at each date, watched; the page's program. */
+  project: ProjectApi
+  payload: PayloadApi
+  dateBundle: DateBundleApi
+  watching: WatchingApi
+  page: PageApi
 }
+
+/** What amends the project a command runs for, which the dispatch gives the API (since g136). */
+export type Amending = (asked: AmendmentAsked) => Promise<AmendmentAnswer>
 
 export interface Options {
   root: string
@@ -325,17 +339,34 @@ const body = (deps: Deps) => {
    * A project as the API gives it: what a view receives, the graph as a build writes it, the documents of its views and
    * one view's (since g132). A project compiled elsewhere has its views loaded while they run.
    */
-  const project = (root: string, ctx: Ctx, elsewhere?: { compiling: Loaded | undefined }): CompiledProject => {
+  const project = (root: string, read: Loaded, ctx: Ctx, elsewhere?: { compiling: Loaded | undefined }, amend?: Amending): CompiledProject => {
     const { c, comp } = ctx
     const own = elsewhere === undefined ? undefined : root
+    const { title } = deps.project.projectDirs(root)
     return {
-      root, today: c.today, graph: comp, written: () => deps.machine.graphJson(c), snapshot: () => deps.machine.snapshotJson(c),
-      documents: () => withViewsOf(own, elsewhere?.compiling, () => {
-        const { documents, failures } = runViews(comp, {})
+      root, today: c.today, graph: comp, ...(title === undefined ? {} : { title }), written: () => deps.machine.graphJson(c), snapshot: () => deps.machine.snapshotJson(c),
+      documents: (asked = {}) => withViewsOf(own, elsewhere?.compiling, () => {
+        const { documents, failures } = runViews(comp, asked)
         if (failures.length) throw new Error(messages.viewsRefused(failures.map((f: ViewFailure) => messages.viewRefused(f.view, f.law, f.example))))
         return { documents, places: renderingContext(documents, ctx) }
       }),
       view: (name, arg) => withViewsOf(own, elsewhere?.compiling, () => oneView(comp, name, arg)),
+      // What a page receives of it (since g136): its views are the project's while the payload names them.
+      payload: (documents) => withViewsOf(own, elsewhere?.compiling, () => deps.payload.makePayload(c, comp, [...documents])),
+      candidates: (history) => deps.payload.candidateDates(comp, history),
+      bundle: (mode) => deps.dateBundle.makeBundle(root, c.today, mode),
+      watch: (changed) => deps.watching.watch(root, changed),
+      // The graph read once, compiled at another day (since g136): what a page offers at each of its dates.
+      at: async (date) => {
+        if (own === undefined) return project(root, read, await compiledAt(read, date), undefined, amend)
+        await loadViews(own)
+        try {
+          return project(root, read, await compiledAt(read, date, { keep: false }), elsewhere, amend)
+        } finally {
+          if (elsewhere?.compiling) await loadViews(elsewhere.compiling.root)
+        }
+      },
+      ...(amend === undefined ? {} : { amend }),
     }
   }
 
@@ -366,7 +397,7 @@ const body = (deps: Deps) => {
     try {
       const { refused, read } = await refusals(at, today)
       if (!read) throw new Error(messages.projectRefusedHere(at, refused))
-      return project(at, await compiledAt(read, today, { keep: false }), { compiling })
+      return project(at, read, await compiledAt(read, today, { keep: false }), { compiling })
     } finally {
       // The views loaded are a project's (its own beside the language's): the project being compiled gets its own back,
       // or its documents would be the other's (a cold build of Trame lost its literals and its versions, g129).
@@ -378,17 +409,25 @@ const body = (deps: Deps) => {
    * The engine's API: the project as the dispatch prepared it for the command, when there is one; the project being
    * compiled, by whose packages a project to compile may be named.
    */
-  function api(prepared?: { o: Options; ctx: Ctx }, compiling: Loaded | undefined = loaded): EngineApi {
+  function api(prepared?: { o: Options; ctx: Ctx; amend?: Amending }, compiling: Loaded | undefined = loaded): EngineApi {
     return {
       layout: deps.projectLayout,
-      prepared: () => (prepared === undefined ? undefined : project(prepared.o.root, prepared.ctx)),
+      prepared: () => (prepared === undefined || compiling === undefined ? undefined : project(prepared.o.root, compiling, prepared.ctx, undefined, prepared.amend)),
       compile: (root, today) => elsewhere(root, today, compiling),
       reader: deps.reader,
+      page: () => deps.page.script(),
+      program: line.program,
     }
   }
 
   /** Runs `f` with this engine running, while it compiles a project: what it compiles reaches the API, no project prepared. */
   const running = <T>(compiling: Loaded, f: () => Promise<T>) => withEngine({ offer: () => undefined, api: api(undefined, compiling) }, f)
+
+  /**
+   * Runs `f` with this engine running, for one of its own commands (since g137): what it does through std's ports of the
+   * engine reaches it (the page's reader of languages).
+   */
+  const asTheEngine = <T>(f: () => Promise<T>) => withEngine({ offer: () => undefined, api: api() }, f)
 
   /**
    * The loaded graph compiled at a date with nodes besides its own (an amendment not yet recorded, since g85): what the
@@ -435,7 +474,7 @@ const body = (deps: Deps) => {
     return { locate: located, files: new Map(docs.map((d) => [d.id, d.file])) }
   }
 
-  return { options, printLaws, refuse, prepare, attempt, handOver, at, alsoWith, reread, views, renderingContext, api }
+  return { options, printLaws, refuse, prepare, attempt, handOver, at, alsoWith, reread, views, renderingContext, api, asTheEngine }
 }
 
 export type Api = ReturnType<typeof body>

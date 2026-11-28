@@ -863,6 +863,48 @@ Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Ge
 - Released by: trame
 - Releases: [Trame on the command line](architecture.md#TrameCli)
 - Assembled by: [Generation 134](#G134)
+- Assembled: [Generation 136](#G136)
+
+<a id="G136"></a>
+
+### Generation 136
+
+`G136` · `src/releases.ts:2019`
+
+The engine's API gives what a page and its commands need: a text read back (readText), a project's documents without those of each node, its payload, the dates a page offers, the project at another date, its title, compiled at each date in a fresh process, watched, amended; the page's program bundled
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 135](#G135).
+
+- Version: `g136`
+- Released on: 28 November 2026
+- Fingerprint: `d3bef5611a8c90e5`
+- Language: the repository's, shared
+- Language archived: `df24f8b6168b2e25`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 135](#G135)
+- Assembled: [Generation 137](#G137)
+
+<a id="G137"></a>
+
+### Generation 137
+
+`G137` · `src/releases.ts:2034`
+
+The page is libs/documents' (documents 0.5.0): the engine wires the library's page, bundles the program it assembles for Browser from the library's component, makes a page with the engine running; payload, export and dev are libs/commands' (0.5.0), which Trame takes; the engine's own use the library's pieces and std's server and timers; the API says what a project's watch follows and the engine's name; a component whose exposure no environment of its project realizes is offered
+
+Releases [Trame on the command line](architecture.md#TrameCli), assembled by [Generation 136](#G136).
+
+- Version: `g137`
+- Released on: 28 November 2026
+- Fingerprint: `693b28fe1d81a5b9`
+- Language: the repository's, shared
+- Language archived: `f9f3c0209197cb7e`
+
+- Released by: trame
+- Releases: [Trame on the command line](architecture.md#TrameCli)
+- Assembled by: [Generation 136](#G136)
 
 <a id="G14"></a>
 

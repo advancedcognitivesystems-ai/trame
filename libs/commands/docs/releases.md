@@ -101,3 +101,19 @@ trame view: one view of the project at hand, its arguments declared, its documen
 
 - Released by: trame
 - Serves: [Commands every project runs, written once](product.md#WrittenOnce)
+
+<a id="R0_5_0"></a>
+
+### Version 0.5.0
+
+`R0_5_0` · `src/releases.ts:90`
+
+The page's commands, the engine's before: payload (the graph at each date a page offers, rendered for files, the terminal and the page), export (libs/documents' page, compiled at each date by the engine in a fresh process, its program the engine's) and dev (the page served, compiled again after each save, amendments prepared by the engine), with what the last change changed, moved here
+
+- Version: `0.5.0`
+- Released on: 28 November 2026
+- Fingerprint: `fc96f093bda0ffe4`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Commands every project runs, written once](product.md#WrittenOnce)

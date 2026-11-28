@@ -230,21 +230,6 @@ export const DefaultRank = decision<number>({ owner: "trame", value: 100 })
 export const DocComment = decision<{ titleLines: number; joint: string }>({ owner: "trame", value: { titleLines: 1, joint: " " } })
 
 /**
- * Names of the documents
- * How a document of a view is named: a view of the whole graph by its name; a view of a module by its name and the
- * module ("layers.engine"), except the first view per module, named by the module alone; a view of a node by its name
- * and the reference of the node ("impact:engine.Compiler"), which the page reads back to show it.
- */
-export const DocumentIds = standard({
-  owner: "trame",
-  source: "Trame, the documents of its views (the engine names them, the page reads them)",
-  constants: {
-    ofModule: { value: ".", meaning: "Between the name of a view and the module it shows" },
-    ofNode: { value: ":", meaning: "Between the name of a view and the reference of the node it shows" },
-  },
-})
-
-/**
  * Order of the view groups
  * Where the views of each group come in the list of documents: the documents of the modules first, then the other
  * documents, the figures, the summary, and last the views of a node.

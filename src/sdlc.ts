@@ -22,7 +22,10 @@ import { Adapter, Strategy, Command, Plugin } from "#std/patterns"
 import { SystemSupported, NodeRecentEnough, GitInstalled, WhatTheMachineRuns, type MachineRequired } from "#machine/machine"
 import { OpenPullRequest, MergePullRequest, Propagate, PullRequestSettings, PropagationSettings } from "#std/commands"
 import { ProjectInTheEngine } from "#std/engine"
-import { Plan as PlanWrittenOnce, Build as BuildWrittenOnce, Snapshot as SnapshotWrittenOnce, View as ViewWrittenOnce } from "#commands/commands"
+import {
+  Plan as PlanWrittenOnce, Build as BuildWrittenOnce, Snapshot as SnapshotWrittenOnce, View as ViewWrittenOnce, Payload as PayloadWrittenOnce,
+  Export as ExportWrittenOnce, Dev as DevWrittenOnce,
+} from "#commands/commands"
 import { GitCliBranches, GitHubCliPullRequests, AutoMergeByGitHubCli, AutoMergeInAClaudeSession } from "#std/repository"
 import { Layout, TrameCommands, TrameEnvironment, ProjectStart } from "./conventions"
 import { TypeScript } from "./typescript"
@@ -33,18 +36,19 @@ import { Html, Css, Svg } from "#std/html"
 import { ExitStatus } from "#std/system"
 import { BrowserLoading } from "#std/platform"
 import { Counts } from "#std/algebra"
-import { PageApp, Test, Browser } from "./architecture"
+import { Test, Browser } from "./architecture"
 import { Export } from "./commands"
-import { PageRegions } from "./page"
-import { DocumentMarkup } from "./markup"
-import { AttributeSelector } from "./html"
+import { PageRegions } from "#documents/page"
+import { DocumentMarkup } from "#documents/markup"
+import { AttributeSelector } from "#documents/html"
 import { Language, ScenarioMessages } from "./messages"
-import { ShowGraph, ExplorerFigures, BrowserWindow, BrowserMemory, BrowserFeed, BrowserAmendments, BrowserDecompression } from "./browser"
+import { PageApp, ShowGraph, ExplorerFigures, BrowserWindow, BrowserMemory, BrowserFeed, BrowserAmendments, BrowserDecompression } from "#documents/browser"
 import { Verified, Served, Applied, Checked, Ruled, Safe, Identified } from "#std/obligations"
 import { TrameCli, Local, Session, Process, ProcessLog } from "./architecture"
 import { ProgramNames } from "./typescript"
 import { TestKinds, Advance, Doctor } from "./commands"
-import { DiskReading, DiskWriting, DiskTrees, NodeProcess, NodePrograms, NodeTerminal, SystemClock, NpmReports, NpmInstall, NodeHttpServer, RunsOnDisk } from "./platform"
+import { DiskReading, DiskWriting, DiskTrees, NodeProcess, NodePrograms, NodeTerminal, SystemClock, NpmReports, NpmInstall, RunsOnDisk } from "./platform"
+import { NodeHttpServing, MachineClock, StandardOutput } from "#std/running"
 import { ExecutableSpecification } from "./product"
 import { TheOperators } from "#std/access"
 import { GitHubWorkflow, MergeWays, type WorkflowSettings, type MergeWay } from "#ci/github"
@@ -147,7 +151,7 @@ export const GenerationMode = policy({
  */
 export const CandidateRunsOnTheMachine = check({
   owner: "trame", on: [EngineCandidate], runs: Doctor, by: Maintainers,
-  verifies: [DiskReading, DiskWriting, DiskTrees, NodeProcess, NodePrograms, NodeTerminal, SystemClock, NpmReports, NpmInstall, NodeHttpServer, RunsOnDisk],
+  verifies: [DiskReading, DiskWriting, DiskTrees, NodeProcess, NodePrograms, NodeTerminal, SystemClock, NpmReports, NpmInstall, NodeHttpServing, RunsOnDisk],
 })
 
 /**
@@ -697,12 +701,12 @@ export const CommandsOfStd = binding({
  */
 export const CommandsWrittenOnce = binding({
   owner: "trame",
-  chooses: [PlanWrittenOnce, BuildWrittenOnce, SnapshotWrittenOnce, ViewWrittenOnce, ProjectInTheEngine],
+  chooses: [PlanWrittenOnce, BuildWrittenOnce, SnapshotWrittenOnce, ViewWrittenOnce, PayloadWrittenOnce, ExportWrittenOnce, DevWrittenOnce, ProjectInTheEngine, MachineClock, StandardOutput],
   environments: [Local],
   follows: [Command],
   serves: [ExecutableSpecification],
   context: "The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.",
-  consequences: "trame plan, build, snapshot and view run on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's own stay until the generation that removes the commands every project then runs from the library.",
+  consequences: "trame plan, build, snapshot, view, payload, export and dev run on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. trame dev prints as it goes on the standard output and reads the machine's clock. The engine's own stay until the generation that removes the commands every project then runs from the library.",
   rejected: { "The engine's own commands, kept": "they would stay out of reach of every project's choice, and the engine the only one to reach its modules" },
 })
 

@@ -4,18 +4,19 @@ import { ReferenceSyntax } from "#std/engine"
 import { code } from "../trame/kernel"
 import { fn } from "../kinds/function"
 import { entryPoint, command } from "../kinds/entry-point"
-import { ExecutableSpecification, SingleSource, SeverityOrder, DevPort } from "./product"
+import { ExecutableSpecification, SingleSource, SeverityOrder } from "./product"
 import { decision } from "../kinds/decision"
-import { TrameCli, Terminal, Process, Clock, FileReading, FileWriting, Paths, Hashing, Programs, FileTrees, PackageReports, PackageInstalls, Bundler, Timer, HttpServer, KeptRuns, AmendmentPlace, Prelude, TypeScriptCompiler } from "./architecture"
-import { Compiler, CompilationApi, Laws, Views, Lock, MachineOutputs, PayloadBuilder, DateBundle, DevServer, Assembly, Fingerprint, References, Project, EngineFingerprint, Wiring, ShipmentPipeline, Differences, JudgedHarder, Fingerprints } from "./engine"
+import { TrameCli, Terminal, Process, Clock, FileReading, FileWriting, Paths, Hashing, Programs, FileTrees, PackageReports, PackageInstalls, Bundler, KeptRuns, AmendmentPlace, Prelude, TypeScriptCompiler } from "./architecture"
+import { Compiler, CompilationApi, Laws, Views, Lock, MachineOutputs, PayloadBuilder, DateBundle, Watching, DevServer, Assembly, Fingerprint, References, Project, EngineFingerprint, Wiring, ShipmentPipeline, JudgedHarder, Fingerprints } from "./engine"
 import { SyntaxReader } from "./syntax"
-import { BuildComparison, ViewRefused } from "#commands/commands"
-import { Page, PageBundle, PageDocument } from "./page"
+import { BuildComparison, ViewRefused, SameAsToday, DevPort } from "#commands/commands"
+import { PageBundle, PageScript } from "./page"
+import { Page, PageDocument, GraphPacking } from "#documents/page"
 import { Html } from "#std/html"
-import { ScriptElement } from "./html"
+import { ScriptElement } from "#documents/html"
 import { DeliveredStyle, NamesLed } from "./delivery"
 import { Common, FileRendering, TerminalRendering } from "#documents/rendering"
-import { PageRendering } from "./rendering"
+import { PageRendering } from "#documents/rendering"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
 import { Layout, TrameCommands, TrameEnvironment, commandNames, AmendmentNaming, LanguageNames, ProjectStart, KeptCommands } from "./conventions"
 import { PackageSources, AnswerFormats, LineWords, LongOptions, StandardOptions } from "#std/tooling"
@@ -79,7 +80,7 @@ export const Preparation = fn({
     layout: TerminalText, columns: TerminalColumns, cell: PaddedCell,
     counts: Counts, sequences: Sequences, texts: Texts, messages: CommandMessages, projectLayout: Layout, uri: Uri, references: References,
     projectCommands: ProjectCommands, kept: KeptCommands, machine: MachineOutputs, paths: Paths, reading: FileReading, specifiers: NodeModuleSpecifiers, reader: SyntaxReader,
-    long: LongOptions, standard: StandardOptions,
+    long: LongOptions, standard: StandardOptions, payload: PayloadBuilder, dateBundle: DateBundle, watching: Watching, page: PageScript, project: Project,
   },
   body: code.file<typeof import("./code/commands/preparation").default>("./code/commands/preparation.ts"),
 })
@@ -185,7 +186,7 @@ export const Publish = entryPoint({
 export const EmitPayload = entryPoint({
   owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
   trigger: command(commandNames.payload),
-  deps: { exitStatus: ExitStatus, preparation: Preparation, payload: PayloadBuilder, files: FileRendering, screen: TerminalRendering, pageRendering: PageRendering, terminal: Terminal },
+  deps: { exitStatus: ExitStatus, preparation: Preparation, payload: PayloadBuilder, same: SameAsToday, files: FileRendering, screen: TerminalRendering, pageRendering: PageRendering, terminal: Terminal },
   body: code.file<typeof import("./code/commands/payload").default>("./code/commands/payload.ts"),
 })
 
@@ -305,7 +306,7 @@ export const Release = entryPoint({
 export const Export = entryPoint({
   owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
   trigger: command(commandNames.export),
-  deps: { exitStatus: ExitStatus, layout: Layout, preparation: Preparation, bundle: DateBundle, page: Page, project: Project, writing: FileWriting, paths: Paths, terminal: Terminal, messages: CommandMessages },
+  deps: { exitStatus: ExitStatus, layout: Layout, preparation: Preparation, bundle: DateBundle, page: Page, script: PageScript, packing: GraphPacking, line: TrameCommands, project: Project, writing: FileWriting, paths: Paths, terminal: Terminal, messages: CommandMessages },
   body: code.file<typeof import("./code/commands/export").default>("./code/commands/export.ts"),
 })
 
@@ -372,7 +373,7 @@ export const Amend = entryPoint({
   owner: "trame", in: TrameCli, for: Anyone, serves: [SingleSource],
   trigger: command(commandNames.amend),
   deps: {
-    exitStatus: ExitStatus, preparation: Preparation, amending: Amending, place: AmendmentPlace, paths: Paths, text: TerminalText, terminal: Terminal,
+    exitStatus: ExitStatus, preparation: Preparation, amending: Amending, place: AmendmentPlace, text: TerminalText, texts: Texts, terminal: Terminal,
     messages: CommandMessages,
   },
   body: code.file<typeof import("./code/commands/amend").default>("./code/commands/amend.ts"),
@@ -448,7 +449,7 @@ export const Init = entryPoint({
 export const Dev = entryPoint({
   owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
   trigger: command(commandNames.dev),
-  deps: { preparation: Preparation, devServer: DevServer, amending: Amending, place: AmendmentPlace, paths: Paths },
+  deps: { preparation: Preparation, devServer: DevServer, amending: Amending, place: AmendmentPlace },
   body: code.file<typeof import("./code/commands/dev").default>("./code/commands/dev.ts"),
 })
 
@@ -496,7 +497,7 @@ export const CommandOrView = entryPoint({
   deps: {
     line: TrameCommands, exitStatus: ExitStatus, preparation: Preparation, renderView: RenderView, compiler: Compiler, views: Views,
     assembler: Assembler, projectCommands: ProjectCommands, writing: FileWriting, paths: Paths, currentProcess: Process, posix: Posix, events: NodeEvents,
-    terminal: Terminal, counts: Counts, sequences: Sequences, messages: CommandMessages,
+    terminal: Terminal, counts: Counts, sequences: Sequences, messages: CommandMessages, amending: Amending, place: AmendmentPlace,
   },
   body: code.file<typeof import("./code/commands/command-or-view").default>("./code/commands/command-or-view.ts"),
 })

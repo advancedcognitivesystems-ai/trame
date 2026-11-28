@@ -9,12 +9,12 @@
       "version": "0.8.0"
     },
     "documents": {
-      "at": "libs/documents/releases/0.4.0",
-      "version": "0.4.0"
+      "at": "libs/documents/releases/0.5.1",
+      "version": "0.5.1"
     },
     "commands": {
-      "at": "libs/commands/releases/0.4.0",
-      "version": "0.4.0"
+      "at": "libs/commands/releases/0.5.0",
+      "version": "0.5.0"
     },
     "machine": {
       "at": "libs/machine/releases/0.1.0",
@@ -25,9 +25,9 @@
       "version": "0.1.0"
     },
     "std": {
-      "at": "std/releases/0.31.0",
-      "version": "0.31.0"
+      "at": "std/releases/0.33.0",
+      "version": "0.33.0"
     }
   },
-  "engine": "generations/g135"
+  "engine": "generations/g137"
 }

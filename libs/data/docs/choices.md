@@ -16,7 +16,7 @@
 | Pattern | Status | Followed by |
 |---|---|---|
 | [Strategy](../.trame/std/docs/patterns.md#Strategy) | **held** | [Documents, in memory](scenarios.md#InMemory), [Tables seeded, in memory](scenarios.md#SeededForScenarios), [PostgreSQL's dialect, read](scenarios.md#PostgresForScenarios), [In memory](../.trame/std/docs/scenarios.md#InMemory), [Judged as the language says](../.trame/std/docs/scenarios.md#LanguageJudgment), [Judged strictly](../.trame/std/docs/scenarios.md#StrictJudgment), [The scenarios' settings](../.trame/std/docs/scenarios.md#ScenarioSettings) |
-| [Adapter](../.trame/std/docs/patterns.md#Adapter) | **held** | [SQLite, in memory](scenarios.md#SqliteForScenarios), [Read by the engine that builds](../.trame/std/docs/scenarios.md#ReadInTheEngine) |
+| [Adapter](../.trame/std/docs/patterns.md#Adapter) | **held** | [SQLite, in memory](scenarios.md#SqliteForScenarios), [Waiting on the machine](../.trame/std/docs/scenarios.md#WaitingAsAPersonWould), [Read by the engine that builds](../.trame/std/docs/scenarios.md#ReadInTheEngine) |
 
 ## Data · Scenarios
 

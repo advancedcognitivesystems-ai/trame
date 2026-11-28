@@ -6,11 +6,8 @@ import type { Bundle, Payload, Pipeline } from "../trame/kernel"
 import { AmendmentField, BundleMode, EvidenceSource, KindName, PipelineStage, Severity, ShipmentEdge, Status, TriggerType } from "../trame/kernel"
 import { scenario } from "../kinds/scenario"
 import { decision } from "../kinds/decision"
-import {
-  Process, WriteLog, TerminalLog, ProcessLog, ServerLog, Test, Compression, Clock, FileReading, FileWriting, FileTrees, Paths, Timer, CommandLine,
-  Signatures,
-} from "./architecture"
-import { PayloadBuilder, Differences, Assembly, Project, Compiler, Lock, References, DateBundle, DevServer, DevService, ShipmentPipeline, Views, EngineFingerprint, ProjectRuns } from "./engine"
+import { Process, WriteLog, TerminalLog, ProcessLog, Test, Clock, FileReading, FileWriting, FileTrees, Paths, CommandLine, Signatures } from "./architecture"
+import { PayloadBuilder, Assembly, Project, Compiler, Lock, References, DateBundle, DevServer, Watching, ShipmentPipeline, Views, EngineFingerprint, ProjectRuns } from "./engine"
 import {
   ShowView, CommandOrView, RenderView, EmitPayload, Assemble, Assembler, TestKinds, TakeSnapshot, Publish, Audit, Release, WriteManifest, Export, Run, Dev,
   Deliver, Ship, RecordEvidence, Doctor, Advance, Build, Plan, Amend, Amending, Init, ReferencesModule, Registry, Upgrade,
@@ -20,21 +17,20 @@ import { DoctorProbe, Asking, ClockAnswers, FilesAnswer, TreesAnswer, ProgramsAn
 import { SyntaxReader, BodyChecks } from "./syntax"
 import { TypeScript, TypeScriptWriter, StringLiteral } from "./typescript"
 import { TerraformWriter } from "./terraform"
-import { BuildComparison } from "#commands/commands"
+import { BuildComparison, PayloadDifferences, CommandWords, DevDebounce } from "#commands/commands"
+import { ServerKept, Waiting, ServerInMemory, MachineTimers } from "#std/running"
 import { Drivers } from "./languages"
-import { Page } from "./page"
-import { Doctype } from "./html"
+import { Page, GraphPacking, GzipInBase64, PageWords, SheetsBesideTheLibrary } from "#documents/page"
+import { PageScript } from "./page"
+import { DevService } from "#documents/page"
+import { Doctype } from "#documents/html"
 import { NamesLed } from "./delivery"
 import { TerminalRendering, PlainTextSyntax, TextFigures } from "#documents/rendering"
-import { PageRendering, HtmlSyntax, SvgFigures } from "./rendering"
-import {
-  WebTreeSitter, Esbuild, NodeCompression, PageResources, StoppedClock, NoReportsInTest, NoInstallsInTest, MemoryHttpServer, NodeTimer, NodeCommandLine, MemoryTerminal,
-  NodeHashing, RunsInTheProcess, InPlaceSources,
-} from "./platform"
+import { PageRendering, HtmlSyntax, SvgFigures } from "#documents/rendering"
+import { WebTreeSitter, Esbuild, PageResources, StoppedClock, NoReportsInTest, NoInstallsInTest, NodeCommandLine, MemoryTerminal, NodeHashing, RunsInTheProcess, InPlaceSources } from "./platform"
 import { ReleaseRecords, EnginePin } from "./generations"
 import { PackageAudit } from "./packages"
 import { SdlcEvidence, ShipmentRunPlan, ShippingRecords, Attribution } from "./shipping"
-import { DevDebounce } from "./product"
 import { ExitStatus, NodeEncodings, NodeModuleSpecifiers } from "#std/system"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
 import { ServerSentEvents, Http } from "#std/web"
@@ -163,10 +159,10 @@ export const SvgSample = decision<{ opening: string }>({ owner: "trame", value: 
  */
 export const PayloadOfTheGraph = scenario({
   owner: "trame",
-  verifies: [EmitPayload, PayloadBuilder, PageRendering, HtmlSyntax, SvgFigures, Differences],
+  verifies: [EmitPayload, PayloadBuilder, PageRendering, HtmlSyntax, SvgFigures, PayloadDifferences],
   env: Test,
   deps: {
-    payload: EmitPayload, differences: Differences, terminalLog: TerminalLog, line: TrameCommands, exitStatus: ExitStatus, output: OutputMessages,
+    payload: EmitPayload, differences: PayloadDifferences, terminalLog: TerminalLog, line: TrameCommands, exitStatus: ExitStatus, output: CommandWords,
     texts: Texts, counts: Counts, messages: ScenarioMessages, svg: SvgSample,
   },
   body: ({ payload, differences, terminalLog, line, exitStatus, output, texts, counts, messages, svg }) => async (check) => {
@@ -191,22 +187,23 @@ export const PayloadOfTheGraph = scenario({
  */
 export const PageOfTheGraph = scenario({
   owner: "trame",
-  verifies: [Page, Esbuild, NodeCompression, PageResources],
+  verifies: [Page, PageScript, SheetsBesideTheLibrary, Esbuild, GzipInBase64, PageResources],
   env: Test,
   deps: {
-    payload: EmitPayload, page: Page, compression: Compression, project: Project, currentProcess: Process, clock: Clock, terminalLog: TerminalLog,
-    line: TrameCommands, output: OutputMessages, texts: Texts, messages: ScenarioMessages,
+    payload: EmitPayload, page: Page, script: PageScript, compression: GraphPacking, project: Project, currentProcess: Process, clock: Clock, terminalLog: TerminalLog,
+    line: TrameCommands, output: PageWords, texts: Texts, messages: ScenarioMessages,
   },
-  body: ({ payload, page, compression, project, currentProcess, clock, terminalLog, line, output, texts, messages }) => async (check) => {
+  body: ({ payload, page, script, compression, project, currentProcess, clock, terminalLog, line, output, texts, messages }) => async (check) => {
     await payload({ params: { command: line.payload }, body: { args: [] } })
     const p = JSON.parse(texts.concat(terminalLog.lines())) as Payload
     const bundle: Bundle = { generatedAt: clock.now().toISOString(), today: p.date, mode: BundleMode.export, dates: [{ date: p.date, payload: p }] }
     const root = currentProcess.cwd()
     const title = project.projectDirs(root).title
-    const html = await page.pageHtml(root, { bundle, fragment: false, project: title })
+    const asked = { script: await script.script(), program: line.program, packed: compression.pack(JSON.stringify(bundle)), project: title }
+    const html = await page.pageHtml({ ...asked, fragment: false })
     check(messages.pageTitled(output.pageTitle(title)), html.includes(output.pageTitle(title)))
     check(messages.pageCarriesTheGraph(), html.includes(compression.pack(JSON.stringify(bundle))))
-    const fragment = await page.pageHtml(root, { bundle, fragment: true, project: title })
+    const fragment = await page.pageHtml({ ...asked, fragment: true })
     check(messages.fragmentShorter(), fragment.length < html.length)
   },
 })
@@ -761,9 +758,9 @@ export const PageExported = scenario({
   env: Test,
   deps: {
     payload: EmitPayload, exported: Export, processLog: ProcessLog, writeLog: WriteLog, terminalLog: TerminalLog, project: Project, currentProcess: Process,
-    paths: Paths, layout: Layout, line: TrameCommands, exitStatus: ExitStatus, output: OutputMessages, texts: Texts, messages: ScenarioMessages,
+    paths: Paths, layout: Layout, line: TrameCommands, exitStatus: ExitStatus, pageWords: PageWords, texts: Texts, messages: ScenarioMessages,
   },
-  body: ({ payload, exported, processLog, writeLog, terminalLog, project, currentProcess, paths, layout, line, exitStatus, output, texts, messages }) => async (check) => {
+  body: ({ payload, exported, processLog, writeLog, terminalLog, project, currentProcess, paths, layout, line, exitStatus, pageWords, texts, messages }) => async (check) => {
     await payload({ params: { command: line.payload }, body: { args: [line.all] } })
     const dates = texts.concat(terminalLog.lines())
     processLog.answer(dates, exitStatus.success)
@@ -772,7 +769,7 @@ export const PageExported = scenario({
     const page = writeLog.written().get(paths.resolve(root, layout.page)) ?? texts.empty
     const [relaunched] = processLog.started()
     check(messages.datesCompiledApart(), relaunched?.args.includes(line.payload) === true && relaunched.args.includes(line.all))
-    check(messages.pageWritten(layout.page), r.status === exitStatus.success && page.includes(output.pageTitle(project.projectDirs(root).title)))
+    check(messages.pageWritten(layout.page), r.status === exitStatus.success && page.includes(pageWords.pageTitle(project.projectDirs(root).title)))
   },
 })
 
@@ -819,12 +816,12 @@ export const DevSamples = decision<{ touched: string; content: string; pauses: n
  */
 export const DevFollowsTheGraph = scenario({
   owner: "trame",
-  verifies: [Dev, DevServer, MemoryHttpServer, NodeTimer],
+  verifies: [Dev, DevServer, Watching, ServerInMemory, MachineTimers],
   env: Test,
   deps: {
-    payload: EmitPayload, dev: Dev, processLog: ProcessLog, serverLog: ServerLog, terminalLog: TerminalLog, writing: FileWriting, timer: Timer,
+    payload: EmitPayload, dev: Dev, processLog: ProcessLog, serverLog: ServerKept, terminalLog: TerminalLog, writing: FileWriting, timer: Waiting,
     currentProcess: Process, paths: Paths, layout: Layout, service: DevService, sse: ServerSentEvents, http: Http, debounce: DevDebounce, project: Project,
-    line: TrameCommands, exitStatus: ExitStatus, output: OutputMessages, texts: Texts, counts: Counts, data: DevSamples, amendment: AmendmentSamples, messages: ScenarioMessages,
+    line: TrameCommands, exitStatus: ExitStatus, output: OutputMessages, pageWords: PageWords, texts: Texts, counts: Counts, data: DevSamples, amendment: AmendmentSamples, messages: ScenarioMessages,
   },
   body: (d) => async (check) => {
     const { processLog, serverLog, service, sse, line, texts, messages } = d
@@ -836,7 +833,7 @@ export const DevFollowsTheGraph = scenario({
     const root = d.currentProcess.cwd()
     const [page] = service.page
     const html = serverLog.request(page ?? service.bundle)
-    check(messages.devPageServed(), html.status === d.http.ok && html.body().includes(d.output.pageTitle(d.project.projectDirs(root).title)))
+    check(messages.devPageServed(), html.status === d.http.ok && html.body().includes(d.pageWords.pageTitle(d.project.projectDirs(root).title)))
     const bundle = serverLog.request(service.bundle)
     const served = JSON.parse(bundle.body()) as { dates: unknown[] }
     check(messages.devBundleServed(), bundle.status === d.http.ok && served.dates.length === (JSON.parse(dates) as unknown[]).length)

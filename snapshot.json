@@ -2,417 +2,6 @@
   "at": "2026-11-28",
   "nodes": [
     {
-      "id": "appearance.ExplorerDrawing",
-      "kind": "decision",
-      "title": "Drawing of the explorer",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "width": 976,
-          "margin": 6,
-          "narrowest": 620,
-          "charWidth": 7.4,
-          "radius": {
-            "frame": 9,
-            "box": 7
-          },
-          "layer": {
-            "head": 30,
-            "pad": 14,
-            "rankBaseline": 19
-          },
-          "map": {
-            "columns": 5,
-            "height": 72,
-            "across": 16,
-            "down": 16,
-            "gap": 22,
-            "kindBottom": 22,
-            "nodes": {
-              "columns": 4,
-              "height": 46,
-              "gap": 16,
-              "kindBottom": 9
-            }
-          },
-          "focus": {
-            "columns": 4,
-            "height": 62,
-            "across": 16,
-            "down": 16,
-            "gap": 24,
-            "left": 30,
-            "rail": 14,
-            "tie": 15,
-            "kindBottom": 9
-          },
-          "text": {
-            "inset": 10,
-            "firstLine": 19,
-            "lineHeight": 15,
-            "lines": 2,
-            "kindExtra": 4
-          },
-          "strip": {
-            "inset": 10,
-            "bottom": 12,
-            "height": 4
-          },
-          "open": {
-            "radius": 5,
-            "inset": 10
-          },
-          "link": {
-            "curve": 26,
-            "base": 1,
-            "widest": 6,
-            "precision": 1
-          },
-          "more": {
-            "baseline": 4
-          },
-          "neighbours": 15,
-          "trail": 8
-        }
-      }
-    },
-    {
-      "id": "appearance.GraphDrawing",
-      "kind": "decision",
-      "title": "Drawing of a graph",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "box": {
-            "width": 178,
-            "height": 60,
-            "radius": 7,
-            "inset": 10,
-            "firstLine": 19,
-            "lineHeight": 15,
-            "kindBottom": 9
-          },
-          "open": {
-            "radius": 5,
-            "inset": 10
-          },
-          "gaps": {
-            "across": 22,
-            "down": 62
-          },
-          "margin": 10,
-          "head": 30,
-          "title": {
-            "chars": 24,
-            "lines": 2,
-            "cut": 2
-          },
-          "kind": {
-            "chars": 27
-          },
-          "passes": 8,
-          "arch": {
-            "rise": 34,
-            "label": 26
-          },
-          "labelBaseline": 4,
-          "narrowest": 0.62,
-          "marker": {
-            "box": 10,
-            "tip": 9,
-            "size": 7
-          },
-          "explored": 40
-        }
-      }
-    },
-    {
-      "id": "appearance.LegendDrawing",
-      "kind": "decision",
-      "title": "Legend of a graph",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "line": {
-            "width": 26,
-            "height": 8,
-            "stroke": 2
-          },
-          "box": {
-            "width": 18,
-            "height": 12,
-            "inset": 1,
-            "radius": 2,
-            "faded": "0.45"
-          },
-          "dot": {
-            "size": 12,
-            "radius": 5
-          },
-          "dashes": {
-            "inferred": "2 3",
-            "computed": "6 4",
-            "discarded": "5 4",
-            "history": "3 2"
-          }
-        }
-      }
-    },
-    {
-      "id": "appearance.Motion",
-      "kind": "decision",
-      "title": "Motion",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "duration-pulse": "1s",
-          "duration-flash": "1.6s"
-        }
-      }
-    },
-    {
-      "id": "appearance.NarrowScreen",
-      "kind": "decision",
-      "title": "Narrow screen",
-      "fields": {
-        "owner": "trame",
-        "value": "920px"
-      }
-    },
-    {
-      "id": "appearance.Opacities",
-      "kind": "decision",
-      "title": "Opacities",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "opacity-full": "1",
-          "opacity-strong": "0.85",
-          "opacity-medium": "0.6",
-          "opacity-muted": "0.45",
-          "opacity-faint": "0.35",
-          "opacity-faintest": "0.3",
-          "opacity-link": "0.1",
-          "opacity-link-dimmed": "0"
-        }
-      }
-    },
-    {
-      "id": "appearance.PageLayout",
-      "kind": "decision",
-      "title": "Page layout",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "side-width": "300px",
-          "page-width": "1320px",
-          "measure": "80ch",
-          "date-min": "62px",
-          "dot-size": "8px",
-          "badge-min": "20px",
-          "screen-height": "100vh",
-          "full": "100%",
-          "fraction": "1fr",
-          "track-fill": "minmax(0, 1fr)",
-          "indent-compact": "1.1em",
-          "indent-doc": "1.2em",
-          "date-mark-line": "1.2em"
-        }
-      }
-    },
-    {
-      "id": "appearance.Radii",
-      "kind": "decision",
-      "title": "Radii",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "radius-2xs": "3px",
-          "radius-xs": "4px",
-          "radius-sm": "5px",
-          "radius-md": "6px",
-          "radius-lg": "7px",
-          "radius-xl": "8px",
-          "radius-2xl": "10px",
-          "radius-3xl": "14px",
-          "radius-round": "50%"
-        }
-      }
-    },
-    {
-      "id": "appearance.Spacing",
-      "kind": "decision",
-      "title": "Spacing",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "space-none": "0",
-          "space-hairline": "1px",
-          "space-3xs": "2px",
-          "space-2xs": "4px",
-          "space-xs": "6px",
-          "space-sm": "8px",
-          "space-md": "10px",
-          "space-lg": "12px",
-          "space-xl": "14px",
-          "space-2xl": "16px",
-          "space-3xl": "18px",
-          "space-4xl": "20px",
-          "space-5xl": "40px",
-          "inset-toggle": "3px",
-          "stack-list-item": "3px",
-          "inset-control-block": "7px",
-          "inset-control-inline": "9px",
-          "inset-cell-block": "7px",
-          "inset-pill-inline": "7px",
-          "stack-h4": "22px",
-          "offset-anchor": "24px",
-          "page-inset-top": "28px",
-          "page-inset-bottom": "64px",
-          "page-inset-bottom-narrow": "48px",
-          "safe-area-default": "0px"
-        }
-      }
-    },
-    {
-      "id": "appearance.Strokes",
-      "kind": "decision",
-      "title": "Strokes",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "line-width": "1px",
-          "focus-width": "2px",
-          "focus-offset": "2px",
-          "underline-offset": "2px",
-          "stroke-grid": "1",
-          "stroke-box": "1.2",
-          "stroke-edge": "1.3",
-          "stroke-today": "1.4",
-          "stroke-open": "1.5",
-          "stroke-strong": "2",
-          "stroke-winner": "2.2",
-          "stroke-focus": "2.4",
-          "stroke-halo": "4px",
-          "dash-history": "5 3",
-          "dash-inferred": "2 3",
-          "dash-computed": "6 4",
-          "dash-discarded": "5 4",
-          "dash-today": "4 3"
-        }
-      }
-    },
-    {
-      "id": "appearance.TimelineDrawing",
-      "kind": "decision",
-      "title": "Drawing of a timeline",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "width": 920,
-          "label": 240,
-          "row": 36,
-          "top": 40,
-          "pad": 18,
-          "narrowest": 640,
-          "titleChars": 32,
-          "period": {
-            "y": 10,
-            "height": 12,
-            "radius": 6,
-            "shortest": 4
-          },
-          "mark": {
-            "centre": 16,
-            "top": 8,
-            "bottom": 24,
-            "half": 7,
-            "radius": 5
-          },
-          "grid": {
-            "above": 8
-          },
-          "tick": {
-            "x": 4,
-            "above": 12
-          },
-          "lane": {
-            "title": 15,
-            "kind": 29
-          },
-          "today": {
-            "above": 26,
-            "below": 4,
-            "label": 5
-          },
-          "bottom": 12,
-          "shortestSpan": 1
-        }
-      }
-    },
-    {
-      "id": "appearance.TypeScale",
-      "kind": "decision",
-      "title": "Type scale",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "text-2xs": "11px",
-          "text-xs": "11.5px",
-          "text-sm": "12px",
-          "text-md": "12.5px",
-          "text-lg": "13px",
-          "text-xl": "13.5px",
-          "text-2xl": "14px",
-          "text-3xl": "15px",
-          "text-date-mark": "10px",
-          "text-edge": "10.5px",
-          "text-doc": "16px",
-          "text-code": "0.82em",
-          "text-h1": "2rem",
-          "text-h1-narrow": "1.6rem",
-          "text-h3": "1.28rem",
-          "weight-regular": "400",
-          "weight-medium": "500",
-          "weight-semibold": "600",
-          "leading-h1": "1.15",
-          "leading-date": "1.2",
-          "leading-h3": "1.25",
-          "leading-table": "1.4",
-          "leading-ui": "1.5",
-          "leading-code": "1.55",
-          "leading-pre": "1.6",
-          "leading-doc": "1.62",
-          "tracking-tight": "-0.01em",
-          "tracking-xs": "0.02em",
-          "tracking-sm": "0.03em",
-          "tracking-md": "0.06em",
-          "tracking-lg": "0.08em",
-          "tracking-xl": "0.09em"
-        }
-      }
-    },
-    {
-      "id": "appearance.Typography",
-      "kind": "decision",
-      "title": "Typography",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "fonts": {
-            "font-doc": "\"Literata\", \"Iowan Old Style\", Georgia, serif",
-            "font-ui": "\"Instrument Sans\", \"Segoe UI\", system-ui, sans-serif",
-            "font-mono": "\"JetBrains Mono\", ui-monospace, \"SFMono-Regular\", Menlo, monospace"
-          },
-          "loading": [
-            "https://fonts.googleapis.com",
-            "https://fonts.gstatic.com",
-            "https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&display=swap"
-          ]
-        }
-      }
-    },
-    {
       "id": "architecture.AmendmentPlace",
       "kind": "port",
       "title": "Where an amendment goes",
@@ -469,24 +58,6 @@
       }
     },
     {
-      "id": "architecture.Compression",
-      "kind": "port",
-      "title": "Compression",
-      "fields": {
-        "owner": "trame",
-        "declaredEffects": []
-      }
-    },
-    {
-      "id": "architecture.Decompression",
-      "kind": "port",
-      "title": "Decompression",
-      "fields": {
-        "owner": "trame",
-        "declaredEffects": []
-      }
-    },
-    {
       "id": "architecture.FileReading",
       "kind": "port",
       "title": "File reading",
@@ -539,43 +110,12 @@
       }
     },
     {
-      "id": "architecture.GraphFeed",
-      "kind": "port",
-      "title": "Feed of the graph",
-      "fields": {
-        "owner": "trame",
-        "declaredEffects": {
-          "packed": [
-            "display"
-          ],
-          "live": [
-            "display"
-          ],
-          "follow": [
-            "network",
-            "asynchronous"
-          ]
-        }
-      }
-    },
-    {
       "id": "architecture.Hashing",
       "kind": "port",
       "title": "Hashing",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
-      }
-    },
-    {
-      "id": "architecture.HttpServer",
-      "kind": "port",
-      "title": "HTTP server",
-      "fields": {
-        "owner": "trame",
-        "declaredEffects": [
-          "network"
-        ]
       }
     },
     {
@@ -693,62 +233,6 @@
       }
     },
     {
-      "id": "architecture.PageAmendments",
-      "kind": "port",
-      "title": "Amendments from the page",
-      "fields": {
-        "owner": "trame",
-        "declaredEffects": {
-          "available": [
-            "display"
-          ],
-          "send": [
-            "network",
-            "asynchronous"
-          ]
-        }
-      }
-    },
-    {
-      "id": "architecture.PageApp",
-      "kind": "component",
-      "title": "The page in a browser",
-      "fields": {
-        "owner": "trame",
-        "language": "typescript",
-        "deps": {
-          "exposure": "std/platform.PageLoading"
-        }
-      }
-    },
-    {
-      "id": "architecture.PageMemory",
-      "kind": "port",
-      "title": "Memory of the page",
-      "fields": {
-        "owner": "trame",
-        "declaredEffects": {
-          "recall": [
-            "read"
-          ],
-          "keep": [
-            "write"
-          ]
-        }
-      }
-    },
-    {
-      "id": "architecture.PageWindow",
-      "kind": "port",
-      "title": "Window of the page",
-      "fields": {
-        "owner": "trame",
-        "declaredEffects": [
-          "display"
-        ]
-      }
-    },
-    {
       "id": "architecture.Paths",
       "kind": "port",
       "title": "Paths",
@@ -845,7 +329,7 @@
               "function"
             ],
             "modules": [
-              "rendering"
+              "documents/rendering"
             ]
           },
           "through": [
@@ -878,15 +362,6 @@
           "read",
           "keeps"
         ]
-      }
-    },
-    {
-      "id": "architecture.ServerLog",
-      "kind": "port",
-      "title": "Server log",
-      "fields": {
-        "owner": "trame",
-        "declaredEffects": []
       }
     },
     {
@@ -961,17 +436,6 @@
       }
     },
     {
-      "id": "architecture.Timer",
-      "kind": "port",
-      "title": "Timer",
-      "fields": {
-        "owner": "trame",
-        "declaredEffects": [
-          "time"
-        ]
-      }
-    },
-    {
       "id": "architecture.TrameCli",
       "kind": "component",
       "title": "Trame on the command line",
@@ -1004,180 +468,16 @@
       }
     },
     {
-      "id": "browser.BrowserAmendments",
-      "kind": "implementation",
-      "title": "Amendments sent to trame dev",
+      "id": "browser.OurPageAssembled",
+      "kind": "adr",
+      "title": "Trame's page, assembled",
       "status": "held",
       "fields": {
         "owner": "trame",
-        "deps": {
-          "page": "page.ThePage",
-          "service": "engine.DevService",
-          "http": "std/web.Http",
-          "media": "std/web.MediaTypes"
-        },
-        "body": {
-          "file": "./code/browser/amendments.ts",
-          "language": "typescript"
-        }
-      }
-    },
-    {
-      "id": "browser.BrowserDecompression",
-      "kind": "implementation",
-      "title": "The browser's gzip",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "packing": "page.PackedGraph",
-          "ecma": "std/ecmascript.EcmaScript"
-        },
-        "body": {
-          "file": "./code/browser/decompression.ts",
-          "language": "typescript"
-        }
-      }
-    },
-    {
-      "id": "browser.BrowserFeed",
-      "kind": "implementation",
-      "title": "The globals of the page, and trame dev",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "page": "page.ThePage",
-          "service": "engine.DevService",
-          "values": "std/algebra.ValueTypes"
-        },
-        "body": {
-          "file": "./code/browser/feed.ts",
-          "language": "typescript"
-        }
-      }
-    },
-    {
-      "id": "browser.BrowserMemory",
-      "kind": "implementation",
-      "title": "Local storage",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "page": "page.ThePage"
-        },
-        "body": {
-          "file": "./code/browser/memory.ts",
-          "language": "typescript"
-        }
-      }
-    },
-    {
-      "id": "browser.BrowserWindow",
-      "kind": "implementation",
-      "title": "The browser's window",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "motion": "std/web.MediaQueries5",
-          "feature": "html.MediaFeature",
-          "counts": "std/algebra.Counts"
-        },
-        "body": {
-          "file": "./code/browser/window.ts",
-          "language": "typescript"
-        }
-      }
-    },
-    {
-      "id": "browser.ExplorerFigures",
-      "kind": "function",
-      "title": "Explorer of a graph",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "html": "std/html.Html",
-          "svg": "std/html.Svg",
-          "aria": "std/html.Aria",
-          "css": "std/html.Css",
-          "page": "page.ThePage",
-          "markup": "markup.DocumentMarkup",
-          "figures": "markup.FigureMarkup",
-          "explorer": "markup.ExplorerMarkup",
-          "drawing": "appearance.ExplorerDrawing",
-          "element": "documents/html.HtmlElement",
-          "start": "documents/html.HtmlStartTag",
-          "empty": "documents/html.SelfClosingTag",
-          "path": "html.PathData",
-          "declaration": "html.CssDeclaration",
-          "escape": "documents/html.EscapedText",
-          "common": "documents/rendering.Common",
-          "words": "messages.PageWords",
-          "messages": "documents/rendering.RenderingMessages",
-          "punctuation": "documents/language.Punctuation",
-          "counts": "std/algebra.Counts",
-          "sequences": "std/algebra.Sequences",
-          "texts": "std/algebra.Texts"
-        },
-        "body": {
-          "file": "./code/rendering/explorer.ts",
-          "language": "typescript"
-        }
-      }
-    },
-    {
-      "id": "browser.ShowGraph",
-      "kind": "entry",
-      "title": "Show the graph",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "trigger": {
-          "type": "load"
-        },
-        "deps": {
-          "window": "architecture.PageWindow",
-          "memory": "architecture.PageMemory",
-          "feed": "architecture.GraphFeed",
-          "unpacking": "architecture.Decompression",
-          "amendments": "architecture.PageAmendments",
-          "explorer": "browser.ExplorerFigures",
-          "common": "documents/rendering.Common",
-          "page": "page.ThePage",
-          "regions": "page.PageRegions",
-          "modes": "page.RenderingModes",
-          "highlighting": "page.MachineHighlighting",
-          "markup": "markup.DocumentMarkup",
-          "around": "markup.AroundMarkup",
-          "explorerMarkup": "markup.ExplorerMarkup",
-          "drawing": "appearance.ExplorerDrawing",
-          "ids": "conventions.DocumentIds",
-          "slots": "documents/rendering.SentenceSlots",
-          "punctuation": "documents/language.Punctuation",
-          "language": "messages.Language",
-          "html": "std/html.Html",
-          "aria": "std/html.Aria",
-          "events": "std/web.UiEvents",
-          "view": "std/web.CssomView",
-          "iso": "std/measures.Iso8601",
-          "file": "std/text.TextFile",
-          "element": "documents/html.HtmlElement",
-          "escape": "documents/html.EscapedText",
-          "attribute": "html.AttributeSelector",
-          "presence": "html.AttributePresence",
-          "selectors": "html.SelectorList",
-          "classSelector": "html.ClassSelector",
-          "words": "messages.PageWords",
-          "counts": "std/algebra.Counts",
-          "sequences": "std/algebra.Sequences",
-          "texts": "std/algebra.Texts"
-        },
-        "body": {
-          "file": "./code/page/show.ts",
-          "language": "typescript"
+        "context": "The page's program is libs/documents' component, which names no environment: a project assembles it where it chooses the browser's realizations.",
+        "consequences": "Trame's environment Browser chooses the library's realizations; the page's program is assembled there with the engine, and bundled for every page the engine writes.",
+        "rejected": {
+          "Realizations of Trame's own": "the browser's are what every project's page needs, written once"
         }
       }
     },
@@ -1193,21 +493,6 @@
         "rejected": {
           "A framework for the page": "a dependency, and its own way of writing the page, for a page that writes HTML strings and listens to a few events",
           "Libraries for storage and decompression": "every browser the page targets has local storage and gzip"
-        }
-      }
-    },
-    {
-      "id": "browser.ThePageIsAssembled",
-      "kind": "adr",
-      "title": "The page is assembled",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "context": "The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.",
-        "consequences": "The page's program is written by the assembly, like the command line's: the values of the graph frozen in it, its bodies wired, the browser's implementations chosen for the environment Browser. It carries the modules of the graph its bodies use, which makes it heavier.",
-        "rejected": {
-          "Values passed to the script in the page": "the script would still build its functions by hand, outside the graph",
-          "The page drawn whole by the engine": "the explorer's states are too many to draw in advance"
         }
       }
     },
@@ -1478,21 +763,22 @@
           "payload": "commands.EmitPayload",
           "dev": "commands.Dev",
           "processLog": "architecture.ProcessLog",
-          "serverLog": "architecture.ServerLog",
+          "serverLog": "std/running.ServerKept",
           "terminalLog": "architecture.TerminalLog",
           "writing": "architecture.FileWriting",
-          "timer": "architecture.Timer",
+          "timer": "std/running.Waiting",
           "currentProcess": "architecture.Process",
           "paths": "architecture.Paths",
           "layout": "conventions.Layout",
-          "service": "engine.DevService",
+          "service": "documents/page.DevService",
           "sse": "std/web.ServerSentEvents",
           "http": "std/web.Http",
-          "debounce": "product.DevDebounce",
+          "debounce": "commands/commands.DevDebounce",
           "project": "engine.Project",
           "line": "conventions.TrameCommands",
           "exitStatus": "std/system.ExitStatus",
           "output": "messages.OutputMessages",
+          "pageWords": "documents/page.PageWords",
           "texts": "std/algebra.Texts",
           "counts": "std/algebra.Counts",
           "data": "command-scenarios.DevSamples",
@@ -1790,7 +1076,7 @@
           "writeLog": "architecture.WriteLog",
           "projects": "command-scenarios.ScenarioProjects",
           "samples": "command-scenarios.ProjectSamples",
-          "doctype": "html.Doctype",
+          "doctype": "documents/html.Doctype",
           "line": "conventions.TrameCommands",
           "exitStatus": "std/system.ExitStatus",
           "counts": "std/algebra.Counts",
@@ -1818,7 +1104,7 @@
           "layout": "conventions.Layout",
           "line": "conventions.TrameCommands",
           "exitStatus": "std/system.ExitStatus",
-          "output": "messages.OutputMessages",
+          "pageWords": "documents/page.PageWords",
           "texts": "std/algebra.Texts",
           "messages": "messages.ScenarioMessages"
         },
@@ -1834,14 +1120,15 @@
         "owner": "trame",
         "deps": {
           "payload": "commands.EmitPayload",
-          "page": "page.Page",
-          "compression": "architecture.Compression",
+          "page": "documents/page.Page",
+          "script": "page.PageScript",
+          "compression": "documents/page.GraphPacking",
           "project": "engine.Project",
           "currentProcess": "architecture.Process",
           "clock": "architecture.Clock",
           "terminalLog": "architecture.TerminalLog",
           "line": "conventions.TrameCommands",
-          "output": "messages.OutputMessages",
+          "output": "documents/page.PageWords",
           "texts": "std/algebra.Texts",
           "messages": "messages.ScenarioMessages"
         },
@@ -1857,11 +1144,11 @@
         "owner": "trame",
         "deps": {
           "payload": "commands.EmitPayload",
-          "differences": "engine.Differences",
+          "differences": "commands/commands.PayloadDifferences",
           "terminalLog": "architecture.TerminalLog",
           "line": "conventions.TrameCommands",
           "exitStatus": "std/system.ExitStatus",
-          "output": "messages.OutputMessages",
+          "output": "commands/commands.CommandWords",
           "texts": "std/algebra.Texts",
           "counts": "std/algebra.Counts",
           "messages": "messages.ScenarioMessages",
@@ -2410,8 +1697,8 @@
           "preparation": "commands.Preparation",
           "amending": "commands.Amending",
           "place": "architecture.AmendmentPlace",
-          "paths": "architecture.Paths",
           "text": "documents/text.TerminalText",
+          "texts": "std/algebra.Texts",
           "terminal": "architecture.Terminal",
           "messages": "messages.CommandMessages"
         },
@@ -2590,7 +1877,9 @@
           "terminal": "architecture.Terminal",
           "counts": "std/algebra.Counts",
           "sequences": "std/algebra.Sequences",
-          "messages": "messages.CommandMessages"
+          "messages": "messages.CommandMessages",
+          "amending": "commands.Amending",
+          "place": "architecture.AmendmentPlace"
         },
         "body": {
           "file": "./code/commands/command-or-view.ts",
@@ -2617,9 +1906,9 @@
           "bundler": "architecture.Bundler",
           "led": "delivery.NamesLed",
           "bundle": "page.PageBundle",
-          "document": "page.PageDocument",
+          "document": "documents/page.PageDocument",
           "html": "std/html.Html",
-          "script": "html.ScriptElement",
+          "script": "documents/html.ScriptElement",
           "style": "delivery.DeliveredStyle",
           "reading": "architecture.FileReading",
           "writing": "architecture.FileWriting",
@@ -2652,8 +1941,7 @@
           "preparation": "commands.Preparation",
           "devServer": "engine.DevServer",
           "amending": "commands.Amending",
-          "place": "architecture.AmendmentPlace",
-          "paths": "architecture.Paths"
+          "place": "architecture.AmendmentPlace"
         },
         "body": {
           "file": "./code/commands/dev.ts",
@@ -2701,9 +1989,10 @@
           "exitStatus": "std/system.ExitStatus",
           "preparation": "commands.Preparation",
           "payload": "engine.PayloadBuilder",
+          "same": "commands/commands.SameAsToday",
           "files": "documents/rendering.FileRendering",
           "screen": "documents/rendering.TerminalRendering",
-          "pageRendering": "rendering.PageRendering",
+          "pageRendering": "documents/rendering.PageRendering",
           "terminal": "architecture.Terminal"
         },
         "body": {
@@ -2779,7 +2068,10 @@
           "layout": "conventions.Layout",
           "preparation": "commands.Preparation",
           "bundle": "engine.DateBundle",
-          "page": "page.Page",
+          "page": "documents/page.Page",
+          "script": "page.PageScript",
+          "packing": "documents/page.GraphPacking",
+          "line": "conventions.TrameCommands",
           "project": "engine.Project",
           "writing": "architecture.FileWriting",
           "paths": "architecture.Paths",
@@ -2928,7 +2220,7 @@
           "currentProcess": "architecture.Process",
           "clock": "architecture.Clock",
           "severityOrder": "(function)",
-          "devPort": "product.DevPort",
+          "devPort": "commands/commands.DevPort",
           "exitStatus": "std/system.ExitStatus",
           "layout": "documents/text.TerminalText",
           "columns": "documents/text.TerminalColumns",
@@ -2948,7 +2240,12 @@
           "specifiers": "std/system.NodeModuleSpecifiers",
           "reader": "syntax.SyntaxReader",
           "long": "std/tooling.LongOptions",
-          "standard": "std/tooling.StandardOptions"
+          "standard": "std/tooling.StandardOptions",
+          "payload": "engine.PayloadBuilder",
+          "dateBundle": "engine.DateBundle",
+          "watching": "engine.Watching",
+          "page": "page.PageScript",
+          "project": "engine.Project"
         },
         "body": {
           "file": "./code/commands/preparation.ts",
@@ -3422,25 +2719,6 @@
         "value": {
           "titleLines": 1,
           "joint": " "
-        }
-      }
-    },
-    {
-      "id": "conventions.DocumentIds",
-      "kind": "standard",
-      "title": "Names of the documents",
-      "fields": {
-        "owner": "trame",
-        "source": "Trame, the documents of its views (the engine names them, the page reads them)",
-        "constants": {
-          "ofModule": {
-            "value": ".",
-            "meaning": "Between the name of a view and the module it shows"
-          },
-          "ofNode": {
-            "value": ":",
-            "meaning": "Between the name of a view and the reference of the node it shows"
-          }
         }
       }
     },
@@ -3937,8 +3215,8 @@
         },
         "deps": {
           "standard": "std/html.Css",
-          "rule": "html.CssRule",
-          "property": "html.CustomProperty",
+          "rule": "documents/html.CssRule",
+          "property": "documents/html.CustomProperty",
           "file": "std/text.TextFile",
           "counts": "std/algebra.Counts"
         },
@@ -4166,7 +3444,7 @@
       "fields": {
         "owner": "trame",
         "deps": {
-          "httpServer": "architecture.HttpServer",
+          "httpServer": "std/running.HttpServing",
           "counts": "std/algebra.Counts",
           "asking": "doctor.Asking",
           "messages": "messages.CommandMessages"
@@ -4183,7 +3461,7 @@
         "owner": "trame",
         "deps": {
           "clock": "architecture.Clock",
-          "timer": "architecture.Timer",
+          "timer": "std/running.Waiting",
           "probe": "doctor.DoctorProbe",
           "asking": "doctor.Asking",
           "messages": "messages.CommandMessages"
@@ -4343,7 +3621,7 @@
           "sequences": "std/algebra.Sequences",
           "texts": "std/algebra.Texts",
           "punctuation": "documents/language.Punctuation",
-          "ids": "conventions.DocumentIds",
+          "ids": "documents/rendering.DocumentIds",
           "layout": "conventions.Layout",
           "uri": "std/web.Uri",
           "messages": "messages.ViewMessages",
@@ -4447,7 +3725,7 @@
       "fields": {
         "owner": "trame",
         "deps": {
-          "service": "engine.DevService",
+          "service": "documents/page.DevService",
           "uri": "std/web.Uri",
           "line": "conventions.TrameCommands",
           "nodeEvents": "std/system.NodeEvents",
@@ -4459,16 +3737,17 @@
           "codeLines": "documents/text.CodeLines",
           "file": "std/text.TextFile",
           "clock": "architecture.Clock",
-          "timer": "architecture.Timer",
-          "debounce": "product.DevDebounce",
-          "httpServer": "architecture.HttpServer",
-          "reading": "architecture.FileReading",
+          "timer": "std/running.Waiting",
+          "debounce": "commands/commands.DevDebounce",
+          "httpServer": "std/running.HttpServing",
+          "watching": "engine.Watching",
           "paths": "architecture.Paths",
           "project": "engine.Project",
           "bundle": "engine.DateBundle",
-          "differences": "engine.Differences",
-          "page": "page.Page",
-          "pageRendering": "rendering.PageRendering",
+          "differences": "commands/commands.PayloadDifferences",
+          "page": "documents/page.Page",
+          "script": "page.PageScript",
+          "pageRendering": "documents/rendering.PageRendering",
           "counts": "std/algebra.Counts",
           "sequences": "std/algebra.Sequences",
           "texts": "std/algebra.Texts",
@@ -4483,44 +3762,17 @@
       }
     },
     {
-      "id": "engine.DevService",
+      "id": "engine.EditorLeftovers",
       "kind": "decision",
-      "title": "What trame dev serves",
+      "title": "Files an editor leaves",
       "fields": {
         "owner": "trame",
         "value": {
-          "page": [
-            "/",
-            "/index.html"
-          ],
-          "bundle": "/bundle.json",
-          "events": "/events",
-          "amend": "/amend",
-          "compiling": "compiling",
-          "ready": "bundle",
-          "host": "localhost",
-          "ignored": [
+          "endings": [
             "~",
             ".swp",
             ".tmp"
           ]
-        }
-      }
-    },
-    {
-      "id": "engine.Differences",
-      "kind": "function",
-      "title": "Differences",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "punctuation": "documents/language.Punctuation",
-          "messages": "messages.OutputMessages"
-        },
-        "body": {
-          "file": "./code/engine/differences.ts",
-          "language": "typescript"
         }
       }
     },
@@ -4545,7 +3797,8 @@
           "json": "std/text.JsonFormatting",
           "sequences": "std/algebra.Sequences",
           "texts": "std/algebra.Texts",
-          "values": "std/algebra.ValueTypes"
+          "values": "std/algebra.ValueTypes",
+          "references": "std/engine.ReferenceSyntax"
         },
         "body": {
           "file": "./code/engine/engine-fingerprint.ts",
@@ -5015,7 +4268,7 @@
           "drivers": "languages.Drivers",
           "rank": "conventions.DefaultRank",
           "groupOrder": "conventions.ViewGroupOrder",
-          "ids": "conventions.DocumentIds",
+          "ids": "documents/rendering.DocumentIds",
           "uri": "std/web.Uri",
           "layout": "conventions.Layout",
           "loader": "architecture.ModuleLoader",
@@ -5032,6 +4285,27 @@
         },
         "body": {
           "file": "./code/engine/views.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "engine.Watching",
+      "kind": "function",
+      "title": "Watching a project",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "reading": "architecture.FileReading",
+          "paths": "architecture.Paths",
+          "layout": "conventions.Layout",
+          "project": "engine.Project",
+          "leftovers": "engine.EditorLeftovers",
+          "texts": "std/algebra.Texts"
+        },
+        "body": {
+          "file": "./code/engine/watching.ts",
           "language": "typescript"
         }
       }
@@ -5091,7 +4365,7 @@
           "component": "TrameCli",
           "environment": "Local",
           "page": {
-            "component": "PageApp",
+            "component": "documents/browser.PageApp",
             "environment": "Browser"
           },
           "terminal": "terminal.txt",
@@ -5184,619 +4458,6 @@
         "rejected": {
           "The history in the README": "written by hand, and it drifted from the generations",
           "A file of records beside the generations": "data the graph would not hold, and no view could show"
-        }
-      }
-    },
-    {
-      "id": "html.AttributePresence",
-      "kind": "syntax",
-      "title": "Attribute presence",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Selectors Level 4, § 6.1 Attribute presence and value selectors",
-        "url": "https://www.w3.org/TR/selectors-4/#attribute-representation",
-        "constants": {
-          "openBracket": {
-            "value": "[",
-            "meaning": "Opens an attribute selector"
-          },
-          "closeBracket": {
-            "value": "]",
-            "meaning": "Closes it"
-          }
-        },
-        "deps": {
-          "standard": "std/html.Css"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "data-ref"
-            ],
-            "output": "[data-ref]"
-          }
-        ],
-        "fragment": {
-          "before": "",
-          "after": " {}"
-        }
-      }
-    },
-    {
-      "id": "html.AttributeSelector",
-      "kind": "syntax",
-      "title": "Attribute selector",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Selectors Level 4, § 6.1 Attribute presence and value selectors",
-        "url": "https://www.w3.org/TR/selectors-4/#attribute-representation",
-        "constants": {
-          "openBracket": {
-            "value": "[",
-            "meaning": "Opens an attribute selector"
-          },
-          "closeBracket": {
-            "value": "]",
-            "meaning": "Closes it"
-          },
-          "equals": {
-            "value": "=",
-            "meaning": "The attribute has exactly this value"
-          },
-          "quote": {
-            "value": "\"",
-            "meaning": "Surrounds the value"
-          }
-        },
-        "deps": {
-          "standard": "std/html.Css"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "data-theme",
-              "dark"
-            ],
-            "output": "[data-theme=\"dark\"]"
-          }
-        ],
-        "fragment": {
-          "before": "",
-          "after": " {}"
-        }
-      }
-    },
-    {
-      "id": "html.ClassSelector",
-      "kind": "syntax",
-      "title": "Class selector",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Selectors Level 4, § 6.6 Class selectors",
-        "url": "https://www.w3.org/TR/selectors-4/#class-html",
-        "constants": {
-          "dot": {
-            "value": ".",
-            "meaning": "Begins a class selector"
-          }
-        },
-        "deps": {
-          "standard": "std/html.Css"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "st-held"
-            ],
-            "output": ".st-held"
-          }
-        ],
-        "fragment": {
-          "before": "",
-          "after": " {}"
-        }
-      }
-    },
-    {
-      "id": "html.CssDeclaration",
-      "kind": "syntax",
-      "title": "Declaration",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "5.4.6 Consume a declaration",
-        "url": "https://www.w3.org/TR/css-syntax-3/#consume-declaration",
-        "constants": {},
-        "deps": {
-          "standard": "std/html.Css"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "color-scheme",
-              "dark"
-            ],
-            "output": "color-scheme: dark;"
-          }
-        ],
-        "fragment": {
-          "before": "a { ",
-          "after": " }"
-        }
-      }
-    },
-    {
-      "id": "html.CssRule",
-      "kind": "syntax",
-      "title": "Rule",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "5.4.3 Consume a qualified rule",
-        "url": "https://www.w3.org/TR/css-syntax-3/#consume-qualified-rule",
-        "constants": {},
-        "deps": {
-          "standard": "std/html.Css"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "body",
-              [
-                "margin: 0;"
-              ]
-            ],
-            "output": "body { margin: 0; }"
-          }
-        ]
-      }
-    },
-    {
-      "id": "html.CssVariable",
-      "kind": "syntax",
-      "title": "Variable",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "CSS Custom Properties for Cascading Variables Level 1, § 3 Using cascading variables: the var() notation",
-        "url": "https://www.w3.org/TR/css-variables-1/#using-variables",
-        "constants": {
-          "notation": {
-            "value": "var",
-            "meaning": "The function that reads a custom property"
-          },
-          "dashes": {
-            "value": "--",
-            "meaning": "Begins the name of a custom property"
-          }
-        },
-        "deps": {
-          "standard": "std/html.Css"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "accent"
-            ],
-            "output": "var(--accent)"
-          }
-        ],
-        "fragment": {
-          "before": "a { color: ",
-          "after": "; }"
-        }
-      }
-    },
-    {
-      "id": "html.CustomProperty",
-      "kind": "syntax",
-      "title": "Custom property",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "CSS Custom Properties for Cascading Variables Level 1, § 2 Defining custom properties",
-        "url": "https://www.w3.org/TR/css-variables-1/#defining-variables",
-        "constants": {
-          "dashes": {
-            "value": "--",
-            "meaning": "Begins the name of a custom property"
-          }
-        },
-        "deps": {
-          "standard": "std/html.Css",
-          "declaration": "html.CssDeclaration"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "bg",
-              "#f3f5f6"
-            ],
-            "output": "--bg: #f3f5f6;"
-          }
-        ],
-        "fragment": {
-          "before": ":root { ",
-          "after": " }"
-        }
-      }
-    },
-    {
-      "id": "html.Doctype",
-      "kind": "syntax",
-      "title": "DOCTYPE",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "13.1.1 The DOCTYPE",
-        "url": "https://html.spec.whatwg.org/multipage/syntax.html#the-doctype",
-        "constants": {
-          "doctype": {
-            "value": "<!doctype html>",
-            "meaning": "The DOCTYPE, in lower case, which HTML allows"
-          }
-        },
-        "deps": {
-          "standard": "std/html.Html"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [],
-            "output": "<!doctype html>"
-          }
-        ]
-      }
-    },
-    {
-      "id": "html.HtmlBlock",
-      "kind": "syntax",
-      "title": "Element over several lines",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "13.1.2 Elements",
-        "url": "https://html.spec.whatwg.org/multipage/syntax.html#elements-2",
-        "constants": {
-          "indent": {
-            "value": "  ",
-            "meaning": "Two spaces per level of nesting"
-          }
-        },
-        "deps": {
-          "standard": "std/html.Html",
-          "startTag": "documents/html.HtmlStartTag",
-          "endTag": "documents/html.HtmlEndTag"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "main",
-              {},
-              [
-                "<article class=\"doc\" id=\"doc\"></article>"
-              ]
-            ],
-            "output": [
-              "<main>",
-              "  <article class=\"doc\" id=\"doc\"></article>",
-              "</main>"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "html.JsonInScript",
-      "kind": "syntax",
-      "title": "JSON in a script",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "4.12.1.3 Restrictions for contents of script elements",
-        "url": "https://html.spec.whatwg.org/multipage/scripting.html#restrictions-for-contents-of-script-elements",
-        "constants": {
-          "escape": {
-            "value": "\\u003c",
-            "meaning": "The less-than sign, as a JSON escape (RFC 8259, § 7)"
-          }
-        },
-        "deps": {
-          "standard": "std/html.Html"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              {
-                "title": "</script>"
-              }
-            ],
-            "output": "{\"title\":\"\\u003c/script>\"}"
-          }
-        ],
-        "fragment": {
-          "before": "x = ",
-          "after": ""
-        }
-      }
-    },
-    {
-      "id": "html.MediaFeature",
-      "kind": "syntax",
-      "title": "Media feature",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Media Queries Level 4, § 2.4 Media features",
-        "url": "https://www.w3.org/TR/mediaqueries-4/#mq-features",
-        "constants": {},
-        "deps": {
-          "standard": "std/html.Css"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "prefers-color-scheme",
-              "dark"
-            ],
-            "output": "(prefers-color-scheme: dark)"
-          }
-        ],
-        "fragment": {
-          "before": "@media ",
-          "after": " {}"
-        }
-      }
-    },
-    {
-      "id": "html.MediaRule",
-      "kind": "syntax",
-      "title": "Media rule",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "CSS Conditional Rules Level 3, § 6 Media-specific style sheets: the @media rule",
-        "url": "https://www.w3.org/TR/css-conditional-3/#at-media",
-        "constants": {
-          "keyword": {
-            "value": "@media",
-            "meaning": "Opens a media rule"
-          }
-        },
-        "deps": {
-          "standard": "std/html.Css"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "(prefers-color-scheme: dark)",
-              [
-                "body { margin: 0; }"
-              ]
-            ],
-            "output": "@media (prefers-color-scheme: dark) { body { margin: 0; } }"
-          }
-        ]
-      }
-    },
-    {
-      "id": "html.NegationSelector",
-      "kind": "syntax",
-      "title": "Negation",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Selectors Level 4, § 4.3 The negation pseudo-class",
-        "url": "https://www.w3.org/TR/selectors-4/#negation",
-        "constants": {
-          "pseudoClass": {
-            "value": ":not",
-            "meaning": "The negation pseudo-class"
-          }
-        },
-        "deps": {
-          "standard": "std/html.Css"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "[data-theme=\"light\"]"
-            ],
-            "output": ":not([data-theme=\"light\"])"
-          }
-        ],
-        "fragment": {
-          "before": "",
-          "after": " {}"
-        }
-      }
-    },
-    {
-      "id": "html.PathData",
-      "kind": "syntax",
-      "title": "Path data",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "9.3 Path data",
-        "url": "https://www.w3.org/TR/SVG2/paths.html#PathData",
-        "constants": {
-          "moveTo": {
-            "value": "M",
-            "meaning": "Starts the path at a point"
-          },
-          "curveTo": {
-            "value": "C",
-            "meaning": "A cubic curve: two control points, then its end"
-          },
-          "lineTo": {
-            "value": "L",
-            "meaning": "A straight line to a point"
-          },
-          "close": {
-            "value": "z",
-            "meaning": "Closes the path, back to its start"
-          }
-        },
-        "deps": {
-          "standard": "std/html.Svg"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              [
-                89,
-                60
-              ],
-              [
-                {
-                  "via": [
-                    [
-                      89,
-                      91
-                    ],
-                    [
-                      111,
-                      91
-                    ]
-                  ],
-                  "to": [
-                    111,
-                    122
-                  ]
-                }
-              ],
-              false
-            ],
-            "output": "M89,60 C89,91 111,91 111,122"
-          },
-          {
-            "input": [
-              [
-                5,
-                8
-              ],
-              [
-                {
-                  "to": [
-                    12,
-                    16
-                  ]
-                },
-                {
-                  "to": [
-                    5,
-                    24
-                  ]
-                }
-              ],
-              true
-            ],
-            "output": "M5,8 L12,16 L5,24 z"
-          }
-        ]
-      }
-    },
-    {
-      "id": "html.ScriptElement",
-      "kind": "syntax",
-      "title": "Script",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "4.12.1.3 Restrictions for contents of script elements",
-        "url": "https://html.spec.whatwg.org/multipage/scripting.html#restrictions-for-contents-of-script-elements",
-        "constants": {
-          "tag": {
-            "value": "script",
-            "meaning": "The element of code run by the page"
-          },
-          "endTagOpen": {
-            "value": "</script",
-            "meaning": "What would end the element in its text"
-          },
-          "escaped": {
-            "value": "<\\/script",
-            "meaning": "The same text for the code, which no longer ends the element"
-          },
-          "everyCase": {
-            "value": "gi",
-            "meaning": "Every occurrence, whatever its case"
-          },
-          "commentOpen": {
-            "value": "<!--",
-            "meaning": "What would let a later start tag of a script swallow the end of the element"
-          },
-          "commentEscaped": {
-            "value": "<\\!--",
-            "meaning": "The same text for the code: a backslash before a character that needs none"
-          }
-        },
-        "deps": {
-          "standard": "std/html.Html",
-          "element": "documents/html.HtmlElement"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "const s = \"</SCRIPT>\""
-            ],
-            "output": "<script>const s = \"<\\/script>\"</script>"
-          },
-          {
-            "input": [
-              "const s = \"<!--\""
-            ],
-            "output": "<script>const s = \"<\\!--\"</script>"
-          }
-        ]
-      }
-    },
-    {
-      "id": "html.SelectorList",
-      "kind": "syntax",
-      "title": "Selector list",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Selectors Level 4, § 4.1 Selector lists",
-        "url": "https://www.w3.org/TR/selectors-4/#grouping",
-        "constants": {},
-        "deps": {
-          "standard": "std/html.Css"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              [
-                "[data-ref]",
-                "[data-doc]"
-              ]
-            ],
-            "output": "[data-ref], [data-doc]"
-          }
-        ],
-        "fragment": {
-          "before": "",
-          "after": " {}"
         }
       }
     },
@@ -6123,230 +4784,6 @@
       }
     },
     {
-      "id": "markup.AroundMarkup",
-      "kind": "decision",
-      "title": "Around the documents",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "classes": {
-            "busy": "busy",
-            "failed": "failed",
-            "dot": "dot",
-            "badge": "badge",
-            "zero": "zero",
-            "title": "t",
-            "file": "f",
-            "nodePick": "node-pick",
-            "nodeViews": "node-views",
-            "error": "error",
-            "changes": "changes",
-            "wide": "wide",
-            "source": "source",
-            "terminal": "term",
-            "prompt": "t-prompt",
-            "json": "json",
-            "flash": "flash"
-          },
-          "json": {
-            "key": "j-key",
-            "text": "j-str",
-            "literal": "j-lit",
-            "number": "j-num"
-          },
-          "attributes": {
-            "date": "data-date",
-            "amendForm": "data-amend-form",
-            "preview": "data-preview",
-            "record": "data-record",
-            "field": "data-field"
-          },
-          "amend": {
-            "form": "amend",
-            "result": "amend-result",
-            "fields": {
-              "node": "node",
-              "path": "path",
-              "value": "value",
-              "unit": "unit",
-              "why": "why",
-              "by": "by",
-              "from": "from",
-              "source": "source",
-              "dryRun": "dryRun"
-            }
-          }
-        }
-      }
-    },
-    {
-      "id": "markup.DocumentMarkup",
-      "kind": "decision",
-      "title": "Documents in the page",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "classes": {
-            "reference": "ref",
-            "open": "open",
-            "rule": "rule",
-            "pill": "pill",
-            "published": "pub",
-            "severity": "sev",
-            "person": "person",
-            "card": "card",
-            "history": "history",
-            "repealed": "repealed",
-            "meta": "meta",
-            "views": "views",
-            "viewButton": "chip-btn",
-            "nature": "nature",
-            "inactive": "inactive",
-            "facts": "facts",
-            "resolution": "resolution",
-            "child": "child",
-            "tableWrap": "table-wrap",
-            "code": "code",
-            "codeSource": "code-source",
-            "checksTitle": "checks-title",
-            "validity": "validity",
-            "summary": "summary",
-            "intro": "intro",
-            "figure": "figure",
-            "figureScroll": "figure-scroll",
-            "amendButton": "amend-btn"
-          },
-          "prefixes": {
-            "outcome": "oc-",
-            "validity": "va-",
-            "severity": "sev-"
-          },
-          "attributes": {
-            "reference": "data-ref",
-            "doc": "data-doc",
-            "view": "data-view",
-            "node": "data-node",
-            "figure": "data-figure",
-            "amend": "data-amend",
-            "value": "data-value",
-            "way": "data-way",
-            "units": "data-units"
-          },
-          "headings": {
-            "title": 1,
-            "section": 2,
-            "card": 3,
-            "nested": 4
-          }
-        },
-        "rejected": {
-          "Inline styles": "the page's themes and its narrow screen change the look, which a style sheet does once",
-          "One heading rank per level": "below a card, the ranks run out, and the outline of a long document is unreadable"
-        }
-      }
-    },
-    {
-      "id": "markup.ExplorerMarkup",
-      "kind": "decision",
-      "title": "The explorer of a graph",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "classes": {
-            "explorer": "explorer",
-            "bar": "explorer-bar",
-            "find": "explorer-find",
-            "hint": "explorer-hint",
-            "trail": "trail",
-            "graph": "explorer-graph",
-            "map": "explorer-map",
-            "lighting": "lighting",
-            "group": "explorer-group",
-            "frame": "frame",
-            "rank": "rank",
-            "rail": "explorer-rail",
-            "box": "map-box",
-            "segment": "map-seg",
-            "none": "none",
-            "link": "map-link",
-            "lit": "lit",
-            "selected": "selected",
-            "top": "map-top",
-            "more": "more"
-          },
-          "attributes": {
-            "explore": "data-explore",
-            "box": "data-explore-box",
-            "place": "data-box",
-            "more": "data-explore-more",
-            "layer": "data-layer",
-            "find": "data-explore-find",
-            "from": "data-a",
-            "to": "data-b",
-            "selected": "data-selected"
-          },
-          "joints": {
-            "box": "|",
-            "pair": ">"
-          },
-          "ids": {
-            "explorer": "f",
-            "suggestions": "-nodes"
-          }
-        }
-      }
-    },
-    {
-      "id": "markup.FigureMarkup",
-      "kind": "decision",
-      "title": "Figures in the page",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "edge": "fe",
-          "node": "fn",
-          "nature": "n-",
-          "role": "r-",
-          "inactive": "inactive",
-          "history": "hist",
-          "focus": "focus",
-          "box": "box",
-          "kind": "kind",
-          "open": "open",
-          "arrows": {
-            "base": "arrow",
-            "accent": "arrow-accent",
-            "bad": "arrow-bad",
-            "warn": "arrow-warn"
-          },
-          "markers": {
-            "base": "arrow-base",
-            "accent": "arrow-to-accent",
-            "bad": "arrow-to-bad",
-            "warn": "arrow-to-warn"
-          },
-          "defs": "figure-defs",
-          "legend": "legend",
-          "samples": {
-            "base": "lg-base",
-            "accent": "lg-accent",
-            "bad": "lg-bad",
-            "box": "lg-box",
-            "open": "lg-open"
-          },
-          "timeline": "tl",
-          "grid": "grid",
-          "tick": "tick",
-          "period": "period",
-          "review": "review",
-          "mark": "mark",
-          "lane": "lane-label",
-          "muted": "muted",
-          "today": "today"
-        }
-      }
-    },
-    {
       "id": "messages.AdvanceMessages",
       "kind": "catalog",
       "title": "Messages of an advance",
@@ -6489,21 +4926,6 @@
       }
     },
     {
-      "id": "messages.PageWords",
-      "kind": "catalog",
-      "title": "Words of the page",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "language": "messages.Language"
-        },
-        "messages": {
-          "file": "./code/page/words.ts",
-          "language": "typescript"
-        }
-      }
-    },
-    {
       "id": "messages.PlatformMessages",
       "kind": "catalog",
       "title": "Messages of the platform",
@@ -6581,10 +5003,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "documents",
-        "version": "0.4.0",
+        "version": "0.5.1",
         "joins": "library",
         "from": "path",
-        "at": "libs/documents/releases/0.4.0"
+        "at": "libs/documents/releases/0.5.1"
       }
     },
     {
@@ -6611,10 +5033,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "commands",
-        "version": "0.4.0",
+        "version": "0.5.0",
         "joins": "library",
         "from": "path",
-        "at": "libs/commands/releases/0.4.0"
+        "at": "libs/commands/releases/0.5.0"
       }
     },
     {
@@ -6731,10 +5153,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.31.0",
+        "version": "0.33.0",
         "joins": "library",
         "from": "path",
-        "at": "std/releases/0.31.0"
+        "at": "std/releases/0.33.0"
       }
     },
     {
@@ -6814,621 +5236,6 @@
       }
     },
     {
-      "id": "page.Banner",
-      "kind": "syntax",
-      "title": "Banner",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Main area",
-        "constants": {},
-        "deps": {
-          "standard": "page.ThePage",
-          "regions": "page.PageRegions",
-          "html": "std/html.Html",
-          "element": "documents/html.HtmlElement",
-          "texts": "std/algebra.Texts"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [],
-            "output": "<div class=\"banner\" id=\"banner\" hidden></div>"
-          }
-        ]
-      }
-    },
-    {
-      "id": "page.Brand",
-      "kind": "syntax",
-      "title": "Brand",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Side bar",
-        "constants": {
-          "brand": {
-            "value": "brand",
-            "meaning": "The class of the brand"
-          },
-          "name": {
-            "value": "brand-name",
-            "meaning": "The class of the name and its subtitle"
-          }
-        },
-        "deps": {
-          "standard": "page.ThePage",
-          "html": "std/html.Html",
-          "commands": "conventions.TrameCommands",
-          "logo": "page.Logo",
-          "block": "html.HtmlBlock",
-          "element": "documents/html.HtmlElement"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "graph"
-            ],
-            "output": [
-              "<div class=\"brand\">",
-              "  <svg width=\"26\" height=\"26\" viewBox=\"0 0 26 26\" aria-hidden=\"true\">",
-              "    <rect x=\"0\" y=\"0\" width=\"26\" height=\"26\" rx=\"6\" fill=\"var(--accent-soft)\"/>",
-              "    <g stroke=\"var(--accent)\" stroke-width=\"2.2\" stroke-linecap=\"round\" fill=\"none\"><path d=\"M7 5v16M13 5v16M19 5v16\"/></g>",
-              "    <g stroke=\"var(--ink)\" stroke-width=\"2.2\" stroke-linecap=\"round\" fill=\"none\"><path d=\"M5 9h3M10 9h6M18 9h3M5 17h3M10 17h6M18 17h3\"/></g>",
-              "  </svg>",
-              "  <div class=\"brand-name\">trame <span>graph</span></div>",
-              "</div>"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "page.CompilationState",
-      "kind": "syntax",
-      "title": "State of the compilation",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Side bar",
-        "constants": {},
-        "deps": {
-          "standard": "page.ThePage",
-          "regions": "page.PageRegions",
-          "html": "std/html.Html",
-          "element": "documents/html.HtmlElement",
-          "texts": "std/algebra.Texts"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [],
-            "output": "<div class=\"status\" id=\"status\"></div>"
-          }
-        ]
-      }
-    },
-    {
-      "id": "page.DatePicker",
-      "kind": "syntax",
-      "title": "Dates",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Side bar",
-        "constants": {
-          "paragraph": {
-            "value": "p",
-            "meaning": "The label is a paragraph"
-          },
-          "labelId": {
-            "value": "dates-label",
-            "meaning": "The identifier of the label, which names the group"
-          }
-        },
-        "deps": {
-          "standard": "page.ThePage",
-          "regions": "page.PageRegions",
-          "html": "std/html.Html",
-          "aria": "std/html.Aria",
-          "block": "html.HtmlBlock",
-          "element": "documents/html.HtmlElement",
-          "texts": "std/algebra.Texts"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "Graph in force on"
-            ],
-            "output": [
-              "<div>",
-              "  <p class=\"label\" id=\"dates-label\">Graph in force on</p>",
-              "  <div class=\"dates\" id=\"dates\" role=\"group\" aria-labelledby=\"dates-label\"></div>",
-              "  <div class=\"date-note\" id=\"date-note\"></div>",
-              "</div>"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "page.DocumentHead",
-      "kind": "syntax",
-      "title": "Head of the document",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Main area",
-        "constants": {
-          "tag": {
-            "value": "header",
-            "meaning": "The head of the main content"
-          },
-          "head": {
-            "value": "doc-head",
-            "meaning": "Its class"
-          },
-          "path": {
-            "value": "path",
-            "meaning": "The class of the path"
-          }
-        },
-        "deps": {
-          "standard": "page.ThePage",
-          "regions": "page.PageRegions",
-          "html": "std/html.Html",
-          "block": "html.HtmlBlock",
-          "element": "documents/html.HtmlElement",
-          "toggle": "page.RenderingToggle",
-          "texts": "std/algebra.Texts"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "Rendering",
-              [
-                "Rendered",
-                "Markdown",
-                "Text"
-              ]
-            ],
-            "output": [
-              "<header class=\"doc-head\">",
-              "  <div class=\"path\" id=\"doc-path\"></div>",
-              "  <div class=\"toggle\" id=\"toggle\" role=\"group\" aria-label=\"Rendering\">",
-              "    <button type=\"button\" id=\"view-rendered\" aria-pressed=\"true\">Rendered</button>",
-              "    <button type=\"button\" id=\"view-markdown\" aria-pressed=\"false\">Markdown</button>",
-              "    <button type=\"button\" id=\"view-text\" aria-pressed=\"false\">Text</button>",
-              "  </div>",
-              "</header>"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "page.DocumentPicker",
-      "kind": "syntax",
-      "title": "Document picker",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Side bar",
-        "constants": {
-          "picker": {
-            "value": "mobile-pick",
-            "meaning": "The class of the picker, which the style sheet shows on small screens only"
-          },
-          "labelTag": {
-            "value": "label",
-            "meaning": "The label of the select"
-          },
-          "for": {
-            "value": "for",
-            "meaning": "The control a label names"
-          },
-          "select": {
-            "value": "select",
-            "meaning": "The list of documents"
-          }
-        },
-        "deps": {
-          "standard": "page.ThePage",
-          "regions": "page.PageRegions",
-          "html": "std/html.Html",
-          "block": "html.HtmlBlock",
-          "element": "documents/html.HtmlElement",
-          "texts": "std/algebra.Texts"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "Document"
-            ],
-            "output": [
-              "<div class=\"mobile-pick\">",
-              "  <label class=\"label\" for=\"doc-select\">Document</label>",
-              "  <select id=\"doc-select\"></select>",
-              "</div>"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "page.FigureMarkers",
-      "kind": "syntax",
-      "title": "Arrowheads of the figures",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Figures",
-        "constants": {},
-        "deps": {
-          "standard": "page.ThePage",
-          "svg": "std/html.Svg",
-          "aria": "std/html.Aria",
-          "html": "std/html.Html",
-          "figures": "markup.FigureMarkup",
-          "drawing": "appearance.GraphDrawing",
-          "counts": "std/algebra.Counts",
-          "texts": "std/algebra.Texts",
-          "block": "html.HtmlBlock",
-          "element": "documents/html.HtmlElement",
-          "empty": "documents/html.SelfClosingTag",
-          "path": "html.PathData"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [],
-            "output": [
-              "<svg class=\"figure-defs\" width=\"0\" height=\"0\" aria-hidden=\"true\">",
-              "  <defs><marker id=\"arrow-base\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path class=\"arrow\" d=\"M0,0 L10,5 L0,10 z\"/></marker><marker id=\"arrow-to-accent\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path class=\"arrow-accent\" d=\"M0,0 L10,5 L0,10 z\"/></marker><marker id=\"arrow-to-bad\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path class=\"arrow-bad\" d=\"M0,0 L10,5 L0,10 z\"/></marker><marker id=\"arrow-to-warn\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path class=\"arrow-warn\" d=\"M0,0 L10,5 L0,10 z\"/></marker></defs>",
-              "</svg>"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "page.FontLinks",
-      "kind": "syntax",
-      "title": "Fonts",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "4.6.7.11 Link type preconnect; 4.6.7.17 Link type stylesheet; 2.5.4 CORS settings attributes",
-        "url": "https://html.spec.whatwg.org/multipage/links.html#link-type-preconnect",
-        "constants": {
-          "link": {
-            "value": "link",
-            "meaning": "A link from the page to a resource"
-          },
-          "rel": {
-            "value": "rel",
-            "meaning": "What the resource is to the page"
-          },
-          "href": {
-            "value": "href",
-            "meaning": "Its address"
-          },
-          "preconnect": {
-            "value": "preconnect",
-            "meaning": "An origin to connect to before it is asked"
-          },
-          "stylesheet": {
-            "value": "stylesheet",
-            "meaning": "A style sheet of the page"
-          },
-          "crossorigin": {
-            "value": "crossorigin",
-            "meaning": "Fetched without credentials"
-          }
-        },
-        "deps": {
-          "standard": "std/html.Html",
-          "startTag": "documents/html.HtmlStartTag",
-          "texts": "std/algebra.Texts"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "https://fonts.example",
-              "https://files.example",
-              "https://fonts.example/css"
-            ],
-            "output": "<link rel=\"preconnect\" href=\"https://fonts.example\"><link rel=\"preconnect\" href=\"https://files.example\" crossorigin><link rel=\"stylesheet\" href=\"https://fonts.example/css\">"
-          }
-        ]
-      }
-    },
-    {
-      "id": "page.Logo",
-      "kind": "syntax",
-      "title": "Logo",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Brand",
-        "constants": {
-          "size": {
-            "value": 26,
-            "meaning": "The side of the drawing, in pixels, and of the grid it is drawn on"
-          },
-          "radius": {
-            "value": 6,
-            "meaning": "The radius of the corners of the square"
-          },
-          "thread": {
-            "value": 2.2,
-            "meaning": "The width of a thread"
-          },
-          "warp": {
-            "value": "M7 5v16M13 5v16M19 5v16",
-            "meaning": "The warp: three vertical threads"
-          },
-          "weft": {
-            "value": "M5 9h3M10 9h6M18 9h3M5 17h3M10 17h6M18 17h3",
-            "meaning": "The weft: two horizontal threads, in pieces between the threads of warp"
-          },
-          "background": {
-            "value": "accent-soft",
-            "meaning": "The colour of the square: the soft accent of the palette"
-          },
-          "warpColour": {
-            "value": "accent",
-            "meaning": "The colour of the warp: the accent of the palette"
-          }
-        },
-        "deps": {
-          "standard": "page.ThePage",
-          "svg": "std/html.Svg",
-          "aria": "std/html.Aria",
-          "palette": "documents/appearance.Palette",
-          "counts": "std/algebra.Counts",
-          "block": "html.HtmlBlock",
-          "element": "documents/html.HtmlElement",
-          "empty": "documents/html.SelfClosingTag",
-          "variable": "html.CssVariable"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [],
-            "output": [
-              "<svg width=\"26\" height=\"26\" viewBox=\"0 0 26 26\" aria-hidden=\"true\">",
-              "  <rect x=\"0\" y=\"0\" width=\"26\" height=\"26\" rx=\"6\" fill=\"var(--accent-soft)\"/>",
-              "  <g stroke=\"var(--accent)\" stroke-width=\"2.2\" stroke-linecap=\"round\" fill=\"none\"><path d=\"M7 5v16M13 5v16M19 5v16\"/></g>",
-              "  <g stroke=\"var(--ink)\" stroke-width=\"2.2\" stroke-linecap=\"round\" fill=\"none\"><path d=\"M5 9h3M10 9h6M18 9h3M5 17h3M10 17h6M18 17h3\"/></g>",
-              "</svg>"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "page.MachineHighlighting",
-      "kind": "decision",
-      "title": "Files for tools in the page",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "pattern": "(&quot;(?:[^&]|&(?!quot;))*?&quot;)(\\s*:)?|\\b(true|false|null)\\b|(-?\\d+(?:\\.\\d+)?)",
-          "flags": "g"
-        }
-      }
-    },
-    {
-      "id": "page.MainArea",
-      "kind": "syntax",
-      "title": "Main area",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Main area",
-        "constants": {
-          "tag": {
-            "value": "main",
-            "meaning": "The main content of the page"
-          },
-          "article": {
-            "value": "article",
-            "meaning": "The document"
-          }
-        },
-        "deps": {
-          "standard": "page.ThePage",
-          "regions": "page.PageRegions",
-          "html": "std/html.Html",
-          "block": "html.HtmlBlock",
-          "element": "documents/html.HtmlElement",
-          "banner": "page.Banner",
-          "head": "page.DocumentHead",
-          "texts": "std/algebra.Texts"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              {
-                "subtitle": "graph",
-                "dates": "Dates",
-                "navigation": "Views",
-                "document": "Document",
-                "rendering": "Rendering",
-                "renderings": [
-                  "Rendered",
-                  "Markdown",
-                  "Text"
-                ]
-              }
-            ],
-            "output": [
-              "<main>",
-              "  <div class=\"banner\" id=\"banner\" hidden></div>",
-              "  <header class=\"doc-head\">",
-              "    <div class=\"path\" id=\"doc-path\"></div>",
-              "    <div class=\"toggle\" id=\"toggle\" role=\"group\" aria-label=\"Rendering\">",
-              "      <button type=\"button\" id=\"view-rendered\" aria-pressed=\"true\">Rendered</button>",
-              "      <button type=\"button\" id=\"view-markdown\" aria-pressed=\"false\">Markdown</button>",
-              "      <button type=\"button\" id=\"view-text\" aria-pressed=\"false\">Text</button>",
-              "    </div>",
-              "  </header>",
-              "  <article class=\"doc\" id=\"doc\"></article>",
-              "</main>"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "page.NarrowScreenRule",
-      "kind": "syntax",
-      "title": "Rules of a narrow screen",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Style",
-        "constants": {
-          "maxWidth": {
-            "value": "max-width",
-            "meaning": "The viewport is at most this wide (Media Queries Level 4, § 4.1 width)"
-          }
-        },
-        "deps": {
-          "standard": "page.ThePage",
-          "media": "html.MediaRule",
-          "feature": "html.MediaFeature"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "920px",
-              ".nav { display: none; }"
-            ],
-            "output": "@media (max-width: 920px) { .nav { display: none; } }"
-          }
-        ]
-      }
-    },
-    {
-      "id": "page.NarrowScreenStyle",
-      "kind": "stylesheet",
-      "title": "Style sheet of a narrow screen",
-      "fields": {
-        "owner": "trame",
-        "body": {
-          "file": "./code/page/narrow.css",
-          "language": "css"
-        }
-      }
-    },
-    {
-      "id": "page.Navigation",
-      "kind": "syntax",
-      "title": "Navigation",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Side bar",
-        "constants": {
-          "tag": {
-            "value": "nav",
-            "meaning": "The region of navigation"
-          }
-        },
-        "deps": {
-          "standard": "page.ThePage",
-          "regions": "page.PageRegions",
-          "html": "std/html.Html",
-          "aria": "std/html.Aria",
-          "element": "documents/html.HtmlElement",
-          "texts": "std/algebra.Texts"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "Documents and views"
-            ],
-            "output": "<nav class=\"nav\" id=\"nav\" aria-label=\"Documents and views\"></nav>"
-          }
-        ]
-      }
-    },
-    {
-      "id": "page.PackedGraph",
-      "kind": "decision",
-      "title": "A page carries its graph compressed",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "format": "gzip",
-          "encoding": "base64"
-        },
-        "rejected": {
-          "The graph in JSON, as it is": "a page of 15 MB a date: slow to open, and too big for some hosts",
-          "Fewer dates in a page": "reading the graph at another date is what an exported page is for",
-          "A compression library in the page": "every browser decompresses gzip itself"
-        }
-      }
-    },
-    {
-      "id": "page.Page",
-      "kind": "function",
-      "title": "Page",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "pageBundle": "page.PageBundle",
-          "standalone": "page.StandaloneStyle",
-          "encodings": "std/system.NodeEncodings",
-          "file": "std/text.TextFile",
-          "palette": "documents/appearance.Palette",
-          "typography": "appearance.Typography",
-          "narrowScreen": "appearance.NarrowScreen",
-          "spacing": "appearance.Spacing",
-          "radii": "appearance.Radii",
-          "typeScale": "appearance.TypeScale",
-          "opacities": "appearance.Opacities",
-          "strokes": "appearance.Strokes",
-          "motion": "appearance.Motion",
-          "pageLayout": "appearance.PageLayout",
-          "resources": "architecture.Resources",
-          "reading": "architecture.FileReading",
-          "bundler": "architecture.Bundler",
-          "compression": "architecture.Compression",
-          "shell": "page.Shell",
-          "theme": "page.Theme",
-          "statusStyle": "page.StatusStyle",
-          "narrow": "page.NarrowScreenRule",
-          "fonts": "page.FontLinks",
-          "scripts": "page.PageScripts",
-          "document": "page.PageDocument",
-          "rule": "html.CssRule",
-          "declaration": "html.CssDeclaration",
-          "messages": "messages.OutputMessages",
-          "language": "messages.Language",
-          "reader": "syntax.SyntaxReader",
-          "markup": "std/languages.HtmlMarkup",
-          "sheets": "std/languages.CssStyleSheets",
-          "gnu": "std/text.GnuPositions"
-        },
-        "body": {
-          "file": "./code/page/page.ts",
-          "language": "typescript"
-        }
-      }
-    },
-    {
       "id": "page.PageBundle",
       "kind": "decision",
       "title": "Bundle of the page",
@@ -7443,584 +5250,45 @@
       }
     },
     {
-      "id": "page.PageDocument",
-      "kind": "syntax",
-      "title": "Document of the page",
+      "id": "page.PageMadeOnTheMachine",
+      "kind": "binding",
+      "title": "How the engine makes a page",
       "status": "held",
       "fields": {
         "owner": "trame",
-        "section": "Document",
-        "constants": {
-          "html": {
-            "value": "html",
-            "meaning": "The root element"
-          },
-          "head": {
-            "value": "head",
-            "meaning": "What the document says of itself"
-          },
-          "body": {
-            "value": "body",
-            "meaning": "What it shows"
-          },
-          "title": {
-            "value": "title",
-            "meaning": "The title of the document"
-          },
-          "style": {
-            "value": "style",
-            "meaning": "A style sheet written in the document"
-          },
-          "meta": {
-            "value": "meta",
-            "meaning": "What the document says of itself, as a name and a content"
-          },
-          "name": {
-            "value": "name",
-            "meaning": "The name of a meta element"
-          },
-          "content": {
-            "value": "content",
-            "meaning": "Its content"
-          },
-          "charset": {
-            "value": "charset",
-            "meaning": "The encoding of the document"
-          },
-          "encoding": {
-            "value": "utf-8",
-            "meaning": "UTF-8, as the WHATWG Encoding standard labels it"
-          },
-          "viewport": {
-            "value": "viewport",
-            "meaning": "How a mobile browser lays the page out (CSS Viewport Module Level 1)"
-          },
-          "deviceWidth": {
-            "value": "width=device-width, initial-scale=1, viewport-fit=cover",
-            "meaning": "As wide as the device, not zoomed, drawn under the notch and the rounded corners"
-          },
-          "hostFit": {
-            "value": "claude:viewport-fit-sides",
-            "meaning": "What the host that shows the page as an artifact (claude.ai) reads to draw it"
-          },
-          "cover": {
-            "value": "cover",
-            "meaning": "To the edges of the screen"
-          }
-        },
-        "deps": {
-          "standard": "page.ThePage",
-          "htmlNames": "std/html.Html",
-          "doctype": "html.Doctype",
-          "startTag": "documents/html.HtmlStartTag",
-          "endTag": "documents/html.HtmlEndTag",
-          "element": "documents/html.HtmlElement",
-          "file": "std/text.TextFile",
-          "texts": "std/algebra.Texts"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              {
-                "lang": "en-GB",
-                "title": "Trame graph",
-                "fonts": "<link>",
-                "style": "body { margin: 0; }",
-                "shell": [
-                  "<div class=\"app\">",
-                  "</div>"
-                ],
-                "scripts": "<script>start()</script>"
-              }
-            ],
-            "output": "<!doctype html>\n<html lang=\"en-GB\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, viewport-fit=cover\">\n<meta name=\"claude:viewport-fit-sides\" content=\"cover\">\n<title>Trame graph</title>\n<link>\n<style>body { margin: 0; }</style>\n</head>\n<body>\n<div class=\"app\">\n</div>\n<script>start()</script>\n</body>\n</html>\n"
-          },
-          {
-            "input": [
-              {
-                "lang": "en-GB",
-                "title": "Trame graph",
-                "fonts": "<link>",
-                "style": "body { margin: 0; }",
-                "shell": [
-                  "<div class=\"app\">",
-                  "</div>"
-                ],
-                "scripts": "<script>start()</script>",
-                "fragment": true
-              }
-            ],
-            "output": "<title>Trame graph</title>\n<meta name=\"claude:viewport-fit-sides\" content=\"cover\">\n<link>\n<style>body { margin: 0; }</style>\n<div class=\"app\">\n</div>\n<script>start()</script>\n"
-          }
-        ]
+        "context": "The page's style sheets are files of libs/documents, which its versions carry; the graph a page carries is packed as the browser unpacks it."
       }
     },
     {
-      "id": "page.PageRegions",
-      "kind": "decision",
-      "title": "Regions of the page",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "status": "status",
-          "dates": "dates",
-          "dateNote": "date-note",
-          "nav": "nav",
-          "documents": "doc-select",
-          "nodes": "node-select",
-          "banner": "banner",
-          "bannerClose": "banner-close",
-          "toggle": "toggle",
-          "rendering": "view-",
-          "path": "doc-path",
-          "doc": "doc"
-        }
-      }
-    },
-    {
-      "id": "page.PageScripts",
-      "kind": "syntax",
-      "title": "Scripts of the page",
+      "id": "page.PageScript",
+      "kind": "function",
+      "title": "The page's program, bundled",
       "status": "held",
       "fields": {
         "owner": "trame",
-        "section": "Scripts",
-        "constants": {},
         "deps": {
-          "standard": "page.ThePage",
-          "html": "std/html.Html",
-          "script": "html.ScriptElement",
-          "json": "html.JsonInScript",
-          "member": "typescript.MemberAccess",
-          "assignment": "typescript.Assignment",
-          "texts": "std/algebra.Texts"
+          "pageBundle": "page.PageBundle",
+          "resources": "architecture.Resources",
+          "bundler": "architecture.Bundler"
         },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "start()",
-              "H4sIAAAA",
-              true
-            ],
-            "output": "<script>window.TRAME_DEV = true</script><script>window.TRAME_BUNDLE_GZIP = \"H4sIAAAA\"</script><script type=\"module\">start()</script>"
-          },
-          {
-            "input": [
-              "start()",
-              null,
-              null
-            ],
-            "output": "<script type=\"module\">start()</script>"
-          }
-        ]
-      }
-    },
-    {
-      "id": "page.PageStyle",
-      "kind": "stylesheet",
-      "title": "Style sheet of the page",
-      "fields": {
-        "owner": "trame",
         "body": {
-          "file": "./code/page/page.css",
-          "language": "css"
+          "file": "./code/page/script.ts",
+          "language": "typescript"
         }
       }
     },
     {
-      "id": "page.RenderingModes",
-      "kind": "vocabulary",
-      "title": "The renderings of a document",
-      "fields": {
-        "owner": "trame",
-        "words": {
-          "rendered": "The document as the page lays it out, in HTML, with its figures drawn",
-          "markdown": "Its Markdown, as trame build writes it",
-          "text": "Its plain text, as a command prints it in the terminal"
-        }
-      }
-    },
-    {
-      "id": "page.RenderingToggle",
-      "kind": "syntax",
-      "title": "Choice of rendering",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Main area",
-        "constants": {},
-        "deps": {
-          "standard": "page.ThePage",
-          "modes": "page.RenderingModes",
-          "regions": "page.PageRegions",
-          "html": "std/html.Html",
-          "aria": "std/html.Aria",
-          "block": "html.HtmlBlock",
-          "element": "documents/html.HtmlElement",
-          "sequences": "std/algebra.Sequences"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "Rendering",
-              [
-                "Rendered",
-                "Markdown",
-                "Text"
-              ]
-            ],
-            "output": [
-              "<div class=\"toggle\" id=\"toggle\" role=\"group\" aria-label=\"Rendering\">",
-              "  <button type=\"button\" id=\"view-rendered\" aria-pressed=\"true\">Rendered</button>",
-              "  <button type=\"button\" id=\"view-markdown\" aria-pressed=\"false\">Markdown</button>",
-              "  <button type=\"button\" id=\"view-text\" aria-pressed=\"false\">Text</button>",
-              "</div>"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "page.Shell",
-      "kind": "syntax",
-      "title": "Shell",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Shell",
-        "constants": {
-          "app": {
-            "value": "app",
-            "meaning": "The class of the whole: a grid of the side bar and the main area"
-          }
-        },
-        "deps": {
-          "standard": "page.ThePage",
-          "html": "std/html.Html",
-          "block": "html.HtmlBlock",
-          "side": "page.SideBar",
-          "main": "page.MainArea",
-          "markers": "page.FigureMarkers"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              {
-                "subtitle": "graph",
-                "dates": "Dates",
-                "navigation": "Views",
-                "document": "Document",
-                "rendering": "Rendering",
-                "renderings": [
-                  "Rendered",
-                  "Markdown",
-                  "Text"
-                ]
-              }
-            ],
-            "output": [
-              "<div class=\"app\">",
-              "  <aside class=\"side\">",
-              "    <div class=\"brand\">",
-              "      <svg width=\"26\" height=\"26\" viewBox=\"0 0 26 26\" aria-hidden=\"true\">",
-              "        <rect x=\"0\" y=\"0\" width=\"26\" height=\"26\" rx=\"6\" fill=\"var(--accent-soft)\"/>",
-              "        <g stroke=\"var(--accent)\" stroke-width=\"2.2\" stroke-linecap=\"round\" fill=\"none\"><path d=\"M7 5v16M13 5v16M19 5v16\"/></g>",
-              "        <g stroke=\"var(--ink)\" stroke-width=\"2.2\" stroke-linecap=\"round\" fill=\"none\"><path d=\"M5 9h3M10 9h6M18 9h3M5 17h3M10 17h6M18 17h3\"/></g>",
-              "      </svg>",
-              "      <div class=\"brand-name\">trame <span>graph</span></div>",
-              "    </div>",
-              "    <div class=\"status\" id=\"status\"></div>",
-              "    <div>",
-              "      <p class=\"label\" id=\"dates-label\">Dates</p>",
-              "      <div class=\"dates\" id=\"dates\" role=\"group\" aria-labelledby=\"dates-label\"></div>",
-              "      <div class=\"date-note\" id=\"date-note\"></div>",
-              "    </div>",
-              "    <nav class=\"nav\" id=\"nav\" aria-label=\"Views\"></nav>",
-              "    <div class=\"mobile-pick\">",
-              "      <label class=\"label\" for=\"doc-select\">Document</label>",
-              "      <select id=\"doc-select\"></select>",
-              "    </div>",
-              "  </aside>",
-              "  <main>",
-              "    <div class=\"banner\" id=\"banner\" hidden></div>",
-              "    <header class=\"doc-head\">",
-              "      <div class=\"path\" id=\"doc-path\"></div>",
-              "      <div class=\"toggle\" id=\"toggle\" role=\"group\" aria-label=\"Rendering\">",
-              "        <button type=\"button\" id=\"view-rendered\" aria-pressed=\"true\">Rendered</button>",
-              "        <button type=\"button\" id=\"view-markdown\" aria-pressed=\"false\">Markdown</button>",
-              "        <button type=\"button\" id=\"view-text\" aria-pressed=\"false\">Text</button>",
-              "      </div>",
-              "    </header>",
-              "    <article class=\"doc\" id=\"doc\"></article>",
-              "  </main>",
-              "  <svg class=\"figure-defs\" width=\"0\" height=\"0\" aria-hidden=\"true\">",
-              "    <defs><marker id=\"arrow-base\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path class=\"arrow\" d=\"M0,0 L10,5 L0,10 z\"/></marker><marker id=\"arrow-to-accent\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path class=\"arrow-accent\" d=\"M0,0 L10,5 L0,10 z\"/></marker><marker id=\"arrow-to-bad\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path class=\"arrow-bad\" d=\"M0,0 L10,5 L0,10 z\"/></marker><marker id=\"arrow-to-warn\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path class=\"arrow-warn\" d=\"M0,0 L10,5 L0,10 z\"/></marker></defs>",
-              "  </svg>",
-              "</div>"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "page.SideBar",
-      "kind": "syntax",
-      "title": "Side bar",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Side bar",
-        "constants": {
-          "tag": {
-            "value": "aside",
-            "meaning": "The side bar is beside the main content"
-          },
-          "side": {
-            "value": "side",
-            "meaning": "Its class"
-          }
-        },
-        "deps": {
-          "standard": "page.ThePage",
-          "html": "std/html.Html",
-          "block": "html.HtmlBlock",
-          "brand": "page.Brand",
-          "state": "page.CompilationState",
-          "dates": "page.DatePicker",
-          "navigation": "page.Navigation",
-          "picker": "page.DocumentPicker"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              {
-                "subtitle": "graph",
-                "dates": "Dates",
-                "navigation": "Views",
-                "document": "Document",
-                "rendering": "Rendering",
-                "renderings": [
-                  "Rendered",
-                  "Markdown",
-                  "Text"
-                ]
-              }
-            ],
-            "output": [
-              "<aside class=\"side\">",
-              "  <div class=\"brand\">",
-              "    <svg width=\"26\" height=\"26\" viewBox=\"0 0 26 26\" aria-hidden=\"true\">",
-              "      <rect x=\"0\" y=\"0\" width=\"26\" height=\"26\" rx=\"6\" fill=\"var(--accent-soft)\"/>",
-              "      <g stroke=\"var(--accent)\" stroke-width=\"2.2\" stroke-linecap=\"round\" fill=\"none\"><path d=\"M7 5v16M13 5v16M19 5v16\"/></g>",
-              "      <g stroke=\"var(--ink)\" stroke-width=\"2.2\" stroke-linecap=\"round\" fill=\"none\"><path d=\"M5 9h3M10 9h6M18 9h3M5 17h3M10 17h6M18 17h3\"/></g>",
-              "    </svg>",
-              "    <div class=\"brand-name\">trame <span>graph</span></div>",
-              "  </div>",
-              "  <div class=\"status\" id=\"status\"></div>",
-              "  <div>",
-              "    <p class=\"label\" id=\"dates-label\">Dates</p>",
-              "    <div class=\"dates\" id=\"dates\" role=\"group\" aria-labelledby=\"dates-label\"></div>",
-              "    <div class=\"date-note\" id=\"date-note\"></div>",
-              "  </div>",
-              "  <nav class=\"nav\" id=\"nav\" aria-label=\"Views\"></nav>",
-              "  <div class=\"mobile-pick\">",
-              "    <label class=\"label\" for=\"doc-select\">Document</label>",
-              "    <select id=\"doc-select\"></select>",
-              "  </div>",
-              "</aside>"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "page.StandaloneStyle",
-      "kind": "decision",
-      "title": "Style of the standalone document",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          ":root": {
-            "padding-top": "env(safe-area-inset-top,0px)",
-            "padding-bottom": "env(safe-area-inset-bottom,0px)"
-          },
-          "body": {
-            "margin": "0"
-          },
-          "[hidden]": {
-            "display": "none!important"
-          },
-          "img": {
-            "max-width": "100%"
-          }
-        }
-      }
-    },
-    {
-      "id": "page.StatusStyle",
-      "kind": "syntax",
-      "title": "Colours of a status",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Style",
-        "constants": {
-          "background": {
-            "value": "background",
-            "meaning": "The background of the pill (CSS Backgrounds Level 3)"
-          },
-          "color": {
-            "value": "color",
-            "meaning": "The colour of its text (CSS Color Level 4)"
-          },
-          "figureNode": {
-            "value": "fn",
-            "meaning": "The class of a node in a figure the script draws"
-          },
-          "box": {
-            "value": "box",
-            "meaning": "The class of the box of that node"
-          }
-        },
-        "deps": {
-          "standard": "page.ThePage",
-          "css": "std/html.Css",
-          "svg": "std/html.Svg",
-          "rule": "html.CssRule",
-          "declaration": "html.CssDeclaration",
-          "variable": "html.CssVariable",
-          "selector": "html.ClassSelector"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              "held",
-              "ok-soft",
-              "ok"
-            ],
-            "output": [
-              ".st-held { background: var(--ok-soft); color: var(--ok); }",
-              ".fn.st-held rect.box { fill: var(--ok-soft); stroke: var(--ok); }"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "page.StyleThroughVariables",
+      "id": "page.ThePageIsTheLibrarys",
       "kind": "adr",
-      "title": "A style sheet writes no value",
+      "title": "The page is the library's",
       "status": "held",
       "fields": {
         "owner": "trame",
-        "context": "A style sheet is a body like any other: a value written in it hides its meaning, and the sheet of the page held 355. CSS cannot import a value, but it reads a variable declared before it.",
-        "consequences": "Each family of measures is a decision of appearance, and the theme writes them in :root with the colours and the fonts; the page refuses a style that uses a variable it does not write. A media query cannot read a variable: the width of a narrow screen is a decision, which the page writes in the media rule around the second sheet. The lines of a grid are named, not numbered. The scale was taken as it was, so the page looks as it did; folding it is a change of decisions.",
+        "context": "The page was Trame's: a project could not make its own, nor change its look but by amending Trame's graph. Its HTML, its CSS and its program read nothing of the engine's but the intermediate format and what the page decides.",
+        "consequences": "Page and the page's program are libs/documents'; the engine bundles the program it assembles for Browser and gives it to Page, with the program's name, the graph packed, its title. Each project will assemble the page with its own choices (trame init writes them, later); until then the engine's program serves every project.",
         "rejected": {
-          "Folding the values into a lighter scale first": "the page would have changed at the same time as its sheet was brought into the graph",
-          "Writing the rules as syntax elements": "the sheet is where the appearance is chosen; two hundred rules spread over elements would hide it",
-          "An exception for style sheets": "a value without its meaning is the same problem in a sheet as in code"
-        }
-      }
-    },
-    {
-      "id": "page.Theme",
-      "kind": "syntax",
-      "title": "Theme",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "section": "Style",
-        "constants": {
-          "root": {
-            "value": ":root",
-            "meaning": "The root element: its variables hold for the whole page"
-          },
-          "colorScheme": {
-            "value": "color-scheme",
-            "meaning": "The scheme the browser draws its own controls in (CSS Color Adjustment Level 1)"
-          },
-          "preference": {
-            "value": "prefers-color-scheme",
-            "meaning": "The scheme the system prefers (Media Queries Level 5)"
-          },
-          "dark": {
-            "value": "dark",
-            "meaning": "The dark scheme, as both name it"
-          }
-        },
-        "deps": {
-          "standard": "page.ThePage",
-          "rule": "html.CssRule",
-          "media": "html.MediaRule",
-          "feature": "html.MediaFeature",
-          "attribute": "html.AttributeSelector",
-          "negation": "html.NegationSelector",
-          "property": "html.CustomProperty",
-          "declaration": "html.CssDeclaration"
-        },
-        "write": "(function)",
-        "examples": [
-          {
-            "input": [
-              {
-                "bg": "#fff"
-              },
-              {
-                "bg": "#000"
-              },
-              {
-                "font-ui": "sans-serif"
-              },
-              [
-                {
-                  "space-sm": "8px"
-                },
-                {
-                  "radius-md": "6px"
-                }
-              ]
-            ],
-            "output": [
-              ":root { --bg: #fff; --font-ui: sans-serif; --space-sm: 8px; --radius-md: 6px; }",
-              "@media (prefers-color-scheme: dark) { :root:not([data-theme=\"light\"]) { --bg: #000; color-scheme: dark; } }",
-              ":root[data-theme=\"dark\"] { --bg: #000; color-scheme: dark; }"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "page.ThePage",
-      "kind": "decision",
-      "title": "The page",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "label": "label",
-          "themeAttribute": "data-theme",
-          "themes": {
-            "light": "light",
-            "dark": "dark"
-          },
-          "statusClass": "st-",
-          "globals": {
-            "packedBundle": "TRAME_BUNDLE_GZIP",
-            "dev": "TRAME_DEV"
-          },
-          "memory": "trame-page",
-          "machine": "machine",
-          "nodeView": "impact",
-          "prompt": "$ "
-        },
-        "rejected": {
-          "A page per document": "the page must work without a server (trame export): one file holds the graph at every date and all its documents",
-          "A front-end framework": "one program, assembled from the graph like the command line, is enough to show the intermediate format"
+          "The page left in Trame": "the commands that write it (export, dev) could not leave the engine",
+          "The engine writing the whole page through its API": "the page's look would stay out of reach of the projects"
         }
       }
     },
@@ -8104,9 +5372,7 @@
         "value": {
           "prelude": "../../../trame/internal",
           "preludeExtension": ".ts",
-          "root": "../../../",
-          "pageStyle": "../page/page.css",
-          "narrowStyle": "../page/narrow.css"
+          "root": "../../../"
         }
       }
     },
@@ -8332,25 +5598,6 @@
       }
     },
     {
-      "id": "platform.MemoryHttpServer",
-      "kind": "function",
-      "title": "A server in memory",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "events": "std/system.NodeEvents",
-          "http": "std/web.Http",
-          "texts": "std/algebra.Texts",
-          "messages": "messages.PlatformMessages"
-        },
-        "body": {
-          "file": "./code/platform/memory-http.ts",
-          "language": "typescript"
-        }
-      }
-    },
-    {
       "id": "platform.MemoryTemporary",
       "kind": "decision",
       "title": "Temporary directories in memory",
@@ -8400,22 +5647,6 @@
       }
     },
     {
-      "id": "platform.NodeCompression",
-      "kind": "implementation",
-      "title": "gzip, with Node's zlib",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "packing": "page.PackedGraph"
-        },
-        "body": {
-          "file": "./code/platform/compression.ts",
-          "language": "typescript"
-        }
-      }
-    },
-    {
       "id": "platform.NodeHashing",
       "kind": "implementation",
       "title": "SHA-256 hashes",
@@ -8424,19 +5655,6 @@
         "owner": "trame",
         "body": {
           "file": "./code/platform/hashing.ts",
-          "language": "typescript"
-        }
-      }
-    },
-    {
-      "id": "platform.NodeHttpServer",
-      "kind": "implementation",
-      "title": "Node HTTP server",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "body": {
-          "file": "./code/platform/http.ts",
           "language": "typescript"
         }
       }
@@ -8537,19 +5755,6 @@
         },
         "body": {
           "file": "./code/platform/terminal.ts",
-          "language": "typescript"
-        }
-      }
-    },
-    {
-      "id": "platform.NodeTimer",
-      "kind": "implementation",
-      "title": "Node timer",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "body": {
-          "file": "./code/platform/timer.ts",
           "language": "typescript"
         }
       }
@@ -8664,6 +5869,7 @@
           "advancement": "generations.Advancement",
           "language": "typescript.TypeScript",
           "specifiers": "std/system.NodeModuleSpecifiers",
+          "references": "std/engine.ReferenceSyntax",
           "texts": "std/algebra.Texts",
           "sequences": "std/algebra.Sequences"
         },
@@ -9441,28 +6647,6 @@
       }
     },
     {
-      "id": "product.DevDebounce",
-      "kind": "decision",
-      "title": "Debouncing of saves",
-      "fields": {
-        "owner": "trame",
-        "value": 150,
-        "range": [
-          50,
-          2000
-        ]
-      }
-    },
-    {
-      "id": "product.DevPort",
-      "kind": "decision",
-      "title": "Port of trame dev",
-      "fields": {
-        "owner": "trame",
-        "value": 4170
-      }
-    },
-    {
       "id": "product.ExecutableSpecification",
       "kind": "goal",
       "title": "A specification that runs",
@@ -10204,6 +7388,34 @@
         "fingerprint": "841d450c9bc4ca2f",
         "language": "shared",
         "archive": "5c959e9d1badf723"
+      }
+    },
+    {
+      "id": "releases.G136",
+      "kind": "release",
+      "title": "Generation 136",
+      "fields": {
+        "owner": "trame",
+        "version": "g136",
+        "date": "2026-11-28",
+        "what": "The engine's API gives what a page and its commands need: a text read back (readText), a project's documents without those of each node, its payload, the dates a page offers, the project at another date, its title, compiled at each date in a fresh process, watched, amended; the page's program bundled",
+        "fingerprint": "d3bef5611a8c90e5",
+        "language": "shared",
+        "archive": "df24f8b6168b2e25"
+      }
+    },
+    {
+      "id": "releases.G137",
+      "kind": "release",
+      "title": "Generation 137",
+      "fields": {
+        "owner": "trame",
+        "version": "g137",
+        "date": "2026-11-28",
+        "what": "The page is libs/documents' (documents 0.5.0): the engine wires the library's page, bundles the program it assembles for Browser from the library's component, makes a page with the engine running; payload, export and dev are libs/commands' (0.5.0), which Trame takes; the engine's own use the library's pieces and std's server and timers; the API says what a project's watch follows and the engine's name; a component whose exposure no environment of its project realizes is offered",
+        "fingerprint": "693b28fe1d81a5b9",
+        "language": "shared",
+        "archive": "f9f3c0209197cb7e"
       }
     },
     {
@@ -11549,33 +8761,6 @@
       }
     },
     {
-      "id": "rendering.HtmlSyntax",
-      "kind": "function",
-      "title": "HTML writer",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "figures": "rendering.PageFigures",
-          "html": "std/html.Html",
-          "markup": "markup.DocumentMarkup",
-          "page": "page.ThePage",
-          "element": "documents/html.HtmlElement",
-          "heading": "documents/html.HtmlHeading",
-          "escape": "documents/html.EscapedText",
-          "punctuation": "documents/language.Punctuation",
-          "slots": "documents/rendering.SentenceSlots",
-          "counts": "std/algebra.Counts",
-          "texts": "std/algebra.Texts",
-          "messages": "documents/rendering.RenderingMessages"
-        },
-        "body": {
-          "file": "./code/rendering/html.ts",
-          "language": "typescript"
-        }
-      }
-    },
-    {
       "id": "rendering.MeaningThenLook",
       "kind": "adr",
       "title": "Kinds and views say what; renderers say how",
@@ -11587,15 +8772,6 @@
         "rejected": {
           "Kinds that write Markdown": "one format only, and the page would have to parse it back"
         }
-      }
-    },
-    {
-      "id": "rendering.PageFigures",
-      "kind": "port",
-      "title": "Figures of the page",
-      "fields": {
-        "owner": "trame",
-        "declaredEffects": []
       }
     },
     {
@@ -11629,29 +8805,6 @@
       }
     },
     {
-      "id": "rendering.PageRendering",
-      "kind": "function",
-      "title": "Rendering in the page",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "rendering": "documents/rendering.Rendering",
-          "syntax": "rendering.PageSyntax"
-        },
-        "body": "(function)"
-      }
-    },
-    {
-      "id": "rendering.PageSyntax",
-      "kind": "port",
-      "title": "Syntax of the page",
-      "fields": {
-        "owner": "trame",
-        "declaredEffects": []
-      }
-    },
-    {
       "id": "rendering.RenderedByTheLibrary",
       "kind": "adr",
       "title": "Trame's documents, rendered by the library of documents",
@@ -11659,48 +8812,9 @@
       "fields": {
         "owner": "trame",
         "context": "The renderers were the engine's: the commands of every project need them (build, view, snapshot), and a project's own command could not reach them (decided 26 November).",
-        "consequences": "Trame's commands use the library's renderers as they use std's structures; the page's syntax and figures move there with the page.",
+        "consequences": "Trame's commands use the library's renderers as they use std's structures; the page's syntax and figures moved there with the page (documents 0.5.0).",
         "rejected": {
           "Renderers kept in the engine": "a command moved out of the engine would lose what writes its documents"
-        }
-      }
-    },
-    {
-      "id": "rendering.SvgFigures",
-      "kind": "function",
-      "title": "Figures in SVG",
-      "status": "held",
-      "fields": {
-        "owner": "trame",
-        "deps": {
-          "html": "std/html.Html",
-          "svg": "std/html.Svg",
-          "aria": "std/html.Aria",
-          "css": "std/html.Css",
-          "markup": "markup.DocumentMarkup",
-          "figures": "markup.FigureMarkup",
-          "page": "page.ThePage",
-          "graph": "appearance.GraphDrawing",
-          "timeline": "appearance.TimelineDrawing",
-          "legend": "appearance.LegendDrawing",
-          "element": "documents/html.HtmlElement",
-          "empty": "documents/html.SelfClosingTag",
-          "path": "html.PathData",
-          "declaration": "html.CssDeclaration",
-          "escape": "documents/html.EscapedText",
-          "common": "documents/rendering.Common",
-          "dates": "documents/language.Dates",
-          "words": "messages.PageWords",
-          "messages": "documents/rendering.RenderingMessages",
-          "punctuation": "documents/language.Punctuation",
-          "iso": "std/measures.Iso8601",
-          "counts": "std/algebra.Counts",
-          "sequences": "std/algebra.Sequences",
-          "texts": "std/algebra.Texts"
-        },
-        "body": {
-          "file": "./code/rendering/svg-figures.ts",
-          "language": "typescript"
         }
       }
     },
@@ -12382,7 +9496,7 @@
       "fields": {
         "owner": "trame",
         "context": "The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.",
-        "consequences": "trame plan, build, snapshot and view run on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's own stay until the generation that removes the commands every project then runs from the library.",
+        "consequences": "trame plan, build, snapshot, view, payload, export and dev run on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. trame dev prints as it goes on the standard output and reads the machine's clock. The engine's own stay until the generation that removes the commands every project then runs from the library.",
         "rejected": {
           "The engine's own commands, kept": "they would stay out of reach of every project's choice, and the engine the only one to reach its modules"
         }
@@ -12488,9 +9602,9 @@
       "fields": {
         "owner": "trame",
         "deps": {
-          "regions": "page.PageRegions",
-          "markup": "markup.DocumentMarkup",
-          "attribute": "html.AttributeSelector",
+          "regions": "documents/page.PageRegions",
+          "markup": "documents/markup.DocumentMarkup",
+          "attribute": "documents/html.AttributeSelector",
           "html": "std/html.Html",
           "css": "std/html.Css",
           "svg": "std/html.Svg"
@@ -15400,11 +12514,6 @@
   ],
   "edges": [
     {
-      "from": "architecture.PageApp",
-      "to": "architecture.Browser",
-      "kind": "environments"
-    },
-    {
       "from": "architecture.TrameCli",
       "to": "architecture.Local",
       "kind": "environments"
@@ -15420,249 +12529,14 @@
       "kind": "deps"
     },
     {
-      "from": "browser.BrowserAmendments",
-      "to": "architecture.PageAmendments",
-      "kind": "implements"
-    },
-    {
-      "from": "browser.BrowserAmendments",
-      "to": "page.ThePage",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.BrowserAmendments",
-      "to": "engine.DevService",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.BrowserDecompression",
-      "to": "architecture.Decompression",
-      "kind": "implements"
-    },
-    {
-      "from": "browser.BrowserDecompression",
-      "to": "page.PackedGraph",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.BrowserFeed",
-      "to": "architecture.GraphFeed",
-      "kind": "implements"
-    },
-    {
-      "from": "browser.BrowserFeed",
-      "to": "page.ThePage",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.BrowserFeed",
-      "to": "engine.DevService",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.BrowserMemory",
-      "to": "architecture.PageMemory",
-      "kind": "implements"
-    },
-    {
-      "from": "browser.BrowserMemory",
-      "to": "page.ThePage",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.BrowserWindow",
-      "to": "architecture.PageWindow",
-      "kind": "implements"
-    },
-    {
-      "from": "browser.BrowserWindow",
-      "to": "html.MediaFeature",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ExplorerFigures",
+      "from": "browser.OurPageAssembled",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
     },
     {
-      "from": "browser.ExplorerFigures",
-      "to": "page.ThePage",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ExplorerFigures",
-      "to": "markup.DocumentMarkup",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ExplorerFigures",
-      "to": "markup.FigureMarkup",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ExplorerFigures",
-      "to": "markup.ExplorerMarkup",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ExplorerFigures",
-      "to": "appearance.ExplorerDrawing",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ExplorerFigures",
-      "to": "html.PathData",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ExplorerFigures",
-      "to": "html.CssDeclaration",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ExplorerFigures",
-      "to": "messages.PageWords",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "product.ExecutableSpecification",
-      "kind": "serves"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "architecture.PageApp",
-      "kind": "in"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "architecture.PageWindow",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "architecture.PageMemory",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "architecture.GraphFeed",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "architecture.Decompression",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "architecture.PageAmendments",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "browser.ExplorerFigures",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "page.ThePage",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "page.PageRegions",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "page.RenderingModes",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "page.MachineHighlighting",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "markup.DocumentMarkup",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "markup.AroundMarkup",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "markup.ExplorerMarkup",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "appearance.ExplorerDrawing",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "conventions.DocumentIds",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "messages.Language",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "html.AttributeSelector",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "html.AttributePresence",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "html.SelectorList",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "html.ClassSelector",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.ShowGraph",
-      "to": "messages.PageWords",
-      "kind": "deps"
-    },
-    {
-      "from": "browser.TheBrowserRunsThePage",
-      "to": "browser.BrowserWindow",
-      "kind": "chooses"
-    },
-    {
-      "from": "browser.TheBrowserRunsThePage",
-      "to": "browser.BrowserMemory",
-      "kind": "chooses"
-    },
-    {
-      "from": "browser.TheBrowserRunsThePage",
-      "to": "browser.BrowserFeed",
-      "kind": "chooses"
-    },
-    {
-      "from": "browser.TheBrowserRunsThePage",
-      "to": "browser.BrowserAmendments",
-      "kind": "chooses"
-    },
-    {
-      "from": "browser.TheBrowserRunsThePage",
-      "to": "browser.BrowserDecompression",
-      "kind": "chooses"
+      "from": "browser.OurPageAssembled",
+      "to": "browser.TheBrowserRunsThePage",
+      "kind": "appliedBy"
     },
     {
       "from": "browser.TheBrowserRunsThePage",
@@ -15673,31 +12547,6 @@
       "from": "browser.TheBrowserRunsThePage",
       "to": "product.ReplaceableTechnology",
       "kind": "serves"
-    },
-    {
-      "from": "browser.ThePageIsAssembled",
-      "to": "product.ExecutableSpecification",
-      "kind": "serves"
-    },
-    {
-      "from": "browser.ThePageIsAssembled",
-      "to": "browser.ShowGraph",
-      "kind": "appliedBy"
-    },
-    {
-      "from": "browser.ThePageIsAssembled",
-      "to": "browser.ExplorerFigures",
-      "kind": "appliedBy"
-    },
-    {
-      "from": "browser.ThePageIsAssembled",
-      "to": "browser.TheBrowserRunsThePage",
-      "kind": "appliedBy"
-    },
-    {
-      "from": "browser.ThePageIsAssembled",
-      "to": "architecture.RenderingWithoutGraph",
-      "kind": "appliedBy"
     },
     {
       "from": "command-scenarios.AdvanceInMemory",
@@ -16141,12 +12990,7 @@
     },
     {
       "from": "command-scenarios.DevFollowsTheGraph",
-      "to": "platform.MemoryHttpServer",
-      "kind": "verifies"
-    },
-    {
-      "from": "command-scenarios.DevFollowsTheGraph",
-      "to": "platform.NodeTimer",
+      "to": "engine.Watching",
       "kind": "verifies"
     },
     {
@@ -16171,22 +13015,12 @@
     },
     {
       "from": "command-scenarios.DevFollowsTheGraph",
-      "to": "architecture.ServerLog",
-      "kind": "deps"
-    },
-    {
-      "from": "command-scenarios.DevFollowsTheGraph",
       "to": "architecture.TerminalLog",
       "kind": "deps"
     },
     {
       "from": "command-scenarios.DevFollowsTheGraph",
       "to": "architecture.FileWriting",
-      "kind": "deps"
-    },
-    {
-      "from": "command-scenarios.DevFollowsTheGraph",
-      "to": "architecture.Timer",
       "kind": "deps"
     },
     {
@@ -16202,16 +13036,6 @@
     {
       "from": "command-scenarios.DevFollowsTheGraph",
       "to": "conventions.Layout",
-      "kind": "deps"
-    },
-    {
-      "from": "command-scenarios.DevFollowsTheGraph",
-      "to": "engine.DevService",
-      "kind": "deps"
-    },
-    {
-      "from": "command-scenarios.DevFollowsTheGraph",
-      "to": "product.DevDebounce",
       "kind": "deps"
     },
     {
@@ -17001,11 +13825,6 @@
     },
     {
       "from": "command-scenarios.PageDelivered",
-      "to": "html.Doctype",
-      "kind": "deps"
-    },
-    {
-      "from": "command-scenarios.PageDelivered",
       "to": "conventions.TrameCommands",
       "kind": "deps"
     },
@@ -17081,27 +13900,17 @@
     },
     {
       "from": "command-scenarios.PageExported",
-      "to": "messages.OutputMessages",
-      "kind": "deps"
-    },
-    {
-      "from": "command-scenarios.PageExported",
       "to": "messages.ScenarioMessages",
       "kind": "deps"
     },
     {
       "from": "command-scenarios.PageOfTheGraph",
-      "to": "page.Page",
+      "to": "page.PageScript",
       "kind": "verifies"
     },
     {
       "from": "command-scenarios.PageOfTheGraph",
       "to": "platform.Esbuild",
-      "kind": "verifies"
-    },
-    {
-      "from": "command-scenarios.PageOfTheGraph",
-      "to": "platform.NodeCompression",
       "kind": "verifies"
     },
     {
@@ -17121,12 +13930,7 @@
     },
     {
       "from": "command-scenarios.PageOfTheGraph",
-      "to": "page.Page",
-      "kind": "deps"
-    },
-    {
-      "from": "command-scenarios.PageOfTheGraph",
-      "to": "architecture.Compression",
+      "to": "page.PageScript",
       "kind": "deps"
     },
     {
@@ -17156,11 +13960,6 @@
     },
     {
       "from": "command-scenarios.PageOfTheGraph",
-      "to": "messages.OutputMessages",
-      "kind": "deps"
-    },
-    {
-      "from": "command-scenarios.PageOfTheGraph",
       "to": "messages.ScenarioMessages",
       "kind": "deps"
     },
@@ -17176,26 +13975,6 @@
     },
     {
       "from": "command-scenarios.PayloadOfTheGraph",
-      "to": "rendering.PageRendering",
-      "kind": "verifies"
-    },
-    {
-      "from": "command-scenarios.PayloadOfTheGraph",
-      "to": "rendering.HtmlSyntax",
-      "kind": "verifies"
-    },
-    {
-      "from": "command-scenarios.PayloadOfTheGraph",
-      "to": "rendering.SvgFigures",
-      "kind": "verifies"
-    },
-    {
-      "from": "command-scenarios.PayloadOfTheGraph",
-      "to": "engine.Differences",
-      "kind": "verifies"
-    },
-    {
-      "from": "command-scenarios.PayloadOfTheGraph",
       "to": "architecture.Test",
       "kind": "env"
     },
@@ -17206,22 +13985,12 @@
     },
     {
       "from": "command-scenarios.PayloadOfTheGraph",
-      "to": "engine.Differences",
-      "kind": "deps"
-    },
-    {
-      "from": "command-scenarios.PayloadOfTheGraph",
       "to": "architecture.TerminalLog",
       "kind": "deps"
     },
     {
       "from": "command-scenarios.PayloadOfTheGraph",
       "to": "conventions.TrameCommands",
-      "kind": "deps"
-    },
-    {
-      "from": "command-scenarios.PayloadOfTheGraph",
-      "to": "messages.OutputMessages",
       "kind": "deps"
     },
     {
@@ -18161,11 +14930,6 @@
     },
     {
       "from": "commands.Amend",
-      "to": "architecture.Paths",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Amend",
       "to": "architecture.Terminal",
       "kind": "deps"
     },
@@ -18460,6 +15224,16 @@
       "kind": "deps"
     },
     {
+      "from": "commands.CommandOrView",
+      "to": "commands.Amending",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.CommandOrView",
+      "to": "architecture.AmendmentPlace",
+      "kind": "deps"
+    },
+    {
       "from": "commands.Deliver",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -18497,16 +15271,6 @@
     {
       "from": "commands.Deliver",
       "to": "page.PageBundle",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Deliver",
-      "to": "page.PageDocument",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Deliver",
-      "to": "html.ScriptElement",
       "kind": "deps"
     },
     {
@@ -18570,11 +15334,6 @@
       "kind": "deps"
     },
     {
-      "from": "commands.Dev",
-      "to": "architecture.Paths",
-      "kind": "deps"
-    },
-    {
       "from": "commands.Doctor",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -18627,11 +15386,6 @@
     {
       "from": "commands.EmitPayload",
       "to": "engine.PayloadBuilder",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.EmitPayload",
-      "to": "rendering.PageRendering",
       "kind": "deps"
     },
     {
@@ -18731,7 +15485,12 @@
     },
     {
       "from": "commands.Export",
-      "to": "page.Page",
+      "to": "page.PageScript",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Export",
+      "to": "conventions.TrameCommands",
       "kind": "deps"
     },
     {
@@ -19056,11 +15815,6 @@
     },
     {
       "from": "commands.Preparation",
-      "to": "product.DevPort",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Preparation",
       "to": "messages.CommandMessages",
       "kind": "deps"
     },
@@ -19102,6 +15856,31 @@
     {
       "from": "commands.Preparation",
       "to": "syntax.SyntaxReader",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Preparation",
+      "to": "engine.PayloadBuilder",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Preparation",
+      "to": "engine.DateBundle",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Preparation",
+      "to": "engine.Watching",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Preparation",
+      "to": "page.PageScript",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Preparation",
+      "to": "engine.Project",
       "kind": "deps"
     },
     {
@@ -19840,16 +16619,6 @@
       "kind": "deps"
     },
     {
-      "from": "delivery.DeliveredStyle",
-      "to": "html.CssRule",
-      "kind": "deps"
-    },
-    {
-      "from": "delivery.DeliveredStyle",
-      "to": "html.CustomProperty",
-      "kind": "deps"
-    },
-    {
       "from": "delivery.NamesLed",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -20146,11 +16915,6 @@
     },
     {
       "from": "doctor.ServerAnswers",
-      "to": "architecture.HttpServer",
-      "kind": "deps"
-    },
-    {
-      "from": "doctor.ServerAnswers",
       "to": "doctor.Asking",
       "kind": "deps"
     },
@@ -20167,11 +16931,6 @@
     {
       "from": "doctor.TimerAnswers",
       "to": "architecture.Clock",
-      "kind": "deps"
-    },
-    {
-      "from": "doctor.TimerAnswers",
-      "to": "architecture.Timer",
       "kind": "deps"
     },
     {
@@ -20366,11 +17125,6 @@
     },
     {
       "from": "engine.CompilationApi",
-      "to": "conventions.DocumentIds",
-      "kind": "deps"
-    },
-    {
-      "from": "engine.CompilationApi",
       "to": "conventions.Layout",
       "kind": "deps"
     },
@@ -20531,11 +17285,6 @@
     },
     {
       "from": "engine.DevServer",
-      "to": "engine.DevService",
-      "kind": "deps"
-    },
-    {
-      "from": "engine.DevServer",
       "to": "conventions.TrameCommands",
       "kind": "deps"
     },
@@ -20556,22 +17305,7 @@
     },
     {
       "from": "engine.DevServer",
-      "to": "architecture.Timer",
-      "kind": "deps"
-    },
-    {
-      "from": "engine.DevServer",
-      "to": "product.DevDebounce",
-      "kind": "deps"
-    },
-    {
-      "from": "engine.DevServer",
-      "to": "architecture.HttpServer",
-      "kind": "deps"
-    },
-    {
-      "from": "engine.DevServer",
-      "to": "architecture.FileReading",
+      "to": "engine.Watching",
       "kind": "deps"
     },
     {
@@ -20591,17 +17325,7 @@
     },
     {
       "from": "engine.DevServer",
-      "to": "engine.Differences",
-      "kind": "deps"
-    },
-    {
-      "from": "engine.DevServer",
-      "to": "page.Page",
-      "kind": "deps"
-    },
-    {
-      "from": "engine.DevServer",
-      "to": "rendering.PageRendering",
+      "to": "page.PageScript",
       "kind": "deps"
     },
     {
@@ -20612,16 +17336,6 @@
     {
       "from": "engine.DevServer",
       "to": "messages.DevMessages",
-      "kind": "deps"
-    },
-    {
-      "from": "engine.Differences",
-      "to": "product.ExecutableSpecification",
-      "kind": "serves"
-    },
-    {
-      "from": "engine.Differences",
-      "to": "messages.OutputMessages",
       "kind": "deps"
     },
     {
@@ -21216,11 +17930,6 @@
     },
     {
       "from": "engine.Views",
-      "to": "conventions.DocumentIds",
-      "kind": "deps"
-    },
-    {
-      "from": "engine.Views",
       "to": "conventions.Layout",
       "kind": "deps"
     },
@@ -21277,6 +17986,36 @@
     {
       "from": "engine.Views",
       "to": "laws.IntermediateFormatOnly",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.Watching",
+      "to": "product.ExecutableSpecification",
+      "kind": "serves"
+    },
+    {
+      "from": "engine.Watching",
+      "to": "architecture.FileReading",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.Watching",
+      "to": "architecture.Paths",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.Watching",
+      "to": "conventions.Layout",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.Watching",
+      "to": "engine.Project",
+      "kind": "deps"
+    },
+    {
+      "from": "engine.Watching",
+      "to": "engine.EditorLeftovers",
       "kind": "deps"
     },
     {
@@ -21395,16 +18134,6 @@
       "kind": "deps"
     },
     {
-      "from": "html.CustomProperty",
-      "to": "html.CssDeclaration",
-      "kind": "deps"
-    },
-    {
-      "from": "html.JsonInScript",
-      "to": "typescript.TypeScript",
-      "kind": "language"
-    },
-    {
       "from": "languages.Drivers",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -21472,11 +18201,6 @@
     {
       "from": "languages.ReadBackWhatIsWritten",
       "to": "languages.Drivers",
-      "kind": "appliedBy"
-    },
-    {
-      "from": "languages.ReadBackWhatIsWritten",
-      "to": "page.Page",
       "kind": "appliedBy"
     },
     {
@@ -21670,11 +18394,6 @@
       "kind": "appliedBy"
     },
     {
-      "from": "messages.CountsInTheLanguage",
-      "to": "messages.PageWords",
-      "kind": "appliedBy"
-    },
-    {
       "from": "messages.DevMessages",
       "to": "messages.Language",
       "kind": "language"
@@ -21708,16 +18427,6 @@
       "from": "messages.OutputMessages",
       "to": "messages.Language",
       "kind": "language"
-    },
-    {
-      "from": "messages.PageWords",
-      "to": "messages.Language",
-      "kind": "language"
-    },
-    {
-      "from": "messages.PageWords",
-      "to": "messages.Language",
-      "kind": "deps"
     },
     {
       "from": "messages.PlatformMessages",
@@ -21790,689 +18499,54 @@
       "kind": "serves"
     },
     {
-      "from": "page.Banner",
-      "to": "page.ThePage",
-      "kind": "standard"
+      "from": "page.PageMadeOnTheMachine",
+      "to": "architecture.Local",
+      "kind": "environments"
     },
     {
-      "from": "page.Banner",
-      "to": "page.ThePage",
-      "kind": "deps"
+      "from": "page.PageMadeOnTheMachine",
+      "to": "architecture.Test",
+      "kind": "environments"
     },
     {
-      "from": "page.Banner",
-      "to": "page.PageRegions",
-      "kind": "deps"
+      "from": "page.PageMadeOnTheMachine",
+      "to": "product.ReplaceableTechnology",
+      "kind": "serves"
     },
     {
-      "from": "page.Brand",
-      "to": "page.ThePage",
-      "kind": "standard"
-    },
-    {
-      "from": "page.Brand",
-      "to": "page.ThePage",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Brand",
-      "to": "conventions.TrameCommands",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Brand",
-      "to": "page.Logo",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Brand",
-      "to": "html.HtmlBlock",
-      "kind": "deps"
-    },
-    {
-      "from": "page.CompilationState",
-      "to": "page.ThePage",
-      "kind": "standard"
-    },
-    {
-      "from": "page.CompilationState",
-      "to": "page.ThePage",
-      "kind": "deps"
-    },
-    {
-      "from": "page.CompilationState",
-      "to": "page.PageRegions",
-      "kind": "deps"
-    },
-    {
-      "from": "page.DatePicker",
-      "to": "page.ThePage",
-      "kind": "standard"
-    },
-    {
-      "from": "page.DatePicker",
-      "to": "page.ThePage",
-      "kind": "deps"
-    },
-    {
-      "from": "page.DatePicker",
-      "to": "page.PageRegions",
-      "kind": "deps"
-    },
-    {
-      "from": "page.DatePicker",
-      "to": "html.HtmlBlock",
-      "kind": "deps"
-    },
-    {
-      "from": "page.DocumentHead",
-      "to": "page.ThePage",
-      "kind": "standard"
-    },
-    {
-      "from": "page.DocumentHead",
-      "to": "page.ThePage",
-      "kind": "deps"
-    },
-    {
-      "from": "page.DocumentHead",
-      "to": "page.PageRegions",
-      "kind": "deps"
-    },
-    {
-      "from": "page.DocumentHead",
-      "to": "html.HtmlBlock",
-      "kind": "deps"
-    },
-    {
-      "from": "page.DocumentHead",
-      "to": "page.RenderingToggle",
-      "kind": "deps"
-    },
-    {
-      "from": "page.DocumentPicker",
-      "to": "page.ThePage",
-      "kind": "standard"
-    },
-    {
-      "from": "page.DocumentPicker",
-      "to": "page.ThePage",
-      "kind": "deps"
-    },
-    {
-      "from": "page.DocumentPicker",
-      "to": "page.PageRegions",
-      "kind": "deps"
-    },
-    {
-      "from": "page.DocumentPicker",
-      "to": "html.HtmlBlock",
-      "kind": "deps"
-    },
-    {
-      "from": "page.FigureMarkers",
-      "to": "page.ThePage",
-      "kind": "standard"
-    },
-    {
-      "from": "page.FigureMarkers",
-      "to": "page.ThePage",
-      "kind": "deps"
-    },
-    {
-      "from": "page.FigureMarkers",
-      "to": "markup.FigureMarkup",
-      "kind": "deps"
-    },
-    {
-      "from": "page.FigureMarkers",
-      "to": "appearance.GraphDrawing",
-      "kind": "deps"
-    },
-    {
-      "from": "page.FigureMarkers",
-      "to": "html.HtmlBlock",
-      "kind": "deps"
-    },
-    {
-      "from": "page.FigureMarkers",
-      "to": "html.PathData",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Logo",
-      "to": "page.ThePage",
-      "kind": "standard"
-    },
-    {
-      "from": "page.Logo",
-      "to": "page.ThePage",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Logo",
-      "to": "html.HtmlBlock",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Logo",
-      "to": "html.CssVariable",
-      "kind": "deps"
-    },
-    {
-      "from": "page.MainArea",
-      "to": "page.ThePage",
-      "kind": "standard"
-    },
-    {
-      "from": "page.MainArea",
-      "to": "page.ThePage",
-      "kind": "deps"
-    },
-    {
-      "from": "page.MainArea",
-      "to": "page.PageRegions",
-      "kind": "deps"
-    },
-    {
-      "from": "page.MainArea",
-      "to": "html.HtmlBlock",
-      "kind": "deps"
-    },
-    {
-      "from": "page.MainArea",
-      "to": "page.Banner",
-      "kind": "deps"
-    },
-    {
-      "from": "page.MainArea",
-      "to": "page.DocumentHead",
-      "kind": "deps"
-    },
-    {
-      "from": "page.NarrowScreenRule",
-      "to": "page.ThePage",
-      "kind": "standard"
-    },
-    {
-      "from": "page.NarrowScreenRule",
-      "to": "page.ThePage",
-      "kind": "deps"
-    },
-    {
-      "from": "page.NarrowScreenRule",
-      "to": "html.MediaRule",
-      "kind": "deps"
-    },
-    {
-      "from": "page.NarrowScreenRule",
-      "to": "html.MediaFeature",
-      "kind": "deps"
-    },
-    {
-      "from": "page.NarrowScreenStyle",
-      "to": "appearance.Spacing",
-      "kind": "variables"
-    },
-    {
-      "from": "page.NarrowScreenStyle",
-      "to": "appearance.TypeScale",
-      "kind": "variables"
-    },
-    {
-      "from": "page.NarrowScreenStyle",
-      "to": "appearance.PageLayout",
-      "kind": "variables"
-    },
-    {
-      "from": "page.NarrowScreenStyle",
-      "to": "page.Page",
-      "kind": "styles"
-    },
-    {
-      "from": "page.Navigation",
-      "to": "page.ThePage",
-      "kind": "standard"
-    },
-    {
-      "from": "page.Navigation",
-      "to": "page.ThePage",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Navigation",
-      "to": "page.PageRegions",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
+      "from": "page.PageScript",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
     },
     {
-      "from": "page.Page",
+      "from": "page.PageScript",
       "to": "page.PageBundle",
       "kind": "deps"
     },
     {
-      "from": "page.Page",
-      "to": "page.StandaloneStyle",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
-      "to": "appearance.Typography",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
-      "to": "appearance.NarrowScreen",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
-      "to": "appearance.Spacing",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
-      "to": "appearance.Radii",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
-      "to": "appearance.TypeScale",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
-      "to": "appearance.Opacities",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
-      "to": "appearance.Strokes",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
-      "to": "appearance.Motion",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
-      "to": "appearance.PageLayout",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
+      "from": "page.PageScript",
       "to": "architecture.Resources",
       "kind": "deps"
     },
     {
-      "from": "page.Page",
-      "to": "architecture.FileReading",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
+      "from": "page.PageScript",
       "to": "architecture.Bundler",
       "kind": "deps"
     },
     {
-      "from": "page.Page",
-      "to": "architecture.Compression",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
-      "to": "page.Shell",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
-      "to": "page.Theme",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
-      "to": "page.StatusStyle",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
-      "to": "page.NarrowScreenRule",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
-      "to": "page.FontLinks",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
-      "to": "page.PageScripts",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
-      "to": "page.PageDocument",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
-      "to": "html.CssRule",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
-      "to": "html.CssDeclaration",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
-      "to": "messages.OutputMessages",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
-      "to": "messages.Language",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Page",
-      "to": "syntax.SyntaxReader",
-      "kind": "deps"
-    },
-    {
-      "from": "page.PageDocument",
-      "to": "page.ThePage",
-      "kind": "standard"
-    },
-    {
-      "from": "page.PageDocument",
-      "to": "page.ThePage",
-      "kind": "deps"
-    },
-    {
-      "from": "page.PageDocument",
-      "to": "html.Doctype",
-      "kind": "deps"
-    },
-    {
-      "from": "page.PageScripts",
-      "to": "page.ThePage",
-      "kind": "standard"
-    },
-    {
-      "from": "page.PageScripts",
-      "to": "page.ThePage",
-      "kind": "deps"
-    },
-    {
-      "from": "page.PageScripts",
-      "to": "html.ScriptElement",
-      "kind": "deps"
-    },
-    {
-      "from": "page.PageScripts",
-      "to": "html.JsonInScript",
-      "kind": "deps"
-    },
-    {
-      "from": "page.PageScripts",
-      "to": "typescript.MemberAccess",
-      "kind": "deps"
-    },
-    {
-      "from": "page.PageScripts",
-      "to": "typescript.Assignment",
-      "kind": "deps"
-    },
-    {
-      "from": "page.PageStyle",
-      "to": "appearance.Typography",
-      "kind": "variables"
-    },
-    {
-      "from": "page.PageStyle",
-      "to": "appearance.Spacing",
-      "kind": "variables"
-    },
-    {
-      "from": "page.PageStyle",
-      "to": "appearance.Radii",
-      "kind": "variables"
-    },
-    {
-      "from": "page.PageStyle",
-      "to": "appearance.TypeScale",
-      "kind": "variables"
-    },
-    {
-      "from": "page.PageStyle",
-      "to": "appearance.Opacities",
-      "kind": "variables"
-    },
-    {
-      "from": "page.PageStyle",
-      "to": "appearance.Strokes",
-      "kind": "variables"
-    },
-    {
-      "from": "page.PageStyle",
-      "to": "appearance.Motion",
-      "kind": "variables"
-    },
-    {
-      "from": "page.PageStyle",
-      "to": "appearance.PageLayout",
-      "kind": "variables"
-    },
-    {
-      "from": "page.PageStyle",
-      "to": "page.Page",
-      "kind": "styles"
-    },
-    {
-      "from": "page.RenderingToggle",
-      "to": "page.ThePage",
-      "kind": "standard"
-    },
-    {
-      "from": "page.RenderingToggle",
-      "to": "page.ThePage",
-      "kind": "deps"
-    },
-    {
-      "from": "page.RenderingToggle",
-      "to": "page.RenderingModes",
-      "kind": "deps"
-    },
-    {
-      "from": "page.RenderingToggle",
-      "to": "page.PageRegions",
-      "kind": "deps"
-    },
-    {
-      "from": "page.RenderingToggle",
-      "to": "html.HtmlBlock",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Shell",
-      "to": "page.ThePage",
-      "kind": "standard"
-    },
-    {
-      "from": "page.Shell",
-      "to": "page.ThePage",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Shell",
-      "to": "html.HtmlBlock",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Shell",
-      "to": "page.SideBar",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Shell",
-      "to": "page.MainArea",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Shell",
-      "to": "page.FigureMarkers",
-      "kind": "deps"
-    },
-    {
-      "from": "page.SideBar",
-      "to": "page.ThePage",
-      "kind": "standard"
-    },
-    {
-      "from": "page.SideBar",
-      "to": "page.ThePage",
-      "kind": "deps"
-    },
-    {
-      "from": "page.SideBar",
-      "to": "html.HtmlBlock",
-      "kind": "deps"
-    },
-    {
-      "from": "page.SideBar",
-      "to": "page.Brand",
-      "kind": "deps"
-    },
-    {
-      "from": "page.SideBar",
-      "to": "page.CompilationState",
-      "kind": "deps"
-    },
-    {
-      "from": "page.SideBar",
-      "to": "page.DatePicker",
-      "kind": "deps"
-    },
-    {
-      "from": "page.SideBar",
-      "to": "page.Navigation",
-      "kind": "deps"
-    },
-    {
-      "from": "page.SideBar",
-      "to": "page.DocumentPicker",
-      "kind": "deps"
-    },
-    {
-      "from": "page.StatusStyle",
-      "to": "page.ThePage",
-      "kind": "standard"
-    },
-    {
-      "from": "page.StatusStyle",
-      "to": "page.ThePage",
-      "kind": "deps"
-    },
-    {
-      "from": "page.StatusStyle",
-      "to": "html.CssRule",
-      "kind": "deps"
-    },
-    {
-      "from": "page.StatusStyle",
-      "to": "html.CssDeclaration",
-      "kind": "deps"
-    },
-    {
-      "from": "page.StatusStyle",
-      "to": "html.CssVariable",
-      "kind": "deps"
-    },
-    {
-      "from": "page.StatusStyle",
-      "to": "html.ClassSelector",
-      "kind": "deps"
-    },
-    {
-      "from": "page.StyleThroughVariables",
-      "to": "product.SingleSource",
+      "from": "page.ThePageIsTheLibrarys",
+      "to": "product.ExecutableSpecification",
       "kind": "serves"
     },
     {
-      "from": "page.StyleThroughVariables",
-      "to": "page.PageStyle",
+      "from": "page.ThePageIsTheLibrarys",
+      "to": "page.PageScript",
       "kind": "appliedBy"
     },
     {
-      "from": "page.StyleThroughVariables",
-      "to": "page.NarrowScreenStyle",
+      "from": "page.ThePageIsTheLibrarys",
+      "to": "page.PageMadeOnTheMachine",
       "kind": "appliedBy"
-    },
-    {
-      "from": "page.StyleThroughVariables",
-      "to": "page.Theme",
-      "kind": "appliedBy"
-    },
-    {
-      "from": "page.StyleThroughVariables",
-      "to": "page.NarrowScreenRule",
-      "kind": "appliedBy"
-    },
-    {
-      "from": "page.StyleThroughVariables",
-      "to": "page.Page",
-      "kind": "appliedBy"
-    },
-    {
-      "from": "page.Theme",
-      "to": "page.ThePage",
-      "kind": "standard"
-    },
-    {
-      "from": "page.Theme",
-      "to": "page.ThePage",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Theme",
-      "to": "html.CssRule",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Theme",
-      "to": "html.MediaRule",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Theme",
-      "to": "html.MediaFeature",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Theme",
-      "to": "html.AttributeSelector",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Theme",
-      "to": "html.NegationSelector",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Theme",
-      "to": "html.CustomProperty",
-      "kind": "deps"
-    },
-    {
-      "from": "page.Theme",
-      "to": "html.CssDeclaration",
-      "kind": "deps"
     },
     {
       "from": "platform.AmendmentsInPlace",
@@ -22661,11 +18735,6 @@
     },
     {
       "from": "platform.InMemoryScenarios",
-      "to": "platform.MemoryHttpServer",
-      "kind": "chooses"
-    },
-    {
-      "from": "platform.InMemoryScenarios",
       "to": "architecture.Test",
       "kind": "environments"
     },
@@ -22825,21 +18894,6 @@
       "kind": "deps"
     },
     {
-      "from": "platform.MemoryHttpServer",
-      "to": "architecture.HttpServer",
-      "kind": "implements"
-    },
-    {
-      "from": "platform.MemoryHttpServer",
-      "to": "architecture.ServerLog",
-      "kind": "implements"
-    },
-    {
-      "from": "platform.MemoryHttpServer",
-      "to": "messages.PlatformMessages",
-      "kind": "deps"
-    },
-    {
       "from": "platform.MemoryTerminal",
       "to": "architecture.Terminal",
       "kind": "implements"
@@ -22885,23 +18939,8 @@
       "kind": "deps"
     },
     {
-      "from": "platform.NodeCompression",
-      "to": "architecture.Compression",
-      "kind": "implements"
-    },
-    {
-      "from": "platform.NodeCompression",
-      "to": "page.PackedGraph",
-      "kind": "deps"
-    },
-    {
       "from": "platform.NodeHashing",
       "to": "architecture.Hashing",
-      "kind": "implements"
-    },
-    {
-      "from": "platform.NodeHttpServer",
-      "to": "architecture.HttpServer",
       "kind": "implements"
     },
     {
@@ -22951,11 +18990,6 @@
     },
     {
       "from": "platform.NodeMachine",
-      "to": "platform.NodeHttpServer",
-      "kind": "chooses"
-    },
-    {
-      "from": "platform.NodeMachine",
       "to": "architecture.Local",
       "kind": "environments"
     },
@@ -22977,16 +19011,6 @@
     {
       "from": "platform.NodePlatform",
       "to": "platform.NodeHashing",
-      "kind": "chooses"
-    },
-    {
-      "from": "platform.NodePlatform",
-      "to": "platform.NodeCompression",
-      "kind": "chooses"
-    },
-    {
-      "from": "platform.NodePlatform",
-      "to": "platform.NodeTimer",
       "kind": "chooses"
     },
     {
@@ -23048,11 +19072,6 @@
       "from": "platform.NodeTerminal",
       "to": "messages.PlatformMessages",
       "kind": "deps"
-    },
-    {
-      "from": "platform.NodeTimer",
-      "to": "architecture.Timer",
-      "kind": "implements"
     },
     {
       "from": "platform.NoInstallsInTest",
@@ -23802,11 +19821,6 @@
     {
       "from": "principles.OneOutputPerReader",
       "to": "engine.MachineOutputs",
-      "kind": "appliedBy"
-    },
-    {
-      "from": "principles.OneOutputPerReader",
-      "to": "page.Page",
       "kind": "appliedBy"
     },
     {
@@ -24647,6 +20661,26 @@
     {
       "from": "releases.G135",
       "to": "releases.G134",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G136",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G136",
+      "to": "releases.G135",
+      "kind": "assembledBy"
+    },
+    {
+      "from": "releases.G137",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G137",
+      "to": "releases.G136",
       "kind": "assembledBy"
     },
     {
@@ -25635,39 +21669,9 @@
       "kind": "serves"
     },
     {
-      "from": "rendering.HtmlSyntax",
-      "to": "product.ExecutableSpecification",
-      "kind": "serves"
-    },
-    {
-      "from": "rendering.HtmlSyntax",
-      "to": "rendering.PageSyntax",
-      "kind": "implements"
-    },
-    {
-      "from": "rendering.HtmlSyntax",
-      "to": "rendering.PageFigures",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.HtmlSyntax",
-      "to": "markup.DocumentMarkup",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.HtmlSyntax",
-      "to": "page.ThePage",
-      "kind": "deps"
-    },
-    {
       "from": "rendering.MeaningThenLook",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
-    },
-    {
-      "from": "rendering.MeaningThenLook",
-      "to": "rendering.PageRendering",
-      "kind": "appliedBy"
     },
     {
       "from": "rendering.MeaningThenLook",
@@ -25676,11 +21680,6 @@
     },
     {
       "from": "rendering.PageFiguresDrawn",
-      "to": "rendering.SvgFigures",
-      "kind": "chooses"
-    },
-    {
-      "from": "rendering.PageFiguresDrawn",
       "to": "architecture.Local",
       "kind": "environments"
     },
@@ -25693,11 +21692,6 @@
       "from": "rendering.PageFiguresDrawn",
       "to": "product.ReplaceableTechnology",
       "kind": "serves"
-    },
-    {
-      "from": "rendering.PageInHtml",
-      "to": "rendering.HtmlSyntax",
-      "kind": "chooses"
     },
     {
       "from": "rendering.PageInHtml",
@@ -25715,24 +21709,9 @@
       "kind": "serves"
     },
     {
-      "from": "rendering.PageRendering",
-      "to": "product.ExecutableSpecification",
-      "kind": "serves"
-    },
-    {
-      "from": "rendering.PageRendering",
-      "to": "rendering.PageSyntax",
-      "kind": "deps"
-    },
-    {
       "from": "rendering.RenderedByTheLibrary",
       "to": "product.ReplaceableTechnology",
       "kind": "serves"
-    },
-    {
-      "from": "rendering.RenderedByTheLibrary",
-      "to": "rendering.PageRendering",
-      "kind": "appliedBy"
     },
     {
       "from": "rendering.RenderedByTheLibrary",
@@ -25768,61 +21747,6 @@
       "from": "rendering.RenderedByTheLibrary",
       "to": "rendering.AnswersAsChosen",
       "kind": "appliedBy"
-    },
-    {
-      "from": "rendering.SvgFigures",
-      "to": "product.ExecutableSpecification",
-      "kind": "serves"
-    },
-    {
-      "from": "rendering.SvgFigures",
-      "to": "rendering.PageFigures",
-      "kind": "implements"
-    },
-    {
-      "from": "rendering.SvgFigures",
-      "to": "markup.DocumentMarkup",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.SvgFigures",
-      "to": "markup.FigureMarkup",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.SvgFigures",
-      "to": "page.ThePage",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.SvgFigures",
-      "to": "appearance.GraphDrawing",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.SvgFigures",
-      "to": "appearance.TimelineDrawing",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.SvgFigures",
-      "to": "appearance.LegendDrawing",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.SvgFigures",
-      "to": "html.PathData",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.SvgFigures",
-      "to": "html.CssDeclaration",
-      "kind": "deps"
-    },
-    {
-      "from": "rendering.SvgFigures",
-      "to": "messages.PageWords",
-      "kind": "deps"
     },
     {
       "from": "rendering.TerminalFiguresAsText",
@@ -26561,11 +22485,6 @@
     },
     {
       "from": "sdlc.CandidateRunsOnTheMachine",
-      "to": "platform.NodeHttpServer",
-      "kind": "verifies"
-    },
-    {
-      "from": "sdlc.CandidateRunsOnTheMachine",
       "to": "platform.RunsOnDisk",
       "kind": "verifies"
     },
@@ -26665,11 +22584,6 @@
       "kind": "producedBy"
     },
     {
-      "from": "sdlc.GraphPage",
-      "to": "architecture.PageApp",
-      "kind": "carries"
-    },
-    {
       "from": "sdlc.GraphPageOpens",
       "to": "sdlc.GraphPage",
       "kind": "on"
@@ -26685,59 +22599,9 @@
       "kind": "by"
     },
     {
-      "from": "sdlc.GraphPageOpens",
-      "to": "browser.ShowGraph",
-      "kind": "verifies"
-    },
-    {
-      "from": "sdlc.GraphPageOpens",
-      "to": "browser.ExplorerFigures",
-      "kind": "verifies"
-    },
-    {
-      "from": "sdlc.GraphPageOpens",
-      "to": "browser.BrowserWindow",
-      "kind": "verifies"
-    },
-    {
-      "from": "sdlc.GraphPageOpens",
-      "to": "browser.BrowserMemory",
-      "kind": "verifies"
-    },
-    {
-      "from": "sdlc.GraphPageOpens",
-      "to": "browser.BrowserFeed",
-      "kind": "verifies"
-    },
-    {
-      "from": "sdlc.GraphPageOpens",
-      "to": "browser.BrowserAmendments",
-      "kind": "verifies"
-    },
-    {
-      "from": "sdlc.GraphPageOpens",
-      "to": "browser.BrowserDecompression",
-      "kind": "verifies"
-    },
-    {
       "from": "sdlc.GraphPageSelectors",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
-    },
-    {
-      "from": "sdlc.GraphPageSelectors",
-      "to": "page.PageRegions",
-      "kind": "deps"
-    },
-    {
-      "from": "sdlc.GraphPageSelectors",
-      "to": "markup.DocumentMarkup",
-      "kind": "deps"
-    },
-    {
-      "from": "sdlc.GraphPageSelectors",
-      "to": "html.AttributeSelector",
-      "kind": "deps"
     },
     {
       "from": "sdlc.IntoMain",
@@ -27043,11 +22907,6 @@
       "from": "sdlc.OurSettingsInTheScenarios",
       "to": "architecture.Test",
       "kind": "environments"
-    },
-    {
-      "from": "sdlc.PageProgram",
-      "to": "architecture.PageApp",
-      "kind": "producedBy"
     },
     {
       "from": "sdlc.PageProgram",
@@ -27413,6 +23272,11 @@
       "from": "syntax.ReadLanguagesAlike",
       "to": "architecture.SyntaxTrees",
       "kind": "appliedBy"
+    },
+    {
+      "from": "syntax.StdLanguagesRead",
+      "to": "architecture.Local",
+      "kind": "environments"
     },
     {
       "from": "syntax.StdLanguagesRead",

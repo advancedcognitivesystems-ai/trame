@@ -38,10 +38,11 @@ A choice that follows it has realizations that touch the platform (implementatio
 | Followed by | Shape |
 |---|---|
 | [Read by the engine that builds](scenarios.md#ReadInTheEngine) | has the shape |
+| [Waiting on the machine](scenarios.md#WaitingAsAPersonWould) | has the shape |
 
 - Maintained by: trame
 - Serves: [Known designs, named](product.md#KnownDesigns)
-- Followed by: [Read by the engine that builds](scenarios.md#ReadInTheEngine)
+- Followed by: [Read by the engine that builds](scenarios.md#ReadInTheEngine), [Waiting on the machine](scenarios.md#WaitingAsAPersonWould)
 
 <a id="Bridge"></a>
 

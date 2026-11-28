@@ -71,7 +71,7 @@ The library as its people write it: what a version freezes, and what projects im
 
 - Path: `src`
 
-Built 28 November 2026 by claude, fingerprint `bce7dc429f648d12bbf991c81ddcbd06399e48c70c7e5b5270cc512d5f7b0854`.
+Built 28 November 2026 by claude, fingerprint `d654c06cdf64b236ca45d99bf2b93e856902327da19349b385e2357b75f9f742`.
 
 Shipped by [The next version](#NextVersion) 26 November 2026, fingerprint `c129edb86a12dca60dd21dfcf77b504ac47a7e649c124520e962fb790a76c725`.
 
@@ -82,6 +82,10 @@ Shipped by [The next version](#NextVersion) 27 November 2026, fingerprint `11e0d
 Shipped by [The next version](#NextVersion) 27 November 2026, fingerprint `5c0346d88aa5faf8c803f0855f034e05aa1061e1eee7b8f939cd9a91b5b392e5`.
 
 Shipped by [The next version](#NextVersion) 28 November 2026, fingerprint `bce7dc429f648d12bbf991c81ddcbd06399e48c70c7e5b5270cc512d5f7b0854`.
+
+Shipped by [The next version](#NextVersion) 28 November 2026, fingerprint `b73129383d9a912cb9f8d3bd0aa4527c8d5a78b052f05ad9d814fbe9ece68b18`.
+
+Shipped by [The next version](#NextVersion) 28 November 2026, fingerprint `d654c06cdf64b236ca45d99bf2b93e856902327da19349b385e2357b75f9f742`.
 
 - Owner: trame
 - A version of the project: true
@@ -102,14 +106,19 @@ A version of the renderers, for the projects that import it: shipped by trame re
 | Obligation | Status | Why |
 |---|---|---|
 | [The renderers of documents](#TheLibrary) | **unknown** | shipped |
+| [The explorer of a large graph](scenarios.md#TheExplorerDraws) | **held** | [Its code verified](#CodeVerified), for [Explorer of a graph](browser.md#ExplorerFigures) |
 | [The language of the documents, written](scenarios.md#LanguageWritten) | **held** | [Its code verified](#CodeVerified), for [Dates](language.md#Dates) |
+| [A page made](scenarios.md#ThePageIsMade) | **held** | [Its code verified](#CodeVerified), for [Page](page.md#Page) |
 | [Answers written in their formats](scenarios.md#AnswersWritten) | **held** | [Its code verified](#CodeVerified), for [Documents at a terminal](rendering.md#AnswersAtATerminal) |
 | [The documents, rendered](scenarios.md#DocumentsRendered) | **held** | [Its code verified](#CodeVerified), for [Common rendering](rendering.md#Common) |
+| [The documents in the page](scenarios.md#DocumentsInThePage) | **held** | [Its code verified](#CodeVerified), for [HTML writer](rendering.md#HtmlSyntax) |
+| [The page is assembled](browser.md#ThePageIsAssembled) | **held** | [Its decisions applied](#DecisionsApplied), for [Explorer of a graph](browser.md#ExplorerFigures) |
 | [The documents speak the engine's language](scenarios.md#TheEnginesLanguage) | **held** | [Its decisions applied](#DecisionsApplied), for [Dates](language.md#Dates) |
+| [A style sheet writes no value](page.md#StyleThroughVariables) | **held** | [Its decisions applied](#DecisionsApplied), for [Rules of a narrow screen](page.md#NarrowScreenRule) |
 | [One renderer, its syntax a choice](rendering.md#OneRendererManySyntaxes) | **held** | [Its decisions applied](#DecisionsApplied), for [Rendering of the files](rendering.md#FileRendering) |
 | [The scenarios render as a project does](scenarios.md#HowTheScenariosRender) | **held** | [Its decisions applied](#DecisionsApplied), for [Figures in Mermaid](scenarios.md#FiguresInMermaid) |
 
-Shipped 28 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-28-8cc6006e.json`.
+Shipped 28 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-28-4f8f6552.json`.
 
 - Owner: trame
 - Ships: [The renderers of documents](#TheLibrary)
@@ -130,7 +139,7 @@ The workflow that checks each pull request, written by trame ship from the graph
 |---|---|---|
 | [The pull requests' workflow](#PullRequestWorkflow) | **held** | shipped |
 
-Shipped 28 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-28-d0f31db5.json`.
+Shipped 28 November 2026 by claude; its dossier: `evidence/shipments/RunnersWritten-2026-11-28-10940672.json`.
 
 - Owner: trame
 - Ships: [The pull requests' workflow](#PullRequestWorkflow)

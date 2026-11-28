@@ -4,8 +4,8 @@
 // of the one it replaces, or when it raises an error (unless accepted). trame amend and trame dev record it then,
 // through the port "Where an amendment goes": this function writes nothing.
 
-import { AmendmentField, ChangeWay, FieldType, KindName, Severity, type ProvidedBy } from "../../../trame/kernel"
-import type { AmendmentToRecord, Layout, Paths, Prelude } from "../../architecture"
+import { AmendmentField, ChangeWay, FieldType, KindName, Severity, type AmendmentAsked, type ProvidedBy } from "../../../trame/kernel"
+import type { AmendmentPlace, AmendmentToRecord, Layout, Paths, Prelude } from "../../architecture"
 import type { CommandMessages } from "../../messages"
 import type { References } from "../../engine"
 import type { AmendmentNaming } from "../../conventions"
@@ -17,21 +17,8 @@ import type { Api as ProjectApi } from "../engine/project"
 import type { Counts, ValueTypes } from "#std/algebra"
 import type { NodeModuleSpecifiers } from "#std/system"
 
-/** An amendment asked for: of which node, which value, to what, by whom, why, from and until when. */
-export interface AmendmentAsked {
-  node: string
-  path: string
-  /** The new value: JSON, or a text as it is. */
-  value: string
-  why: string
-  by: string
-  from?: string
-  until?: string
-  /** The source that changed a cited value. */
-  source?: string
-  /** Recorded even when it raises an error, for its owner to settle. */
-  accept?: boolean
-}
+/** An amendment asked for: of which node, which value, to what, by whom, why, from and until when (the language's, since g136). */
+export type { AmendmentAsked }
 
 /** What an amendment would do: why it is refused, or what it would change and what to record; whose approval it awaits. */
 export interface AmendmentPrepared {
@@ -137,7 +124,19 @@ const body = (deps: Deps) => {
     }
   }
 
-  return { prepareAmendment }
+  /**
+   * An amendment prepared, then recorded by the command that asks it (only a command writes) where the project's
+   * amendments go, unless it is refused or only previewed: trame amend, the page of trame dev, a command the engine's API
+   * amends for (since g136). The file it went to, from the root.
+   */
+  async function amend(o: Options, a: AmendmentAsked, place: AmendmentPlace): Promise<AmendmentPrepared & { file?: string }> {
+    const prepared = await prepareAmendment(o, a)
+    if (prepared.refused !== undefined || !prepared.record || a.dryRun) return prepared
+    const recorded = place.record(prepared.record)
+    return { ...prepared, file: paths.relative(o.root, recorded.file) }
+  }
+
+  return { prepareAmendment, amend }
 }
 
 export type Api = ReturnType<typeof body>

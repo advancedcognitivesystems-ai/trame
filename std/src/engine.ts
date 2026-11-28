@@ -7,7 +7,7 @@
 // commands: what it reaches of the engine is what the ports say. They grow as the engine's commands move out of it.
 
 import { code, refines } from "#trame/kernel"
-import type { CompiledProject, LanguageReader, ProjectLayout } from "#trame/kernel"
+import type { CompiledProject, LanguageReader, ProjectLayout, TextReader } from "#trame/kernel"
 import { port } from "#trame/kinds/port"
 import { standard } from "#trame/kinds/standard"
 import { implementation } from "#trame/kinds/implementation"
@@ -40,6 +40,10 @@ export interface ProjectAtHand {
   layout(): ProjectLayout
   /** The project, compiled at the day its command line says (--at, or today), once. */
   compiled(): Promise<CompiledProject>
+  /** The page's program, bundled for a browser by the engine (since 0.32.0): what a command that writes a page gives it. */
+  page(): Promise<string>
+  /** The name a person types to run the engine (since 0.33.0): what a page's brand writes, what a command names it by. */
+  program(): string
 }
 
 /**
@@ -100,9 +104,10 @@ export const ProjectCompiledHere = implementation({
 /**
  * Reading a language
  * The reader of the languages bodies are written in (tree-sitter): it loads a language's grammar, reads an example of
- * it, and says which predicates of its queries tree-sitter keeps aside. A language node names it as its reader.
+ * it, and says which predicates of its queries tree-sitter keeps aside. A language node names it as its reader. It reads
+ * back a text written in the language too (since 0.32.0): what a page writes, before it is given.
  */
-export const LanguageReading = port<LanguageReader>({ owner: "trame", declaredEffects: ["read", "asynchronous"] })
+export const LanguageReading = port<LanguageReader & TextReader>({ owner: "trame", declaredEffects: ["read", "asynchronous"] })
 
 /**
  * Read by the engine

@@ -21,9 +21,9 @@ The language Trame speaks to people: British English. Its messages are written i
 
 - Decided by: trame
 - Rejected: French, the language of the first generations; the workspace and its documents moved to English; Several languages at once, nothing asks for it yet: each catalog is written in one language, and a second one would be a second set of catalogs
-- Used by: [Show the graph](browser.md#ShowGraph), [The documents in Trame's language](documents.md#OurDocumentLanguage), [trame dev server](engine.md#DevServer), [Payload](engine.md#PayloadBuilder), [Messages of an advance](#AdvanceMessages), [Messages of the commands](#CommandMessages), [Messages of the compiler](#CompilerMessages), [Messages of trame dev](#DevMessages), [Words of the page](#PageWords), [Messages of the scenarios](#ScenarioMessages), [Messages of the views](#ViewMessages), [Page](page.md#Page), [The documents write in the decided language](scenarios.md#DocumentWords), [Open the graph page](sdlc.md#OpenTheGraphPage)
+- Used by: [The documents in Trame's language](documents.md#OurDocumentLanguage), [trame dev server](engine.md#DevServer), [Payload](engine.md#PayloadBuilder), [Messages of an advance](#AdvanceMessages), [Messages of the commands](#CommandMessages), [Messages of the compiler](#CompilerMessages), [Messages of trame dev](#DevMessages), [Messages of the scenarios](#ScenarioMessages), [Messages of the views](#ViewMessages), [The documents write in the decided language](scenarios.md#DocumentWords), [Open the graph page](sdlc.md#OpenTheGraphPage)
 - Applies: [The punctuation is the language's](documents.md#PunctuationOfTheLanguage)
-- Language of: [Messages of an advance](#AdvanceMessages), [Messages of the commands](#CommandMessages), [Messages of the compiler](#CompilerMessages), [Messages of trame dev](#DevMessages), [Messages of the drivers](#DriverMessages), [Words of Trame's views](#EngineViewWords), [Words of the kinds](#KindWords), [Messages of the laws](#LawMessages), [Messages of the outputs](#OutputMessages), [Words of the page](#PageWords), [Messages of the platform](#PlatformMessages), [Messages of the scenarios](#ScenarioMessages), [Messages of the views](#ViewMessages), [Words of the views](#ViewWords), [What the programs of Trame's SDLC say](sdlc.md#SdlcWords), [Roles of a literal](syntax.md#LiteralRoles)
+- Language of: [Messages of an advance](#AdvanceMessages), [Messages of the commands](#CommandMessages), [Messages of the compiler](#CompilerMessages), [Messages of trame dev](#DevMessages), [Messages of the drivers](#DriverMessages), [Words of Trame's views](#EngineViewWords), [Words of the kinds](#KindWords), [Messages of the laws](#LawMessages), [Messages of the outputs](#OutputMessages), [Messages of the platform](#PlatformMessages), [Messages of the scenarios](#ScenarioMessages), [Messages of the views](#ViewMessages), [Words of the views](#ViewWords), [What the programs of Trame's SDLC say](sdlc.md#SdlcWords), [Roles of a literal](syntax.md#LiteralRoles)
 
 ## Architecture decision
 
@@ -31,7 +31,7 @@ The language Trame speaks to people: British English. Its messages are written i
 
 ### A catalog counts in its language
 
-`CountsInTheLanguage` · `src/messages.ts:1007` · status: **held**
+`CountsInTheLanguage` · `src/messages.ts:961` · status: **held**
 
 A count and its noun follow the plural rules of the language the catalog is written in, with the forms the catalog writes for each category; nothing below the catalogs presumes a language.
 
@@ -46,7 +46,7 @@ Consequences: A catalog that counts receives the decided language and counts by 
 
 - Decided by: trame
 - Serves: [A single source of truth](product.md#SingleSource)
-- Applied by: [Messages of the compiler](#CompilerMessages), [Messages of the views](#ViewMessages), [Messages of trame dev](#DevMessages), [Messages of the commands](#CommandMessages), [Messages of the scenarios](#ScenarioMessages), [Messages of an advance](#AdvanceMessages), [Words of the page](#PageWords), [Lists](../libs/documents/releases/0.4.0/docs/language.md#Lists)
+- Applied by: [Messages of the compiler](#CompilerMessages), [Messages of the views](#ViewMessages), [Messages of trame dev](#DevMessages), [Messages of the commands](#CommandMessages), [Messages of the scenarios](#ScenarioMessages), [Messages of an advance](#AdvanceMessages), [Lists](../libs/documents/releases/0.5.1/docs/language.md#Lists)
 
 ## Message catalogs
 
@@ -54,7 +54,7 @@ Consequences: A catalog that counts receives the decided language and counts by 
 
 ### Messages of an advance
 
-`AdvanceMessages` · `src/messages.ts:918`
+`AdvanceMessages` · `src/messages.ts:872`
 
 What trame advance says as it goes, and what a generation says of itself.
 
@@ -153,7 +153,7 @@ What trame advance says as it goes, and what a generation says of itself.
 
 ### Messages of the commands
 
-`CommandMessages` · `src/messages.ts:420`
+`CommandMessages` · `src/messages.ts:387`
 
 What the commands print: summaries, usage, refusals.
 
@@ -555,7 +555,7 @@ What the compiler, the wiring and the assembly say: diagnostics on the graph, re
 </details>
 
 - Owner: trame
-- Parameters: `language` ← [Language](#Language) · `lists` ← [Lists](../libs/documents/releases/0.4.0/docs/language.md#Lists)
+- Parameters: `language` ← [Language](#Language) · `lists` ← [Lists](../libs/documents/releases/0.5.1/docs/language.md#Lists)
 - Written in: [Language](#Language)
 - Used by: [Shipments run, evidence given](command-scenarios.md#ShipmentsRun), [Assembly](engine.md#Assembly), [Compiler](engine.md#Compiler), [Graph](engine.md#GraphApi), [Judged harder](engine.md#JudgedHarder), [Static reading](engine.md#StaticAnalysis), [Wiring](engine.md#Wiring)
 - Applies: [A catalog counts in its language](#CountsInTheLanguage), [The words are in catalogs](principles.md#WordsInCatalogs)
@@ -564,7 +564,7 @@ What the compiler, the wiring and the assembly say: diagnostics on the graph, re
 
 ### Messages of trame dev
 
-`DevMessages` · `src/messages.ts:396`
+`DevMessages` · `src/messages.ts:363`
 
 What the dev server prints while it watches the project.
 
@@ -590,7 +590,7 @@ What the dev server prints while it watches the project.
 </details>
 
 - Owner: trame
-- Parameters: `language` ← [Language](#Language) · `lists` ← [Lists](../libs/documents/releases/0.4.0/docs/language.md#Lists)
+- Parameters: `language` ← [Language](#Language) · `lists` ← [Lists](../libs/documents/releases/0.5.1/docs/language.md#Lists)
 - Written in: [Language](#Language)
 - Used by: [trame dev server](engine.md#DevServer)
 - Applies: [A catalog counts in its language](#CountsInTheLanguage), [The words are in catalogs](principles.md#WordsInCatalogs)
@@ -658,7 +658,7 @@ What the drivers say about a body: hidden dependencies, access to the platform, 
 
 ### Words of Trame's views
 
-`EngineViewWords` · `src/messages.ts:695`
+`EngineViewWords` · `src/messages.ts:662`
 
 What the views of Trame's own graph say: the catalogue of literals, the versions of the engine.
 
@@ -671,7 +671,7 @@ The messages are written in `../engine-views/words.ts`.
 
 ### Words of the kinds
 
-`KindWords` · `src/messages.ts:675`
+`KindWords` · `src/messages.ts:642`
 
 What the kinds say: their labels, the labels of their fields and edges, what their holes say, what they render. The kinds are files of the language, outside the graph: their words are a catalog all the same, which they call; a kind writes no text of its own.
 
@@ -760,43 +760,10 @@ What the machine outputs, the lock, the payload, the date bundle, the difference
     publishedStatedChanged: (part: string) => `Its ${part} changed after publication: a new node that repeals it states the new one (trame publish --migrate "why" when only its form changed)`,
     publishedOutdated: () => `Published before its parts were (g108): trame publish --migrate "why" publishes them`,
 
-    // The page, read back before it is given.
-    styleNotTheLanguage: (language: string, places: string[]) => `The style of the page does not follow the grammar of ${language}, at ${places.join(", ")}: the page is not given`,
-    pageNotTheLanguage: (language: string, places: string[]) => `The page does not follow the grammar of ${language}, at ${places.join(", ")}: it is not given`,
-    variablesNotWritten: (variables: string[]) => `The style of the page uses variables that it does not write: ${variables.join(", ")}: the page is not given`,
-
     // The date bundle.
     compilationFailed: () => "the compilation failed",
     unreadableOutput: (error: string) => `unreadable output: ${error}`,
 
-    // What the last change changed: the pieces of each line, around the nodes, statuses and values it names.
-    changesTitle: () => "What the last change changed",
-    newNode: () => "New node: ",
-    nodeRemoved: (title: string) => `Node removed: ${title}`,
-    statusGoesFrom: () => " goes from ",
-    statusGoesTo: () => " to ",
-    noStatus: () => "no status",
-    issueAdded: () => " added: ",
-    issueResolved: () => " resolved: ",
-    newOverlapOn: () => "New overlap on ",
-    overlapOn: () => "The overlap on ",
-    overlapOf: () => " of ",
-    settledDifferently: () => " is settled differently: ",
-    contested: () => "contested",
-    prevails: (titles: string[]) => `${titles.join(", ")} ${titles.length > 1 ? "prevail" : "prevails"}`,
-
-    // The page.
-    /** The page's title: the graph of the project, by what it calls itself (Trame's own has no name). */
-    pageTitle: (project?: string) => `${project ?? "Trame"} graph`,
-    /** Next to the name "trame", in the corner of the page. */
-    brandSubtitle: () => "graph",
-    datesLabel: () => "Graph in force on",
-    navigationLabel: () => "Documents and views",
-    documentLabel: () => "Document",
-    renderingLabel: () => "Rendering",
-    renderedButton: () => "Rendered",
-    markdownButton: () => "Markdown",
-    textButton: () => "Text",
   })
 ```
 
@@ -804,30 +771,14 @@ What the machine outputs, the lock, the payload, the date bundle, the difference
 
 - Owner: trame
 - Written in: [Language](#Language)
-- Used by: [trame dev](command-scenarios.md#DevFollowsTheGraph), [The page exported](command-scenarios.md#PageExported), [The page of the graph](command-scenarios.md#PageOfTheGraph), [The graph in the intermediate format](command-scenarios.md#PayloadOfTheGraph), [A published value changed](command-scenarios.md#PublishedValueChanged), [Date bundle](engine.md#DateBundle), [Differences](engine.md#Differences), [Lock](engine.md#Lock), [Machine outputs](engine.md#MachineOutputs), [Views](engine.md#Views), [Page](page.md#Page)
+- Used by: [trame dev](command-scenarios.md#DevFollowsTheGraph), [A published value changed](command-scenarios.md#PublishedValueChanged), [Date bundle](engine.md#DateBundle), [Lock](engine.md#Lock), [Machine outputs](engine.md#MachineOutputs), [Views](engine.md#Views)
 - Applies: [The words are in catalogs](principles.md#WordsInCatalogs)
-
-<a id="PageWords"></a>
-
-### Words of the page
-
-`PageWords` · `src/messages.ts:706`
-
-What the page says around the documents the engine wrote: the state of the compilation, the dates, the navigation, the banner, the figures, the explorer.
-
-The messages are written in `./code/page/words.ts`.
-
-- Owner: trame
-- Parameters: `language` ← [Language](#Language)
-- Written in: [Language](#Language)
-- Used by: [Explorer of a graph](browser.md#ExplorerFigures), [Show the graph](browser.md#ShowGraph), [Figures in SVG](rendering.md#SvgFigures)
-- Applies: [A catalog counts in its language](#CountsInTheLanguage)
 
 <a id="PlatformMessages"></a>
 
 ### Messages of the platform
 
-`PlatformMessages` · `src/messages.ts:717`
+`PlatformMessages` · `src/messages.ts:672`
 
 What the implementations of the ports say (the command line, the terminal, the processes).
 
@@ -846,7 +797,6 @@ What the implementations of the ports say (the command line, the terminal, the p
     /** In test, a file was read that neither the memory nor the disk holds. */
     noSuchFileInMemory: (path: string) => `No such file, in memory or on the disk: ${path}`,
     /** In test, a page was asked of a server that was never started. */
-    noServerInTest: (url: string) => `In test, ${url} was asked, and no server was started`,
     /** In test, the engine asked to exit (a refusal, most often): the scenario fails with this message. */
     engineExited: (code: number, lastLines: string[]) => `the engine exited with code ${code}: ${lastLines.join(" | ")}`,
     /** A text was to be read with a grammar that was not loaded first. */
@@ -860,14 +810,14 @@ What the implementations of the ports say (the command line, the terminal, the p
 
 - Owner: trame
 - Written in: [Language](#Language)
-- Used by: [The command line](command-scenarios.md#CommandLineChooses), [Example process](platform.md#ExampleProcess), [Files in memory, over the disk](platform.md#MemoryFiles), [A server in memory](platform.md#MemoryHttpServer), [Terminal in memory](platform.md#MemoryTerminal), [Command line](platform.md#NodeCommandLine), [Node terminal](platform.md#NodeTerminal), [tree-sitter in WebAssembly](platform.md#WebTreeSitter)
+- Used by: [The command line](command-scenarios.md#CommandLineChooses), [Example process](platform.md#ExampleProcess), [Files in memory, over the disk](platform.md#MemoryFiles), [Terminal in memory](platform.md#MemoryTerminal), [Command line](platform.md#NodeCommandLine), [Node terminal](platform.md#NodeTerminal), [tree-sitter in WebAssembly](platform.md#WebTreeSitter)
 - Applies: [The words are in catalogs](principles.md#WordsInCatalogs)
 
 <a id="ScenarioMessages"></a>
 
 ### Messages of the scenarios
 
-`ScenarioMessages` · `src/messages.ts:746`
+`ScenarioMessages` · `src/messages.ts:700`
 
 The names of the checks that the engine's scenarios make.
 
@@ -1112,7 +1062,7 @@ What the loading of views and the compilation API say.
 
 ### Words of the views
 
-`ViewWords` · `src/messages.ts:685`
+`ViewWords` · `src/messages.ts:652`
 
 What the views say: their titles, their introductions, their headings, what they say of the graph.
 

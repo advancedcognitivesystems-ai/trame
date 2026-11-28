@@ -4,26 +4,25 @@
 // It does not compile the graph at startup. No dated change of the graph after its date reaches it.
 
 import { frozen } from "../../trame/internal"
-import { EscapedText, HtmlAttributes, HtmlElement, HtmlEndTag, HtmlStartTag, SelfClosingTag } from "../../libs/documents/releases/0.4.0/src/html.ts"
-import { Dates, Lists, Punctuation, Units } from "../../libs/documents/releases/0.4.0/src/language.ts"
-import { PageApp } from "../../src/architecture.ts"
+import { PageApp } from "../../libs/documents/releases/0.5.1/src/browser.ts"
+import { AttributePresence, AttributeSelector, ClassSelector, CssDeclaration, EscapedText, HtmlAttributes, HtmlElement, HtmlEndTag, HtmlStartTag, MediaFeature, PathData, SelectorList, SelfClosingTag } from "../../libs/documents/releases/0.5.1/src/html.ts"
+import { Dates, Lists, Punctuation, Units } from "../../libs/documents/releases/0.5.1/src/language.ts"
 import { OurDocumentLanguage } from "../../src/documents.ts"
-import { AttributePresence, AttributeSelector, ClassSelector, CssDeclaration, MediaFeature, PathData, SelectorList } from "../../src/html.ts"
-import body_browserLoading from "../../std/releases/0.31.0/src/code/platform/loading.ts"
-import body_counts from "../../std/releases/0.31.0/src/code/algebra/counts.ts"
-import body_browserWindow from "../../src/code/browser/window.ts"
-import body_browserMemory from "../../src/code/browser/memory.ts"
-import body_valueTypes from "../../std/releases/0.31.0/src/code/algebra/values.ts"
-import body_browserFeed from "../../src/code/browser/feed.ts"
-import body_browserDecompression from "../../src/code/browser/decompression.ts"
-import body_browserAmendments from "../../src/code/browser/amendments.ts"
-import body_sequences from "../../std/releases/0.31.0/src/code/algebra/sequences.ts"
-import body_texts from "../../std/releases/0.31.0/src/code/algebra/texts.ts"
-import body_renderingMessages from "../../libs/documents/releases/0.4.0/src/code/rendering/messages.ts"
-import body_common from "../../libs/documents/releases/0.4.0/src/code/rendering/common.ts"
-import body_pageWords from "../../src/code/page/words.ts"
-import body_explorerFigures from "../../src/code/rendering/explorer.ts"
-import body_showGraph from "../../src/code/page/show.ts"
+import body_browserLoading from "../../std/releases/0.33.0/src/code/platform/loading.ts"
+import body_counts from "../../std/releases/0.33.0/src/code/algebra/counts.ts"
+import body_browserWindow from "../../libs/documents/releases/0.5.1/src/code/browser/window.ts"
+import body_browserMemory from "../../libs/documents/releases/0.5.1/src/code/browser/memory.ts"
+import body_valueTypes from "../../std/releases/0.33.0/src/code/algebra/values.ts"
+import body_browserFeed from "../../libs/documents/releases/0.5.1/src/code/browser/feed.ts"
+import body_browserDecompression from "../../libs/documents/releases/0.5.1/src/code/browser/decompression.ts"
+import body_browserAmendments from "../../libs/documents/releases/0.5.1/src/code/browser/amendments.ts"
+import body_sequences from "../../std/releases/0.33.0/src/code/algebra/sequences.ts"
+import body_texts from "../../std/releases/0.33.0/src/code/algebra/texts.ts"
+import body_renderingMessages from "../../libs/documents/releases/0.5.1/src/code/rendering/messages.ts"
+import body_common from "../../libs/documents/releases/0.5.1/src/code/rendering/common.ts"
+import body_pageWords from "../../libs/documents/releases/0.5.1/src/code/page/words.ts"
+import body_explorerFigures from "../../libs/documents/releases/0.5.1/src/code/rendering/explorer.ts"
+import body_showGraph from "../../libs/documents/releases/0.5.1/src/code/page/show.ts"
 
 // "UI events" · standard
 const uiEvents = {"click":"click","pointerdown":"pointerdown","keydown":"keydown","input":"input","change":"change","over":"mouseover","out":"mouseout","focusIn":"focusin","focusOut":"focusout","loaded":"DOMContentLoaded","loading":"loading","enter":"Enter","space":" "}
@@ -44,7 +43,7 @@ const thePage = {"label":"label","themeAttribute":"data-theme","themes":{"light"
 // "Local storage" · implementation, for "Memory of the page"
 const browserMemory = await body_browserMemory({ page: thePage })
 // "What trame dev serves" · decision
-const devService = {"page":["/","/index.html"],"bundle":"/bundle.json","events":"/events","amend":"/amend","compiling":"compiling","ready":"bundle","host":"localhost","ignored":["~",".swp",".tmp"]}
+const devService = {"page":["/","/index.html"],"bundle":"/bundle.json","events":"/events","amend":"/amend","compiling":"compiling","ready":"bundle","host":"localhost"}
 // "ECMAScript types" · standard
 const ecmaScriptTypes = {"undefined":"undefined","object":"object","boolean":"boolean","number":"number","string":"string","symbol":"symbol","bigint":"bigint","function":"function"}
 // "Types of values" · algebraic structure
@@ -117,8 +116,10 @@ const numberDisplay = {"base":10,"decimals":2}
 const units = await frozen.body(Units)({ display: numberDisplay, counts, values: valueTypes })
 // "Common rendering" · function
 const common = await body_common({ values: valueTypes, syntax: referenceSyntax, slots: sentenceSlots, dates, lists, texts, messages: renderingMessages, units })
+// "The language of the library's words" · decision
+const wordsLanguage = {"tag":"en-GB"}
 // "Words of the page" · message catalog
-const pageWords = await body_pageWords({ language })
+const pageWords = await body_pageWords({ language: wordsLanguage })
 // "Punctuation" · function
 const punctuation = await frozen.body(Punctuation)({ language: frozen.limited(ourDocumentLanguage, ["punctuation"]) })
 // "Explorer of a graph" · function
@@ -148,7 +149,7 @@ const selectorList = await frozen.body(SelectorList)({ standard: css })
 // "Class selector" · syntax element
 const classSelector = await frozen.body(ClassSelector)({ dot: ".", standard: css })
 // "Show the graph" · entry point
-const showGraph = await body_showGraph({ window: frozen.limited(browserWindow, ["document","escape","reducedMotion","toTop"]), memory: frozen.limited(browserMemory, ["keep","recall"]), feed: frozen.limited(browserFeed, ["follow","live","packed"]), unpacking: frozen.limited(browserDecompression, ["unpack"]), amendments: frozen.limited(browserAmendments, ["available","send"]), explorer: explorerFigures, common, page: thePage, regions: pageRegions, modes: renderingModes, highlighting: machineHighlighting, markup: documentMarkup, around: aroundMarkup, explorerMarkup, drawing: explorerDrawing, ids: documentIds, slots: sentenceSlots, punctuation, language, html, aria, events: uiEvents, view: cssomView, iso: iso8601, file: textFile, element: htmlElement, escape: escapedText, attribute: attributeSelector, presence: attributePresence, selectors: selectorList, classSelector, words: pageWords, counts, sequences, texts })
+const showGraph = await body_showGraph({ window: frozen.limited(browserWindow, ["document","escape","reducedMotion","toTop"]), memory: frozen.limited(browserMemory, ["keep","recall"]), feed: frozen.limited(browserFeed, ["follow","live","packed"]), unpacking: frozen.limited(browserDecompression, ["unpack"]), amendments: frozen.limited(browserAmendments, ["available","send"]), explorer: explorerFigures, common, page: thePage, regions: pageRegions, modes: renderingModes, highlighting: machineHighlighting, markup: documentMarkup, around: aroundMarkup, explorerMarkup, drawing: explorerDrawing, ids: documentIds, slots: sentenceSlots, punctuation, language: frozen.limited(ourDocumentLanguage, ["tag"]), html, aria, events: uiEvents, view: cssomView, iso: iso8601, file: textFile, element: htmlElement, escape: escapedText, attribute: attributeSelector, presence: attributePresence, selectors: selectorList, classSelector, words: pageWords, counts, sequences, texts })
 
 const started = (await frozen.start(PageApp, { exposure: browserLoading }, [
   { title: "Show the graph", fields: {"trigger":{"type":"load"}}, value: showGraph },

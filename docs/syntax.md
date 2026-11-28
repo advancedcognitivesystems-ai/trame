@@ -146,7 +146,7 @@ Consequences: The checks of a body are the same for every language; the queries 
 What a body may touch, read on its reading, the same for every language: the prelude's public API only as a value import; no other module of the project (a hidden dependency: declare it as a parameter); the platform (a package, a built-in module, a computed load, a global that reaches outside) only for the kinds that may touch it. A file body exports what it gives; a body follows the grammar of its language. A refused body is never run.
 
 - Owner: trame
-- Parameters: `prelude` ← [The prelude's public API](conventions.md#PreludeApi) · `specifiers` ← [Node.js module specifiers](../std/releases/0.31.0/docs/system.md#NodeModuleSpecifiers) · `gnu` ← [Positions in a file](../std/releases/0.31.0/docs/text.md#GnuPositions) · `sequences` ← [Sequences](../std/releases/0.31.0/docs/algebra.md#Sequences) · `messages` ← [Messages of the drivers](messages.md#DriverMessages)
+- Parameters: `prelude` ← [The prelude's public API](conventions.md#PreludeApi) · `specifiers` ← [Node.js module specifiers](../std/releases/0.33.0/docs/system.md#NodeModuleSpecifiers) · `gnu` ← [Positions in a file](../std/releases/0.33.0/docs/text.md#GnuPositions) · `sequences` ← [Sequences](../std/releases/0.33.0/docs/algebra.md#Sequences) · `messages` ← [Messages of the drivers](messages.md#DriverMessages)
 - Body: `./code/syntax/checks.ts` (typescript)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Verified by: [A body is read and checked](command-scenarios.md#BodiesReadAndChecked)
@@ -162,12 +162,12 @@ What a body may touch, read on its reading, the same for every language: the pre
 Reads a body with the grammar and the queries of its language: the literals, the imports, what may reach outside, whether it gives something, and where it does not follow the grammar. It parses each file once in the process, again only when its text changed; an inline body is read in the property of its declaration. It knows the captures, and nothing of any grammar.
 
 - Owner: trame
-- Parameters: `trees` ← [Syntax trees](architecture.md#SyntaxTrees) · `captures` ← [Captures](#Captures) · `roles` ← [Roles of a literal](#LiteralRoles) · `categories` ← [Categories of literals](#LiteralCategories) · `display` ← [How a literal is shown](#LiteralDisplay) · `treeSitter` ← [tree-sitter API](standards.md#TreeSitterApi) · `gnu` ← [Positions in a file](../std/releases/0.31.0/docs/text.md#GnuPositions) · `ecma` ← [ECMAScript](../std/releases/0.31.0/docs/ecmascript.md#EcmaScript) · `textFile` ← [Text file](../std/releases/0.31.0/docs/text.md#TextFile) · `encodings` ← [Node.js character encodings](../std/releases/0.31.0/docs/system.md#NodeEncodings) · `reading` ← [File reading](architecture.md#FileReading) · `kept` ← [Results kept](architecture.md#KeptResults) · `runs` ← [Where runs are kept](architecture.md#RunStore) · `layout` ← [Project layout](conventions.md#Layout) · `paths` ← [Paths](architecture.md#Paths) · `hashing` ← [Hashing](architecture.md#Hashing) · `sha256` ← [SHA-256](../std/releases/0.31.0/docs/algorithms.md#Sha256) · `counts` ← [Counts](../std/releases/0.31.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.31.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.31.0/docs/algebra.md#Texts)
+- Parameters: `trees` ← [Syntax trees](architecture.md#SyntaxTrees) · `captures` ← [Captures](#Captures) · `roles` ← [Roles of a literal](#LiteralRoles) · `categories` ← [Categories of literals](#LiteralCategories) · `display` ← [How a literal is shown](#LiteralDisplay) · `treeSitter` ← [tree-sitter API](standards.md#TreeSitterApi) · `gnu` ← [Positions in a file](../std/releases/0.33.0/docs/text.md#GnuPositions) · `ecma` ← [ECMAScript](../std/releases/0.33.0/docs/ecmascript.md#EcmaScript) · `textFile` ← [Text file](../std/releases/0.33.0/docs/text.md#TextFile) · `encodings` ← [Node.js character encodings](../std/releases/0.33.0/docs/system.md#NodeEncodings) · `reading` ← [File reading](architecture.md#FileReading) · `kept` ← [Results kept](architecture.md#KeptResults) · `runs` ← [Where runs are kept](architecture.md#RunStore) · `layout` ← [Project layout](conventions.md#Layout) · `paths` ← [Paths](architecture.md#Paths) · `hashing` ← [Hashing](architecture.md#Hashing) · `sha256` ← [SHA-256](../std/releases/0.33.0/docs/algorithms.md#Sha256) · `counts` ← [Counts](../std/releases/0.33.0/docs/algebra.md#Counts) · `sequences` ← [Sequences](../std/releases/0.33.0/docs/algebra.md#Sequences) · `texts` ← [Texts](../std/releases/0.33.0/docs/algebra.md#Texts)
 - Body: `./code/syntax/reader.ts` (typescript)
 - Effects: execution, keeps, read
 - Serves: [A specification that runs](product.md#ExecutableSpecification), [A single source of truth](product.md#SingleSource)
 - Verified by: [A body is read and checked](command-scenarios.md#BodiesReadAndChecked)
-- Used by: [A body is read and checked](command-scenarios.md#BodiesReadAndChecked), [Preparation](commands.md#Preparation), [Drivers](languages.md#Drivers), [Page](page.md#Page)
+- Used by: [A body is read and checked](command-scenarios.md#BodiesReadAndChecked), [Preparation](commands.md#Preparation), [Drivers](languages.md#Drivers)
 - Applies: [A literal in a body is an error](principles.md#EveryLiteralDeclared), [A literal in a kind or a view is an error](principles.md#NoLiteralInTheLanguage), [The words are in catalogs](principles.md#WordsInCatalogs), [tree-sitter says what it keeps aside](#PredicatesAsTreeSitterReadsThem), [Every language is read alike, with tree-sitter](#ReadLanguagesAlike)
 - Reads: [Terraform](terraform.md#Terraform), [TypeScript](typescript.md#TypeScript)
 
@@ -240,21 +240,21 @@ What a literal does, from its place in the code, and how the catalogue says it. 
 
 ### std's languages, read by the engine
 
-`StdLanguagesRead` · `src/syntax.ts:332` · status: **held**
+`StdLanguagesRead` · `src/syntax.ts:333` · status: **held**
 
-Where Trame's build evaluates, the languages std declares for every project (HTML, CSS: their examples, and what Trame's syntax elements write in them) are read by the engine that compiles Trame, through std's port (since g129): the engine's reader, which its own languages name directly.
+Where Trame's build evaluates, the languages std declares for every project (HTML, CSS: their examples, and what Trame's syntax elements write in them) are read by the engine that compiles Trame, through std's port (since g129): the engine's reader, which its own languages name directly. On a machine, what the page writes is read back by the engine that writes it (since g137), which runs while it does.
 
-In [Test](architecture.md#Test):
+In [Local](architecture.md#Local), [Test](architecture.md#Test):
 
 | Port | Answered by | Which is |
 |---|---|---|
-| [Reading a language](../std/releases/0.31.0/docs/engine.md#LanguageReading) | [Read by the engine](../std/releases/0.31.0/docs/engine.md#ReadByTheEngine) | an implementation |
+| [Reading a language](../std/releases/0.33.0/docs/engine.md#LanguageReading) | [Read by the engine](../std/releases/0.33.0/docs/engine.md#ReadByTheEngine) | an implementation |
 
 Context: A language std declares names std's port as its reader: the engine that compiles answers it, here as in any project that imports std.
 
 - Decided by: trame
-- Chooses: [Read by the engine](../std/releases/0.31.0/docs/engine.md#ReadByTheEngine)
-- In: [Test](architecture.md#Test)
-- Follows: [Adapter](../std/releases/0.31.0/docs/patterns.md#Adapter)
+- Chooses: [Read by the engine](../std/releases/0.33.0/docs/engine.md#ReadByTheEngine)
+- In: [Local](architecture.md#Local), [Test](architecture.md#Test)
+- Follows: [Adapter](../std/releases/0.33.0/docs/patterns.md#Adapter)
 - Serves: [A specification that runs](product.md#ExecutableSpecification)
 - Applies: [The engine is a provider, for Trame too](principles.md#EngineProvidesForTrame)

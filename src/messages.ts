@@ -349,43 +349,10 @@ export const OutputMessages = catalog({
     publishedStatedChanged: (part: string) => `Its ${part} changed after publication: a new node that repeals it states the new one (trame publish --migrate "why" when only its form changed)`,
     publishedOutdated: () => `Published before its parts were (g108): trame publish --migrate "why" publishes them`,
 
-    // The page, read back before it is given.
-    styleNotTheLanguage: (language: string, places: string[]) => `The style of the page does not follow the grammar of ${language}, at ${places.join(", ")}: the page is not given`,
-    pageNotTheLanguage: (language: string, places: string[]) => `The page does not follow the grammar of ${language}, at ${places.join(", ")}: it is not given`,
-    variablesNotWritten: (variables: string[]) => `The style of the page uses variables that it does not write: ${variables.join(", ")}: the page is not given`,
-
     // The date bundle.
     compilationFailed: () => "the compilation failed",
     unreadableOutput: (error: string) => `unreadable output: ${error}`,
 
-    // What the last change changed: the pieces of each line, around the nodes, statuses and values it names.
-    changesTitle: () => "What the last change changed",
-    newNode: () => "New node: ",
-    nodeRemoved: (title: string) => `Node removed: ${title}`,
-    statusGoesFrom: () => " goes from ",
-    statusGoesTo: () => " to ",
-    noStatus: () => "no status",
-    issueAdded: () => " added: ",
-    issueResolved: () => " resolved: ",
-    newOverlapOn: () => "New overlap on ",
-    overlapOn: () => "The overlap on ",
-    overlapOf: () => " of ",
-    settledDifferently: () => " is settled differently: ",
-    contested: () => "contested",
-    prevails: (titles: string[]) => `${titles.join(", ")} ${titles.length > 1 ? "prevail" : "prevails"}`,
-
-    // The page.
-    /** The page's title: the graph of the project, by what it calls itself (Trame's own has no name). */
-    pageTitle: (project?: string) => `${project ?? "Trame"} graph`,
-    /** Next to the name "trame", in the corner of the page. */
-    brandSubtitle: () => "graph",
-    datesLabel: () => "Graph in force on",
-    navigationLabel: () => "Documents and views",
-    documentLabel: () => "Document",
-    renderingLabel: () => "Rendering",
-    renderedButton: () => "Rendered",
-    markdownButton: () => "Markdown",
-    textButton: () => "Text",
   }),
 })
 
@@ -699,18 +666,6 @@ export const EngineViewWords = catalog({
 })
 
 /**
- * Words of the page
- * What the page says around the documents the engine wrote: the state of the compilation, the dates, the
- * navigation, the banner, the figures, the explorer.
- */
-export const PageWords = catalog({
-  owner: "trame",
-  language: Language,
-  deps: { language: Language },
-  messages: code.file<typeof import("./code/page/words").default>("./code/page/words.ts"),
-})
-
-/**
  * Messages of the platform
  * What the implementations of the ports say (the command line, the terminal, the processes).
  */
@@ -729,7 +684,6 @@ export const PlatformMessages = catalog({
     /** In test, a file was read that neither the memory nor the disk holds. */
     noSuchFileInMemory: (path: string) => `No such file, in memory or on the disk: ${path}`,
     /** In test, a page was asked of a server that was never started. */
-    noServerInTest: (url: string) => `In test, ${url} was asked, and no server was started`,
     /** In test, the engine asked to exit (a refusal, most often): the scenario fails with this message. */
     engineExited: (code: number, lastLines: string[]) => `the engine exited with code ${code}: ${lastLines.join(" | ")}`,
     /** A text was to be read with a grammar that was not loaded first. */
@@ -1013,6 +967,6 @@ export const CountsInTheLanguage = adr({
     "A plural made by adding an s": "irregular nouns, and every other language",
   },
   serves: [SingleSource],
-  appliedBy: [CompilerMessages, ViewMessages, DevMessages, CommandMessages, ScenarioMessages, AdvanceMessages, PageWords, Lists],
+  appliedBy: [CompilerMessages, ViewMessages, DevMessages, CommandMessages, ScenarioMessages, AdvanceMessages, Lists],
 })
 

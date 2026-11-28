@@ -6,7 +6,7 @@ import type { ProvidedBy, Compilation, Document, Inline, Json, ViewDef, View, Bl
 import type { FileReading, Layout, ModuleLoader, Paths, Prelude } from "../../architecture"
 import type { OutputMessages, ViewMessages } from "../../messages"
 import type { Uri } from "#std/web"
-import type { DocumentIds } from "../../conventions"
+import type { DocumentIds } from "#documents/rendering"
 import type { Api as ProjectApi } from "./project"
 import type { Api as DriversApi } from "../languages/drivers"
 import type { AnswersWithoutCrashing, CompleteViewDeclaration, IntermediateFormatOnly, SameInputSameAnswer } from "../../laws"

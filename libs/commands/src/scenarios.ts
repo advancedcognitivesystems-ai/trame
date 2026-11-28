@@ -1,23 +1,29 @@
 /** Commands · Scenarios */
 
 import { environment } from "#trame/kinds/environment"
+import { implementation } from "#trame/kinds/implementation"
+import { code, BundleMode } from "#trame/kernel"
 import { binding } from "#trame/kinds/binding"
 import { decision } from "#trame/kinds/decision"
 import { catalog } from "#trame/kinds/catalog"
 import { scenario } from "#trame/kinds/scenario"
 import { adr } from "#trame/kinds/adr"
 import { fn } from "#trame/kinds/function"
-import { TheProject, ProjectOfTheScenario, ProjectCompiledHere, EngineAsAProvider, type ProjectChosen } from "#std/engine"
-import { Files, FilesInMemory } from "#std/tooling"
+import { TheProject, ProjectOfTheScenario, ProjectCompiledHere, EngineAsAProvider, ReadByTheEngine, EngineWords, type ProjectChosen } from "#std/engine"
+import { Files, FilesKept, FilesInMemory } from "#std/tooling"
+import { ServerKept, LinesKept, ClockStopped, ServerInMemory, LinesInMemory, MachineTimers } from "#std/running"
+import { Http } from "#std/web"
 import { Strategy, Adapter, Bridge } from "#std/patterns"
 import { ExitStatus } from "#std/system"
 import { Counts, Sequences } from "#std/algebra"
 import { DocumentName, ViewGroup, ViewName } from "#trame/kernel"
 import type { Places } from "#trame/kernel"
-import { MarkdownSyntax, MermaidDiagrams, PlainTextSyntax, TextFigures, FileRendering, TerminalRendering, OneRendererManySyntaxes } from "#documents/rendering"
+import { MarkdownSyntax, MermaidDiagrams, PlainTextSyntax, TextFigures, HtmlSyntax, SvgFigures, FileRendering, TerminalRendering, OneRendererManySyntaxes } from "#documents/rendering"
+import { SheetsBesideTheLibrary, GzipInBase64, DevService, PageWords } from "#documents/page"
 import { WrittenForTheScenarios } from "#documents/scenarios"
 import { WrittenOnce } from "./product"
-import { Plan, BuildComparison, CommandWords, WordsLanguage, Build as BuildCommand, Snapshot, View, ViewRefused } from "./commands"
+import { Plan, BuildComparison, CommandWords, WordsLanguage, Build as BuildCommand, Snapshot, View, ViewRefused, Payload, Export, Dev, PayloadDifferences, SameAsToday } from "./commands"
+import type { Payload as Compiled, Bundle } from "#trame/kernel"
 import { TerminalText } from "#documents/text"
 import type { Build } from "./code/comparison"
 
@@ -30,6 +36,13 @@ import type { Build } from "./code/comparison"
  * Where the library's scenarios run: the small project compiled by the engine, the files kept in memory.
  */
 export const Test = environment({ owner: "trame", evaluates: true })
+
+/**
+ * Served
+ * Where the page's commands are played (export, dev): the small project's page made from its graph compiled by the
+ * engine, its other dates left aside, the page's program a sample; the server, the clock and the lines kept in memory.
+ */
+export const Served = environment({ owner: "trame" })
 
 /**
  * The small project
@@ -71,7 +84,7 @@ export const CompiledByTheEngine = binding({
 export const PlayedOnASmallProject = binding({
   owner: "trame",
   chooses: [TheSmallProject, FilesInMemory],
-  environments: [Test],
+  environments: [Test, Served],
   follows: [Strategy],
   serves: [WrittenOnce],
   context: "The library's own project is the one being compiled when its scenarios play: they compile another, small and of the library's own, whose files are read again when they change.",
@@ -94,6 +107,14 @@ export const ScenarioWords = catalog({
     snapshotWritesItsDocuments: () => "A snapshot writes snapshot.json and the documents of the snapshot's view, then names them with the day",
     viewAnswersItsDocument: () => "A view answers the document the engine's view gives, and where each card is when a format asks",
     viewSaysWhyNot: () => "A view the engine cannot give (no view of that name, a view of a node without its node) says why, in the commands' words",
+    payloadToday: () => "A payload carries the graph at its day, each document rendered for files, for the terminal and for the page",
+    payloadDates: (n: number) => `With --all, the payload holds the ${n} dates a page offers, today's whole, another's documents as today's left to it`,
+    differencesSaid: () => "Two payloads alike differ in nothing; a node removed, the difference says so",
+    pageExported: () => "An export writes the page, titled by the project, the graph packed in it, and says how many dates it offers",
+    devServes: () => "trame dev serves the page, titled by the project, and the graph as it compiled it",
+    devStreams: () => "trame dev opens a stream of compilations, which says first who follows the project",
+    devAmends: () => "An amendment the page posts is answered as the engine prepares it",
+    devSays: () => "trame dev says where it listens, what it watches, and when it compiled",
   }),
 })
 
@@ -193,7 +214,7 @@ export const PlayedOnARealGraph = adr({
 export const DocumentsAsFiles = binding({
   owner: "trame",
   chooses: [MarkdownSyntax, PlainTextSyntax],
-  environments: [Test],
+  environments: [Test, Served],
   follows: [Bridge, Strategy],
   serves: [WrittenOnce],
   context: "A command writes its documents with the renderers of libs/documents, in the syntaxes a project chooses.",
@@ -206,7 +227,7 @@ export const DocumentsAsFiles = binding({
 export const FiguresOfTheDocuments = binding({
   owner: "trame",
   chooses: [MermaidDiagrams, TextFigures],
-  environments: [Test],
+  environments: [Test, Served],
   follows: [Strategy],
   serves: [WrittenOnce],
   context: "Each syntax reaches its figures through a port of its own, chosen apart.",
@@ -219,10 +240,170 @@ export const FiguresOfTheDocuments = binding({
 export const DocumentsLanguage = binding({
   owner: "trame",
   chooses: [WrittenForTheScenarios],
-  environments: [Test],
+  environments: [Test, Served],
   follows: [Strategy],
   serves: [WrittenOnce],
   context: "The documents speak the language of the engine that compiles the graph: in a library's scenarios, a language decided for them.",
+})
+
+// The page's commands, played (0.5.0) -------------------------------------------------------------------------------
+
+/**
+ * The page, as a project makes it
+ * In the library's scenarios, a document in the page is written in HTML with its figures in SVG; the page's style sheets
+ * are read beside libs/documents, the graph it carries packed with gzip, what it writes read back by the engine that
+ * plays the scenarios; the server, the clock and the lines a command prints as it goes are kept in memory, a wait is
+ * the machine's.
+ */
+export const PageAsAProjectMakesIt = binding({
+  owner: "trame",
+  chooses: [HtmlSyntax, SvgFigures, ServerInMemory, LinesInMemory, ClockStopped],
+  environments: [Test, Served],
+  follows: [Strategy],
+  serves: [WrittenOnce],
+  context: "The page's commands write with libs/documents' page, and run with what std offers a command that keeps running.",
+})
+
+/**
+ * The page's files and its reading, as on a machine
+ * In the library's scenarios, the page's style sheets are read beside libs/documents, the graph it carries is packed
+ * with gzip, and what it writes is read back by the engine that plays the scenarios.
+ */
+export const PageFilesAsOnAMachine = binding({
+  owner: "trame",
+  chooses: [SheetsBesideTheLibrary, GzipInBase64, ReadByTheEngine],
+  environments: [Test, Served],
+  follows: [Adapter],
+  serves: [WrittenOnce],
+  context: "The page's commands write with libs/documents' page, and run with what std offers a command that keeps running.",
+})
+
+/**
+ * Waiting as a person would
+ * In the library's scenarios, a wait is the machine's: trame dev waits before it compiles again.
+ */
+export const WaitingOnTheMachine = binding({
+  owner: "trame",
+  chooses: [MachineTimers],
+  environments: [Test, Served],
+  follows: [Adapter],
+  serves: [WrittenOnce],
+  context: "A wait kept in memory would call at once what trame dev waits for.",
+})
+
+/**
+ * The small project's page
+ * What the page's commands are given in the scenarios: the program's name, a sample program, the instant a bundle is
+ * made at, what the project's watch follows, why an amendment is refused, the port asked.
+ */
+export const PageSample = decision<{ program: string; script: string; instant: string; watched: readonly string[]; refused: string; port: string }>({
+  owner: "trame",
+  value: { program: "trame", script: "start()", instant: "2026-11-26T08:00:00.000Z", watched: ["src/", "trame.lock"], refused: "amended nowhere in a scenario", port: "4171" },
+})
+
+/**
+ * The small project, served
+ * In the scenarios of the page's commands, the project at hand is the small project compiled by the engine that plays
+ * them, its other dates left aside: its bundle holds the day of the line only, made in this process; its watch follows
+ * nothing; an amendment is refused; the page's program is a sample.
+ */
+export const TheSmallProjectServed = implementation({
+  owner: "trame", implements: [TheProject],
+  deps: { chosen: ProjectOfTheScenario, sample: PageSample, say: EngineWords },
+  body: code.file("./code/scenarios/small-project-served.ts"),
+})
+
+/**
+ * The small project, served
+ * In the scenarios of the page's commands, the project at hand is the small project made for a page.
+ */
+export const ServedFromTheSmallProject = binding({
+  owner: "trame",
+  chooses: [TheSmallProjectServed],
+  environments: [Served],
+  follows: [Adapter],
+  serves: [WrittenOnce],
+  context: "A bundle is compiled in a fresh process of the engine on a machine: a scenario makes it in its own.",
+})
+
+/**
+ * A payload of the graph
+ * The small project's payload at its day: each document rendered three times; with --all, at each date its decision's
+ * review makes a page offer, another date's documents as today's left to today's. Two payloads alike differ in nothing;
+ * a node removed, the difference says so.
+ */
+export const PayloadOfTheSmallProject = scenario({
+  owner: "trame",
+  verifies: [Payload, SameAsToday, PayloadDifferences, ProjectCompiledHere, TheSmallProject, HtmlSyntax, SvgFigures],
+  env: Test,
+  deps: { payload: Payload, differences: PayloadDifferences, say: CommandWords, exit: ExitStatus, counts: Counts, checks: ScenarioWords },
+  body: ({ payload, differences, say, exit, counts, checks }) => async (check) => {
+    const today = await payload({ params: { command: String() }, body: { args: [] } })
+    const [written] = Array.isArray(today.body) ? today.body : []
+    const p = JSON.parse(String(written)) as Compiled
+    const renders = Object.values(p.renders ?? {})
+    check(checks.payloadToday(), today.status === exit.success && counts.any(p.documents) && renders.length === p.documents.length && renders.every((x) => x.markdown && x.text && x.html))
+    const all = await payload({ params: { command: String() }, body: { args: [], options: { all: true } } })
+    const [listed] = Array.isArray(all.body) ? all.body : []
+    const dates = JSON.parse(String(listed)) as Bundle["dates"]
+    const others = dates.filter((d) => d.date !== p.date)
+    check(checks.payloadDates(dates.length), counts.several(dates) && others.every((d) => d.payload?.same?.date === p.date && counts.any(d.payload.same.order)))
+    const [gone, ...kept] = p.nodes
+    check(checks.differencesSaid(), differences.diffPayloads(p, p) === undefined && gone !== undefined &&
+      JSON.stringify(differences.diffPayloads(p, { ...p, nodes: kept }) ?? null).includes(JSON.stringify(say.nodeRemoved(gone.title))))
+  },
+})
+
+/**
+ * A page exported
+ * The small project exported: the page written where the layout says, titled by the project, carrying its graph packed;
+ * the command says how many dates it offers.
+ */
+export const PageExported = scenario({
+  owner: "trame",
+  verifies: [Export, TheSmallProjectServed, TheSmallProject, SheetsBesideTheLibrary, GzipInBase64, ReadByTheEngine],
+  env: Served,
+  deps: { exported: Export, project: TheProject, kept: FilesKept, words: PageWords, say: CommandWords, exit: ExitStatus, checks: ScenarioWords },
+  body: ({ exported, project, kept, words, say, exit, checks }) => async (check) => {
+    const r = await exported({ params: { command: String() }, body: { args: [] } })
+    const { page } = project.layout()
+    const compiled = await project.compiled()
+    const written = kept.written().get(page) ?? String()
+    const bundle = await compiled.bundle(BundleMode.export)
+    check(checks.pageExported(), r.status === exit.success && written.includes(words.pageTitle(compiled.title)) &&
+      JSON.stringify(r.body) === JSON.stringify([say.exported(bundle.dates.length, page)]))
+  },
+})
+
+/**
+ * trame dev serves the page
+ * trame dev on the small project: the page served, titled by the project; the graph as it compiled it; a stream that
+ * says first who follows the project; an amendment answered as the engine prepares it; what it says as it goes.
+ */
+export const DevServesThePage = scenario({
+  owner: "trame",
+  verifies: [Dev, TheSmallProjectServed, TheSmallProject, SheetsBesideTheLibrary, ServerInMemory, LinesInMemory, ClockStopped, MachineTimers],
+  env: Served,
+  deps: {
+    dev: Dev, project: TheProject, server: ServerKept, printed: LinesKept, service: DevService, sample: PageSample, words: PageWords, say: CommandWords,
+    http: Http, exit: ExitStatus, counts: Counts, checks: ScenarioWords,
+  },
+  body: ({ dev, project, server, printed, service, sample, words, say, http, exit, counts, checks }) => async (check) => {
+    const r = await dev({ params: { command: String() }, body: { args: [], options: { port: sample.port } } })
+    const compiled = await project.compiled()
+    const [path] = service.page
+    const page = server.request(path ?? service.bundle)
+    check(checks.devServes(), r.status === exit.success && page.status === http.ok && page.body().includes(words.pageTitle(compiled.title)) &&
+      server.ports().includes(Number(sample.port)) && counts.any((JSON.parse(server.request(service.bundle).body()) as Bundle).dates))
+    const stream = server.request(service.events)
+    check(checks.devStreams(), stream.body().includes(say.devStream(sample.program)))
+    stream.close()
+    const amended = server.request(service.amend, JSON.stringify({}))
+    await amended.ended()
+    check(checks.devAmends(), (JSON.parse(amended.body()) as { refused?: string }).refused === sample.refused)
+    const lines = printed.lines()
+    check(checks.devSays(), lines.some((l) => l.includes(say.startup())) && lines.some((l) => l.includes(String(sample.port))) && lines.some((l) => sample.watched.every((w) => l.includes(w))))
+  },
 })
 
 /**
@@ -237,7 +418,7 @@ export const WrittenAsAProjectDoes = adr({
   rejected: { "A renderer of the commands' own": "the walk and the words of the documents repeated" },
   serves: [WrittenOnce],
   adopts: [OneRendererManySyntaxes],
-  appliedBy: [DocumentsAsFiles, FiguresOfTheDocuments, DocumentsLanguage],
+  appliedBy: [DocumentsAsFiles, FiguresOfTheDocuments, DocumentsLanguage, PageAsAProjectMakesIt, PageFilesAsOnAMachine, WaitingOnTheMachine, ServedFromTheSmallProject],
 })
 
 /**

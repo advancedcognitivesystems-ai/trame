@@ -83,3 +83,16 @@ export const R0_4_0 = release({
   language: "shared",
   serves: [WrittenOnce],
 })
+
+/**
+ * Version 0.5.0
+ */
+export const R0_5_0 = release({
+  owner: "trame",
+  version: "0.5.0",
+  date: "2026-11-28",
+  what: "The page's commands, the engine's before: payload (the graph at each date a page offers, rendered for files, the terminal and the page), export (libs/documents' page, compiled at each date by the engine in a fresh process, its program the engine's) and dev (the page served, compiled again after each save, amendments prepared by the engine), with what the last change changed, moved here",
+  fingerprint: "fc96f093bda0ffe4",
+  language: "shared",
+  serves: [WrittenOnce],
+})

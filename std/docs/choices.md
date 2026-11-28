@@ -2,7 +2,7 @@
 
 *What answers each port in each environment on 28 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
-> **6 technical choices for 24 ports, in 2 environments**
+> **7 technical choices for 30 ports, in 2 environments**
 
 | Port | Test | Strict |
 |---|---|---|
@@ -23,6 +23,12 @@
 | [The branches a scenario keeps](repository.md#BranchesKept) | [Branches kept in memory](repository.md#BranchesInMemory) | — |
 | [Pull requests](repository.md#PullRequests) | [Pull requests kept in memory](repository.md#PullRequestsInMemory) | — |
 | [The pull requests a scenario keeps](repository.md#PullRequestsKept) | [Pull requests kept in memory](repository.md#PullRequestsInMemory) | — |
+| [The clock](running.md#TheClock) | [A clock stopped](running.md#ClockStopped) | — |
+| [Timers](running.md#Waiting) | [The machine's timers](running.md#MachineTimers) | — |
+| [Serving HTTP](running.md#HttpServing) | [A server in memory](running.md#ServerInMemory) | — |
+| [Printing as it goes](running.md#LinesPrinted) | [Lines kept](running.md#LinesInMemory) | — |
+| [The server asked](running.md#ServerKept) | [A server in memory](running.md#ServerInMemory) | — |
+| [The lines printed](running.md#LinesKept) | [Lines kept](running.md#LinesInMemory) | — |
 | [Formats of an answer](tooling.md#AnswerFormats) | [Documents in JSON](tooling.md#AnswersInJson) | — |
 | [Project files](tooling.md#Files) | [Files kept in memory](tooling.md#FilesInMemory) | — |
 | [Files written](tooling.md#FilesKept) | [Files kept in memory](tooling.md#FilesInMemory) | — |
@@ -34,7 +40,7 @@
 | Pattern | Status | Followed by |
 |---|---|---|
 | [Strategy](patterns.md#Strategy) | **held** | [In memory](scenarios.md#InMemory), [Judged as the language says](scenarios.md#LanguageJudgment), [Judged strictly](scenarios.md#StrictJudgment), [The scenarios' settings](scenarios.md#ScenarioSettings) |
-| [Adapter](patterns.md#Adapter) | **held** | [Read by the engine that builds](scenarios.md#ReadInTheEngine) |
+| [Adapter](patterns.md#Adapter) | **held** | [Waiting on the machine](scenarios.md#WaitingAsAPersonWould), [Read by the engine that builds](scenarios.md#ReadInTheEngine) |
 | [Bridge](patterns.md#Bridge) | unknown | — |
 | [Abstract Factory](patterns.md#AbstractFactory) | unknown | — |
 | [Repository](patterns.md#Repository) | unknown | — |
@@ -47,7 +53,7 @@
 
 ### In memory
 
-`InMemory` · `src/scenarios.ts:49` · status: **held**
+`InMemory` · `src/scenarios.ts:52` · status: **held**
 
 In the library's scenarios, each port of a device or of the tooling is answered by its realization kept in memory.
 
@@ -62,6 +68,9 @@ In [Test](scenarios.md#Test):
 | [The branches](repository.md#Branches), [The branches a scenario keeps](repository.md#BranchesKept) | [Branches kept in memory](repository.md#BranchesInMemory) | a function |
 | [Pull requests](repository.md#PullRequests), [The pull requests a scenario keeps](repository.md#PullRequestsKept) | [Pull requests kept in memory](repository.md#PullRequestsInMemory) | a function |
 | [A repository on GitHub](repository.md#RepositoryApi), [The repositories a scenario keeps](repository.md#RepositoryKept) | [A repository kept in memory](repository.md#RepositoryInMemory) | a function |
+| [The clock](running.md#TheClock) | [A clock stopped](running.md#ClockStopped) | a function |
+| [The lines printed](running.md#LinesKept), [Printing as it goes](running.md#LinesPrinted) | [Lines kept](running.md#LinesInMemory) | a function |
+| [Serving HTTP](running.md#HttpServing), [The server asked](running.md#ServerKept) | [A server in memory](running.md#ServerInMemory) | a function |
 | [Browser script](tooling.md#BrowserScripted), [Headless browser](tooling.md#HeadlessBrowser) | [A browser kept in memory](tooling.md#BrowserInMemory) | a function |
 | [Project files](tooling.md#Files), [Files written](tooling.md#FilesKept) | [Files kept in memory](tooling.md#FilesInMemory) | a function |
 | [Programs run](tooling.md#ProgramRuns), [The programs a scenario keeps: the file it says a program writes is written when that program runs.](tooling.md#ProgramRunsKept) | [Programs run in memory](tooling.md#ProgramRunsInMemory) | a function |
@@ -69,9 +78,32 @@ In [Test](scenarios.md#Test):
 Context: A realization kept in memory is what a project's scenarios run in place of the device: it must keep its port's promise.
 
 - Decided by: trame
-- Chooses: [Preferences kept in memory](platform.md#MemoryPreferences), [A voice that writes down](platform.md#WrittenSpeech), [The screen kept awake, in memory](platform.md#AwakeInMemory), [Frames turned by hand](platform.md#FramesByHand), [Files kept in memory](tooling.md#FilesInMemory), [A browser kept in memory](tooling.md#BrowserInMemory), [A repository kept in memory](repository.md#RepositoryInMemory), [Branches kept in memory](repository.md#BranchesInMemory), [Pull requests kept in memory](repository.md#PullRequestsInMemory), [Programs run in memory](tooling.md#ProgramRunsInMemory)
+- Chooses: [Preferences kept in memory](platform.md#MemoryPreferences), [A voice that writes down](platform.md#WrittenSpeech), [The screen kept awake, in memory](platform.md#AwakeInMemory), [Frames turned by hand](platform.md#FramesByHand), [Files kept in memory](tooling.md#FilesInMemory), [A browser kept in memory](tooling.md#BrowserInMemory), [A repository kept in memory](repository.md#RepositoryInMemory), [Branches kept in memory](repository.md#BranchesInMemory), [Pull requests kept in memory](repository.md#PullRequestsInMemory), [Programs run in memory](tooling.md#ProgramRunsInMemory), [A clock stopped](running.md#ClockStopped), [A server in memory](running.md#ServerInMemory), [Lines kept](running.md#LinesInMemory)
 - In: [Test](scenarios.md#Test)
 - Follows: [Strategy](patterns.md#Strategy)
+- Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
+- Applies: [How the library's scenarios run](scenarios.md#HowTheScenariosRun)
+
+<a id="WaitingAsAPersonWould"></a>
+
+### Waiting on the machine
+
+`WaitingAsAPersonWould` · `src/scenarios.ts:68` · status: **held**
+
+In the library's scenarios, a function waited for is called by Node.js's timers: a scenario waits as a person would.
+
+In [Test](scenarios.md#Test):
+
+| Port | Answered by | Which is |
+|---|---|---|
+| [Timers](running.md#Waiting) | [The machine's timers](running.md#MachineTimers) | an implementation |
+
+Context: A wait kept in memory would call at once what a person waits for: the scenario would no longer wait.
+
+- Decided by: trame
+- Chooses: [The machine's timers](running.md#MachineTimers)
+- In: [Test](scenarios.md#Test)
+- Follows: [Adapter](patterns.md#Adapter)
 - Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
 - Applies: [How the library's scenarios run](scenarios.md#HowTheScenariosRun)
 
@@ -79,7 +111,7 @@ Context: A realization kept in memory is what a project's scenarios run in place
 
 ### Read by the engine that builds
 
-`ReadInTheEngine` · `src/scenarios.ts:66` · status: **held**
+`ReadInTheEngine` · `src/scenarios.ts:82` · status: **held**
 
 Where the library's build evaluates, its languages (HTML, CSS) are read by the engine that compiles it: their examples, and what the syntax elements of a library write in them.
 
@@ -102,7 +134,7 @@ Context: Reading a language is the engine's: the grammar and its reader are the 
 
 ### Judged as the language says
 
-`LanguageJudgment` · `src/scenarios.ts:79` · status: **held**
+`LanguageJudgment` · `src/scenarios.ts:95` · status: **held**
 
 Where the library's build evaluates, it raises nothing: each problem as the language judges it.
 
@@ -125,7 +157,7 @@ Context: The library raises nothing the language does not: its warnings are poin
 
 ### Judged strictly
 
-`StrictJudgment` · `src/scenarios.ts:98` · status: **held**
+`StrictJudgment` · `src/scenarios.ts:114` · status: **held**
 
 In Strict, every warning is an error.
 
@@ -148,7 +180,7 @@ Context: A project that leaves nothing to watch chooses it; the library plays it
 
 ### The scenarios' settings
 
-`ScenarioSettings` · `src/scenarios.ts:244` · status: **held**
+`ScenarioSettings` · `src/scenarios.ts:270` · status: **held**
 
 Where the library's scenarios run, its commands read the settings the scenarios give.
 
@@ -172,7 +204,7 @@ Context: A command of the library reads its settings through its ports: a scenar
 
 ### The formats of the scenarios
 
-`FormatsOfTheScenarios` · `src/scenarios.ts:553` · status: **held**
+`FormatsOfTheScenarios` · `src/scenarios.ts:625` · status: **held**
 
 In the library's scenarios, a command's documents are written in JSON, the format the library offers.
 

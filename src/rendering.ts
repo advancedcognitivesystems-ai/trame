@@ -1,97 +1,19 @@
 /** Trame · Rendering */
 
-import { code } from "../trame/kernel"
-import { fn } from "../kinds/function"
-import { port } from "../kinds/port"
 import { binding } from "../kinds/binding"
 import { adr } from "../kinds/adr"
 import { RenderingWithoutGraph, Local, Test } from "./architecture"
 import { ExecutableSpecification, ReplaceableTechnology } from "./product"
-import { GraphDrawing, TimelineDrawing, LegendDrawing } from "./appearance"
 import { Bridge, Strategy, Plugin } from "#std/patterns"
-import { Punctuation, Dates } from "#documents/language"
 import {
-  Common, Rendering, FileRendering, TerminalRendering, MarkdownSyntax, MermaidDiagrams, PlainTextSyntax, TextFigures,
-  SentenceSlots, RenderingMessages, OneRendererManySyntaxes, AnswersAtATerminal, AnswersInMarkdown, type DocumentSyntax, type FigureSyntax,
+  Common, FileRendering, TerminalRendering, PageRendering, MarkdownSyntax, MermaidDiagrams, PlainTextSyntax, TextFigures, HtmlSyntax, SvgFigures,
+  OneRendererManySyntaxes, AnswersAtATerminal, AnswersInMarkdown,
 } from "#documents/rendering"
 import { AnswersInJson } from "#std/tooling"
-import { Html, Svg, Aria, Css } from "#std/html"
-import { HtmlElement, HtmlHeading, EscapedText, SelfClosingTag } from "#documents/html"
-import { PathData, CssDeclaration } from "./html"
-import { ThePage } from "./page"
-import { DocumentMarkup, FigureMarkup } from "./markup"
-import { Counts, Sequences, Texts } from "#std/algebra"
-import { PageWords } from "./messages"
-import { Iso8601 } from "#std/measures"
 
 // Trame's documents are rendered by libs/documents (since g131): one renderer, given a syntax; Markdown with Mermaid
-// for the files, text for the terminal, which Trame chooses below. The page's syntax is Trame's until the page moves
-// there: its ports are declared here, its HTML and its SVG written here, and the library's renderer is given them.
-
-// The page's ports -------------------------------------------------------------------------------
-
-/**
- * Syntax of the page
- * What the page shows a document in, formatted: the engine writes it, the page puts it in place.
- */
-export const PageSyntax = port<DocumentSyntax>({ owner: "trame", declaredEffects: [] })
-
-/**
- * Figures of the page
- */
-export const PageFigures = port<FigureSyntax>({ owner: "trame", declaredEffects: [] })
-
-// The page's syntax and figures -------------------------------------------------------------------
-
-/**
- * Figures in SVG
- * A figure of the page, drawn: a graph layer under layer, its nodes under their neighbours, with its legend; a timeline
- * as lanes of bars and marks under the months. A graph too large to be read whole is left to the page, which explores
- * it: its place carries the figure's index in the document.
- */
-export const SvgFigures = fn({
-  owner: "trame",
-  implements: [PageFigures],
-  serves: [ExecutableSpecification],
-  deps: {
-    html: Html, svg: Svg, aria: Aria, css: Css, markup: DocumentMarkup, figures: FigureMarkup, page: ThePage,
-    graph: GraphDrawing, timeline: TimelineDrawing, legend: LegendDrawing,
-    element: HtmlElement, empty: SelfClosingTag, path: PathData, declaration: CssDeclaration, escape: EscapedText,
-    common: Common, dates: Dates, words: PageWords, messages: RenderingMessages, punctuation: Punctuation, iso: Iso8601,
-    counts: Counts, sequences: Sequences, texts: Texts,
-  },
-  body: code.file<typeof import("./code/rendering/svg-figures").default>("./code/rendering/svg-figures.ts"),
-})
-
-/**
- * HTML writer
- * A document as the page shows it: the elements of HTML, with the classes and attributes that the page's style sheet
- * and its script know ("Documents in the page"). Its text is escaped; a sentence of the catalog that holds pieces is
- * escaped around them.
- */
-export const HtmlSyntax = fn({
-  owner: "trame",
-  implements: [PageSyntax],
-  serves: [ExecutableSpecification],
-  deps: { figures: PageFigures,
-    html: Html, markup: DocumentMarkup, page: ThePage, element: HtmlElement, heading: HtmlHeading, escape: EscapedText,
-    punctuation: Punctuation, slots: SentenceSlots,
-    counts: Counts, texts: Texts, messages: RenderingMessages,
-  },
-  body: code.file<typeof import("./code/rendering/html").default>("./code/rendering/html.ts"),
-})
-
-/**
- * Rendering in the page
- * Each document formatted for the page, and the changes the page announces: the library's renderer, in the syntax of
- * the page.
- */
-export const PageRendering = fn({
-  owner: "trame",
-  serves: [ExecutableSpecification],
-  deps: { rendering: Rendering, syntax: PageSyntax },
-  body: ({ rendering, syntax }) => rendering(syntax),
-})
+// for the files, text for the terminal, HTML with SVG figures for the page (the library's since documents 0.5.0), which
+// Trame chooses below.
 
 // The choices -----------------------------------------------------------------------------------
 
@@ -237,15 +159,14 @@ export const AnswersAsChosen = binding({
 
 /**
  * Trame's documents, rendered by the library of documents
- * The renderers are libs/documents': Trame chooses their syntaxes for its files and its terminal, and gives the same
- * renderer the syntax of its page, which it still writes.
+ * The renderers are libs/documents': Trame chooses their syntaxes for its files, its terminal and its page.
  */
 export const RenderedByTheLibrary = adr({
   owner: "trame",
   context: "The renderers were the engine's: the commands of every project need them (build, view, snapshot), and a project's own command could not reach them (decided 26 November).",
-  consequences: "Trame's commands use the library's renderers as they use std's structures; the page's syntax and figures move there with the page.",
+  consequences: "Trame's commands use the library's renderers as they use std's structures; the page's syntax and figures moved there with the page (documents 0.5.0).",
   rejected: { "Renderers kept in the engine": "a command moved out of the engine would lose what writes its documents" },
   serves: [ReplaceableTechnology],
   adopts: [OneRendererManySyntaxes],
-  appliedBy: [PageRendering, DocumentsInMarkdown, FiguresInMermaid, TerminalInText, TerminalFiguresAsText, PageInHtml, PageFiguresDrawn, AnswersAsChosen],
+  appliedBy: [DocumentsInMarkdown, FiguresInMermaid, TerminalInText, TerminalFiguresAsText, PageInHtml, PageFiguresDrawn, AnswersAsChosen],
 })

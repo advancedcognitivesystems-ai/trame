@@ -11,9 +11,16 @@ import { Adapter, Bridge, Strategy, Plugin } from "#std/patterns"
 import { AnswerFormats } from "#std/tooling"
 import { ReadByTheEngine, EngineAsAProvider } from "#std/engine"
 import { TextFile } from "#std/text"
-import { RenderedOnce } from "./product"
+import { RenderedOnce, ShownInAPage } from "./product"
+import { BlockType, FigureType } from "#trame/kernel"
 import { DocumentLanguage, Dates, Lists, Punctuation, Units, WordsLanguage, type WrittenLanguage } from "./language"
-import { Common, Rendering, FileRendering, TerminalRendering, MarkdownSyntax, PlainTextSyntax, MermaidDiagrams, TextFigures, AnswersAtATerminal, AnswersInMarkdown } from "./rendering"
+import {
+  Common, Rendering, FileRendering, TerminalRendering, PageRendering, MarkdownSyntax, PlainTextSyntax, HtmlSyntax, MermaidDiagrams, TextFigures, SvgFigures,
+  AnswersAtATerminal, AnswersInMarkdown,
+} from "./rendering"
+import { Page, PageScripts, PageWords, SheetsBesideTheLibrary } from "./page"
+import { ExplorerFigures } from "./browser"
+import { Doctype, EscapedText } from "./html"
 import { SampleDocuments } from "./samples"
 
 /**
@@ -92,6 +99,11 @@ export const ScenarioWords = catalog({
     writtenAtATerminal: (title: string) => `${title}, printed at a terminal, reads as expected`,
     answersPrinted: () => "Documents a command answers, printed at a terminal, read as the renderer of the terminal gives them",
     answersWritten: () => "Documents a command answers, in Markdown, read as the renderer of files gives them, their references leading where the answer says",
+    shownInThePage: (title: string) => `${title}, in the page, reads as expected`,
+    pageMade: () => "A page is a document of its own: its DOCTYPE first, its title naming the project, its program and the graph in its scripts",
+    pageHosted: () => "A page a host shows has no skeleton: no DOCTYPE, its title and its scripts all the same",
+    mapDrawn: () => "A large graph is explored from the map of its layers",
+    focusDrawn: (title: string) => `${title}, in focus, is drawn with its neighbours`,
   }),
 })
 
@@ -402,6 +414,124 @@ export const AnswersWritten = scenario({
   },
 })
 
+// The page, played (documents 0.5.0) ---------------------------------------------------------------------------------
+
+/**
+ * The page in HTML
+ * In the library's scenarios, a document in the page is written in HTML, as a project chooses it.
+ */
+export const PageInHtml = binding({
+  owner: "trame",
+  chooses: [HtmlSyntax],
+  environments: [Test],
+  follows: [Bridge, Strategy],
+  serves: [ShownInAPage],
+  context: "The scenarios play the syntax of the page the library offers.",
+})
+
+/**
+ * The page's figures in SVG
+ * In the library's scenarios, a figure in the page is drawn in SVG.
+ */
+export const PageFiguresDrawn = binding({
+  owner: "trame",
+  chooses: [SvgFigures],
+  environments: [Test],
+  follows: [Strategy],
+  serves: [ShownInAPage],
+  context: "The scenarios play the figures of the page the library offers.",
+})
+
+/**
+ * Style sheets read beside the library
+ * In the library's scenarios, the page's style sheets are read where the library's sources keep them.
+ */
+export const SheetsRead = binding({
+  owner: "trame",
+  chooses: [SheetsBesideTheLibrary],
+  environments: [Test],
+  follows: [Adapter],
+  serves: [ShownInAPage],
+  context: "The style sheets are files of the library, which its versions carry.",
+})
+
+/**
+ * What the page expects
+ * Each sample document as the page shows it, written in HTML.
+ */
+export const ExpectedPage = decision<Record<string, string>>({
+  owner: "trame",
+  value: {
+    index: "<h1>A small project</h1><p class=\"intro\">What the project is for: <a class=\"ref\" data-ref=\"product.Fast\" tabindex=\"0\">Reservations answered fast</a>.</p><div class=\"summary\">1 goal, 1 requirement · <span class=\"pill st-held\">held</span></div><section id=\"holds\"><h2>What it holds</h2><p>Decided 15 min, open <mark class=\"open\">to be decided</mark>, by <span class=\"person\">karim</span> on <time datetime=\"2026-11-26\">26 November 2026</time>, in <code>src/product.ts:12</code>; see <a data-doc=\"product\" tabindex=\"0\">Product</a> and <a href=\"src/product.ts\">its sources</a> (<span class=\"sev sev-warning\">warning</span>).</p><dl class=\"facts\"><dt>Owner</dt><dd><span class=\"person\">karim</span></dd><dt>Since</dt><dd><time datetime=\"2026-10-30\">30 October 2026</time></dd></dl><ul><li>A goal</li><li>A requirement that refines it</li></ul><div class=\"table-wrap\"><table><thead><tr><th>Node</th><th>Status</th></tr></thead><tbody><tr><td><a class=\"ref\" data-ref=\"product.Fast\" tabindex=\"0\">Reservations answered fast</a></td><td><span class=\"pill st-held\">held</span></td></tr></tbody></table></div><pre class=\"code\"><code>export const Fast = goal({ owner: &quot;karim&quot; })</code></pre><p class=\"code-source\">src/product.ts:3</p><p class=\"checks-title\">Criteria of <a class=\"ref\" data-ref=\"product.Answered\" tabindex=\"0\">Answered in time</a></p><div class=\"table-wrap\"><table><thead><tr><th>Criterion</th><th>Result</th></tr></thead><tbody><tr><td>An answer within the minute</td><td><span class=\"pill oc-passed\">passed</span></td></tr><tr><td>A late answer refused</td><td><span class=\"pill oc-failed\">failed</span> took 2 min</td></tr></tbody></table></div><p class=\"validity\"><span class=\"pill va-inForce\">In force</span> since 1 October 2026, until 31 December 2026</p><details><summary>The code</summary><pre class=\"code\"><code>const x = 1</code></pre><p class=\"code-source\">src/product.ts:9</p></details></section><div class=\"table-wrap\"><table><thead><tr><th>Severity</th><th>Code</th><th>What</th><th>Where</th><th>Owner</th><th>Consequence</th></tr></thead><tbody><tr><td><span class=\"sev sev-error\">error</span></td><td><code>literal-in-body</code></td><td>A literal in a body</td><td><a class=\"ref\" data-ref=\"product.Answered\" tabindex=\"0\">Answered in time</a></td><td><span class=\"person\">karim</span></td><td></td></tr><tr><td><span class=\"sev sev-error\">error, raised from warning</span></td><td></td><td>Nothing applies it yet</td><td><code>the graph</code></td><td><span class=\"person\">lea</span></td><td>a wish</td></tr></tbody></table></div><figure class=\"figure\"><div class=\"figure-scroll\"><svg viewBox=\"-10 -40 198 232\" width=\"198\" style=\"width: 100%; min-width: 123px; max-width: 198px;\" role=\"img\" aria-label=\"Figure\"><g class=\"fe n-declared\"><title>refines</title><path d=\"M89,122 C89,91 89,91 89,60\" marker-end=\"url(#arrow-base)\"/></g><g class=\"fn st-held\" data-ref=\"product.Fast\" transform=\"translate(0,0)\" tabindex=\"0\" role=\"link\" aria-label=\"Reservations answered fast · Goal · held\"><title>Reservations answered fast · Goal · held</title><rect class=\"box\" width=\"178\" height=\"60\" rx=\"7\"/><text x=\"10\" y=\"19\">Reservations answered</text><text x=\"10\" y=\"34\">fast</text><text class=\"kind\" x=\"10\" y=\"51\">Goal · held</text></g><g class=\"fn st-violated\" data-ref=\"product.Answered\" transform=\"translate(0,122)\" tabindex=\"0\" role=\"link\" aria-label=\"Answered in time · Requirement · violated · a decision remains to be taken\"><title>Answered in time · Requirement · violated · a decision remains to be taken</title><rect class=\"box\" width=\"178\" height=\"60\" rx=\"7\"/><text x=\"10\" y=\"19\">Answered in time</text><text class=\"kind\" x=\"10\" y=\"51\">Requirement · violated</text><circle class=\"open\" cx=\"168\" cy=\"10\" r=\"5\"/></g></svg><div class=\"legend\"><span><svg width=\"26\" height=\"8\" aria-hidden=\"true\"><line x1=\"0\" y1=\"4\" x2=\"26\" y2=\"4\" class=\"lg-base\" stroke-width=\"2\"/></svg>declared edge</span><span><svg width=\"12\" height=\"12\" aria-hidden=\"true\"><circle cx=\"6\" cy=\"6\" r=\"5\" class=\"lg-open\"/></svg>decision to take</span></div></div><figcaption>The layers of the graph</figcaption></figure><figure class=\"figure\"><div class=\"figure-scroll\"><svg class=\"tl\" viewBox=\"0 0 920 88\" width=\"920\" style=\"width: 100%; min-width: 640px; max-width: 920px;\" role=\"img\" aria-label=\"Timeline\"><line class=\"grid\" x1=\"240\" y1=\"32\" x2=\"240\" y2=\"76\"/><text class=\"tick\" x=\"244\" y=\"28\">Oct</text><line class=\"grid\" x1=\"465.5164835164835\" y1=\"32\" x2=\"465.5164835164835\" y2=\"76\"/><text class=\"tick\" x=\"469.5164835164835\" y=\"28\">Nov</text><line class=\"grid\" x1=\"683.7582417582418\" y1=\"32\" x2=\"683.7582417582418\" y2=\"76\"/><text class=\"tick\" x=\"687.7582417582418\" y=\"28\">Dec</text><g class=\"lane-label\" data-ref=\"product.Answered\" tabindex=\"0\" role=\"link\"><text x=\"0\" y=\"55\">Answered in time</text><text class=\"muted\" x=\"0\" y=\"69\">Requirement</text></g><rect class=\"period\" x=\"240\" y=\"50\" width=\"662\" height=\"12\" rx=\"6\"><title>Answered in time · from 1 October 2026 until 31 December 2026</title></rect><circle class=\"review\" cx=\"785.6043956043956\" cy=\"56\" r=\"5\"><title>Reviewed: 15 December 2026</title></circle><line class=\"today\" x1=\"647.3846153846155\" y1=\"14\" x2=\"647.3846153846155\" y2=\"84\"/><text class=\"muted\" x=\"652.3846153846155\" y=\"14\">date of the graph · 26 Nov</text></svg></div><figcaption>When it holds</figcaption></figure>",
+    product: "<h1>Product</h1><article class=\"card\" id=\"Fast\"><h3>Reservations answered fast</h3><div class=\"meta\"><span>Goal</span><code>Fast</code><code>src/product.ts:3</code><span class=\"pill st-held\">held</span></div><p>A person who reserves knows at once.</p><p>Back to <a data-doc=\"index\" tabindex=\"0\">the summary</a>.</p><dl class=\"facts\"><dt>Decided by</dt><dd><span class=\"person\">karim</span></dd><dt class=\"\">refined by</dt><dd class=\"\"><a class=\"ref\" data-ref=\"product.Answered\" tabindex=\"0\">Answered in time</a></dd></dl><div class=\"child\" id=\"Answered\"><p>Within the minute.</p></div></article>",
+  },
+})
+
+/**
+ * The documents in the page
+ * The sample documents written for the page, their figures drawn in SVG: each one as expected.
+ */
+export const DocumentsInThePage = scenario({
+  owner: "trame",
+  verifies: [PageRendering, HtmlSyntax, SvgFigures],
+  env: Test,
+  deps: { page: PageRendering, samples: SampleDocuments, expected: ExpectedPage, checks: ScenarioWords },
+  body: ({ page, samples, expected, checks }) => async (check) => {
+    for (const d of samples) check(checks.shownInThePage(d.title), page.render(d) === expected[d.id])
+  },
+})
+
+/**
+ * A page asked for
+ * What a command gives Page to make a page: a program, bundled; the name of the program that writes it; the project
+ * it shows; the graph, packed.
+ */
+export const PageAsked = decision<{ script: string; program: string; project: string; packed: string }>({
+  owner: "trame",
+  value: { script: "start()", program: "trame", project: "Small", packed: "H4sIAAAA" },
+})
+
+/**
+ * A page made
+ * The page a command asks for, standalone then hosted: its DOCTYPE first, or none; its title naming the project; its
+ * program and the graph in its scripts; its style and its markup read back by the engine, each in its language.
+ */
+export const ThePageIsMade = scenario({
+  owner: "trame",
+  verifies: [Page, SheetsBesideTheLibrary],
+  env: Test,
+  deps: { page: Page, asked: PageAsked, scripts: PageScripts, doctype: Doctype, words: PageWords, checks: ScenarioWords },
+  body: ({ page, asked, scripts, doctype, words, checks }) => async (check) => {
+    const pieces = (made: string) => made.includes(words.pageTitle(asked.project)) && made.includes(scripts(asked.script, asked.packed, undefined))
+    const standalone = await page.pageHtml(asked)
+    check(checks.pageMade(), standalone.startsWith(doctype()) && pieces(standalone))
+    const hosted = await page.pageHtml({ ...asked, fragment: true })
+    check(checks.pageHosted(), !hosted.includes(doctype()) && pieces(hosted))
+  },
+})
+
+/**
+ * The explorer of a large graph
+ * The sample graph explored: the map of its layers, then its first node in focus with its neighbours.
+ */
+export const TheExplorerDraws = scenario({
+  owner: "trame",
+  verifies: [ExplorerFigures],
+  env: Test,
+  deps: { explorer: ExplorerFigures, samples: SampleDocuments, words: PageWords, escape: EscapedText, checks: ScenarioWords },
+  body: ({ explorer, samples, words, escape, checks }) => async (check) => {
+    for (const d of samples) {
+      for (const b of d.blocks) {
+        if (b.type !== BlockType.figure || b.figure.type !== FigureType.graph) continue
+        const f = b.figure
+        check(checks.mapDrawn(), explorer.draw(d.id, { f, trail: [], all: new Set() }).includes(escape(words.mapLabel())))
+        const [first] = f.nodes
+        if (first) check(checks.focusDrawn(first.title), explorer.draw(d.id, { f, focus: first.ref, trail: [], all: new Set() }).includes(escape(words.andItsNeighbours(first.title))))
+      }
+    }
+  },
+})
+
 /**
  * The scenarios render as a project does
  * The renderers are pure: they receive documents in the intermediate format, the contract of the views, and give text.
@@ -415,5 +545,5 @@ export const HowTheScenariosRender = adr({
   rejected: { "A project compiled and its documents rendered": "the views would be played again here, and the API gives no documents yet" },
   serves: [RenderedOnce],
   adopts: [EngineAsAProvider],
-  appliedBy: [FilesInMarkdown, FiguresInMermaid, TerminalInText, TerminalFiguresAsText, LanguagesRead, FormatsOfTheAnswers],
+  appliedBy: [FilesInMarkdown, FiguresInMermaid, TerminalInText, TerminalFiguresAsText, LanguagesRead, FormatsOfTheAnswers, PageInHtml, PageFiguresDrawn, SheetsRead],
 })

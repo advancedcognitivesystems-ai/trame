@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 6 | 286 |
+| trame | 0 | 0 | 6 | 306 |
 
 <a id="trame"></a>
 
@@ -171,6 +171,8 @@
 | [Version 0.3.0](releases.md#R0_3_0) | Release |  |
 | [Version 0.30.0](releases.md#R0_30_0) | Release |  |
 | [Version 0.31.0](releases.md#R0_31_0) | Release |  |
+| [Version 0.32.0](releases.md#R0_32_0) | Release |  |
+| [Version 0.33.0](releases.md#R0_33_0) | Release |  |
 | [Version 0.4.0](releases.md#R0_4_0) | Release |  |
 | [Version 0.5.0](releases.md#R0_5_0) | Release |  |
 | [Version 0.6.0](releases.md#R0_6_0) | Release |  |
@@ -211,6 +213,22 @@
 | [Criteria of effects a node may not have](rules.md#WithoutEffectsCriteria) | Acceptance criteria | **held** |
 | [Words of a vocabulary](rules.md#WordsOf) | Requirement | **held** |
 | [Criteria of words of a vocabulary](rules.md#WordsOfCriteria) | Acceptance criteria | **held** |
+| [A clock stopped](running.md#ClockStopped) | Function | **held** |
+| [Serving HTTP](running.md#HttpServing) | Port |  |
+| [Lines kept](running.md#LinesInMemory) | Function | **held** |
+| [The lines printed](running.md#LinesKept) | Port |  |
+| [Printing as it goes](running.md#LinesPrinted) | Port |  |
+| [The machine's clock](running.md#MachineClock) | Implementation |  |
+| [The machine's timers](running.md#MachineTimers) | Implementation | **held** |
+| [A server of Node.js](running.md#NodeHttpServing) | Implementation |  |
+| [A command that keeps running asks the machine through ports](running.md#RunningThroughPorts) | Architecture decision | **held** |
+| [What a realization of this module says](running.md#RunningWords) | Message catalog |  |
+| [The instant of the scenarios](running.md#ScenarioInstant) | Decision |  |
+| [A server in memory](running.md#ServerInMemory) | Function | **held** |
+| [The server asked](running.md#ServerKept) | Port |  |
+| [The standard output](running.md#StandardOutput) | Implementation |  |
+| [The clock](running.md#TheClock) | Port |  |
+| [Timers](running.md#Waiting) | Port |  |
 | [Commands are made for each effect](scenarios.md#CommandsMade) | Scenario | **held** |
 | [The device, in memory](scenarios.md#DeviceInMemory) | Scenario | **held** |
 | [Seeded draws keep their promise](scenarios.md#DrawsKeepTheirPromise) | Scenario | **held** |
@@ -227,6 +245,7 @@
 | [A pull request opened](scenarios.md#PullRequestOpened) | Scenario | **held** |
 | [Read by the engine that builds](scenarios.md#ReadInTheEngine) | Technical choice | **held** |
 | [A repository kept in memory](scenarios.md#RepositoryInMemoryKeeps) | Scenario | **held** |
+| [Running, in memory](scenarios.md#RunningInMemory) | Scenario | **held** |
 | [What the library's scenarios check](scenarios.md#ScenarioChecks) | Message catalog |  |
 | [A command's line, in the scenarios](scenarios.md#ScenarioCommand) | Decision |  |
 | [What the library's scenarios are given](scenarios.md#ScenarioData) | Decision |  |
@@ -238,6 +257,7 @@
 | [Judged strictly](scenarios.md#StrictJudgment) | Technical choice | **held** |
 | [Test](scenarios.md#Test) | Environment |  |
 | [The tooling, in memory](scenarios.md#ToolingInMemory) | Scenario | **held** |
+| [Waiting on the machine](scenarios.md#WaitingAsAPersonWould) | Technical choice | **held** |
 | [Its callers identified](sdlc.md#CallersIdentified) | Obligation |  |
 | [Its data reviewed](sdlc.md#DataReviewed) | Obligation |  |
 | [Its decisions applied](sdlc.md#DecisionsApplied) | Obligation |  |

@@ -9,7 +9,7 @@
 // scenarios it plays then reach it too); a program run alone finds none. The API grows as the engine's commands move
 // into libraries, each time with a generation.
 
-import type { Compilation, Document } from "./kernel"
+import type { Bundle, BundleMode, Compilation, Document, Payload } from "./kernel"
 
 /** Where a project's files are, from its root, as the engine reads and writes them. */
 export interface ProjectLayout {
@@ -90,6 +90,22 @@ export interface ExampleReading {
  * The reader a language is read by (since g128, the engine's, which it gives through its API): it loads the language's
  * grammar, reads an example of it, and says which predicates of its queries tree-sitter keeps aside.
  */
+/** Where a text does not follow the grammar of its language: its line and its column, from one. */
+export interface TextPlace {
+  readonly line: number
+  readonly column: number
+}
+
+/**
+ * A text read in its language, once, nothing kept (since g136): the names it reads that it does not declare (a CSS
+ * variable used), those it declares (a variable written), and where it does not follow the grammar.
+ */
+export interface TextReading {
+  readonly parameters: readonly string[]
+  readonly outputs: readonly string[]
+  readonly errors: readonly TextPlace[]
+}
+
 export interface LanguageReader {
   load(language: LanguageDescription): Promise<void>
   example(language: LanguageDescription, code: string): ExampleReading
@@ -97,6 +113,11 @@ export interface LanguageReader {
   aside(language: LanguageDescription): [string, string][]
 }
 
+
+/** What reads back a text written in a language (since g136): a page before it is given. A reader the engine gives does both. */
+export interface TextReader {
+  readText(language: LanguageDescription, text: string): TextReading
+}
 
 // The documents of the views (since g132) ---------------------------------------------------------------------------
 //
@@ -134,22 +155,86 @@ export type ViewAnswer =
   | { readonly document: Document; readonly refused?: undefined }
   | { readonly document?: undefined; readonly refused: ViewRefusal; readonly asked?: string; readonly known: readonly string[]; readonly view?: string }
 
+/** Which documents the views give: those of each node too, unless said otherwise (a day of history carries none). */
+export interface DocumentsAsked {
+  readonly perNode?: boolean
+}
+
+/** A value a person amends from the page (since g86), as trame amend takes it; previewed only, with `dryRun`. */
+export interface AmendmentAsked {
+  readonly node: string
+  readonly path: string
+  /** The new value: JSON, or a text as it is. */
+  readonly value: string
+  readonly why: string
+  readonly by: string
+  readonly from?: string
+  readonly until?: string
+  /** The source that changed a cited value. */
+  readonly source?: string
+  /** Recorded even when it raises an error, for its owner to settle. */
+  readonly accept?: boolean
+  /** What it would change, recorded nowhere. */
+  readonly dryRun?: boolean
+}
+
+/**
+ * What an amendment does: why it is refused, or what it changes (a heading, then its lines), the file it was recorded
+ * in, whose approval it awaits.
+ */
+export interface AmendmentAnswer {
+  readonly refused?: string
+  readonly heading?: string
+  readonly lines: readonly string[]
+  readonly file?: string
+  readonly awaits?: string
+}
+
 /** A project compiled at a date. */
 export interface CompiledProject {
   /** Its root, as the engine found it. */
   readonly root: string
   /** The day it is compiled at. */
   readonly today: string
+  /** What it calls itself, as its configuration says (since g136): a page's title names it. */
+  readonly title?: string
   /** What a view receives: the graph, its statuses and issues, the pipelines of its shipments, g.lib. */
   readonly graph: Compilation
   /** The graph as a build writes it into graph.json. */
   written(): string
   /** The graph as a build writes it into snapshot.json. */
   snapshot(): string
-  /** The documents its views give, those of each node too, and where each card is (since g132); a view that breaks a law refuses. */
-  documents(): Promise<ViewDocuments>
+  /**
+   * The documents its views give, those of each node too unless asked otherwise (since g136), and where each card is
+   * (since g132); a view that breaks a law refuses.
+   */
+  documents(asked?: DocumentsAsked): Promise<ViewDocuments>
   /** One view's document, by the view's name and, for a view of a node or a module, its name (since g132). */
   view(name: string, arg?: string): Promise<ViewAnswer>
+  /**
+   * The graph as a page receives it at its date, carrying these documents, not yet rendered (since g136): its modules,
+   * nodes, views, statuses and issues, its outputs for tools, the dates it changes at, its history.
+   */
+  payload(documents: readonly Document[]): Promise<Payload>
+  /** The dates a page offers it at: those it changes at and, with its history, the last days something was given (since g136). */
+  candidates(history?: boolean): readonly string[]
+  /**
+   * The project compiled at its date and at each date a page offers, in a fresh process (since g136): its modules read
+   * afresh, a compilation that fails taking nothing down; an export's carries its history.
+   */
+  bundle(mode: BundleMode): Promise<Bundle>
+  /** The same graph, read once, compiled at another day (since g136): what a page offers at each of its dates. */
+  at(date: string): Promise<CompiledProject>
+  /**
+   * Calls `changed` with each file its build reads that changes, from its root (since g136): what trame dev follows.
+   * Gives what it watches, from the root, a directory ending with the separator of paths (since g137).
+   */
+  watch(changed: (path: string) => void): readonly string[]
+  /**
+   * Amends one of its values, as trame amend does, then records the amendment where the project's go, unless it is
+   * refused or only previewed (since g136): given on the project a command runs for.
+   */
+  amend?(asked: AmendmentAsked): Promise<AmendmentAnswer>
 }
 
 /** What a command reaches of the engine that runs it (since g124). */
@@ -166,7 +251,11 @@ export interface EngineApi {
    */
   compile(root: string, today: string): Promise<CompiledProject>
   /** The engine's reader of languages (since g128): what it reads a body with, given a language's description. */
-  readonly reader: LanguageReader
+  readonly reader: LanguageReader & TextReader
+  /** The page's program, bundled for a browser as the engine assembled it (since g136): what a page runs. */
+  page(): Promise<string>
+  /** The name a person types to run the engine (since g137): what a page's brand writes, what a command names it by. */
+  readonly program: string
 }
 
 /** The engine that runs a program: where its commands go, and its API. */

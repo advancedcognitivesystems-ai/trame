@@ -14,6 +14,8 @@ const body: BodyOf<typeof ProjectCompiledHere> = ({ chosen, say }) => {
   let compiled: Promise<CompiledProject> | undefined
   return {
     layout: () => api().layout,
+    page: () => api().page(),
+    program: () => api().program,
     compiled: () => (compiled ??= api().compile(chosen.root, chosen.today)),
   }
 }

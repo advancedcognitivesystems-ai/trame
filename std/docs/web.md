@@ -54,6 +54,7 @@ Source: RFC 9110 (semantics), RFC 9111 (caching), RFC 9112 (connections), RFC 67
 
 - Maintained by: trame
 - Serves: [A published value is cited, not copied](product.md#CitedNotCopied)
+- Used by: [A server in memory](running.md#ServerInMemory)
 
 <a id="MediaQueries5"></a>
 

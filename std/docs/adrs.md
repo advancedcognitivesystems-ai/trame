@@ -2,7 +2,7 @@
 
 *The choices that shape the product without being values, in force on 28 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
-> **9 architecture decisions, 8 held by the nodes that apply them**
+> **10 architecture decisions, 9 held by the nodes that apply them**
 
 | Decision | Status | Applied by |
 |---|---|---|
@@ -13,7 +13,8 @@
 | [A component in a browser starts with its page](platform.md#StartsWithThePage) | unknown | [The browser loads the page](platform.md#BrowserLoading), [Loading of a page](platform.md#PageLoading) |
 | [The device's services, as ports](platform.md#DeviceAsPorts) | **held** | [Animation frames](platform.md#AnimationFrames), [The screen kept awake, in memory](platform.md#AwakeInMemory), [The browser's frames](platform.md#BrowserFrames), [The browser's languages](platform.md#BrowserLanguages), [The browser keeps the preferences](platform.md#BrowserPreferences), [The browser's voice](platform.md#BrowserSpeech), [The browser keeps the screen awake](platform.md#BrowserWakeLock), [Languages of the device](platform.md#DeviceLanguages), [Frames turned by hand](platform.md#FramesByHand), [Preferences kept in memory](platform.md#MemoryPreferences), [Preferences](platform.md#PreferencesStore), [Screen kept awake](platform.md#ScreenAwake), [Whether the screen is kept awake](platform.md#ScreenKeptAwake), [What was said](platform.md#SpeechHeard), [Speech](platform.md#SpeechVoice), [Time turned by hand](platform.md#TimeTurned), [A voice that writes down](platform.md#WrittenSpeech) |
 | [A repository is set by its project's graph](repository.md#RepositoryThroughItsApi) | **held** | [GitHub's command line](repository.md#GitHubCliRepository), [How GitHub merges a pull request](repository.md#MergeMethods), [A repository on GitHub](repository.md#RepositoryApi), [A repository compared with its settings](repository.md#RepositoryCompared), [A repository kept in memory](repository.md#RepositoryInMemory), [The repositories a scenario keeps](repository.md#RepositoryKept), [The parts of a repository's settings](repository.md#RepositoryParts) |
-| [How the library's scenarios run](scenarios.md#HowTheScenariosRun) | **held** | [The formats of the scenarios](scenarios.md#FormatsOfTheScenarios), [In memory](scenarios.md#InMemory), [Judged as the language says](scenarios.md#LanguageJudgment), [Read by the engine that builds](scenarios.md#ReadInTheEngine), [The scenarios' settings](scenarios.md#ScenarioSettings), [Judged strictly](scenarios.md#StrictJudgment) |
+| [A command that keeps running asks the machine through ports](running.md#RunningThroughPorts) | **held** | [A clock stopped](running.md#ClockStopped), [Serving HTTP](running.md#HttpServing), [Lines kept](running.md#LinesInMemory), [Printing as it goes](running.md#LinesPrinted), [The machine's clock](running.md#MachineClock), [The machine's timers](running.md#MachineTimers), [A server of Node.js](running.md#NodeHttpServing), [A server in memory](running.md#ServerInMemory), [The standard output](running.md#StandardOutput), [The clock](running.md#TheClock), [Timers](running.md#Waiting) |
+| [How the library's scenarios run](scenarios.md#HowTheScenariosRun) | **held** | [The formats of the scenarios](scenarios.md#FormatsOfTheScenarios), [In memory](scenarios.md#InMemory), [Judged as the language says](scenarios.md#LanguageJudgment), [Read by the engine that builds](scenarios.md#ReadInTheEngine), [The scenarios' settings](scenarios.md#ScenarioSettings), [Judged strictly](scenarios.md#StrictJudgment), [Waiting on the machine](scenarios.md#WaitingAsAPersonWould) |
 | [The SDLC's tooling is realized once](tooling.md#ToolingAsPorts) | **held** | [A browser kept in memory](tooling.md#BrowserInMemory), [Browser script](tooling.md#BrowserScripted), [Commands run in the engine](tooling.md#CommandsInTheEngine), [Project files](tooling.md#Files), [Files kept in memory](tooling.md#FilesInMemory), [Files written](tooling.md#FilesKept), [Headless browser](tooling.md#HeadlessBrowser), [The machine's files](tooling.md#MachineFiles), [What the machine must also have](tooling.md#MachineNeeds), [Node's command line](tooling.md#NodeProgramCommands), [Where a package comes from](tooling.md#PackageSources), [Chromium, driven by Playwright](tooling.md#PlaywrightBrowser), [Playwright's browser, installed](tooling.md#PlaywrightBrowserInstalled), [Commands of a program](tooling.md#ProgramCommands), [What repairs a project](tooling.md#ProjectRepairs) |
 
 ## Standard library · Access
@@ -69,7 +70,7 @@ Consequences: The library's component LibraryCommands holds the commands; a proj
 
 ### The engine is a provider
 
-`EngineAsAProvider` · `src/engine.ts:125` · status: **held**
+`EngineAsAProvider` · `src/engine.ts:130` · status: **held**
 
 What a command needs of the engine (the project compiled at a date, with what a view receives; a language read; later the evidence, the assembly, the publication, the engine's identity) is a port of the library, realized by an adapter that reads the API the language defines; a command, or a language, of a library or a project reaches the engine only through them.
 
@@ -174,13 +175,35 @@ Consequences: A project decides its settings (RepositorySettings) and applies th
 - Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
 - Applied by: [How GitHub merges a pull request](repository.md#MergeMethods), [The parts of a repository's settings](repository.md#RepositoryParts), [A repository compared with its settings](repository.md#RepositoryCompared), [A repository on GitHub](repository.md#RepositoryApi), [GitHub's command line](repository.md#GitHubCliRepository), [The repositories a scenario keeps](repository.md#RepositoryKept), [A repository kept in memory](repository.md#RepositoryInMemory)
 
+## Standard library · Running
+
+<a id="RunningThroughPorts"></a>
+
+### A command that keeps running asks the machine through ports
+
+`RunningThroughPorts` · `src/running.ts:186` · status: **held**
+
+trame dev serves a page, waits before it compiles again, says when it compiled: what it asks of the machine is a port of the library, which a project realizes where its commands run.
+
+Context: trame dev leaves the engine for a library of commands: the server, the timers, the clock and the terminal it used were the engine's own ports, which no library reaches.
+
+Consequences: A library's command that keeps running is played in memory like any other: its server asked as a browser would, its clock stopped, its lines kept; on a machine, Node.js answers.
+
+| Rejected | Why |
+|---|---|
+| The engine's API serving the page | the engine would serve HTTP for a command, a platform it has no reason to give |
+
+- Decided by: trame
+- Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
+- Applied by: [The clock](running.md#TheClock), [Timers](running.md#Waiting), [Serving HTTP](running.md#HttpServing), [Printing as it goes](running.md#LinesPrinted), [The machine's clock](running.md#MachineClock), [The machine's timers](running.md#MachineTimers), [A server of Node.js](running.md#NodeHttpServing), [The standard output](running.md#StandardOutput), [A clock stopped](running.md#ClockStopped), [A server in memory](running.md#ServerInMemory), [Lines kept](running.md#LinesInMemory)
+
 ## Standard library · Scenarios
 
 <a id="HowTheScenariosRun"></a>
 
 ### How the library's scenarios run
 
-`HowTheScenariosRun` · `src/scenarios.ts:639` · status: **held**
+`HowTheScenariosRun` · `src/scenarios.ts:711` · status: **held**
 
 Every port the library's code touches is played in memory, by the realizations the library offers for that (they keep their port's promise, as a project's scenarios need); a command's settings are the scenario's own; the library judges as the language says, and plays the strict way of judging through its port in an environment of its own; its languages are read by the engine that builds it, whose grammars no library carries.
 
@@ -195,7 +218,7 @@ Consequences: A project that judges harder chooses EveryWarning or one of its ow
 
 - Decided by: trame
 - Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
-- Applied by: [In memory](scenarios.md#InMemory), [The scenarios' settings](scenarios.md#ScenarioSettings), [Judged as the language says](scenarios.md#LanguageJudgment), [Judged strictly](scenarios.md#StrictJudgment), [Read by the engine that builds](scenarios.md#ReadInTheEngine), [The formats of the scenarios](scenarios.md#FormatsOfTheScenarios)
+- Applied by: [In memory](scenarios.md#InMemory), [Waiting on the machine](scenarios.md#WaitingAsAPersonWould), [The scenarios' settings](scenarios.md#ScenarioSettings), [Judged as the language says](scenarios.md#LanguageJudgment), [Judged strictly](scenarios.md#StrictJudgment), [Read by the engine that builds](scenarios.md#ReadInTheEngine), [The formats of the scenarios](scenarios.md#FormatsOfTheScenarios)
 
 ## Standard library · Tooling
 

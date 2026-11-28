@@ -1,128 +1,15 @@
 /** Trame · The page in a browser */
 
-import { code } from "../trame/kernel"
-import { fn } from "../kinds/function"
-import { implementation } from "../kinds/implementation"
 import { binding } from "../kinds/binding"
-import { entryPoint, load } from "../kinds/entry-point"
 import { adr } from "../kinds/adr"
-import {
-  Browser, PageApp, PageWindow, PageMemory, GraphFeed, Decompression, RenderingWithoutGraph, PageAmendments,
-} from "./architecture"
+import { Browser } from "./architecture"
 import { BrowserLoading } from "#std/platform"
-import { Html, Svg, Aria, Css } from "#std/html"
-import { HtmlElement, HtmlStartTag, SelfClosingTag, EscapedText } from "#documents/html"
-import { PathData, CssDeclaration, AttributeSelector, AttributePresence, SelectorList, ClassSelector, MediaFeature } from "./html"
-import { DocumentMarkup, FigureMarkup, AroundMarkup, ExplorerMarkup } from "./markup"
-import { ExplorerDrawing } from "./appearance"
-import { ThePage, PageRegions, RenderingModes, MachineHighlighting, PackedGraph } from "./page"
-import { Common, SentenceSlots, RenderingMessages } from "#documents/rendering"
-import { Language, PageWords } from "./messages"
-import { DocumentIds } from "./conventions"
-import { Punctuation } from "#documents/language"
-import { DevService } from "./engine"
-import { UiEvents, CssomView, MediaQueries5, Http, MediaTypes } from "#std/web"
-import { Iso8601 } from "#std/measures"
-import { TextFile } from "#std/text"
-import { EcmaScript } from "#std/ecmascript"
-import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
 import { Adapter } from "#std/patterns"
 import { ExecutableSpecification, ReplaceableTechnology } from "./product"
-import { Anyone } from "#std/access"
+import { BrowserWindow, BrowserMemory, BrowserFeed, BrowserAmendments, BrowserDecompression, ThePageIsAssembled } from "#documents/browser"
 
-// The page Trame writes is a program of its own: the component "The page in a browser", assembled for the environment
-// Browser as the command line is for a machine. Its entry point shows the documents the engine wrote; its explorer
-// draws a graph too large to be read whole; what it touches of the browser goes through its ports, realized here.
-
-/**
- * Explorer of a graph
- * Draws the explorer of a graph too large to be read whole, where the engine left its place: the map of its layers,
- * or one node and its neighbours, with the bar that moves in it. Pure: the page keeps where each explorer is.
- */
-export const ExplorerFigures = fn({
-  owner: "trame",
-  serves: [ExecutableSpecification],
-  deps: {
-    html: Html, svg: Svg, aria: Aria, css: Css, page: ThePage, markup: DocumentMarkup, figures: FigureMarkup, explorer: ExplorerMarkup, drawing: ExplorerDrawing,
-    element: HtmlElement, start: HtmlStartTag, empty: SelfClosingTag, path: PathData, declaration: CssDeclaration, escape: EscapedText,
-    common: Common, words: PageWords, messages: RenderingMessages, punctuation: Punctuation, counts: Counts, sequences: Sequences, texts: Texts,
-  },
-  body: code.file<typeof import("./code/rendering/explorer").default>("./code/rendering/explorer.ts"),
-})
-
-/**
- * Show the graph
- * When the page loads: the state of the compilation, the dates, the navigation, then the document the person was on,
- * in the rendering they chose; the graph comes packed in an exported page, or from trame dev at each compilation.
- */
-export const ShowGraph = entryPoint({
-  owner: "trame", in: PageApp, for: Anyone, serves: [ExecutableSpecification],
-  trigger: load(),
-  deps: {
-    window: PageWindow, memory: PageMemory, feed: GraphFeed, unpacking: Decompression, amendments: PageAmendments, explorer: ExplorerFigures, common: Common,
-    page: ThePage, regions: PageRegions, modes: RenderingModes, highlighting: MachineHighlighting,
-    markup: DocumentMarkup, around: AroundMarkup, explorerMarkup: ExplorerMarkup, drawing: ExplorerDrawing,
-    ids: DocumentIds, slots: SentenceSlots, punctuation: Punctuation, language: Language,
-    html: Html, aria: Aria, events: UiEvents, view: CssomView, iso: Iso8601, file: TextFile,
-    element: HtmlElement, escape: EscapedText, attribute: AttributeSelector, presence: AttributePresence, selectors: SelectorList, classSelector: ClassSelector,
-    words: PageWords, counts: Counts, sequences: Sequences, texts: Texts,
-  },
-  body: code.file<typeof import("./code/page/show").default>("./code/page/show.ts"),
-})
-
-// In a browser ------------------------------------------------------------------------------
-
-
-/**
- * The browser's window
- * The document of the page, CSS.escape, the media query of reduced motion, the scroll of the window.
- */
-export const BrowserWindow = implementation({
-  owner: "trame", implements: [PageWindow],
-  deps: { motion: MediaQueries5, feature: MediaFeature, counts: Counts },
-  body: code.file("./code/browser/window.ts"),
-})
-
-/**
- * Local storage
- * The person's place, in the storage of the page's origin, under the name the page decides.
- */
-export const BrowserMemory = implementation({
-  owner: "trame", implements: [PageMemory],
-  deps: { page: ThePage },
-  body: code.file("./code/browser/memory.ts"),
-})
-
-/**
- * The globals of the page, and trame dev
- * The graph an exported page carries and the mode of trame dev, in the globals the page's scripts assign; in trame dev,
- * the last graph and the stream of compilations, at the addresses of the service.
- */
-export const BrowserFeed = implementation({
-  owner: "trame", implements: [GraphFeed],
-  deps: { page: ThePage, service: DevService, values: ValueTypes },
-  body: code.file("./code/browser/feed.ts"),
-})
-
-/**
- * Amendments sent to trame dev
- * Posted as JSON to trame dev's address of amendments; the page can amend only when it follows trame dev.
- */
-export const BrowserAmendments = implementation({
-  owner: "trame", implements: [PageAmendments],
-  deps: { page: ThePage, service: DevService, http: Http, media: MediaTypes },
-  body: code.file("./code/browser/amendments.ts"),
-})
-
-/**
- * The browser's gzip
- * DecompressionStream, after base64: what "A page carries its graph compressed" packed.
- */
-export const BrowserDecompression = implementation({
-  owner: "trame", implements: [Decompression],
-  deps: { packing: PackedGraph, ecma: EcmaScript },
-  body: code.file("./code/browser/decompression.ts"),
-})
+// The page Trame writes is libs/documents' program (since documents 0.5.0), which Trame assembles for its environment
+// Browser, with the browser's realizations the library offers.
 
 /**
  * The browser runs the page
@@ -144,18 +31,15 @@ export const TheBrowserRunsThePage = binding({
 })
 
 /**
- * The page is assembled
- * The page's script was the only code of Trame outside the graph: written by hand, wired by hand, its values written in
- * it. It is now a component assembled for the browser, its entry point and its explorer bodies of the graph.
+ * Trame's page, assembled
+ * Trame assembles the library's page for its environment Browser, as the command line for a machine.
  */
-export const ThePageIsAssembled = adr({
+export const OurPageAssembled = adr({
   owner: "trame",
-  context: "The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.",
-  consequences: "The page's program is written by the assembly, like the command line's: the values of the graph frozen in it, its bodies wired, the browser's implementations chosen for the environment Browser. It carries the modules of the graph its bodies use, which makes it heavier.",
-  rejected: {
-    "Values passed to the script in the page": "the script would still build its functions by hand, outside the graph",
-    "The page drawn whole by the engine": "the explorer's states are too many to draw in advance",
-  },
+  context: "The page's program is libs/documents' component, which names no environment: a project assembles it where it chooses the browser's realizations.",
+  consequences: "Trame's environment Browser chooses the library's realizations; the page's program is assembled there with the engine, and bundled for every page the engine writes.",
+  rejected: { "Realizations of Trame's own": "the browser's are what every project's page needs, written once" },
   serves: [ExecutableSpecification],
-  appliedBy: [ShowGraph, ExplorerFigures, TheBrowserRunsThePage, RenderingWithoutGraph],
+  adopts: [ThePageIsAssembled],
+  appliedBy: [TheBrowserRunsThePage],
 })

@@ -59,7 +59,7 @@ export const Advancement = decision<{
   value: {
     component: "TrameCli",
     environment: "Local",
-    page: { component: "PageApp", environment: "Browser" },
+    page: { component: "documents/browser.PageApp", environment: "Browser" },
     terminal: "terminal.txt",
     saves: { reference: "reference", candidate: "candidate", second: "second" },
     shown: 12,
