@@ -39,7 +39,7 @@ flowchart TB
 
 ## On this machine
 
-> **On this machine does not ship yet: 13 of 15 obligations hold.**
+> **On this machine does not ship yet: 14 of 16 obligations hold.**
 
 For the target local; its programs are assembled for [Local](infra.md#Local).
 
@@ -55,26 +55,27 @@ flowchart TB
   n7["Cancelling twice refunds only once<br/><small>Scenario</small>"]:::held
   n8["Every reservation is refunded according to the rule<br/><small>Scenario</small>"]:::held
   n9["The storage is prepared<br/><small>Scenario</small>"]:::held
-  n10["The refund of a cancelled reservation<br/><small>Entity</small>"]:::held
-  n11["A reservation<br/><small>Entity</small>"]:::held
-  n12["A read writes nothing<br/><small>Architecture rule</small>"]:::held
-  n13["Every call to a third party is verified<br/><small>Architecture rule</small>"]:::held
-  n14["Utilities do not touch the world<br/><small>Architecture rule</small>"]:::held
-  n15["Prepare the storage<br/><small>Entry point</small>"]:::held
-  n16["On this machine<br/><small>Shipment</small>"]:::unknown
-  n8 -->|Depends on| n11
-  n4 -->|Depends on| n11
-  n7 -->|Depends on| n11
-  n9 -->|Verifies| n15
-  n9 -->|Depends on| n15
+  n10["A command's line read, its answer written<br/><small>Scenario</small>"]:::held
+  n11["The refund of a cancelled reservation<br/><small>Entity</small>"]:::held
+  n12["A reservation<br/><small>Entity</small>"]:::held
+  n13["A read writes nothing<br/><small>Architecture rule</small>"]:::held
+  n14["Every call to a third party is verified<br/><small>Architecture rule</small>"]:::held
+  n15["Utilities do not touch the world<br/><small>Architecture rule</small>"]:::held
+  n16["Prepare the storage<br/><small>Entry point</small>"]:::held
+  n17["On this machine<br/><small>Shipment</small>"]:::unknown
+  n8 -->|Depends on| n12
+  n4 -->|Depends on| n12
+  n7 -->|Depends on| n12
+  n9 -->|Verifies| n16
+  n9 -->|Depends on| n16
+  n9 -->|Depends on| n12
   n9 -->|Depends on| n11
-  n9 -->|Depends on| n10
   n0 -->|Produced by| n1
-  n16 -->|Ships| n0
-  n16 -->|Deployed by| n15
-  n15 -->|Depends on| n11
-  n15 -->|Depends on| n10
-  n10 -.->|Depends on| n11
+  n17 -->|Ships| n0
+  n17 -->|Deployed by| n16
+  n16 -->|Depends on| n12
+  n16 -->|Depends on| n11
+  n11 -.->|Depends on| n12
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a
@@ -97,13 +98,14 @@ flowchart TB
 | 9 | prove | [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario) | — | [The code is verified](sdlc.md#CodeVerified) via [Cancellations as records](infra.md#CancellationRecords) | **held** |  |
 | 10 | prove | [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario) | — | [The code is verified](sdlc.md#CodeVerified) via [Refund on cancellation](cancellation.md#Refund) | **held** |  |
 | 11 | prove | [The storage is prepared](scenarios.md#StoragePrepared) | — | [The code is verified](sdlc.md#CodeVerified) via [Prepare the storage](sdlc.md#PrepareStorage) | **held** |  |
-| 12 | prove | [The refund of a cancelled reservation](data.md#KeptRefund) | — | [What the service keeps, migrated](sdlc.md#KeptMigrates) | **held** |  |
-| 13 | prove | [A reservation](data.md#KeptReservation) | — | [What the service keeps, migrated](sdlc.md#KeptMigrates) | **held** |  |
-| 14 | prove | [A read writes nothing](architecture.md#ReadWithoutWrite) | — | [The rules hold](sdlc.md#RulesHeld) | **held** |  |
-| 15 | prove | [Every call to a third party is verified](architecture.md#ThirdPartiesVerified) | — | [The rules hold](sdlc.md#RulesHeld) | **held** |  |
-| 16 | prove | [Utilities do not touch the world](architecture.md#UtilitiesWithoutWorld) | — | [The rules hold](sdlc.md#RulesHeld) | **held** |  |
-| 17 | deploy | [Prepare the storage](sdlc.md#PrepareStorage) | itself | — | **held** |  |
-| 18 | record | [On this machine](sdlc.md#OnThisMachine) | — | — | **unknown** |  |
+| 12 | prove | [A command's line read, its answer written](../../../std/docs/scenarios.md#LinesReadAnswersWritten) | — | [The code is verified](sdlc.md#CodeVerified) via [A command's line, read](../../../std/docs/tooling.md#CommandLineRead) | **held** |  |
+| 13 | prove | [The refund of a cancelled reservation](data.md#KeptRefund) | — | [What the service keeps, migrated](sdlc.md#KeptMigrates) | **held** |  |
+| 14 | prove | [A reservation](data.md#KeptReservation) | — | [What the service keeps, migrated](sdlc.md#KeptMigrates) | **held** |  |
+| 15 | prove | [A read writes nothing](architecture.md#ReadWithoutWrite) | — | [The rules hold](sdlc.md#RulesHeld) | **held** |  |
+| 16 | prove | [Every call to a third party is verified](architecture.md#ThirdPartiesVerified) | — | [The rules hold](sdlc.md#RulesHeld) | **held** |  |
+| 17 | prove | [Utilities do not touch the world](architecture.md#UtilitiesWithoutWorld) | — | [The rules hold](sdlc.md#RulesHeld) | **held** |  |
+| 18 | deploy | [Prepare the storage](sdlc.md#PrepareStorage) | itself | — | **held** |  |
+| 19 | record | [On this machine](sdlc.md#OnThisMachine) | — | — | **unknown** |  |
 
 `trame ship OnThisMachine --by <name>`
 

@@ -82,7 +82,7 @@ The programs that deploy the service, run by trame ship (or by a person): the fi
 - Owner: karim
 - Language: typescript
 - Startup: `exposure` ← [Commands of a program](../../../std/docs/tooling.md#ProgramCommands)
-- Effects: terminal
+- Effects: asynchronous, terminal
 - Deployed in: [Local](infra.md#Local)
 - Exposes: [Prepare the storage](#PrepareStorage)
 
@@ -337,6 +337,7 @@ The service on a developer's machine, the way of this machine: the program for a
 | [Cancelling twice refunds only once](scenarios.md#RepeatedCancellationScenario) | **held** | [The code is verified](#CodeVerified), for [Cancellations as records](infra.md#CancellationRecords) |
 | [Every reservation is refunded according to the rule](scenarios.md#ComplianceScenario) | **held** | [The code is verified](#CodeVerified), for [Refund on cancellation](cancellation.md#Refund) |
 | [The storage is prepared](scenarios.md#StoragePrepared) | **held** | [The code is verified](#CodeVerified), for [Prepare the storage](#PrepareStorage) |
+| [A command's line read, its answer written](../../../std/docs/scenarios.md#LinesReadAnswersWritten) | **held** | [The code is verified](#CodeVerified), for [A command's line, read](../../../std/docs/tooling.md#CommandLineRead) |
 | [The refund of a cancelled reservation](data.md#KeptRefund) | **held** | [What the service keeps, migrated](#KeptMigrates) |
 | [A reservation](data.md#KeptReservation) | **held** | [What the service keeps, migrated](#KeptMigrates) |
 | [A read writes nothing](architecture.md#ReadWithoutWrite) | **held** | [The rules hold](#RulesHeld) |

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-28",
+  "generated": "2026-10-30",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -16407,7 +16407,7 @@
         "code": "1b5a8d9f"
       },
       "diagnostics": [
-        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
+        "warning: To run: trame ship runs it on the artefacts it checks"
       ]
     },
     {
@@ -17573,7 +17573,7 @@
         "code": "59129ea7"
       },
       "diagnostics": [
-        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
+        "warning: To run: trame ship runs it on the artefacts it checks"
       ]
     },
     {
@@ -17627,7 +17627,7 @@
         "code": "b395be3d"
       },
       "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+        "warning: Not built yet: trame ship builds it"
       ]
     },
     {
@@ -17745,7 +17745,7 @@
         "code": "98c7b2f2"
       },
       "diagnostics": [
-        "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
+        "warning: To run: trame ship runs it on the artefacts it checks"
       ]
     },
     {
@@ -17995,7 +17995,7 @@
         "code": "6caaf7c4"
       },
       "diagnostics": [
-        "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
+        "warning: Not built yet: trame ship builds it"
       ]
     },
     {

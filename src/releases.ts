@@ -1997,3 +1997,18 @@ export const G134 = release({
   archive: "c4eba3cff58c1b7b",
   assembledBy: G133,
 })
+
+/**
+ * Generation 135
+ */
+export const G135 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g135",
+  date: "2026-11-28",
+  what: "trame help <command> presents what a project's command reads on its line; the engine's view writes with the formats chosen on std's AnswerFormats and says a refusal in libs/commands' words; --format is std's option of every command; --at leaves the line forwarded to a project's command",
+  fingerprint: "841d450c9bc4ca2f",
+  language: "shared",
+  archive: "5c959e9d1badf723",
+  assembledBy: G134,
+})
