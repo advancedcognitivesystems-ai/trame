@@ -36,9 +36,9 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The commands of every project](sdlc.md#TheLibrary) · `src` | — | — | **unknown** | 27 November 2026 by claude  |
+| 1 | produce | [The commands of every project](sdlc.md#TheLibrary) · `src` | — | — | **unknown** | 28 November 2026 by claude  |
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 3 | prove | [The commands of every project](sdlc.md#TheLibrary) | — | the shipment | **unknown** | 27 November 2026 by claude  |
+| 3 | prove | [The commands of every project](sdlc.md#TheLibrary) | — | the shipment | **unknown** | 28 November 2026 by claude  |
 | 4 | prove | [A build writes the documents and the graph](scenarios.md#BuildWritesTheDocuments) | — | [Its code verified](sdlc.md#CodeVerified) via [Build](commands.md#Build) | **held** |  |
 | 5 | prove | [After a build, nothing changes](scenarios.md#PlanAfterTheSameBuild) | — | [Its code verified](sdlc.md#CodeVerified) via [Two builds compared](commands.md#BuildComparison) | **held** |  |
 | 6 | prove | [A plan says what a build would change](scenarios.md#PlanSaysWhatChanges) | — | [Its code verified](sdlc.md#CodeVerified) via [Two builds compared](commands.md#BuildComparison) | **held** |  |
@@ -47,7 +47,7 @@ flowchart TB
 | 9 | prove | [A view answers its document](scenarios.md#ViewAnswersItsDocument) | — | [Its code verified](sdlc.md#CodeVerified) via [View](commands.md#View) | **held** |  |
 | 10 | prove | [A command is played on a real graph](scenarios.md#PlayedOnARealGraph) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [Compiled by the engine that plays them](scenarios.md#CompiledByTheEngine) | **held** |  |
 | 11 | prove | [A command writes documents as a project does](scenarios.md#WrittenAsAProjectDoes) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [Files in Markdown, the terminal in text](scenarios.md#DocumentsAsFiles) | **held** |  |
-| 12 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 27 November 2026 by claude `evidence/shipments/NextVersion-2026-11-27-b3495299.json` |
+| 12 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 28 November 2026 by claude `evidence/shipments/NextVersion-2026-11-28-067890d0.json` |
 
 `trame ship NextVersion --by <name>`
 
@@ -77,9 +77,9 @@ flowchart TB
 
 |  | Stage | Step | Run by | Why | Status | Latest evidence |
 |---|---|---|---|---|---|---|
-| 1 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../../.github/workflows/commands-pull-request.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **held** | 27 November 2026 by claude  |
+| 1 | produce | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) · `../../.github/workflows/commands-pull-request.yml` | [A workflow of GitHub Actions](../.trame/ci/docs/github.md#GitHubWorkflow) | — | **held** | 28 November 2026 by claude  |
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
-| 3 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **held** | 27 November 2026 by claude  |
-| 4 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 27 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-27-b810d2eb.json` |
+| 3 | prove | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | — | the shipment | **held** | 28 November 2026 by claude  |
+| 4 | record | [The files that run it elsewhere](sdlc.md#RunnersWritten) | — | — | **held** | 28 November 2026 by claude `evidence/shipments/RunnersWritten-2026-11-28-722807ae.json` |
 
 `trame ship RunnersWritten --by <name>`

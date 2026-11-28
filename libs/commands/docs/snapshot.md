@@ -123,9 +123,9 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 134
+- Version: 135
 - How it joins the graph: language
-- Its path: ../../generations/g134
+- Its path: ../../generations/g135
 - Serves: Commands every project runs, written once
 
 ### The people of the repository
@@ -218,6 +218,18 @@ Release · `R0_3_0`
 - Released on: 2026-11-27
 - What changes: trame build and trame snapshot: the documents the engine's views give, written with libs/documents' renderers; documents 0.3.0, generation 133
 - Fingerprint: f84eccb53ad7bbb8
+- Language: shared
+- Serves: Commands every project runs, written once
+
+### Version 0.4.0
+
+Release · `R0_4_0`
+
+- Released by: trame
+- Version: 0.4.0
+- Released on: 2026-11-28
+- What changes: trame view: one view of the project at hand, its arguments declared, its document written in the format the line names; the words of a refused view; std 0.31.0, documents 0.4.0
+- Fingerprint: 752f80d70061f712
 - Language: shared
 - Serves: Commands every project runs, written once
 

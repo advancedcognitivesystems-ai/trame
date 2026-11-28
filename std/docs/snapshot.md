@@ -785,10 +785,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 134
+- Version: 135
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g134
+- Its path: ../generations/g135
 - Serves: Ports of the platform, realized once
 
 ### The people of the repository
@@ -1441,6 +1441,18 @@ Release · `R0_30_0`
 - Released on: 2026-11-27
 - What changes: Trame's reference syntax, which the engine gives and renderers read, in the module engine
 - Fingerprint: a85cd39da95a106b
+- Language: shared
+- Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
+
+### Version 0.31.0
+
+Release · `R0_31_0`
+
+- Released by: trame
+- Version: 0.31.0
+- Released on: 2026-11-28
+- What changes: A command's line read by what it declares, std's options apart: the format its documents are written in, an extension point (AnswerFormats) with JSON; the JSON formatting and the media types of Markdown and plain text
+- Fingerprint: 9bd1ced9100e8814
 - Language: shared
 - Serves: Commands chosen, not written again, A published value is cited, not copied, Known designs, named, Ports of the platform, realized once, Shared operations instead of literals, Rules applied, not written again, Versions that hold
 

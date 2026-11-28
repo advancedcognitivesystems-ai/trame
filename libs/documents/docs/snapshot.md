@@ -628,9 +628,9 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 134
+- Version: 135
 - How it joins the graph: language
-- Its path: ../../generations/g134
+- Its path: ../../generations/g135
 - Serves: Documents rendered once, for every project
 
 ### The people of the repository
@@ -711,6 +711,18 @@ Release · `R0_3_0`
 - Released on: 2026-11-27
 - What changes: The renderers' context is the kernel's places, which the engine's API gives (g132); generation 132
 - Fingerprint: 70cc1beb5f8ab540
+- Language: shared
+- Serves: Documents rendered once, for every project
+
+### Version 0.4.0
+
+Release · `R0_4_0`
+
+- Released by: trame
+- Version: 0.4.0
+- Released on: 2026-11-28
+- What changes: The formats of std's answers: text at a terminal and Markdown with where each card is; std 0.31.0
+- Fingerprint: 720a23669214f66a
 - Language: shared
 - Serves: Documents rendered once, for every project
 

@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-27",
+  "at": "2026-11-28",
   "nodes": [
     {
       "id": "machine.GitInstalled",
@@ -144,9 +144,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "134",
+        "version": "135",
         "joins": "language",
-        "at": "../../generations/g134"
+        "at": "../../generations/g135"
       }
     },
     {
@@ -169,9 +169,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.30.0",
+        "version": "0.31.0",
         "joins": "library",
-        "at": "../../std/releases/0.30.0"
+        "at": "../../std/releases/0.31.0"
       }
     },
     {

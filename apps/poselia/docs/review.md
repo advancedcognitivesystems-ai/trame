@@ -1,6 +1,6 @@
 # Branch review
 
-*What the declarations that are not published yet add to the published graph (`trame.lock`), as of 27 November 2026.*
+*What the declarations that are not published yet add to the published graph (`trame.lock`), as of 28 November 2026.*
 
 > **0 new declarations · 0 published declarations affected · 0 overlaps · 0 blocking holes added**
 

@@ -85,3 +85,19 @@ trame build and trame snapshot: the documents the engine's views give, written w
 
 - Released by: trame
 - Serves: [Commands every project runs, written once](product.md#WrittenOnce)
+
+<a id="R0_4_0"></a>
+
+### Version 0.4.0
+
+`R0_4_0` · `src/releases.ts:77`
+
+trame view: one view of the project at hand, its arguments declared, its document written in the format the line names; the words of a refused view; std 0.31.0, documents 0.4.0
+
+- Version: `0.4.0`
+- Released on: 28 November 2026
+- Fingerprint: `752f80d70061f712`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Commands every project runs, written once](product.md#WrittenOnce)

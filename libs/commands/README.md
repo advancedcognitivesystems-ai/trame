@@ -10,7 +10,9 @@ engine once every project of the repository runs this library's.
   with the function `BuildComparison` (two builds compared); `Build` (`trame build [--at <date>]`: the documents the
   views give, written in the syntax of files with libs/documents' renderers, graph.json and snapshot.json, the summary
   printed) and `Snapshot` (`trame snapshot`: snapshot.json and the snapshot's documents), since 0.3.0, on the
-  documents the engine's API gives (g132); the words they say (`CommandWords`).
+  documents the engine's API gives (g132); `View` (`trame view <view> [node|module]`, since 0.4.0: its arguments
+  declared on its line, its document answered and written in the format std's `--format` names), with `ViewRefused`
+  (why a view gives no document, which the engine's view says too); the words they say (`CommandWords`).
 - `src/scenarios.ts` — the commands played on a real graph: `samples/small`, a project of the library's own, compiled
   by the engine that plays the scenarios (std's `ProjectCompiledHere`), the files kept in memory.
 - `src/sdlc.ts` — how a version ships (its code verified by the scenarios, its packages safe), and the workflow that
@@ -24,7 +26,7 @@ files beside it:
 
 ```ts
 export const CommandsWrittenOnce = binding({
-  owner: "…", chooses: [Plan, Build, Snapshot, ProjectInTheEngine], environments: [Local], follows: [Command], …
+  owner: "…", chooses: [Plan, Build, Snapshot, View, ProjectInTheEngine], environments: [Local], follows: [Command], …
 })
 ```
 

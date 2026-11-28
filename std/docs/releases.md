@@ -486,6 +486,22 @@ Trame's reference syntax, which the engine gives and renderers read, in the modu
 - Released by: trame
 - Serves: [Commands chosen, not written again](product.md#ChosenCommands), [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
 
+<a id="R0_31_0"></a>
+
+### Version 0.31.0
+
+`R0_31_0` · `src/releases.ts:480`
+
+A command's line read by what it declares, std's options apart: the format its documents are written in, an extension point (AnswerFormats) with JSON; the JSON formatting and the media types of Markdown and plain text
+
+- Version: `0.31.0`
+- Released on: 28 November 2026
+- Fingerprint: `9bd1ced9100e8814`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Commands chosen, not written again](product.md#ChosenCommands), [A published value is cited, not copied](product.md#CitedNotCopied), [Known designs, named](product.md#KnownDesigns), [Ports of the platform, realized once](product.md#RealizedOnce), [Shared operations instead of literals](product.md#SharedOperations), [Rules applied, not written again](product.md#SharedRules), [Versions that hold](product.md#VersionsThatHold)
+
 <a id="R0_4_0"></a>
 
 ### Version 0.4.0

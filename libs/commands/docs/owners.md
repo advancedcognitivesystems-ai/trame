@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 2 | 49 |
+| trame | 0 | 0 | 2 | 50 |
 
 <a id="trame"></a>
 
@@ -39,6 +39,7 @@
 | [Version 0.1.2](releases.md#R0_1_2) | Release |  |
 | [Version 0.2.0](releases.md#R0_2_0) | Release |  |
 | [Version 0.3.0](releases.md#R0_3_0) | Release |  |
+| [Version 0.4.0](releases.md#R0_4_0) | Release |  |
 | [A build writes the documents and the graph](scenarios.md#BuildWritesTheDocuments) | Scenario | **held** |
 | [Compiled by the engine that plays them](scenarios.md#CompiledByTheEngine) | Technical choice | **held** |
 | [Files in Markdown, the terminal in text](scenarios.md#DocumentsAsFiles) | Technical choice | **held** |

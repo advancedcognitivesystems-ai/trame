@@ -35,8 +35,8 @@ Run from the project's directory, through the pinned generation:
 ./trame.sh plan [--at <date>]          # what a build would change against graph.json, written nowhere (g73; in Trame, libs/commands' since g124)
 ./trame.sh build --at 2026-10-27        # the graph as it was that day: evidence counts from the day it was given (g75)
 ./trame.sh test-kinds                  # the laws of the kinds and views
-./trame.sh view <view> [node|module]   # one view in the terminal: impact, why, history, assembly take a node
-./trame.sh help                        # what may be typed here: the engine's commands, the project's, the views (g116)
+./trame.sh view <view> [node|module] [--format text|md|json]   # one view: impact, why, history, assembly take a node (in Trame, libs/commands' since g135)
+./trame.sh help [command]              # what may be typed here: the engine's commands, the project's, the views (g116); a command's arguments and options (g135)
 ./trame.sh explain <node>              # everything the graph says of a node: what it is, why, what was decided, what holds it, what depends on it
 ./trame.sh <command> [args] [--env <e>] # a command of the project (E3, g116): its component assembled, its program run, in the engine's process when it is std's CommandsInTheEngine (g119); named like a command of the engine, it replaces it
 ./trame.sh pull-request "Title" ["What it changes"] --env Local|Session   # std's command Trame takes (g117): pushes, opens, merges once it holds unless a lock changed
@@ -249,6 +249,22 @@ give with libs/documents' renderers, character for character what the engine's w
 snapshot (`CommandsWrittenOnce`). A component that names no environment is offered to other projects (g133): in the
 library that declares it, the engine's command of that name answers. A project's command named like a command of
 the engine it does not keep is asked before a view of that name (g134: `snapshot` is both).
+
+**A command declares its line** (g135, std 0.31.0). Its trigger says its help, its arguments in their order and its
+options: `command("view", { help, arguments: [{ name, meaning, optional }], options: [{ name, meaning, takes }] })`;
+its entry point's document presents them, and `trame help <command>` too. std's exposures (`CommandsInTheEngine`,
+`NodeProgramCommands`) read the line by it (`CommandLineRead`: the words before any option are its arguments, an
+option is the long option of its name, `LongOptions`), refuse a line that lacks an argument or names an option nobody
+declares, and hand the command its arguments and options by name (`body.arguments`, `body.options`, the language's
+`CommandRequest`), the line as typed in `body.args`. The options of every command are std's (`StandardOptions`, never
+declared again by a command): `--format`, the format the documents a command answers are written in. A command that
+answers documents returns `{ documents, places? }` (std's `DocumentsAnswer`; `places` computed only when a format
+links) and the exposure writes them in the format the line names, among those the project chose on std's extension
+point `AnswerFormats`, the first when it names none: libs/documents' `AnswersAtATerminal` (`text`) and
+`AnswersInMarkdown` (`md`), std's `AnswersInJson` (`json`). Trame chooses the three (`AnswersAsChosen`), and the
+engine's own view writes with them. The engine leaves `--env` and `--at` out of the line it forwards to a project's
+command. libs/commands 0.4.0 holds `view`, which Trame takes, and the words of a refused view, which the engine's view
+says too.
 
 Reading a language is a primitive of the engine too (g128–g129, std 0.29.0): a `language` node's reader may be std's
 port `LanguageReading`, which `ReadByTheEngine` realizes with the engine's reader (`EngineApi.reader`). The languages the
@@ -743,6 +759,11 @@ elements), a port answered differently in several environments is answered as in
   documents 0.3.0's `TerminalText`, a node without a name in Trame's graph, found as a difference by g133's advance).
   Release the library and move the projects that import it together, or keep the link where the released versions
   expect it until then.
+- A function's constants reach its body as its dependencies do, but a body typed `BodyOf<typeof F>` does not see them,
+  and one declared `code.file("./x.ts")` without its type gives the node no type (what depends on it reads `unknown`):
+  type a function's body by its own `Deps` and declare it `code.file<typeof import("./x").default>("./x.ts")`.
+- A command that declares its line refuses an option nobody declares (g135): the engine's own options (`--env`,
+  `--at`) leave the line before it reaches the command; std's (`--format`) are read apart.
 - A Markdown link is written from the document it is in (g131: the renderer gives the syntax the document's file,
   `Target.from`): a document without a file (a view printed with `--format md`) keeps the path from the project's root.
 - A project's decision that adopts a library's names it by its package (`import { CommandsOfALibrary } from

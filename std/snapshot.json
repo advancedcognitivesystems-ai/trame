@@ -2662,10 +2662,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "134",
+        "version": "135",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g134"
+        "at": "../generations/g135"
       }
     },
     {
@@ -3470,6 +3470,19 @@
         "date": "2026-11-27",
         "what": "Trame's reference syntax, which the engine gives and renderers read, in the module engine",
         "fingerprint": "a85cd39da95a106b",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "releases.R0_31_0",
+      "kind": "release",
+      "title": "Version 0.31.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.31.0",
+        "date": "2026-11-28",
+        "what": "A command's line read by what it declares, std's options apart: the format its documents are written in, an extension point (AnswerFormats) with JSON; the JSON formatting and the media types of Markdown and plain text",
+        "fingerprint": "9bd1ced9100e8814",
         "language": "shared"
       }
     },
@@ -8393,6 +8406,41 @@
     },
     {
       "from": "releases.R0_30_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_31_0",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_31_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_31_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_31_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_31_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_31_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_31_0",
       "to": "product.VersionsThatHold",
       "kind": "serves"
     },

@@ -94,6 +94,9 @@ The repository's `AGENTS.md` is the full guide; read it first, then keep to this
   its launcher (`<name>.node.ts`, g99), which leads the names the same way before it runs the program. A reference
   behind the newest version its origin holds is warned: `trame upgrade [package…]` moves it, then runs the manifest,
   which installs the packages when the lockfile disagrees (g100); commit the lockfile, a CI installs with `npm ci`.
+- A command declares its line in its trigger (`command("view", { help, arguments, options })`): std reads it, hands
+  the body `arguments` and `options` by name, and writes an answer of documents (`{ documents, places? }`) in the format
+  `--format` names (std's option of every command, formats chosen on `AnswerFormats`). Never declare `--format` again.
 - `trame build` and `trame snapshot` are libs/commands' where a project chooses them (Trame does): they write the
   documents the engine's API gives (`compiled.documents()`) with libs/documents' renderers.
 - What renders documents is libs/documents' (`#documents/rendering`: `FileRendering`, `TerminalRendering`, `Common`,

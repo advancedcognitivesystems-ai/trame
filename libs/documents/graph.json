@@ -2713,9 +2713,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "134",
+        "version": "135",
         "joins": "language",
-        "at": "../../generations/g134"
+        "at": "../../generations/g135"
       },
       "diagnostics": []
     },
@@ -2814,6 +2814,21 @@
         "date": "2026-11-27",
         "what": "The renderers' context is the kernel's places, which the engine's API gives (g132); generation 132",
         "fingerprint": "70cc1beb5f8ab540",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_4_0",
+      "kind": "release",
+      "title": "Version 0.4.0",
+      "source": "src/releases.ts:64",
+      "fields": {
+        "owner": "trame",
+        "version": "0.4.0",
+        "date": "2026-11-28",
+        "what": "The formats of std's answers: text at a terminal and Markdown with where each card is; std 0.31.0",
+        "fingerprint": "720a23669214f66a",
         "language": "shared"
       },
       "diagnostics": []
@@ -4385,7 +4400,7 @@
       },
       "result": {
         "path": "src",
-        "code": "700946f0"
+        "code": "0685b848"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -5642,6 +5657,11 @@
     },
     {
       "from": "releases.R0_3_0",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_4_0",
       "to": "product.RenderedOnce",
       "kind": "serves"
     },

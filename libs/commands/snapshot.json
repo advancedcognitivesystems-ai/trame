@@ -214,9 +214,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "134",
+        "version": "135",
         "joins": "language",
-        "at": "../../generations/g134"
+        "at": "../../generations/g135"
       }
     },
     {
@@ -314,6 +314,19 @@
         "date": "2026-11-27",
         "what": "trame build and trame snapshot: the documents the engine's views give, written with libs/documents' renderers; documents 0.3.0, generation 133",
         "fingerprint": "f84eccb53ad7bbb8",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "releases.R0_4_0",
+      "kind": "release",
+      "title": "Version 0.4.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.4.0",
+        "date": "2026-11-28",
+        "what": "trame view: one view of the project at hand, its arguments declared, its document written in the format the line names; the words of a refused view; std 0.31.0, documents 0.4.0",
+        "fingerprint": "752f80d70061f712",
         "language": "shared"
       }
     },
@@ -837,6 +850,11 @@
     },
     {
       "from": "releases.R0_3_0",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_4_0",
       "to": "product.WrittenOnce",
       "kind": "serves"
     },

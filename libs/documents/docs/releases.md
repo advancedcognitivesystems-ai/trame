@@ -69,3 +69,19 @@ The renderers' context is the kernel's places, which the engine's API gives (g13
 
 - Released by: trame
 - Serves: [Documents rendered once, for every project](product.md#RenderedOnce)
+
+<a id="R0_4_0"></a>
+
+### Version 0.4.0
+
+`R0_4_0` · `src/releases.ts:64`
+
+The formats of std's answers: text at a terminal and Markdown with where each card is; std 0.31.0
+
+- Version: `0.4.0`
+- Released on: 28 November 2026
+- Fingerprint: `720a23669214f66a`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Documents rendered once, for every project](product.md#RenderedOnce)

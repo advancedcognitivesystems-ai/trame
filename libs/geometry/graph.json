@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-27",
+  "generated": "2026-11-28",
   "nodes": [
     {
       "id": "angles.Angle",
@@ -51,7 +51,7 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "134",
+        "version": "135",
         "joins": "language",
         "from": "registry"
       },
@@ -79,7 +79,7 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.30.0",
+        "version": "0.31.0",
         "joins": "library",
         "from": "registry"
       },
@@ -201,7 +201,7 @@
       },
       "result": {
         "path": "src",
-        "code": "ec5b98b1"
+        "code": "c2e26aa1"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
