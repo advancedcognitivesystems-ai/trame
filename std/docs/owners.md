@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 6 | 286 |
+| trame | 0 | 0 | 8 | 304 |
 
 <a id="trame"></a>
 
@@ -16,6 +16,8 @@
 | warning | `rules-look-alike` | Computes the same kind of answer from the same kind of arguments as “A node reaches what it must” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A node never reaches what it must not](rules.md#NeverReaches) | trame |  |
 | warning | `rules-look-alike` | Computes the same kind of answer from the same kind of arguments as “A node never reaches what it must not” (trame), for the same need: if they can disagree, one amends or constrains the other; if they answer different questions, a more precise type says so | [A node reaches what it must](rules.md#Reaches) | trame |  |
 | warning | `shipment-awaits` | To ship: The standard library is unknown | [The next version](sdlc.md#NextVersion) | trame |  |
+| warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | trame |  |
+| warning | `shipment-awaits` | To ship: The pull requests' workflow is unknown | [The files that run it elsewhere](sdlc.md#RunnersWritten) | trame |  |
 | warning | `artifact-stale` | Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again | [The standard library](sdlc.md#TheLibrary) | trame |  |
 | warning | `port-unrealized` | No realization, in any environment | [Where a package comes from](tooling.md#PackageSources) | trame |  |
 
@@ -211,6 +213,22 @@
 | [Criteria of effects a node may not have](rules.md#WithoutEffectsCriteria) | Acceptance criteria | **held** |
 | [Words of a vocabulary](rules.md#WordsOf) | Requirement | **held** |
 | [Criteria of words of a vocabulary](rules.md#WordsOfCriteria) | Acceptance criteria | **held** |
+| [A clock stopped](running.md#ClockStopped) | Function | **held** |
+| [Serving HTTP](running.md#HttpServing) | Port |  |
+| [Lines kept](running.md#LinesInMemory) | Function | **held** |
+| [The lines printed](running.md#LinesKept) | Port |  |
+| [Printing as it goes](running.md#LinesPrinted) | Port |  |
+| [The machine's clock](running.md#MachineClock) | Implementation |  |
+| [The machine's timers](running.md#MachineTimers) | Implementation | **held** |
+| [A server of Node.js](running.md#NodeHttpServing) | Implementation |  |
+| [A command that keeps running asks the machine through ports](running.md#RunningThroughPorts) | Architecture decision | **held** |
+| [What a realization of this module says](running.md#RunningWords) | Message catalog |  |
+| [The instant of the scenarios](running.md#ScenarioInstant) | Decision |  |
+| [A server in memory](running.md#ServerInMemory) | Function | **held** |
+| [The server asked](running.md#ServerKept) | Port |  |
+| [The standard output](running.md#StandardOutput) | Implementation |  |
+| [The clock](running.md#TheClock) | Port |  |
+| [Timers](running.md#Waiting) | Port |  |
 | [Commands are made for each effect](scenarios.md#CommandsMade) | Scenario | **held** |
 | [The device, in memory](scenarios.md#DeviceInMemory) | Scenario | **held** |
 | [Seeded draws keep their promise](scenarios.md#DrawsKeepTheirPromise) | Scenario | **held** |
@@ -227,6 +245,7 @@
 | [A pull request opened](scenarios.md#PullRequestOpened) | Scenario | **held** |
 | [Read by the engine that builds](scenarios.md#ReadInTheEngine) | Technical choice | **held** |
 | [A repository kept in memory](scenarios.md#RepositoryInMemoryKeeps) | Scenario | **held** |
+| [Running, in memory](scenarios.md#RunningInMemory) | Scenario | **held** |
 | [What the library's scenarios check](scenarios.md#ScenarioChecks) | Message catalog |  |
 | [A command's line, in the scenarios](scenarios.md#ScenarioCommand) | Decision |  |
 | [What the library's scenarios are given](scenarios.md#ScenarioData) | Decision |  |
@@ -238,6 +257,7 @@
 | [Judged strictly](scenarios.md#StrictJudgment) | Technical choice | **held** |
 | [Test](scenarios.md#Test) | Environment |  |
 | [The tooling, in memory](scenarios.md#ToolingInMemory) | Scenario | **held** |
+| [Waiting on the machine](scenarios.md#WaitingAsAPersonWould) | Technical choice | **held** |
 | [Its callers identified](sdlc.md#CallersIdentified) | Obligation |  |
 | [Its data reviewed](sdlc.md#DataReviewed) | Obligation |  |
 | [Its decisions applied](sdlc.md#DecisionsApplied) | Obligation |  |
@@ -245,10 +265,10 @@
 | [The next version](sdlc.md#NextVersion) | Shipment | **unknown** |
 | [Its packages safe](sdlc.md#PackagesSafe) | Obligation |  |
 | [How a pull request is checked on GitHub](sdlc.md#PullRequestsOnGitHub) | Decision |  |
-| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **held** |
+| [The pull requests' workflow](sdlc.md#PullRequestWorkflow) | Artefact | **unknown** |
 | [Its requirements held](sdlc.md#RequirementsServed) | Obligation |  |
 | [Its rules held](sdlc.md#RulesHeld) | Obligation |  |
-| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **held** |
+| [The files that run it elsewhere](sdlc.md#RunnersWritten) | Shipment | **unknown** |
 | [The standard library](sdlc.md#TheLibrary) | Artefact | **unknown** |
 | [How a version is made](sdlc.md#VersionMode) | Policy |  |
 | [Exit status](system.md#ExitStatus) | Standard |  |

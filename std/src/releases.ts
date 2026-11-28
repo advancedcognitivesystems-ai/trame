@@ -486,3 +486,16 @@ export const R0_31_0 = release({
   language: "shared",
   serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
 })
+
+/**
+ * Version 0.32.0
+ */
+export const R0_32_0 = release({
+  owner: "trame",
+  version: "0.32.0",
+  date: "2026-11-28",
+  what: "A text read back by the engine (LanguageReading's readText); the page's program, bundled by the engine (TheProject's page); what a command that keeps running asks of the machine (module running: the clock, timers, a server of HTTP, lines printed as it goes, with Node.js's realizations and, for scenarios, a clock stopped, a server asked in memory, the lines kept)",
+  fingerprint: "5ee4f3123d0cc584",
+  language: "shared",
+  serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})

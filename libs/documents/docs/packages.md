@@ -36,13 +36,13 @@ The writers of the files that run a shipment elsewhere (GitHub Actions), at the 
 The language the library is written in, at the generation the repository runs, by its path: the one whose views give the documents the library renders.
 
 - Name: `trame`
-- Version: `135`
+- Version: `136`
 - Installed: Not installed in the project: its lockfile lists no trame
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `language`
-- Its path: `../../generations/g135`
+- Its path: `../../generations/g136`
 
 - Owner: trame
 - Serves: [Documents rendered once, for every project](product.md#RenderedOnce)
@@ -77,13 +77,13 @@ Who works on Trame's repository, declared once as actors (C4): every owner of th
 The library the renderers are written with: its structures, its standards, its patterns.
 
 - Name: `std`
-- Version: `0.31.0`
+- Version: `0.32.0`
 - Installed: Not installed in the project: its lockfile lists no std
 - Vulnerabilities: No report yet: trame audit asks the registry
 - Latest version: No report yet: trame audit asks the registry
 - What it may do: not said: an implementation that imports it cannot promise anything
 - How it joins the graph: `library`
-- Its path: `../../std/releases/0.31.0`
+- Its path: `../../std/releases/0.32.0`
 
 - Owner: trame
 - Serves: [Documents rendered once, for every project](product.md#RenderedOnce)

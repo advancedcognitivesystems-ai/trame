@@ -13,6 +13,7 @@ const body: BodyOf<typeof ProjectInTheEngine> = ({ say }) => {
   }
   return {
     layout: () => api().layout,
+    page: () => api().page(),
     compiled: async () => {
       const prepared = api().prepared()
       if (!prepared) throw new Error(say.nothingPrepared())

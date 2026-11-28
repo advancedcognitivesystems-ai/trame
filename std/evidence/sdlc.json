@@ -1225,6 +1225,17 @@
     "seal": "f3f985bc5d328b94331268bf7a2316c13f501d2d9896ef688757f8b0659485e7"
   },
   {
+    "node": "sdlc.NextVersion",
+    "at": "2026-11-28",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "5dc981f2",
+    "url": "evidence/shipments/NextVersion-2026-11-28-5dc981f2.json",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "c023e0020d1ac5bdcd61a46a27502679de423b6a23e91de8bd8ee2d27496170b"
+  },
+  {
     "node": "sdlc.PullRequestWorkflow",
     "at": "2026-11-28",
     "source": "built",
@@ -1280,5 +1291,28 @@
     "by": "claude",
     "signature": "attribution",
     "seal": "65416e6241daf9c35b2af8aef9681932ac21aeeb84c27f15cb27f2183c59be3a"
+  },
+  {
+    "node": "sdlc.TheLibrary",
+    "at": "2026-11-28",
+    "source": "built",
+    "value": 1,
+    "fingerprint": "9241a032691a86f2278218e863abb4d1954da6099fde630840f33680ac025acf",
+    "code": "64bc336d",
+    "by": "claude",
+    "signature": "attribution",
+    "engine": "83cf5a92876512a0",
+    "seal": "4a673773b579275366aeafa8ece93575f3ee7eeb1d4dc29f15b1e46777b933aa"
+  },
+  {
+    "node": "sdlc.TheLibrary",
+    "at": "2026-11-28",
+    "source": "shipped",
+    "value": 1,
+    "fingerprint": "9241a032691a86f2278218e863abb4d1954da6099fde630840f33680ac025acf",
+    "subject": "sdlc.NextVersion",
+    "by": "claude",
+    "signature": "attribution",
+    "seal": "5dc5e99fc312a307956500fab468ff20bdb87100965b8a73a3dd594658fc28f6"
   }
 ]

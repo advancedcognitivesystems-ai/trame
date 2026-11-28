@@ -1,0 +1,331 @@
+{
+  "shipment": "sdlc.NextVersion",
+  "title": "The next version",
+  "target": "version",
+  "at": "2026-11-28",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.TheLibrary",
+      "path": "src",
+      "fingerprint": "b73129383d9a912cb9f8d3bd0aa4527c8d5a78b052f05ad9d814fbe9ece68b18"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.TheLibrary",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-26",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "c129edb86a12dca60dd21dfcf77b504ac47a7e649c124520e962fb790a76c725",
+          "code": "636e0cc8",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "ee027dcb6d4b0887",
+          "seal": "351fc1dea9093adfe41ee4418ba278857fec491d2e4ac5b2cdd8e750631cf4e3"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-26",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "c129edb86a12dca60dd21dfcf77b504ac47a7e649c124520e962fb790a76c725",
+          "subject": "sdlc.NextVersion",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "e3752c66b4b914d4bda335aecd81abfa90152a72b93f19909097011b381a4f2e"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-27",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "4eb79cc05608f84449153540ba2754042a886f4e6128cbb950858483608b618e",
+          "code": "2f237532",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "203a6308a3ce37b3",
+          "seal": "8ecec0c6941ddecf37dc8ceebf945f4227d1a877d31fcb2169af60a640b17fc6"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-27",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "4eb79cc05608f84449153540ba2754042a886f4e6128cbb950858483608b618e",
+          "subject": "sdlc.NextVersion",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "2861b1dbff29ec00d4914dfc9b75adf35560b613401184b36cdb21e74b426165"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-27",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "11e0d99da70eec189f5b4bbddc376f0b4e2a88a9da0f1934b347afd92d31e00e",
+          "code": "bdde3be7",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "758896ce908b9ecb",
+          "seal": "fb142b1fc0befb27cfc376d07fb4a15289e941510627d68ce691f6b706514eb4"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-27",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "11e0d99da70eec189f5b4bbddc376f0b4e2a88a9da0f1934b347afd92d31e00e",
+          "subject": "sdlc.NextVersion",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "60bf38b0f37c7f5f221e4c8f9dd4ddd6340f97f28bc3f778a932d5c9b95fa8cd"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-27",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "5c0346d88aa5faf8c803f0855f034e05aa1061e1eee7b8f939cd9a91b5b392e5",
+          "code": "c2ebfe7b",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "8eb573fee17a586a",
+          "seal": "1ad22738bee5aaa653d2907ea8fa9b019f679f9b10770789083c812bd0d526e3"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-27",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "5c0346d88aa5faf8c803f0855f034e05aa1061e1eee7b8f939cd9a91b5b392e5",
+          "subject": "sdlc.NextVersion",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "3a2be86dca2ca9579a401cbe66818d9cd52d9ea5e985842667399f6ba5986c68"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-28",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "bce7dc429f648d12bbf991c81ddcbd06399e48c70c7e5b5270cc512d5f7b0854",
+          "code": "700946f0",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "cbca529b66a70907",
+          "seal": "0730a36b3ea2def00e085295c60aff892158e866e13e176f6fccfff2ea466822"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-28",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "bce7dc429f648d12bbf991c81ddcbd06399e48c70c7e5b5270cc512d5f7b0854",
+          "subject": "sdlc.NextVersion",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "09c86bce9fa433f158128eb5f9ba583315ed8600a00c9f76bc5684febf92fa7d"
+        },
+        {
+          "node": "sdlc.TheLibrary",
+          "at": "2026-11-28",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "b73129383d9a912cb9f8d3bd0aa4527c8d5a78b052f05ad9d814fbe9ece68b18",
+          "code": "1bfcc438",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "83cf5a92876512a0",
+          "seal": "3eec807c9385df7d323d152cbdee582652fe01a927218303195259f05868574a"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.TheExplorerDraws",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerified",
+      "via": "browser.ExplorerFigures",
+      "outcome": [
+        {
+          "name": "A large graph is explored from the map of its layers",
+          "status": "passed"
+        },
+        {
+          "name": "Reservations answered fast, in focus, is drawn with its neighbours",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.LanguageWritten",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerified",
+      "via": "language.Dates",
+      "outcome": [
+        {
+          "name": "2026-10-17 is written as people read it, long and short, and its month",
+          "status": "passed"
+        },
+        {
+          "name": "Three items are joined by the words of a conjunction, as they are",
+          "status": "passed"
+        },
+        {
+          "name": "The marks between the parts of a line are those of the language of the documents",
+          "status": "passed"
+        },
+        {
+          "name": "A number is written with two decimals at most; a quantity in the largest of its units it makes a whole number of",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.ThePageIsMade",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerified",
+      "via": "page.Page",
+      "outcome": [
+        {
+          "name": "A page is a document of its own: its DOCTYPE first, its title naming the project, its program and the graph in its scripts",
+          "status": "passed"
+        },
+        {
+          "name": "A page a host shows has no skeleton: no DOCTYPE, its title and its scripts all the same",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.AnswersWritten",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerified",
+      "via": "rendering.AnswersAtATerminal",
+      "outcome": [
+        {
+          "name": "Documents a command answers, printed at a terminal, read as the renderer of the terminal gives them",
+          "status": "passed"
+        },
+        {
+          "name": "Documents a command answers, in Markdown, read as the renderer of files gives them, their references leading where the answer says",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.DocumentsRendered",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerified",
+      "via": "rendering.Common",
+      "outcome": [
+        {
+          "name": "A small project, written as a file, reads as expected",
+          "status": "passed"
+        },
+        {
+          "name": "A small project, printed at a terminal, reads as expected",
+          "status": "passed"
+        },
+        {
+          "name": "Product, written as a file, reads as expected",
+          "status": "passed"
+        },
+        {
+          "name": "Product, printed at a terminal, reads as expected",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.DocumentsInThePage",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerified",
+      "via": "rendering.HtmlSyntax",
+      "outcome": [
+        {
+          "name": "A small project, in the page, reads as expected",
+          "status": "passed"
+        },
+        {
+          "name": "Product, in the page, reads as expected",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "browser.ThePageIsAssembled",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.DecisionsApplied",
+      "via": "browser.ExplorerFigures"
+    },
+    {
+      "node": "scenarios.TheEnginesLanguage",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.DecisionsApplied",
+      "via": "language.Dates"
+    },
+    {
+      "node": "page.StyleThroughVariables",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.DecisionsApplied",
+      "via": "page.NarrowScreenRule"
+    },
+    {
+      "node": "rendering.OneRendererManySyntaxes",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.DecisionsApplied",
+      "via": "rendering.FileRendering"
+    },
+    {
+      "node": "scenarios.HowTheScenariosRender",
+      "kind": "adr",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.DecisionsApplied",
+      "via": "scenarios.FiguresInMermaid"
+    }
+  ],
+  "deployed": []
+}

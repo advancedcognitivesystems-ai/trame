@@ -2662,10 +2662,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "135",
+        "version": "136",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g135"
+        "at": "../generations/g136"
       }
     },
     {
@@ -4488,6 +4488,191 @@
       }
     },
     {
+      "id": "running.ClockStopped",
+      "kind": "function",
+      "title": "A clock stopped",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "instant": "running.ScenarioInstant"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "running.HttpServing",
+      "kind": "port",
+      "title": "Serving HTTP",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": [
+          "network"
+        ]
+      }
+    },
+    {
+      "id": "running.LinesInMemory",
+      "kind": "function",
+      "title": "Lines kept",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "running.LinesKept",
+      "kind": "port",
+      "title": "The lines printed",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": []
+      }
+    },
+    {
+      "id": "running.LinesPrinted",
+      "kind": "port",
+      "title": "Printing as it goes",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": [
+          "terminal"
+        ]
+      }
+    },
+    {
+      "id": "running.MachineClock",
+      "kind": "implementation",
+      "title": "The machine's clock",
+      "fields": {
+        "owner": "trame",
+        "body": {
+          "file": "./code/running/machine-clock.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "running.MachineTimers",
+      "kind": "implementation",
+      "title": "The machine's timers",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "body": {
+          "file": "./code/running/machine-timers.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "running.NodeHttpServing",
+      "kind": "implementation",
+      "title": "A server of Node.js",
+      "fields": {
+        "owner": "trame",
+        "body": {
+          "file": "./code/running/node-http.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "running.RunningThroughPorts",
+      "kind": "adr",
+      "title": "A command that keeps running asks the machine through ports",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "trame dev leaves the engine for a library of commands: the server, the timers, the clock and the terminal it used were the engine's own ports, which no library reaches.",
+        "consequences": "A library's command that keeps running is played in memory like any other: its server asked as a browser would, its clock stopped, its lines kept; on a machine, Node.js answers.",
+        "rejected": {
+          "The engine's API serving the page": "the engine would serve HTTP for a command, a platform it has no reason to give"
+        }
+      }
+    },
+    {
+      "id": "running.RunningWords",
+      "kind": "catalog",
+      "title": "What a realization of this module says",
+      "fields": {
+        "owner": "trame",
+        "messages": "(function)"
+      }
+    },
+    {
+      "id": "running.ScenarioInstant",
+      "kind": "decision",
+      "title": "The instant of the scenarios",
+      "fields": {
+        "owner": "trame",
+        "value": "2026-10-30T08:00:00.000Z"
+      }
+    },
+    {
+      "id": "running.ServerInMemory",
+      "kind": "function",
+      "title": "A server in memory",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "events": "system.NodeEvents",
+          "http": "web.Http",
+          "texts": "algebra.Texts",
+          "say": "running.RunningWords"
+        },
+        "body": {
+          "file": "./code/running/server-in-memory.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "running.ServerKept",
+      "kind": "port",
+      "title": "The server asked",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": []
+      }
+    },
+    {
+      "id": "running.StandardOutput",
+      "kind": "implementation",
+      "title": "The standard output",
+      "fields": {
+        "owner": "trame",
+        "body": {
+          "file": "./code/running/standard-output.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "running.TheClock",
+      "kind": "port",
+      "title": "The clock",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": [
+          "time"
+        ]
+      }
+    },
+    {
+      "id": "running.Waiting",
+      "kind": "port",
+      "title": "Timers",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": [
+          "time"
+        ]
+      }
+    },
+    {
       "id": "scenarios.CommandsMade",
       "kind": "scenario",
       "title": "Commands are made for each effect",
@@ -4626,6 +4811,7 @@
           "html": "languages.HtmlMarkup",
           "css": "languages.CssStyleSheets",
           "counts": "algebra.Counts",
+          "data": "scenarios.ScenarioData",
           "checks": "scenarios.ScenarioChecks"
         },
         "body": "(function)"
@@ -4738,6 +4924,29 @@
           "data": "scenarios.ScenarioData",
           "checks": "scenarios.ScenarioChecks",
           "counts": "algebra.Counts"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "scenarios.RunningInMemory",
+      "kind": "scenario",
+      "title": "Running, in memory",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "clock": "running.TheClock",
+          "instant": "running.ScenarioInstant",
+          "serving": "running.HttpServing",
+          "server": "running.ServerKept",
+          "waiting": "running.Waiting",
+          "printing": "running.LinesPrinted",
+          "printed": "running.LinesKept",
+          "events": "system.NodeEvents",
+          "texts": "algebra.Texts",
+          "data": "scenarios.ScenarioData",
+          "checks": "scenarios.ScenarioChecks"
         },
         "body": "(function)"
       }
@@ -5022,6 +5231,19 @@
               "path": "apps/app/trame.json",
               "to": "{\"libraries\":{\"lib\":{\"path\":\"../../libs/lib\",\"version\":\"0.2.0\"}}}"
             }
+          },
+          "sheet": {
+            "written": ":root { --ink: black; } p { color: var(--ink); }",
+            "cut": "p { color: var(--ink"
+          },
+          "served": {
+            "port": 4173,
+            "path": "/",
+            "status": 200,
+            "header": "content-type",
+            "media": "text/plain",
+            "text": "a page",
+            "wait": 10
           }
         }
       }
@@ -5119,6 +5341,16 @@
       }
     },
     {
+      "id": "scenarios.WaitingAsAPersonWould",
+      "kind": "binding",
+      "title": "Waiting on the machine",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "A wait kept in memory would call at once what a person waits for: the scenario would no longer wait."
+      }
+    },
+    {
       "id": "sdlc.CallersIdentified",
       "kind": "obligation",
       "title": "Its callers identified",
@@ -5209,7 +5441,7 @@
       "id": "sdlc.PullRequestWorkflow",
       "kind": "artifact",
       "title": "The pull requests' workflow",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "../.github/workflows/std-pull-request.yml",
@@ -5236,7 +5468,7 @@
       "id": "sdlc.RunnersWritten",
       "kind": "shipment",
       "title": "The files that run it elsewhere",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "repository"
@@ -8985,6 +9217,156 @@
       "kind": "accepts"
     },
     {
+      "from": "running.ClockStopped",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "running.ClockStopped",
+      "to": "running.TheClock",
+      "kind": "implements"
+    },
+    {
+      "from": "running.ClockStopped",
+      "to": "running.ScenarioInstant",
+      "kind": "deps"
+    },
+    {
+      "from": "running.LinesInMemory",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "running.LinesInMemory",
+      "to": "running.LinesPrinted",
+      "kind": "implements"
+    },
+    {
+      "from": "running.LinesInMemory",
+      "to": "running.LinesKept",
+      "kind": "implements"
+    },
+    {
+      "from": "running.MachineClock",
+      "to": "running.TheClock",
+      "kind": "implements"
+    },
+    {
+      "from": "running.MachineTimers",
+      "to": "running.Waiting",
+      "kind": "implements"
+    },
+    {
+      "from": "running.NodeHttpServing",
+      "to": "running.HttpServing",
+      "kind": "implements"
+    },
+    {
+      "from": "running.RunningThroughPorts",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "running.RunningThroughPorts",
+      "to": "running.TheClock",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "running.RunningThroughPorts",
+      "to": "running.Waiting",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "running.RunningThroughPorts",
+      "to": "running.HttpServing",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "running.RunningThroughPorts",
+      "to": "running.LinesPrinted",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "running.RunningThroughPorts",
+      "to": "running.MachineClock",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "running.RunningThroughPorts",
+      "to": "running.MachineTimers",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "running.RunningThroughPorts",
+      "to": "running.NodeHttpServing",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "running.RunningThroughPorts",
+      "to": "running.StandardOutput",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "running.RunningThroughPorts",
+      "to": "running.ClockStopped",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "running.RunningThroughPorts",
+      "to": "running.ServerInMemory",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "running.RunningThroughPorts",
+      "to": "running.LinesInMemory",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "running.RunningWords",
+      "to": "tooling.CommandLanguage",
+      "kind": "language"
+    },
+    {
+      "from": "running.ServerInMemory",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "running.ServerInMemory",
+      "to": "running.HttpServing",
+      "kind": "implements"
+    },
+    {
+      "from": "running.ServerInMemory",
+      "to": "running.ServerKept",
+      "kind": "implements"
+    },
+    {
+      "from": "running.ServerInMemory",
+      "to": "system.NodeEvents",
+      "kind": "deps"
+    },
+    {
+      "from": "running.ServerInMemory",
+      "to": "web.Http",
+      "kind": "deps"
+    },
+    {
+      "from": "running.ServerInMemory",
+      "to": "algebra.Texts",
+      "kind": "deps"
+    },
+    {
+      "from": "running.ServerInMemory",
+      "to": "running.RunningWords",
+      "kind": "deps"
+    },
+    {
+      "from": "running.StandardOutput",
+      "to": "running.LinesPrinted",
+      "kind": "implements"
+    },
+    {
       "from": "scenarios.CommandsMade",
       "to": "effects.Commands",
       "kind": "verifies"
@@ -9151,6 +9533,11 @@
     },
     {
       "from": "scenarios.HowTheScenariosRun",
+      "to": "scenarios.WaitingAsAPersonWould",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.HowTheScenariosRun",
       "to": "scenarios.ScenarioSettings",
       "kind": "appliedBy"
     },
@@ -9222,6 +9609,21 @@
     {
       "from": "scenarios.InMemory",
       "to": "tooling.ProgramRunsInMemory",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.InMemory",
+      "to": "running.ClockStopped",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.InMemory",
+      "to": "running.ServerInMemory",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.InMemory",
+      "to": "running.LinesInMemory",
       "kind": "chooses"
     },
     {
@@ -9327,6 +9729,11 @@
     {
       "from": "scenarios.LanguagesRead",
       "to": "algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.LanguagesRead",
+      "to": "scenarios.ScenarioData",
       "kind": "deps"
     },
     {
@@ -9670,6 +10077,86 @@
       "kind": "deps"
     },
     {
+      "from": "scenarios.RunningInMemory",
+      "to": "running.ClockStopped",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.RunningInMemory",
+      "to": "running.ServerInMemory",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.RunningInMemory",
+      "to": "running.LinesInMemory",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.RunningInMemory",
+      "to": "running.MachineTimers",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.RunningInMemory",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.RunningInMemory",
+      "to": "running.TheClock",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RunningInMemory",
+      "to": "running.ScenarioInstant",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RunningInMemory",
+      "to": "running.HttpServing",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RunningInMemory",
+      "to": "running.ServerKept",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RunningInMemory",
+      "to": "running.Waiting",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RunningInMemory",
+      "to": "running.LinesPrinted",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RunningInMemory",
+      "to": "running.LinesKept",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RunningInMemory",
+      "to": "system.NodeEvents",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RunningInMemory",
+      "to": "algebra.Texts",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RunningInMemory",
+      "to": "scenarios.ScenarioData",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.RunningInMemory",
+      "to": "scenarios.ScenarioChecks",
+      "kind": "deps"
+    },
+    {
       "from": "scenarios.ScenarioChecks",
       "to": "scenarios.ScenarioLanguage",
       "kind": "language"
@@ -9793,6 +10280,26 @@
       "from": "scenarios.ToolingInMemory",
       "to": "scenarios.ScenarioChecks",
       "kind": "deps"
+    },
+    {
+      "from": "scenarios.WaitingAsAPersonWould",
+      "to": "running.MachineTimers",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.WaitingAsAPersonWould",
+      "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.WaitingAsAPersonWould",
+      "to": "patterns.Adapter",
+      "kind": "follows"
+    },
+    {
+      "from": "scenarios.WaitingAsAPersonWould",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
     },
     {
       "from": "sdlc.CallersIdentified",

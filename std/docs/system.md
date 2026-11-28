@@ -107,7 +107,7 @@ Source: Node.js documentation: stream.Readable ('data', 'close', 'error'), Child
 
 - Maintained by: trame
 - Serves: [A published value is cited, not copied](product.md#CitedNotCopied)
-- Used by: [The automatic merge, by GitHub's command line](repository.md#AutoMergeByGitHubCli), [The automatic merge, in a session of Claude Code](repository.md#AutoMergeInAClaudeSession), [Git's branches](repository.md#GitCliBranches), [GitHub's pull requests, by its command line](repository.md#GitHubCliPullRequests), [GitHub's command line](repository.md#GitHubCliRepository), [Programs run by Node](tooling.md#NodeProgramRuns)
+- Used by: [The automatic merge, by GitHub's command line](repository.md#AutoMergeByGitHubCli), [The automatic merge, in a session of Claude Code](repository.md#AutoMergeInAClaudeSession), [Git's branches](repository.md#GitCliBranches), [GitHub's pull requests, by its command line](repository.md#GitHubCliPullRequests), [GitHub's command line](repository.md#GitHubCliRepository), [A server in memory](running.md#ServerInMemory), [Running, in memory](scenarios.md#RunningInMemory), [Programs run by Node](tooling.md#NodeProgramRuns)
 
 <a id="NodeModuleSpecifiers"></a>
 

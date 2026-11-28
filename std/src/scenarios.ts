@@ -23,6 +23,9 @@ import {
 import { BranchesInMemory, BranchesKept, PullRequestsInMemory, PullRequestsKept, type PullRequestOpen } from "./repository"
 import { Strategy, Adapter, Plugin } from "./patterns"
 import { ReadByTheEngine, LanguageReading } from "./engine"
+import { TheClock, Waiting, HttpServing, LinesPrinted, ServerKept, LinesKept, ClockStopped, ServerInMemory, LinesInMemory, MachineTimers, ScenarioInstant } from "./running"
+import { NodeEvents } from "./system"
+import { Texts } from "./algebra"
 import { HtmlMarkup, CssStyleSheets } from "./languages"
 import { Commands, Effects } from "./effects"
 import { Counts, Sequences } from "./algebra"
@@ -50,12 +53,25 @@ export const InMemory = binding({
   owner: "trame",
   chooses: [
     MemoryPreferences, WrittenSpeech, AwakeInMemory, FramesByHand, FilesInMemory, BrowserInMemory, RepositoryInMemory, BranchesInMemory, PullRequestsInMemory,
-    ProgramRunsInMemory,
+    ProgramRunsInMemory, ClockStopped, ServerInMemory, LinesInMemory,
   ],
   environments: [Test],
   follows: [Strategy],
   serves: [RealizedOnce],
   context: "A realization kept in memory is what a project's scenarios run in place of the device: it must keep its port's promise.",
+})
+
+/**
+ * Waiting on the machine
+ * In the library's scenarios, a function waited for is called by Node.js's timers: a scenario waits as a person would.
+ */
+export const WaitingAsAPersonWould = binding({
+  owner: "trame",
+  chooses: [MachineTimers],
+  environments: [Test],
+  follows: [Adapter],
+  serves: [RealizedOnce],
+  context: "A wait kept in memory would call at once what a person waits for: the scenario would no longer wait.",
 })
 
 /**
@@ -121,6 +137,12 @@ export const ScenarioChecks = catalog({
     lineRefused: () => "A line that lacks an argument the command needs, or names an option nobody declares, is refused in the library's words",
     answerWritten: () => "Documents a command answers are written in the format the line names, the first chosen when it names none; a word nobody chose is refused",
     languageRead: (language: string) => `The engine loads ${language}'s grammar and its queries, which use only the predicates tree-sitter evaluates`,
+    textReadBack: () => "A style sheet written is read back: the variables it uses are those it writes; one cut short does not follow the grammar",
+    clockStopped: () => "The clock of the scenarios shows one instant, always",
+    served: () => "A server started in memory listens on the port it was given",
+    servedPosted: () => "A text posted reaches the server, which answers it once it has read it all: its status, its headers and what it wrote",
+    waitedFor: () => "A function waited for is called once the time has passed; one given up never is",
+    linesKept: () => "The lines a command prints as it goes are kept, in order",
     otherSeedOthers: () => "Another seed draws others",
     integersWithin: (lo: number, hi: number) => `Integers drawn between ${lo} and ${hi} stay between them, and reach both`,
     weightedByWeight: () => "An element is drawn by its weight: one that weighs nothing never is; nothing from a list that weighs nothing",
@@ -166,6 +188,8 @@ export const ScenarioData = decision<{
   repository: { name: string; settings: RepositorySettings; left: RepositoryState; differs: string[] }
   pullRequest: { way: PullRequestWay; branch: string; title: string; free: string[]; decided: string[]; open: PullRequestOpen; elsewhere: string; check: string }
   propagation: { settings: Propagation; by: string; person: string; described: Record<string, string>; order: string[]; moves: { dir: string; path: string; to: string } }
+  sheet: { written: string; cut: string }
+  served: { port: number; path: string; status: number; header: string; media: string; text: string; wait: number }
 }>({
   owner: "trame",
   value: {
@@ -214,6 +238,8 @@ export const ScenarioData = decision<{
       order: ["app", "lib", "example", "project"],
       moves: { dir: "apps/app", path: "apps/app/trame.json", to: "{\"libraries\":{\"lib\":{\"path\":\"../../libs/lib\",\"version\":\"0.2.0\"}}}" },
     },
+    sheet: { written: ":root { --ink: black; } p { color: var(--ink); }", cut: "p { color: var(--ink" },
+    served: { port: 4173, path: "/", status: 200, header: "content-type", media: "text/plain", text: "a page", wait: 10 },
   },
 })
 
@@ -537,12 +563,58 @@ export const LanguagesRead = scenario({
   owner: "trame",
   verifies: [ReadByTheEngine],
   env: Test,
-  deps: { reader: LanguageReading, html: HtmlMarkup, css: CssStyleSheets, counts: Counts, checks: ScenarioChecks },
-  body: ({ reader, html, css, counts, checks }) => async (check) => {
+  deps: { reader: LanguageReading, html: HtmlMarkup, css: CssStyleSheets, counts: Counts, data: ScenarioData, checks: ScenarioChecks },
+  body: ({ reader, html, css, counts, data, checks }) => async (check) => {
     for (const language of [html, css]) {
       const read = await reader.load(language).then(() => counts.isEmpty(reader.aside(language)), () => false)
       check(checks.languageRead(language.name), read)
     }
+    const written = reader.readText(css, data.sheet.written)
+    const cut = reader.readText(css, data.sheet.cut)
+    check(checks.textReadBack(), counts.isEmpty(written.errors) && JSON.stringify([...new Set(written.parameters)]) === JSON.stringify([...new Set(written.outputs)]) &&
+      counts.any(written.outputs) && counts.any(cut.errors))
+  },
+})
+
+/**
+ * Running, in memory
+ * The clock of the scenarios stopped; a server started in memory asked as a browser would, a text posted to it; a
+ * function waited for, another given up; the lines a command prints as it goes kept.
+ */
+export const RunningInMemory = scenario({
+  owner: "trame",
+  verifies: [ClockStopped, ServerInMemory, LinesInMemory, MachineTimers],
+  env: Test,
+  deps: {
+    clock: TheClock, instant: ScenarioInstant, serving: HttpServing, server: ServerKept, waiting: Waiting, printing: LinesPrinted, printed: LinesKept,
+    events: NodeEvents, texts: Texts, data: ScenarioData, checks: ScenarioChecks,
+  },
+  body: ({ clock, instant, serving, server, waiting, printing, printed, events, texts, data, checks }) => async (check) => {
+    check(checks.clockStopped(), clock.now().toISOString() === instant && clock.now().getTime() === new Date(instant).getTime())
+    const { served } = data
+    type Request = { on(event: string, f: (chunk?: string) => void): void }
+    type Response = { writeHead(status: number, headers: Record<string, string>): void; end(text?: string): void }
+    const started = serving.createServer(((req: Request, res: Response) => {
+      const chunks: string[] = []
+      req.on(events.data, (chunk) => void chunks.push(String(chunk)))
+      req.on(events.end, () => {
+        res.writeHead(served.status, { [served.header]: served.media })
+        res.end(texts.concat(chunks))
+      })
+    }) as never)
+    started.listen(served.port)
+    check(checks.served(), server.ports().includes(served.port))
+    const posted = server.request(served.path, served.text)
+    await posted.ended()
+    check(checks.servedPosted(), posted.status === served.status && posted.headers[served.header] === served.media && posted.body() === served.text)
+    const calls: string[] = []
+    const kept = waiting.setTimeout(() => void calls.push(served.text), served.wait)
+    const dropped = waiting.setTimeout(() => void calls.push(served.path), served.wait)
+    waiting.clearTimeout(dropped)
+    await new Promise((resolve) => waiting.setTimeout(resolve, served.wait + served.wait))
+    check(checks.waitedFor(), JSON.stringify(calls) === JSON.stringify([served.text]) && kept !== undefined)
+    for (const line of data.weighted) printing.line(line.item)
+    check(checks.linesKept(), JSON.stringify(printed.lines()) === JSON.stringify(data.weighted.map((w) => w.item)))
   },
 })
 
@@ -645,5 +717,5 @@ export const HowTheScenariosRun = adr({
     "Strict judgment for the library itself": "a library's warnings are often what its projects decide (a port nobody realizes here)",
   },
   serves: [RealizedOnce],
-  appliedBy: [InMemory, ScenarioSettings, LanguageJudgment, StrictJudgment, ReadInTheEngine, FormatsOfTheScenarios],
+  appliedBy: [InMemory, WaitingAsAPersonWould, ScenarioSettings, LanguageJudgment, StrictJudgment, ReadInTheEngine, FormatsOfTheScenarios],
 })

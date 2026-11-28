@@ -785,10 +785,10 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 135
+- Version: 136
 - How it joins the graph: language
 - Where it comes from: path
-- Its path: ../generations/g135
+- Its path: ../generations/g136
 - Serves: Ports of the platform, realized once
 
 ### The people of the repository
@@ -1814,6 +1814,131 @@ Acceptance criteria · `WordsOfCriteria` · **held**
 - Owner: trame
 - Accepts: Words of a vocabulary
 
+## Standard library · Running
+
+### The instant of the scenarios
+
+Decision · `ScenarioInstant`
+
+- Decided by: trame
+- Value: 2026-10-30T08:00:00.000Z
+
+### A command that keeps running asks the machine through ports
+
+Architecture decision · `RunningThroughPorts` · **held**
+
+- Decided by: trame
+- Context: trame dev leaves the engine for a library of commands: the server, the timers, the clock and the terminal it used were the engine's own ports, which no library reaches.
+- Consequences: A library's command that keeps running is played in memory like any other: its server asked as a browser would, its clock stopped, its lines kept; on a machine, Node.js answers.
+- Rejected: The engine's API serving the page, the engine would serve HTTP for a command, a platform it has no reason to give
+- Serves: Ports of the platform, realized once
+- Applied by: The clock, Timers, Serving HTTP, Printing as it goes, The machine's clock, The machine's timers, A server of Node.js, The standard output, A clock stopped, A server in memory, Lines kept
+
+### Serving HTTP
+
+Port · `HttpServing`
+
+- Owner: trame
+- Declared effects: network
+
+### The lines printed
+
+Port · `LinesKept`
+
+- Owner: trame
+- Declared effects: 
+
+### Printing as it goes
+
+Port · `LinesPrinted`
+
+- Owner: trame
+- Declared effects: terminal
+
+### The server asked
+
+Port · `ServerKept`
+
+- Owner: trame
+- Declared effects: 
+
+### The clock
+
+Port · `TheClock`
+
+- Owner: trame
+- Declared effects: time
+
+### Timers
+
+Port · `Waiting`
+
+- Owner: trame
+- Declared effects: time
+
+### A clock stopped
+
+Function · `ClockStopped` · **held**
+
+- Owner: trame
+- Parameters: { instant: running.ScenarioInstant }
+- Serves: Ports of the platform, realized once
+- Implements: The clock
+- Depends on: The instant of the scenarios
+
+### Lines kept
+
+Function · `LinesInMemory` · **held**
+
+- Owner: trame
+- Serves: Ports of the platform, realized once
+- Implements: Printing as it goes, The lines printed
+
+### A server in memory
+
+Function · `ServerInMemory` · **held**
+
+- Owner: trame
+- Parameters: { events: system.NodeEvents, http: web.Http, texts: algebra.Texts, say: running.RunningWords }
+- Serves: Ports of the platform, realized once
+- Implements: Serving HTTP, The server asked
+- Depends on: Node.js events, HTTP, Texts, What a realization of this module says
+
+### What a realization of this module says
+
+Message catalog · `RunningWords`
+
+- Owner: trame
+- Written in: The language the library's commands and tools speak in.
+
+### The machine's clock
+
+Implementation · `MachineClock`
+
+- Owner: trame
+- Implements: The clock
+
+### The machine's timers
+
+Implementation · `MachineTimers` · **held**
+
+- Owner: trame
+- Implements: Timers
+
+### A server of Node.js
+
+Implementation · `NodeHttpServing`
+
+- Owner: trame
+- Implements: Serving HTTP
+
+### The standard output
+
+Implementation · `StandardOutput`
+
+- Owner: trame
+- Implements: Printing as it goes
+
 ## Standard library · Scenarios
 
 ### A command's line, in the scenarios
@@ -1828,7 +1953,7 @@ Decision · `ScenarioCommand`
 Decision · `ScenarioData`
 
 - Decided by: trame
-- Value: { seeds: 1, 2, text: a seed, draws: 200, bounds: { lo: 1, hi: 6 }, weighted: { item: light, weight: 1 }, { item: heavy, weight: 3 }, { item: never, weight: 0 }, never: never, preference: { name: voice, value: off, unset: pace }, sentence: { text: Breathe in, language: en }, turned: 0.5, 0.25, file: { path: dist/page.html, text: <p>a page</p>, copy: public/index.html }, page: { path: dist/page.html, selector: .poses li, count: 12, text: Mountain, error: The page broke, language: fr }, command: SELECT 1, repository: { name: owner/project, settings: { branch: main, checks: project, library, upToDate: false, approvals: 1, method: merge, autoMerge: true, deletesMerged: true, pages: true }, left: { methods: merge, squash, autoMerge: false, deletesMerged: true, protected: false, checks: library, upToDate: false }, differs: methods, autoMerge, protected, approvals, checks }, pullRequest: { way: { repository: owner/project, base: main, method: merge, merge: onceItHoldsUnlessDecided, lock: trame.lock, projects: { name: project, dir: . }, { name: app, dir: apps/app } }, branch: work, title: A change, free: src/product.ts, apps/app/src/app.ts, decided: apps/app/trame.lock, apps/app/src/app.ts, open: { number: 7, url: https://github.com/owner/project/pull/7 }, elsewhere: more-work, check: project }, propagation: { settings: { engine: { launcher: trame.sh, upgrade: upgrade, ship: ship, build: build, by: --by, today: TRAME_TODAY }, configuration: trame.json, references: trame.json, src/packages.ts, projects: { name: project, dir: ., reads: example, runners: RunnersWritten }, { name: example, dir: examples/example, day: 2026-10-30, runners: RunnersWritten }, { name: app, dir: apps/app, runners: RunnersWritten }, { name: lib, dir: libs/lib } }, by: --by, person: ada, described: { ./trame.json: {"libraries":{"lib":"libs/lib"}}, examples/example/trame.json: {"libraries":{"lib":"../../libs/lib","app":"../../apps/app"}}, apps/app/trame.json: {"libraries":{"lib":{"path":"../../libs/lib","version":"0.1.0"}}}, libs/lib/trame.json: {"libraries":{"app":{"path":"../../apps/app","version":"0.1.0"}}} }, order: app, lib, example, project, moves: { dir: apps/app, path: apps/app/trame.json, to: {"libraries":{"lib":{"path":"../../libs/lib","version":"0.2.0"}}} } } }
+- Value: { seeds: 1, 2, text: a seed, draws: 200, bounds: { lo: 1, hi: 6 }, weighted: { item: light, weight: 1 }, { item: heavy, weight: 3 }, { item: never, weight: 0 }, never: never, preference: { name: voice, value: off, unset: pace }, sentence: { text: Breathe in, language: en }, turned: 0.5, 0.25, file: { path: dist/page.html, text: <p>a page</p>, copy: public/index.html }, page: { path: dist/page.html, selector: .poses li, count: 12, text: Mountain, error: The page broke, language: fr }, command: SELECT 1, repository: { name: owner/project, settings: { branch: main, checks: project, library, upToDate: false, approvals: 1, method: merge, autoMerge: true, deletesMerged: true, pages: true }, left: { methods: merge, squash, autoMerge: false, deletesMerged: true, protected: false, checks: library, upToDate: false }, differs: methods, autoMerge, protected, approvals, checks }, pullRequest: { way: { repository: owner/project, base: main, method: merge, merge: onceItHoldsUnlessDecided, lock: trame.lock, projects: { name: project, dir: . }, { name: app, dir: apps/app } }, branch: work, title: A change, free: src/product.ts, apps/app/src/app.ts, decided: apps/app/trame.lock, apps/app/src/app.ts, open: { number: 7, url: https://github.com/owner/project/pull/7 }, elsewhere: more-work, check: project }, propagation: { settings: { engine: { launcher: trame.sh, upgrade: upgrade, ship: ship, build: build, by: --by, today: TRAME_TODAY }, configuration: trame.json, references: trame.json, src/packages.ts, projects: { name: project, dir: ., reads: example, runners: RunnersWritten }, { name: example, dir: examples/example, day: 2026-10-30, runners: RunnersWritten }, { name: app, dir: apps/app, runners: RunnersWritten }, { name: lib, dir: libs/lib } }, by: --by, person: ada, described: { ./trame.json: {"libraries":{"lib":"libs/lib"}}, examples/example/trame.json: {"libraries":{"lib":"../../libs/lib","app":"../../apps/app"}}, apps/app/trame.json: {"libraries":{"lib":{"path":"../../libs/lib","version":"0.1.0"}}}, libs/lib/trame.json: {"libraries":{"app":{"path":"../../apps/app","version":"0.1.0"}}} }, order: app, lib, example, project, moves: { dir: apps/app, path: apps/app/trame.json, to: {"libraries":{"lib":{"path":"../../libs/lib","version":"0.2.0"}}} } }, sheet: { written: :root { --ink: black; } p { color: var(--ink); }, cut: p { color: var(--ink }, served: { port: 4173, path: /, status: 200, header: content-type, media: text/plain, text: a page, wait: 10 } }
 
 ### The language of the library's scenarios
 
@@ -1846,7 +1971,7 @@ Architecture decision · `HowTheScenariosRun` · **held**
 - Consequences: A project that judges harder chooses EveryWarning or one of its own (C4); the library leaves its warnings as points to watch. Reading HTML and CSS needs an engine: the library's build has one.
 - Rejected: Scenarios on the machine, they would touch the disk, a browser and GitHub at each build of the library; Strict judgment for the library itself, a library's warnings are often what its projects decide (a port nobody realizes here)
 - Serves: Ports of the platform, realized once
-- Applied by: In memory, The scenarios' settings, Judged as the language says, Judged strictly, Read by the engine that builds, The formats of the scenarios
+- Applied by: In memory, Waiting on the machine, The scenarios' settings, Judged as the language says, Judged strictly, Read by the engine that builds, The formats of the scenarios
 
 ### How the scenarios' versions are carried
 
@@ -1892,7 +2017,7 @@ Technical choice · `InMemory` · **held**
 
 - Decided by: trame
 - Context: A realization kept in memory is what a project's scenarios run in place of the device: it must keep its port's promise.
-- Chooses: Preferences kept in memory, A voice that writes down, The screen kept awake, in memory, Frames turned by hand, Files kept in memory, A browser kept in memory, A repository kept in memory, Branches kept in memory, Pull requests kept in memory, Programs run in memory
+- Chooses: Preferences kept in memory, A voice that writes down, The screen kept awake, in memory, Frames turned by hand, Files kept in memory, A browser kept in memory, A repository kept in memory, Branches kept in memory, Pull requests kept in memory, Programs run in memory, A clock stopped, A server in memory, Lines kept
 - In: Test
 - Follows: Strategy
 - Serves: Ports of the platform, realized once
@@ -1939,6 +2064,17 @@ Technical choice · `StrictJudgment` · **held**
 - Chooses: Every warning an error
 - In: Strict
 - Follows: Strategy
+- Serves: Ports of the platform, realized once
+
+### Waiting on the machine
+
+Technical choice · `WaitingAsAPersonWould` · **held**
+
+- Decided by: trame
+- Context: A wait kept in memory would call at once what a person waits for: the scenario would no longer wait.
+- Chooses: The machine's timers
+- In: Test
+- Follows: Adapter
 - Serves: Ports of the platform, realized once
 
 ### Strict
@@ -2009,10 +2145,10 @@ Scenario · `JudgedStrictly` · **held**
 Scenario · `LanguagesRead` · **held**
 
 - Owner: trame
-- Parameters: { reader: engine.LanguageReading, html: languages.HtmlMarkup, css: languages.CssStyleSheets, counts: algebra.Counts, checks: scenarios.ScenarioChecks }
+- Parameters: { reader: engine.LanguageReading, html: languages.HtmlMarkup, css: languages.CssStyleSheets, counts: algebra.Counts, data: scenarios.ScenarioData, checks: scenarios.ScenarioChecks }
 - Verifies: Read by the engine
 - In: Test
-- Depends on: Reading a language, HTML markup, CSS style sheets, Counts, What the library's scenarios check
+- Depends on: Reading a language, HTML markup, CSS style sheets, Counts, What the library's scenarios are given, What the library's scenarios check
 
 ### A command's line read, its answer written
 
@@ -2064,6 +2200,16 @@ Scenario · `RepositoryInMemoryKeeps` · **held**
 - In: Test
 - Depends on: A repository on GitHub, The repositories a scenario keeps, A repository compared with its settings, What the library's scenarios are given, What the library's scenarios check, Counts
 
+### Running, in memory
+
+Scenario · `RunningInMemory` · **held**
+
+- Owner: trame
+- Parameters: { clock: running.TheClock, instant: running.ScenarioInstant, serving: running.HttpServing, server: running.ServerKept, waiting: running.Waiting, printing: running.LinesPrinted, printed: running.LinesKept, events: system.NodeEvents, texts: algebra.Texts, data: scenarios.ScenarioData, checks: scenarios.ScenarioChecks }
+- Verifies: A clock stopped, A server in memory, Lines kept, The machine's timers
+- In: Test
+- Depends on: The clock, The instant of the scenarios, Serving HTTP, The server asked, Timers, Printing as it goes, The lines printed, Node.js events, Texts, What the library's scenarios are given, What the library's scenarios check
+
 ### The tooling, in memory
 
 Scenario · `ToolingInMemory` · **held**
@@ -2086,7 +2232,7 @@ Decision · `PullRequestsOnGitHub`
 
 ### The pull requests' workflow
 
-Artefact · `PullRequestWorkflow` · **held**
+Artefact · `PullRequestWorkflow` · **unknown**
 
 - Owner: trame
 - Path: ../.github/workflows/std-pull-request.yml
@@ -2113,7 +2259,7 @@ Shipment · `NextVersion` · **unknown**
 
 ### The files that run it elsewhere
 
-Shipment · `RunnersWritten` · **held**
+Shipment · `RunnersWritten` · **unknown**
 
 - Owner: trame
 - Target: repository

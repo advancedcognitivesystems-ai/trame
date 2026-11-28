@@ -42,14 +42,18 @@ const kind = defineKind({
 
   /**
    * Assembled in each environment where it is deployed: what cannot be wired blocks. Without environments named, each
-   * environment of its own project: a library's (where its own scenarios run) is not one a product deploys to.
+   * environment of its own project: a library's (where its own scenarios run) is not one a product deploys to. One whose
+   * exposure no environment of its project realizes is offered (a library's page, since g137): each project that
+   * imports it assembles it where it chooses its realizations, and the assembly checks it there.
    */
   holes: (self, g) => {
     const { counts, texts, lists } = g.lib
     // A library's commands, offered (E3): assembled where a project's choice holds, which the choice checks.
     if (!counts.any(self.environments) && self.dependencies.some((d) => isCommandsExposure(d.node))) return []
     const envs = counts.any(self.environments) ? self.environments : g.all(KindName.environment).nodes().filter((v) => v.library === self.library)
-    const needed = [...self.dependencies.map((d) => d.node), ...entriesOf(self, g)]
+    const exposure = self.dependencies.map((d) => d.node)
+    if (!counts.any(self.environments) && envs.every((env) => counts.any(g.plan(exposure, env).errors))) return []
+    const needed = [...exposure, ...entriesOf(self, g)]
     // The same error in several environments is said once.
     const byError = new Map<string, Set<string>>()
     for (const env of envs) for (const e of g.plan(needed, env).errors) byError.set(e, (byError.get(e) ?? new Set()).add(env.title))
