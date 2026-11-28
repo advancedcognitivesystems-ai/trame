@@ -1,5 +1,7 @@
 /** Trame · Shipping */
 
+import { AnswerFormats, LongOptions, StandardOptions } from "#std/tooling"
+import { MediaTypes } from "#std/web"
 import { code, Status } from "../trame/kernel"
 import { decision } from "../kinds/decision"
 import { requirement } from "../kinds/requirement"
@@ -8,7 +10,8 @@ import { fn } from "../kinds/function"
 import { binding } from "../kinds/binding"
 import { ExecutableSpecification } from "./product"
 import { FileReading, Paths, Hashing, Signatures, Local, Test } from "./architecture"
-import { Layout, JsonFormatting, TrameCommands } from "./conventions"
+import { JsonFormatting } from "#std/text"
+import { Layout, TrameCommands } from "./conventions"
 import { Fingerprints, Project } from "./engine"
 import { EnginePin } from "./generations"
 import { Sha256 } from "#std/algorithms"
@@ -140,7 +143,7 @@ export const ShipmentRunPlan = fn({
   serves: [ExecutableSpecification],
   deps: {
     line: TrameCommands, project: Project, layout: Layout, pin: EnginePin, reading: FileReading, paths: Paths, encodings: NodeEncodings,
-    values: ValueTypes, sequences: Sequences, posix: Posix,
+    values: ValueTypes, sequences: Sequences, posix: Posix, formats: AnswerFormats, media: MediaTypes, long: LongOptions, standard: StandardOptions,
   },
   body: code.file<typeof import("./code/commands/run-plan").default>("./code/commands/run-plan.ts"),
 })

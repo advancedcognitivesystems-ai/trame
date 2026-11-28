@@ -57,3 +57,16 @@ export const R0_3_0 = release({
   language: "shared",
   serves: [RenderedOnce],
 })
+
+/**
+ * Version 0.4.0
+ */
+export const R0_4_0 = release({
+  owner: "trame",
+  version: "0.4.0",
+  date: "2026-11-28",
+  what: "The formats of std's answers: text at a terminal and Markdown with where each card is; std 0.31.0",
+  fingerprint: "720a23669214f66a",
+  language: "shared",
+  serves: [RenderedOnce],
+})

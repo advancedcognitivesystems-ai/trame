@@ -4,23 +4,23 @@
 // It does not compile the graph at startup. No dated change of the graph after its date reaches it.
 
 import { frozen } from "../../trame/internal"
-import { EscapedText, HtmlAttributes, HtmlElement, HtmlEndTag, HtmlStartTag, SelfClosingTag } from "../../libs/documents/releases/0.3.0/src/html.ts"
-import { Dates, Lists, Punctuation, Units } from "../../libs/documents/releases/0.3.0/src/language.ts"
+import { EscapedText, HtmlAttributes, HtmlElement, HtmlEndTag, HtmlStartTag, SelfClosingTag } from "../../libs/documents/releases/0.4.0/src/html.ts"
+import { Dates, Lists, Punctuation, Units } from "../../libs/documents/releases/0.4.0/src/language.ts"
 import { PageApp } from "../../src/architecture.ts"
 import { OurDocumentLanguage } from "../../src/documents.ts"
 import { AttributePresence, AttributeSelector, ClassSelector, CssDeclaration, MediaFeature, PathData, SelectorList } from "../../src/html.ts"
-import body_browserLoading from "../../std/releases/0.30.0/src/code/platform/loading.ts"
-import body_counts from "../../std/releases/0.30.0/src/code/algebra/counts.ts"
+import body_browserLoading from "../../std/releases/0.31.0/src/code/platform/loading.ts"
+import body_counts from "../../std/releases/0.31.0/src/code/algebra/counts.ts"
 import body_browserWindow from "../../src/code/browser/window.ts"
 import body_browserMemory from "../../src/code/browser/memory.ts"
-import body_valueTypes from "../../std/releases/0.30.0/src/code/algebra/values.ts"
+import body_valueTypes from "../../std/releases/0.31.0/src/code/algebra/values.ts"
 import body_browserFeed from "../../src/code/browser/feed.ts"
 import body_browserDecompression from "../../src/code/browser/decompression.ts"
 import body_browserAmendments from "../../src/code/browser/amendments.ts"
-import body_sequences from "../../std/releases/0.30.0/src/code/algebra/sequences.ts"
-import body_texts from "../../std/releases/0.30.0/src/code/algebra/texts.ts"
-import body_renderingMessages from "../../libs/documents/releases/0.3.0/src/code/rendering/messages.ts"
-import body_common from "../../libs/documents/releases/0.3.0/src/code/rendering/common.ts"
+import body_sequences from "../../std/releases/0.31.0/src/code/algebra/sequences.ts"
+import body_texts from "../../std/releases/0.31.0/src/code/algebra/texts.ts"
+import body_renderingMessages from "../../libs/documents/releases/0.4.0/src/code/rendering/messages.ts"
+import body_common from "../../libs/documents/releases/0.4.0/src/code/rendering/common.ts"
 import body_pageWords from "../../src/code/page/words.ts"
 import body_explorerFigures from "../../src/code/rendering/explorer.ts"
 import body_showGraph from "../../src/code/page/show.ts"
@@ -60,7 +60,7 @@ const browserDecompression = await body_browserDecompression({ packing: packedGr
 // "HTTP" · standard
 const http = {"scheme":"http","ok":200,"noContent":204,"notFound":404,"serverError":500,"unavailable":503,"post":"POST","contentType":"content-type","cacheControl":"cache-control","connection":"connection","authorization":"authorization","bearer":"Bearer ","noCache":"no-cache","keepAlive":"keep-alive"}
 // "Media types" · standard
-const mediaTypes = {"html":"text/html; charset=utf-8","json":"application/json","jsonUtf8":"application/json; charset=utf-8","eventStream":"text/event-stream"}
+const mediaTypes = {"html":"text/html; charset=utf-8","json":"application/json","jsonUtf8":"application/json; charset=utf-8","eventStream":"text/event-stream","markdown":"text/markdown; charset=utf-8","plain":"text/plain; charset=utf-8"}
 // "Amendments sent to trame dev" · implementation, for "Amendments from the page"
 const browserAmendments = await body_browserAmendments({ page: thePage, service: devService, http, media: mediaTypes })
 // "HTML" · standard

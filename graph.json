@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-27",
+  "generated": "2026-11-28",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -1350,7 +1350,7 @@
       "id": "command-scenarios.AdvanceInMemory",
       "kind": "scenario",
       "title": "An advance, in memory",
-      "source": "src/command-scenarios.ts:1354",
+      "source": "src/command-scenarios.ts:1357",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1387,7 +1387,7 @@
           "status": "passed"
         },
         {
-          "name": "The candidate is accepted (  ✓ trame runs g135 |   ✓ reservations runs g135 | Advance succeeded.)",
+          "name": "The candidate is accepted (  ✓ trame runs g136 |   ✓ reservations runs g136 | Advance succeeded.)",
           "status": "passed"
         },
         {
@@ -1405,7 +1405,7 @@
       "id": "command-scenarios.AdvanceSamples",
       "kind": "decision",
       "title": "What the engines an advance starts answer in a scenario",
-      "source": "src/command-scenarios.ts:1340",
+      "source": "src/command-scenarios.ts:1343",
       "fields": {
         "owner": "trame",
         "value": {
@@ -1421,7 +1421,7 @@
       "id": "command-scenarios.AmendmentSamples",
       "kind": "decision",
       "title": "What an amendment is checked with",
-      "source": "src/command-scenarios.ts:374",
+      "source": "src/command-scenarios.ts:377",
       "fields": {
         "owner": "trame",
         "value": {
@@ -1452,7 +1452,7 @@
       "id": "command-scenarios.AssemblySamples",
       "kind": "decision",
       "title": "What the example is assembled for",
-      "source": "src/command-scenarios.ts:215",
+      "source": "src/command-scenarios.ts:218",
       "fields": {
         "owner": "trame",
         "value": {
@@ -1475,7 +1475,7 @@
       "id": "command-scenarios.BodiesReadAndChecked",
       "kind": "scenario",
       "title": "A body is read and checked",
-      "source": "src/command-scenarios.ts:75",
+      "source": "src/command-scenarios.ts:77",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1519,7 +1519,7 @@
       "id": "command-scenarios.BodySamples",
       "kind": "decision",
       "title": "Bodies the reader is given",
-      "source": "src/command-scenarios.ts:52",
+      "source": "src/command-scenarios.ts:54",
       "fields": {
         "owner": "trame",
         "value": {
@@ -1552,7 +1552,7 @@
       "id": "command-scenarios.BuildPlanned",
       "kind": "scenario",
       "title": "A build planned",
-      "source": "src/command-scenarios.ts:321",
+      "source": "src/command-scenarios.ts:324",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1594,7 +1594,7 @@
       "id": "command-scenarios.CommandLineChooses",
       "kind": "scenario",
       "title": "The command line",
-      "source": "src/command-scenarios.ts:860",
+      "source": "src/command-scenarios.ts:863",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1630,7 +1630,7 @@
       "id": "command-scenarios.ComponentAssembled",
       "kind": "scenario",
       "title": "A component assembled",
-      "source": "src/command-scenarios.ts:233",
+      "source": "src/command-scenarios.ts:236",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1673,7 +1673,7 @@
       "id": "command-scenarios.ComponentRun",
       "kind": "scenario",
       "title": "A component run",
-      "source": "src/command-scenarios.ts:785",
+      "source": "src/command-scenarios.ts:788",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1704,7 +1704,7 @@
       "id": "command-scenarios.DeclarationsPublished",
       "kind": "scenario",
       "title": "Declarations published",
-      "source": "src/command-scenarios.ts:427",
+      "source": "src/command-scenarios.ts:430",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1738,7 +1738,7 @@
       "id": "command-scenarios.DevFollowsTheGraph",
       "kind": "scenario",
       "title": "trame dev",
-      "source": "src/command-scenarios.ts:817",
+      "source": "src/command-scenarios.ts:820",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1793,7 +1793,7 @@
       "id": "command-scenarios.DevSamples",
       "kind": "decision",
       "title": "What trame dev is shown in a scenario",
-      "source": "src/command-scenarios.ts:806",
+      "source": "src/command-scenarios.ts:809",
       "fields": {
         "owner": "trame",
         "value": {
@@ -1809,7 +1809,7 @@
       "id": "command-scenarios.DoctorAsks",
       "kind": "scenario",
       "title": "The doctor",
-      "source": "src/command-scenarios.ts:1313",
+      "source": "src/command-scenarios.ts:1316",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1844,7 +1844,7 @@
       "id": "command-scenarios.EngineApiGiven",
       "kind": "scenario",
       "title": "The engine's API",
-      "source": "src/command-scenarios.ts:1068",
+      "source": "src/command-scenarios.ts:1071",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1881,7 +1881,7 @@
       "id": "command-scenarios.EvidenceForSomeone",
       "kind": "scenario",
       "title": "Evidence given for someone",
-      "source": "src/command-scenarios.ts:985",
+      "source": "src/command-scenarios.ts:988",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1921,7 +1921,7 @@
       "id": "command-scenarios.ExampleOutputRewritten",
       "kind": "scenario",
       "title": "An example's output written again",
-      "source": "src/command-scenarios.ts:1148",
+      "source": "src/command-scenarios.ts:1151",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1953,7 +1953,7 @@
       "id": "command-scenarios.ExamplesMet",
       "kind": "scenario",
       "title": "The examples of a project, met",
-      "source": "src/command-scenarios.ts:1165",
+      "source": "src/command-scenarios.ts:1168",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -1978,7 +1978,7 @@
       "id": "command-scenarios.KindsCarried",
       "kind": "scenario",
       "title": "A library carries kinds",
-      "source": "src/command-scenarios.ts:1214",
+      "source": "src/command-scenarios.ts:1217",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2016,7 +2016,7 @@
       "id": "command-scenarios.LawsTested",
       "kind": "scenario",
       "title": "The laws, tested by their command",
-      "source": "src/command-scenarios.ts:268",
+      "source": "src/command-scenarios.ts:271",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2045,7 +2045,7 @@
       "id": "command-scenarios.LibraryCommandRun",
       "kind": "scenario",
       "title": "A command of a library the project chooses",
-      "source": "src/command-scenarios.ts:1184",
+      "source": "src/command-scenarios.ts:1187",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2078,7 +2078,7 @@
       "id": "command-scenarios.LibraryReleased",
       "kind": "scenario",
       "title": "A library released",
-      "source": "src/command-scenarios.ts:662",
+      "source": "src/command-scenarios.ts:665",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2124,7 +2124,7 @@
       "id": "command-scenarios.ManifestWritten",
       "kind": "scenario",
       "title": "The manifest written",
-      "source": "src/command-scenarios.ts:698",
+      "source": "src/command-scenarios.ts:701",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2168,7 +2168,7 @@
       "id": "command-scenarios.PackagesAudited",
       "kind": "scenario",
       "title": "The packages audited",
-      "source": "src/command-scenarios.ts:638",
+      "source": "src/command-scenarios.ts:641",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2198,7 +2198,7 @@
       "id": "command-scenarios.PackagesUpgraded",
       "kind": "scenario",
       "title": "The packages upgraded",
-      "source": "src/command-scenarios.ts:730",
+      "source": "src/command-scenarios.ts:733",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2230,7 +2230,7 @@
       "id": "command-scenarios.PageDelivered",
       "kind": "scenario",
       "title": "The page delivered",
-      "source": "src/command-scenarios.ts:900",
+      "source": "src/command-scenarios.ts:903",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2260,7 +2260,7 @@
       "id": "command-scenarios.PageExported",
       "kind": "scenario",
       "title": "The page exported",
-      "source": "src/command-scenarios.ts:755",
+      "source": "src/command-scenarios.ts:758",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2298,7 +2298,7 @@
       "id": "command-scenarios.PageOfTheGraph",
       "kind": "scenario",
       "title": "The page of the graph",
-      "source": "src/command-scenarios.ts:189",
+      "source": "src/command-scenarios.ts:192",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2337,7 +2337,7 @@
       "id": "command-scenarios.PayloadOfTheGraph",
       "kind": "scenario",
       "title": "The graph in the intermediate format",
-      "source": "src/command-scenarios.ts:161",
+      "source": "src/command-scenarios.ts:164",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2383,7 +2383,7 @@
       "id": "command-scenarios.PlanSamples",
       "kind": "decision",
       "title": "What a plan is checked with",
-      "source": "src/command-scenarios.ts:309",
+      "source": "src/command-scenarios.ts:312",
       "fields": {
         "owner": "trame",
         "value": {
@@ -2401,7 +2401,7 @@
       "id": "command-scenarios.ProjectCommandRun",
       "kind": "scenario",
       "title": "A command of the project",
-      "source": "src/command-scenarios.ts:1026",
+      "source": "src/command-scenarios.ts:1029",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2453,7 +2453,7 @@
       "id": "command-scenarios.ProjectRepaired",
       "kind": "scenario",
       "title": "A project repaired",
-      "source": "src/command-scenarios.ts:611",
+      "source": "src/command-scenarios.ts:614",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2488,7 +2488,7 @@
       "id": "command-scenarios.ProjectSamples",
       "kind": "decision",
       "title": "What the scenarios ask of those projects",
-      "source": "src/command-scenarios.ts:492",
+      "source": "src/command-scenarios.ts:495",
       "fields": {
         "owner": "trame",
         "value": {
@@ -2590,7 +2590,7 @@
       "id": "command-scenarios.ProjectStarted",
       "kind": "scenario",
       "title": "A project started",
-      "source": "src/command-scenarios.ts:571",
+      "source": "src/command-scenarios.ts:574",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2647,7 +2647,7 @@
       "id": "command-scenarios.PublishedValueChanged",
       "kind": "scenario",
       "title": "A published value changed",
-      "source": "src/command-scenarios.ts:451",
+      "source": "src/command-scenarios.ts:454",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2685,7 +2685,7 @@
       "id": "command-scenarios.RegistryFilled",
       "kind": "scenario",
       "title": "The registry filled",
-      "source": "src/command-scenarios.ts:548",
+      "source": "src/command-scenarios.ts:551",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2714,7 +2714,7 @@
       "id": "command-scenarios.RewritingSamples",
       "kind": "decision",
       "title": "Declarations rewritten",
-      "source": "src/command-scenarios.ts:1109",
+      "source": "src/command-scenarios.ts:1112",
       "fields": {
         "owner": "trame",
         "value": {
@@ -2732,7 +2732,7 @@
       "id": "command-scenarios.RunSamples",
       "kind": "decision",
       "title": "What a program run in a scenario answers",
-      "source": "src/command-scenarios.ts:779",
+      "source": "src/command-scenarios.ts:782",
       "fields": {
         "owner": "trame",
         "value": {
@@ -2746,7 +2746,7 @@
       "id": "command-scenarios.ScenarioProjects",
       "kind": "decision",
       "title": "The projects of the repository the scenarios enter",
-      "source": "src/command-scenarios.ts:481",
+      "source": "src/command-scenarios.ts:484",
       "fields": {
         "owner": "trame",
         "value": {
@@ -2762,7 +2762,7 @@
       "id": "command-scenarios.ShipmentsRun",
       "kind": "scenario",
       "title": "Shipments run, evidence given",
-      "source": "src/command-scenarios.ts:926",
+      "source": "src/command-scenarios.ts:929",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2829,7 +2829,7 @@
       "id": "command-scenarios.SnapshotTaken",
       "kind": "scenario",
       "title": "The snapshot, taken by its command",
-      "source": "src/command-scenarios.ts:289",
+      "source": "src/command-scenarios.ts:292",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2858,7 +2858,7 @@
       "id": "command-scenarios.StagesShipped",
       "kind": "scenario",
       "title": "Stages shipped in order",
-      "source": "src/command-scenarios.ts:1264",
+      "source": "src/command-scenarios.ts:1267",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2906,7 +2906,7 @@
       "id": "command-scenarios.SvgSample",
       "kind": "decision",
       "title": "What an SVG figure opens with",
-      "source": "src/command-scenarios.ts:153",
+      "source": "src/command-scenarios.ts:156",
       "fields": {
         "owner": "trame",
         "value": {
@@ -2919,7 +2919,7 @@
       "id": "command-scenarios.ValueAmended",
       "kind": "scenario",
       "title": "A value amended",
-      "source": "src/command-scenarios.ts:398",
+      "source": "src/command-scenarios.ts:401",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2959,7 +2959,7 @@
       "id": "command-scenarios.ViewSamples",
       "kind": "decision",
       "title": "Views asked of the example",
-      "source": "src/command-scenarios.ts:106",
+      "source": "src/command-scenarios.ts:108",
       "fields": {
         "owner": "trame",
         "value": {
@@ -2981,7 +2981,7 @@
       "id": "command-scenarios.ViewsInTheTerminal",
       "kind": "scenario",
       "title": "A view in the terminal",
-      "source": "src/command-scenarios.ts:121",
+      "source": "src/command-scenarios.ts:123",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2994,7 +2994,11 @@
           "samples": "command-scenarios.ViewSamples",
           "texts": "std/algebra.Texts",
           "counts": "std/algebra.Counts",
-          "messages": "messages.ScenarioMessages"
+          "messages": "messages.ScenarioMessages",
+          "formats": "std/tooling.AnswerFormats",
+          "media": "std/web.MediaTypes",
+          "long": "std/tooling.LongOptions",
+          "standard": "std/tooling.StandardOptions"
         },
         "body": "(function)"
       },
@@ -3046,7 +3050,7 @@
       "id": "commands.Advance",
       "kind": "entry",
       "title": "Advance",
-      "source": "src/commands.ts:126",
+      "source": "src/commands.ts:127",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3090,7 +3094,7 @@
           "sharing": "generations.LanguageSharing",
           "releases": "generations.Releases",
           "records": "generations.ReleaseRecords",
-          "json": "conventions.JsonFormatting",
+          "json": "std/text.JsonFormatting",
           "specifiers": "std/system.NodeModuleSpecifiers",
           "references": "std/engine.ReferenceSyntax",
           "clock": "architecture.Clock",
@@ -3109,7 +3113,7 @@
       "id": "commands.Amend",
       "kind": "entry",
       "title": "Amend",
-      "source": "src/commands.ts:370",
+      "source": "src/commands.ts:371",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3138,7 +3142,7 @@
       "id": "commands.Amending",
       "kind": "function",
       "title": "An amendment prepared",
-      "source": "src/commands.ts:353",
+      "source": "src/commands.ts:354",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3168,7 +3172,7 @@
       "id": "commands.Assemble",
       "kind": "entry",
       "title": "Assemble a component",
-      "source": "src/commands.ts:457",
+      "source": "src/commands.ts:458",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3196,7 +3200,7 @@
       "id": "commands.Assembler",
       "kind": "function",
       "title": "Assembler",
-      "source": "src/commands.ts:101",
+      "source": "src/commands.ts:102",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3220,7 +3224,7 @@
       "id": "commands.Audit",
       "kind": "entry",
       "title": "Audit the packages",
-      "source": "src/commands.ts:195",
+      "source": "src/commands.ts:196",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3239,7 +3243,7 @@
           "paths": "architecture.Paths",
           "versions": "packages.VersionOrder",
           "encodings": "std/system.NodeEncodings",
-          "json": "conventions.JsonFormatting",
+          "json": "std/text.JsonFormatting",
           "terminal": "architecture.Terminal",
           "table": "documents/text.Columns",
           "columns": "documents/text.TerminalText",
@@ -3258,7 +3262,7 @@
       "id": "commands.Build",
       "kind": "entry",
       "title": "Build",
-      "source": "src/commands.ts:112",
+      "source": "src/commands.ts:113",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3289,7 +3293,7 @@
       "id": "commands.CommandOrView",
       "kind": "entry",
       "title": "A command of the project, or a view",
-      "source": "src/commands.ts:492",
+      "source": "src/commands.ts:493",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3327,7 +3331,7 @@
       "id": "commands.Deliver",
       "kind": "entry",
       "title": "Deliver",
-      "source": "src/commands.ts:232",
+      "source": "src/commands.ts:233",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3368,7 +3372,7 @@
       "id": "commands.Dev",
       "kind": "entry",
       "title": "Start trame dev",
-      "source": "src/commands.ts:447",
+      "source": "src/commands.ts:448",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3394,7 +3398,7 @@
       "id": "commands.Doctor",
       "kind": "entry",
       "title": "Ask the machine",
-      "source": "src/commands.ts:320",
+      "source": "src/commands.ts:321",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3421,7 +3425,7 @@
       "id": "commands.EmitPayload",
       "kind": "entry",
       "title": "Payload",
-      "source": "src/commands.ts:184",
+      "source": "src/commands.ts:185",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3449,7 +3453,7 @@
       "id": "commands.ExampleRewriting",
       "kind": "function",
       "title": "Rewriting an example",
-      "source": "src/commands.ts:507",
+      "source": "src/commands.ts:508",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3472,7 +3476,7 @@
       "id": "commands.Examples",
       "kind": "entry",
       "title": "Examples",
-      "source": "src/commands.ts:519",
+      "source": "src/commands.ts:520",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3504,7 +3508,7 @@
       "id": "commands.Export",
       "kind": "entry",
       "title": "Export the page",
-      "source": "src/commands.ts:304",
+      "source": "src/commands.ts:305",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3535,7 +3539,7 @@
       "id": "commands.Help",
       "kind": "entry",
       "title": "Help",
-      "source": "src/commands.ts:534",
+      "source": "src/commands.ts:535",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3551,7 +3555,9 @@
           "terminal": "architecture.Terminal",
           "cell": "documents/text.PaddedCell",
           "columns": "documents/text.TerminalColumns",
-          "messages": "messages.CommandMessages"
+          "messages": "messages.CommandMessages",
+          "long": "std/tooling.LongOptions",
+          "standard": "std/tooling.StandardOptions"
         },
         "body": {
           "file": "./code/commands/help.ts",
@@ -3564,7 +3570,7 @@
       "id": "commands.Init",
       "kind": "entry",
       "title": "Start a project",
-      "source": "src/commands.ts:430",
+      "source": "src/commands.ts:431",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3585,7 +3591,7 @@
           "paths": "architecture.Paths",
           "encodings": "std/system.NodeEncodings",
           "file": "std/text.TextFile",
-          "json": "conventions.JsonFormatting",
+          "json": "std/text.JsonFormatting",
           "language": "typescript.TypeScript",
           "syntax": "typescript.TypeScriptSyntax",
           "title": "typescript.ModuleTitle",
@@ -3624,7 +3630,7 @@
       "id": "commands.Plan",
       "kind": "entry",
       "title": "Plan a build",
-      "source": "src/commands.ts:336",
+      "source": "src/commands.ts:337",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3690,7 +3696,9 @@
           "paths": "architecture.Paths",
           "reading": "architecture.FileReading",
           "specifiers": "std/system.NodeModuleSpecifiers",
-          "reader": "syntax.SyntaxReader"
+          "reader": "syntax.SyntaxReader",
+          "long": "std/tooling.LongOptions",
+          "standard": "std/tooling.StandardOptions"
         },
         "body": {
           "file": "./code/commands/preparation.ts",
@@ -3723,7 +3731,7 @@
       "id": "commands.Publish",
       "kind": "entry",
       "title": "Publish",
-      "source": "src/commands.ts:170",
+      "source": "src/commands.ts:171",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3754,7 +3762,7 @@
       "id": "commands.RecordEvidence",
       "kind": "entry",
       "title": "Record evidence",
-      "source": "src/commands.ts:271",
+      "source": "src/commands.ts:272",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3786,7 +3794,7 @@
       "id": "commands.ReferencesModule",
       "kind": "function",
       "title": "A module of references",
-      "source": "src/commands.ts:416",
+      "source": "src/commands.ts:417",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3815,7 +3823,7 @@
       "id": "commands.Registry",
       "kind": "entry",
       "title": "Fill the registry",
-      "source": "src/commands.ts:401",
+      "source": "src/commands.ts:402",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3847,7 +3855,7 @@
       "id": "commands.Release",
       "kind": "entry",
       "title": "Release a version",
-      "source": "src/commands.ts:287",
+      "source": "src/commands.ts:288",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3900,20 +3908,17 @@
       "id": "commands.RenderView",
       "kind": "function",
       "title": "Render a view",
-      "source": "src/commands.ts:90",
+      "source": "src/commands.ts:91",
       "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
-          "line": "conventions.TrameCommands",
-          "json": "conventions.JsonFormatting",
           "preparation": "commands.Preparation",
           "views": "engine.Views",
-          "files": "documents/rendering.FileRendering",
-          "screen": "documents/rendering.TerminalRendering",
+          "formats": "std/tooling.AnswerFormats",
+          "refused": "commands/commands.ViewRefused",
           "terminal": "architecture.Terminal",
-          "texts": "std/algebra.Texts",
-          "messages": "messages.CommandMessages"
+          "lineWords": "std/tooling.LineWords"
         },
         "body": {
           "file": "./code/commands/render-view.ts",
@@ -3926,7 +3931,7 @@
       "id": "commands.Run",
       "kind": "entry",
       "title": "Run a component",
-      "source": "src/commands.ts:468",
+      "source": "src/commands.ts:469",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3952,7 +3957,7 @@
       "id": "commands.Ship",
       "kind": "entry",
       "title": "Ship",
-      "source": "src/commands.ts:252",
+      "source": "src/commands.ts:253",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3998,7 +4003,7 @@
       "id": "commands.ShowView",
       "kind": "entry",
       "title": "Show a view",
-      "source": "src/commands.ts:478",
+      "source": "src/commands.ts:479",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4022,7 +4027,7 @@
       "id": "commands.TakeSnapshot",
       "kind": "entry",
       "title": "Take the snapshot",
-      "source": "src/commands.ts:159",
+      "source": "src/commands.ts:160",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4052,7 +4057,7 @@
       "id": "commands.TestKinds",
       "kind": "entry",
       "title": "Test the laws",
-      "source": "src/commands.ts:146",
+      "source": "src/commands.ts:147",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4083,7 +4088,7 @@
       "id": "commands.Upgrade",
       "kind": "entry",
       "title": "Upgrade",
-      "source": "src/commands.ts:385",
+      "source": "src/commands.ts:386",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4122,7 +4127,7 @@
       "id": "commands.WriteManifest",
       "kind": "entry",
       "title": "Write the manifest",
-      "source": "src/commands.ts:213",
+      "source": "src/commands.ts:214",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4150,7 +4155,7 @@
           "installs": "architecture.PackageInstalls",
           "lock": "packages.NpmLockfile",
           "file": "std/text.TextFile",
-          "json": "conventions.JsonFormatting",
+          "json": "std/text.JsonFormatting",
           "language": "typescript.TypeScript",
           "terminal": "architecture.Terminal",
           "messages": "messages.CommandMessages",
@@ -4184,7 +4189,7 @@
       "id": "conventions.DefaultRank",
       "kind": "decision",
       "title": "Default rank",
-      "source": "src/conventions.ts:226",
+      "source": "src/conventions.ts:223",
       "fields": {
         "owner": "trame",
         "value": 100
@@ -4195,7 +4200,7 @@
       "id": "conventions.DocComment",
       "kind": "decision",
       "title": "Documentation comment",
-      "source": "src/conventions.ts:233",
+      "source": "src/conventions.ts:230",
       "fields": {
         "owner": "trame",
         "value": {
@@ -4209,7 +4214,7 @@
       "id": "conventions.DocumentIds",
       "kind": "standard",
       "title": "Names of the documents",
-      "source": "src/conventions.ts:247",
+      "source": "src/conventions.ts:238",
       "fields": {
         "owner": "trame",
         "source": "Trame, the documents of its views (the engine names them, the page reads them)",
@@ -4304,23 +4309,10 @@
       "diagnostics": []
     },
     {
-      "id": "conventions.JsonFormatting",
-      "kind": "decision",
-      "title": "JSON formatting",
-      "source": "src/conventions.ts:239",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "indentation": 2
-        }
-      },
-      "diagnostics": []
-    },
-    {
       "id": "conventions.KeptCommands",
       "kind": "decision",
       "title": "The commands the engine keeps",
-      "source": "src/conventions.ts:192",
+      "source": "src/conventions.ts:189",
       "fields": {
         "owner": "trame",
         "value": [
@@ -4453,7 +4445,7 @@
       "id": "conventions.StepNames",
       "kind": "decision",
       "title": "Names of steps",
-      "source": "src/conventions.ts:220",
+      "source": "src/conventions.ts:217",
       "fields": {
         "owner": "trame",
         "value": {
@@ -4587,10 +4579,6 @@
             "value": "--at",
             "meaning": "The date at which the graph is compiled"
           },
-          "format": {
-            "value": "--format",
-            "meaning": "The format a view is written in"
-          },
           "port": {
             "value": "--port",
             "meaning": "The port trame dev listens on"
@@ -4679,14 +4667,6 @@
             "value": "failed",
             "meaning": "The evidence says no: the check failed, the review asks for changes"
           },
-          "json": {
-            "value": "json",
-            "meaning": "A view written as JSON (the intermediate format)"
-          },
-          "markdown": {
-            "value": "md",
-            "meaning": "A view written as Markdown"
-          },
           "separator": {
             "value": " ",
             "meaning": "Separates the words of a command, and the names of a list given as one parameter"
@@ -4699,7 +4679,7 @@
       "id": "conventions.TrameEnvironment",
       "kind": "standard",
       "title": "Trame's environment",
-      "source": "src/conventions.ts:206",
+      "source": "src/conventions.ts:203",
       "fields": {
         "owner": "trame",
         "source": "Trame, the variables of the environment it reads",
@@ -4720,7 +4700,7 @@
       "id": "conventions.ViewGroupOrder",
       "kind": "decision",
       "title": "Order of the view groups",
-      "source": "src/conventions.ts:261",
+      "source": "src/conventions.ts:252",
       "fields": {
         "owner": "trame",
         "value": [
@@ -5459,7 +5439,7 @@
           "sha256": "std/algorithms.Sha256",
           "encodings": "std/system.NodeEncodings",
           "fingerprint": "engine.Fingerprint",
-          "json": "conventions.JsonFormatting",
+          "json": "std/text.JsonFormatting",
           "sequences": "std/algebra.Sequences",
           "texts": "std/algebra.Texts",
           "values": "std/algebra.ValueTypes"
@@ -5695,7 +5675,7 @@
         "deps": {
           "encodings": "std/system.NodeEncodings",
           "layout": "conventions.Layout",
-          "json": "conventions.JsonFormatting",
+          "json": "std/text.JsonFormatting",
           "textFile": "std/text.TextFile",
           "references": "engine.References",
           "codeSpan": "documents/markdown.CodeSpan",
@@ -5721,7 +5701,7 @@
         "owner": "trame",
         "deps": {
           "values": "std/algebra.ValueTypes",
-          "json": "conventions.JsonFormatting",
+          "json": "std/text.JsonFormatting",
           "positions": "engine.Positions",
           "prelude": "architecture.Prelude",
           "counts": "std/algebra.Counts",
@@ -7893,7 +7873,7 @@
       "id": "messages.AdvanceMessages",
       "kind": "catalog",
       "title": "Messages of an advance",
-      "source": "src/messages.ts:910",
+      "source": "src/messages.ts:918",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -7936,7 +7916,7 @@
       "id": "messages.CountsInTheLanguage",
       "kind": "adr",
       "title": "A catalog counts in its language",
-      "source": "src/messages.ts:999",
+      "source": "src/messages.ts:1007",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -7979,7 +7959,7 @@
       "id": "messages.EngineViewWords",
       "kind": "catalog",
       "title": "Words of Trame's views",
-      "source": "src/messages.ts:687",
+      "source": "src/messages.ts:695",
       "fields": {
         "owner": "trame",
         "messages": {
@@ -7993,7 +7973,7 @@
       "id": "messages.KindWords",
       "kind": "catalog",
       "title": "Words of the kinds",
-      "source": "src/messages.ts:667",
+      "source": "src/messages.ts:675",
       "fields": {
         "owner": "trame",
         "messages": {
@@ -8057,7 +8037,7 @@
       "id": "messages.PageWords",
       "kind": "catalog",
       "title": "Words of the page",
-      "source": "src/messages.ts:698",
+      "source": "src/messages.ts:706",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -8074,7 +8054,7 @@
       "id": "messages.PlatformMessages",
       "kind": "catalog",
       "title": "Messages of the platform",
-      "source": "src/messages.ts:709",
+      "source": "src/messages.ts:717",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -8085,7 +8065,7 @@
       "id": "messages.ScenarioMessages",
       "kind": "catalog",
       "title": "Messages of the scenarios",
-      "source": "src/messages.ts:738",
+      "source": "src/messages.ts:746",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -8113,7 +8093,7 @@
       "id": "messages.ViewWords",
       "kind": "catalog",
       "title": "Words of the views",
-      "source": "src/messages.ts:677",
+      "source": "src/messages.ts:685",
       "fields": {
         "owner": "trame",
         "messages": {
@@ -8161,10 +8141,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "documents",
-        "version": "0.3.0",
+        "version": "0.4.0",
         "joins": "library",
         "from": "path",
-        "at": "libs/documents/releases/0.3.0"
+        "at": "libs/documents/releases/0.4.0"
       },
       "diagnostics": []
     },
@@ -8195,10 +8175,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "commands",
-        "version": "0.3.0",
+        "version": "0.4.0",
         "joins": "library",
         "from": "path",
-        "at": "libs/commands/releases/0.3.0"
+        "at": "libs/commands/releases/0.4.0"
       },
       "diagnostics": []
     },
@@ -8331,10 +8311,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.30.0",
+        "version": "0.31.0",
         "joins": "library",
         "from": "path",
-        "at": "std/releases/0.30.0"
+        "at": "std/releases/0.31.0"
       },
       "diagnostics": []
     },
@@ -12726,6 +12706,22 @@
       "diagnostics": []
     },
     {
+      "id": "releases.G135",
+      "kind": "release",
+      "title": "Generation 135",
+      "source": "src/releases.ts:2004",
+      "fields": {
+        "owner": "trame",
+        "version": "g135",
+        "date": "2026-11-28",
+        "what": "trame help <command> presents what a project's command reads on its line; the engine's view writes with the formats chosen on std's AnswerFormats and says a refusal in libs/commands' words; --format is std's option of every command; --at leaves the line forwarded to a project's command",
+        "fingerprint": "841d450c9bc4ca2f",
+        "language": "shared",
+        "archive": "5c959e9d1badf723"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "releases.G14",
       "kind": "release",
       "title": "Generation 14",
@@ -14214,10 +14210,22 @@
       "diagnostics": []
     },
     {
+      "id": "rendering.AnswersAsChosen",
+      "kind": "binding",
+      "title": "The formats of a command's documents",
+      "source": "src/rendering.ts:229",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "--format is an option of every command (std's): the project chooses the formats it offers, its default first."
+      },
+      "diagnostics": []
+    },
+    {
       "id": "rendering.DocumentsInMarkdown",
       "kind": "binding",
       "title": "Documents in Markdown",
-      "source": "src/rendering.ts:103",
+      "source": "src/rendering.ts:104",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14235,7 +14243,7 @@
       "id": "rendering.FiguresInMermaid",
       "kind": "binding",
       "title": "Figures in Mermaid",
-      "source": "src/rendering.ts:123",
+      "source": "src/rendering.ts:124",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14253,7 +14261,7 @@
       "id": "rendering.HtmlSyntax",
       "kind": "function",
       "title": "HTML writer",
-      "source": "src/rendering.ts:71",
+      "source": "src/rendering.ts:72",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14282,7 +14290,7 @@
       "id": "rendering.MeaningThenLook",
       "kind": "adr",
       "title": "Kinds and views say what; renderers say how",
-      "source": "src/rendering.ts:214",
+      "source": "src/rendering.ts:215",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14298,7 +14306,7 @@
       "id": "rendering.PageFigures",
       "kind": "port",
       "title": "Figures of the page",
-      "source": "src/rendering.ts:41",
+      "source": "src/rendering.ts:42",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -14309,7 +14317,7 @@
       "id": "rendering.PageFiguresDrawn",
       "kind": "binding",
       "title": "The page's figures in SVG",
-      "source": "src/rendering.ts:195",
+      "source": "src/rendering.ts:196",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14326,7 +14334,7 @@
       "id": "rendering.PageInHtml",
       "kind": "binding",
       "title": "The page in HTML",
-      "source": "src/rendering.ts:176",
+      "source": "src/rendering.ts:177",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14343,7 +14351,7 @@
       "id": "rendering.PageRendering",
       "kind": "function",
       "title": "Rendering in the page",
-      "source": "src/rendering.ts:88",
+      "source": "src/rendering.ts:89",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14359,7 +14367,7 @@
       "id": "rendering.PageSyntax",
       "kind": "port",
       "title": "Syntax of the page",
-      "source": "src/rendering.ts:36",
+      "source": "src/rendering.ts:37",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -14370,7 +14378,7 @@
       "id": "rendering.RenderedByTheLibrary",
       "kind": "adr",
       "title": "Trame's documents, rendered by the library of documents",
-      "source": "src/rendering.ts:228",
+      "source": "src/rendering.ts:243",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14386,7 +14394,7 @@
       "id": "rendering.SvgFigures",
       "kind": "function",
       "title": "Figures in SVG",
-      "source": "src/rendering.ts:51",
+      "source": "src/rendering.ts:52",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14427,7 +14435,7 @@
       "id": "rendering.TerminalFiguresAsText",
       "kind": "binding",
       "title": "Figures in the terminal, as text",
-      "source": "src/rendering.ts:160",
+      "source": "src/rendering.ts:161",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -14443,7 +14451,7 @@
       "id": "rendering.TerminalInText",
       "kind": "binding",
       "title": "The terminal in plain text",
-      "source": "src/rendering.ts:142",
+      "source": "src/rendering.ts:143",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -15294,7 +15302,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "2d0b8b3a"
+        "code": "30df9272"
       },
       "diagnostics": []
     },
@@ -15308,7 +15316,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "2a9089b8"
+        "code": "cc224390"
       },
       "diagnostics": []
     },
@@ -15336,7 +15344,7 @@
       "fields": {
         "owner": "trame",
         "context": "The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.",
-        "consequences": "trame plan, build and snapshot run on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's own stay until the generation that removes the commands every project then runs from the library.",
+        "consequences": "trame plan, build, snapshot and view run on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's own stay until the generation that removes the commands every project then runs from the library.",
         "rejected": {
           "The engine's own commands, kept": "they would stay out of reach of every project's choice, and the engine the only one to reach its modules"
         }
@@ -15366,7 +15374,7 @@
       },
       "result": {
         "path": "out/local/trame-cli.ts",
-        "code": "2d7eac79"
+        "code": "bc1bfe90"
       },
       "diagnostics": []
     },
@@ -15420,7 +15428,7 @@
       },
       "result": {
         "path": "trame-page.html",
-        "code": "40f4f810"
+        "code": "f5952c54"
       },
       "diagnostics": []
     },
@@ -15447,7 +15455,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "c731f651"
+        "code": "65715dfa"
       },
       "diagnostics": []
     },
@@ -15934,7 +15942,6 @@
           "conventions.DocComment",
           "conventions.DocumentIds",
           "conventions.FrozenApi",
-          "conventions.JsonFormatting",
           "conventions.KeptCommands",
           "conventions.LanguageNames",
           "conventions.Layout",
@@ -16221,6 +16228,7 @@
           "product.SingleSource",
           "product.StructureDraws",
           "product.WrittenOnce",
+          "rendering.AnswersAsChosen",
           "rendering.DocumentsInMarkdown",
           "rendering.FiguresInMermaid",
           "rendering.HtmlSyntax",
@@ -17064,7 +17072,6 @@
           "engine.Project",
           "platform.NodeHashing",
           "engine.Fingerprint",
-          "conventions.JsonFormatting",
           "engine.EngineFingerprint",
           "engine.KeptRunsScope",
           "platform.RunsOnDisk",
@@ -17543,7 +17550,7 @@
       },
       "result": {
         "path": "out/browser/page-app.ts",
-        "code": "d554265c"
+        "code": "216521f0"
       },
       "diagnostics": []
     },
@@ -17557,7 +17564,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "fa4b4d46"
+        "code": "59129ea7"
       },
       "diagnostics": [
         "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
@@ -17729,7 +17736,7 @@
         "owner": "trame"
       },
       "result": {
-        "code": "b31042d2"
+        "code": "98c7b2f2"
       },
       "diagnostics": [
         "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
@@ -17794,6 +17801,11 @@
             "obligation": "sdlc.EngineVerified"
           },
           {
+            "node": "scenarios.DocumentWords",
+            "via": "documents.OurDocumentLanguage",
+            "obligation": "sdlc.EngineVerified"
+          },
+          {
             "node": "sdlc.CandidateRunsOnTheMachine",
             "via": "platform.NodeProcess",
             "obligation": "sdlc.EngineVerified"
@@ -17814,6 +17826,8 @@
         "reached": [
           "sdlc.ApplyTheRepositorySettings",
           "sdlc.TrameSdlc",
+          "messages.Language",
+          "documents.OurDocumentLanguage",
           "platform.TypeScriptRunner",
           "conventions.TrameEnvironment",
           "platform.NodeProcess",
@@ -17828,7 +17842,6 @@
           "sdlc.TheRepository",
           "sdlc.MainBranch",
           "sdlc.GraphPage",
-          "messages.Language",
           "page.PageRegions",
           "markup.DocumentMarkup",
           "html.AttributeSelector",
@@ -17972,7 +17985,7 @@
       },
       "result": {
         "path": "src",
-        "code": "01eeef91"
+        "code": "6caaf7c4"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -18021,7 +18034,7 @@
       "id": "shipping.Attribution",
       "kind": "function",
       "title": "Attribution",
-      "source": "src/shipping.ts:84",
+      "source": "src/shipping.ts:87",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18042,7 +18055,7 @@
       "id": "shipping.ProgramBundle",
       "kind": "decision",
       "title": "The fingerprint of a program",
-      "source": "src/shipping.ts:69",
+      "source": "src/shipping.ts:72",
       "fields": {
         "owner": "trame",
         "value": {
@@ -18062,7 +18075,7 @@
       "id": "shipping.SdlcEvidence",
       "kind": "function",
       "title": "Evidence of the SDLC",
-      "source": "src/shipping.ts:117",
+      "source": "src/shipping.ts:120",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18074,7 +18087,7 @@
           "hashing": "architecture.Hashing",
           "sha256": "std/algorithms.Sha256",
           "encodings": "std/system.NodeEncodings",
-          "json": "conventions.JsonFormatting",
+          "json": "std/text.JsonFormatting",
           "fingerprints": "engine.Fingerprints",
           "signatures": "architecture.Signatures"
         },
@@ -18089,7 +18102,7 @@
       "id": "shipping.SealedByAttribution",
       "kind": "binding",
       "title": "Evidence sealed by attribution",
-      "source": "src/shipping.ts:95",
+      "source": "src/shipping.ts:98",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18106,7 +18119,7 @@
       "id": "shipping.ShipmentRunPlan",
       "kind": "function",
       "title": "The plan of a run elsewhere",
-      "source": "src/shipping.ts:138",
+      "source": "src/shipping.ts:141",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18120,7 +18133,11 @@
           "encodings": "std/system.NodeEncodings",
           "values": "std/algebra.ValueTypes",
           "sequences": "std/algebra.Sequences",
-          "posix": "std/system.Posix"
+          "posix": "std/system.Posix",
+          "formats": "std/tooling.AnswerFormats",
+          "media": "std/web.MediaTypes",
+          "long": "std/tooling.LongOptions",
+          "standard": "std/tooling.StandardOptions"
         },
         "body": {
           "file": "./code/commands/run-plan.ts",
@@ -18133,7 +18150,7 @@
       "id": "shipping.ShipOnlyWhatHolds",
       "kind": "requirement",
       "title": "Ship only what holds",
-      "source": "src/shipping.ts:31",
+      "source": "src/shipping.ts:34",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18148,7 +18165,7 @@
       "id": "shipping.ShipOnlyWhatHoldsCriteria",
       "kind": "acceptance",
       "title": "Criteria of shipping only what holds",
-      "source": "src/shipping.ts:39",
+      "source": "src/shipping.ts:42",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -18178,7 +18195,7 @@
       "id": "shipping.ShippingRecords",
       "kind": "decision",
       "title": "Where the SDLC's evidence is kept",
-      "source": "src/shipping.ts:56",
+      "source": "src/shipping.ts:59",
       "fields": {
         "owner": "trame",
         "value": {
@@ -24533,6 +24550,26 @@
       "kind": "deps"
     },
     {
+      "from": "command-scenarios.ViewsInTheTerminal",
+      "to": "std/tooling.AnswerFormats",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ViewsInTheTerminal",
+      "to": "std/web.MediaTypes",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ViewsInTheTerminal",
+      "to": "std/tooling.LongOptions",
+      "kind": "deps"
+    },
+    {
+      "from": "command-scenarios.ViewsInTheTerminal",
+      "to": "std/tooling.StandardOptions",
+      "kind": "deps"
+    },
+    {
       "from": "commands.AddOns",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -24744,7 +24781,7 @@
     },
     {
       "from": "commands.Advance",
-      "to": "conventions.JsonFormatting",
+      "to": "std/text.JsonFormatting",
       "kind": "deps"
     },
     {
@@ -25059,7 +25096,7 @@
     },
     {
       "from": "commands.Audit",
-      "to": "conventions.JsonFormatting",
+      "to": "std/text.JsonFormatting",
       "kind": "deps"
     },
     {
@@ -25733,6 +25770,16 @@
       "kind": "deps"
     },
     {
+      "from": "commands.Help",
+      "to": "std/tooling.LongOptions",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Help",
+      "to": "std/tooling.StandardOptions",
+      "kind": "deps"
+    },
+    {
       "from": "commands.Init",
       "to": "product.SingleSource",
       "kind": "serves"
@@ -25809,7 +25856,7 @@
     },
     {
       "from": "commands.Init",
-      "to": "conventions.JsonFormatting",
+      "to": "std/text.JsonFormatting",
       "kind": "deps"
     },
     {
@@ -26165,6 +26212,16 @@
     {
       "from": "commands.Preparation",
       "to": "syntax.SyntaxReader",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Preparation",
+      "to": "std/tooling.LongOptions",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.Preparation",
+      "to": "std/tooling.StandardOptions",
       "kind": "deps"
     },
     {
@@ -26639,16 +26696,6 @@
     },
     {
       "from": "commands.RenderView",
-      "to": "conventions.TrameCommands",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.RenderView",
-      "to": "conventions.JsonFormatting",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.RenderView",
       "to": "commands.Preparation",
       "kind": "deps"
     },
@@ -26659,12 +26706,12 @@
     },
     {
       "from": "commands.RenderView",
-      "to": "documents/rendering.FileRendering",
+      "to": "std/tooling.AnswerFormats",
       "kind": "deps"
     },
     {
       "from": "commands.RenderView",
-      "to": "documents/rendering.TerminalRendering",
+      "to": "commands/commands.ViewRefused",
       "kind": "deps"
     },
     {
@@ -26674,12 +26721,7 @@
     },
     {
       "from": "commands.RenderView",
-      "to": "std/algebra.Texts",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.RenderView",
-      "to": "messages.CommandMessages",
+      "to": "std/tooling.LineWords",
       "kind": "deps"
     },
     {
@@ -27234,7 +27276,7 @@
     },
     {
       "from": "commands.WriteManifest",
-      "to": "conventions.JsonFormatting",
+      "to": "std/text.JsonFormatting",
       "kind": "deps"
     },
     {
@@ -28379,7 +28421,7 @@
     },
     {
       "from": "engine.EngineFingerprint",
-      "to": "conventions.JsonFormatting",
+      "to": "std/text.JsonFormatting",
       "kind": "deps"
     },
     {
@@ -28769,7 +28811,7 @@
     },
     {
       "from": "engine.Lock",
-      "to": "conventions.JsonFormatting",
+      "to": "std/text.JsonFormatting",
       "kind": "deps"
     },
     {
@@ -28819,7 +28861,7 @@
     },
     {
       "from": "engine.MachineOutputs",
-      "to": "conventions.JsonFormatting",
+      "to": "std/text.JsonFormatting",
       "kind": "deps"
     },
     {
@@ -33818,6 +33860,16 @@
       "kind": "assembledBy"
     },
     {
+      "from": "releases.G135",
+      "to": "architecture.TrameCli",
+      "kind": "component"
+    },
+    {
+      "from": "releases.G135",
+      "to": "releases.G134",
+      "kind": "assembledBy"
+    },
+    {
       "from": "releases.G14",
       "to": "architecture.TrameCli",
       "kind": "component"
@@ -34758,6 +34810,41 @@
       "kind": "assembledBy"
     },
     {
+      "from": "rendering.AnswersAsChosen",
+      "to": "documents/rendering.AnswersAtATerminal",
+      "kind": "chooses"
+    },
+    {
+      "from": "rendering.AnswersAsChosen",
+      "to": "documents/rendering.AnswersInMarkdown",
+      "kind": "chooses"
+    },
+    {
+      "from": "rendering.AnswersAsChosen",
+      "to": "std/tooling.AnswersInJson",
+      "kind": "chooses"
+    },
+    {
+      "from": "rendering.AnswersAsChosen",
+      "to": "architecture.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "rendering.AnswersAsChosen",
+      "to": "architecture.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "rendering.AnswersAsChosen",
+      "to": "std/patterns.Plugin",
+      "kind": "follows"
+    },
+    {
+      "from": "rendering.AnswersAsChosen",
+      "to": "product.ReplaceableTechnology",
+      "kind": "serves"
+    },
+    {
       "from": "rendering.DocumentsInMarkdown",
       "to": "documents/rendering.MarkdownSyntax",
       "kind": "chooses"
@@ -35020,6 +35107,11 @@
     {
       "from": "rendering.RenderedByTheLibrary",
       "to": "rendering.PageFiguresDrawn",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "rendering.RenderedByTheLibrary",
+      "to": "rendering.AnswersAsChosen",
       "kind": "appliedBy"
     },
     {
@@ -36204,6 +36296,11 @@
     },
     {
       "from": "sdlc.CommandsWrittenOnce",
+      "to": "commands/commands.View",
+      "kind": "chooses"
+    },
+    {
+      "from": "sdlc.CommandsWrittenOnce",
       "to": "std/engine.ProjectInTheEngine",
       "kind": "chooses"
     },
@@ -37244,7 +37341,7 @@
     },
     {
       "from": "shipping.SdlcEvidence",
-      "to": "conventions.JsonFormatting",
+      "to": "std/text.JsonFormatting",
       "kind": "deps"
     },
     {
@@ -37335,6 +37432,26 @@
     {
       "from": "shipping.ShipmentRunPlan",
       "to": "std/system.Posix",
+      "kind": "deps"
+    },
+    {
+      "from": "shipping.ShipmentRunPlan",
+      "to": "std/tooling.AnswerFormats",
+      "kind": "deps"
+    },
+    {
+      "from": "shipping.ShipmentRunPlan",
+      "to": "std/web.MediaTypes",
+      "kind": "deps"
+    },
+    {
+      "from": "shipping.ShipmentRunPlan",
+      "to": "std/tooling.LongOptions",
+      "kind": "deps"
+    },
+    {
+      "from": "shipping.ShipmentRunPlan",
+      "to": "std/tooling.StandardOptions",
       "kind": "deps"
     },
     {

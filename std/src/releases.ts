@@ -473,3 +473,16 @@ export const R0_30_0 = release({
   language: "shared",
   serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
 })
+
+/**
+ * Version 0.31.0
+ */
+export const R0_31_0 = release({
+  owner: "trame",
+  version: "0.31.0",
+  date: "2026-11-28",
+  what: "A command's line read by what it declares, std's options apart: the format its documents are written in, an extension point (AnswerFormats) with JSON; the JSON formatting and the media types of Markdown and plain text",
+  fingerprint: "9bd1ced9100e8814",
+  language: "shared",
+  serves: [ChosenCommands, CitedNotCopied, KnownDesigns, RealizedOnce, SharedOperations, SharedRules, VersionsThatHold],
+})

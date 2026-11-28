@@ -4,17 +4,20 @@ import { code } from "#trame/kernel"
 import { standard } from "#trame/kinds/standard"
 import { port, extensionPoint } from "#trame/kinds/port"
 import { catalog } from "#trame/kinds/catalog"
-import type { MachineNeed, ProjectRepair } from "#trame/kernel"
+import type { Document, MachineNeed, Places, ProjectRepair } from "#trame/kernel"
 import { implementation } from "#trame/kinds/implementation"
 import { fn } from "#trame/kinds/function"
 import { decision } from "#trame/kinds/decision"
 import { pkg } from "#trame/kinds/package"
 import { vocabulary } from "#trame/kinds/vocabulary"
 import { adr } from "#trame/kinds/adr"
-import { Counts, Texts, ValueTypes } from "./algebra"
+import { Counts, Sequences, Texts, ValueTypes } from "./algebra"
 import { Sha256, SeededDraws } from "./algorithms"
 import { NodeEncodings, NodeArguments, ExitStatus, NodeCli, NodeEvents, Posix } from "./system"
 import type { Exposure } from "#trame/kinds/component"
+import type { CommandOption } from "#trame/kinds/entry-point"
+import { MediaTypes } from "./web"
+import { JsonFormatting } from "./text"
 import { RealizedOnce, CitedNotCopied } from "./product"
 import { Time } from "./measures"
 
@@ -28,10 +31,130 @@ import { Time } from "./measures"
  * A program of the SDLC (a check, a deployment), run by a person or by trame ship: its first argument names the
  * command that runs.
  */
-export const ProgramCommands = port<Exposure>({ owner: "trame", declaredEffects: ["terminal"] })
+export const ProgramCommands = port<Exposure>({ owner: "trame", declaredEffects: ["terminal", "asynchronous"] })
 
 /** The language the library's commands and tools speak in. */
 export const CommandLanguage = decision<{ tag: string }>({ owner: "trame", value: { tag: "en-GB" } })
+
+// The line of a command (std 0.31.0) --------------------------------------------------------------------------------
+//
+// A command declares what it reads on its line (its arguments, its options: the language's command trigger), and std's
+// exposures read the line by it, then hand the command its arguments and options by name. The options every command
+// has are std's: the format its answer is written in, when it answers documents, which the exposures write in the
+// format the line names, among those the project chose.
+
+/**
+ * Long options
+ * How a command's line is written: its arguments in their order, then its options, each one its name after two
+ * hyphens, followed by its value when it takes one.
+ */
+export const LongOptions = standard({
+  owner: "trame",
+  serves: [CitedNotCopied],
+  source: "The GNU C Library, Program Arguments, Argument Syntax (long options); POSIX.1-2017, XBD 12.2, Utility Syntax Guidelines",
+  url: "https://www.gnu.org/software/libc/manual/html_node/Argument-Syntax.html",
+  constants: {
+    prefix: { value: "--", meaning: "Begins a long option, before its name" },
+  },
+})
+
+/**
+ * The options of every command
+ * What std's exposures read on the line of any command, beside what the command declares: the format the documents it
+ * answers are written in.
+ */
+export const StandardOptions = decision<{ format: CommandOption }>({
+  owner: "trame",
+  value: { format: { name: "format", meaning: "the format the documents a command answers are written in", takes: "the word of a format the project chose" } },
+  rejected: { "Each command its own format option": "the same option declared again by every command that answers documents, written differently by each" },
+})
+
+/** What a command answers when it answers documents: how they are written is the line's (--format), not the command's. */
+export interface DocumentsAnswer {
+  readonly documents: readonly Document[]
+  /** Where each card is, for a format that links (Markdown): computed only when one asks. */
+  places?(): Promise<Places>
+}
+
+/** A format the documents a command answers may be written in: its word on the line, its media type, how it writes them. */
+export interface AnswerFormat {
+  readonly word: string
+  readonly media: string
+  write(answer: DocumentsAnswer): Promise<readonly string[]>
+}
+
+/**
+ * Formats of an answer
+ * The extension point of std's exposures (std 0.31.0): each format a project chooses, in the order its choice writes
+ * them. A command that answers documents has them written in the format the line names, the first chosen when it names
+ * none.
+ */
+export const AnswerFormats = extensionPoint<AnswerFormat>({ owner: "trame", declaredEffects: ["asynchronous"] })
+
+/**
+ * Documents in JSON
+ * A format of an answer: the documents as the intermediate format gives them, in JSON, indented; a document alone, not
+ * in a list.
+ */
+export const AnswersInJson = fn({
+  owner: "trame", implements: [AnswerFormats],
+  serves: [RealizedOnce],
+  constants: { word: { value: "json", meaning: "The word of the format, after --format" } },
+  deps: { media: MediaTypes, json: JsonFormatting, counts: Counts },
+  body: code.file<typeof import("./code/tooling/answers-in-json").default>("./code/tooling/answers-in-json.ts"),
+})
+
+/** A command's line read by what it declares: its arguments and options by name, std's options apart, what is wrong. */
+export interface LineRead {
+  readonly arguments: Readonly<Record<string, string>>
+  readonly options: Readonly<Record<string, string | true>>
+  /** std's options, which no command declares. */
+  readonly standard: Readonly<Record<string, string | true>>
+  /** The line without std's options, for a command that reads its line itself. */
+  readonly args: readonly string[]
+  /** The first argument the command needs that the line does not give. */
+  readonly missing?: string
+  /** The first option the line names that nobody declares. */
+  readonly unknown?: string
+}
+
+/**
+ * A command's line, read
+ * By what the command declares: the words before any option are its arguments, in their order; an option is the long
+ * option of its name, followed by its value when it takes one; std's options are read apart.
+ */
+export const CommandLineRead = fn({
+  owner: "trame",
+  serves: [RealizedOnce],
+  deps: { long: LongOptions, standard: StandardOptions, sequences: Sequences, counts: Counts },
+  body: code.file<typeof import("./code/tooling/command-line").default>("./code/tooling/command-line.ts"),
+})
+
+/**
+ * What std's exposures say of a line
+ */
+export const LineWords = catalog({
+  owner: "trame",
+  language: CommandLanguage,
+  messages: () => ({
+    argumentMissing: (command: string, argument: string) => `${command}: the ${argument} is missing`,
+    optionUnknown: (command: string, option: string) => `${command}: no option ${option}`,
+    formatUnknown: (word: string, known: readonly string[]) => `no format ${word}: ${known.length ? known.join(", ") : "none is chosen"}`,
+    formatNone: () => "the command answers documents, and the project chose no format to write them in",
+  }),
+})
+
+/**
+ * Commands, their lines read and their answers written
+ * What std's exposures do with each command: its line read by what it declares (refused when it lacks an argument or
+ * names an option nobody declares), then, when it answers documents, its answer written in the format the line names.
+ */
+export const CommandLines = fn({
+  owner: "trame",
+  serves: [RealizedOnce],
+  deps: { read: CommandLineRead, formats: AnswerFormats, long: LongOptions, standard: StandardOptions, exit: ExitStatus, values: ValueTypes, sequences: Sequences, counts: Counts, say: LineWords },
+  body: code.file<typeof import("./code/tooling/command-lines").default>("./code/tooling/command-lines.ts"),
+})
 
 /**
  * What the machine must also have
@@ -57,7 +180,7 @@ export const ProjectRepairs = extensionPoint<ProjectRepair>({ owner: "trame", de
  */
 export const NodeProgramCommands = implementation({
   owner: "trame", implements: [ProgramCommands],
-  deps: { argv: NodeArguments, exit: ExitStatus, values: ValueTypes },
+  deps: { argv: NodeArguments, exit: ExitStatus, values: ValueTypes, lines: CommandLines },
   body: code.file("./code/tooling/node-commands.ts"),
 })
 
@@ -70,7 +193,7 @@ export const NodeProgramCommands = implementation({
  */
 export const CommandsInTheEngine = implementation({
   owner: "trame", implements: [ProgramCommands],
-  deps: { exit: ExitStatus },
+  deps: { exit: ExitStatus, lines: CommandLines },
   body: code.file("./code/tooling/engine-commands.ts"),
 })
 

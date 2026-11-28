@@ -40,13 +40,15 @@ export const Http = standard({
 export const MediaTypes = standard({
   owner: "trame",
   serves: [CitedNotCopied],
-  source: "IANA media types registry; RFC 6838; RFC 8259, § 11 (application/json); WHATWG HTML (text/event-stream)",
+  source: "IANA media types registry; RFC 6838; RFC 8259, § 11 (application/json); RFC 7763 (text/markdown); RFC 2046, § 4.1.3 (text/plain); WHATWG HTML (text/event-stream)",
   url: "https://www.iana.org/assignments/media-types/",
   constants: {
     html: { value: "text/html; charset=utf-8", meaning: "An HTML page in UTF-8" },
     json: { value: "application/json", meaning: "A body written in JSON" },
     jsonUtf8: { value: "application/json; charset=utf-8", meaning: "The same, its encoding said: UTF-8" },
     eventStream: { value: "text/event-stream", meaning: "A stream of events sent by the server" },
+    markdown: { value: "text/markdown; charset=utf-8", meaning: "A text written in Markdown, in UTF-8" },
+    plain: { value: "text/plain; charset=utf-8", meaning: "Plain text, in UTF-8" },
   },
 })
 

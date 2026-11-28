@@ -1,10 +1,10 @@
 # Owners
 
-*What each person must decide, settle or watch on 27 November 2026, and what they own.*
+*What each person must decide, settle or watch on 28 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 2 | 113 |
+| trame | 0 | 0 | 2 | 118 |
 
 <a id="trame"></a>
 
@@ -78,6 +78,9 @@
 | [Version 0.1.1](releases.md#R0_1_1) | Release |  |
 | [Version 0.2.0](releases.md#R0_2_0) | Release |  |
 | [Version 0.3.0](releases.md#R0_3_0) | Release |  |
+| [Version 0.4.0](releases.md#R0_4_0) | Release |  |
+| [Documents at a terminal](rendering.md#AnswersAtATerminal) | Function | **held** |
+| [Documents in Markdown](rendering.md#AnswersInMarkdown) | Function | **held** |
 | [Common rendering](rendering.md#Common) | Function | **held** |
 | [Figures of the documents written as files](rendering.md#FileFigures) | Port |  |
 | [Rendering of the files](rendering.md#FileRendering) | Function | **held** |
@@ -96,11 +99,13 @@
 | [Figures as text](rendering.md#TextFigures) | Function | **held** |
 | [Heading levels of Markdown documents](rendering.md#TextRendering) | Decision |  |
 | [The documents the scenarios render](samples.md#SampleDocuments) | Decision |  |
+| [Answers written in their formats](scenarios.md#AnswersWritten) | Scenario | **held** |
 | [The documents, rendered](scenarios.md#DocumentsRendered) | Scenario | **held** |
 | [What the scenarios read and expect](scenarios.md#Expected) | Decision |  |
 | [What the scenarios expect](scenarios.md#ExpectedDocuments) | Decision |  |
 | [Figures in Mermaid](scenarios.md#FiguresInMermaid) | Technical choice | **held** |
 | [Files in Markdown](scenarios.md#FilesInMarkdown) | Technical choice | **held** |
+| [The formats of the answers](scenarios.md#FormatsOfTheAnswers) | Technical choice | **held** |
 | [The scenarios render as a project does](scenarios.md#HowTheScenariosRender) | Architecture decision | **held** |
 | [The scenarios' language](scenarios.md#InTheScenariosLanguage) | Technical choice | **held** |
 | [Read by the engine](scenarios.md#LanguagesRead) | Technical choice | **held** |

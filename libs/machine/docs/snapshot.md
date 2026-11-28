@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 27 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 28 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Machine · Questions
 
@@ -79,9 +79,9 @@ Package · `Language`
 
 - Owner: trame
 - Name: trame
-- Version: 134
+- Version: 135
 - How it joins the graph: language
-- Its path: ../../generations/g134
+- Its path: ../../generations/g135
 - Serves: The machine is asked once
 
 ### The people of the repository
@@ -102,9 +102,9 @@ Package · `StandardLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.30.0
+- Version: 0.31.0
 - How it joins the graph: library
-- Its path: ../../std/releases/0.30.0
+- Its path: ../../std/releases/0.31.0
 - Serves: The machine is asked once
 
 ## Machine · Product

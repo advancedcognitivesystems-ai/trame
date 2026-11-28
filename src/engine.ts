@@ -15,11 +15,11 @@ import { Mulberry32, MultiplicativeHash, DepthFirstSearch, Sha256 } from "#std/a
 import { EcmaScript, EcmaScriptReservedWords, TextAsCode } from "#std/ecmascript"
 import { PlatformEffects } from "#std/effects"
 import { PackageSources } from "#std/tooling"
-import { TextFile, GnuPositions } from "#std/text"
+import { TextFile, GnuPositions, JsonFormatting } from "#std/text"
 import { TypeScriptApi } from "./standards"
 import { ExitStatus, NodeEncodings, NodeEvents, NodeModuleSpecifiers } from "#std/system"
 import { Iso8601 } from "#std/measures"
-import { Layout, DefaultRank, DocComment, JsonFormatting, ViewGroupOrder, DocumentIds, TrameCommands, StepNames, PreludeApi, LanguageNames } from "./conventions"
+import { Layout, DefaultRank, DocComment, ViewGroupOrder, DocumentIds, TrameCommands, StepNames, PreludeApi, LanguageNames } from "./conventions"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
 import {
   Prelude, FileReading, Paths, ModuleLoader, TypeScriptCompiler, Hashing, KeptResults, Signatures, Process, Terminal, Clock, Timer,

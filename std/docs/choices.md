@@ -1,8 +1,8 @@
 # Technical choices
 
-*What answers each port in each environment on 27 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 28 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
-> **5 technical choices for 23 ports, in 2 environments**
+> **6 technical choices for 24 ports, in 2 environments**
 
 | Port | Test | Strict |
 |---|---|---|
@@ -23,6 +23,7 @@
 | [The branches a scenario keeps](repository.md#BranchesKept) | [Branches kept in memory](repository.md#BranchesInMemory) | — |
 | [Pull requests](repository.md#PullRequests) | [Pull requests kept in memory](repository.md#PullRequestsInMemory) | — |
 | [The pull requests a scenario keeps](repository.md#PullRequestsKept) | [Pull requests kept in memory](repository.md#PullRequestsInMemory) | — |
+| [Formats of an answer](tooling.md#AnswerFormats) | [Documents in JSON](tooling.md#AnswersInJson) | — |
 | [Project files](tooling.md#Files) | [Files kept in memory](tooling.md#FilesInMemory) | — |
 | [Files written](tooling.md#FilesKept) | [Files kept in memory](tooling.md#FilesInMemory) | — |
 | [Programs run](tooling.md#ProgramRuns) | [Programs run in memory](tooling.md#ProgramRunsInMemory) | — |
@@ -38,7 +39,7 @@
 | [Abstract Factory](patterns.md#AbstractFactory) | unknown | — |
 | [Repository](patterns.md#Repository) | unknown | — |
 | [Command](patterns.md#Command) | unknown | — |
-| [Plugin](patterns.md#Plugin) | unknown | — |
+| [Plugin](patterns.md#Plugin) | **held** | [The formats of the scenarios](scenarios.md#FormatsOfTheScenarios) |
 
 ## Standard library · Scenarios
 
@@ -46,7 +47,7 @@
 
 ### In memory
 
-`InMemory` · `src/scenarios.ts:46` · status: **held**
+`InMemory` · `src/scenarios.ts:49` · status: **held**
 
 In the library's scenarios, each port of a device or of the tooling is answered by its realization kept in memory.
 
@@ -78,7 +79,7 @@ Context: A realization kept in memory is what a project's scenarios run in place
 
 ### Read by the engine that builds
 
-`ReadInTheEngine` · `src/scenarios.ts:63` · status: **held**
+`ReadInTheEngine` · `src/scenarios.ts:66` · status: **held**
 
 Where the library's build evaluates, its languages (HTML, CSS) are read by the engine that compiles it: their examples, and what the syntax elements of a library write in them.
 
@@ -101,7 +102,7 @@ Context: Reading a language is the engine's: the grammar and its reader are the 
 
 ### Judged as the language says
 
-`LanguageJudgment` · `src/scenarios.ts:76` · status: **held**
+`LanguageJudgment` · `src/scenarios.ts:79` · status: **held**
 
 Where the library's build evaluates, it raises nothing: each problem as the language judges it.
 
@@ -124,7 +125,7 @@ Context: The library raises nothing the language does not: its warnings are poin
 
 ### Judged strictly
 
-`StrictJudgment` · `src/scenarios.ts:95` · status: **held**
+`StrictJudgment` · `src/scenarios.ts:98` · status: **held**
 
 In Strict, every warning is an error.
 
@@ -147,7 +148,7 @@ Context: A project that leaves nothing to watch chooses it; the library plays it
 
 ### The scenarios' settings
 
-`ScenarioSettings` · `src/scenarios.ts:238` · status: **held**
+`ScenarioSettings` · `src/scenarios.ts:244` · status: **held**
 
 Where the library's scenarios run, its commands read the settings the scenarios give.
 
@@ -164,5 +165,28 @@ Context: A command of the library reads its settings through its ports: a scenar
 - Chooses: [How the scenarios' pull requests are opened](scenarios.md#ScenarioPullRequests), [How the scenarios' versions are carried](scenarios.md#ScenarioPropagation)
 - In: [Test](scenarios.md#Test)
 - Follows: [Strategy](patterns.md#Strategy)
+- Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
+- Applies: [How the library's scenarios run](scenarios.md#HowTheScenariosRun)
+
+<a id="FormatsOfTheScenarios"></a>
+
+### The formats of the scenarios
+
+`FormatsOfTheScenarios` · `src/scenarios.ts:553` · status: **held**
+
+In the library's scenarios, a command's documents are written in JSON, the format the library offers.
+
+In [Test](scenarios.md#Test):
+
+| Port | Answered by | Which is |
+|---|---|---|
+| [Formats of an answer](tooling.md#AnswerFormats) | [Documents in JSON](tooling.md#AnswersInJson) | a function |
+
+Context: The library offers one format of its own; Markdown and text are libs/documents', which projects choose beside it.
+
+- Decided by: trame
+- Chooses: [Documents in JSON](tooling.md#AnswersInJson)
+- In: [Test](scenarios.md#Test)
+- Follows: [Plugin](patterns.md#Plugin)
 - Serves: [Ports of the platform, realized once](product.md#RealizedOnce)
 - Applies: [How the library's scenarios run](scenarios.md#HowTheScenariosRun)

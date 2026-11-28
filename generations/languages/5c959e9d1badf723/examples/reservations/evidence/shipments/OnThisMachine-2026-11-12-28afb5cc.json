@@ -1,0 +1,427 @@
+{
+  "shipment": "sdlc.OnThisMachine",
+  "title": "On this machine",
+  "target": "local",
+  "at": "2026-11-12",
+  "by": "claude",
+  "signature": "attribution",
+  "artifacts": [
+    {
+      "node": "sdlc.LocalProgram",
+      "path": "out/local/reservations-api.ts",
+      "fingerprint": "0722d470a85bdb7be673f33d615f50d29222fd50cb4ef6d699697fadc4e98831"
+    }
+  ],
+  "foundations": {
+    "problems": 0
+  },
+  "obligations": [
+    {
+      "node": "sdlc.LocalProgram",
+      "kind": "artifact",
+      "status": "held",
+      "owner": "karim",
+      "evidence": [
+        {
+          "node": "sdlc.LocalProgram",
+          "at": "2026-11-10",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "ebd9c68a28a0e0f7100b28ed22d47ec4fc48b9bc52fb9f4205d64810deef03a0",
+          "code": "ecb5f9f1",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "59f20aefeccfc914",
+          "seal": "2c481330476ba76e046ea9749756707e51a1c05ab49e4b1fab7ef72b782a2cd3"
+        },
+        {
+          "node": "sdlc.LocalProgram",
+          "at": "2026-11-10",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "ebd9c68a28a0e0f7100b28ed22d47ec4fc48b9bc52fb9f4205d64810deef03a0",
+          "subject": "sdlc.OnThisMachine",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "1a09853bb8639b7df1175d644af8815cc0b827df1d5649d620129c7739abe129"
+        },
+        {
+          "node": "sdlc.LocalProgram",
+          "at": "2026-11-10",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "0f07b7abf7c436912902c22fa9ce1743efd543be1f4c68ad49223b0d1b46766c",
+          "code": "84cb9d94",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "59f20aefeccfc914",
+          "seal": "3c70955870368f6366ef7bd400a6d623fb7eed9969f009cad2e80544d69e1db9"
+        },
+        {
+          "node": "sdlc.LocalProgram",
+          "at": "2026-11-10",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "0f07b7abf7c436912902c22fa9ce1743efd543be1f4c68ad49223b0d1b46766c",
+          "subject": "sdlc.OnThisMachine",
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "7837b19deb89b5ecba53d688853e48803de506dcdae54747e7ec8ea49c4dcd49"
+        },
+        {
+          "node": "sdlc.LocalProgram",
+          "at": "2026-11-12",
+          "source": "built",
+          "value": 1,
+          "fingerprint": "0722d470a85bdb7be673f33d615f50d29222fd50cb4ef6d699697fadc4e98831",
+          "code": "b4a70b0a",
+          "by": "claude",
+          "signature": "attribution",
+          "engine": "85baa19400d3c6fb",
+          "seal": "b11f2fc25118fac095ed8e206e279729cecd5d49f840cce059bca15c1b293d3d"
+        }
+      ]
+    },
+    {
+      "node": "std/scenarios.CommandsMade",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerified",
+      "via": "std/effects.Commands",
+      "outcome": [
+        {
+          "name": "A command is made for each effect, from its text, which it keeps as it is",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "data/scenarios.RecordsKept",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerified",
+      "via": "data/records.SqliteTables",
+      "outcome": [
+        {
+          "name": "A table of a version deployed is migrated when it is made ready: a column renamed (its key), one dropped, one added; its rows read as the description is now, and the version kept is this one",
+          "status": "passed"
+        },
+        {
+          "name": "A record inserted is found by its key, as it was; the table counts it",
+          "status": "passed"
+        },
+        {
+          "name": "A record updated takes its new values, and keeps the others",
+          "status": "passed"
+        },
+        {
+          "name": "A transaction that fails writes nothing",
+          "status": "passed"
+        },
+        {
+          "name": "A table made ready in a transaction that fails is made ready again the next time it is used",
+          "status": "passed"
+        },
+        {
+          "name": "A row that does not keep its description is nothing",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.ReadScenario",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "karim",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerified",
+      "via": "data/records.SqliteTables",
+      "outcome": [
+        {
+          "name": "An existing reservation is returned",
+          "status": "passed"
+        },
+        {
+          "name": "It comes with the end of its free cancellation period",
+          "status": "passed"
+        },
+        {
+          "name": "An unknown reservation returns 404",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "data/scenarios.RecordsSeeded",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerified",
+      "via": "data/records.SeedOfTheEntity",
+      "outcome": [
+        {
+          "name": "Where a binding seeds it, a table created starts with the records its entity declares: each found, and counted",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "data/scenarios.DocumentsKept",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "trame",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerified",
+      "via": "data/documents.Conforms",
+      "outcome": [
+        {
+          "name": "A document written is read back as it was, with the version of its description",
+          "status": "passed"
+        },
+        {
+          "name": "What was stored before versions were kept is read as the first version deployed",
+          "status": "passed"
+        },
+        {
+          "name": "A document of a version deployed is migrated: a field renamed moves, one dropped goes",
+          "status": "passed"
+        },
+        {
+          "name": "A document that does not keep its description is nothing: a number written as a text, a word of no vocabulary",
+          "status": "passed"
+        },
+        {
+          "name": "A document of a version nothing migrates from is nothing",
+          "status": "passed"
+        },
+        {
+          "name": "A document cleared is nothing",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.RepeatedCancellationScenario",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "karim",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerified",
+      "via": "infra.CancellationRecords",
+      "outcome": [
+        {
+          "name": "The first cancellation refunds according to the rule",
+          "status": "passed"
+        },
+        {
+          "name": "The second one returns the same refund",
+          "status": "passed"
+        },
+        {
+          "name": "The provider is called only once",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.ComplianceScenario",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "lea",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerified",
+      "via": "cancellation.Refund",
+      "outcome": [
+        {
+          "name": "R1 (normal, 120 min ahead) is refunded 20 CHF",
+          "status": "passed"
+        },
+        {
+          "name": "R2 (fast, 4 min ahead) is refunded 15 CHF",
+          "status": "passed"
+        },
+        {
+          "name": "R3 (ultra, 60 min ahead) is refunded 40 CHF",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "scenarios.StoragePrepared",
+      "kind": "scenario",
+      "status": "held",
+      "owner": "karim",
+      "evidence": [],
+      "obligation": "sdlc.CodeVerified",
+      "via": "sdlc.PrepareStorage",
+      "outcome": [
+        {
+          "name": "The storage is made ready: the reservations with the first ones, the refunds without any",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "node": "data.KeptRefund",
+      "kind": "entity",
+      "status": "held",
+      "owner": "karim",
+      "evidence": [
+        {
+          "node": "data.KeptRefund",
+          "at": "2026-11-10",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "af743efb",
+          "subject": "sdlc.OnThisMachine",
+          "kept": {
+            "fields": {
+              "reservation": {
+                "type": "reference",
+                "entity": "data.KeptReservation",
+                "keptAs": "reservations",
+                "key": "id"
+              },
+              "amount": {
+                "type": "number",
+                "quantity": "cancellation.SwissFrancs"
+              },
+              "reference": {
+                "type": "text"
+              }
+            },
+            "key": "reservation"
+          },
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "a110e7aef082e726257482320588e8404736d52f8c16ded2b116b8e0b4fe505d"
+        },
+        {
+          "node": "data.KeptRefund",
+          "at": "2026-11-10",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "a2c32e34",
+          "subject": "sdlc.OnThisMachine",
+          "kept": {
+            "fields": {
+              "reservation": {
+                "type": "reference",
+                "entity": "data.KeptReservation",
+                "keptAs": "reservations",
+                "key": "id"
+              },
+              "amount": {
+                "type": "number",
+                "quantity": "cancellation.SwissFrancs"
+              },
+              "reference": {
+                "type": "text"
+              },
+              "at": {
+                "type": "optional",
+                "of": {
+                  "type": "text"
+                }
+              }
+            },
+            "key": "reservation"
+          },
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "2a5b7d64ce46edf8d1c0fb82b6ac234ed6904c10c016ca0043b472829f543f03"
+        }
+      ],
+      "obligation": "sdlc.KeptMigrates",
+      "via": "data.KeptRefund"
+    },
+    {
+      "node": "data.KeptReservation",
+      "kind": "entity",
+      "status": "held",
+      "owner": "karim",
+      "evidence": [
+        {
+          "node": "data.KeptReservation",
+          "at": "2026-11-10",
+          "source": "shipped",
+          "value": 1,
+          "fingerprint": "6c591614",
+          "subject": "sdlc.OnThisMachine",
+          "kept": {
+            "fields": {
+              "id": {
+                "type": "text"
+              },
+              "charger": {
+                "type": "word",
+                "vocabulary": "data.Chargers",
+                "words": [
+                  "fast",
+                  "normal",
+                  "ultra"
+                ]
+              },
+              "price": {
+                "type": "number",
+                "quantity": "cancellation.SwissFrancs"
+              },
+              "start": {
+                "type": "text"
+              },
+              "status": {
+                "type": "word",
+                "vocabulary": "data.ReservationStatuses",
+                "words": [
+                  "active",
+                  "cancelled"
+                ]
+              }
+            },
+            "key": "id"
+          },
+          "by": "claude",
+          "signature": "attribution",
+          "seal": "9bb488062391025d1acf44acd4b56d42c36e42f0c4c91e2bdcd39b13b623d2e1"
+        }
+      ],
+      "obligation": "sdlc.KeptMigrates",
+      "via": "data.KeptReservation"
+    },
+    {
+      "node": "architecture.ReadWithoutWrite",
+      "kind": "rule",
+      "status": "held",
+      "owner": "karim",
+      "evidence": [],
+      "obligation": "sdlc.RulesHeld",
+      "via": "architecture.ReadWithoutWrite"
+    },
+    {
+      "node": "architecture.ThirdPartiesVerified",
+      "kind": "rule",
+      "status": "held",
+      "owner": "karim",
+      "evidence": [],
+      "obligation": "sdlc.RulesHeld",
+      "via": "architecture.ThirdPartiesVerified"
+    },
+    {
+      "node": "architecture.UtilitiesWithoutWorld",
+      "kind": "rule",
+      "status": "held",
+      "owner": "karim",
+      "evidence": [],
+      "obligation": "sdlc.RulesHeld",
+      "via": "architecture.UtilitiesWithoutWorld"
+    }
+  ],
+  "deployed": [
+    "sdlc.PrepareStorage"
+  ]
+}

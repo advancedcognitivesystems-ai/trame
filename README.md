@@ -601,7 +601,10 @@ it and, in a scenario, by the engine that plays the scenario compiling a project
 The commands every project runs move onto it into `libs/commands`, one by one: `plan` first, which Trame now runs from
 the library, and which says what the engine's plan said; then `build` and `snapshot` (g132–g134), on the documents the
 engine's API gives (the views' documents and where each card is), written with libs/documents' renderers, the same
-documents character for character; code leaves the engine by a move, never a copy, so the engine's
+documents character for character; then `view` (g135). A command declares what it reads on its line (its arguments,
+its options), and std's exposures read the line by it and hand the command what it declared, by name; the options
+every command has are std's, the first of them `--format`: a command that answers documents (a view) has them written
+in the format the line names, among those the project chose (text and Markdown from libs/documents, JSON from std); code leaves the engine by a move, never a copy, so the engine's
 own `plan` and `amend` compare two builds with the library's comparison until they leave too (g130). Reading a language is the engine's too (since g128): the languages it reads for every
 project (HTML and CSS) are std's, read through std's port `LanguageReading`, so the syntax elements of any library can
 name them and have what they write read back. The renderers of documents go into a library of their own,

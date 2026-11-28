@@ -1,6 +1,6 @@
 # Architecture decisions
 
-*The choices that shape the product without being values, in force on 27 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
+*The choices that shape the product without being values, in force on 28 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
 > **2 architecture decisions, 2 held by the nodes that apply them**
 
@@ -15,7 +15,7 @@
 
 ### A command is played on a real graph
 
-`PlayedOnARealGraph` · `src/scenarios.ts:173` · status: **held**
+`PlayedOnARealGraph` · `src/scenarios.ts:176` · status: **held**
 
 What a command computes from a graph is played on one the engine compiles: a small project the library carries in its sources, compiled by the engine that plays the scenarios, only the platform kept in memory. The library adopts std's decision that the engine is a provider, reached through std's ports.
 
@@ -36,7 +36,7 @@ Consequences: The small project travels with each version, named by the library'
 
 ### A command writes documents as a project does
 
-`WrittenAsAProjectDoes` · `src/scenarios.ts:230` · status: **held**
+`WrittenAsAProjectDoes` · `src/scenarios.ts:233` · status: **held**
 
 The library's commands write the documents the views give with the renderers of libs/documents: one renderer, its syntax a choice per audience. Its scenarios choose the syntaxes a project chooses.
 

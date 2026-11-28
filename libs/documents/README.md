@@ -17,6 +17,8 @@ speak, for the commands of every project (`libs/commands`) and a project's own.
 - `src/markdown.ts`, `src/mermaid.ts`, `src/text.ts`, `src/html.ts` — the syntax elements the renderers compose:
   CommonMark and GFM, Mermaid, the terminal's text (a decision of Trame's), the elements of HTML the documents write.
   A relative reference is written from the document it is in.
+- The formats of std's answers (0.4.0): `AnswersAtATerminal` (`text`) and `AnswersInMarkdown` (`md`, with where each
+  card is), add-ons of std's `AnswerFormats`, which a project chooses with std's `AnswersInJson`.
 - `src/appearance.ts` — the look of the documents: the `Palette`, which colours the figures and a page.
 - `src/samples.ts`, `src/scenarios.ts` — the language written, and two documents in the intermediate format rendered
   as files and at a terminal, line by line as expected.

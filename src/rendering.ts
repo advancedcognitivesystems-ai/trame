@@ -8,12 +8,13 @@ import { adr } from "../kinds/adr"
 import { RenderingWithoutGraph, Local, Test } from "./architecture"
 import { ExecutableSpecification, ReplaceableTechnology } from "./product"
 import { GraphDrawing, TimelineDrawing, LegendDrawing } from "./appearance"
-import { Bridge, Strategy } from "#std/patterns"
+import { Bridge, Strategy, Plugin } from "#std/patterns"
 import { Punctuation, Dates } from "#documents/language"
 import {
   Common, Rendering, FileRendering, TerminalRendering, MarkdownSyntax, MermaidDiagrams, PlainTextSyntax, TextFigures,
-  SentenceSlots, RenderingMessages, OneRendererManySyntaxes, type DocumentSyntax, type FigureSyntax,
+  SentenceSlots, RenderingMessages, OneRendererManySyntaxes, AnswersAtATerminal, AnswersInMarkdown, type DocumentSyntax, type FigureSyntax,
 } from "#documents/rendering"
+import { AnswersInJson } from "#std/tooling"
 import { Html, Svg, Aria, Css } from "#std/html"
 import { HtmlElement, HtmlHeading, EscapedText, SelfClosingTag } from "#documents/html"
 import { PathData, CssDeclaration } from "./html"
@@ -221,6 +222,20 @@ export const MeaningThenLook = adr({
 })
 
 /**
+ * The formats of a command's documents
+ * What a command answers in documents (a view) is written at the terminal as text unless the line names another
+ * format: Markdown, with where each card is, or JSON, the intermediate format. The engine's own view writes with them.
+ */
+export const AnswersAsChosen = binding({
+  owner: "trame",
+  chooses: [AnswersAtATerminal, AnswersInMarkdown, AnswersInJson],
+  environments: [Local, Test],
+  follows: [Plugin],
+  serves: [ReplaceableTechnology],
+  context: "--format is an option of every command (std's): the project chooses the formats it offers, its default first.",
+})
+
+/**
  * Trame's documents, rendered by the library of documents
  * The renderers are libs/documents': Trame chooses their syntaxes for its files and its terminal, and gives the same
  * renderer the syntax of its page, which it still writes.
@@ -232,5 +247,5 @@ export const RenderedByTheLibrary = adr({
   rejected: { "Renderers kept in the engine": "a command moved out of the engine would lose what writes its documents" },
   serves: [ReplaceableTechnology],
   adopts: [OneRendererManySyntaxes],
-  appliedBy: [PageRendering, DocumentsInMarkdown, FiguresInMermaid, TerminalInText, TerminalFiguresAsText, PageInHtml, PageFiguresDrawn],
+  appliedBy: [PageRendering, DocumentsInMarkdown, FiguresInMermaid, TerminalInText, TerminalFiguresAsText, PageInHtml, PageFiguresDrawn, AnswersAsChosen],
 })

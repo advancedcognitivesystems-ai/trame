@@ -70,3 +70,16 @@ export const R0_3_0 = release({
   language: "shared",
   serves: [WrittenOnce],
 })
+
+/**
+ * Version 0.4.0
+ */
+export const R0_4_0 = release({
+  owner: "trame",
+  version: "0.4.0",
+  date: "2026-11-28",
+  what: "trame view: one view of the project at hand, its arguments declared, its document written in the format the line names; the words of a refused view; std 0.31.0, documents 0.4.0",
+  fingerprint: "752f80d70061f712",
+  language: "shared",
+  serves: [WrittenOnce],
+})

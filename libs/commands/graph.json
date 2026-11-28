@@ -1,11 +1,11 @@
 {
-  "generated": "2026-11-27",
+  "generated": "2026-11-28",
   "nodes": [
     {
       "id": "commands.Build",
       "kind": "entry",
       "title": "Build",
-      "source": "src/commands.ts:123",
+      "source": "src/commands.ts:128",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -32,7 +32,7 @@
       "id": "commands.BuildComparison",
       "kind": "function",
       "title": "Two builds compared",
-      "source": "src/commands.ts:93",
+      "source": "src/commands.ts:98",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -78,7 +78,7 @@
       "id": "commands.Plan",
       "kind": "entry",
       "title": "Plan",
-      "source": "src/commands.ts:107",
+      "source": "src/commands.ts:112",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -106,7 +106,7 @@
       "id": "commands.Snapshot",
       "kind": "entry",
       "title": "Snapshot",
-      "source": "src/commands.ts:137",
+      "source": "src/commands.ts:142",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -123,6 +123,61 @@
         },
         "body": {
           "file": "./code/snapshot.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "commands.View",
+      "kind": "entry",
+      "title": "View",
+      "source": "src/commands.ts:169",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "trigger": {
+          "type": "command",
+          "name": "view",
+          "help": "One view of the project at hand",
+          "arguments": [
+            {
+              "name": "view",
+              "meaning": "the view, by its name"
+            },
+            {
+              "name": "subject",
+              "meaning": "the node or the module a view of a node or of a module is for",
+              "optional": true
+            }
+          ]
+        },
+        "deps": {
+          "project": "std/engine.TheProject",
+          "refused": "commands.ViewRefused",
+          "exit": "std/system.ExitStatus"
+        },
+        "body": {
+          "file": "./code/view.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "commands.ViewRefused",
+      "kind": "function",
+      "title": "Why a view gives no document, said",
+      "source": "src/commands.ts:156",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "say": "commands.CommandWords",
+          "texts": "std/algebra.Texts"
+        },
+        "body": {
+          "file": "./code/view-refused.ts",
           "language": "typescript"
         }
       },
@@ -167,10 +222,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "documents",
-        "version": "0.3.0",
+        "version": "0.4.0",
         "joins": "library",
         "from": "path",
-        "at": "../documents/releases/0.3.0"
+        "at": "../documents/releases/0.4.0"
       },
       "diagnostics": []
     },
@@ -182,9 +237,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "134",
+        "version": "135",
         "joins": "language",
-        "at": "../../generations/g134"
+        "at": "../../generations/g135"
       },
       "diagnostics": []
     },
@@ -211,9 +266,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.30.0",
+        "version": "0.31.0",
         "joins": "library",
-        "at": "../../std/releases/0.30.0"
+        "at": "../../std/releases/0.31.0"
       },
       "diagnostics": []
     },
@@ -303,10 +358,25 @@
       "diagnostics": []
     },
     {
+      "id": "releases.R0_4_0",
+      "kind": "release",
+      "title": "Version 0.4.0",
+      "source": "src/releases.ts:77",
+      "fields": {
+        "owner": "trame",
+        "version": "0.4.0",
+        "date": "2026-11-28",
+        "what": "trame view: one view of the project at hand, its arguments declared, its document written in the format the line names; the words of a refused view; std 0.31.0, documents 0.4.0",
+        "fingerprint": "752f80d70061f712",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.BuildWritesTheDocuments",
       "kind": "scenario",
       "title": "A build writes the documents and the graph",
-      "source": "src/scenarios.ts:245",
+      "source": "src/scenarios.ts:248",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -342,7 +412,7 @@
       "id": "scenarios.CompiledByTheEngine",
       "kind": "binding",
       "title": "Compiled by the engine that plays them",
-      "source": "src/scenarios.ts:56",
+      "source": "src/scenarios.ts:57",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -357,7 +427,7 @@
       "id": "scenarios.DocumentsAsFiles",
       "kind": "binding",
       "title": "Files in Markdown, the terminal in text",
-      "source": "src/scenarios.ts:190",
+      "source": "src/scenarios.ts:193",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -369,7 +439,7 @@
       "id": "scenarios.DocumentsLanguage",
       "kind": "binding",
       "title": "In the language of libs/documents' scenarios",
-      "source": "src/scenarios.ts:216",
+      "source": "src/scenarios.ts:219",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -381,7 +451,7 @@
       "id": "scenarios.FiguresOfTheDocuments",
       "kind": "binding",
       "title": "Figures in Mermaid and in text",
-      "source": "src/scenarios.ts:203",
+      "source": "src/scenarios.ts:206",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -393,7 +463,7 @@
       "id": "scenarios.PlanAfterTheSameBuild",
       "kind": "scenario",
       "title": "After a build, nothing changes",
-      "source": "src/scenarios.ts:149",
+      "source": "src/scenarios.ts:152",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -420,7 +490,7 @@
       "id": "scenarios.PlanSaysWhatChanges",
       "kind": "scenario",
       "title": "A plan says what a build would change",
-      "source": "src/scenarios.ts:102",
+      "source": "src/scenarios.ts:105",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -452,7 +522,7 @@
       "id": "scenarios.PlanWithoutABuild",
       "kind": "scenario",
       "title": "Without a build, a plan says so",
-      "source": "src/scenarios.ts:134",
+      "source": "src/scenarios.ts:137",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -477,7 +547,7 @@
       "id": "scenarios.PlayedOnARealGraph",
       "kind": "adr",
       "title": "A command is played on a real graph",
-      "source": "src/scenarios.ts:173",
+      "source": "src/scenarios.ts:176",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -493,7 +563,7 @@
       "id": "scenarios.PlayedOnASmallProject",
       "kind": "binding",
       "title": "Played on a small project",
-      "source": "src/scenarios.ts:70",
+      "source": "src/scenarios.ts:71",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -502,10 +572,23 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.ScenarioViews",
+      "kind": "decision",
+      "title": "Views the scenarios ask for",
+      "source": "src/scenarios.ts:296",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "unknown": "nothing"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.ScenarioWords",
       "kind": "catalog",
       "title": "What the scenarios check",
-      "source": "src/scenarios.ts:82",
+      "source": "src/scenarios.ts:83",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -516,7 +599,7 @@
       "id": "scenarios.SmallProject",
       "kind": "decision",
       "title": "The small project",
-      "source": "src/scenarios.ts:39",
+      "source": "src/scenarios.ts:40",
       "fields": {
         "owner": "trame",
         "value": {
@@ -530,7 +613,7 @@
       "id": "scenarios.SnapshotTaken",
       "kind": "scenario",
       "title": "A snapshot writes the graph in force",
-      "source": "src/scenarios.ts:271",
+      "source": "src/scenarios.ts:274",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -558,7 +641,7 @@
       "id": "scenarios.Test",
       "kind": "environment",
       "title": "Test",
-      "source": "src/scenarios.ts:31",
+      "source": "src/scenarios.ts:32",
       "fields": {
         "owner": "trame",
         "evaluates": true
@@ -569,7 +652,7 @@
       "id": "scenarios.TheSmallProject",
       "kind": "function",
       "title": "Which project the scenarios compile",
-      "source": "src/scenarios.ts:45",
+      "source": "src/scenarios.ts:46",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -581,10 +664,40 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.ViewAnswersItsDocument",
+      "kind": "scenario",
+      "title": "A view answers its document",
+      "source": "src/scenarios.ts:303",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "view": "commands.View",
+          "project": "std/engine.TheProject",
+          "refused": "commands.ViewRefused",
+          "views": "scenarios.ScenarioViews",
+          "checks": "scenarios.ScenarioWords",
+          "exit": "std/system.ExitStatus"
+        },
+        "body": "(function)"
+      },
+      "result": [
+        {
+          "name": "A view answers the document the engine's view gives, and where each card is when a format asks",
+          "status": "passed"
+        },
+        {
+          "name": "A view the engine cannot give (no view of that name, a view of a node without its node) says why, in the commands' words",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.WrittenAsAProjectDoes",
       "kind": "adr",
       "title": "A command writes documents as a project does",
-      "source": "src/scenarios.ts:230",
+      "source": "src/scenarios.ts:233",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -672,6 +785,11 @@
             "obligation": "sdlc.CodeVerified"
           },
           {
+            "node": "scenarios.ViewAnswersItsDocument",
+            "via": "commands.View",
+            "obligation": "sdlc.CodeVerified"
+          },
+          {
             "node": "scenarios.PlayedOnARealGraph",
             "via": "scenarios.CompiledByTheEngine",
             "obligation": "sdlc.DecisionsApplied"
@@ -692,6 +810,8 @@
           "commands.CommandWords",
           "commands.Plan",
           "commands.Snapshot",
+          "commands.View",
+          "commands.ViewRefused",
           "commands.WordsLanguage",
           "packages.ContinuousIntegration",
           "packages.Documents",
@@ -709,11 +829,13 @@
           "scenarios.PlanWithoutABuild",
           "scenarios.PlayedOnARealGraph",
           "scenarios.PlayedOnASmallProject",
+          "scenarios.ScenarioViews",
           "scenarios.ScenarioWords",
           "scenarios.SmallProject",
           "scenarios.SnapshotTaken",
           "scenarios.Test",
           "scenarios.TheSmallProject",
+          "scenarios.ViewAnswersItsDocument",
           "scenarios.WrittenAsAProjectDoes",
           "sdlc.CallersIdentified",
           "sdlc.CodeVerified",
@@ -832,7 +954,7 @@
       },
       "result": {
         "path": "src",
-        "code": "07d4ced2"
+        "code": "9a83a6db"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -1011,6 +1133,51 @@
       "kind": "deps"
     },
     {
+      "from": "commands.View",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.View",
+      "to": "commands.Commands",
+      "kind": "in"
+    },
+    {
+      "from": "commands.View",
+      "to": "std/access.Anyone",
+      "kind": "for"
+    },
+    {
+      "from": "commands.View",
+      "to": "std/engine.TheProject",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.View",
+      "to": "commands.ViewRefused",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.View",
+      "to": "std/system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ViewRefused",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.ViewRefused",
+      "to": "commands.CommandWords",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ViewRefused",
+      "to": "std/algebra.Texts",
+      "kind": "deps"
+    },
+    {
       "from": "packages.ContinuousIntegration",
       "to": "product.WrittenOnce",
       "kind": "serves"
@@ -1057,6 +1224,11 @@
     },
     {
       "from": "releases.R0_3_0",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_4_0",
       "to": "product.WrittenOnce",
       "kind": "serves"
     },
@@ -1493,6 +1665,61 @@
     {
       "from": "scenarios.TheSmallProject",
       "to": "scenarios.SmallProject",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ViewAnswersItsDocument",
+      "to": "commands.View",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.ViewAnswersItsDocument",
+      "to": "commands.ViewRefused",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.ViewAnswersItsDocument",
+      "to": "std/engine.ProjectCompiledHere",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.ViewAnswersItsDocument",
+      "to": "scenarios.TheSmallProject",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.ViewAnswersItsDocument",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.ViewAnswersItsDocument",
+      "to": "commands.View",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ViewAnswersItsDocument",
+      "to": "std/engine.TheProject",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ViewAnswersItsDocument",
+      "to": "commands.ViewRefused",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ViewAnswersItsDocument",
+      "to": "scenarios.ScenarioViews",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ViewAnswersItsDocument",
+      "to": "scenarios.ScenarioWords",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ViewAnswersItsDocument",
+      "to": "std/system.ExitStatus",
       "kind": "deps"
     },
     {

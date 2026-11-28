@@ -162,6 +162,11 @@ const body = () => ({
   entryPointTriggeredBy: () => "Triggered by ",
   entryPointRequest: (method: string, path: string) => `${method} ${path}`,
   entryPointCommand: (name: string) => `command ${name}`,
+  entryPointArgument: () => "Argument",
+  entryPointOption: () => "Option",
+  entryPointMeaning: () => "Meaning",
+  entryPointMayBeLeftOut: (meaning: string) => `${meaning} (may be left out)`,
+  entryPointOptionTakes: (meaning: string, takes: string) => `${meaning}; followed by ${takes}`,
   entryPointScheduled: (when: string) => `scheduled: ${when}`,
 
   // environment ------------------------------------------------------------------------------------------------

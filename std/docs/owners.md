@@ -1,10 +1,10 @@
 # Owners
 
-*What each person must decide, settle or watch on 27 November 2026, and what they own.*
+*What each person must decide, settle or watch on 28 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 6 | 274 |
+| trame | 0 | 0 | 6 | 286 |
 
 <a id="trame"></a>
 
@@ -109,7 +109,7 @@
 | [Adapter](patterns.md#Adapter) | Design pattern | **held** |
 | [Bridge](patterns.md#Bridge) | Design pattern |  |
 | [Command](patterns.md#Command) | Design pattern |  |
-| [Plugin](patterns.md#Plugin) | Design pattern |  |
+| [Plugin](patterns.md#Plugin) | Design pattern | **held** |
 | [Repository](patterns.md#Repository) | Design pattern |  |
 | [Strategy](patterns.md#Strategy) | Design pattern | **held** |
 | [Animation frames](platform.md#AnimationFrames) | Port |  |
@@ -170,6 +170,7 @@
 | [Version 0.29.1](releases.md#R0_29_1) | Release |  |
 | [Version 0.3.0](releases.md#R0_3_0) | Release |  |
 | [Version 0.30.0](releases.md#R0_30_0) | Release |  |
+| [Version 0.31.0](releases.md#R0_31_0) | Release |  |
 | [Version 0.4.0](releases.md#R0_4_0) | Release |  |
 | [Version 0.5.0](releases.md#R0_5_0) | Release |  |
 | [Version 0.6.0](releases.md#R0_6_0) | Release |  |
@@ -213,18 +214,21 @@
 | [Commands are made for each effect](scenarios.md#CommandsMade) | Scenario | **held** |
 | [The device, in memory](scenarios.md#DeviceInMemory) | Scenario | **held** |
 | [Seeded draws keep their promise](scenarios.md#DrawsKeepTheirPromise) | Scenario | **held** |
+| [The formats of the scenarios](scenarios.md#FormatsOfTheScenarios) | Technical choice | **held** |
 | [How the library's scenarios run](scenarios.md#HowTheScenariosRun) | Architecture decision | **held** |
 | [In memory](scenarios.md#InMemory) | Technical choice | **held** |
 | [Judged as the language says](scenarios.md#JudgedAsTheLanguage) | Scenario | **held** |
 | [Judged strictly](scenarios.md#JudgedStrictly) | Scenario | **held** |
 | [Judged as the language says](scenarios.md#LanguageJudgment) | Technical choice | **held** |
 | [The languages read by the engine](scenarios.md#LanguagesRead) | Scenario | **held** |
+| [A command's line read, its answer written](scenarios.md#LinesReadAnswersWritten) | Scenario | **held** |
 | [A pull request merged once it holds](scenarios.md#MergedOnceItHolds) | Scenario | **held** |
 | [A version carried across the projects](scenarios.md#PropagatedInOrder) | Scenario | **held** |
 | [A pull request opened](scenarios.md#PullRequestOpened) | Scenario | **held** |
 | [Read by the engine that builds](scenarios.md#ReadInTheEngine) | Technical choice | **held** |
 | [A repository kept in memory](scenarios.md#RepositoryInMemoryKeeps) | Scenario | **held** |
 | [What the library's scenarios check](scenarios.md#ScenarioChecks) | Message catalog |  |
+| [A command's line, in the scenarios](scenarios.md#ScenarioCommand) | Decision |  |
 | [What the library's scenarios are given](scenarios.md#ScenarioData) | Decision |  |
 | [The language of the library's scenarios](scenarios.md#ScenarioLanguage) | Decision |  |
 | [How the scenarios' versions are carried](scenarios.md#ScenarioPropagation) | Function | **held** |
@@ -259,17 +263,24 @@
 | [POSIX signals and errors](system.md#Posix) | Standard |  |
 | [Positions in a file](text.md#GnuPositions) | Standard |  |
 | [Characters that do not show](text.md#InvisibleCharacters) | Standard |  |
+| [JSON formatting](text.md#JsonFormatting) | Decision |  |
 | [Text file](text.md#TextFile) | Standard |  |
 | [Unified differences](text.md#UnifiedDiff) | Standard |  |
+| [Formats of an answer](tooling.md#AnswerFormats) | Port |  |
+| [Documents in JSON](tooling.md#AnswersInJson) | Function | **held** |
 | [A browser kept in memory](tooling.md#BrowserInMemory) | Function | **held** |
 | [Browser script](tooling.md#BrowserScripted) | Port |  |
 | [The language the library's commands and tools speak in.](tooling.md#CommandLanguage) | Decision |  |
+| [A command's line, read](tooling.md#CommandLineRead) | Function | **held** |
+| [Commands, their lines read and their answers written](tooling.md#CommandLines) | Function | **held** |
 | [Commands run in the engine](tooling.md#CommandsInTheEngine) | Implementation |  |
 | [Project files](tooling.md#Files) | Port |  |
 | [Files kept in memory](tooling.md#FilesInMemory) | Function | **held** |
 | [Files written](tooling.md#FilesKept) | Port |  |
 | [Headless browser](tooling.md#HeadlessBrowser) | Port |  |
 | [Chromium without a screen](tooling.md#HeadlessChromium) | Decision |  |
+| [What std's exposures say of a line](tooling.md#LineWords) | Message catalog |  |
+| [Long options](tooling.md#LongOptions) | Standard |  |
 | [The machine's files](tooling.md#MachineFiles) | Implementation |  |
 | [What the machine must also have](tooling.md#MachineNeeds) | Port |  |
 | [Node's command line](tooling.md#NodeProgramCommands) | Implementation |  |
@@ -285,6 +296,7 @@
 | [Programs run in memory](tooling.md#ProgramRunsInMemory) | Function | **held** |
 | [The programs a scenario keeps: the file it says a program writes is written when that program runs.](tooling.md#ProgramRunsKept) | Port |  |
 | [What repairs a project](tooling.md#ProjectRepairs) | Port |  |
+| [The options of every command](tooling.md#StandardOptions) | Decision |  |
 | [The SDLC's tooling is realized once](tooling.md#ToolingAsPorts) | Architecture decision | **held** |
 | [What the library's tools say](tooling.md#ToolWords) | Message catalog |  |
 | [CSSOM View](web.md#CssomView) | Standard |  |

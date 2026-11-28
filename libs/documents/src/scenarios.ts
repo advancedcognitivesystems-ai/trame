@@ -7,12 +7,13 @@ import { catalog } from "#trame/kinds/catalog"
 import { scenario } from "#trame/kinds/scenario"
 import { adr } from "#trame/kinds/adr"
 import { fn } from "#trame/kinds/function"
-import { Adapter, Bridge, Strategy } from "#std/patterns"
+import { Adapter, Bridge, Strategy, Plugin } from "#std/patterns"
+import { AnswerFormats } from "#std/tooling"
 import { ReadByTheEngine, EngineAsAProvider } from "#std/engine"
 import { TextFile } from "#std/text"
 import { RenderedOnce } from "./product"
 import { DocumentLanguage, Dates, Lists, Punctuation, Units, WordsLanguage, type WrittenLanguage } from "./language"
-import { Common, Rendering, FileRendering, TerminalRendering, MarkdownSyntax, PlainTextSyntax, MermaidDiagrams, TextFigures } from "./rendering"
+import { Common, Rendering, FileRendering, TerminalRendering, MarkdownSyntax, PlainTextSyntax, MermaidDiagrams, TextFigures, AnswersAtATerminal, AnswersInMarkdown } from "./rendering"
 import { SampleDocuments } from "./samples"
 
 /**
@@ -89,6 +90,8 @@ export const ScenarioWords = catalog({
     numbersWritten: () => "A number is written with two decimals at most; a quantity in the largest of its units it makes a whole number of",
     writtenAsFiles: (title: string) => `${title}, written as a file, reads as expected`,
     writtenAtATerminal: (title: string) => `${title}, printed at a terminal, reads as expected`,
+    answersPrinted: () => "Documents a command answers, printed at a terminal, read as the renderer of the terminal gives them",
+    answersWritten: () => "Documents a command answers, in Markdown, read as the renderer of files gives them, their references leading where the answer says",
   }),
 })
 
@@ -367,6 +370,39 @@ export const DocumentsRendered = scenario({
 })
 
 /**
+ * The formats of the answers
+ * In the library's scenarios, the documents a command answers are printed as text first, written in Markdown on demand.
+ */
+export const FormatsOfTheAnswers = binding({
+  owner: "trame",
+  chooses: [AnswersAtATerminal, AnswersInMarkdown],
+  environments: [Test],
+  follows: [Plugin],
+  serves: [RenderedOnce],
+  context: "The scenarios play the formats of std's answers the library offers, in the order a project chooses them.",
+})
+
+/**
+ * Answers written in their formats
+ * The sample documents answered by a command: printed at a terminal, then written in Markdown with where each card is,
+ * each as the renderer of its syntax gives it.
+ */
+export const AnswersWritten = scenario({
+  owner: "trame",
+  verifies: [AnswersAtATerminal, AnswersInMarkdown],
+  env: Test,
+  deps: { formats: AnswerFormats, common: Common, samples: SampleDocuments, expected: ExpectedDocuments, text: TextFile, checks: ScenarioWords },
+  body: ({ formats, common, samples, expected, text: { endOfLine }, checks }) => async (check) => {
+    const places = { locate: common.locate(samples), files: new Map(samples.map((d) => [d.id, d.file])) }
+    const [terminal, markdown] = formats
+    const printed = await terminal?.write({ documents: samples })
+    const written = await markdown?.write({ documents: samples, places: async () => places })
+    check(checks.answersPrinted(), JSON.stringify(printed) === JSON.stringify(samples.map((d) => expected.terminal[d.id]?.join(endOfLine))))
+    check(checks.answersWritten(), JSON.stringify(written) === JSON.stringify(samples.map((d) => expected.files[d.id]?.join(endOfLine))))
+  },
+})
+
+/**
  * The scenarios render as a project does
  * The renderers are pure: they receive documents in the intermediate format, the contract of the views, and give text.
  * The scenarios render documents written in it, with each syntax and each kind of figures the library offers, chosen
@@ -379,5 +415,5 @@ export const HowTheScenariosRender = adr({
   rejected: { "A project compiled and its documents rendered": "the views would be played again here, and the API gives no documents yet" },
   serves: [RenderedOnce],
   adopts: [EngineAsAProvider],
-  appliedBy: [FilesInMarkdown, FiguresInMermaid, TerminalInText, TerminalFiguresAsText, LanguagesRead],
+  appliedBy: [FilesInMarkdown, FiguresInMermaid, TerminalInText, TerminalFiguresAsText, LanguagesRead, FormatsOfTheAnswers],
 })

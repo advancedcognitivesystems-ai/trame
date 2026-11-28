@@ -9,7 +9,7 @@ import { decision } from "../kinds/decision"
 import { TrameCli, Terminal, Process, Clock, FileReading, FileWriting, Paths, Hashing, Programs, FileTrees, PackageReports, PackageInstalls, Bundler, Timer, HttpServer, KeptRuns, AmendmentPlace, Prelude, TypeScriptCompiler } from "./architecture"
 import { Compiler, CompilationApi, Laws, Views, Lock, MachineOutputs, PayloadBuilder, DateBundle, DevServer, Assembly, Fingerprint, References, Project, EngineFingerprint, Wiring, ShipmentPipeline, Differences, JudgedHarder, Fingerprints } from "./engine"
 import { SyntaxReader } from "./syntax"
-import { BuildComparison } from "#commands/commands"
+import { BuildComparison, ViewRefused } from "#commands/commands"
 import { Page, PageBundle, PageDocument } from "./page"
 import { Html } from "#std/html"
 import { ScriptElement } from "./html"
@@ -17,13 +17,13 @@ import { DeliveredStyle, NamesLed } from "./delivery"
 import { Common, FileRendering, TerminalRendering } from "#documents/rendering"
 import { PageRendering } from "./rendering"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
-import { Layout, JsonFormatting, TrameCommands, TrameEnvironment, commandNames, AmendmentNaming, LanguageNames, ProjectStart, KeptCommands } from "./conventions"
-import { PackageSources } from "#std/tooling"
+import { Layout, TrameCommands, TrameEnvironment, commandNames, AmendmentNaming, LanguageNames, ProjectStart, KeptCommands } from "./conventions"
+import { PackageSources, AnswerFormats, LineWords, LongOptions, StandardOptions } from "#std/tooling"
 import { ExitStatus, NodeEvents, Posix, NodeEncodings, NodeModuleSpecifiers, NpmManifest } from "#std/system"
 import { Sha256 } from "#std/algorithms"
 import { SemanticVersioning, Iso8601 } from "#std/measures"
 import { ReleaseIsSettled, LibraryReleaseNames } from "./libraries"
-import { UnifiedDiff, TextFile } from "#std/text"
+import { UnifiedDiff, TextFile, JsonFormatting } from "#std/text"
 import { Uri } from "#std/web"
 import { PackageAudit, VersionOrder, NpmLockfile } from "./packages"
 import { CommandMessages, AdvanceMessages, OutputMessages } from "./messages"
@@ -79,6 +79,7 @@ export const Preparation = fn({
     layout: TerminalText, columns: TerminalColumns, cell: PaddedCell,
     counts: Counts, sequences: Sequences, texts: Texts, messages: CommandMessages, projectLayout: Layout, uri: Uri, references: References,
     projectCommands: ProjectCommands, kept: KeptCommands, machine: MachineOutputs, paths: Paths, reading: FileReading, specifiers: NodeModuleSpecifiers, reader: SyntaxReader,
+    long: LongOptions, standard: StandardOptions,
   },
   body: code.file<typeof import("./code/commands/preparation").default>("./code/commands/preparation.ts"),
 })
@@ -90,7 +91,7 @@ export const Preparation = fn({
 export const RenderView = fn({
   owner: "trame",
   serves: [ExecutableSpecification],
-  deps: { line: TrameCommands, json: JsonFormatting, preparation: Preparation, views: Views, files: FileRendering, screen: TerminalRendering, terminal: Terminal, texts: Texts, messages: CommandMessages },
+  deps: { preparation: Preparation, views: Views, formats: AnswerFormats, refused: ViewRefused, terminal: Terminal, lineWords: LineWords },
   body: code.file<typeof import("./code/commands/render-view").default>("./code/commands/render-view.ts"),
 })
 
@@ -534,6 +535,6 @@ export const Examples = entryPoint({
 export const Help = entryPoint({
   owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
   trigger: command(commandNames.help),
-  deps: { exitStatus: ExitStatus, preparation: Preparation, projectCommands: ProjectCommands, views: Views, terminal: Terminal, cell: PaddedCell, columns: TerminalColumns, messages: CommandMessages },
+  deps: { exitStatus: ExitStatus, preparation: Preparation, projectCommands: ProjectCommands, views: Views, terminal: Terminal, cell: PaddedCell, columns: TerminalColumns, messages: CommandMessages, long: LongOptions, standard: StandardOptions },
   body: code.file<typeof import("./code/commands/help").default>("./code/commands/help.ts"),
 })

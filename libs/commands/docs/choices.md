@@ -1,6 +1,6 @@
 # Technical choices
 
-*What answers each port in each environment on 27 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 28 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
 > **5 technical choices for 9 ports, in 1 environment**
 
@@ -28,7 +28,7 @@
 
 ### Compiled by the engine that plays them
 
-`CompiledByTheEngine` · `src/scenarios.ts:56` · status: **held**
+`CompiledByTheEngine` · `src/scenarios.ts:57` · status: **held**
 
 In the library's scenarios, the project at hand is compiled by the engine that plays them, as on a machine it is compiled by the engine that runs the command.
 
@@ -55,7 +55,7 @@ Context: A command computes from a graph the engine compiled: a graph a scenario
 
 ### Played on a small project
 
-`PlayedOnASmallProject` · `src/scenarios.ts:70` · status: **held**
+`PlayedOnASmallProject` · `src/scenarios.ts:71` · status: **held**
 
 In the library's scenarios, the project at hand is the small project, and the project's files are kept in memory.
 
@@ -79,7 +79,7 @@ Context: The library's own project is the one being compiled when its scenarios 
 
 ### Files in Markdown, the terminal in text
 
-`DocumentsAsFiles` · `src/scenarios.ts:190` · status: **held**
+`DocumentsAsFiles` · `src/scenarios.ts:193` · status: **held**
 
 In the library's scenarios, the documents a command writes as files are in Markdown with Mermaid figures, and what it prints is plain text with figures as text, as libs/documents plays them.
 
@@ -103,7 +103,7 @@ Context: A command writes its documents with the renderers of libs/documents, in
 
 ### Figures in Mermaid and in text
 
-`FiguresOfTheDocuments` · `src/scenarios.ts:203` · status: **held**
+`FiguresOfTheDocuments` · `src/scenarios.ts:206` · status: **held**
 
 In the library's scenarios, the figures of the files are Mermaid diagrams, those of the terminal lines of text.
 
@@ -127,7 +127,7 @@ Context: Each syntax reaches its figures through a port of its own, chosen apart
 
 ### In the language of libs/documents' scenarios
 
-`DocumentsLanguage` · `src/scenarios.ts:216` · status: **held**
+`DocumentsLanguage` · `src/scenarios.ts:219` · status: **held**
 
 In the library's scenarios, the documents are written in the language libs/documents decided for its own.
 

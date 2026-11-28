@@ -2106,7 +2106,7 @@
       },
       "result": {
         "path": "out/local/reservations-api.ts",
-        "code": "b745731d"
+        "code": "f1f52c31"
       },
       "diagnostics": [
         "warning: Not built yet: trame ship builds it"
@@ -2219,6 +2219,11 @@
             "obligation": "sdlc.CodeVerified"
           },
           {
+            "node": "std/scenarios.LinesReadAnswersWritten",
+            "via": "std/tooling.CommandLineRead",
+            "obligation": "sdlc.CodeVerified"
+          },
+          {
             "node": "data.KeptRefund",
             "via": "data.KeptRefund",
             "obligation": "sdlc.KeptMigrates"
@@ -2310,6 +2315,14 @@
           "sdlc.PrepareStorage",
           "sdlc.ReservationsSdlc",
           "std/system.ExitStatus",
+          "std/tooling.LongOptions",
+          "std/tooling.StandardOptions",
+          "std/ecmascript.EcmaScript",
+          "std/algebra.Sequences",
+          "std/tooling.CommandLineRead",
+          "std/tooling.AnswerFormats",
+          "std/tooling.LineWords",
+          "std/tooling.CommandLines",
           "std/tooling.CommandsInTheEngine"
         ]
       },
@@ -2399,7 +2412,7 @@
       },
       "result": {
         "path": "out/production/reservations-api.ts",
-        "code": "0258a635"
+        "code": "4959f159"
       },
       "diagnostics": [
         "warning: Not built yet: trame ship builds it"

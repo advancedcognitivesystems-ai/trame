@@ -502,6 +502,14 @@ export const CommandMessages = catalog({
     /** The commands of the engine the project's replace (since g119): the project's run. */
     helpReplaced: (names: string[]) => `Replaced by the project's: ${names.join(", ")}`,
     helpViews: (views: string[]) => `Views (trame <view> [node]): ${views.join(", ")}`,
+    /** trame help <command> (since g135): a command of the project, what it reads on its line. */
+    helpCommand: (name: string, title: string, help: string | undefined) => `trame ${name}: ${help ?? title}`,
+    helpArguments: () => "Arguments, in their order:",
+    helpArgument: (name: string, meaning: string, optional: boolean) => `  ${name} ${meaning}${optional ? " (may be left out)" : ""}`,
+    helpOptions: () => "Options:",
+    helpOption: (flag: string, takes: string | undefined, meaning: string) => `  ${flag}${takes ? ` <${takes}>` : ""} ${meaning}`,
+    helpEveryCommand: () => "Options of every command (std's):",
+    helpNoSuchCommand: (name: string) => `${name} is no command of the project: trame help lists them`,
 
     // The add-ons of a command the engine keeps (since g120).
     /** Several environments make different add-ons, and none was named. */

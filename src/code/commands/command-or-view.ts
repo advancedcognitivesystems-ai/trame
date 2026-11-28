@@ -87,9 +87,13 @@ const body = (deps: Deps): Handler => async (req) => {
     deps.writing.writeFileSync(f.path, f.content)
   }
   // The rest of the line, as typed, but the environment the dispatch read: the program receives it after its name.
+  // The engine's options leave the line it forwards: the environment, and the day the project was prepared at (since
+  // g135: a command that declares its line would find --at an option nobody declares; the project it reads is
+  // already compiled at that day).
   const forwarded = [...raw]
-  const at = deps.sequences.position(forwarded, line.env)
-  if (at !== undefined) {
+  for (const flag of [line.env, line.at]) {
+    const at = deps.sequences.position(forwarded, flag)
+    if (at === undefined) continue
     deps.sequences.removeAt(forwarded, at)
     deps.sequences.removeAt(forwarded, at)
   }

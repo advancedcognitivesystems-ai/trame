@@ -1,6 +1,6 @@
 import {
   defineKind, field, optional, edge, optionalEdge, doc, hole, keysOf, edgesOf, Status, KindName, EdgeName, TriggerType, EntryField, EntryEdge,
-  OwnedField, Identity, type AnyNode, type Node, type Provides, type HasDeps, type Provided, type FileBody, type Signature, type View, type Graph, HoleCode,
+  OwnedField, Identity, isPlain, type AnyNode, type Node, type Provides, type HasDeps, type Provided, type FileBody, type Signature, type View, type Graph, HoleCode,
 } from "../trame/kernel"
 import { verifiedStatus } from "./scenario"
 import { carriedBy, bySystem, overEveryOwner } from "./audience"
@@ -8,16 +8,50 @@ import words from "./words"
 
 const say = words()
 
+/** A word a command reads in its place on its line, before any option: what it is, whether it may be left out. */
+export interface CommandArgument {
+  name: string
+  meaning: string
+  optional?: boolean
+}
+
+/** An option a command reads after its flag (the long option of its name): what it means, and what follows it when it takes a value. */
+export interface CommandOption {
+  name: string
+  meaning: string
+  /** What follows the flag, in words, when the option takes a value; none for a switch. */
+  takes?: string
+}
+
+/** What a command declares of its line (since 28 November): its help, its arguments in their order, its options. */
+export interface CommandLine {
+  help?: string
+  arguments?: readonly CommandArgument[]
+  options?: readonly CommandOption[]
+}
+
+/** What a command receives: its line as typed, and, read by what exposes it, its arguments and its options by name. */
+export interface CommandRequest {
+  params: Record<string, string>
+  body?: {
+    args: readonly string[]
+    arguments?: Readonly<Record<string, string>>
+    options?: Readonly<Record<string, string | true>>
+  }
+}
+
 /** What triggers an entry point. An HTTP request or a command today; a message or a schedule tomorrow. */
 export type Trigger =
   | { type: typeof TriggerType.http; method: "GET" | "POST" | "PUT" | "DELETE"; path: string }
-  | { type: typeof TriggerType.command; name: string; help?: string }
+  | ({ type: typeof TriggerType.command; name: string } & CommandLine)
   | { type: typeof TriggerType.message; queue: string }
   | { type: typeof TriggerType.scheduled; when: string }
   | { type: typeof TriggerType.load }
 
 export const http = (method: "GET" | "POST" | "PUT" | "DELETE", path: string): Trigger => ({ type: TriggerType.http, method, path })
-export const command = (name: string, help?: string): Trigger => ({ type: TriggerType.command, name, ...(help ? { help } : {}) })
+/** `command("plan")`, `command("plan", "help")`, or `command("view", { help, arguments: [{ name, meaning }], options: [{ name, meaning, takes }] })`. */
+export const command = (name: string, line?: string | CommandLine): Trigger =>
+  ({ type: TriggerType.command, name, ...(isPlain(line) ? line : line ? { help: line } : {}) })
 /** The loading of the page that runs the component: a page shown in a browser. */
 export const load = (): Trigger => ({ type: TriggerType.load })
 
@@ -77,7 +111,20 @@ const kind = defineKind({
   render(self, g) {
     const t = self.field(F.trigger) as Trigger | undefined
     if (!t || !g.lib.values.isObject(t)) return []
-    return [doc.para(say.entryPointTriggeredBy(), doc.ident(triggerWords(t)))]
+    const blocks = [doc.para(say.entryPointTriggeredBy(), doc.ident(triggerWords(t)))]
+    if (t.type !== TriggerType.command) return blocks
+    // What the command reads on its line (since 28 November): its arguments in their order, then its options.
+    const args = t.arguments ?? []
+    const options = t.options ?? []
+    if (g.lib.counts.any(args)) {
+      blocks.push(doc.table([say.entryPointArgument(), say.entryPointMeaning()],
+        args.map((a) => [[doc.ident(a.name)], [a.optional ? say.entryPointMayBeLeftOut(a.meaning) : a.meaning]])))
+    }
+    if (g.lib.counts.any(options)) {
+      blocks.push(doc.table([say.entryPointOption(), say.entryPointMeaning()],
+        options.map((o) => [[doc.ident(o.name)], [o.takes ? say.entryPointOptionTakes(o.meaning, o.takes) : o.meaning]])))
+    }
+    return blocks
   },
 })
 

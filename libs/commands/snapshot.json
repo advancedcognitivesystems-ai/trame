@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-27",
+  "at": "2026-11-28",
   "nodes": [
     {
       "id": "commands.Build",
@@ -117,6 +117,57 @@
       }
     },
     {
+      "id": "commands.View",
+      "kind": "entry",
+      "title": "View",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "trigger": {
+          "type": "command",
+          "name": "view",
+          "help": "One view of the project at hand",
+          "arguments": [
+            {
+              "name": "view",
+              "meaning": "the view, by its name"
+            },
+            {
+              "name": "subject",
+              "meaning": "the node or the module a view of a node or of a module is for",
+              "optional": true
+            }
+          ]
+        },
+        "deps": {
+          "project": "std/engine.TheProject",
+          "refused": "commands.ViewRefused",
+          "exit": "std/system.ExitStatus"
+        },
+        "body": {
+          "file": "./code/view.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "commands.ViewRefused",
+      "kind": "function",
+      "title": "Why a view gives no document, said",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "say": "commands.CommandWords",
+          "texts": "std/algebra.Texts"
+        },
+        "body": {
+          "file": "./code/view-refused.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
       "id": "commands.WordsLanguage",
       "kind": "decision",
       "title": "The language the commands speak",
@@ -150,10 +201,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "documents",
-        "version": "0.3.0",
+        "version": "0.4.0",
         "joins": "library",
         "from": "path",
-        "at": "../documents/releases/0.3.0"
+        "at": "../documents/releases/0.4.0"
       }
     },
     {
@@ -163,9 +214,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "134",
+        "version": "135",
         "joins": "language",
-        "at": "../../generations/g134"
+        "at": "../../generations/g135"
       }
     },
     {
@@ -188,9 +239,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.30.0",
+        "version": "0.31.0",
         "joins": "library",
-        "at": "../../std/releases/0.30.0"
+        "at": "../../std/releases/0.31.0"
       }
     },
     {
@@ -263,6 +314,19 @@
         "date": "2026-11-27",
         "what": "trame build and trame snapshot: the documents the engine's views give, written with libs/documents' renderers; documents 0.3.0, generation 133",
         "fingerprint": "f84eccb53ad7bbb8",
+        "language": "shared"
+      }
+    },
+    {
+      "id": "releases.R0_4_0",
+      "kind": "release",
+      "title": "Version 0.4.0",
+      "fields": {
+        "owner": "trame",
+        "version": "0.4.0",
+        "date": "2026-11-28",
+        "what": "trame view: one view of the project at hand, its arguments declared, its document written in the format the line names; the words of a refused view; std 0.31.0, documents 0.4.0",
+        "fingerprint": "752f80d70061f712",
         "language": "shared"
       }
     },
@@ -410,6 +474,17 @@
       }
     },
     {
+      "id": "scenarios.ScenarioViews",
+      "kind": "decision",
+      "title": "Views the scenarios ask for",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "unknown": "nothing"
+        }
+      }
+    },
+    {
       "id": "scenarios.ScenarioWords",
       "kind": "catalog",
       "title": "What the scenarios check",
@@ -468,6 +543,24 @@
         "owner": "trame",
         "deps": {
           "small": "scenarios.SmallProject"
+        },
+        "body": "(function)"
+      }
+    },
+    {
+      "id": "scenarios.ViewAnswersItsDocument",
+      "kind": "scenario",
+      "title": "A view answers its document",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "view": "commands.View",
+          "project": "std/engine.TheProject",
+          "refused": "commands.ViewRefused",
+          "views": "scenarios.ScenarioViews",
+          "checks": "scenarios.ScenarioWords",
+          "exit": "std/system.ExitStatus"
         },
         "body": "(function)"
       }
@@ -686,6 +779,31 @@
       "kind": "deps"
     },
     {
+      "from": "commands.View",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.View",
+      "to": "commands.Commands",
+      "kind": "in"
+    },
+    {
+      "from": "commands.View",
+      "to": "commands.ViewRefused",
+      "kind": "deps"
+    },
+    {
+      "from": "commands.ViewRefused",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "commands.ViewRefused",
+      "to": "commands.CommandWords",
+      "kind": "deps"
+    },
+    {
       "from": "packages.ContinuousIntegration",
       "to": "product.WrittenOnce",
       "kind": "serves"
@@ -732,6 +850,11 @@
     },
     {
       "from": "releases.R0_3_0",
+      "to": "product.WrittenOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_4_0",
       "to": "product.WrittenOnce",
       "kind": "serves"
     },
@@ -963,6 +1086,46 @@
     {
       "from": "scenarios.TheSmallProject",
       "to": "scenarios.SmallProject",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ViewAnswersItsDocument",
+      "to": "commands.View",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.ViewAnswersItsDocument",
+      "to": "commands.ViewRefused",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.ViewAnswersItsDocument",
+      "to": "scenarios.TheSmallProject",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.ViewAnswersItsDocument",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.ViewAnswersItsDocument",
+      "to": "commands.View",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ViewAnswersItsDocument",
+      "to": "commands.ViewRefused",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ViewAnswersItsDocument",
+      "to": "scenarios.ScenarioViews",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.ViewAnswersItsDocument",
+      "to": "scenarios.ScenarioWords",
       "kind": "deps"
     },
     {

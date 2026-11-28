@@ -22,7 +22,7 @@ import { Adapter, Strategy, Command, Plugin } from "#std/patterns"
 import { SystemSupported, NodeRecentEnough, GitInstalled, WhatTheMachineRuns, type MachineRequired } from "#machine/machine"
 import { OpenPullRequest, MergePullRequest, Propagate, PullRequestSettings, PropagationSettings } from "#std/commands"
 import { ProjectInTheEngine } from "#std/engine"
-import { Plan as PlanWrittenOnce, Build as BuildWrittenOnce, Snapshot as SnapshotWrittenOnce } from "#commands/commands"
+import { Plan as PlanWrittenOnce, Build as BuildWrittenOnce, Snapshot as SnapshotWrittenOnce, View as ViewWrittenOnce } from "#commands/commands"
 import { GitCliBranches, GitHubCliPullRequests, AutoMergeByGitHubCli, AutoMergeInAClaudeSession } from "#std/repository"
 import { Layout, TrameCommands, TrameEnvironment, ProjectStart } from "./conventions"
 import { TypeScript } from "./typescript"
@@ -697,12 +697,12 @@ export const CommandsOfStd = binding({
  */
 export const CommandsWrittenOnce = binding({
   owner: "trame",
-  chooses: [PlanWrittenOnce, BuildWrittenOnce, SnapshotWrittenOnce, ProjectInTheEngine],
+  chooses: [PlanWrittenOnce, BuildWrittenOnce, SnapshotWrittenOnce, ViewWrittenOnce, ProjectInTheEngine],
   environments: [Local],
   follows: [Command],
   serves: [ExecutableSpecification],
   context: "The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.",
-  consequences: "trame plan, build and snapshot run on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's own stay until the generation that removes the commands every project then runs from the library.",
+  consequences: "trame plan, build, snapshot and view run on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's own stay until the generation that removes the commands every project then runs from the library.",
   rejected: { "The engine's own commands, kept": "they would stay out of reach of every project's choice, and the engine the only one to reach its modules" },
 })
 

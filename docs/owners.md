@@ -1,11 +1,11 @@
 # Owners
 
-*What each person must decide, settle or watch on 27 November 2026, and what they own.*
+*What each person must decide, settle or watch on 28 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
 | Trame's maintainers | 0 | 0 | 3 | 0 |
-| trame | 0 | 0 | 7 | 723 |
+| trame | 0 | 0 | 7 | 724 |
 
 <a id="Trame's maintainers"></a>
 
@@ -188,7 +188,6 @@
 | [Documentation comment](conventions.md#DocComment) | Decision |  |
 | [Names of the documents](conventions.md#DocumentIds) | Standard |  |
 | [The frozen API](conventions.md#FrozenApi) | Standard |  |
-| [JSON formatting](conventions.md#JsonFormatting) | Decision |  |
 | [The commands the engine keeps](conventions.md#KeptCommands) | Decision |  |
 | [The language's names](conventions.md#LanguageNames) | Decision |  |
 | [Project layout](conventions.md#Layout) | Decision |  |
@@ -515,6 +514,7 @@
 | [Generation 132](releases.md#G132) | Release |  |
 | [Generation 133](releases.md#G133) | Release |  |
 | [Generation 134](releases.md#G134) | Release |  |
+| [Generation 135](releases.md#G135) | Release |  |
 | [Generation 14](releases.md#G14) | Release |  |
 | [Generation 15](releases.md#G15) | Release |  |
 | [Generation 16](releases.md#G16) | Release |  |
@@ -609,6 +609,7 @@
 | [Generation 97](releases.md#G97) | Release |  |
 | [Generation 98](releases.md#G98) | Release |  |
 | [Generation 99](releases.md#G99) | Release |  |
+| [The formats of a command's documents](rendering.md#AnswersAsChosen) | Technical choice | **held** |
 | [Documents in Markdown](rendering.md#DocumentsInMarkdown) | Technical choice | **held** |
 | [Figures in Mermaid](rendering.md#FiguresInMermaid) | Technical choice | **held** |
 | [HTML writer](rendering.md#HtmlSyntax) | Function | **held** |

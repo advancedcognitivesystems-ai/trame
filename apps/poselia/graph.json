@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-27",
+  "generated": "2026-11-28",
   "nodes": [
     {
       "id": "app.BrowserScreen",
@@ -4416,10 +4416,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "trame",
-        "version": "134",
+        "version": "135",
         "joins": "language",
         "from": "path",
-        "at": "../../generations/g134"
+        "at": "../../generations/g135"
       },
       "diagnostics": []
     },
@@ -4446,10 +4446,10 @@
       "fields": {
         "owner": "ghalaax",
         "packageName": "std",
-        "version": "0.30.0",
+        "version": "0.31.0",
         "joins": "library",
         "from": "path",
-        "at": "../../std/releases/0.30.0"
+        "at": "../../std/releases/0.31.0"
       },
       "diagnostics": []
     },
@@ -6173,7 +6173,7 @@
         "owner": "ghalaax"
       },
       "result": {
-        "code": "20164e5d"
+        "code": "ac319147"
       },
       "diagnostics": [
         "warning: Checked on another build of its artefacts, by another version of its program or another engine: to check again"
@@ -7190,7 +7190,7 @@
       },
       "result": {
         "path": "src",
-        "code": "f29eb706"
+        "code": "ff5e6f87"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"

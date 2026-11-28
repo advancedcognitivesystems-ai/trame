@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-27",
+  "generated": "2026-11-28",
   "nodes": [
     {
       "id": "access.Anyone",
@@ -3325,10 +3325,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "trame",
-        "version": "134",
+        "version": "135",
         "joins": "language",
         "from": "path",
-        "at": "../generations/g134"
+        "at": "../generations/g135"
       },
       "diagnostics": []
     },
@@ -3410,6 +3410,7 @@
       "kind": "pattern",
       "title": "Plugin",
       "source": "src/patterns.ts:93",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "source": "M. Fowler, Patterns of Enterprise Application Architecture (2002), Plugin (D. Rice, M. Foemmel)",
@@ -4264,6 +4265,21 @@
         "date": "2026-11-27",
         "what": "Trame's reference syntax, which the engine gives and renderers read, in the module engine",
         "fingerprint": "a85cd39da95a106b",
+        "language": "shared"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "releases.R0_31_0",
+      "kind": "release",
+      "title": "Version 0.31.0",
+      "source": "src/releases.ts:480",
+      "fields": {
+        "owner": "trame",
+        "version": "0.31.0",
+        "date": "2026-11-28",
+        "what": "A command's line read by what it declares, std's options apart: the format its documents are written in, an extension point (AnswerFormats) with JSON; the JSON formatting and the media types of Markdown and plain text",
+        "fingerprint": "9bd1ced9100e8814",
         "language": "shared"
       },
       "diagnostics": []
@@ -5399,7 +5415,7 @@
       "id": "scenarios.CommandsMade",
       "kind": "scenario",
       "title": "Commands are made for each effect",
-      "source": "src/scenarios.ts:426",
+      "source": "src/scenarios.ts:432",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5423,7 +5439,7 @@
       "id": "scenarios.DeviceInMemory",
       "kind": "scenario",
       "title": "The device, in memory",
-      "source": "src/scenarios.ts:470",
+      "source": "src/scenarios.ts:476",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5465,7 +5481,7 @@
       "id": "scenarios.DrawsKeepTheirPromise",
       "kind": "scenario",
       "title": "Seeded draws keep their promise",
-      "source": "src/scenarios.ts:442",
+      "source": "src/scenarios.ts:448",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5498,10 +5514,22 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.FormatsOfTheScenarios",
+      "kind": "binding",
+      "title": "The formats of the scenarios",
+      "source": "src/scenarios.ts:553",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "The library offers one format of its own; Markdown and text are libs/documents', which projects choose beside it."
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.HowTheScenariosRun",
       "kind": "adr",
       "title": "How the library's scenarios run",
-      "source": "src/scenarios.ts:550",
+      "source": "src/scenarios.ts:639",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5518,7 +5546,7 @@
       "id": "scenarios.InMemory",
       "kind": "binding",
       "title": "In memory",
-      "source": "src/scenarios.ts:46",
+      "source": "src/scenarios.ts:49",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5530,7 +5558,7 @@
       "id": "scenarios.JudgedAsTheLanguage",
       "kind": "scenario",
       "title": "Judged as the language says",
-      "source": "src/scenarios.ts:394",
+      "source": "src/scenarios.ts:400",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5552,7 +5580,7 @@
       "id": "scenarios.JudgedStrictly",
       "kind": "scenario",
       "title": "Judged strictly",
-      "source": "src/scenarios.ts:409",
+      "source": "src/scenarios.ts:415",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5574,7 +5602,7 @@
       "id": "scenarios.LanguageJudgment",
       "kind": "binding",
       "title": "Judged as the language says",
-      "source": "src/scenarios.ts:76",
+      "source": "src/scenarios.ts:79",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5586,7 +5614,7 @@
       "id": "scenarios.LanguagesRead",
       "kind": "scenario",
       "title": "The languages read by the engine",
-      "source": "src/scenarios.ts:530",
+      "source": "src/scenarios.ts:536",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5612,10 +5640,47 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.LinesReadAnswersWritten",
+      "kind": "scenario",
+      "title": "A command's line read, its answer written",
+      "source": "src/scenarios.ts:597",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "lines": "tooling.CommandLines",
+          "read": "tooling.CommandLineRead",
+          "sample": "scenarios.ScenarioCommand",
+          "json": "text.JsonFormatting",
+          "long": "tooling.LongOptions",
+          "standard": "tooling.StandardOptions",
+          "exit": "system.ExitStatus",
+          "say": "tooling.LineWords",
+          "checks": "scenarios.ScenarioChecks"
+        },
+        "body": "(function)"
+      },
+      "result": [
+        {
+          "name": "A command's line is read by what it declares: its arguments in their order, its options by name, std's apart",
+          "status": "passed"
+        },
+        {
+          "name": "A line that lacks an argument the command needs, or names an option nobody declares, is refused in the library's words",
+          "status": "passed"
+        },
+        {
+          "name": "Documents a command answers are written in the format the line names, the first chosen when it names none; a word nobody chose is refused",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.MergedOnceItHolds",
       "kind": "scenario",
       "title": "A pull request merged once it holds",
-      "source": "src/scenarios.ts:291",
+      "source": "src/scenarios.ts:297",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5652,7 +5717,7 @@
       "id": "scenarios.PropagatedInOrder",
       "kind": "scenario",
       "title": "A version carried across the projects",
-      "source": "src/scenarios.ts:332",
+      "source": "src/scenarios.ts:338",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5689,7 +5754,7 @@
       "id": "scenarios.PullRequestOpened",
       "kind": "scenario",
       "title": "A pull request opened",
-      "source": "src/scenarios.ts:253",
+      "source": "src/scenarios.ts:259",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5729,7 +5794,7 @@
       "id": "scenarios.ReadInTheEngine",
       "kind": "binding",
       "title": "Read by the engine that builds",
-      "source": "src/scenarios.ts:63",
+      "source": "src/scenarios.ts:66",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5741,7 +5806,7 @@
       "id": "scenarios.RepositoryInMemoryKeeps",
       "kind": "scenario",
       "title": "A repository kept in memory",
-      "source": "src/scenarios.ts:371",
+      "source": "src/scenarios.ts:377",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -5771,7 +5836,7 @@
       "id": "scenarios.ScenarioChecks",
       "kind": "catalog",
       "title": "What the library's scenarios check",
-      "source": "src/scenarios.ts:112",
+      "source": "src/scenarios.ts:115",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -5779,10 +5844,93 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.ScenarioCommand",
+      "kind": "decision",
+      "title": "A command's line, in the scenarios",
+      "source": "src/scenarios.ts:566",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "trigger": {
+            "type": "command",
+            "name": "show",
+            "help": "Shows a node",
+            "arguments": [
+              {
+                "name": "node",
+                "meaning": "the node shown"
+              },
+              {
+                "name": "depth",
+                "meaning": "how far",
+                "optional": true
+              }
+            ],
+            "options": [
+              {
+                "name": "lang",
+                "meaning": "the language",
+                "takes": "a tag"
+              }
+            ]
+          },
+          "document": {
+            "id": "show",
+            "view": "show",
+            "group": "summary",
+            "title": "A node",
+            "blocks": [
+              {
+                "type": "para",
+                "content": [
+                  "Shown."
+                ]
+              }
+            ]
+          },
+          "lines": {
+            "full": [
+              "Fast",
+              "--lang",
+              "fr"
+            ],
+            "bare": [
+              "Fast"
+            ],
+            "lacking": [
+              "--lang",
+              "fr"
+            ],
+            "unknown": [
+              "Fast",
+              "--colour"
+            ],
+            "formatted": [
+              "Fast",
+              "--format",
+              "json"
+            ],
+            "elsewhere": [
+              "Fast",
+              "--format",
+              "pdf"
+            ]
+          },
+          "read": {
+            "argument": "node",
+            "given": "Fast",
+            "option": "lang",
+            "value": "fr"
+          }
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.ScenarioData",
       "kind": "decision",
       "title": "What the library's scenarios are given",
-      "source": "src/scenarios.ts:151",
+      "source": "src/scenarios.ts:157",
       "fields": {
         "owner": "trame",
         "value": {
@@ -5978,7 +6126,7 @@
       "id": "scenarios.ScenarioLanguage",
       "kind": "decision",
       "title": "The language of the library's scenarios",
-      "source": "src/scenarios.ts:107",
+      "source": "src/scenarios.ts:110",
       "fields": {
         "owner": "trame",
         "value": {
@@ -5991,7 +6139,7 @@
       "id": "scenarios.ScenarioPropagation",
       "kind": "function",
       "title": "How the scenarios' versions are carried",
-      "source": "src/scenarios.ts:228",
+      "source": "src/scenarios.ts:234",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6006,7 +6154,7 @@
       "id": "scenarios.ScenarioPullRequests",
       "kind": "function",
       "title": "How the scenarios' pull requests are opened",
-      "source": "src/scenarios.ts:218",
+      "source": "src/scenarios.ts:224",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6021,7 +6169,7 @@
       "id": "scenarios.ScenarioSettings",
       "kind": "binding",
       "title": "The scenarios' settings",
-      "source": "src/scenarios.ts:238",
+      "source": "src/scenarios.ts:244",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6033,7 +6181,7 @@
       "id": "scenarios.Strict",
       "kind": "environment",
       "title": "Strict",
-      "source": "src/scenarios.ts:89",
+      "source": "src/scenarios.ts:92",
       "fields": {
         "owner": "trame"
       },
@@ -6043,7 +6191,7 @@
       "id": "scenarios.StrictJudgment",
       "kind": "binding",
       "title": "Judged strictly",
-      "source": "src/scenarios.ts:95",
+      "source": "src/scenarios.ts:98",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6055,7 +6203,7 @@
       "id": "scenarios.Test",
       "kind": "environment",
       "title": "Test",
-      "source": "src/scenarios.ts:40",
+      "source": "src/scenarios.ts:43",
       "fields": {
         "owner": "trame",
         "evaluates": true
@@ -6066,7 +6214,7 @@
       "id": "scenarios.ToolingInMemory",
       "kind": "scenario",
       "title": "The tooling, in memory",
-      "source": "src/scenarios.ts:504",
+      "source": "src/scenarios.ts:510",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -6189,7 +6337,7 @@
           },
           {
             "node": "scenarios.HowTheScenariosRun",
-            "via": "scenarios.InMemory",
+            "via": "scenarios.FormatsOfTheScenarios",
             "obligation": "sdlc.DecisionsApplied"
           },
           {
@@ -6245,6 +6393,11 @@
           {
             "node": "scenarios.RepositoryInMemoryKeeps",
             "via": "repository.RepositoryCompared",
+            "obligation": "sdlc.FunctionsVerified"
+          },
+          {
+            "node": "scenarios.LinesReadAnswersWritten",
+            "via": "tooling.AnswersInJson",
             "obligation": "sdlc.FunctionsVerified"
           },
           {
@@ -6491,18 +6644,21 @@
           "scenarios.CommandsMade",
           "scenarios.DeviceInMemory",
           "scenarios.DrawsKeepTheirPromise",
+          "scenarios.FormatsOfTheScenarios",
           "scenarios.HowTheScenariosRun",
           "scenarios.InMemory",
           "scenarios.JudgedAsTheLanguage",
           "scenarios.JudgedStrictly",
           "scenarios.LanguageJudgment",
           "scenarios.LanguagesRead",
+          "scenarios.LinesReadAnswersWritten",
           "scenarios.MergedOnceItHolds",
           "scenarios.PropagatedInOrder",
           "scenarios.PullRequestOpened",
           "scenarios.ReadInTheEngine",
           "scenarios.RepositoryInMemoryKeeps",
           "scenarios.ScenarioChecks",
+          "scenarios.ScenarioCommand",
           "scenarios.ScenarioData",
           "scenarios.ScenarioLanguage",
           "scenarios.ScenarioPropagation",
@@ -6536,17 +6692,24 @@
           "system.Posix",
           "text.GnuPositions",
           "text.InvisibleCharacters",
+          "text.JsonFormatting",
           "text.TextFile",
           "text.UnifiedDiff",
+          "tooling.AnswerFormats",
+          "tooling.AnswersInJson",
           "tooling.BrowserInMemory",
           "tooling.BrowserScripted",
           "tooling.CommandLanguage",
+          "tooling.CommandLineRead",
+          "tooling.CommandLines",
           "tooling.CommandsInTheEngine",
           "tooling.Files",
           "tooling.FilesInMemory",
           "tooling.FilesKept",
           "tooling.HeadlessBrowser",
           "tooling.HeadlessChromium",
+          "tooling.LineWords",
+          "tooling.LongOptions",
           "tooling.MachineFiles",
           "tooling.MachineNeeds",
           "tooling.NodeProgramCommands",
@@ -6562,6 +6725,7 @@
           "tooling.ProgramRunsInMemory",
           "tooling.ProgramRunsKept",
           "tooling.ProjectRepairs",
+          "tooling.StandardOptions",
           "tooling.ToolingAsPorts",
           "tooling.ToolWords",
           "web.CssomView",
@@ -6691,7 +6855,7 @@
       },
       "result": {
         "path": "src",
-        "code": "9a6044b3"
+        "code": "934edfdd"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -7027,7 +7191,7 @@
       "id": "text.GnuPositions",
       "kind": "standard",
       "title": "Positions in a file",
-      "source": "src/text.ts:43",
+      "source": "src/text.ts:44",
       "fields": {
         "owner": "trame",
         "source": "GNU Coding Standards, § 4.4 Formatting Error Messages",
@@ -7053,7 +7217,7 @@
       "id": "text.InvisibleCharacters",
       "kind": "standard",
       "title": "Characters that do not show",
-      "source": "src/text.ts:28",
+      "source": "src/text.ts:29",
       "fields": {
         "owner": "trame",
         "source": "The Unicode Standard 15.1, § 23.1 Control Codes, § 6.2 General Punctuation (U+00A0, U+2028, U+2029); RFC 8259 § 7",
@@ -7072,10 +7236,23 @@
       "diagnostics": []
     },
     {
+      "id": "text.JsonFormatting",
+      "kind": "decision",
+      "title": "JSON formatting",
+      "source": "src/text.ts:87",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "indentation": 2
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "text.TextFile",
       "kind": "standard",
       "title": "Text file",
-      "source": "src/text.ts:12",
+      "source": "src/text.ts:13",
       "fields": {
         "owner": "trame",
         "source": "POSIX.1-2017, Base Definitions, § 3.206 Line and § 3.403 Text File",
@@ -7093,7 +7270,7 @@
       "id": "text.UnifiedDiff",
       "kind": "standard",
       "title": "Unified differences",
-      "source": "src/text.ts:60",
+      "source": "src/text.ts:61",
       "fields": {
         "owner": "trame",
         "source": "GNU diffutils: Comparing and Merging Files, § 2.2.3 Unified Format and § 4 Comparing Directories; POSIX.1-2017, diff",
@@ -7152,10 +7329,50 @@
       "diagnostics": []
     },
     {
+      "id": "tooling.AnswerFormats",
+      "kind": "port",
+      "title": "Formats of an answer",
+      "source": "src/tooling.ts:92",
+      "fields": {
+        "owner": "trame",
+        "declaredEffects": [
+          "asynchronous"
+        ],
+        "extension": true
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "tooling.AnswersInJson",
+      "kind": "function",
+      "title": "Documents in JSON",
+      "source": "src/tooling.ts:99",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "media": "web.MediaTypes",
+          "json": "text.JsonFormatting",
+          "counts": "algebra.Counts"
+        },
+        "constants": {
+          "word": {
+            "value": "json",
+            "meaning": "The word of the format, after --format"
+          }
+        },
+        "body": {
+          "file": "./code/tooling/answers-in-json.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "tooling.BrowserInMemory",
       "kind": "function",
       "title": "A browser kept in memory",
-      "source": "src/tooling.ts:344",
+      "source": "src/tooling.ts:467",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -7170,7 +7387,7 @@
       "id": "tooling.BrowserScripted",
       "kind": "port",
       "title": "Browser script",
-      "source": "src/tooling.ts:337",
+      "source": "src/tooling.ts:460",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -7181,7 +7398,7 @@
       "id": "tooling.CommandLanguage",
       "kind": "decision",
       "title": "The language the library's commands and tools speak in.",
-      "source": "src/tooling.ts:34",
+      "source": "src/tooling.ts:37",
       "fields": {
         "owner": "trame",
         "value": {
@@ -7191,14 +7408,62 @@
       "diagnostics": []
     },
     {
-      "id": "tooling.CommandsInTheEngine",
-      "kind": "implementation",
-      "title": "Commands run in the engine",
-      "source": "src/tooling.ts:71",
+      "id": "tooling.CommandLineRead",
+      "kind": "function",
+      "title": "A command's line, read",
+      "source": "src/tooling.ts:126",
+      "status": "held",
       "fields": {
         "owner": "trame",
         "deps": {
-          "exit": "system.ExitStatus"
+          "long": "tooling.LongOptions",
+          "standard": "tooling.StandardOptions",
+          "sequences": "algebra.Sequences",
+          "counts": "algebra.Counts"
+        },
+        "body": {
+          "file": "./code/tooling/command-line.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "tooling.CommandLines",
+      "kind": "function",
+      "title": "Commands, their lines read and their answers written",
+      "source": "src/tooling.ts:152",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "read": "tooling.CommandLineRead",
+          "formats": "tooling.AnswerFormats",
+          "long": "tooling.LongOptions",
+          "standard": "tooling.StandardOptions",
+          "exit": "system.ExitStatus",
+          "values": "algebra.ValueTypes",
+          "sequences": "algebra.Sequences",
+          "counts": "algebra.Counts",
+          "say": "tooling.LineWords"
+        },
+        "body": {
+          "file": "./code/tooling/command-lines.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "tooling.CommandsInTheEngine",
+      "kind": "implementation",
+      "title": "Commands run in the engine",
+      "source": "src/tooling.ts:194",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "exit": "system.ExitStatus",
+          "lines": "tooling.CommandLines"
         },
         "body": {
           "file": "./code/tooling/engine-commands.ts",
@@ -7211,7 +7476,7 @@
       "id": "tooling.Files",
       "kind": "port",
       "title": "Project files",
-      "source": "src/tooling.ts:91",
+      "source": "src/tooling.ts:214",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -7239,7 +7504,7 @@
       "id": "tooling.FilesInMemory",
       "kind": "function",
       "title": "Files kept in memory",
-      "source": "src/tooling.ts:122",
+      "source": "src/tooling.ts:245",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -7255,7 +7520,7 @@
       "id": "tooling.FilesKept",
       "kind": "port",
       "title": "Files written",
-      "source": "src/tooling.ts:105",
+      "source": "src/tooling.ts:228",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -7266,7 +7531,7 @@
       "id": "tooling.HeadlessBrowser",
       "kind": "port",
       "title": "Headless browser",
-      "source": "src/tooling.ts:241",
+      "source": "src/tooling.ts:364",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
@@ -7283,7 +7548,7 @@
       "id": "tooling.HeadlessChromium",
       "kind": "decision",
       "title": "Chromium without a screen",
-      "source": "src/tooling.ts:273",
+      "source": "src/tooling.ts:396",
       "fields": {
         "owner": "trame",
         "value": {
@@ -7303,10 +7568,39 @@
       "diagnostics": []
     },
     {
+      "id": "tooling.LineWords",
+      "kind": "catalog",
+      "title": "What std's exposures say of a line",
+      "source": "src/tooling.ts:136",
+      "fields": {
+        "owner": "trame",
+        "messages": "(function)"
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "tooling.LongOptions",
+      "kind": "standard",
+      "title": "Long options",
+      "source": "src/tooling.ts:51",
+      "fields": {
+        "owner": "trame",
+        "source": "The GNU C Library, Program Arguments, Argument Syntax (long options); POSIX.1-2017, XBD 12.2, Utility Syntax Guidelines",
+        "url": "https://www.gnu.org/software/libc/manual/html_node/Argument-Syntax.html",
+        "constants": {
+          "prefix": {
+            "value": "--",
+            "meaning": "Begins a long option, before its name"
+          }
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "tooling.MachineFiles",
       "kind": "implementation",
       "title": "The machine's files",
-      "source": "src/tooling.ts:112",
+      "source": "src/tooling.ts:235",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -7324,7 +7618,7 @@
       "id": "tooling.MachineNeeds",
       "kind": "port",
       "title": "What the machine must also have",
-      "source": "src/tooling.ts:42",
+      "source": "src/tooling.ts:165",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -7345,13 +7639,14 @@
       "id": "tooling.NodeProgramCommands",
       "kind": "implementation",
       "title": "Node's command line",
-      "source": "src/tooling.ts:58",
+      "source": "src/tooling.ts:181",
       "fields": {
         "owner": "trame",
         "deps": {
           "argv": "system.NodeArguments",
           "exit": "system.ExitStatus",
-          "values": "algebra.ValueTypes"
+          "values": "algebra.ValueTypes",
+          "lines": "tooling.CommandLines"
         },
         "body": {
           "file": "./code/tooling/node-commands.ts",
@@ -7364,7 +7659,7 @@
       "id": "tooling.NodeProgramRuns",
       "kind": "implementation",
       "title": "Programs run by Node",
-      "source": "src/tooling.ts:169",
+      "source": "src/tooling.ts:292",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -7384,7 +7679,7 @@
       "id": "tooling.PackageOrigins",
       "kind": "vocabulary",
       "title": "Where a package comes from",
-      "source": "src/tooling.ts:424",
+      "source": "src/tooling.ts:547",
       "fields": {
         "owner": "trame",
         "words": {
@@ -7398,7 +7693,7 @@
       "id": "tooling.PackageSources",
       "kind": "port",
       "title": "Where a package comes from",
-      "source": "src/tooling.ts:414",
+      "source": "src/tooling.ts:537",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -7423,7 +7718,7 @@
       "id": "tooling.PlaywrightApi",
       "kind": "standard",
       "title": "Playwright's API",
-      "source": "src/tooling.ts:258",
+      "source": "src/tooling.ts:381",
       "fields": {
         "owner": "trame",
         "source": "Playwright documentation, class Page, event \"pageerror\"",
@@ -7441,7 +7736,7 @@
       "id": "tooling.PlaywrightBrowser",
       "kind": "implementation",
       "title": "Chromium, driven by Playwright",
-      "source": "src/tooling.ts:287",
+      "source": "src/tooling.ts:410",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -7461,7 +7756,7 @@
       "id": "tooling.PlaywrightBrowserInstalled",
       "kind": "implementation",
       "title": "Playwright's browser, installed",
-      "source": "src/tooling.ts:312",
+      "source": "src/tooling.ts:435",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -7478,7 +7773,7 @@
       "id": "tooling.PlaywrightPackage",
       "kind": "package",
       "title": "Playwright",
-      "source": "src/tooling.ts:248",
+      "source": "src/tooling.ts:371",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -7500,11 +7795,12 @@
       "id": "tooling.ProgramCommands",
       "kind": "port",
       "title": "Commands of a program",
-      "source": "src/tooling.ts:31",
+      "source": "src/tooling.ts:34",
       "fields": {
         "owner": "trame",
         "declaredEffects": [
-          "terminal"
+          "terminal",
+          "asynchronous"
         ]
       },
       "diagnostics": []
@@ -7513,7 +7809,7 @@
       "id": "tooling.ProgramRuns",
       "kind": "port",
       "title": "Programs run",
-      "source": "src/tooling.ts:162",
+      "source": "src/tooling.ts:285",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -7532,7 +7828,7 @@
       "id": "tooling.ProgramRunsInMemory",
       "kind": "function",
       "title": "Programs run in memory",
-      "source": "src/tooling.ts:193",
+      "source": "src/tooling.ts:316",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -7548,7 +7844,7 @@
       "id": "tooling.ProgramRunsKept",
       "kind": "port",
       "title": "The programs a scenario keeps: the file it says a program writes is written when that program runs.",
-      "source": "src/tooling.ts:186",
+      "source": "src/tooling.ts:309",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -7565,7 +7861,7 @@
       "id": "tooling.ProjectRepairs",
       "kind": "port",
       "title": "What repairs a project",
-      "source": "src/tooling.ts:50",
+      "source": "src/tooling.ts:173",
       "fields": {
         "owner": "trame",
         "declaredEffects": {
@@ -7579,10 +7875,30 @@
       "diagnostics": []
     },
     {
+      "id": "tooling.StandardOptions",
+      "kind": "decision",
+      "title": "The options of every command",
+      "source": "src/tooling.ts:66",
+      "fields": {
+        "owner": "trame",
+        "value": {
+          "format": {
+            "name": "format",
+            "meaning": "the format the documents a command answers are written in",
+            "takes": "the word of a format the project chose"
+          }
+        },
+        "rejected": {
+          "Each command its own format option": "the same option declared again by every command that answers documents, written differently by each"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "tooling.ToolingAsPorts",
       "kind": "adr",
       "title": "The SDLC's tooling is realized once",
-      "source": "src/tooling.ts:439",
+      "source": "src/tooling.ts:562",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -7595,7 +7911,7 @@
       "id": "tooling.ToolWords",
       "kind": "catalog",
       "title": "What the library's tools say",
-      "source": "src/tooling.ts:297",
+      "source": "src/tooling.ts:420",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -7606,7 +7922,7 @@
       "id": "web.CssomView",
       "kind": "standard",
       "title": "CSSOM View",
-      "source": "src/web.ts:121",
+      "source": "src/web.ts:123",
       "fields": {
         "owner": "trame",
         "source": "W3C, CSSOM View Module: § 5 the ScrollIntoViewOptions dictionary and the ScrollBehavior enumeration",
@@ -7702,7 +8018,7 @@
       "id": "web.MediaQueries5",
       "kind": "standard",
       "title": "Media Queries Level 5",
-      "source": "src/web.ts:137",
+      "source": "src/web.ts:139",
       "fields": {
         "owner": "trame",
         "source": "W3C, Media Queries Level 5: § 12.1 prefers-reduced-motion",
@@ -7727,7 +8043,7 @@
       "source": "src/web.ts:40",
       "fields": {
         "owner": "trame",
-        "source": "IANA media types registry; RFC 6838; RFC 8259, § 11 (application/json); WHATWG HTML (text/event-stream)",
+        "source": "IANA media types registry; RFC 6838; RFC 8259, § 11 (application/json); RFC 7763 (text/markdown); RFC 2046, § 4.1.3 (text/plain); WHATWG HTML (text/event-stream)",
         "url": "https://www.iana.org/assignments/media-types/",
         "constants": {
           "html": {
@@ -7745,6 +8061,14 @@
           "eventStream": {
             "value": "text/event-stream",
             "meaning": "A stream of events sent by the server"
+          },
+          "markdown": {
+            "value": "text/markdown; charset=utf-8",
+            "meaning": "A text written in Markdown, in UTF-8"
+          },
+          "plain": {
+            "value": "text/plain; charset=utf-8",
+            "meaning": "Plain text, in UTF-8"
           }
         }
       },
@@ -7754,7 +8078,7 @@
       "id": "web.ScreenWakeLockApi",
       "kind": "standard",
       "title": "Screen Wake Lock API",
-      "source": "src/web.ts:152",
+      "source": "src/web.ts:154",
       "fields": {
         "owner": "trame",
         "source": "W3C, Screen Wake Lock API: § 4 The WakeLockType enumeration",
@@ -7772,7 +8096,7 @@
       "id": "web.ServerSentEvents",
       "kind": "standard",
       "title": "Server-sent events",
-      "source": "src/web.ts:76",
+      "source": "src/web.ts:78",
       "fields": {
         "owner": "trame",
         "source": "WHATWG HTML, § Server-sent events",
@@ -7806,7 +8130,7 @@
       "id": "web.UiEvents",
       "kind": "standard",
       "title": "UI events",
-      "source": "src/web.ts:95",
+      "source": "src/web.ts:97",
       "fields": {
         "owner": "trame",
         "source": "W3C, UI Events (§ 3.4 mouse events, § 3.3 focus events, § 3.6 keyboard events), Pointer Events (pointerdown), and the HTML Living Standard (input, change, DOMContentLoaded)",
@@ -7872,7 +8196,7 @@
       "id": "web.Uri",
       "kind": "standard",
       "title": "URI",
-      "source": "src/web.ts:57",
+      "source": "src/web.ts:59",
       "fields": {
         "owner": "trame",
         "source": "RFC 3986, § 3 Syntax components and § 4.2 Relative reference; RFC 6761 (localhost)",
@@ -7910,7 +8234,7 @@
       "id": "web.WebAudioApi",
       "kind": "standard",
       "title": "Web Audio API",
-      "source": "src/web.ts:183",
+      "source": "src/web.ts:185",
       "fields": {
         "owner": "trame",
         "source": "W3C, Web Audio API 1.1: § 1.2.4 AudioContextLatencyCategory",
@@ -7928,7 +8252,7 @@
       "id": "web.WebSpeechApi",
       "kind": "standard",
       "title": "Web Speech API",
-      "source": "src/web.ts:167",
+      "source": "src/web.ts:169",
       "fields": {
         "owner": "trame",
         "source": "W3C Community Group, Web Speech API: § 4.2.9 SpeechSynthesisErrorEvent",
@@ -9819,6 +10143,41 @@
       "kind": "serves"
     },
     {
+      "from": "releases.R0_31_0",
+      "to": "product.ChosenCommands",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_31_0",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_31_0",
+      "to": "product.KnownDesigns",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_31_0",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_31_0",
+      "to": "product.SharedOperations",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_31_0",
+      "to": "product.SharedRules",
+      "kind": "serves"
+    },
+    {
+      "from": "releases.R0_31_0",
+      "to": "product.VersionsThatHold",
+      "kind": "serves"
+    },
+    {
       "from": "releases.R0_4_0",
       "to": "product.CitedNotCopied",
       "kind": "serves"
@@ -10494,6 +10853,26 @@
       "kind": "deps"
     },
     {
+      "from": "scenarios.FormatsOfTheScenarios",
+      "to": "tooling.AnswersInJson",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.FormatsOfTheScenarios",
+      "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.FormatsOfTheScenarios",
+      "to": "patterns.Plugin",
+      "kind": "follows"
+    },
+    {
+      "from": "scenarios.FormatsOfTheScenarios",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
       "from": "scenarios.HowTheScenariosRun",
       "to": "product.RealizedOnce",
       "kind": "serves"
@@ -10521,6 +10900,11 @@
     {
       "from": "scenarios.HowTheScenariosRun",
       "to": "scenarios.ReadInTheEngine",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.HowTheScenariosRun",
+      "to": "scenarios.FormatsOfTheScenarios",
       "kind": "appliedBy"
     },
     {
@@ -10680,6 +11064,71 @@
     },
     {
       "from": "scenarios.LanguagesRead",
+      "to": "scenarios.ScenarioChecks",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.LinesReadAnswersWritten",
+      "to": "tooling.CommandLines",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.LinesReadAnswersWritten",
+      "to": "tooling.CommandLineRead",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.LinesReadAnswersWritten",
+      "to": "tooling.AnswersInJson",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.LinesReadAnswersWritten",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.LinesReadAnswersWritten",
+      "to": "tooling.CommandLines",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.LinesReadAnswersWritten",
+      "to": "tooling.CommandLineRead",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.LinesReadAnswersWritten",
+      "to": "scenarios.ScenarioCommand",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.LinesReadAnswersWritten",
+      "to": "text.JsonFormatting",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.LinesReadAnswersWritten",
+      "to": "tooling.LongOptions",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.LinesReadAnswersWritten",
+      "to": "tooling.StandardOptions",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.LinesReadAnswersWritten",
+      "to": "system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.LinesReadAnswersWritten",
+      "to": "tooling.LineWords",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.LinesReadAnswersWritten",
       "to": "scenarios.ScenarioChecks",
       "kind": "deps"
     },
@@ -11284,6 +11733,31 @@
       "kind": "serves"
     },
     {
+      "from": "tooling.AnswersInJson",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "tooling.AnswersInJson",
+      "to": "tooling.AnswerFormats",
+      "kind": "implements"
+    },
+    {
+      "from": "tooling.AnswersInJson",
+      "to": "web.MediaTypes",
+      "kind": "deps"
+    },
+    {
+      "from": "tooling.AnswersInJson",
+      "to": "text.JsonFormatting",
+      "kind": "deps"
+    },
+    {
+      "from": "tooling.AnswersInJson",
+      "to": "algebra.Counts",
+      "kind": "deps"
+    },
+    {
       "from": "tooling.BrowserInMemory",
       "to": "tooling.HeadlessBrowser",
       "kind": "implements"
@@ -11299,6 +11773,81 @@
       "kind": "deps"
     },
     {
+      "from": "tooling.CommandLineRead",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "tooling.CommandLineRead",
+      "to": "tooling.LongOptions",
+      "kind": "deps"
+    },
+    {
+      "from": "tooling.CommandLineRead",
+      "to": "tooling.StandardOptions",
+      "kind": "deps"
+    },
+    {
+      "from": "tooling.CommandLineRead",
+      "to": "algebra.Sequences",
+      "kind": "deps"
+    },
+    {
+      "from": "tooling.CommandLineRead",
+      "to": "algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "tooling.CommandLines",
+      "to": "product.RealizedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "tooling.CommandLines",
+      "to": "tooling.CommandLineRead",
+      "kind": "deps"
+    },
+    {
+      "from": "tooling.CommandLines",
+      "to": "tooling.AnswerFormats",
+      "kind": "deps"
+    },
+    {
+      "from": "tooling.CommandLines",
+      "to": "tooling.LongOptions",
+      "kind": "deps"
+    },
+    {
+      "from": "tooling.CommandLines",
+      "to": "tooling.StandardOptions",
+      "kind": "deps"
+    },
+    {
+      "from": "tooling.CommandLines",
+      "to": "system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "tooling.CommandLines",
+      "to": "algebra.ValueTypes",
+      "kind": "deps"
+    },
+    {
+      "from": "tooling.CommandLines",
+      "to": "algebra.Sequences",
+      "kind": "deps"
+    },
+    {
+      "from": "tooling.CommandLines",
+      "to": "algebra.Counts",
+      "kind": "deps"
+    },
+    {
+      "from": "tooling.CommandLines",
+      "to": "tooling.LineWords",
+      "kind": "deps"
+    },
+    {
       "from": "tooling.CommandsInTheEngine",
       "to": "tooling.ProgramCommands",
       "kind": "implements"
@@ -11306,6 +11855,11 @@
     {
       "from": "tooling.CommandsInTheEngine",
       "to": "system.ExitStatus",
+      "kind": "deps"
+    },
+    {
+      "from": "tooling.CommandsInTheEngine",
+      "to": "tooling.CommandLines",
       "kind": "deps"
     },
     {
@@ -11327,6 +11881,16 @@
       "from": "tooling.FilesInMemory",
       "to": "algebra.Texts",
       "kind": "deps"
+    },
+    {
+      "from": "tooling.LineWords",
+      "to": "tooling.CommandLanguage",
+      "kind": "language"
+    },
+    {
+      "from": "tooling.LongOptions",
+      "to": "product.CitedNotCopied",
+      "kind": "serves"
     },
     {
       "from": "tooling.MachineFiles",
@@ -11361,6 +11925,11 @@
     {
       "from": "tooling.NodeProgramCommands",
       "to": "algebra.ValueTypes",
+      "kind": "deps"
+    },
+    {
+      "from": "tooling.NodeProgramCommands",
+      "to": "tooling.CommandLines",
       "kind": "deps"
     },
     {

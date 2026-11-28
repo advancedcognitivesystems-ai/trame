@@ -6,7 +6,7 @@ import type { Prelude } from "../../architecture"
 import type { OutputMessages } from "../../messages"
 import type { Compiled } from "./compiler"
 import type { Counts, ValueTypes } from "#std/algebra"
-import type { JsonFormatting } from "../../conventions"
+import type { JsonFormatting } from "#std/text"
 
 export interface Deps {
   values: ProvidedBy<typeof ValueTypes>

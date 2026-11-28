@@ -12,7 +12,7 @@ import { ProgramCommands, Files } from "#std/tooling"
 import { TheProject } from "#std/engine"
 import { Anyone } from "#std/access"
 import { ExitStatus } from "#std/system"
-import { Counts } from "#std/algebra"
+import { Counts, Texts } from "#std/algebra"
 import { WrittenOnce } from "./product"
 
 // The commands every project runs (E3): each reaches the engine through std's ports (the project at hand, compiled at
@@ -78,6 +78,11 @@ export const CommandWords = catalog({
       planNothingBuilt: (file: string) => `no ${file} to compare with: trame build writes it, and every node would be new`,
       /** The last line of a build: the files it wrote. */
       written: (files: readonly string[]) => `written: ${files.join(", ")}`,
+      /** Why a view gives no document (moved from the engine's words, commands 0.4.0). */
+      unknownView: (name: string | undefined, views: readonly string[]) => `Unknown view: ${name ?? "(none)"}. Views: ${views.join(", ")}`,
+      unknownNode: (node: string | undefined) => `Unknown node: ${node ?? "(none)"}`,
+      viewDoesNotApply: (view: string, node: string) => `The view "${view}" does not apply to ${node}.`,
+      unknownModule: (module: string | undefined, modules: readonly string[]) => `Unknown module: ${module ?? "(none)"}. Modules: ${modules.join(", ")}`,
       /** What a snapshot wrote, and the day of the graph it took. */
       snapshotTaken: (date: string, files: readonly string[]) => `snapshot of ${date} · written: ${files.join(", ")}`,
     }
@@ -141,4 +146,37 @@ export const Snapshot = entryPoint({
   trigger: command("snapshot"),
   deps: { project: TheProject, files: Files, written: FileRendering, say: CommandWords, exit: ExitStatus },
   body: code.file("./code/snapshot.ts"),
+})
+
+/**
+ * Why a view gives no document, said
+ * The reason the engine's API gives (no view of that name, no such node or module, a view that does not apply to the
+ * node), in the words of the commands: the library's view and the engine's own say it alike.
+ */
+export const ViewRefused = fn({
+  owner: "trame",
+  serves: [WrittenOnce],
+  deps: { say: CommandWords, texts: Texts },
+  body: code.file<typeof import("./code/view-refused").default>("./code/view-refused.ts"),
+})
+
+/**
+ * View
+ * trame view <view> [node|module] [--at <date>]: one view of the project at hand, at the day the line says, which the
+ * engine runs; a view of a node or of a module is given its name. It answers the view's document, written in the
+ * format the line names (std's --format: text, Markdown with where each card is, JSON); or why there is none.
+ */
+export const View = entryPoint({
+  owner: "trame",
+  in: Commands, for: Anyone,
+  serves: [WrittenOnce],
+  trigger: command("view", {
+    help: "One view of the project at hand",
+    arguments: [
+      { name: "view", meaning: "the view, by its name" },
+      { name: "subject", meaning: "the node or the module a view of a node or of a module is for", optional: true },
+    ],
+  }),
+  deps: { project: TheProject, refused: ViewRefused, exit: ExitStatus },
+  body: code.file("./code/view.ts"),
 })
