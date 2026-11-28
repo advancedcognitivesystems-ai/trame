@@ -16,7 +16,7 @@ export const Language = pkg({ owner: "trame", packageName: "trame", version: "13
  * std
  * The library the renderers are written with: its structures, its standards, its patterns.
  */
-export const StandardLibrary = pkg({ owner: "trame", packageName: "std", version: "0.32.0", joins: "library", at: "../../std/releases/0.32.0", serves: [RenderedOnce] })
+export const StandardLibrary = pkg({ owner: "trame", packageName: "std", version: "0.33.0", joins: "library", at: "../../std/releases/0.33.0", serves: [RenderedOnce] })
 
 /**
  * The library of continuous integration

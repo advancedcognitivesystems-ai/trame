@@ -803,7 +803,7 @@ The program of Trame's command line, assembled from the graph for a machine: wha
 
 - Path: `out/local/trame-cli.ts`
 
-Built 28 November 2026 by claude, fingerprint `760f47886520a27b34dd3a0cf488f4b0daff0642e205af0d0e277d538dfd73fe`.
+Built 28 November 2026 by claude, fingerprint `fc29b0fb5cb719a5024f5de796ad5ff3c775e229e2a339e036bd38ff8da16e35`.
 
 Shipped by [The next generation](#NextGeneration) 8 November 2026, fingerprint `7b37d575242fcf8f0998170f818ac1b266c2f3408a5dc31f62eedaf3cbf0f2f4`.
 
@@ -890,7 +890,7 @@ The page trame export writes of Trame's graph, which a browser opens as it is: i
 - Path: `trame-page.html`
 - Media type: `text/html; charset=utf-8`
 
-Built 28 November 2026 by claude, fingerprint `3301a75511ab3f52bef62e0e1ab2cd5463c2c86502070d01dbadcd323c7e34f5`.
+Built 28 November 2026 by claude, fingerprint `6b9c0da240fb167fcf0d2521957fe889246c6c2b53c421b5a31452913f28ff52`.
 
 Shipped by [The next generation](#NextGeneration) 8 November 2026, fingerprint `99d138159c0e7fce465ffd74ec828b3cfa1bb501acf7d08ed97f495b21eca67a`.
 
@@ -993,7 +993,7 @@ The component that shows the graph page, assembled for the browser where the eng
 
 - Path: `out/browser/page-app.ts`
 
-Built 28 November 2026 by claude, fingerprint `b4b2300be2110a8354b4864d008d6be9274e4d4986c9457e1e445f20932e211d`.
+Built 28 November 2026 by claude, fingerprint `dd40053bb9307c47b27a1568b33251aafea0ae63d0c9819b01d3e234fffac4d5`.
 
 Shipped by [The next generation](#NextGeneration) 8 November 2026, fingerprint `6416e1b80c44d0c602d83fd12a79c6785cb84f3d295f9795ed017ce759e2af04`.
 
