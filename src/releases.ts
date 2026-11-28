@@ -2027,3 +2027,18 @@ export const G136 = release({
   archive: "df24f8b6168b2e25",
   assembledBy: G135,
 })
+
+/**
+ * Generation 137
+ */
+export const G137 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g137",
+  date: "2026-11-28",
+  what: "The page is libs/documents' (documents 0.5.0): the engine wires the library's page, bundles the program it assembles for Browser from the library's component, makes a page with the engine running; payload, export and dev are libs/commands' (0.5.0), which Trame takes; the engine's own use the library's pieces and std's server and timers; the API says what a project's watch follows and the engine's name; a component whose exposure no environment of its project realizes is offered",
+  fingerprint: "693b28fe1d81a5b9",
+  language: "shared",
+  archive: "f9f3c0209197cb7e",
+  assembledBy: G136,
+})
