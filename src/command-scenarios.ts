@@ -10,7 +10,7 @@ import {
   Process, WriteLog, TerminalLog, ProcessLog, ServerLog, Test, Compression, Clock, FileReading, FileWriting, FileTrees, Paths, Timer, CommandLine,
   Signatures,
 } from "./architecture"
-import { PayloadBuilder, Differences, Assembly, Project, Compiler, Lock, References, DateBundle, DevServer, DevService, ShipmentPipeline, Views, EngineFingerprint, ProjectRuns } from "./engine"
+import { PayloadBuilder, Differences, Assembly, Project, Compiler, Lock, References, DateBundle, DevServer, Watching, DevService, ShipmentPipeline, Views, EngineFingerprint, ProjectRuns } from "./engine"
 import {
   ShowView, CommandOrView, RenderView, EmitPayload, Assemble, Assembler, TestKinds, TakeSnapshot, Publish, Audit, Release, WriteManifest, Export, Run, Dev,
   Deliver, Ship, RecordEvidence, Doctor, Advance, Build, Plan, Amend, Amending, Init, ReferencesModule, Registry, Upgrade,
@@ -819,7 +819,7 @@ export const DevSamples = decision<{ touched: string; content: string; pauses: n
  */
 export const DevFollowsTheGraph = scenario({
   owner: "trame",
-  verifies: [Dev, DevServer, MemoryHttpServer, NodeTimer],
+  verifies: [Dev, DevServer, Watching, MemoryHttpServer, NodeTimer],
   env: Test,
   deps: {
     payload: EmitPayload, dev: Dev, processLog: ProcessLog, serverLog: ServerLog, terminalLog: TerminalLog, writing: FileWriting, timer: Timer,

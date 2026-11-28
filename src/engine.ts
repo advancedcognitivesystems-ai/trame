@@ -472,6 +472,28 @@ export const DateBundle = fn({
 })
 
 /**
+ * Files an editor leaves
+ * The endings of the files an editor leaves while it saves (a backup, a swap file, a temporary file): they change
+ * nothing a build reads, and nobody follows them.
+ */
+export const EditorLeftovers = decision<{ endings: readonly string[] }>({
+  owner: "trame",
+  value: { endings: ["~", ".swp", ".tmp"] },
+})
+
+/**
+ * Watching a project
+ * Each file a build reads that changes, from the project's root: its sources, its kinds and views, its evidence, its
+ * lock; what an editor leaves aside. What trame dev follows, and what the engine's API gives (since g136).
+ */
+export const Watching = fn({
+  owner: "trame",
+  serves: [ExecutableSpecification],
+  deps: { reading: FileReading, paths: Paths, layout: Layout, project: Project, leftovers: EditorLeftovers, texts: Texts },
+  body: code.file<typeof import("./code/engine/watching").default>("./code/engine/watching.ts"),
+})
+
+/**
  * Differences
  * What a change altered between two compilations: statuses, holes, overlaps.
  */
@@ -485,13 +507,13 @@ export const Differences = fn({
 /**
  * What trame dev serves
  * The paths the page is asked at, the bundle of the graph, the stream of its changes; the events of that stream; the
- * host it answers on; the endings of the files an editor leaves while it saves, which change nothing.
+ * host it answers on.
  */
-export const DevService = decision<{ page: readonly string[]; bundle: string; events: string; amend: string; compiling: string; ready: string; host: string; ignored: readonly string[] }>({
+export const DevService = decision<{ page: readonly string[]; bundle: string; events: string; amend: string; compiling: string; ready: string; host: string }>({
   owner: "trame",
   value: {
     page: ["/", "/index.html"], bundle: "/bundle.json", events: "/events", amend: "/amend",
-    compiling: "compiling", ready: "bundle", host: "localhost", ignored: ["~", ".swp", ".tmp"],
+    compiling: "compiling", ready: "bundle", host: "localhost",
   },
 })
 
@@ -505,7 +527,7 @@ export const DevServer = fn({
   deps: { service: DevService, uri: Uri, line: TrameCommands, nodeEvents: NodeEvents, layout: Layout,
     http: Http, mediaTypes: MediaTypes, events: ServerSentEvents,
     terminal: Terminal, codeLines: CodeLines, file: TextFile, clock: Clock, timer: Timer, debounce: DevDebounce, httpServer: HttpServer,
-    reading: FileReading, paths: Paths, project: Project, bundle: DateBundle, differences: Differences, page: Page, pageRendering: PageRendering,
+    watching: Watching, paths: Paths, project: Project, bundle: DateBundle, differences: Differences, page: Page, pageRendering: PageRendering,
     counts: Counts, sequences: Sequences, texts: Texts, dates: Dates, language: Language, messages: DevMessages,
   },
   body: code.file<typeof import("./code/engine/dev-server").default>("./code/engine/dev-server.ts"),

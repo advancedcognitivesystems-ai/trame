@@ -78,6 +78,13 @@ import body_nodeProcess from "../../src/code/platform/process.ts"
 import body_systemClock from "../../src/code/platform/system-clock.ts"
 import body_projectCommands from "../../src/code/commands/project-commands.ts"
 import body_machineOutputs from "../../src/code/engine/machine.ts"
+import body_payloadBuilder from "../../src/code/engine/payload.ts"
+import body_dateBundle from "../../src/code/engine/date-bundle.ts"
+import body_watching from "../../src/code/engine/watching.ts"
+import body_pageResources from "../../src/code/platform/page-resources.ts"
+import body_esbuild from "../../src/code/platform/esbuild.ts"
+import body_nodeCompression from "../../src/code/platform/compression.ts"
+import body_page from "../../src/code/page/page.ts"
 import body_preparation from "../../src/code/commands/preparation.ts"
 import body_nodePrograms from "../../src/code/platform/programs.ts"
 import body_releaseRecords from "../../src/code/commands/releases.ts"
@@ -103,16 +110,11 @@ import body_answersInJson from "../../std/releases/0.31.0/src/code/tooling/answe
 import body_viewRefused from "../../libs/commands/releases/0.4.0/src/code/view-refused.ts"
 import body_renderView from "../../src/code/commands/render-view.ts"
 import body_commandOrView from "../../src/code/commands/command-or-view.ts"
-import body_esbuild from "../../src/code/platform/esbuild.ts"
 import body_namesLed from "../../src/code/delivery/names-led.ts"
 import body_deliver from "../../src/code/commands/deliver.ts"
 import body_nodeTimer from "../../src/code/platform/timer.ts"
 import body_nodeHttpServer from "../../src/code/platform/http.ts"
-import body_dateBundle from "../../src/code/engine/date-bundle.ts"
 import body_differences from "../../src/code/engine/differences.ts"
-import body_pageResources from "../../src/code/platform/page-resources.ts"
-import body_nodeCompression from "../../src/code/platform/compression.ts"
-import body_page from "../../src/code/page/page.ts"
 import body_pageWords from "../../src/code/page/words.ts"
 import body_svgFigures from "../../src/code/rendering/svg-figures.ts"
 import body_htmlSyntax from "../../src/code/rendering/html.ts"
@@ -121,7 +123,6 @@ import body_dev from "../../src/code/commands/dev.ts"
 import body_npmInstall from "../../src/code/platform/npm-install.ts"
 import body_addOns from "../../src/code/commands/add-ons.ts"
 import body_doctor from "../../src/code/commands/doctor.ts"
-import body_payloadBuilder from "../../src/code/engine/payload.ts"
 import body_emitPayload from "../../src/code/commands/payload.ts"
 import body_exampleRewriting from "../../src/code/commands/example-rewriting.ts"
 import body_examples from "../../src/code/commands/examples.ts"
@@ -510,8 +511,150 @@ const machineOutputs = await body_machineOutputs({ values: valueTypes, json: jso
 const longOptions = {"prefix":"--"}
 // "The options of every command" · decision
 const standardOptions = {"format":{"name":"format","meaning":"the format the documents a command answers are written in","takes":"the word of a format the project chose"}}
+// "Candidate dates" · decision
+const candidateDates = {"afterAnEnd":1,"beforeTheFirstChange":-1}
+// "The days of history a page offers" · decision
+const pageHistory = {"days":7}
+// "Payload" · function
+const payloadBuilder = await body_payloadBuilder({ layout, candidateDates, history: pageHistory, iso: iso8601, clock: frozen.limited(systemClock, ["now"]), machine: machineOutputs, views, language, texts, values: valueTypes, counts, sequences })
+// "Date bundle" · function
+const dateBundle = await body_dateBundle({ line: trameCommands, encodings: nodeEncodings, events: nodeEvents, clock: frozen.limited(systemClock, ["now"]), currentProcess: frozen.limited(nodeProcess, ["relaunch"]), exitStatus, texts, messages: outputMessages })
+// "Files an editor leaves" · decision
+const editorLeftovers = {"endings":["~",".swp",".tmp"]}
+// "Watching a project" · function
+const watching = await body_watching({ reading: frozen.limited(diskReading, ["existsSync","watch"]), paths: frozen.limited(nodePaths, ["join","relative"]), layout, project, leftovers: editorLeftovers, texts })
+// "Bundle of the page" · decision
+const pageBundle = {"format":"esm","target":"es2022","legalComments":"none","charset":"utf8"}
+// "Style of the standalone document" · decision
+const standaloneStyle = {":root":{"padding-top":"env(safe-area-inset-top,0px)","padding-bottom":"env(safe-area-inset-bottom,0px)"},"body":{"margin":"0"},"[hidden]":{"display":"none!important"},"img":{"max-width":"100%"}}
+// "Palette" · decision
+const palette = {"light":{"bg":"#f3f5f6","panel":"#ffffff","ink":"#17202a","muted":"#5a6672","line":"#d9e0e5","accent":"#34509a","accent-soft":"#e5ebf7","ok":"#26734a","ok-soft":"#e1f1e7","warn":"#9a6200","warn-soft":"#fbf0d9","bad":"#ad2a22","bad-soft":"#f9e3e1","unk":"#65707c","unk-soft":"#e9edf0","term-bg":"#121820","term-ink":"#d8dee5","term-dim":"#7f8b97"},"dark":{"bg":"#0e1217","panel":"#151b22","ink":"#e4e9ee","muted":"#98a3ae","line":"#29323c","accent":"#93abef","accent-soft":"#1e2a44","ok":"#7fd19b","ok-soft":"#173325","warn":"#f2c063","warn-soft":"#3a2d12","bad":"#f08a80","bad-soft":"#3d1c1a","unk":"#a5afb9","unk-soft":"#222a33","term-bg":"#0a0e13","term-ink":"#d8dee5","term-dim":"#7f8b97"},"statuses":{"held":{"fill":"ok-soft","stroke":"ok"},"blocked":{"fill":"warn-soft","stroke":"warn"},"violated":{"fill":"bad-soft","stroke":"bad"},"unknown":{"fill":"unk-soft","stroke":"unk"},"neutral":{"fill":"panel","stroke":"muted"}},"ink":"ink"}
+// "Typography" · decision
+const typography = {"fonts":{"font-doc":"\"Literata\", \"Iowan Old Style\", Georgia, serif","font-ui":"\"Instrument Sans\", \"Segoe UI\", system-ui, sans-serif","font-mono":"\"JetBrains Mono\", ui-monospace, \"SFMono-Regular\", Menlo, monospace"},"loading":["https://fonts.googleapis.com","https://fonts.gstatic.com","https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&display=swap"]}
+// "Narrow screen" · decision
+const narrowScreen = "920px"
+// "Spacing" · decision
+const spacing = {"space-none":"0","space-hairline":"1px","space-3xs":"2px","space-2xs":"4px","space-xs":"6px","space-sm":"8px","space-md":"10px","space-lg":"12px","space-xl":"14px","space-2xl":"16px","space-3xl":"18px","space-4xl":"20px","space-5xl":"40px","inset-toggle":"3px","stack-list-item":"3px","inset-control-block":"7px","inset-control-inline":"9px","inset-cell-block":"7px","inset-pill-inline":"7px","stack-h4":"22px","offset-anchor":"24px","page-inset-top":"28px","page-inset-bottom":"64px","page-inset-bottom-narrow":"48px","safe-area-default":"0px"}
+// "Radii" · decision
+const radii = {"radius-2xs":"3px","radius-xs":"4px","radius-sm":"5px","radius-md":"6px","radius-lg":"7px","radius-xl":"8px","radius-2xl":"10px","radius-3xl":"14px","radius-round":"50%"}
+// "Type scale" · decision
+const typeScale = {"text-2xs":"11px","text-xs":"11.5px","text-sm":"12px","text-md":"12.5px","text-lg":"13px","text-xl":"13.5px","text-2xl":"14px","text-3xl":"15px","text-date-mark":"10px","text-edge":"10.5px","text-doc":"16px","text-code":"0.82em","text-h1":"2rem","text-h1-narrow":"1.6rem","text-h3":"1.28rem","weight-regular":"400","weight-medium":"500","weight-semibold":"600","leading-h1":"1.15","leading-date":"1.2","leading-h3":"1.25","leading-table":"1.4","leading-ui":"1.5","leading-code":"1.55","leading-pre":"1.6","leading-doc":"1.62","tracking-tight":"-0.01em","tracking-xs":"0.02em","tracking-sm":"0.03em","tracking-md":"0.06em","tracking-lg":"0.08em","tracking-xl":"0.09em"}
+// "Opacities" · decision
+const opacities = {"opacity-full":"1","opacity-strong":"0.85","opacity-medium":"0.6","opacity-muted":"0.45","opacity-faint":"0.35","opacity-faintest":"0.3","opacity-link":"0.1","opacity-link-dimmed":"0"}
+// "Strokes" · decision
+const strokes = {"line-width":"1px","focus-width":"2px","focus-offset":"2px","underline-offset":"2px","stroke-grid":"1","stroke-box":"1.2","stroke-edge":"1.3","stroke-today":"1.4","stroke-open":"1.5","stroke-strong":"2","stroke-winner":"2.2","stroke-focus":"2.4","stroke-halo":"4px","dash-history":"5 3","dash-inferred":"2 3","dash-computed":"6 4","dash-discarded":"5 4","dash-today":"4 3"}
+// "Motion" · decision
+const motion = {"duration-pulse":"1s","duration-flash":"1.6s"}
+// "Page layout" · decision
+const pageLayout = {"side-width":"300px","page-width":"1320px","measure":"80ch","date-min":"62px","dot-size":"8px","badge-min":"20px","screen-height":"100vh","full":"100%","fraction":"1fr","track-fill":"minmax(0, 1fr)","indent-compact":"1.1em","indent-doc":"1.2em","date-mark-line":"1.2em"}
+// "Page resources" · implementation, for "Page resources"
+const pageResources = await body_pageResources({ files: engineFiles, layout, advancement, language: typeScript, specifiers: nodeModuleSpecifiers, texts, sequences })
+// "esbuild" · implementation, for "Bundler"
+const esbuild = await body_esbuild({})
+// "A page carries its graph compressed" · decision
+const packedGraph = {"format":"gzip","encoding":"base64"}
+// "gzip, with Node's zlib" · implementation, for "Compression"
+const nodeCompression = await body_nodeCompression({ packing: packedGraph })
+// "The page" · decision
+const thePage = {"label":"label","themeAttribute":"data-theme","themes":{"light":"light","dark":"dark"},"statusClass":"st-","globals":{"packedBundle":"TRAME_BUNDLE_GZIP","dev":"TRAME_DEV"},"memory":"trame-page","machine":"machine","nodeView":"impact","prompt":"$ "}
+// "HTML" · standard
+const html = {"lessThan":"<","greaterThan":">","space":" ","id":"id","class":"class","hidden":"hidden","lang":"lang","div":"div","span":"span","p":"p","a":"a","href":"href","mark":"mark","code":"code","time":"time","datetime":"datetime","ul":"ul","li":"li","dl":"dl","dt":"dt","dd":"dd","table":"table","thead":"thead","tbody":"tbody","tr":"tr","th":"th","td":"td","pre":"pre","details":"details","summary":"summary","section":"section","article":"article","figure":"figure","figcaption":"figcaption","button":"button","type":"type","buttonType":"button","tabindex":"tabindex","focusable":"0","style":"style","window":"window","module":"module","b":"b","small":"small","h2":"h2","ol":"ol","select":"select","option":"option","optgroup":"optgroup","form":"form","textarea":"textarea","textType":"text","numberType":"number","dateType":"date","name":"name","input":"input","datalist":"datalist","label":"label","value":"value","selected":"selected","disabled":"disabled","title":"title","list":"list","placeholder":"placeholder","search":"search","h1":"h1","h3":"h3","header":"header","main":"main","footer":"footer","nav":"nav"}
+// "Attributes" · syntax element
+const htmlAttributes = await frozen.body(HtmlAttributes)({ equals: "=", quote: "\"", standard: html, texts })
+// "Start tag" · syntax element
+const htmlStartTag = await frozen.body(HtmlStartTag)({ standard: html, attributes: htmlAttributes })
+// "End tag" · syntax element
+const htmlEndTag = await frozen.body(HtmlEndTag)({ slash: "/", standard: html })
+// "Element over several lines" · syntax element
+const htmlBlock = await frozen.body(HtmlBlock)({ indent: "  ", standard: html, startTag: htmlStartTag, endTag: htmlEndTag })
+// "SVG" · standard
+const svg = {"svg":"svg","group":"g","rect":"rect","path":"path","width":"width","height":"height","viewBox":"viewBox","x":"x","y":"y","rx":"rx","d":"d","fill":"fill","stroke":"stroke","strokeWidth":"stroke-width","strokeLinecap":"stroke-linecap","round":"round","none":"none","separator":" ","text":"text","line":"line","circle":"circle","title":"title","defs":"defs","marker":"marker","cx":"cx","cy":"cy","r":"r","x1":"x1","y1":"y1","x2":"x2","y2":"y2","transform":"transform","translate":"translate","textAnchor":"text-anchor","middle":"middle","markerEnd":"marker-end","refX":"refX","refY":"refY","markerWidth":"markerWidth","markerHeight":"markerHeight","orient":"orient","autoStartReverse":"auto-start-reverse","strokeDasharray":"stroke-dasharray","opacity":"opacity","reference":"url(#","referenceEnd":")","openArguments":"(","closeArguments":")","comma":",","namespace":"http://www.w3.org/2000/svg"}
+// "WAI-ARIA" · standard
+const aria = {"role":"role","group":"group","label":"aria-label","labelledBy":"aria-labelledby","pressed":"aria-pressed","hidden":"aria-hidden","link":"link","img":"img","current":"aria-current","page":"page","expanded":"aria-expanded","button":"button"}
+// "HTML element" · syntax element
+const htmlElement = await frozen.body(HtmlElement)({ standard: html, startTag: htmlStartTag, endTag: htmlEndTag })
+// "Self-closing tag" · syntax element
+const selfClosingTag = await frozen.body(SelfClosingTag)({ slash: "/", standard: html, attributes: htmlAttributes })
+// "CSS" · standard
+const css = {"openBlock":"{","closeBlock":"}","colon":":","semicolon":";","openParenthesis":"(","closeParenthesis":")","space":" ","comma":",","classSelector":".","idSelector":"#","descendant":" ","width":"width","minWidth":"min-width","maxWidth":"max-width","percent":"%","whole":100,"pixel":"px"}
+// "Variable" · syntax element
+const cssVariable = await frozen.body(CssVariable)({ notation: "var", dashes: "--", standard: css })
+// "Logo" · syntax element
+const logo = await frozen.body(Logo)({ size: 26, radius: 6, thread: 2.2, warp: "M7 5v16M13 5v16M19 5v16", weft: "M5 9h3M10 9h6M18 9h3M5 17h3M10 17h6M18 17h3", background: "accent-soft", warpColour: "accent", standard: thePage, svg, aria, palette, counts, block: htmlBlock, element: htmlElement, empty: selfClosingTag, variable: cssVariable })
+// "Brand" · syntax element
+const brand = await frozen.body(Brand)({ brand: "brand", name: "brand-name", standard: thePage, html, commands: trameCommands, logo, block: htmlBlock, element: htmlElement })
+// "Regions of the page" · decision
+const pageRegions = {"status":"status","dates":"dates","dateNote":"date-note","nav":"nav","documents":"doc-select","nodes":"node-select","banner":"banner","bannerClose":"banner-close","toggle":"toggle","rendering":"view-","path":"doc-path","doc":"doc"}
+// "State of the compilation" · syntax element
+const compilationState = await frozen.body(CompilationState)({ standard: thePage, regions: pageRegions, html, element: htmlElement, texts })
+// "Dates" · syntax element
+const datePicker = await frozen.body(DatePicker)({ paragraph: "p", labelId: "dates-label", standard: thePage, regions: pageRegions, html, aria, block: htmlBlock, element: htmlElement, texts })
+// "Navigation" · syntax element
+const navigation = await frozen.body(Navigation)({ tag: "nav", standard: thePage, regions: pageRegions, html, aria, element: htmlElement, texts })
+// "Document picker" · syntax element
+const documentPicker = await frozen.body(DocumentPicker)({ picker: "mobile-pick", labelTag: "label", for: "for", select: "select", standard: thePage, regions: pageRegions, html, block: htmlBlock, element: htmlElement, texts })
+// "Side bar" · syntax element
+const sideBar = await frozen.body(SideBar)({ tag: "aside", side: "side", standard: thePage, html, block: htmlBlock, brand, state: compilationState, dates: datePicker, navigation, picker: documentPicker })
+// "Banner" · syntax element
+const banner = await frozen.body(Banner)({ standard: thePage, regions: pageRegions, html, element: htmlElement, texts })
+// "The renderings of a document" · vocabulary
+const renderingModes = ["rendered","markdown","text"]
+// "Choice of rendering" · syntax element
+const renderingToggle = await frozen.body(RenderingToggle)({ standard: thePage, modes: renderingModes, regions: pageRegions, html, aria, block: htmlBlock, element: htmlElement, sequences })
+// "Head of the document" · syntax element
+const documentHead = await frozen.body(DocumentHead)({ tag: "header", head: "doc-head", path: "path", standard: thePage, regions: pageRegions, html, block: htmlBlock, element: htmlElement, toggle: renderingToggle, texts })
+// "Main area" · syntax element
+const mainArea = await frozen.body(MainArea)({ tag: "main", article: "article", standard: thePage, regions: pageRegions, html, block: htmlBlock, element: htmlElement, banner, head: documentHead, texts })
+// "Figures in the page" · decision
+const figureMarkup = {"edge":"fe","node":"fn","nature":"n-","role":"r-","inactive":"inactive","history":"hist","focus":"focus","box":"box","kind":"kind","open":"open","arrows":{"base":"arrow","accent":"arrow-accent","bad":"arrow-bad","warn":"arrow-warn"},"markers":{"base":"arrow-base","accent":"arrow-to-accent","bad":"arrow-to-bad","warn":"arrow-to-warn"},"defs":"figure-defs","legend":"legend","samples":{"base":"lg-base","accent":"lg-accent","bad":"lg-bad","box":"lg-box","open":"lg-open"},"timeline":"tl","grid":"grid","tick":"tick","period":"period","review":"review","mark":"mark","lane":"lane-label","muted":"muted","today":"today"}
+// "Drawing of a graph" · decision
+const graphDrawing = {"box":{"width":178,"height":60,"radius":7,"inset":10,"firstLine":19,"lineHeight":15,"kindBottom":9},"open":{"radius":5,"inset":10},"gaps":{"across":22,"down":62},"margin":10,"head":30,"title":{"chars":24,"lines":2,"cut":2},"kind":{"chars":27},"passes":8,"arch":{"rise":34,"label":26},"labelBaseline":4,"narrowest":0.62,"marker":{"box":10,"tip":9,"size":7},"explored":40}
+// "Path data" · syntax element
+const pathData = await frozen.body(PathData)({ moveTo: "M", curveTo: "C", lineTo: "L", close: "z", standard: svg })
+// "Arrowheads of the figures" · syntax element
+const figureMarkers = await frozen.body(FigureMarkers)({ standard: thePage, svg, aria, html, figures: figureMarkup, drawing: graphDrawing, counts, texts, block: htmlBlock, element: htmlElement, empty: selfClosingTag, path: pathData })
+// "Shell" · syntax element
+const shell = await frozen.body(Shell)({ app: "app", standard: thePage, html, block: htmlBlock, side: sideBar, main: mainArea, markers: figureMarkers })
+// "Rule" · syntax element
+const cssRule = await frozen.body(CssRule)({ standard: css })
+// "Media rule" · syntax element
+const mediaRule = await frozen.body(MediaRule)({ keyword: "@media", standard: css })
+// "Media feature" · syntax element
+const mediaFeature = await frozen.body(MediaFeature)({ standard: css })
+// "Attribute selector" · syntax element
+const attributeSelector = await frozen.body(AttributeSelector)({ openBracket: "[", closeBracket: "]", equals: "=", quote: "\"", standard: css })
+// "Negation" · syntax element
+const negationSelector = await frozen.body(NegationSelector)({ pseudoClass: ":not", standard: css })
+// "Declaration" · syntax element
+const cssDeclaration = await frozen.body(CssDeclaration)({ standard: css })
+// "Custom property" · syntax element
+const customProperty = await frozen.body(CustomProperty)({ dashes: "--", standard: css, declaration: cssDeclaration })
+// "Theme" · syntax element
+const theme = await frozen.body(Theme)({ root: ":root", colorScheme: "color-scheme", preference: "prefers-color-scheme", dark: "dark", standard: thePage, rule: cssRule, media: mediaRule, feature: mediaFeature, attribute: attributeSelector, negation: negationSelector, property: customProperty, declaration: cssDeclaration })
+// "Class selector" · syntax element
+const classSelector = await frozen.body(ClassSelector)({ dot: ".", standard: css })
+// "Colours of a status" · syntax element
+const statusStyle = await frozen.body(StatusStyle)({ background: "background", color: "color", figureNode: "fn", box: "box", standard: thePage, css, svg, rule: cssRule, declaration: cssDeclaration, variable: cssVariable, selector: classSelector })
+// "Rules of a narrow screen" · syntax element
+const narrowScreenRule = await frozen.body(NarrowScreenRule)({ maxWidth: "max-width", standard: thePage, media: mediaRule, feature: mediaFeature })
+// "Fonts" · syntax element
+const fontLinks = await frozen.body(FontLinks)({ link: "link", rel: "rel", href: "href", preconnect: "preconnect", stylesheet: "stylesheet", crossorigin: "crossorigin", standard: html, startTag: htmlStartTag, texts })
+// "Script" · syntax element
+const scriptElement = await frozen.body(ScriptElement)({ tag: "script", endTagOpen: "</script", escaped: "<\\/script", everyCase: "gi", commentOpen: "<!--", commentEscaped: "<\\!--", standard: html, element: htmlElement })
+// "JSON in a script" · syntax element
+const jsonInScript = await frozen.body(JsonInScript)({ escape: "\\u003c", standard: html })
+// "Scripts of the page" · syntax element
+const pageScripts = await frozen.body(PageScripts)({ standard: thePage, html, script: scriptElement, json: jsonInScript, member: memberAccess, assignment, texts })
+// "DOCTYPE" · syntax element
+const doctype = await frozen.body(Doctype)({ doctype: "<!doctype html>", standard: html })
+// "Document of the page" · syntax element
+const pageDocument = await frozen.body(PageDocument)({ html: "html", head: "head", body: "body", title: "title", style: "style", meta: "meta", name: "name", content: "content", charset: "charset", encoding: "utf-8", viewport: "viewport", deviceWidth: "width=device-width, initial-scale=1, viewport-fit=cover", hostFit: "claude:viewport-fit-sides", cover: "cover", standard: thePage, htmlNames: html, doctype, startTag: htmlStartTag, endTag: htmlEndTag, element: htmlElement, file: textFile, texts })
+// "HTML markup" · language
+const htmlMarkup = {"name":"HtmlMarkup","tag":"html","grammar":{"module":"tree-sitter-html/tree-sitter-html.wasm"},"extensions":[".html"],"queries":{"values":"\n(quoted_attribute_value) @literal.text\n(attribute (attribute_value) @literal.text)\n(text) @literal.text\n(entity) @literal.text","parts":"\n(attribute_value) @literal.part\n(text) @literal.part\n(entity) @literal.escape","names":"\n((attribute (attribute_name) @_name) @name (#any-of? @_name \"class\" \"id\" \"for\" \"aria-labelledby\" \"aria-describedby\" \"aria-controls\"))","roles":"\n(attribute (quoted_attribute_value) @role.attribute)\n(attribute (attribute_value) @role.attribute)\n(element (text) @role.content)\n(element (entity) @role.content)"},"escapes":{"mark":"&","single":{"amp;":"&","lt;":"<","gt;":">","quot;":"\"","apos;":"'","nbsp;":" "},"numeric":[{"prefix":"#x","radix":16,"close":";"},{"prefix":"#X","radix":16,"close":";"},{"prefix":"#","radix":10,"close":";"}],"keepUnknown":true}}
+// "Page" · function
+const page = await body_page({ pageBundle, standalone: standaloneStyle, encodings: nodeEncodings, file: textFile, palette, typography, narrowScreen, spacing, radii, typeScale, opacities, strokes, motion, pageLayout, resources: frozen.limited(pageResources, ["narrowStyle","script","style"]), reading: frozen.limited(diskReading, ["readFileSync"]), bundler: frozen.limited(esbuild, ["build"]), compression: frozen.limited(nodeCompression, ["pack"]), shell, theme, statusStyle, narrow: narrowScreenRule, fonts: fontLinks, scripts: pageScripts, document: pageDocument, rule: cssRule, declaration: cssDeclaration, messages: outputMessages, language, reader: syntaxReader, markup: htmlMarkup, sheets: cssStyleSheets, gnu: gnuPositions })
 // "Preparation" · function
-const preparation = await body_preparation({ line: trameCommands, compiler, compilationApi, laws, views, lock, common, terminal: frozen.limited(nodeTerminal, ["error","exit","write"]), currentProcess: frozen.limited(nodeProcess, ["cwd"]), clock: frozen.limited(systemClock, ["today"]), severityOrder, devPort, exitStatus, layout: terminalText, columns: terminalColumns, cell: paddedCell, counts, sequences, texts, messages: commandMessages, projectLayout: layout, uri, references, projectCommands, kept: keptCommands, machine: machineOutputs, paths: frozen.limited(nodePaths, ["basename","join","resolve"]), reading: frozen.limited(diskReading, ["existsSync"]), specifiers: nodeModuleSpecifiers, reader: syntaxReader, long: longOptions, standard: standardOptions })
+const preparation = await body_preparation({ line: trameCommands, compiler, compilationApi, laws, views, lock, common, terminal: frozen.limited(nodeTerminal, ["error","exit","write"]), currentProcess: frozen.limited(nodeProcess, ["cwd"]), clock: frozen.limited(systemClock, ["today"]), severityOrder, devPort, exitStatus, layout: terminalText, columns: terminalColumns, cell: paddedCell, counts, sequences, texts, messages: commandMessages, projectLayout: layout, uri, references, projectCommands, kept: keptCommands, machine: machineOutputs, paths: frozen.limited(nodePaths, ["basename","join","resolve"]), reading: frozen.limited(diskReading, ["existsSync"]), specifiers: nodeModuleSpecifiers, reader: syntaxReader, long: longOptions, standard: standardOptions, payload: payloadBuilder, dateBundle, watching, page, project })
 // "Accept a candidate" · requirement
 const acceptCandidate = await frozen.body(AcceptCandidate)({})
 // "Example project" · decision
@@ -549,11 +692,11 @@ const buildComparison = await body_buildComparison({ say: commandWords })
 // "How an amendment is named" · decision
 const amendmentNaming = {"suffix":"Amendment","first":2}
 // "An amendment prepared" · function
-const amending = await body_amending({ preparation, machine: machineOutputs, comparison: buildComparison, prelude: frozen.limited(tramePrelude, ["internal"]), references, project, specifiers: nodeModuleSpecifiers, layout, values: valueTypes, paths: frozen.limited(nodePaths, ["dirname","join","sep"]), messages: commandMessages, naming: amendmentNaming, counts })
+const amending = await body_amending({ preparation, machine: machineOutputs, comparison: buildComparison, prelude: frozen.limited(tramePrelude, ["internal"]), references, project, specifiers: nodeModuleSpecifiers, layout, values: valueTypes, paths: frozen.limited(nodePaths, ["dirname","join","relative","sep"]), messages: commandMessages, naming: amendmentNaming, counts })
 // "Amendments in place" · implementation, for "Where an amendment goes"
 const inPlaceSources = await body_inPlaceSources({ reading: frozen.limited(diskReading, ["readFileSync"]), writing: frozen.limited(diskWriting, ["writeFileSync"]), encodings: nodeEncodings, syntax: typeScriptSyntax, doc: docBlock, exported: exportDeclaration, constant: constDeclaration, call, object: objectLiteral, property, text: stringLiteral, list: inlineArray, imports: namedImport, values: valueTypes, texts, counts })
 // "Amend" · entry point
-const amend = await body_amend({ exitStatus, preparation, amending, place: frozen.limited(inPlaceSources, ["record"]), paths: frozen.limited(nodePaths, ["relative"]), text: terminalText, terminal: frozen.limited(nodeTerminal, ["write"]), messages: commandMessages })
+const amend = await body_amend({ exitStatus, preparation, amending, place: frozen.limited(inPlaceSources, ["record"]), text: terminalText, texts, terminal: frozen.limited(nodeTerminal, ["write"]), messages: commandMessages })
 // "Assembly" · function
 const assembly = await body_assembly({ line: trameCommands, values: valueTypes, layout, paths: frozen.limited(nodePaths, ["join"]), wiring, prelude: frozen.limited(tramePrelude, ["internal","path","root"]), drivers, texts, messages: compilerMessages, names: languageNames, specifiers: nodeModuleSpecifiers, language: typeScript })
 // "Assembler" · function
@@ -574,18 +717,6 @@ const rendering = await body_rendering({ common, values: valueTypes, texts, coun
 const mermaid = {"indent":"  ","space":" ","quote":"\"","language":"mermaid"}
 // "How Mermaid figures are drawn" · decision
 const mermaidFigures = {"idPrefix":"n","directions":{"layers":"down","tree":"down","path":"right"},"strokes":{"computed":"dottedOpen","inferred":"dotted","winner":"thick","support":"thick","other":"solid"},"defaultStatus":"neutral","history":{"dashes":"4 3"},"inactive":{"opacity":"0.5"},"gantt":{"dateFormat":"YYYY-MM-DD","axisFormat":"%d.%m","milestones":["deadline","review"]}}
-// "Palette" · decision
-const palette = {"light":{"bg":"#f3f5f6","panel":"#ffffff","ink":"#17202a","muted":"#5a6672","line":"#d9e0e5","accent":"#34509a","accent-soft":"#e5ebf7","ok":"#26734a","ok-soft":"#e1f1e7","warn":"#9a6200","warn-soft":"#fbf0d9","bad":"#ad2a22","bad-soft":"#f9e3e1","unk":"#65707c","unk-soft":"#e9edf0","term-bg":"#121820","term-ink":"#d8dee5","term-dim":"#7f8b97"},"dark":{"bg":"#0e1217","panel":"#151b22","ink":"#e4e9ee","muted":"#98a3ae","line":"#29323c","accent":"#93abef","accent-soft":"#1e2a44","ok":"#7fd19b","ok-soft":"#173325","warn":"#f2c063","warn-soft":"#3a2d12","bad":"#f08a80","bad-soft":"#3d1c1a","unk":"#a5afb9","unk-soft":"#222a33","term-bg":"#0a0e13","term-ink":"#d8dee5","term-dim":"#7f8b97"},"statuses":{"held":{"fill":"ok-soft","stroke":"ok"},"blocked":{"fill":"warn-soft","stroke":"warn"},"violated":{"fill":"bad-soft","stroke":"bad"},"unknown":{"fill":"unk-soft","stroke":"unk"},"neutral":{"fill":"panel","stroke":"muted"}},"ink":"ink"}
-// "HTML" · standard
-const html = {"lessThan":"<","greaterThan":">","space":" ","id":"id","class":"class","hidden":"hidden","lang":"lang","div":"div","span":"span","p":"p","a":"a","href":"href","mark":"mark","code":"code","time":"time","datetime":"datetime","ul":"ul","li":"li","dl":"dl","dt":"dt","dd":"dd","table":"table","thead":"thead","tbody":"tbody","tr":"tr","th":"th","td":"td","pre":"pre","details":"details","summary":"summary","section":"section","article":"article","figure":"figure","figcaption":"figcaption","button":"button","type":"type","buttonType":"button","tabindex":"tabindex","focusable":"0","style":"style","window":"window","module":"module","b":"b","small":"small","h2":"h2","ol":"ol","select":"select","option":"option","optgroup":"optgroup","form":"form","textarea":"textarea","textType":"text","numberType":"number","dateType":"date","name":"name","input":"input","datalist":"datalist","label":"label","value":"value","selected":"selected","disabled":"disabled","title":"title","list":"list","placeholder":"placeholder","search":"search","h1":"h1","h3":"h3","header":"header","main":"main","footer":"footer","nav":"nav"}
-// "Attributes" · syntax element
-const htmlAttributes = await frozen.body(HtmlAttributes)({ equals: "=", quote: "\"", standard: html, texts })
-// "Start tag" · syntax element
-const htmlStartTag = await frozen.body(HtmlStartTag)({ standard: html, attributes: htmlAttributes })
-// "End tag" · syntax element
-const htmlEndTag = await frozen.body(HtmlEndTag)({ slash: "/", standard: html })
-// "HTML element" · syntax element
-const htmlElement = await frozen.body(HtmlElement)({ standard: html, startTag: htmlStartTag, endTag: htmlEndTag })
 // "Small text" · syntax element
 const small = await frozen.body(Small)({ tag: "small", standard: html, element: htmlElement })
 // "Flowchart" · syntax element
@@ -693,37 +824,17 @@ const lineWords = await frozen.body(LineWords)({})
 // "Render a view" · function
 const renderView = await body_renderView({ preparation, views, formats: frozen.limited(answerFormats, ["word","media","write"]), refused: viewRefused, terminal: frozen.limited(nodeTerminal, ["write"]), lineWords })
 // "A command of the project, or a view" · entry point
-const commandOrView = await body_commandOrView({ line: trameCommands, exitStatus, preparation, renderView, compiler, views, assembler, projectCommands, writing: frozen.limited(diskWriting, ["mkdirSync","writeFileSync"]), paths: frozen.limited(nodePaths, ["dirname"]), currentProcess: frozen.limited(nodeProcess, ["onSignal","runHere","runTs"]), posix, events: nodeEvents, terminal: frozen.limited(nodeTerminal, ["error"]), counts, sequences, messages: commandMessages })
-// "esbuild" · implementation, for "Bundler"
-const esbuild = await body_esbuild({})
+const commandOrView = await body_commandOrView({ line: trameCommands, exitStatus, preparation, renderView, compiler, views, assembler, projectCommands, writing: frozen.limited(diskWriting, ["mkdirSync","writeFileSync"]), paths: frozen.limited(nodePaths, ["dirname"]), currentProcess: frozen.limited(nodeProcess, ["onSignal","runHere","runTs"]), posix, events: nodeEvents, terminal: frozen.limited(nodeTerminal, ["error"]), counts, sequences, messages: commandMessages, amending, place: frozen.limited(inPlaceSources, ["record"]) })
 // "How a bundle is led" · decision
 const bundlerLeading = {"plugin":"trame-names","names":"^#"}
 // "The names a bundle is led by" · function
 const namesLed = await body_namesLed({ loader: frozen.limited(tsxLoader, ["resolve"]), leading: bundlerLeading })
-// "Bundle of the page" · decision
-const pageBundle = {"format":"esm","target":"es2022","legalComments":"none","charset":"utf8"}
-// "The page" · decision
-const thePage = {"label":"label","themeAttribute":"data-theme","themes":{"light":"light","dark":"dark"},"statusClass":"st-","globals":{"packedBundle":"TRAME_BUNDLE_GZIP","dev":"TRAME_DEV"},"memory":"trame-page","machine":"machine","nodeView":"impact","prompt":"$ "}
-// "DOCTYPE" · syntax element
-const doctype = await frozen.body(Doctype)({ doctype: "<!doctype html>", standard: html })
-// "Document of the page" · syntax element
-const pageDocument = await frozen.body(PageDocument)({ html: "html", head: "head", body: "body", title: "title", style: "style", meta: "meta", name: "name", content: "content", charset: "charset", encoding: "utf-8", viewport: "viewport", deviceWidth: "width=device-width, initial-scale=1, viewport-fit=cover", hostFit: "claude:viewport-fit-sides", cover: "cover", standard: thePage, htmlNames: html, doctype, startTag: htmlStartTag, endTag: htmlEndTag, element: htmlElement, file: textFile, texts })
-// "Script" · syntax element
-const scriptElement = await frozen.body(ScriptElement)({ tag: "script", endTagOpen: "</script", escaped: "<\\/script", everyCase: "gi", commentOpen: "<!--", commentEscaped: "<\\!--", standard: html, element: htmlElement })
-// "CSS" · standard
-const css = {"openBlock":"{","closeBlock":"}","colon":":","semicolon":";","openParenthesis":"(","closeParenthesis":")","space":" ","comma":",","classSelector":".","idSelector":"#","descendant":" ","width":"width","minWidth":"min-width","maxWidth":"max-width","percent":"%","whole":100,"pixel":"px"}
-// "Rule" · syntax element
-const cssRule = await frozen.body(CssRule)({ standard: css })
-// "Declaration" · syntax element
-const cssDeclaration = await frozen.body(CssDeclaration)({ standard: css })
-// "Custom property" · syntax element
-const customProperty = await frozen.body(CustomProperty)({ dashes: "--", standard: css, declaration: cssDeclaration })
 // "Style of a delivered page" · syntax element
 const deliveredStyle = await frozen.body(DeliveredStyle)({ root: ":root", standard: css, rule: cssRule, property: customProperty, file: textFile, counts })
 // "Deliver" · entry point
 const deliver = await body_deliver({ exitStatus, preparation, assembly, assembler, bundler: frozen.limited(esbuild, ["build"]), led: namesLed, bundle: pageBundle, document: pageDocument, html, script: scriptElement, style: deliveredStyle, reading: frozen.limited(diskReading, ["readFileSync"]), writing: frozen.limited(diskWriting, ["mkdirSync","writeFileSync"]), paths: frozen.limited(nodePaths, ["dirname","join","relative"]), encodings: nodeEncodings, terminal: frozen.limited(nodeTerminal, ["write"]), sequences, texts, values: valueTypes, messages: commandMessages })
 // "What trame dev serves" · decision
-const devService = {"page":["/","/index.html"],"bundle":"/bundle.json","events":"/events","amend":"/amend","compiling":"compiling","ready":"bundle","host":"localhost","ignored":["~",".swp",".tmp"]}
+const devService = {"page":["/","/index.html"],"bundle":"/bundle.json","events":"/events","amend":"/amend","compiling":"compiling","ready":"bundle","host":"localhost"}
 // "HTTP" · standard
 const http = {"scheme":"http","ok":200,"noContent":204,"notFound":404,"serverError":500,"unavailable":503,"post":"POST","contentType":"content-type","cacheControl":"cache-control","connection":"connection","authorization":"authorization","bearer":"Bearer ","noCache":"no-cache","keepAlive":"keep-alive"}
 // "Server-sent events" · standard
@@ -734,108 +845,8 @@ const nodeTimer = await body_nodeTimer({})
 const devDebounce = 150
 // "Node HTTP server" · implementation, for "HTTP server"
 const nodeHttpServer = await body_nodeHttpServer({})
-// "Date bundle" · function
-const dateBundle = await body_dateBundle({ line: trameCommands, encodings: nodeEncodings, events: nodeEvents, clock: frozen.limited(systemClock, ["now"]), currentProcess: frozen.limited(nodeProcess, ["relaunch"]), exitStatus, texts, messages: outputMessages })
 // "Differences" · function
 const differences = await body_differences({ punctuation, messages: outputMessages })
-// "Style of the standalone document" · decision
-const standaloneStyle = {":root":{"padding-top":"env(safe-area-inset-top,0px)","padding-bottom":"env(safe-area-inset-bottom,0px)"},"body":{"margin":"0"},"[hidden]":{"display":"none!important"},"img":{"max-width":"100%"}}
-// "Typography" · decision
-const typography = {"fonts":{"font-doc":"\"Literata\", \"Iowan Old Style\", Georgia, serif","font-ui":"\"Instrument Sans\", \"Segoe UI\", system-ui, sans-serif","font-mono":"\"JetBrains Mono\", ui-monospace, \"SFMono-Regular\", Menlo, monospace"},"loading":["https://fonts.googleapis.com","https://fonts.gstatic.com","https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&display=swap"]}
-// "Narrow screen" · decision
-const narrowScreen = "920px"
-// "Spacing" · decision
-const spacing = {"space-none":"0","space-hairline":"1px","space-3xs":"2px","space-2xs":"4px","space-xs":"6px","space-sm":"8px","space-md":"10px","space-lg":"12px","space-xl":"14px","space-2xl":"16px","space-3xl":"18px","space-4xl":"20px","space-5xl":"40px","inset-toggle":"3px","stack-list-item":"3px","inset-control-block":"7px","inset-control-inline":"9px","inset-cell-block":"7px","inset-pill-inline":"7px","stack-h4":"22px","offset-anchor":"24px","page-inset-top":"28px","page-inset-bottom":"64px","page-inset-bottom-narrow":"48px","safe-area-default":"0px"}
-// "Radii" · decision
-const radii = {"radius-2xs":"3px","radius-xs":"4px","radius-sm":"5px","radius-md":"6px","radius-lg":"7px","radius-xl":"8px","radius-2xl":"10px","radius-3xl":"14px","radius-round":"50%"}
-// "Type scale" · decision
-const typeScale = {"text-2xs":"11px","text-xs":"11.5px","text-sm":"12px","text-md":"12.5px","text-lg":"13px","text-xl":"13.5px","text-2xl":"14px","text-3xl":"15px","text-date-mark":"10px","text-edge":"10.5px","text-doc":"16px","text-code":"0.82em","text-h1":"2rem","text-h1-narrow":"1.6rem","text-h3":"1.28rem","weight-regular":"400","weight-medium":"500","weight-semibold":"600","leading-h1":"1.15","leading-date":"1.2","leading-h3":"1.25","leading-table":"1.4","leading-ui":"1.5","leading-code":"1.55","leading-pre":"1.6","leading-doc":"1.62","tracking-tight":"-0.01em","tracking-xs":"0.02em","tracking-sm":"0.03em","tracking-md":"0.06em","tracking-lg":"0.08em","tracking-xl":"0.09em"}
-// "Opacities" · decision
-const opacities = {"opacity-full":"1","opacity-strong":"0.85","opacity-medium":"0.6","opacity-muted":"0.45","opacity-faint":"0.35","opacity-faintest":"0.3","opacity-link":"0.1","opacity-link-dimmed":"0"}
-// "Strokes" · decision
-const strokes = {"line-width":"1px","focus-width":"2px","focus-offset":"2px","underline-offset":"2px","stroke-grid":"1","stroke-box":"1.2","stroke-edge":"1.3","stroke-today":"1.4","stroke-open":"1.5","stroke-strong":"2","stroke-winner":"2.2","stroke-focus":"2.4","stroke-halo":"4px","dash-history":"5 3","dash-inferred":"2 3","dash-computed":"6 4","dash-discarded":"5 4","dash-today":"4 3"}
-// "Motion" · decision
-const motion = {"duration-pulse":"1s","duration-flash":"1.6s"}
-// "Page layout" · decision
-const pageLayout = {"side-width":"300px","page-width":"1320px","measure":"80ch","date-min":"62px","dot-size":"8px","badge-min":"20px","screen-height":"100vh","full":"100%","fraction":"1fr","track-fill":"minmax(0, 1fr)","indent-compact":"1.1em","indent-doc":"1.2em","date-mark-line":"1.2em"}
-// "Page resources" · implementation, for "Page resources"
-const pageResources = await body_pageResources({ files: engineFiles, layout, advancement, language: typeScript, specifiers: nodeModuleSpecifiers, texts, sequences })
-// "A page carries its graph compressed" · decision
-const packedGraph = {"format":"gzip","encoding":"base64"}
-// "gzip, with Node's zlib" · implementation, for "Compression"
-const nodeCompression = await body_nodeCompression({ packing: packedGraph })
-// "Element over several lines" · syntax element
-const htmlBlock = await frozen.body(HtmlBlock)({ indent: "  ", standard: html, startTag: htmlStartTag, endTag: htmlEndTag })
-// "SVG" · standard
-const svg = {"svg":"svg","group":"g","rect":"rect","path":"path","width":"width","height":"height","viewBox":"viewBox","x":"x","y":"y","rx":"rx","d":"d","fill":"fill","stroke":"stroke","strokeWidth":"stroke-width","strokeLinecap":"stroke-linecap","round":"round","none":"none","separator":" ","text":"text","line":"line","circle":"circle","title":"title","defs":"defs","marker":"marker","cx":"cx","cy":"cy","r":"r","x1":"x1","y1":"y1","x2":"x2","y2":"y2","transform":"transform","translate":"translate","textAnchor":"text-anchor","middle":"middle","markerEnd":"marker-end","refX":"refX","refY":"refY","markerWidth":"markerWidth","markerHeight":"markerHeight","orient":"orient","autoStartReverse":"auto-start-reverse","strokeDasharray":"stroke-dasharray","opacity":"opacity","reference":"url(#","referenceEnd":")","openArguments":"(","closeArguments":")","comma":",","namespace":"http://www.w3.org/2000/svg"}
-// "WAI-ARIA" · standard
-const aria = {"role":"role","group":"group","label":"aria-label","labelledBy":"aria-labelledby","pressed":"aria-pressed","hidden":"aria-hidden","link":"link","img":"img","current":"aria-current","page":"page","expanded":"aria-expanded","button":"button"}
-// "Self-closing tag" · syntax element
-const selfClosingTag = await frozen.body(SelfClosingTag)({ slash: "/", standard: html, attributes: htmlAttributes })
-// "Variable" · syntax element
-const cssVariable = await frozen.body(CssVariable)({ notation: "var", dashes: "--", standard: css })
-// "Logo" · syntax element
-const logo = await frozen.body(Logo)({ size: 26, radius: 6, thread: 2.2, warp: "M7 5v16M13 5v16M19 5v16", weft: "M5 9h3M10 9h6M18 9h3M5 17h3M10 17h6M18 17h3", background: "accent-soft", warpColour: "accent", standard: thePage, svg, aria, palette, counts, block: htmlBlock, element: htmlElement, empty: selfClosingTag, variable: cssVariable })
-// "Brand" · syntax element
-const brand = await frozen.body(Brand)({ brand: "brand", name: "brand-name", standard: thePage, html, commands: trameCommands, logo, block: htmlBlock, element: htmlElement })
-// "Regions of the page" · decision
-const pageRegions = {"status":"status","dates":"dates","dateNote":"date-note","nav":"nav","documents":"doc-select","nodes":"node-select","banner":"banner","bannerClose":"banner-close","toggle":"toggle","rendering":"view-","path":"doc-path","doc":"doc"}
-// "State of the compilation" · syntax element
-const compilationState = await frozen.body(CompilationState)({ standard: thePage, regions: pageRegions, html, element: htmlElement, texts })
-// "Dates" · syntax element
-const datePicker = await frozen.body(DatePicker)({ paragraph: "p", labelId: "dates-label", standard: thePage, regions: pageRegions, html, aria, block: htmlBlock, element: htmlElement, texts })
-// "Navigation" · syntax element
-const navigation = await frozen.body(Navigation)({ tag: "nav", standard: thePage, regions: pageRegions, html, aria, element: htmlElement, texts })
-// "Document picker" · syntax element
-const documentPicker = await frozen.body(DocumentPicker)({ picker: "mobile-pick", labelTag: "label", for: "for", select: "select", standard: thePage, regions: pageRegions, html, block: htmlBlock, element: htmlElement, texts })
-// "Side bar" · syntax element
-const sideBar = await frozen.body(SideBar)({ tag: "aside", side: "side", standard: thePage, html, block: htmlBlock, brand, state: compilationState, dates: datePicker, navigation, picker: documentPicker })
-// "Banner" · syntax element
-const banner = await frozen.body(Banner)({ standard: thePage, regions: pageRegions, html, element: htmlElement, texts })
-// "The renderings of a document" · vocabulary
-const renderingModes = ["rendered","markdown","text"]
-// "Choice of rendering" · syntax element
-const renderingToggle = await frozen.body(RenderingToggle)({ standard: thePage, modes: renderingModes, regions: pageRegions, html, aria, block: htmlBlock, element: htmlElement, sequences })
-// "Head of the document" · syntax element
-const documentHead = await frozen.body(DocumentHead)({ tag: "header", head: "doc-head", path: "path", standard: thePage, regions: pageRegions, html, block: htmlBlock, element: htmlElement, toggle: renderingToggle, texts })
-// "Main area" · syntax element
-const mainArea = await frozen.body(MainArea)({ tag: "main", article: "article", standard: thePage, regions: pageRegions, html, block: htmlBlock, element: htmlElement, banner, head: documentHead, texts })
-// "Figures in the page" · decision
-const figureMarkup = {"edge":"fe","node":"fn","nature":"n-","role":"r-","inactive":"inactive","history":"hist","focus":"focus","box":"box","kind":"kind","open":"open","arrows":{"base":"arrow","accent":"arrow-accent","bad":"arrow-bad","warn":"arrow-warn"},"markers":{"base":"arrow-base","accent":"arrow-to-accent","bad":"arrow-to-bad","warn":"arrow-to-warn"},"defs":"figure-defs","legend":"legend","samples":{"base":"lg-base","accent":"lg-accent","bad":"lg-bad","box":"lg-box","open":"lg-open"},"timeline":"tl","grid":"grid","tick":"tick","period":"period","review":"review","mark":"mark","lane":"lane-label","muted":"muted","today":"today"}
-// "Drawing of a graph" · decision
-const graphDrawing = {"box":{"width":178,"height":60,"radius":7,"inset":10,"firstLine":19,"lineHeight":15,"kindBottom":9},"open":{"radius":5,"inset":10},"gaps":{"across":22,"down":62},"margin":10,"head":30,"title":{"chars":24,"lines":2,"cut":2},"kind":{"chars":27},"passes":8,"arch":{"rise":34,"label":26},"labelBaseline":4,"narrowest":0.62,"marker":{"box":10,"tip":9,"size":7},"explored":40}
-// "Path data" · syntax element
-const pathData = await frozen.body(PathData)({ moveTo: "M", curveTo: "C", lineTo: "L", close: "z", standard: svg })
-// "Arrowheads of the figures" · syntax element
-const figureMarkers = await frozen.body(FigureMarkers)({ standard: thePage, svg, aria, html, figures: figureMarkup, drawing: graphDrawing, counts, texts, block: htmlBlock, element: htmlElement, empty: selfClosingTag, path: pathData })
-// "Shell" · syntax element
-const shell = await frozen.body(Shell)({ app: "app", standard: thePage, html, block: htmlBlock, side: sideBar, main: mainArea, markers: figureMarkers })
-// "Media rule" · syntax element
-const mediaRule = await frozen.body(MediaRule)({ keyword: "@media", standard: css })
-// "Media feature" · syntax element
-const mediaFeature = await frozen.body(MediaFeature)({ standard: css })
-// "Attribute selector" · syntax element
-const attributeSelector = await frozen.body(AttributeSelector)({ openBracket: "[", closeBracket: "]", equals: "=", quote: "\"", standard: css })
-// "Negation" · syntax element
-const negationSelector = await frozen.body(NegationSelector)({ pseudoClass: ":not", standard: css })
-// "Theme" · syntax element
-const theme = await frozen.body(Theme)({ root: ":root", colorScheme: "color-scheme", preference: "prefers-color-scheme", dark: "dark", standard: thePage, rule: cssRule, media: mediaRule, feature: mediaFeature, attribute: attributeSelector, negation: negationSelector, property: customProperty, declaration: cssDeclaration })
-// "Class selector" · syntax element
-const classSelector = await frozen.body(ClassSelector)({ dot: ".", standard: css })
-// "Colours of a status" · syntax element
-const statusStyle = await frozen.body(StatusStyle)({ background: "background", color: "color", figureNode: "fn", box: "box", standard: thePage, css, svg, rule: cssRule, declaration: cssDeclaration, variable: cssVariable, selector: classSelector })
-// "Rules of a narrow screen" · syntax element
-const narrowScreenRule = await frozen.body(NarrowScreenRule)({ maxWidth: "max-width", standard: thePage, media: mediaRule, feature: mediaFeature })
-// "Fonts" · syntax element
-const fontLinks = await frozen.body(FontLinks)({ link: "link", rel: "rel", href: "href", preconnect: "preconnect", stylesheet: "stylesheet", crossorigin: "crossorigin", standard: html, startTag: htmlStartTag, texts })
-// "JSON in a script" · syntax element
-const jsonInScript = await frozen.body(JsonInScript)({ escape: "\\u003c", standard: html })
-// "Scripts of the page" · syntax element
-const pageScripts = await frozen.body(PageScripts)({ standard: thePage, html, script: scriptElement, json: jsonInScript, member: memberAccess, assignment, texts })
-// "HTML markup" · language
-const htmlMarkup = {"name":"HtmlMarkup","tag":"html","grammar":{"module":"tree-sitter-html/tree-sitter-html.wasm"},"extensions":[".html"],"queries":{"values":"\n(quoted_attribute_value) @literal.text\n(attribute (attribute_value) @literal.text)\n(text) @literal.text\n(entity) @literal.text","parts":"\n(attribute_value) @literal.part\n(text) @literal.part\n(entity) @literal.escape","names":"\n((attribute (attribute_name) @_name) @name (#any-of? @_name \"class\" \"id\" \"for\" \"aria-labelledby\" \"aria-describedby\" \"aria-controls\"))","roles":"\n(attribute (quoted_attribute_value) @role.attribute)\n(attribute (attribute_value) @role.attribute)\n(element (text) @role.content)\n(element (entity) @role.content)"},"escapes":{"mark":"&","single":{"amp;":"&","lt;":"<","gt;":">","quot;":"\"","apos;":"'","nbsp;":" "},"numeric":[{"prefix":"#x","radix":16,"close":";"},{"prefix":"#X","radix":16,"close":";"},{"prefix":"#","radix":10,"close":";"}],"keepUnknown":true}}
-// "Page" · function
-const page = await body_page({ pageBundle, standalone: standaloneStyle, encodings: nodeEncodings, file: textFile, palette, typography, narrowScreen, spacing, radii, typeScale, opacities, strokes, motion, pageLayout, resources: frozen.limited(pageResources, ["narrowStyle","script","style"]), reading: frozen.limited(diskReading, ["readFileSync"]), bundler: frozen.limited(esbuild, ["build"]), compression: frozen.limited(nodeCompression, ["pack"]), shell, theme, statusStyle, narrow: narrowScreenRule, fonts: fontLinks, scripts: pageScripts, document: pageDocument, rule: cssRule, declaration: cssDeclaration, messages: outputMessages, language, reader: syntaxReader, markup: htmlMarkup, sheets: cssStyleSheets, gnu: gnuPositions })
 // "Documents in the page" · decision
 const documentMarkup = {"classes":{"reference":"ref","open":"open","rule":"rule","pill":"pill","published":"pub","severity":"sev","person":"person","card":"card","history":"history","repealed":"repealed","meta":"meta","views":"views","viewButton":"chip-btn","nature":"nature","inactive":"inactive","facts":"facts","resolution":"resolution","child":"child","tableWrap":"table-wrap","code":"code","codeSource":"code-source","checksTitle":"checks-title","validity":"validity","summary":"summary","intro":"intro","figure":"figure","figureScroll":"figure-scroll","amendButton":"amend-btn"},"prefixes":{"outcome":"oc-","validity":"va-","severity":"sev-"},"attributes":{"reference":"data-ref","doc":"data-doc","view":"data-view","node":"data-node","figure":"data-figure","amend":"data-amend","value":"data-value","way":"data-way","units":"data-units"},"headings":{"title":1,"section":2,"card":3,"nested":4}}
 // "Drawing of a timeline" · decision
@@ -857,9 +868,9 @@ const pageRendering = await frozen.body(PageRendering)({ rendering, syntax: froz
 // "Messages of trame dev" · message catalog
 const devMessages = await frozen.body(DevMessages)({ language, lists })
 // "trame dev server" · function
-const devServer = await body_devServer({ service: devService, uri, line: trameCommands, nodeEvents, layout, http, mediaTypes, events: serverSentEvents, terminal: frozen.limited(nodeTerminal, ["write"]), codeLines, file: textFile, clock: frozen.limited(systemClock, ["now"]), timer: frozen.limited(nodeTimer, ["clearTimeout","setTimeout"]), debounce: devDebounce, httpServer: frozen.limited(nodeHttpServer, ["createServer"]), reading: frozen.limited(diskReading, ["existsSync","watch"]), paths: frozen.limited(nodePaths, ["join","relative","sep"]), project, bundle: dateBundle, differences, page, pageRendering, counts, sequences, texts, dates, language, messages: devMessages })
+const devServer = await body_devServer({ service: devService, uri, line: trameCommands, nodeEvents, layout, http, mediaTypes, events: serverSentEvents, terminal: frozen.limited(nodeTerminal, ["write"]), codeLines, file: textFile, clock: frozen.limited(systemClock, ["now"]), timer: frozen.limited(nodeTimer, ["clearTimeout","setTimeout"]), debounce: devDebounce, httpServer: frozen.limited(nodeHttpServer, ["createServer"]), watching, paths: frozen.limited(nodePaths, ["sep"]), project, bundle: dateBundle, differences, page, pageRendering, counts, sequences, texts, dates, language, messages: devMessages })
 // "Start trame dev" · entry point
-const dev = await body_dev({ preparation, devServer, amending, place: frozen.limited(inPlaceSources, ["record"]), paths: frozen.limited(nodePaths, ["relative"]) })
+const dev = await body_dev({ preparation, devServer, amending, place: frozen.limited(inPlaceSources, ["record"]) })
 // "Asking" · function
 const asking = await frozen.body(Asking)({ messages: commandMessages })
 // "The clock gives the day" · implementation, for "What the engine needs of the machine"
@@ -890,12 +901,6 @@ const engineNeeds = [clockAnswers, filesAnswer, treesAnswer, programsAnswer, run
 const addOns = await body_addOns({ wiring, counts, messages: commandMessages })
 // "Ask the machine" · entry point
 const doctor = await body_doctor({ exitStatus, preparation, engine: frozen.limited(engineNeeds, ["ask"]), terminal: frozen.limited(nodeTerminal, ["write"]), messages: commandMessages, addOns })
-// "Candidate dates" · decision
-const candidateDates = {"afterAnEnd":1,"beforeTheFirstChange":-1}
-// "The days of history a page offers" · decision
-const pageHistory = {"days":7}
-// "Payload" · function
-const payloadBuilder = await body_payloadBuilder({ layout, candidateDates, history: pageHistory, iso: iso8601, clock: frozen.limited(systemClock, ["now"]), machine: machineOutputs, views, language, texts, values: valueTypes, counts, sequences })
 // "Payload" · entry point
 const emitPayload = await body_emitPayload({ exitStatus, preparation, payload: payloadBuilder, files: fileRendering, screen: terminalRendering, pageRendering, terminal: frozen.limited(nodeTerminal, ["args","write","writeRaw","error","exit"]) })
 // "Rewriting an example" · function

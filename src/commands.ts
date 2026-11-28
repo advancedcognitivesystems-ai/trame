@@ -7,7 +7,7 @@ import { entryPoint, command } from "../kinds/entry-point"
 import { ExecutableSpecification, SingleSource, SeverityOrder, DevPort } from "./product"
 import { decision } from "../kinds/decision"
 import { TrameCli, Terminal, Process, Clock, FileReading, FileWriting, Paths, Hashing, Programs, FileTrees, PackageReports, PackageInstalls, Bundler, Timer, HttpServer, KeptRuns, AmendmentPlace, Prelude, TypeScriptCompiler } from "./architecture"
-import { Compiler, CompilationApi, Laws, Views, Lock, MachineOutputs, PayloadBuilder, DateBundle, DevServer, Assembly, Fingerprint, References, Project, EngineFingerprint, Wiring, ShipmentPipeline, Differences, JudgedHarder, Fingerprints } from "./engine"
+import { Compiler, CompilationApi, Laws, Views, Lock, MachineOutputs, PayloadBuilder, DateBundle, Watching, DevServer, Assembly, Fingerprint, References, Project, EngineFingerprint, Wiring, ShipmentPipeline, Differences, JudgedHarder, Fingerprints } from "./engine"
 import { SyntaxReader } from "./syntax"
 import { BuildComparison, ViewRefused } from "#commands/commands"
 import { Page, PageBundle, PageDocument } from "./page"
@@ -79,7 +79,7 @@ export const Preparation = fn({
     layout: TerminalText, columns: TerminalColumns, cell: PaddedCell,
     counts: Counts, sequences: Sequences, texts: Texts, messages: CommandMessages, projectLayout: Layout, uri: Uri, references: References,
     projectCommands: ProjectCommands, kept: KeptCommands, machine: MachineOutputs, paths: Paths, reading: FileReading, specifiers: NodeModuleSpecifiers, reader: SyntaxReader,
-    long: LongOptions, standard: StandardOptions,
+    long: LongOptions, standard: StandardOptions, payload: PayloadBuilder, dateBundle: DateBundle, watching: Watching, page: Page, project: Project,
   },
   body: code.file<typeof import("./code/commands/preparation").default>("./code/commands/preparation.ts"),
 })
@@ -372,7 +372,7 @@ export const Amend = entryPoint({
   owner: "trame", in: TrameCli, for: Anyone, serves: [SingleSource],
   trigger: command(commandNames.amend),
   deps: {
-    exitStatus: ExitStatus, preparation: Preparation, amending: Amending, place: AmendmentPlace, paths: Paths, text: TerminalText, terminal: Terminal,
+    exitStatus: ExitStatus, preparation: Preparation, amending: Amending, place: AmendmentPlace, text: TerminalText, texts: Texts, terminal: Terminal,
     messages: CommandMessages,
   },
   body: code.file<typeof import("./code/commands/amend").default>("./code/commands/amend.ts"),
@@ -448,7 +448,7 @@ export const Init = entryPoint({
 export const Dev = entryPoint({
   owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
   trigger: command(commandNames.dev),
-  deps: { preparation: Preparation, devServer: DevServer, amending: Amending, place: AmendmentPlace, paths: Paths },
+  deps: { preparation: Preparation, devServer: DevServer, amending: Amending, place: AmendmentPlace },
   body: code.file<typeof import("./code/commands/dev").default>("./code/commands/dev.ts"),
 })
 
@@ -496,7 +496,7 @@ export const CommandOrView = entryPoint({
   deps: {
     line: TrameCommands, exitStatus: ExitStatus, preparation: Preparation, renderView: RenderView, compiler: Compiler, views: Views,
     assembler: Assembler, projectCommands: ProjectCommands, writing: FileWriting, paths: Paths, currentProcess: Process, posix: Posix, events: NodeEvents,
-    terminal: Terminal, counts: Counts, sequences: Sequences, messages: CommandMessages,
+    terminal: Terminal, counts: Counts, sequences: Sequences, messages: CommandMessages, amending: Amending, place: AmendmentPlace,
   },
   body: code.file<typeof import("./code/commands/command-or-view").default>("./code/commands/command-or-view.ts"),
 })

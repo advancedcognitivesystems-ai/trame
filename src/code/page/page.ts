@@ -134,7 +134,8 @@ const body = async (deps: Deps) => {
     return page
   }
 
-  return { pageHtml }
+  /** The page's program, bundled once: what the engine's API gives a command that writes a page (since g136). */
+  return { pageHtml, script: bundleScript }
 }
 
 export type Api = Awaited<ReturnType<typeof body>>

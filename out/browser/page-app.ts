@@ -44,7 +44,7 @@ const thePage = {"label":"label","themeAttribute":"data-theme","themes":{"light"
 // "Local storage" · implementation, for "Memory of the page"
 const browserMemory = await body_browserMemory({ page: thePage })
 // "What trame dev serves" · decision
-const devService = {"page":["/","/index.html"],"bundle":"/bundle.json","events":"/events","amend":"/amend","compiling":"compiling","ready":"bundle","host":"localhost","ignored":["~",".swp",".tmp"]}
+const devService = {"page":["/","/index.html"],"bundle":"/bundle.json","events":"/events","amend":"/amend","compiling":"compiling","ready":"bundle","host":"localhost"}
 // "ECMAScript types" · standard
 const ecmaScriptTypes = {"undefined":"undefined","object":"object","boolean":"boolean","number":"number","string":"string","symbol":"symbol","bigint":"bigint","function":"function"}
 // "Types of values" · algebraic structure

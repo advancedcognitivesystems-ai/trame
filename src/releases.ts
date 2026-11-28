@@ -2012,3 +2012,18 @@ export const G135 = release({
   archive: "5c959e9d1badf723",
   assembledBy: G134,
 })
+
+/**
+ * Generation 136
+ */
+export const G136 = release({
+  owner: "trame",
+  component: TrameCli,
+  version: "g136",
+  date: "2026-11-28",
+  what: "The engine's API gives what a page and its commands need: a text read back (readText), a project's documents without those of each node, its payload, the dates a page offers, the project at another date, its title, compiled at each date in a fresh process, watched, amended; the page's program bundled",
+  fingerprint: "d3bef5611a8c90e5",
+  language: "shared",
+  archive: "df24f8b6168b2e25",
+  assembledBy: G135,
+})

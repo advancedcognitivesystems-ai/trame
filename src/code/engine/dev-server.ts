@@ -3,11 +3,12 @@
 
 import { BlockType, BundleMode } from "../../../trame/kernel"
 import type { ProvidedBy, Bundle, Payload } from "../../../trame/kernel"
-import type { Clock, FileReading, HttpServer, Layout, Paths, Terminal, Timer } from "../../architecture"
+import type { Clock, HttpServer, Layout, Paths, Terminal, Timer } from "../../architecture"
 import type { DevMessages } from "../../messages"
 import type { Dates } from "#documents/language"
 import type { ServerResponse } from "node:http"
 import type { Api as ProjectApi } from "./project"
+import type { Api as WatchingApi } from "./watching"
 import type { Api as DateBundleApi } from "./date-bundle"
 import type { Api as DifferencesApi } from "./differences"
 import type { Api as PageApi } from "../page/page"
@@ -37,7 +38,8 @@ export interface Deps {
   timer: Timer
   debounce: number
   httpServer: HttpServer
-  reading: FileReading
+  /** Each file the build reads that changes (since g136, the engine's API gives it too). */
+  watching: WatchingApi
   paths: Paths
   project: ProjectApi
   bundle: DateBundleApi
@@ -63,8 +65,6 @@ const body = (deps: Deps) => {
   const { endOfLine } = deps.file
   const { terminal, clock, timer, debounce, http: h, mediaTypes, events: ev, dates, language, messages } = deps
   const { createServer } = deps.httpServer
-  const { watch, existsSync } = deps.reading
-  const { join, relative, sep } = deps.paths
   const { projectDirs } = deps.project
   const { makeBundle } = deps.bundle
   const { diffPayloads } = deps.differences
@@ -157,12 +157,11 @@ const body = (deps: Deps) => {
     await new Promise<void>((resolve) => server.listen(port, resolve))
     terminal.write(messages.listening(h.scheme + uri.schemeEnd + uri.authority + service.host + uri.portSeparator + port, dates.format(today)))
     const layout = deps.layout
-    terminal.write(messages.watching([...[layout.sources, layout.kinds, layout.views, layout.evidence].map((d) => d + sep), layout.lock]))
+    terminal.write(messages.watching([...[layout.sources, layout.kinds, layout.views, layout.evidence].map((d) => d + deps.paths.sep), layout.lock]))
 
     let pending: ReturnType<Timer["setTimeout"]> | undefined
     const changed = new Set<string>()
     const schedule = (what: string) => {
-      if (service.ignored.some((ending) => what.endsWith(ending))) return
       changed.add(what)
       timer.clearTimeout(pending)
       pending = timer.setTimeout(() => {
@@ -172,12 +171,7 @@ const body = (deps: Deps) => {
         void recompile(single(list) ? only : messages.filesChanged(list.length))
       }, debounce)
     }
-    const dirs = projectDirs(root)
-    for (const abs of [join(root, layout.sources), ...dirs.kinds, ...dirs.views, join(root, layout.evidence)]) {
-      const dir = relative(root, abs)
-      if (existsSync(abs)) watch(abs, { recursive: true }, (_e, f) => schedule(join(dir, optional(f))))
-    }
-    if (existsSync(join(root, layout.lock))) watch(join(root, layout.lock), () => schedule(layout.lock))
+    deps.watching.watch(root, schedule)
 
     await recompile(messages.startup())
   }
