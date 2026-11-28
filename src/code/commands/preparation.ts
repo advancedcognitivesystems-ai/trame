@@ -23,7 +23,7 @@ import type { Api as MachineApi } from "../engine/machine"
 import type { Api as PayloadApi } from "../engine/payload"
 import type { Api as DateBundleApi } from "../engine/date-bundle"
 import type { Api as WatchingApi } from "../engine/watching"
-import type { Api as PageApi } from "../page/page"
+import type { Api as PageApi } from "../page/script"
 import type { Api as ProjectApi } from "../engine/project"
 
 export interface Deps {
@@ -416,11 +416,18 @@ const body = (deps: Deps) => {
       compile: (root, today) => elsewhere(root, today, compiling),
       reader: deps.reader,
       page: () => deps.page.script(),
+      program: line.program,
     }
   }
 
   /** Runs `f` with this engine running, while it compiles a project: what it compiles reaches the API, no project prepared. */
   const running = <T>(compiling: Loaded, f: () => Promise<T>) => withEngine({ offer: () => undefined, api: api(undefined, compiling) }, f)
+
+  /**
+   * Runs `f` with this engine running, for one of its own commands (since g137): what it does through std's ports of the
+   * engine reaches it (the page's reader of languages).
+   */
+  const asTheEngine = <T>(f: () => Promise<T>) => withEngine({ offer: () => undefined, api: api() }, f)
 
   /**
    * The loaded graph compiled at a date with nodes besides its own (an amendment not yet recorded, since g85): what the
@@ -467,7 +474,7 @@ const body = (deps: Deps) => {
     return { locate: located, files: new Map(docs.map((d) => [d.id, d.file])) }
   }
 
-  return { options, printLaws, refuse, prepare, attempt, handOver, at, alsoWith, reread, views, renderingContext, api }
+  return { options, printLaws, refuse, prepare, attempt, handOver, at, alsoWith, reread, views, renderingContext, api, asTheEngine }
 }
 
 export type Api = ReturnType<typeof body>

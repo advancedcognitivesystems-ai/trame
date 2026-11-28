@@ -1,8 +1,8 @@
 # Versions
 
-*The releases of the components on 30 October 2026, newest first. A project runs the release its configuration pins.*
+*The releases of the components on 28 November 2026, newest first. A project runs the release its configuration pins.*
 
-> **135 releases of 1 component; 95 releases on a language of their own**
+> **136 releases of 1 component; 95 releases on a language of their own**
 
 ## Trame on the command line
 
@@ -10,6 +10,7 @@ Each release, newest first: what changed, the release that assembled it, and whe
 
 | Release | Released on | What changes | Assembled by | Language |
 |---|---|---|---|---|
+| [Generation 136](releases.md#G136) | 28 November 2026 | The engine's API gives what a page and its commands need: a text read back (readText), a project's documents without those of each node, its payload, the dates a page offers, the project at another date, its title, compiled at each date in a fresh process, watched, amended; the page's program bundled | [Generation 135](releases.md#G135) | shared |
 | [Generation 135](releases.md#G135) | 28 November 2026 | trame help <command> presents what a project's command reads on its line; the engine's view writes with the formats chosen on std's AnswerFormats and says a refusal in libs/commands' words; --format is std's option of every command; --at leaves the line forwarded to a project's command | [Generation 134](releases.md#G134) | shared |
 | [Generation 134](releases.md#G134) | 27 November 2026 | A project's command named like a command of the engine it does not keep is asked before a view of that name: libs/commands' snapshot replaces the engine's | [Generation 133](releases.md#G133) | shared |
 | [Generation 133](releases.md#G133) | 27 November 2026 | A component that names no environment is offered to other projects: the project that declares it has nowhere to assemble it, and the engine's command of that name answers there | [Generation 132](releases.md#G132) | shared |

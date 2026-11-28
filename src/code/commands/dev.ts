@@ -19,7 +19,8 @@ const body = (deps: Deps): Handler => async (req) => {
   const o = deps.preparation.options(req.params.command, (req.body as { args: string[] }).args, req.params.commands)
   /** An amendment the page posts: prepared, then recorded unless refused or only previewed. */
   const amend = (asked: unknown) => deps.amending.amend(o, asked as AmendmentAsked, deps.place)
-  await deps.devServer.startDev(o.root, o.today, o.port, amend)
+  // The engine runs while the page is made: its reader reads back what the page writes.
+  await deps.preparation.asTheEngine(() => deps.devServer.startDev(o.root, o.today, o.port, amend))
   // The server stays open: no exit status.
   return { body: undefined }
 }

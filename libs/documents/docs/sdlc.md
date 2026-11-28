@@ -73,7 +73,7 @@ The library as its people write it: what a version freezes, and what projects im
 
 - Path: `src`
 
-Built 28 November 2026 by claude, fingerprint `bce7dc429f648d12bbf991c81ddcbd06399e48c70c7e5b5270cc512d5f7b0854`.
+Built 28 November 2026 by claude, fingerprint `b73129383d9a912cb9f8d3bd0aa4527c8d5a78b052f05ad9d814fbe9ece68b18`.
 
 Shipped by [The next version](#NextVersion) 26 November 2026, fingerprint `c129edb86a12dca60dd21dfcf77b504ac47a7e649c124520e962fb790a76c725`.
 
@@ -84,6 +84,8 @@ Shipped by [The next version](#NextVersion) 27 November 2026, fingerprint `11e0d
 Shipped by [The next version](#NextVersion) 27 November 2026, fingerprint `5c0346d88aa5faf8c803f0855f034e05aa1061e1eee7b8f939cd9a91b5b392e5`.
 
 Shipped by [The next version](#NextVersion) 28 November 2026, fingerprint `bce7dc429f648d12bbf991c81ddcbd06399e48c70c7e5b5270cc512d5f7b0854`.
+
+Shipped by [The next version](#NextVersion) 28 November 2026, fingerprint `b73129383d9a912cb9f8d3bd0aa4527c8d5a78b052f05ad9d814fbe9ece68b18`.
 
 - Owner: trame
 - A version of the project: true
@@ -116,7 +118,7 @@ A version of the renderers, for the projects that import it: shipped by trame re
 | [One renderer, its syntax a choice](rendering.md#OneRendererManySyntaxes) | **held** | [Its decisions applied](#DecisionsApplied), for [Rendering of the files](rendering.md#FileRendering) |
 | [The scenarios render as a project does](scenarios.md#HowTheScenariosRender) | **held** | [Its decisions applied](#DecisionsApplied), for [Figures in Mermaid](scenarios.md#FiguresInMermaid) |
 
-Shipped 28 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-28-8cc6006e.json`.
+Shipped 28 November 2026 by claude; its dossier: `evidence/shipments/NextVersion-2026-11-28-56851f93.json`.
 
 - Owner: trame
 - Ships: [The renderers of documents](#TheLibrary)

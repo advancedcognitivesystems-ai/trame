@@ -503,9 +503,9 @@ export const ThePageIsMade = scenario({
   deps: { page: Page, asked: PageAsked, scripts: PageScripts, doctype: Doctype, words: PageWords, checks: ScenarioWords },
   body: ({ page, asked, scripts, doctype, words, checks }) => async (check) => {
     const pieces = (made: string) => made.includes(words.pageTitle(asked.project)) && made.includes(scripts(asked.script, asked.packed, undefined))
-    const standalone = page.pageHtml(asked)
+    const standalone = await page.pageHtml(asked)
     check(checks.pageMade(), standalone.startsWith(doctype()) && pieces(standalone))
-    const hosted = page.pageHtml({ ...asked, fragment: true })
+    const hosted = await page.pageHtml({ ...asked, fragment: true })
     check(checks.pageHosted(), !hosted.includes(doctype()) && pieces(hosted))
   },
 })

@@ -19,7 +19,7 @@ import { TextFile, GnuPositions, JsonFormatting } from "#std/text"
 import { TypeScriptApi } from "./standards"
 import { ExitStatus, NodeEncodings, NodeEvents, NodeModuleSpecifiers } from "#std/system"
 import { Iso8601 } from "#std/measures"
-import { Layout, DefaultRank, DocComment, ViewGroupOrder, DocumentIds, TrameCommands, StepNames, PreludeApi, LanguageNames } from "./conventions"
+import { Layout, DefaultRank, DocComment, ViewGroupOrder, TrameCommands, StepNames, PreludeApi, LanguageNames } from "./conventions"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
 import {
   Prelude, FileReading, Paths, ModuleLoader, TypeScriptCompiler, Hashing, KeptResults, Signatures, Process, Terminal, Clock, Timer,
@@ -32,8 +32,10 @@ import { LanguageSettings, VisibleText } from "./documents"
 import { Punctuation, Units } from "#documents/language"
 import { CodeSpan } from "#documents/markdown"
 import { CodeLines } from "#documents/text"
-import { Page } from "./page"
-import { PageRendering } from "./rendering"
+import { Page, DevService } from "#documents/page"
+import { PageScript } from "./page"
+import { PageRendering, DocumentIds } from "#documents/rendering"
+import { GraphPacking } from "#documents/page"
 import { TypeScript, TypeScriptSyntax, TypeScriptLibraries } from "./typescript"
 import { VersionOrder } from "./packages"
 import { LibraryOfAModule } from "./libraries"
@@ -243,6 +245,7 @@ export const EngineFingerprint = fn({
   deps: {
     layout: Layout, advancement: Advancement, language: TypeScript, project: Project, reading: FileReading, paths: Paths, hashing: Hashing,
     sha256: Sha256, encodings: NodeEncodings, fingerprint: Fingerprint, json: JsonFormatting, sequences: Sequences, texts: Texts, values: ValueTypes,
+    references: ReferenceSyntax,
   },
   body: code.file<typeof import("./code/engine/engine-fingerprint").default>("./code/engine/engine-fingerprint.ts"),
 })
@@ -505,19 +508,6 @@ export const Differences = fn({
 })
 
 /**
- * What trame dev serves
- * The paths the page is asked at, the bundle of the graph, the stream of its changes; the events of that stream; the
- * host it answers on.
- */
-export const DevService = decision<{ page: readonly string[]; bundle: string; events: string; amend: string; compiling: string; ready: string; host: string }>({
-  owner: "trame",
-  value: {
-    page: ["/", "/index.html"], bundle: "/bundle.json", events: "/events", amend: "/amend",
-    compiling: "compiling", ready: "bundle", host: "localhost",
-  },
-})
-
-/**
  * trame dev server
  * Watches the project, recompiles it at each save, pushes the updated page.
  */
@@ -527,7 +517,7 @@ export const DevServer = fn({
   deps: { service: DevService, uri: Uri, line: TrameCommands, nodeEvents: NodeEvents, layout: Layout,
     http: Http, mediaTypes: MediaTypes, events: ServerSentEvents,
     terminal: Terminal, codeLines: CodeLines, file: TextFile, clock: Clock, timer: Timer, debounce: DevDebounce, httpServer: HttpServer,
-    watching: Watching, paths: Paths, project: Project, bundle: DateBundle, differences: Differences, page: Page, pageRendering: PageRendering,
+    watching: Watching, paths: Paths, project: Project, bundle: DateBundle, differences: Differences, page: Page, script: PageScript, pageRendering: PageRendering,
     counts: Counts, sequences: Sequences, texts: Texts, dates: Dates, language: Language, messages: DevMessages,
   },
   body: code.file<typeof import("./code/engine/dev-server").default>("./code/engine/dev-server.ts"),

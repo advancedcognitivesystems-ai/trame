@@ -4,7 +4,7 @@
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 4 | 217 |
+| trame | 0 | 0 | 4 | 218 |
 
 <a id="trame"></a>
 
@@ -166,6 +166,7 @@
 | [Version 0.2.0](releases.md#R0_2_0) | Release |  |
 | [Version 0.3.0](releases.md#R0_3_0) | Release |  |
 | [Version 0.4.0](releases.md#R0_4_0) | Release |  |
+| [Version 0.5.0](releases.md#R0_5_0) | Release |  |
 | [Documents at a terminal](rendering.md#AnswersAtATerminal) | Function | **held** |
 | [Documents in Markdown](rendering.md#AnswersInMarkdown) | Function | **held** |
 | [Common rendering](rendering.md#Common) | Function | **held** |

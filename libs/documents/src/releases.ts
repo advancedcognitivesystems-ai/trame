@@ -83,3 +83,16 @@ export const R0_5_0 = release({
   language: "shared",
   serves: [RenderedOnce, ShownInAPage],
 })
+
+/**
+ * Version 0.5.1
+ */
+export const R0_5_1 = release({
+  owner: "trame",
+  version: "0.5.1",
+  date: "2026-11-28",
+  what: "Page loads the languages it reads back in when a page is first asked, and gives the page as a promise: the reader may be the engine running a command, which runs none while a program is wired",
+  fingerprint: "c6a3d29f4adf38f8",
+  language: "shared",
+  serves: [RenderedOnce, ShownInAPage],
+})

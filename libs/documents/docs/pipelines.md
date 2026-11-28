@@ -53,7 +53,7 @@ flowchart TB
 | 12 | prove | [A style sheet writes no value](page.md#StyleThroughVariables) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [Rules of a narrow screen](page.md#NarrowScreenRule) | **held** |  |
 | 13 | prove | [One renderer, its syntax a choice](rendering.md#OneRendererManySyntaxes) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [Rendering of the files](rendering.md#FileRendering) | **held** |  |
 | 14 | prove | [The scenarios render as a project does](scenarios.md#HowTheScenariosRender) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [Figures in Mermaid](scenarios.md#FiguresInMermaid) | **held** |  |
-| 15 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 28 November 2026 by claude `evidence/shipments/NextVersion-2026-11-28-8cc6006e.json` |
+| 15 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 28 November 2026 by claude `evidence/shipments/NextVersion-2026-11-28-56851f93.json` |
 
 `trame ship NextVersion --by <name>`
 

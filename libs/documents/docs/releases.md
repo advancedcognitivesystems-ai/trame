@@ -85,3 +85,19 @@ The formats of std's answers: text at a terminal and Markdown with where each ca
 
 - Released by: trame
 - Serves: [Documents rendered once, for every project](product.md#RenderedOnce)
+
+<a id="R0_5_0"></a>
+
+### Version 0.5.0
+
+`R0_5_0` · `src/releases.ts:77`
+
+The page, Trame's before: its HTML, SVG and CSS, its syntax and figures, its look, its words, its shell and scripts, Page (given its program by the command, read back by std's reader), its style sheets read beside the library, the graph packed; its program, the component PageApp, offered: each project assembles it for its environment of a browser with the browser's realizations, which the library offers
+
+- Version: `0.5.0`
+- Released on: 28 November 2026
+- Fingerprint: `6548a54818c5140a`
+- Language: the repository's, shared
+
+- Released by: trame
+- Serves: [Documents rendered once, for every project](product.md#RenderedOnce), [A graph shown in a page, for every project](product.md#ShownInAPage)

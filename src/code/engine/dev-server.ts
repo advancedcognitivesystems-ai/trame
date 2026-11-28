@@ -11,7 +11,8 @@ import type { Api as ProjectApi } from "./project"
 import type { Api as WatchingApi } from "./watching"
 import type { Api as DateBundleApi } from "./date-bundle"
 import type { Api as DifferencesApi } from "./differences"
-import type { Api as PageApi } from "../page/page"
+import type { Api as PageApi } from "#documents/code/page/page"
+import type { Api as ScriptApi } from "../page/script"
 import type { Api as RenderingApi } from "#documents/code/rendering/document"
 import type { Counts, Sequences, Texts } from "#std/algebra"
 import type { NodeEvents } from "#std/system"
@@ -19,7 +20,7 @@ import type { TextFile } from "#std/text"
 import type { Uri } from "#std/web"
 import type { CodeLines } from "#documents/text"
 import type { TrameCommands } from "../../conventions"
-import type { DevService } from "../../engine"
+import type { DevService } from "#documents/page"
 
 export interface Deps {
   service: ProvidedBy<typeof DevService>
@@ -45,6 +46,8 @@ export interface Deps {
   bundle: DateBundleApi
   differences: DifferencesApi
   page: PageApi
+  /** The page's program, bundled by the engine. */
+  script: ScriptApi
   /** The renderer of the page: the changes it announces. */
   pageRendering: RenderingApi
   dates: ProvidedBy<typeof Dates>
@@ -119,7 +122,7 @@ const body = (deps: Deps) => {
       }
     }
 
-    const html = await pageHtml(root, { dev: true, project: projectDirs(root).title })
+    const html = await pageHtml({ script: await deps.script.script(), program: line.program, dev: true, project: projectDirs(root).title })
     const server = createServer((req, res) => {
       const [url] = optional(req.url).split(uri.query)
       if (service.page.includes(url)) {

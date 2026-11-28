@@ -58,7 +58,7 @@ export interface Deps {
   gnu: ProvidedBy<typeof GnuPositions>
 }
 
-const body = async (deps: Deps) => {
+const body = (deps: Deps) => {
   const { palette, typography, narrowScreen, words, language, reading, markup, css, gnu } = deps
   const { theme, statusStyle, narrow, scripts, document, rule, declaration } = deps
   const { endOfLine } = deps.file
@@ -72,8 +72,9 @@ const body = async (deps: Deps) => {
   const standalone = Object.entries(deps.standalone).map(([selector, declarations]) =>
     rule(selector, Object.entries(declarations).map(([property, value]) => declaration(property, value))))
 
-  await reading.load(markup)
-  await reading.load(css)
+  /** The languages the page is read back in, loaded when a page is first asked: the reader may be the running engine's. */
+  let loaded: Promise<void> | undefined
+  const load = () => (loaded ??= reading.load(markup).then(() => reading.load(css)))
   /** A text of the page, read back in its language: refused if it does not follow the grammar. */
   const readBack = (written: string, read: LanguageDescription, refused: (language: string, places: string[]) => string) => {
     const r = reading.readText(read, written)
@@ -81,7 +82,8 @@ const body = async (deps: Deps) => {
     return r
   }
 
-  function pageHtml(o: PageOptions): string {
+  async function pageHtml(o: PageOptions): Promise<string> {
+    await load()
     // The variables, the style sheet of the page, then the rules of a narrow screen. A standalone document gives its
     // own skeleton the style of a document; a host gives it in a fragment.
     const sheet = [themed, deps.sheets.style(), narrow(narrowScreen, deps.sheets.narrow())].join(endOfLine)
@@ -116,5 +118,5 @@ const body = async (deps: Deps) => {
   return { pageHtml }
 }
 
-export type Api = Awaited<ReturnType<typeof body>>
+export type Api = ReturnType<typeof body>
 export default body

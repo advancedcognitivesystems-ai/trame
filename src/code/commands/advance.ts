@@ -99,8 +99,10 @@ const body = (deps: Deps): Handler => async (req) => {
 
   // The program of the engine under a directory: the component assembled for its environment, as the assembly names it.
   const kebab = (name: string) => lowerWords(name, layout.wordJoint)
+  /** A component by its name, or by its reference (a library's: documents/browser.PageApp): the program is named by its name. */
+  const named = (component: string) => deps.sequences.last(component.split(deps.references.separator))
   const programOf = (component: string, environment: string) => (base: string) =>
-    join(base, layout.output, kebab(environment), kebab(component) + optional(head(deps.language.extensions)))
+    join(base, layout.output, kebab(environment), kebab(optional(named(component))) + optional(head(deps.language.extensions)))
   const programIn = programOf(advancement.component, advancement.environment)
   // The page the engine writes: its own program, assembled for the browser, frozen with the engine.
   const pageIn = programOf(advancement.page.component, advancement.page.environment)

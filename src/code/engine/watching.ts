@@ -21,18 +21,25 @@ const body = (deps: Deps) => {
   const { join, relative } = deps.paths
   const { optional } = deps.texts
 
-  /** Calls `changed` with each file the build of the project at `root` reads that changes, from its root. */
-  function watchProject(root: string, changed: (path: string) => void): void {
+  /** Calls `changed` with each file the build of the project at `root` reads that changes, from its root; gives what it watches. */
+  function watchProject(root: string, changed: (path: string) => void): string[] {
     const told = (path: string) => {
       if (!deps.leftovers.endings.some((ending) => path.endsWith(ending))) changed(path)
     }
     const { layout } = deps
     const dirs = deps.project.projectDirs(root)
+    const watched: string[] = []
     for (const abs of [join(root, layout.sources), ...dirs.kinds, ...dirs.views, join(root, layout.evidence)]) {
       const dir = relative(root, abs)
-      if (existsSync(abs)) watch(abs, { recursive: true }, (_e, f) => told(join(dir, optional(f))))
+      if (!existsSync(abs)) continue
+      watch(abs, { recursive: true }, (_e, f) => told(join(dir, optional(f))))
+      watched.push(dir + deps.paths.sep)
     }
-    if (existsSync(join(root, layout.lock))) watch(join(root, layout.lock), () => told(layout.lock))
+    if (existsSync(join(root, layout.lock))) {
+      watch(join(root, layout.lock), () => told(layout.lock))
+      watched.push(layout.lock)
+    }
+    return watched
   }
 
   return { watch: watchProject }

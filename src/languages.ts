@@ -11,7 +11,7 @@ import { DriverMessages } from "./messages"
 import { SyntaxReader, BodyChecks } from "./syntax"
 import { TypeScript, TypeScriptWriter } from "./typescript"
 import { Terraform, TerraformModules, TerraformWriter } from "./terraform"
-import { Page } from "./page"
+import { Page } from "#documents/page"
 import { CssStyleSheets } from "#std/languages"
 
 // Each language has its module (typescript, terraform, html): how Trame reads it, what Trame writes in it. Here, Drivers

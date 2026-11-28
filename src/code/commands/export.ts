@@ -6,7 +6,10 @@ import type { FileWriting, Layout, Paths, Terminal } from "../../architecture"
 import type { CommandMessages } from "../../messages"
 import type { Api as PreparationApi } from "./preparation"
 import type { Api as DateBundleApi } from "../engine/date-bundle"
-import type { Api as PageApi } from "../page/page"
+import type { Api as PageApi } from "#documents/code/page/page"
+import type { Api as ScriptApi } from "../page/script"
+import type { Packing } from "#documents/page"
+import type { TrameCommands } from "../../conventions"
 import type { Api as ProjectApi } from "../engine/project"
 import { BundleMode } from "../../../trame/kernel"
 
@@ -17,6 +20,10 @@ export interface Deps {
   preparation: PreparationApi
   bundle: DateBundleApi
   page: PageApi
+  /** The page's program, bundled by the engine; how the graph it carries is packed; the program's name, which its brand writes. */
+  script: ScriptApi
+  packing: Packing
+  line: ProvidedBy<typeof TrameCommands>
   project: ProjectApi
   writing: FileWriting
   paths: Paths
@@ -30,7 +37,11 @@ const body = (deps: Deps): Handler => async (req) => {
   const [file = deps.layout.page] = o.args
   const bundle = await deps.bundle.makeBundle(o.root, o.today, BundleMode.export)
   if (bundle.error) refuse(o, [bundle.error])
-  deps.writing.writeFileSync(deps.paths.resolve(o.root, file), await deps.page.pageHtml(o.root, { bundle, fragment: o.fragment, project: deps.project.projectDirs(o.root).title }))
+  const page = await deps.preparation.asTheEngine(async () => deps.page.pageHtml({
+    script: await deps.script.script(), program: deps.line.program, packed: deps.packing.pack(JSON.stringify(bundle)), fragment: o.fragment,
+    project: deps.project.projectDirs(o.root).title,
+  }))
+  deps.writing.writeFileSync(deps.paths.resolve(o.root, file), page)
   deps.terminal.write(deps.messages.exported(bundle.dates.length, file))
   return { status: deps.exitStatus.success, body: file }
 }

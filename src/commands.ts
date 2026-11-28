@@ -10,12 +10,13 @@ import { TrameCli, Terminal, Process, Clock, FileReading, FileWriting, Paths, Ha
 import { Compiler, CompilationApi, Laws, Views, Lock, MachineOutputs, PayloadBuilder, DateBundle, Watching, DevServer, Assembly, Fingerprint, References, Project, EngineFingerprint, Wiring, ShipmentPipeline, Differences, JudgedHarder, Fingerprints } from "./engine"
 import { SyntaxReader } from "./syntax"
 import { BuildComparison, ViewRefused } from "#commands/commands"
-import { Page, PageBundle, PageDocument } from "./page"
+import { PageBundle, PageScript } from "./page"
+import { Page, PageDocument, GraphPacking } from "#documents/page"
 import { Html } from "#std/html"
-import { ScriptElement } from "./html"
+import { ScriptElement } from "#documents/html"
 import { DeliveredStyle, NamesLed } from "./delivery"
 import { Common, FileRendering, TerminalRendering } from "#documents/rendering"
-import { PageRendering } from "./rendering"
+import { PageRendering } from "#documents/rendering"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
 import { Layout, TrameCommands, TrameEnvironment, commandNames, AmendmentNaming, LanguageNames, ProjectStart, KeptCommands } from "./conventions"
 import { PackageSources, AnswerFormats, LineWords, LongOptions, StandardOptions } from "#std/tooling"
@@ -79,7 +80,7 @@ export const Preparation = fn({
     layout: TerminalText, columns: TerminalColumns, cell: PaddedCell,
     counts: Counts, sequences: Sequences, texts: Texts, messages: CommandMessages, projectLayout: Layout, uri: Uri, references: References,
     projectCommands: ProjectCommands, kept: KeptCommands, machine: MachineOutputs, paths: Paths, reading: FileReading, specifiers: NodeModuleSpecifiers, reader: SyntaxReader,
-    long: LongOptions, standard: StandardOptions, payload: PayloadBuilder, dateBundle: DateBundle, watching: Watching, page: Page, project: Project,
+    long: LongOptions, standard: StandardOptions, payload: PayloadBuilder, dateBundle: DateBundle, watching: Watching, page: PageScript, project: Project,
   },
   body: code.file<typeof import("./code/commands/preparation").default>("./code/commands/preparation.ts"),
 })
@@ -305,7 +306,7 @@ export const Release = entryPoint({
 export const Export = entryPoint({
   owner: "trame", in: TrameCli, for: Anyone, serves: [ExecutableSpecification],
   trigger: command(commandNames.export),
-  deps: { exitStatus: ExitStatus, layout: Layout, preparation: Preparation, bundle: DateBundle, page: Page, project: Project, writing: FileWriting, paths: Paths, terminal: Terminal, messages: CommandMessages },
+  deps: { exitStatus: ExitStatus, layout: Layout, preparation: Preparation, bundle: DateBundle, page: Page, script: PageScript, packing: GraphPacking, line: TrameCommands, project: Project, writing: FileWriting, paths: Paths, terminal: Terminal, messages: CommandMessages },
   body: code.file<typeof import("./code/commands/export").default>("./code/commands/export.ts"),
 })
 

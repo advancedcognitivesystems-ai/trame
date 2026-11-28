@@ -16,7 +16,7 @@
 | [Documents · Packages](packages.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 4 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Documents · The page](page.md) | 0 | 0 | 1 | 19 | 7 | 1 | 0 | 2 | 0 | 1 | 2 | 0 | 1 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Documents · Product](product.md) | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Documents · Releases](releases.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Documents · Releases](releases.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 6 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Documents · Rendering](rendering.md) | 0 | 1 | 0 | 0 | 3 | 1 | 0 | 6 | 0 | 13 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Documents · Samples](samples.md) | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Documents · Scenarios](scenarios.md) | 0 | 0 | 0 | 0 | 5 | 2 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 0 | 0 | 10 | 1 | 6 | 0 | 0 | 0 | 0 | 0 |

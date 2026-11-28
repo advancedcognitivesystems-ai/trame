@@ -225,8 +225,11 @@ export interface CompiledProject {
   bundle(mode: BundleMode): Promise<Bundle>
   /** The same graph, read once, compiled at another day (since g136): what a page offers at each of its dates. */
   at(date: string): Promise<CompiledProject>
-  /** Calls `changed` with each file its build reads that changes, from its root (since g136): what trame dev follows. */
-  watch(changed: (path: string) => void): void
+  /**
+   * Calls `changed` with each file its build reads that changes, from its root (since g136): what trame dev follows.
+   * Gives what it watches, from the root, a directory ending with the separator of paths (since g137).
+   */
+  watch(changed: (path: string) => void): readonly string[]
   /**
    * Amends one of its values, as trame amend does, then records the amendment where the project's go, unless it is
    * refused or only previewed (since g136): given on the project a command runs for.
@@ -251,6 +254,8 @@ export interface EngineApi {
   readonly reader: LanguageReader & TextReader
   /** The page's program, bundled for a browser as the engine assembled it (since g136): what a page runs. */
   page(): Promise<string>
+  /** The name a person types to run the engine (since g137): what a page's brand writes, what a command names it by. */
+  readonly program: string
 }
 
 /** The engine that runs a program: where its commands go, and its API. */

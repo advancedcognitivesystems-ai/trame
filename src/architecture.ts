@@ -1,6 +1,6 @@
 /** Trame · Architecture */
 
-import { LanguageEffect, type Status, type KeyOf, type Bundle } from "../trame/kernel"
+import { LanguageEffect } from "../trame/kernel"
 import { port, portKind } from "../kinds/port"
 import { component, type Exposure } from "../kinds/component"
 import { environment } from "../kinds/environment"
@@ -9,18 +9,10 @@ import { fieldsOf, KindName, EdgeName } from "../trame/kernel"
 import { NeverReaches, WithoutEffects, WordsOf } from "#std/rules"
 import { Effects, type Effect } from "#std/effects"
 import type { Grammar } from "../trame/kernel"
-import { PageLoading } from "#std/platform"
 
 // The contracts: what the engine asks of the platform. Types, not implementations.
 // When Node already has the right type, the contract reuses it (a part of node:fs, node:path…).
 
-/** The colours, by CSS variable name ("ok-soft": the background of what holds). */
-export interface Typography {
-  /** By CSS variable name. */
-  fonts: Record<string, string>
-  /** The addresses to preload, then the stylesheet that declares the fonts. */
-  loading: string[]
-}
 /** Where a project keeps its files. */
 export interface Layout {
   sources: string
@@ -214,46 +206,6 @@ export interface PackageReports {
   /** The packages a project installs that are not at their latest version. */
   outdated(root: string): Promise<OutdatedFinding[]>
 }
-export interface Compression {
-  /** A text, compressed, in an encoding that a page carries as a string and decompresses itself. */
-  pack(text: string): string
-}
-/** A packed text made whole again: the graph a page carries. */
-export interface Decompression {
-  unpack(packed: string): Promise<string>
-}
-/** Where the page sends an amendment a person writes (since g86): trame dev, which prepares it and records it. */
-export interface PageAmendments {
-  /** The page can amend: it follows trame dev. */
-  available(): boolean
-  /** Sends an amendment, previewed or to record; what trame dev answers: what it would change, why it refuses, where it went. */
-  send(asked: Readonly<Record<string, unknown>>): Promise<{ refused?: string; heading?: string; lines: string[]; file?: string; awaits?: string }>
-}
-/** The window of the browser that shows the page: its document, and what the page asks of the window around it. */
-export interface PageWindow {
-  /** The page's document: the page writes in it and hears what the person does in it. */
-  document: Document
-  /** A value written so that a CSS selector reads it character for character (CSSOM, CSS.escape). */
-  escape(value: string): string
-  /** The person asked for less motion. */
-  reducedMotion(): boolean
-  /** Back to the top of the page. */
-  toTop(): void
-}
-/** What the page keeps of the person's place between two visits, in the browser. */
-export interface PageMemory {
-  recall(): string | undefined
-  keep(text: string): void
-}
-/** Where the page receives the compiled graph from: packed in an exported page, or from trame dev as it compiles. */
-export interface GraphFeed {
-  /** The graph an exported page carries, packed. */
-  packed(): string | undefined
-  /** The page follows trame dev. */
-  live(): boolean
-  /** In trame dev: the last graph compiled, then each compilation that starts and each graph it gives. */
-  follow(on: { compiling(): void; bundle(b: Bundle): void }): void
-}
 /** A place in a text, as tree-sitter gives it: a row and a column counted from its first, and an offset. */
 export interface SyntaxPoint {
   row: number
@@ -286,10 +238,8 @@ export interface SyntaxTrees {
   aside(grammar: Grammar, query: string): string[]
 }
 export interface Resources {
-  /** The page's program (for the browser), its style sheet and the rules of a narrow screen, absolute paths. */
+  /** The page's program (for the browser) as the assembly writes it, an absolute path. */
   script: string
-  style: string
-  narrowStyle: string
 }
 
 /** The effects of a port, checked by TypeScript against the vocabulary. */
@@ -459,12 +409,6 @@ export const PackageReports = port<PackageReports>({ owner: "trame", declaredEff
 export const PackageInstalls = port<PackageInstalls>({ owner: "trame", declaredEffects: effects("process", "network", "write") })
 
 /**
- * Compression
- * A text made smaller for a page to carry: the browser decompresses it.
- */
-export const Compression = port<Compression>({ owner: "trame", declaredEffects: effects() })
-
-/**
  * Page resources
  */
 export const Resources = port<Resources>({ owner: "trame", declaredEffects: effects() })
@@ -492,39 +436,6 @@ export const FileTrees = port<FileTrees>({
  * Exposes Trame's commands: reads the arguments, calls the command, exits with its code.
  */
 export const CommandLine = port<Exposure>({ owner: "trame", declaredEffects: effects("terminal") })
-
-// The page in a browser ----------------------------------------------------------------------
-
-
-/**
- * Window of the page
- * The document the page writes in and hears, and what it asks of the window around it.
- */
-export const PageWindow = port<PageWindow>({ owner: "trame", declaredEffects: effects("display") })
-
-/**
- * Memory of the page
- * The document, the rendering and the node the person was on, kept for their next visit.
- */
-export const PageMemory = port<PageMemory>({ owner: "trame", declaredEffects: { recall: effects("read"), keep: effects("write") } })
-
-/**
- * Feed of the graph
- * The compiled graph the page shows: carried by an exported page, or given by trame dev at each compilation.
- */
-export const GraphFeed = port<GraphFeed>({ owner: "trame", declaredEffects: { packed: effects("display"), live: effects("display"), follow: effects("network", "asynchronous") } })
-
-/**
- * Amendments from the page
- * What a person amends in the page goes to trame dev, which says first what it would change, then records it.
- */
-export const PageAmendments = port<PageAmendments>({ owner: "trame", declaredEffects: { available: effects("display"), send: effects("network", "asynchronous") } })
-
-/**
- * Decompression
- * The graph an exported page carries, made whole again by the browser.
- */
-export const Decompression = port<Decompression>({ owner: "trame", declaredEffects: effects() })
 
 // Where Trame runs ----------------------------------------------------------------------------
 
@@ -568,19 +479,6 @@ export const TrameCli = component({
 })
 
 /**
- * The page in a browser
- * What runs in the page Trame writes: it shows the documents of the graph at each date, follows trame dev, and
- * explores the figures too large to be read whole. Assembled for the browser like the command line for a machine: the
- * values of the graph are written into its program, and its implementations are the browser's.
- */
-export const PageApp = component({
-  owner: "trame",
-  language: "typescript",
-  environments: [Browser],
-  deps: { exposure: PageLoading },
-})
-
-/**
  * Rendering does not read the graph
  * A renderer receives only the intermediate format: no function of the module rendering reaches the prelude, even from
  * afar through what it depends on.
@@ -588,7 +486,7 @@ export const PageApp = component({
 export const RenderingWithoutGraph = rule({
   owner: "trame",
   applies: NeverReaches,
-  params: { nodes: { kinds: [KindName.function], modules: ["rendering"] }, through: [EdgeName.deps], to: { nodes: [Prelude] } },
+  params: { nodes: { kinds: [KindName.function], modules: ["documents/rendering"] }, through: [EdgeName.deps], to: { nodes: [Prelude] } },
 })
 
 /**

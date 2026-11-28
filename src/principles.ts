@@ -9,7 +9,7 @@ import { LibraryOfAModule, ReleaseIsSettled, LibraryReleaseNames } from "./libra
 import { BodyChecks, SyntaxReader } from "./syntax"
 import { Drivers } from "./languages"
 import { TypeScript } from "./typescript"
-import { Page } from "./page"
+import { Page } from "#documents/page"
 import { Build, Publish, TakeSnapshot, Advance, WriteManifest, Release, Deliver, Ship, RecordEvidence, Init } from "./commands"
 import { ShipOnlyWhatHolds, SdlcEvidence, ShippingRecords } from "./shipping"
 import { NextGeneration, CandidateKeepsTheLaws } from "./sdlc"
