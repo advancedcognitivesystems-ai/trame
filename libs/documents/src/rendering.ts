@@ -8,6 +8,8 @@ import { decision } from "#trame/kinds/decision"
 import { catalog } from "#trame/kinds/catalog"
 import { adr } from "#trame/kinds/adr"
 import { ReferenceSyntax } from "#std/engine"
+import { AnswerFormats } from "#std/tooling"
+import { MediaTypes } from "#std/web"
 import { Counts, Sequences, Texts, ValueTypes } from "#std/algebra"
 import { RenderedOnce } from "./product"
 import { Dates, Lists, Punctuation, Units, WordsLanguage } from "./language"
@@ -369,4 +371,31 @@ export const OneRendererManySyntaxes = adr({
   },
   serves: [RenderedOnce],
   appliedBy: [Rendering, FileRendering, TerminalRendering, MarkdownSyntax, PlainTextSyntax, MermaidDiagrams, TextFigures],
+})
+
+// The formats a command's documents are written in (documents 0.4.0) -----------------------------------------------
+
+/**
+ * Documents at a terminal
+ * A format of std's answers: each document a command answers, printed in the syntax of the terminal.
+ */
+export const AnswersAtATerminal = fn({
+  owner: "trame", implements: [AnswerFormats],
+  serves: [RenderedOnce],
+  constants: { word: { value: "text", meaning: "The word of the format, after --format" } },
+  deps: { printed: TerminalRendering, media: MediaTypes },
+  body: code.file<typeof import("./code/rendering/answers-at-a-terminal").default>("./code/rendering/answers-at-a-terminal.ts"),
+})
+
+/**
+ * Documents in Markdown
+ * A format of std's answers: each document a command answers, in the syntax of files, its references leading where
+ * each card is.
+ */
+export const AnswersInMarkdown = fn({
+  owner: "trame", implements: [AnswerFormats],
+  serves: [RenderedOnce],
+  constants: { word: { value: "md", meaning: "The word of the format, after --format" } },
+  deps: { written: FileRendering, media: MediaTypes },
+  body: code.file<typeof import("./code/rendering/answers-in-markdown").default>("./code/rendering/answers-in-markdown.ts"),
 })

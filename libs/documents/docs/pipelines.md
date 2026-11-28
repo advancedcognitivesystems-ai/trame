@@ -1,12 +1,12 @@
 # Pipelines
 
-*What trame ship runs for each shipment on 27 November 2026, in order, as the engine computes it: its artefacts produced, the checks a program makes, the obligations to prove, the programs that deploy it, the dossier.*
+*What trame ship runs for each shipment on 28 November 2026, in order, as the engine computes it: its artefacts produced, the checks a program makes, the obligations to prove, the programs that deploy it, the dossier.*
 
 <a id="NextVersion"></a>
 
 ## The next version
 
-> **The next version does not ship yet: 6 of 7 obligations hold.**
+> **The next version does not ship yet: 7 of 8 obligations hold.**
 
 For the target version.
 
@@ -16,12 +16,13 @@ Run elsewhere by [The pull requests' workflow](sdlc.md#PullRequestWorkflow), wri
 flowchart TB
   n0["The renderers of documents<br/><small>Artefact</small>"]:::unknown
   n1["The language of the documents, written<br/><small>Scenario</small>"]:::held
-  n2["The documents, rendered<br/><small>Scenario</small>"]:::held
-  n3["The documents speak the engine's language<br/><small>Architecture decision</small>"]:::held
-  n4["One renderer, its syntax a choice<br/><small>Architecture decision</small>"]:::held
-  n5["The scenarios render as a project does<br/><small>Architecture decision</small>"]:::held
-  n6["The next version<br/><small>Shipment</small>"]:::unknown
-  n6 -->|Ships| n0
+  n2["Answers written in their formats<br/><small>Scenario</small>"]:::held
+  n3["The documents, rendered<br/><small>Scenario</small>"]:::held
+  n4["The documents speak the engine's language<br/><small>Architecture decision</small>"]:::held
+  n5["One renderer, its syntax a choice<br/><small>Architecture decision</small>"]:::held
+  n6["The scenarios render as a project does<br/><small>Architecture decision</small>"]:::held
+  n7["The next version<br/><small>Shipment</small>"]:::unknown
+  n7 -->|Ships| n0
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a
@@ -37,11 +38,12 @@ flowchart TB
 | 2 | prove | The foundations | itself | every shipment: no literal in a body, a sound graph | **held** |  |
 | 3 | prove | [The renderers of documents](sdlc.md#TheLibrary) | — | the shipment | **unknown** | 27 November 2026 by claude  |
 | 4 | prove | [The language of the documents, written](scenarios.md#LanguageWritten) | — | [Its code verified](sdlc.md#CodeVerified) via [Dates](language.md#Dates) | **held** |  |
-| 5 | prove | [The documents, rendered](scenarios.md#DocumentsRendered) | — | [Its code verified](sdlc.md#CodeVerified) via [Common rendering](rendering.md#Common) | **held** |  |
-| 6 | prove | [The documents speak the engine's language](scenarios.md#TheEnginesLanguage) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [Dates](language.md#Dates) | **held** |  |
-| 7 | prove | [One renderer, its syntax a choice](rendering.md#OneRendererManySyntaxes) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [Rendering of the files](rendering.md#FileRendering) | **held** |  |
-| 8 | prove | [The scenarios render as a project does](scenarios.md#HowTheScenariosRender) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [Figures in Mermaid](scenarios.md#FiguresInMermaid) | **held** |  |
-| 9 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 27 November 2026 by claude `evidence/shipments/NextVersion-2026-11-27-61c20f0f.json` |
+| 5 | prove | [Answers written in their formats](scenarios.md#AnswersWritten) | — | [Its code verified](sdlc.md#CodeVerified) via [Documents at a terminal](rendering.md#AnswersAtATerminal) | **held** |  |
+| 6 | prove | [The documents, rendered](scenarios.md#DocumentsRendered) | — | [Its code verified](sdlc.md#CodeVerified) via [Common rendering](rendering.md#Common) | **held** |  |
+| 7 | prove | [The documents speak the engine's language](scenarios.md#TheEnginesLanguage) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [Dates](language.md#Dates) | **held** |  |
+| 8 | prove | [One renderer, its syntax a choice](rendering.md#OneRendererManySyntaxes) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [Rendering of the files](rendering.md#FileRendering) | **held** |  |
+| 9 | prove | [The scenarios render as a project does](scenarios.md#HowTheScenariosRender) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [Figures in Mermaid](scenarios.md#FiguresInMermaid) | **held** |  |
+| 10 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 27 November 2026 by claude `evidence/shipments/NextVersion-2026-11-27-61c20f0f.json` |
 
 `trame ship NextVersion --by <name>`
 

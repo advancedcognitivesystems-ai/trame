@@ -1,12 +1,12 @@
 # Pipelines
 
-*What trame ship runs for each shipment on 27 November 2026, in order, as the engine computes it: its artefacts produced, the checks a program makes, the obligations to prove, the programs that deploy it, the dossier.*
+*What trame ship runs for each shipment on 28 November 2026, in order, as the engine computes it: its artefacts produced, the checks a program makes, the obligations to prove, the programs that deploy it, the dossier.*
 
 <a id="NextVersion"></a>
 
 ## The next version
 
-> **The next version does not ship yet: 36 of 37 obligations hold.**
+> **The next version does not ship yet: 37 of 38 obligations hold.**
 
 For the target version.
 
@@ -33,26 +33,27 @@ flowchart TB
   n16["Judged strictly<br/><small>Scenario</small>"]:::held
   n17["The device, in memory<br/><small>Scenario</small>"]:::held
   n18["A repository kept in memory<br/><small>Scenario</small>"]:::held
-  n19["The tooling, in memory<br/><small>Scenario</small>"]:::held
-  n20["Playwright<br/><small>Package</small>"]:::held
-  n21["The decisions a shipment applies hold<br/><small>Requirement</small>"]:::held
-  n22["The artefacts a shipment ships are checked<br/><small>Requirement</small>"]:::held
-  n23["Who calls a shipment's programs is identified<br/><small>Requirement</small>"]:::held
-  n24["The artefacts a shipment ships were shipped first by those that precede it<br/><small>Requirement</small>"]:::held
-  n25["What people decided is published<br/><small>Requirement</small>"]:::held
-  n26["The data a shipment carries is reviewed<br/><small>Requirement</small>"]:::held
-  n27["The project's rules hold<br/><small>Requirement</small>"]:::held
-  n28["The packages a shipment uses are safe<br/><small>Requirement</small>"]:::held
-  n29["The product a shipment serves holds<br/><small>Requirement</small>"]:::held
-  n30["The code a shipment ships is verified<br/><small>Requirement</small>"]:::held
-  n31["As many links as asked<br/><small>Requirement</small>"]:::held
-  n32["A node never reaches what it must not<br/><small>Requirement</small>"]:::held
-  n33["A node reaches what it must<br/><small>Requirement</small>"]:::held
-  n34["Effects a node may not have<br/><small>Requirement</small>"]:::held
-  n35["Words of a vocabulary<br/><small>Requirement</small>"]:::held
-  n36["The next version<br/><small>Shipment</small>"]:::unknown
-  n4 -->|Applied by| n23
-  n36 -->|Ships| n0
+  n19["A command's line read, its answer written<br/><small>Scenario</small>"]:::held
+  n20["The tooling, in memory<br/><small>Scenario</small>"]:::held
+  n21["Playwright<br/><small>Package</small>"]:::held
+  n22["The decisions a shipment applies hold<br/><small>Requirement</small>"]:::held
+  n23["The artefacts a shipment ships are checked<br/><small>Requirement</small>"]:::held
+  n24["Who calls a shipment's programs is identified<br/><small>Requirement</small>"]:::held
+  n25["The artefacts a shipment ships were shipped first by those that precede it<br/><small>Requirement</small>"]:::held
+  n26["What people decided is published<br/><small>Requirement</small>"]:::held
+  n27["The data a shipment carries is reviewed<br/><small>Requirement</small>"]:::held
+  n28["The project's rules hold<br/><small>Requirement</small>"]:::held
+  n29["The packages a shipment uses are safe<br/><small>Requirement</small>"]:::held
+  n30["The product a shipment serves holds<br/><small>Requirement</small>"]:::held
+  n31["The code a shipment ships is verified<br/><small>Requirement</small>"]:::held
+  n32["As many links as asked<br/><small>Requirement</small>"]:::held
+  n33["A node never reaches what it must not<br/><small>Requirement</small>"]:::held
+  n34["A node reaches what it must<br/><small>Requirement</small>"]:::held
+  n35["Effects a node may not have<br/><small>Requirement</small>"]:::held
+  n36["Words of a vocabulary<br/><small>Requirement</small>"]:::held
+  n37["The next version<br/><small>Shipment</small>"]:::unknown
+  n4 -->|Applied by| n24
+  n37 -->|Ships| n0
   classDef held fill:#e1f1e7,stroke:#26734a,color:#17202a
   classDef blocked fill:#fbf0d9,stroke:#9a6200,color:#17202a
   classDef violated fill:#f9e3e1,stroke:#ad2a22,color:#17202a
@@ -73,7 +74,7 @@ flowchart TB
 | 7 | prove | [An entry point says who may call it](access.md#SaysItsAudience) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [Who calls a shipment's programs is identified](obligations.md#Identified) | **held** |  |
 | 8 | prove | [The device's services, as ports](platform.md#DeviceAsPorts) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [Animation frames](platform.md#AnimationFrames) | **held** |  |
 | 9 | prove | [A repository is set by its project's graph](repository.md#RepositoryThroughItsApi) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [GitHub's command line](repository.md#GitHubCliRepository) | **held** |  |
-| 10 | prove | [How the library's scenarios run](scenarios.md#HowTheScenariosRun) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [In memory](scenarios.md#InMemory) | **held** |  |
+| 10 | prove | [How the library's scenarios run](scenarios.md#HowTheScenariosRun) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [The formats of the scenarios](scenarios.md#FormatsOfTheScenarios) | **held** |  |
 | 11 | prove | [The SDLC's tooling is realized once](tooling.md#ToolingAsPorts) | — | [Its decisions applied](sdlc.md#DecisionsApplied) via [A browser kept in memory](tooling.md#BrowserInMemory) | **held** |  |
 | 12 | prove | [Seeded draws keep their promise](scenarios.md#DrawsKeepTheirPromise) | — | [Its functions verified](sdlc.md#FunctionsVerified) via [Seeded draws](algorithms.md#SeededDraws) | **held** |  |
 | 13 | prove | [A pull request merged once it holds](scenarios.md#MergedOnceItHolds) | — | [Its functions verified](sdlc.md#FunctionsVerified) via [Merge a pull request](commands.md#MergePullRequest) | **held** |  |
@@ -85,24 +86,25 @@ flowchart TB
 | 19 | prove | [Judged strictly](scenarios.md#JudgedStrictly) | — | [Its functions verified](sdlc.md#FunctionsVerified) via [Every warning an error](judgment.md#EveryWarning) | **held** |  |
 | 20 | prove | [The device, in memory](scenarios.md#DeviceInMemory) | — | [Its functions verified](sdlc.md#FunctionsVerified) via [The screen kept awake, in memory](platform.md#AwakeInMemory) | **held** |  |
 | 21 | prove | [A repository kept in memory](scenarios.md#RepositoryInMemoryKeeps) | — | [Its functions verified](sdlc.md#FunctionsVerified) via [A repository compared with its settings](repository.md#RepositoryCompared) | **held** |  |
-| 22 | prove | [The tooling, in memory](scenarios.md#ToolingInMemory) | — | [Its functions verified](sdlc.md#FunctionsVerified) via [A browser kept in memory](tooling.md#BrowserInMemory) | **held** |  |
-| 23 | prove | [Playwright](tooling.md#PlaywrightPackage) | — | [Its packages safe](sdlc.md#PackagesSafe) via [Chromium, driven by Playwright](tooling.md#PlaywrightBrowser) | **held** | 27 October 2026 by   |
-| 24 | prove | [The decisions a shipment applies hold](obligations.md#Applied) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
-| 25 | prove | [The artefacts a shipment ships are checked](obligations.md#Checked) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
-| 26 | prove | [Who calls a shipment's programs is identified](obligations.md#Identified) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
-| 27 | prove | [The artefacts a shipment ships were shipped first by those that precede it](obligations.md#Preceded) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
-| 28 | prove | [What people decided is published](obligations.md#Published) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
-| 29 | prove | [The data a shipment carries is reviewed](obligations.md#Reviewed) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
-| 30 | prove | [The project's rules hold](obligations.md#Ruled) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
-| 31 | prove | [The packages a shipment uses are safe](obligations.md#Safe) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
-| 32 | prove | [The product a shipment serves holds](obligations.md#Served) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
-| 33 | prove | [The code a shipment ships is verified](obligations.md#Verified) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
-| 34 | prove | [As many links as asked](rules.md#Linked) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
-| 35 | prove | [A node never reaches what it must not](rules.md#NeverReaches) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
-| 36 | prove | [A node reaches what it must](rules.md#Reaches) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
-| 37 | prove | [Effects a node may not have](rules.md#WithoutEffects) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
-| 38 | prove | [Words of a vocabulary](rules.md#WordsOf) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
-| 39 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 27 November 2026 by claude `evidence/shipments/NextVersion-2026-11-27-61082841.json` |
+| 22 | prove | [A command's line read, its answer written](scenarios.md#LinesReadAnswersWritten) | — | [Its functions verified](sdlc.md#FunctionsVerified) via [Documents in JSON](tooling.md#AnswersInJson) | **held** |  |
+| 23 | prove | [The tooling, in memory](scenarios.md#ToolingInMemory) | — | [Its functions verified](sdlc.md#FunctionsVerified) via [A browser kept in memory](tooling.md#BrowserInMemory) | **held** |  |
+| 24 | prove | [Playwright](tooling.md#PlaywrightPackage) | — | [Its packages safe](sdlc.md#PackagesSafe) via [Chromium, driven by Playwright](tooling.md#PlaywrightBrowser) | **held** | 27 October 2026 by   |
+| 25 | prove | [The decisions a shipment applies hold](obligations.md#Applied) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
+| 26 | prove | [The artefacts a shipment ships are checked](obligations.md#Checked) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
+| 27 | prove | [Who calls a shipment's programs is identified](obligations.md#Identified) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
+| 28 | prove | [The artefacts a shipment ships were shipped first by those that precede it](obligations.md#Preceded) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
+| 29 | prove | [What people decided is published](obligations.md#Published) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
+| 30 | prove | [The data a shipment carries is reviewed](obligations.md#Reviewed) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
+| 31 | prove | [The project's rules hold](obligations.md#Ruled) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
+| 32 | prove | [The packages a shipment uses are safe](obligations.md#Safe) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
+| 33 | prove | [The product a shipment serves holds](obligations.md#Served) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
+| 34 | prove | [The code a shipment ships is verified](obligations.md#Verified) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
+| 35 | prove | [As many links as asked](rules.md#Linked) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
+| 36 | prove | [A node never reaches what it must not](rules.md#NeverReaches) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
+| 37 | prove | [A node reaches what it must](rules.md#Reaches) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
+| 38 | prove | [Effects a node may not have](rules.md#WithoutEffects) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
+| 39 | prove | [Words of a vocabulary](rules.md#WordsOf) | — | [Its requirements held](sdlc.md#RequirementsServed) via [Anyone](access.md#Anyone) | **held** |  |
+| 40 | record | [The next version](sdlc.md#NextVersion) | — | — | **unknown** | 27 November 2026 by claude `evidence/shipments/NextVersion-2026-11-27-61082841.json` |
 
 `trame ship NextVersion --by <name>`
 

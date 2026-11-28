@@ -1,6 +1,7 @@
 /** Standard library · Text */
 
 import { standard } from "#trame/kinds/standard"
+import { decision } from "#trame/kinds/decision"
 import { CitedNotCopied } from "./product"
 
 // Text as files and tools write it: lines, characters a reader cannot see, places in a file, differences.
@@ -77,3 +78,10 @@ export const UnifiedDiff = standard({
     rangeSeparator: { value: ",", meaning: "Separates the first line of a range from the number of its lines" },
   },
 })
+
+/**
+ * JSON formatting
+ * The JSON written to be read (the lock, a graph for agents, a document a command answers in JSON): indented. Moved from
+ * Trame's conventions (std 0.31.0), so that a command of a library writes JSON as the engine does.
+ */
+export const JsonFormatting = decision<{ indentation: number }>({ owner: "trame", value: { indentation: 2 } })

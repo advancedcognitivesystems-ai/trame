@@ -153,7 +153,6 @@ export const TrameCommands = standard({
     fallback: { value: commandNames.fallback, meaning: "The command that receives a word naming no other one: a view, or a command of the project" },
     optionPrefix: { value: "-", meaning: "Opens an option, not a command" },
     at: { value: "--at", meaning: "The date at which the graph is compiled" },
-    format: { value: "--format", meaning: "The format a view is written in" },
     port: { value: "--port", meaning: "The port trame dev listens on" },
     fragment: { value: "--fragment", meaning: "Writes the page as a fragment, without its document" },
     env: { value: "--env", meaning: "The environment a component is assembled for" },
@@ -176,8 +175,6 @@ export const TrameCommands = standard({
     restore: { value: "--restore", meaning: "Given to the launcher: installs, in the pinned generation's folder, the packages it was frozen with" },
     passed: { value: "passed", meaning: "The evidence says yes: the check passed, the review approves, the deployment is done" },
     failed: { value: "failed", meaning: "The evidence says no: the check failed, the review asks for changes" },
-    json: { value: "json", meaning: "A view written as JSON (the intermediate format)" },
-    markdown: { value: "md", meaning: "A view written as Markdown" },
     separator: { value: " ", meaning: "Separates the words of a command, and the names of a list given as one parameter" },
   },
 })
@@ -231,12 +228,6 @@ export const DefaultRank = decision<number>({ owner: "trame", value: 100 })
  * The lines of each are joined into one text, by a space.
  */
 export const DocComment = decision<{ titleLines: number; joint: string }>({ owner: "trame", value: { titleLines: 1, joint: " " } })
-
-/**
- * JSON formatting
- * The JSON that Trame writes to be read (the lock, a view in JSON): indented.
- */
-export const JsonFormatting = decision<{ indentation: number }>({ owner: "trame", value: { indentation: 2 } })
 
 /**
  * Names of the documents

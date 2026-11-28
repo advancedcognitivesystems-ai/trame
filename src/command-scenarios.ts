@@ -1,5 +1,7 @@
 /** Trame · Scenarios of the commands */
 
+import { AnswerFormats, LongOptions, StandardOptions } from "#std/tooling"
+import { MediaTypes } from "#std/web"
 import type { Bundle, Payload, Pipeline } from "../trame/kernel"
 import { AmendmentField, BundleMode, EvidenceSource, KindName, PipelineStage, Severity, ShipmentEdge, Status, TriggerType } from "../trame/kernel"
 import { scenario } from "../kinds/scenario"
@@ -124,9 +126,9 @@ export const ViewsInTheTerminal = scenario({
   env: Test,
   deps: {
     show: ShowView, byName: CommandOrView, terminalLog: TerminalLog, line: TrameCommands, exitStatus: ExitStatus, samples: ViewSamples,
-    texts: Texts, counts: Counts, messages: ScenarioMessages,
+    texts: Texts, counts: Counts, messages: ScenarioMessages, formats: AnswerFormats, media: MediaTypes, long: LongOptions, standard: StandardOptions,
   },
-  body: ({ show, byName, terminalLog, line, exitStatus, samples, texts, counts, messages }) => async (check) => {
+  body: ({ show, byName, terminalLog, line, exitStatus, samples, texts, counts, messages, formats, media, long, standard }) => async (check) => {
     const printed = (from: number) => texts.concat(terminalLog.lines().slice(from))
     const { project, module } = samples
     const shown = await show({ params: { command: line.view }, body: { args: [project.view] } })
@@ -139,7 +141,8 @@ export const ViewsInTheTerminal = scenario({
     await show({ params: { command: line.view }, body: { args: [module.view, module.module] } })
     check(messages.figureDrawnAsText(module.draws), printed(from).includes(module.draws))
     from = terminalLog.lines().length
-    await show({ params: { command: line.view }, body: { args: [project.view, line.format, line.json] } })
+    const inJson = formats.find((f) => f.media === media.json)?.word ?? texts.empty
+    await show({ params: { command: line.view }, body: { args: [project.view, long.prefix + standard.format.name, inJson] } })
     const json = JSON.parse(printed(from)) as { view?: string }
     check(messages.viewInJson(), json.view === project.view)
     const unknown = await byName({ params: { command: samples.unknown, commands: line.build }, body: { args: [] } })

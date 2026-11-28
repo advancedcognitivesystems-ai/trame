@@ -1,10 +1,10 @@
 # Owners
 
-*What each person must decide, settle or watch on 27 November 2026, and what they own.*
+*What each person must decide, settle or watch on 28 November 2026, and what they own.*
 
 | Owner | To decide or settle | Errors | To watch | Owns |
 |---|---|---|---|---|
-| trame | 0 | 0 | 2 | 45 |
+| trame | 0 | 0 | 2 | 49 |
 
 <a id="trame"></a>
 
@@ -25,6 +25,8 @@
 | [What the commands say](commands.md#CommandWords) | Message catalog |  |
 | [Plan](commands.md#Plan) | Entry point | **held** |
 | [Snapshot](commands.md#Snapshot) | Entry point | **held** |
+| [View](commands.md#View) | Entry point | **held** |
+| [Why a view gives no document, said](commands.md#ViewRefused) | Function | **held** |
 | [The language the commands speak](commands.md#WordsLanguage) | Decision |  |
 | [The library of continuous integration](packages.md#ContinuousIntegration) | Package |  |
 | [The renderers of documents](packages.md#Documents) | Package |  |
@@ -47,11 +49,13 @@
 | [Without a build, a plan says so](scenarios.md#PlanWithoutABuild) | Scenario | **held** |
 | [A command is played on a real graph](scenarios.md#PlayedOnARealGraph) | Architecture decision | **held** |
 | [Played on a small project](scenarios.md#PlayedOnASmallProject) | Technical choice | **held** |
+| [Views the scenarios ask for](scenarios.md#ScenarioViews) | Decision |  |
 | [What the scenarios check](scenarios.md#ScenarioWords) | Message catalog |  |
 | [The small project](scenarios.md#SmallProject) | Decision |  |
 | [A snapshot writes the graph in force](scenarios.md#SnapshotTaken) | Scenario | **held** |
 | [Test](scenarios.md#Test) | Environment |  |
 | [Which project the scenarios compile](scenarios.md#TheSmallProject) | Function | **held** |
+| [A view answers its document](scenarios.md#ViewAnswersItsDocument) | Scenario | **held** |
 | [A command writes documents as a project does](scenarios.md#WrittenAsAProjectDoes) | Architecture decision | **held** |
 | [Its callers identified](sdlc.md#CallersIdentified) | Obligation |  |
 | [Its code verified](sdlc.md#CodeVerified) | Obligation |  |

@@ -12,11 +12,12 @@ import { Files, FilesInMemory } from "#std/tooling"
 import { Strategy, Adapter, Bridge } from "#std/patterns"
 import { ExitStatus } from "#std/system"
 import { Counts, Sequences } from "#std/algebra"
-import { DocumentName, ViewGroup } from "#trame/kernel"
+import { DocumentName, ViewGroup, ViewName } from "#trame/kernel"
+import type { Places } from "#trame/kernel"
 import { MarkdownSyntax, MermaidDiagrams, PlainTextSyntax, TextFigures, FileRendering, TerminalRendering, OneRendererManySyntaxes } from "#documents/rendering"
 import { WrittenForTheScenarios } from "#documents/scenarios"
 import { WrittenOnce } from "./product"
-import { Plan, BuildComparison, CommandWords, WordsLanguage, Build as BuildCommand, Snapshot } from "./commands"
+import { Plan, BuildComparison, CommandWords, WordsLanguage, Build as BuildCommand, Snapshot, View, ViewRefused } from "./commands"
 import { TerminalText } from "#documents/text"
 import type { Build } from "./code/comparison"
 
@@ -91,6 +92,8 @@ export const ScenarioWords = catalog({
     buildWritesTheGraph: () => "A build writes graph.json and snapshot.json as the engine gives them",
     buildPrintsTheSummary: () => "A build prints the summary in the syntax of the terminal, then names the files it wrote",
     snapshotWritesItsDocuments: () => "A snapshot writes snapshot.json and the documents of the snapshot's view, then names them with the day",
+    viewAnswersItsDocument: () => "A view answers the document the engine's view gives, and where each card is when a format asks",
+    viewSaysWhyNot: () => "A view the engine cannot give (no view of that name, a view of a node without its node) says why, in the commands' words",
   }),
 })
 
@@ -283,5 +286,43 @@ export const SnapshotTaken = scenario({
       answered.status === exit.success && files.read(file) === compiled.snapshot() &&
       taken.every((d) => files.read(d.file!) === written.render(d, places)) &&
       JSON.stringify(answered.body) === JSON.stringify([say.snapshotTaken(compiled.today, [file, ...taken.map((d) => d.file!)])]))
+  },
+})
+
+/**
+ * Views the scenarios ask for
+ * A name no view has.
+ */
+export const ScenarioViews = decision<{ unknown: string }>({ owner: "trame", value: { unknown: "nothing" } })
+
+/**
+ * A view answers its document
+ * The small project's index asked by name: the document the engine's view gives, and where each card is once asked;
+ * a name no view has, and a view of a node asked without its node, refused in the commands' words.
+ */
+export const ViewAnswersItsDocument = scenario({
+  owner: "trame",
+  verifies: [View, ViewRefused, ProjectCompiledHere, TheSmallProject],
+  env: Test,
+  deps: { view: View, project: TheProject, refused: ViewRefused, views: ScenarioViews, checks: ScenarioWords, exit: ExitStatus },
+  body: ({ view, project, refused, views, checks, exit }) => async (check) => {
+    const ask = (given: Record<string, string>) => view({ params: {}, body: { args: Object.values(given), arguments: given } })
+    const compiled = await project.compiled()
+    const answered = await ask({ view: ViewName.index })
+    const expected = await compiled.view(ViewName.index)
+    const { documents, places } = answered.body as { documents: unknown; places?: () => Promise<Places> }
+    const where = await places?.()
+    check(checks.viewAnswersItsDocument(),
+      answered.status === exit.success && JSON.stringify(documents) === JSON.stringify([expected.document]) &&
+      where?.locate.size === (await compiled.documents()).places.locate.size)
+    const saidFor = async (name: string) => {
+      const answer = await compiled.view(name)
+      return answer.refused === undefined ? undefined : JSON.stringify([refused(answer)])
+    }
+    const unknown = await ask({ view: views.unknown })
+    const lacking = await ask({ view: ViewName.impact })
+    check(checks.viewSaysWhyNot(),
+      unknown.status === exit.failure && JSON.stringify(unknown.body) === await saidFor(views.unknown) &&
+      lacking.status === exit.failure && JSON.stringify(lacking.body) === await saidFor(ViewName.impact))
   },
 })

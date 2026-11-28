@@ -1,6 +1,6 @@
 # Architecture decisions
 
-*The choices that shape the product without being values, in force on 27 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
+*The choices that shape the product without being values, in force on 28 November 2026: why each was taken, what was rejected, and the nodes that apply it.*
 
 > **3 architecture decisions, 3 held by the nodes that apply them**
 
@@ -8,7 +8,7 @@
 |---|---|---|
 | [One renderer, its syntax a choice](rendering.md#OneRendererManySyntaxes) | **held** | [Rendering of the files](rendering.md#FileRendering), [Markdown writer](rendering.md#MarkdownSyntax), [Mermaid diagrams](rendering.md#MermaidDiagrams), [Plain text writer](rendering.md#PlainTextSyntax), [The renderer](rendering.md#Rendering), [Rendering in the terminal](rendering.md#TerminalRendering), [Figures as text](rendering.md#TextFigures) |
 | [The documents speak the engine's language](scenarios.md#TheEnginesLanguage) | **held** | [Dates](language.md#Dates), [Lists](language.md#Lists), [Punctuation](language.md#Punctuation), [Values with their units](language.md#Units), [The scenarios' language](scenarios.md#InTheScenariosLanguage) |
-| [The scenarios render as a project does](scenarios.md#HowTheScenariosRender) | **held** | [Figures in Mermaid](scenarios.md#FiguresInMermaid), [Files in Markdown](scenarios.md#FilesInMarkdown), [Read by the engine](scenarios.md#LanguagesRead), [Figures at a terminal, as text](scenarios.md#TerminalFiguresAsText), [The terminal in text](scenarios.md#TerminalInText) |
+| [The scenarios render as a project does](scenarios.md#HowTheScenariosRender) | **held** | [Figures in Mermaid](scenarios.md#FiguresInMermaid), [Files in Markdown](scenarios.md#FilesInMarkdown), [The formats of the answers](scenarios.md#FormatsOfTheAnswers), [Read by the engine](scenarios.md#LanguagesRead), [Figures at a terminal, as text](scenarios.md#TerminalFiguresAsText), [The terminal in text](scenarios.md#TerminalInText) |
 
 ## Documents · Rendering
 
@@ -16,7 +16,7 @@
 
 ### One renderer, its syntax a choice
 
-`OneRendererManySyntaxes` · `src/rendering.ts:362` · status: **held**
+`OneRendererManySyntaxes` · `src/rendering.ts:364` · status: **held**
 
 A document is rendered by one renderer, which says each piece in words and finds where references lead; the syntax it writes in is a port, chosen per audience, and the figures a second port, which the syntax reaches.
 
@@ -39,7 +39,7 @@ Consequences: The words of a document are said once, by the renderer; a new form
 
 ### The documents speak the engine's language
 
-`TheEnginesLanguage` · `src/scenarios.ts:121` · status: **held**
+`TheEnginesLanguage` · `src/scenarios.ts:124` · status: **held**
 
 The views speak the language of the engine that compiles a graph: what renders their documents writes its dates, its lists, its marks and its numbers, through a port each project realizes with its decision of the language (Trame with its own), and the library's scenarios with one decided for them.
 
@@ -59,7 +59,7 @@ Consequences: The engine's g.lib, the renderers and the page read the same nodes
 
 ### The scenarios render as a project does
 
-`HowTheScenariosRender` · `src/scenarios.ts:375` · status: **held**
+`HowTheScenariosRender` · `src/scenarios.ts:411` · status: **held**
 
 The renderers are pure: they receive documents in the intermediate format, the contract of the views, and give text. The scenarios render documents written in it, with each syntax and each kind of figures the library offers, chosen as a project chooses them; what its syntax elements write in HTML is read back by the engine that builds the library.
 
@@ -73,5 +73,5 @@ Consequences: A change of the renderers shows in the expected documents, line by
 
 - Decided by: trame
 - Serves: [Documents rendered once, for every project](product.md#RenderedOnce)
-- Applied by: [Files in Markdown](scenarios.md#FilesInMarkdown), [Figures in Mermaid](scenarios.md#FiguresInMermaid), [The terminal in text](scenarios.md#TerminalInText), [Figures at a terminal, as text](scenarios.md#TerminalFiguresAsText), [Read by the engine](scenarios.md#LanguagesRead)
+- Applied by: [Files in Markdown](scenarios.md#FilesInMarkdown), [Figures in Mermaid](scenarios.md#FiguresInMermaid), [The terminal in text](scenarios.md#TerminalInText), [Figures at a terminal, as text](scenarios.md#TerminalFiguresAsText), [Read by the engine](scenarios.md#LanguagesRead), [The formats of the answers](scenarios.md#FormatsOfTheAnswers)
 - Adopts: [The engine is a provider](../.trame/std/docs/engine.md#EngineAsAProvider)

@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-27",
+  "at": "2026-11-28",
   "nodes": [
     {
       "id": "appearance.ExplorerDrawing",
@@ -1007,7 +1007,7 @@
       "id": "browser.BrowserAmendments",
       "kind": "implementation",
       "title": "Amendments sent to trame dev",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1026,7 +1026,7 @@
       "id": "browser.BrowserDecompression",
       "kind": "implementation",
       "title": "The browser's gzip",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1043,7 +1043,7 @@
       "id": "browser.BrowserFeed",
       "kind": "implementation",
       "title": "The globals of the page, and trame dev",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1061,7 +1061,7 @@
       "id": "browser.BrowserMemory",
       "kind": "implementation",
       "title": "Local storage",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1077,7 +1077,7 @@
       "id": "browser.BrowserWindow",
       "kind": "implementation",
       "title": "The browser's window",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1095,7 +1095,7 @@
       "id": "browser.ExplorerFigures",
       "kind": "function",
       "title": "Explorer of a graph",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -1132,7 +1132,7 @@
       "id": "browser.ShowGraph",
       "kind": "entry",
       "title": "Show the graph",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "trigger": {
@@ -1185,7 +1185,7 @@
       "id": "browser.TheBrowserRunsThePage",
       "kind": "binding",
       "title": "The browser runs the page",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The page's script took what it needed from the browser itself, here and there: the graph could not say what the page asks of the browser, nor try it elsewhere.",
@@ -1200,7 +1200,7 @@
       "id": "browser.ThePageIsAssembled",
       "kind": "adr",
       "title": "The page is assembled",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The page's script built by hand what it shared with the engine and wrote its values (classes, identifiers, the explorer's geometry) as literals the catalogue could not see: a change in the graph did not reach it.",
@@ -2306,7 +2306,11 @@
           "samples": "command-scenarios.ViewSamples",
           "texts": "std/algebra.Texts",
           "counts": "std/algebra.Counts",
-          "messages": "messages.ScenarioMessages"
+          "messages": "messages.ScenarioMessages",
+          "formats": "std/tooling.AnswerFormats",
+          "media": "std/web.MediaTypes",
+          "long": "std/tooling.LongOptions",
+          "standard": "std/tooling.StandardOptions"
         },
         "body": "(function)"
       }
@@ -2376,7 +2380,7 @@
           "sharing": "generations.LanguageSharing",
           "releases": "generations.Releases",
           "records": "generations.ReleaseRecords",
-          "json": "conventions.JsonFormatting",
+          "json": "std/text.JsonFormatting",
           "specifiers": "std/system.NodeModuleSpecifiers",
           "references": "std/engine.ReferenceSyntax",
           "clock": "architecture.Clock",
@@ -2515,7 +2519,7 @@
           "paths": "architecture.Paths",
           "versions": "packages.VersionOrder",
           "encodings": "std/system.NodeEncodings",
-          "json": "conventions.JsonFormatting",
+          "json": "std/text.JsonFormatting",
           "terminal": "architecture.Terminal",
           "table": "documents/text.Columns",
           "columns": "documents/text.TerminalText",
@@ -2807,7 +2811,9 @@
           "terminal": "architecture.Terminal",
           "cell": "documents/text.PaddedCell",
           "columns": "documents/text.TerminalColumns",
-          "messages": "messages.CommandMessages"
+          "messages": "messages.CommandMessages",
+          "long": "std/tooling.LongOptions",
+          "standard": "std/tooling.StandardOptions"
         },
         "body": {
           "file": "./code/commands/help.ts",
@@ -2839,7 +2845,7 @@
           "paths": "architecture.Paths",
           "encodings": "std/system.NodeEncodings",
           "file": "std/text.TextFile",
-          "json": "conventions.JsonFormatting",
+          "json": "std/text.JsonFormatting",
           "language": "typescript.TypeScript",
           "syntax": "typescript.TypeScriptSyntax",
           "title": "typescript.ModuleTitle",
@@ -2940,7 +2946,9 @@
           "paths": "architecture.Paths",
           "reading": "architecture.FileReading",
           "specifiers": "std/system.NodeModuleSpecifiers",
-          "reader": "syntax.SyntaxReader"
+          "reader": "syntax.SyntaxReader",
+          "long": "std/tooling.LongOptions",
+          "standard": "std/tooling.StandardOptions"
         },
         "body": {
           "file": "./code/commands/preparation.ts",
@@ -3141,15 +3149,12 @@
       "fields": {
         "owner": "trame",
         "deps": {
-          "line": "conventions.TrameCommands",
-          "json": "conventions.JsonFormatting",
           "preparation": "commands.Preparation",
           "views": "engine.Views",
-          "files": "documents/rendering.FileRendering",
-          "screen": "documents/rendering.TerminalRendering",
+          "formats": "std/tooling.AnswerFormats",
+          "refused": "commands/commands.ViewRefused",
           "terminal": "architecture.Terminal",
-          "texts": "std/algebra.Texts",
-          "messages": "messages.CommandMessages"
+          "lineWords": "std/tooling.LineWords"
         },
         "body": {
           "file": "./code/commands/render-view.ts",
@@ -3372,7 +3377,7 @@
           "installs": "architecture.PackageInstalls",
           "lock": "packages.NpmLockfile",
           "file": "std/text.TextFile",
-          "json": "conventions.JsonFormatting",
+          "json": "std/text.JsonFormatting",
           "language": "typescript.TypeScript",
           "terminal": "architecture.Terminal",
           "messages": "messages.CommandMessages",
@@ -3511,17 +3516,6 @@
             "value": "lead",
             "meaning": "What that module exports: given where the names lead and the launcher's URL, it leads them"
           }
-        }
-      }
-    },
-    {
-      "id": "conventions.JsonFormatting",
-      "kind": "decision",
-      "title": "JSON formatting",
-      "fields": {
-        "owner": "trame",
-        "value": {
-          "indentation": 2
         }
       }
     },
@@ -3783,10 +3777,6 @@
             "value": "--at",
             "meaning": "The date at which the graph is compiled"
           },
-          "format": {
-            "value": "--format",
-            "meaning": "The format a view is written in"
-          },
           "port": {
             "value": "--port",
             "meaning": "The port trame dev listens on"
@@ -3874,14 +3864,6 @@
           "failed": {
             "value": "failed",
             "meaning": "The evidence says no: the check failed, the review asks for changes"
-          },
-          "json": {
-            "value": "json",
-            "meaning": "A view written as JSON (the intermediate format)"
-          },
-          "markdown": {
-            "value": "md",
-            "meaning": "A view written as Markdown"
           },
           "separator": {
             "value": " ",
@@ -4560,7 +4542,7 @@
           "sha256": "std/algorithms.Sha256",
           "encodings": "std/system.NodeEncodings",
           "fingerprint": "engine.Fingerprint",
-          "json": "conventions.JsonFormatting",
+          "json": "std/text.JsonFormatting",
           "sequences": "std/algebra.Sequences",
           "texts": "std/algebra.Texts",
           "values": "std/algebra.ValueTypes"
@@ -4778,7 +4760,7 @@
         "deps": {
           "encodings": "std/system.NodeEncodings",
           "layout": "conventions.Layout",
-          "json": "conventions.JsonFormatting",
+          "json": "std/text.JsonFormatting",
           "textFile": "std/text.TextFile",
           "references": "engine.References",
           "codeSpan": "documents/markdown.CodeSpan",
@@ -4802,7 +4784,7 @@
         "owner": "trame",
         "deps": {
           "values": "std/algebra.ValueTypes",
-          "json": "conventions.JsonFormatting",
+          "json": "std/text.JsonFormatting",
           "positions": "engine.Positions",
           "prelude": "architecture.Prelude",
           "counts": "std/algebra.Counts",
@@ -6599,10 +6581,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "documents",
-        "version": "0.3.0",
+        "version": "0.4.0",
         "joins": "library",
         "from": "path",
-        "at": "libs/documents/releases/0.3.0"
+        "at": "libs/documents/releases/0.4.0"
       }
     },
     {
@@ -6629,10 +6611,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "commands",
-        "version": "0.3.0",
+        "version": "0.4.0",
         "joins": "library",
         "from": "path",
-        "at": "libs/commands/releases/0.3.0"
+        "at": "libs/commands/releases/0.4.0"
       }
     },
     {
@@ -6749,10 +6731,10 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.30.0",
+        "version": "0.31.0",
         "joins": "library",
         "from": "path",
-        "at": "std/releases/0.30.0"
+        "at": "std/releases/0.31.0"
       }
     },
     {
@@ -8073,7 +8055,7 @@
       "id": "platform.DiskReading",
       "kind": "implementation",
       "title": "System files, for reading",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": {
@@ -8086,7 +8068,7 @@
       "id": "platform.DiskTrees",
       "kind": "implementation",
       "title": "Trees on disk",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -8104,7 +8086,7 @@
       "id": "platform.DiskWriting",
       "kind": "implementation",
       "title": "System files, for writing",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": {
@@ -8450,7 +8432,7 @@
       "id": "platform.NodeHttpServer",
       "kind": "implementation",
       "title": "Node HTTP server",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "body": {
@@ -8463,7 +8445,7 @@
       "id": "platform.NodeMachine",
       "kind": "binding",
       "title": "On a machine, Node.js reads, writes and runs",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "What changes the world (files written, processes, the terminal, the clock) is real only on a machine; the scenarios keep it in memory.",
@@ -8504,7 +8486,7 @@
       "id": "platform.NodeProcess",
       "kind": "implementation",
       "title": "Node process",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -8525,7 +8507,7 @@
       "id": "platform.NodePrograms",
       "kind": "implementation",
       "title": "Node programs",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -8543,7 +8525,7 @@
       "id": "platform.NodeTerminal",
       "kind": "implementation",
       "title": "Node terminal",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -8603,7 +8585,7 @@
       "id": "platform.NpmInstall",
       "kind": "implementation",
       "title": "npm installs",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -8622,7 +8604,7 @@
       "id": "platform.NpmReports",
       "kind": "implementation",
       "title": "npm's reports",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -8762,7 +8744,7 @@
       "id": "platform.RunsKeptOnDisk",
       "kind": "binding",
       "title": "On a machine, runs are kept on disk",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "The commands of a shipment and of an advance run as separate processes, each compiling the same graph: what one played, the next can find only on disk.",
@@ -8776,7 +8758,7 @@
       "id": "platform.RunsOnDisk",
       "kind": "implementation",
       "title": "Runs kept on disk",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -8814,7 +8796,7 @@
       "id": "platform.SystemClock",
       "kind": "implementation",
       "title": "System clock",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "deps": {
@@ -9312,7 +9294,7 @@
       "id": "principles.RunsKept",
       "kind": "adr",
       "title": "A run is kept while what it reads is as it was",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "A build of Trame played its scenarios 2,030 times, a hundred of its hundred and forty seconds; a shipment compiled the same graph a dozen times with the same code (g74).",
@@ -9341,7 +9323,7 @@
       "id": "principles.ShippedThroughTheGraph",
       "kind": "adr",
       "title": "A version ships through the graph",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "Two products ship differently (a page placed where it is served, an engine frozen into a generation) and their pipelines lived in scripts and in their authors' heads: nothing said what had been checked, by whom, on which version, nor why a version could go.",
@@ -9357,7 +9339,7 @@
       "id": "principles.TechnologyInOneNode",
       "kind": "adr",
       "title": "A technology is chosen in one node",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "context": "Each implementation said which environments it served: the choice of a technology was spread over its realizations, nothing said why, and a test double or a repository over a database port had to be declared as if it touched the platform.",
@@ -11511,6 +11493,16 @@
       }
     },
     {
+      "id": "rendering.AnswersAsChosen",
+      "kind": "binding",
+      "title": "The formats of a command's documents",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "--format is an option of every command (std's): the project chooses the formats it offers, its default first."
+      }
+    },
+    {
       "id": "rendering.DocumentsInMarkdown",
       "kind": "binding",
       "title": "Documents in Markdown",
@@ -12341,7 +12333,7 @@
       "id": "sdlc.CandidateKeepsTheLaws",
       "kind": "check",
       "title": "The candidate plays the laws",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       }
@@ -12350,7 +12342,7 @@
       "id": "sdlc.CandidateRunsOnTheMachine",
       "kind": "check",
       "title": "The candidate runs on the machine",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       }
@@ -12376,7 +12368,7 @@
       "fields": {
         "owner": "trame",
         "context": "The engine's commands reached its modules directly: a project could neither choose them nor specialize them, and a command of its own could not compute what they computed.",
-        "consequences": "trame plan, build and snapshot run on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's own stay until the generation that removes the commands every project then runs from the library.",
+        "consequences": "trame plan, build, snapshot and view run on a machine and in a session alike, chosen for Local only: the dispatch asks for no environment. The engine's own stay until the generation that removes the commands every project then runs from the library.",
         "rejected": {
           "The engine's own commands, kept": "they would stay out of reach of every project's choice, and the engine the only one to reach its modules"
         }
@@ -12395,7 +12387,7 @@
       "id": "sdlc.EngineCandidate",
       "kind": "artifact",
       "title": "The candidate engine",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "out/local/trame-cli.ts"
@@ -12436,7 +12428,7 @@
       "id": "sdlc.GraphPage",
       "kind": "artifact",
       "title": "The graph page",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "trame-page.html",
@@ -12458,7 +12450,7 @@
       "id": "sdlc.GraphPageOpens",
       "kind": "check",
       "title": "The graph page opens",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame"
       }
@@ -12600,7 +12592,7 @@
       "id": "sdlc.NextGeneration",
       "kind": "shipment",
       "title": "The next generation",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "target": "generation"
@@ -12761,7 +12753,7 @@
       "id": "sdlc.PageProgram",
       "kind": "artifact",
       "title": "The page's program",
-      "status": "held",
+      "status": "unknown",
       "fields": {
         "owner": "trame",
         "path": "out/browser/page-app.ts"
@@ -13136,7 +13128,7 @@
           "hashing": "architecture.Hashing",
           "sha256": "std/algorithms.Sha256",
           "encodings": "std/system.NodeEncodings",
-          "json": "conventions.JsonFormatting",
+          "json": "std/text.JsonFormatting",
           "fingerprints": "engine.Fingerprints",
           "signatures": "architecture.Signatures"
         },
@@ -13178,7 +13170,11 @@
           "encodings": "std/system.NodeEncodings",
           "values": "std/algebra.ValueTypes",
           "sequences": "std/algebra.Sequences",
-          "posix": "std/system.Posix"
+          "posix": "std/system.Posix",
+          "formats": "std/tooling.AnswerFormats",
+          "media": "std/web.MediaTypes",
+          "long": "std/tooling.LongOptions",
+          "standard": "std/tooling.StandardOptions"
         },
         "body": {
           "file": "./code/commands/run-plan.ts",
@@ -18111,11 +18107,6 @@
     },
     {
       "from": "commands.Advance",
-      "to": "conventions.JsonFormatting",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Advance",
       "to": "architecture.Clock",
       "kind": "deps"
     },
@@ -18327,11 +18318,6 @@
     {
       "from": "commands.Audit",
       "to": "packages.VersionOrder",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Audit",
-      "to": "conventions.JsonFormatting",
       "kind": "deps"
     },
     {
@@ -18847,11 +18833,6 @@
     {
       "from": "commands.Init",
       "to": "architecture.Paths",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.Init",
-      "to": "conventions.JsonFormatting",
       "kind": "deps"
     },
     {
@@ -19451,16 +19432,6 @@
     },
     {
       "from": "commands.RenderView",
-      "to": "conventions.TrameCommands",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.RenderView",
-      "to": "conventions.JsonFormatting",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.RenderView",
       "to": "commands.Preparation",
       "kind": "deps"
     },
@@ -19472,11 +19443,6 @@
     {
       "from": "commands.RenderView",
       "to": "architecture.Terminal",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.RenderView",
-      "to": "messages.CommandMessages",
       "kind": "deps"
     },
     {
@@ -19832,11 +19798,6 @@
     {
       "from": "commands.WriteManifest",
       "to": "packages.NpmLockfile",
-      "kind": "deps"
-    },
-    {
-      "from": "commands.WriteManifest",
-      "to": "conventions.JsonFormatting",
       "kind": "deps"
     },
     {
@@ -20695,11 +20656,6 @@
       "kind": "deps"
     },
     {
-      "from": "engine.EngineFingerprint",
-      "to": "conventions.JsonFormatting",
-      "kind": "deps"
-    },
-    {
       "from": "engine.Fingerprints",
       "to": "product.ExecutableSpecification",
       "kind": "serves"
@@ -20946,11 +20902,6 @@
     },
     {
       "from": "engine.Lock",
-      "to": "conventions.JsonFormatting",
-      "kind": "deps"
-    },
-    {
-      "from": "engine.Lock",
       "to": "engine.References",
       "kind": "deps"
     },
@@ -20978,11 +20929,6 @@
       "from": "engine.MachineOutputs",
       "to": "product.SingleSource",
       "kind": "serves"
-    },
-    {
-      "from": "engine.MachineOutputs",
-      "to": "conventions.JsonFormatting",
-      "kind": "deps"
     },
     {
       "from": "engine.MachineOutputs",
@@ -25620,6 +25566,21 @@
       "kind": "assembledBy"
     },
     {
+      "from": "rendering.AnswersAsChosen",
+      "to": "architecture.Local",
+      "kind": "environments"
+    },
+    {
+      "from": "rendering.AnswersAsChosen",
+      "to": "architecture.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "rendering.AnswersAsChosen",
+      "to": "product.ReplaceableTechnology",
+      "kind": "serves"
+    },
+    {
       "from": "rendering.DocumentsInMarkdown",
       "to": "architecture.Local",
       "kind": "environments"
@@ -25777,6 +25738,11 @@
     {
       "from": "rendering.RenderedByTheLibrary",
       "to": "rendering.PageFiguresDrawn",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "rendering.RenderedByTheLibrary",
+      "to": "rendering.AnswersAsChosen",
       "kind": "appliedBy"
     },
     {
@@ -27292,11 +27258,6 @@
     {
       "from": "shipping.SdlcEvidence",
       "to": "architecture.Hashing",
-      "kind": "deps"
-    },
-    {
-      "from": "shipping.SdlcEvidence",
-      "to": "conventions.JsonFormatting",
       "kind": "deps"
     },
     {

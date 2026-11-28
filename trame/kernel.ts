@@ -16,7 +16,7 @@ import {
   PublicationState,
 } from "./ir"
 
-export { Hole, patchLeaves, getPath, isFileBody, isNode }
+export { Hole, patchLeaves, getPath, isFileBody, isNode, isPlain }
 export type { FileBody }
 export * from "./format"
 export * from "./ir"

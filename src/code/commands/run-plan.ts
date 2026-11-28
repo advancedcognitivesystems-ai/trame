@@ -7,6 +7,8 @@
 // was made available, and those that write the review of a branch (since g109). A writer gives it a form; it decides
 // nothing.
 
+import type { AnswerFormat, LongOptions, StandardOptions } from "#std/tooling"
+import type { MediaTypes } from "#std/web"
 import { ArtifactEdge, EdgeName, KindName, PackageField, PipelineStage, ViewName } from "../../../trame/kernel"
 import type { Compilation, Pipeline, ProvidedBy, RunPlan, View } from "../../../trame/kernel"
 import type { FileReading, Layout, Paths } from "../../architecture"
@@ -27,9 +29,17 @@ export interface Deps {
   values: ProvidedBy<typeof ValueTypes>
   sequences: ProvidedBy<typeof Sequences>
   posix: ProvidedBy<typeof Posix>
+  /** The formats chosen for a command's documents, and std's option that names one (since g135). */
+  formats: readonly AnswerFormat[]
+  media: ProvidedBy<typeof MediaTypes>
+  long: ProvidedBy<typeof LongOptions>
+  standard: ProvidedBy<typeof StandardOptions>
 }
 
-const body = ({ line, project, layout, pin, reading, paths, encodings, values, sequences, posix }: Deps) => {
+const body = ({ line, project, layout, pin, reading, paths, encodings, values, sequences, posix, formats, media, long, standard }: Deps) => {
+  /** The review asked in Markdown, when a format writes it (since g135: its word is the format's, its option std's). */
+  const markdown = formats.find((f) => f.media === media.markdown)
+  const inMarkdown = markdown === undefined ? [] : [long.prefix + standard.format.name, markdown.word]
   const { join, resolve, relative, dirname, sep } = paths
   const unique = <T>(xs: readonly T[]) => [...new Set(xs)]
   const read = (file: string) => (reading.existsSync(file) ? reading.readFileSync(file, encodings.utf8) : undefined)
@@ -94,7 +104,7 @@ const body = ({ line, project, layout, pin, reading, paths, encodings, values, s
       evidence: from(join(root, layout.evidence)),
       deployed: { command: [launcher, line.evidence], verdict: line.passed, by: line.by, url: line.url },
       // What a pull request adds to what is published: the view review, against the lock of the branch it merges into.
-      review: { command: [launcher, line.view, ViewName.review, line.format, line.markdown], lock: layout.lock },
+      review: { command: [launcher, line.view, ViewName.review, ...inMarkdown], lock: layout.lock },
       // Where the file comes from in the graph (since g110): the artefact it is, the decision of its settings, and the
       // file that declares the artefact, from the repository's root; what a file written says to whoever reads it.
       from: {

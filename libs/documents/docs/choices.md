@@ -1,8 +1,8 @@
 # Technical choices
 
-*What answers each port in each environment on 27 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
+*What answers each port in each environment on 28 November 2026: a technical choice says what it chooses, where, the patterns it follows, why, and what it rejected. The code that uses a port never names what answers it.*
 
-> **6 technical choices for 6 ports, in 1 environment**
+> **7 technical choices for 7 ports, in 1 environment**
 
 | Port | Test |
 |---|---|
@@ -12,12 +12,14 @@
 | [Figures of the documents written as files](rendering.md#FileFigures) | [Mermaid diagrams](rendering.md#MermaidDiagrams) |
 | [Figures of the terminal](rendering.md#TerminalFigures) | [Figures as text](rendering.md#TextFigures) |
 | [Reading a language](../.trame/std/docs/engine.md#LanguageReading) | [Read by the engine](../.trame/std/docs/engine.md#ReadByTheEngine) |
+| [Formats of an answer](../.trame/std/docs/tooling.md#AnswerFormats) | [Documents at a terminal](rendering.md#AnswersAtATerminal), [Documents in Markdown](rendering.md#AnswersInMarkdown) |
 
 | Pattern | Status | Followed by |
 |---|---|---|
 | [Strategy](../.trame/std/docs/patterns.md#Strategy) | **held** | [The scenarios' language](scenarios.md#InTheScenariosLanguage), [Files in Markdown](scenarios.md#FilesInMarkdown), [Figures in Mermaid](scenarios.md#FiguresInMermaid), [The terminal in text](scenarios.md#TerminalInText), [Figures at a terminal, as text](scenarios.md#TerminalFiguresAsText), [In memory](../.trame/std/docs/scenarios.md#InMemory), [Judged as the language says](../.trame/std/docs/scenarios.md#LanguageJudgment), [Judged strictly](../.trame/std/docs/scenarios.md#StrictJudgment), [The scenarios' settings](../.trame/std/docs/scenarios.md#ScenarioSettings) |
 | [Adapter](../.trame/std/docs/patterns.md#Adapter) | **held** | [Read by the engine](scenarios.md#LanguagesRead), [Read by the engine that builds](../.trame/std/docs/scenarios.md#ReadInTheEngine) |
 | [Bridge](../.trame/std/docs/patterns.md#Bridge) | **held** | [Files in Markdown](scenarios.md#FilesInMarkdown), [The terminal in text](scenarios.md#TerminalInText) |
+| [Plugin](../.trame/std/docs/patterns.md#Plugin) | **held** | [The formats of the answers](scenarios.md#FormatsOfTheAnswers), [The formats of the scenarios](../.trame/std/docs/scenarios.md#FormatsOfTheScenarios) |
 
 ## Documents · Scenarios
 
@@ -25,7 +27,7 @@
 
 ### The scenarios' language
 
-`InTheScenariosLanguage` · `src/scenarios.ts:50` · status: **held**
+`InTheScenariosLanguage` · `src/scenarios.ts:51` · status: **held**
 
 In the library's scenarios, the documents are written in the language decided for them.
 
@@ -48,7 +50,7 @@ Context: A project writes its documents in the language its engine speaks: the l
 
 ### Files in Markdown
 
-`FilesInMarkdown` · `src/scenarios.ts:136` · status: **held**
+`FilesInMarkdown` · `src/scenarios.ts:139` · status: **held**
 
 In the library's scenarios, the documents written as files are in Markdown, as a project chooses them.
 
@@ -71,7 +73,7 @@ Context: The scenarios play the syntax of files the library offers.
 
 ### Figures in Mermaid
 
-`FiguresInMermaid` · `src/scenarios.ts:149` · status: **held**
+`FiguresInMermaid` · `src/scenarios.ts:152` · status: **held**
 
 In the library's scenarios, the figures of the files are Mermaid diagrams.
 
@@ -94,7 +96,7 @@ Context: The scenarios play the figures of files the library offers.
 
 ### The terminal in text
 
-`TerminalInText` · `src/scenarios.ts:162` · status: **held**
+`TerminalInText` · `src/scenarios.ts:165` · status: **held**
 
 In the library's scenarios, what a terminal prints is plain text.
 
@@ -117,7 +119,7 @@ Context: The scenarios play the syntax of the terminal the library offers.
 
 ### Figures at a terminal, as text
 
-`TerminalFiguresAsText` · `src/scenarios.ts:175` · status: **held**
+`TerminalFiguresAsText` · `src/scenarios.ts:178` · status: **held**
 
 In the library's scenarios, a figure printed at a terminal is drawn in lines of text.
 
@@ -140,7 +142,7 @@ Context: The scenarios play the figures of the terminal the library offers.
 
 ### Read by the engine
 
-`LanguagesRead` · `src/scenarios.ts:188` · status: **held**
+`LanguagesRead` · `src/scenarios.ts:191` · status: **held**
 
 Where the library's build evaluates, the HTML its syntax elements write is read back by the engine that builds it.
 
@@ -156,5 +158,29 @@ Context: Reading a language is the engine's: the grammar and its reader are the 
 - Chooses: [Read by the engine](../.trame/std/docs/engine.md#ReadByTheEngine)
 - In: [Test](scenarios.md#Test)
 - Follows: [Adapter](../.trame/std/docs/patterns.md#Adapter)
+- Serves: [Documents rendered once, for every project](product.md#RenderedOnce)
+- Applies: [The scenarios render as a project does](scenarios.md#HowTheScenariosRender)
+
+<a id="FormatsOfTheAnswers"></a>
+
+### The formats of the answers
+
+`FormatsOfTheAnswers` · `src/scenarios.ts:376` · status: **held**
+
+In the library's scenarios, the documents a command answers are printed as text first, written in Markdown on demand.
+
+In [Test](scenarios.md#Test):
+
+| Port | Answered by | Which is |
+|---|---|---|
+| [Formats of an answer](../.trame/std/docs/tooling.md#AnswerFormats) | [Documents at a terminal](rendering.md#AnswersAtATerminal) | a function |
+| [Formats of an answer](../.trame/std/docs/tooling.md#AnswerFormats) | [Documents in Markdown](rendering.md#AnswersInMarkdown) | a function |
+
+Context: The scenarios play the formats of std's answers the library offers, in the order a project chooses them.
+
+- Decided by: trame
+- Chooses: [Documents at a terminal](rendering.md#AnswersAtATerminal), [Documents in Markdown](rendering.md#AnswersInMarkdown)
+- In: [Test](scenarios.md#Test)
+- Follows: [Plugin](../.trame/std/docs/patterns.md#Plugin)
 - Serves: [Documents rendered once, for every project](product.md#RenderedOnce)
 - Applies: [The scenarios render as a project does](scenarios.md#HowTheScenariosRender)

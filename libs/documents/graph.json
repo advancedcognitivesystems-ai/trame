@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-27",
+  "generated": "2026-11-28",
   "nodes": [
     {
       "id": "appearance.Palette",
@@ -2742,9 +2742,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.30.0",
+        "version": "0.31.0",
         "joins": "library",
-        "at": "../../std/releases/0.30.0"
+        "at": "../../std/releases/0.31.0"
       },
       "diagnostics": []
     },
@@ -2819,10 +2819,60 @@
       "diagnostics": []
     },
     {
+      "id": "rendering.AnswersAtATerminal",
+      "kind": "function",
+      "title": "Documents at a terminal",
+      "source": "src/rendering.ts:382",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "printed": "rendering.TerminalRendering",
+          "media": "std/web.MediaTypes"
+        },
+        "constants": {
+          "word": {
+            "value": "text",
+            "meaning": "The word of the format, after --format"
+          }
+        },
+        "body": {
+          "file": "./code/rendering/answers-at-a-terminal.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "id": "rendering.AnswersInMarkdown",
+      "kind": "function",
+      "title": "Documents in Markdown",
+      "source": "src/rendering.ts:395",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "written": "rendering.FileRendering",
+          "media": "std/web.MediaTypes"
+        },
+        "constants": {
+          "word": {
+            "value": "md",
+            "meaning": "The word of the format, after --format"
+          }
+        },
+        "body": {
+          "file": "./code/rendering/answers-in-markdown.ts",
+          "language": "typescript"
+        }
+      },
+      "diagnostics": []
+    },
+    {
       "id": "rendering.Common",
       "kind": "function",
       "title": "Common rendering",
-      "source": "src/rendering.ts:112",
+      "source": "src/rendering.ts:114",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2847,7 +2897,7 @@
       "id": "rendering.FileFigures",
       "kind": "port",
       "title": "Figures of the documents written as files",
-      "source": "src/rendering.ts:239",
+      "source": "src/rendering.ts:241",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -2858,7 +2908,7 @@
       "id": "rendering.FileRendering",
       "kind": "function",
       "title": "Rendering of the files",
-      "source": "src/rendering.ts:339",
+      "source": "src/rendering.ts:341",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2874,7 +2924,7 @@
       "id": "rendering.FileSyntax",
       "kind": "port",
       "title": "Syntax of the documents written as files",
-      "source": "src/rendering.ts:228",
+      "source": "src/rendering.ts:230",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -2885,7 +2935,7 @@
       "id": "rendering.MarkdownSyntax",
       "kind": "function",
       "title": "Markdown writer",
-      "source": "src/rendering.ts:289",
+      "source": "src/rendering.ts:291",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2922,7 +2972,7 @@
       "id": "rendering.MermaidDiagrams",
       "kind": "function",
       "title": "Mermaid diagrams",
-      "source": "src/rendering.ts:253",
+      "source": "src/rendering.ts:255",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -2956,7 +3006,7 @@
       "id": "rendering.MermaidFigures",
       "kind": "decision",
       "title": "How Mermaid figures are drawn",
-      "source": "src/rendering.ts:81",
+      "source": "src/rendering.ts:83",
       "fields": {
         "owner": "trame",
         "value": {
@@ -2996,7 +3046,7 @@
       "id": "rendering.OneRendererManySyntaxes",
       "kind": "adr",
       "title": "One renderer, its syntax a choice",
-      "source": "src/rendering.ts:362",
+      "source": "src/rendering.ts:364",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3013,7 +3063,7 @@
       "id": "rendering.PlainTextSyntax",
       "kind": "function",
       "title": "Plain text writer",
-      "source": "src/rendering.ts:308",
+      "source": "src/rendering.ts:310",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3042,7 +3092,7 @@
       "id": "rendering.Rendering",
       "kind": "function",
       "title": "The renderer",
-      "source": "src/rendering.ts:328",
+      "source": "src/rendering.ts:330",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3064,7 +3114,7 @@
       "id": "rendering.RenderingMessages",
       "kind": "catalog",
       "title": "Words of the renderers",
-      "source": "src/rendering.ts:102",
+      "source": "src/rendering.ts:104",
       "fields": {
         "owner": "trame",
         "messages": {
@@ -3078,7 +3128,7 @@
       "id": "rendering.SentenceSlots",
       "kind": "decision",
       "title": "Places in a sentence",
-      "source": "src/rendering.ts:43",
+      "source": "src/rendering.ts:45",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3091,7 +3141,7 @@
       "id": "rendering.TerminalFigures",
       "kind": "port",
       "title": "Figures of the terminal",
-      "source": "src/rendering.ts:244",
+      "source": "src/rendering.ts:246",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -3102,7 +3152,7 @@
       "id": "rendering.TerminalRendering",
       "kind": "function",
       "title": "Rendering in the terminal",
-      "source": "src/rendering.ts:350",
+      "source": "src/rendering.ts:352",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3118,7 +3168,7 @@
       "id": "rendering.TerminalSyntax",
       "kind": "port",
       "title": "Syntax of the terminal",
-      "source": "src/rendering.ts:234",
+      "source": "src/rendering.ts:236",
       "fields": {
         "owner": "trame",
         "declaredEffects": []
@@ -3129,7 +3179,7 @@
       "id": "rendering.TextFigures",
       "kind": "function",
       "title": "Figures as text",
-      "source": "src/rendering.ts:271",
+      "source": "src/rendering.ts:273",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3158,7 +3208,7 @@
       "id": "rendering.TextRendering",
       "kind": "decision",
       "title": "Heading levels of Markdown documents",
-      "source": "src/rendering.ts:50",
+      "source": "src/rendering.ts:52",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3559,10 +3609,40 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.AnswersWritten",
+      "kind": "scenario",
+      "title": "Answers written in their formats",
+      "source": "src/scenarios.ts:390",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "formats": "std/tooling.AnswerFormats",
+          "common": "rendering.Common",
+          "samples": "samples.SampleDocuments",
+          "expected": "scenarios.ExpectedDocuments",
+          "text": "std/text.TextFile",
+          "checks": "scenarios.ScenarioWords"
+        },
+        "body": "(function)"
+      },
+      "result": [
+        {
+          "name": "Documents a command answers, printed at a terminal, read as the renderer of the terminal gives them",
+          "status": "passed"
+        },
+        {
+          "name": "Documents a command answers, in Markdown, read as the renderer of files gives them, their references leading where the answer says",
+          "status": "passed"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.DocumentsRendered",
       "kind": "scenario",
       "title": "The documents, rendered",
-      "source": "src/scenarios.ts:355",
+      "source": "src/scenarios.ts:358",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3601,7 +3681,7 @@
       "id": "scenarios.Expected",
       "kind": "decision",
       "title": "What the scenarios read and expect",
-      "source": "src/scenarios.ts:64",
+      "source": "src/scenarios.ts:65",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3646,7 +3726,7 @@
       "id": "scenarios.ExpectedDocuments",
       "kind": "decision",
       "title": "What the scenarios expect",
-      "source": "src/scenarios.ts:201",
+      "source": "src/scenarios.ts:204",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3801,7 +3881,7 @@
       "id": "scenarios.FiguresInMermaid",
       "kind": "binding",
       "title": "Figures in Mermaid",
-      "source": "src/scenarios.ts:149",
+      "source": "src/scenarios.ts:152",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3813,7 +3893,7 @@
       "id": "scenarios.FilesInMarkdown",
       "kind": "binding",
       "title": "Files in Markdown",
-      "source": "src/scenarios.ts:136",
+      "source": "src/scenarios.ts:139",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3822,10 +3902,22 @@
       "diagnostics": []
     },
     {
+      "id": "scenarios.FormatsOfTheAnswers",
+      "kind": "binding",
+      "title": "The formats of the answers",
+      "source": "src/scenarios.ts:376",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "The scenarios play the formats of std's answers the library offers, in the order a project chooses them."
+      },
+      "diagnostics": []
+    },
+    {
       "id": "scenarios.HowTheScenariosRender",
       "kind": "adr",
       "title": "The scenarios render as a project does",
-      "source": "src/scenarios.ts:375",
+      "source": "src/scenarios.ts:411",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3841,7 +3933,7 @@
       "id": "scenarios.InTheScenariosLanguage",
       "kind": "binding",
       "title": "The scenarios' language",
-      "source": "src/scenarios.ts:50",
+      "source": "src/scenarios.ts:51",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3853,7 +3945,7 @@
       "id": "scenarios.LanguagesRead",
       "kind": "binding",
       "title": "Read by the engine",
-      "source": "src/scenarios.ts:188",
+      "source": "src/scenarios.ts:191",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3865,7 +3957,7 @@
       "id": "scenarios.LanguageWritten",
       "kind": "scenario",
       "title": "The language of the documents, written",
-      "source": "src/scenarios.ts:100",
+      "source": "src/scenarios.ts:103",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3904,7 +3996,7 @@
       "id": "scenarios.ScenarioLanguage",
       "kind": "decision",
       "title": "The language of the scenarios",
-      "source": "src/scenarios.ts:28",
+      "source": "src/scenarios.ts:29",
       "fields": {
         "owner": "trame",
         "value": {
@@ -3928,7 +4020,7 @@
       "id": "scenarios.ScenarioWords",
       "kind": "catalog",
       "title": "What the scenarios check",
-      "source": "src/scenarios.ts:82",
+      "source": "src/scenarios.ts:83",
       "fields": {
         "owner": "trame",
         "messages": "(function)"
@@ -3939,7 +4031,7 @@
       "id": "scenarios.TerminalFiguresAsText",
       "kind": "binding",
       "title": "Figures at a terminal, as text",
-      "source": "src/scenarios.ts:175",
+      "source": "src/scenarios.ts:178",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3951,7 +4043,7 @@
       "id": "scenarios.TerminalInText",
       "kind": "binding",
       "title": "The terminal in text",
-      "source": "src/scenarios.ts:162",
+      "source": "src/scenarios.ts:165",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3963,7 +4055,7 @@
       "id": "scenarios.Test",
       "kind": "environment",
       "title": "Test",
-      "source": "src/scenarios.ts:22",
+      "source": "src/scenarios.ts:23",
       "fields": {
         "owner": "trame",
         "evaluates": true
@@ -3974,7 +4066,7 @@
       "id": "scenarios.TheEnginesLanguage",
       "kind": "adr",
       "title": "The documents speak the engine's language",
-      "source": "src/scenarios.ts:121",
+      "source": "src/scenarios.ts:124",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -3990,7 +4082,7 @@
       "id": "scenarios.WrittenForTheScenarios",
       "kind": "function",
       "title": "Written in the language of the scenarios",
-      "source": "src/scenarios.ts:40",
+      "source": "src/scenarios.ts:41",
       "status": "held",
       "fields": {
         "owner": "trame",
@@ -4042,6 +4134,11 @@
           {
             "node": "scenarios.LanguageWritten",
             "via": "language.Dates",
+            "obligation": "sdlc.CodeVerified"
+          },
+          {
+            "node": "scenarios.AnswersWritten",
+            "via": "rendering.AnswersAtATerminal",
             "obligation": "sdlc.CodeVerified"
           },
           {
@@ -4124,6 +4221,8 @@
           "packages.People",
           "packages.StandardLibrary",
           "product.RenderedOnce",
+          "rendering.AnswersAtATerminal",
+          "rendering.AnswersInMarkdown",
           "rendering.Common",
           "rendering.FileFigures",
           "rendering.FileRendering",
@@ -4142,11 +4241,13 @@
           "rendering.TextFigures",
           "rendering.TextRendering",
           "samples.SampleDocuments",
+          "scenarios.AnswersWritten",
           "scenarios.DocumentsRendered",
           "scenarios.Expected",
           "scenarios.ExpectedDocuments",
           "scenarios.FiguresInMermaid",
           "scenarios.FilesInMarkdown",
+          "scenarios.FormatsOfTheAnswers",
           "scenarios.HowTheScenariosRender",
           "scenarios.InTheScenariosLanguage",
           "scenarios.LanguagesRead",
@@ -4284,7 +4385,7 @@
       },
       "result": {
         "path": "src",
-        "code": "9fe235ef"
+        "code": "700946f0"
       },
       "diagnostics": [
         "warning: Built from code that has changed since, or by another engine than the one pinned: trame ship builds it again"
@@ -5545,6 +5646,46 @@
       "kind": "serves"
     },
     {
+      "from": "rendering.AnswersAtATerminal",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "rendering.AnswersAtATerminal",
+      "to": "std/tooling.AnswerFormats",
+      "kind": "implements"
+    },
+    {
+      "from": "rendering.AnswersAtATerminal",
+      "to": "rendering.TerminalRendering",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.AnswersAtATerminal",
+      "to": "std/web.MediaTypes",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.AnswersInMarkdown",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "rendering.AnswersInMarkdown",
+      "to": "std/tooling.AnswerFormats",
+      "kind": "implements"
+    },
+    {
+      "from": "rendering.AnswersInMarkdown",
+      "to": "rendering.FileRendering",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.AnswersInMarkdown",
+      "to": "std/web.MediaTypes",
+      "kind": "deps"
+    },
+    {
       "from": "rendering.Common",
       "to": "product.RenderedOnce",
       "kind": "serves"
@@ -6040,6 +6181,51 @@
       "kind": "deps"
     },
     {
+      "from": "scenarios.AnswersWritten",
+      "to": "rendering.AnswersAtATerminal",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.AnswersWritten",
+      "to": "rendering.AnswersInMarkdown",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.AnswersWritten",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.AnswersWritten",
+      "to": "std/tooling.AnswerFormats",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.AnswersWritten",
+      "to": "rendering.Common",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.AnswersWritten",
+      "to": "samples.SampleDocuments",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.AnswersWritten",
+      "to": "scenarios.ExpectedDocuments",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.AnswersWritten",
+      "to": "std/text.TextFile",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.AnswersWritten",
+      "to": "scenarios.ScenarioWords",
+      "kind": "deps"
+    },
+    {
       "from": "scenarios.DocumentsRendered",
       "to": "rendering.Common",
       "kind": "verifies"
@@ -6165,6 +6351,31 @@
       "kind": "serves"
     },
     {
+      "from": "scenarios.FormatsOfTheAnswers",
+      "to": "rendering.AnswersAtATerminal",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.FormatsOfTheAnswers",
+      "to": "rendering.AnswersInMarkdown",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.FormatsOfTheAnswers",
+      "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.FormatsOfTheAnswers",
+      "to": "std/patterns.Plugin",
+      "kind": "follows"
+    },
+    {
+      "from": "scenarios.FormatsOfTheAnswers",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
       "from": "scenarios.HowTheScenariosRender",
       "to": "product.RenderedOnce",
       "kind": "serves"
@@ -6192,6 +6403,11 @@
     {
       "from": "scenarios.HowTheScenariosRender",
       "to": "scenarios.LanguagesRead",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.HowTheScenariosRender",
+      "to": "scenarios.FormatsOfTheAnswers",
       "kind": "appliedBy"
     },
     {

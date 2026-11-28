@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-27",
+  "at": "2026-11-28",
   "nodes": [
     {
       "id": "appearance.Palette",
@@ -1876,9 +1876,9 @@
       "fields": {
         "owner": "trame",
         "packageName": "std",
-        "version": "0.30.0",
+        "version": "0.31.0",
         "joins": "library",
-        "at": "../../std/releases/0.30.0"
+        "at": "../../std/releases/0.31.0"
       }
     },
     {
@@ -1939,6 +1939,52 @@
         "what": "The renderers' context is the kernel's places, which the engine's API gives (g132); generation 132",
         "fingerprint": "70cc1beb5f8ab540",
         "language": "shared"
+      }
+    },
+    {
+      "id": "rendering.AnswersAtATerminal",
+      "kind": "function",
+      "title": "Documents at a terminal",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "printed": "rendering.TerminalRendering",
+          "media": "std/web.MediaTypes"
+        },
+        "constants": {
+          "word": {
+            "value": "text",
+            "meaning": "The word of the format, after --format"
+          }
+        },
+        "body": {
+          "file": "./code/rendering/answers-at-a-terminal.ts",
+          "language": "typescript"
+        }
+      }
+    },
+    {
+      "id": "rendering.AnswersInMarkdown",
+      "kind": "function",
+      "title": "Documents in Markdown",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "written": "rendering.FileRendering",
+          "media": "std/web.MediaTypes"
+        },
+        "constants": {
+          "word": {
+            "value": "md",
+            "meaning": "The word of the format, after --format"
+          }
+        },
+        "body": {
+          "file": "./code/rendering/answers-in-markdown.ts",
+          "language": "typescript"
+        }
       }
     },
     {
@@ -2646,6 +2692,24 @@
       }
     },
     {
+      "id": "scenarios.AnswersWritten",
+      "kind": "scenario",
+      "title": "Answers written in their formats",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "deps": {
+          "formats": "std/tooling.AnswerFormats",
+          "common": "rendering.Common",
+          "samples": "samples.SampleDocuments",
+          "expected": "scenarios.ExpectedDocuments",
+          "text": "std/text.TextFile",
+          "checks": "scenarios.ScenarioWords"
+        },
+        "body": "(function)"
+      }
+    },
+    {
       "id": "scenarios.DocumentsRendered",
       "kind": "scenario",
       "title": "The documents, rendered",
@@ -2878,6 +2942,16 @@
       "fields": {
         "owner": "trame",
         "context": "The scenarios play the syntax of files the library offers."
+      }
+    },
+    {
+      "id": "scenarios.FormatsOfTheAnswers",
+      "kind": "binding",
+      "title": "The formats of the answers",
+      "status": "held",
+      "fields": {
+        "owner": "trame",
+        "context": "The scenarios play the formats of std's answers the library offers, in the order a project chooses them."
       }
     },
     {
@@ -3967,6 +4041,26 @@
       "kind": "serves"
     },
     {
+      "from": "rendering.AnswersAtATerminal",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "rendering.AnswersAtATerminal",
+      "to": "rendering.TerminalRendering",
+      "kind": "deps"
+    },
+    {
+      "from": "rendering.AnswersInMarkdown",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
+      "from": "rendering.AnswersInMarkdown",
+      "to": "rendering.FileRendering",
+      "kind": "deps"
+    },
+    {
       "from": "rendering.Common",
       "to": "product.RenderedOnce",
       "kind": "serves"
@@ -4392,6 +4486,41 @@
       "kind": "deps"
     },
     {
+      "from": "scenarios.AnswersWritten",
+      "to": "rendering.AnswersAtATerminal",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.AnswersWritten",
+      "to": "rendering.AnswersInMarkdown",
+      "kind": "verifies"
+    },
+    {
+      "from": "scenarios.AnswersWritten",
+      "to": "scenarios.Test",
+      "kind": "env"
+    },
+    {
+      "from": "scenarios.AnswersWritten",
+      "to": "rendering.Common",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.AnswersWritten",
+      "to": "samples.SampleDocuments",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.AnswersWritten",
+      "to": "scenarios.ExpectedDocuments",
+      "kind": "deps"
+    },
+    {
+      "from": "scenarios.AnswersWritten",
+      "to": "scenarios.ScenarioWords",
+      "kind": "deps"
+    },
+    {
       "from": "scenarios.DocumentsRendered",
       "to": "rendering.Common",
       "kind": "verifies"
@@ -4497,6 +4626,26 @@
       "kind": "serves"
     },
     {
+      "from": "scenarios.FormatsOfTheAnswers",
+      "to": "rendering.AnswersAtATerminal",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.FormatsOfTheAnswers",
+      "to": "rendering.AnswersInMarkdown",
+      "kind": "chooses"
+    },
+    {
+      "from": "scenarios.FormatsOfTheAnswers",
+      "to": "scenarios.Test",
+      "kind": "environments"
+    },
+    {
+      "from": "scenarios.FormatsOfTheAnswers",
+      "to": "product.RenderedOnce",
+      "kind": "serves"
+    },
+    {
       "from": "scenarios.HowTheScenariosRender",
       "to": "product.RenderedOnce",
       "kind": "serves"
@@ -4524,6 +4673,11 @@
     {
       "from": "scenarios.HowTheScenariosRender",
       "to": "scenarios.LanguagesRead",
+      "kind": "appliedBy"
+    },
+    {
+      "from": "scenarios.HowTheScenariosRender",
+      "to": "scenarios.FormatsOfTheAnswers",
       "kind": "appliedBy"
     },
     {

@@ -12,13 +12,16 @@ import {
   PreferencesStore, MemoryPreferences, SpeechVoice, SpeechHeard, WrittenSpeech, ScreenAwake, ScreenKeptAwake, AwakeInMemory, AnimationFrames, TimeTurned,
   FramesByHand,
 } from "./platform"
-import { Files, FilesKept, FilesInMemory, HeadlessBrowser, BrowserScripted, BrowserInMemory, ProgramRunsInMemory, ProgramRunsKept } from "./tooling"
+import { Files, FilesKept, FilesInMemory, HeadlessBrowser, BrowserScripted, BrowserInMemory, ProgramRunsInMemory, ProgramRunsKept, AnswersInJson, CommandLines, CommandLineRead, LongOptions, LineWords, StandardOptions } from "./tooling"
+import { JsonFormatting } from "./text"
+import type { Document } from "#trame/kernel"
+import type { Trigger } from "#trame/kinds/entry-point"
 import { fn } from "#trame/kinds/function"
 import {
   OpenPullRequest, MergePullRequest, Propagate, PullRequestSettings, PropagationSettings, CommandWords, type PullRequestWay, type Propagation,
 } from "./commands"
 import { BranchesInMemory, BranchesKept, PullRequestsInMemory, PullRequestsKept, type PullRequestOpen } from "./repository"
-import { Strategy, Adapter } from "./patterns"
+import { Strategy, Adapter, Plugin } from "./patterns"
 import { ReadByTheEngine, LanguageReading } from "./engine"
 import { HtmlMarkup, CssStyleSheets } from "./languages"
 import { Commands, Effects } from "./effects"
@@ -114,6 +117,9 @@ export const ScenarioChecks = catalog({
   language: ScenarioLanguage,
   messages: () => ({
     sameSeedSameDraws: () => "The same seed draws the same numbers, a text the same seed",
+    lineReadByName: () => "A command's line is read by what it declares: its arguments in their order, its options by name, std's apart",
+    lineRefused: () => "A line that lacks an argument the command needs, or names an option nobody declares, is refused in the library's words",
+    answerWritten: () => "Documents a command answers are written in the format the line names, the first chosen when it names none; a word nobody chose is refused",
     languageRead: (language: string) => `The engine loads ${language}'s grammar and its queries, which use only the predicates tree-sitter evaluates`,
     otherSeedOthers: () => "Another seed draws others",
     integersWithin: (lo: number, hi: number) => `Integers drawn between ${lo} and ${hi} stay between them, and reach both`,
@@ -541,6 +547,89 @@ export const LanguagesRead = scenario({
 })
 
 /**
+ * The formats of the scenarios
+ * In the library's scenarios, a command's documents are written in JSON, the format the library offers.
+ */
+export const FormatsOfTheScenarios = binding({
+  owner: "trame",
+  chooses: [AnswersInJson],
+  environments: [Test],
+  follows: [Plugin],
+  serves: [RealizedOnce],
+  context: "The library offers one format of its own; Markdown and text are libs/documents', which projects choose beside it.",
+})
+
+/**
+ * A command's line, in the scenarios
+ * A command that declares an argument and an option, the lines a person might type for it, and the document it answers.
+ */
+export const ScenarioCommand = decision<{
+  trigger: Trigger; document: Document
+  lines: { full: string[]; bare: string[]; lacking: string[]; unknown: string[]; formatted: string[]; elsewhere: string[] }
+  read: { argument: string; given: string; option: string; value: string }
+}>({
+  owner: "trame",
+  value: {
+    trigger: {
+      type: "command", name: "show", help: "Shows a node",
+      arguments: [{ name: "node", meaning: "the node shown" }, { name: "depth", meaning: "how far", optional: true }],
+      options: [{ name: "lang", meaning: "the language", takes: "a tag" }],
+    },
+    document: { id: "show", view: "show", group: "summary", title: "A node", blocks: [{ type: "para", content: ["Shown."] }] },
+    lines: {
+      full: ["Fast", "--lang", "fr"],
+      bare: ["Fast"],
+      lacking: ["--lang", "fr"],
+      unknown: ["Fast", "--colour"],
+      formatted: ["Fast", "--format", "json"],
+      elsewhere: ["Fast", "--format", "pdf"],
+    },
+    read: { argument: "node", given: "Fast", option: "lang", value: "fr" },
+  },
+})
+
+/**
+ * A command's line read, its answer written
+ * The sample command, its lines read by what it declares (its argument and option by name, std's format apart), refused
+ * when it lacks its argument or names an option nobody declares; the document it answers written in JSON, by default
+ * and when the line names it, and refused in a format nobody chose.
+ */
+export const LinesReadAnswersWritten = scenario({
+  owner: "trame",
+  verifies: [CommandLines, CommandLineRead, AnswersInJson],
+  env: Test,
+  deps: {
+    lines: CommandLines, read: CommandLineRead, sample: ScenarioCommand, json: JsonFormatting, long: LongOptions, standard: StandardOptions,
+    exit: ExitStatus, say: LineWords, checks: ScenarioChecks,
+  },
+  body: ({ lines, read, sample, json, long, standard, exit, say, checks }) => async (check) => {
+    const { trigger, document, lines: typed, read: expected } = sample
+    const got = read(trigger, typed.full)
+    check(checks.lineReadByName(),
+      got.arguments[expected.argument] === expected.given && got.options[expected.option] === expected.value &&
+      read(trigger, typed.formatted).standard[standard.format.name] !== undefined && !read(trigger, typed.formatted).args.includes(long.prefix + standard.format.name))
+    let seen: unknown
+    const route = lines.route({ trigger, name: document.id, handler: async (req) => {
+      seen = req.body
+      return { status: exit.success, body: { documents: [document] } }
+    } })
+    const call = (args: string[]) => route.handler({ params: {}, body: { args } })
+    const lacking = await call(typed.lacking)
+    const unknown = await call(typed.unknown)
+    check(checks.lineRefused(),
+      lacking.status === exit.failure && JSON.stringify(lacking.body) === JSON.stringify([say.argumentMissing(document.id, expected.argument)]) &&
+      unknown.status === exit.failure)
+    const written = JSON.stringify([JSON.stringify(document, undefined, json.indentation)])
+    const bare = await call(typed.bare)
+    const formatted = await call(typed.formatted)
+    const elsewhere = await call(typed.elsewhere)
+    check(checks.answerWritten(),
+      JSON.stringify(bare.body) === written && JSON.stringify(formatted.body) === written && seen !== undefined &&
+      elsewhere.status === exit.failure)
+  },
+})
+
+/**
  * How the library's scenarios run
  * Every port the library's code touches is played in memory, by the realizations the library offers for that (they
  * keep their port's promise, as a project's scenarios need); a command's settings are the scenario's own; the library
@@ -556,5 +645,5 @@ export const HowTheScenariosRun = adr({
     "Strict judgment for the library itself": "a library's warnings are often what its projects decide (a port nobody realizes here)",
   },
   serves: [RealizedOnce],
-  appliedBy: [InMemory, ScenarioSettings, LanguageJudgment, StrictJudgment, ReadInTheEngine],
+  appliedBy: [InMemory, ScenarioSettings, LanguageJudgment, StrictJudgment, ReadInTheEngine, FormatsOfTheScenarios],
 })

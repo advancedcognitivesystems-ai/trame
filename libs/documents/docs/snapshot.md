@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 27 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 28 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Documents · Appearance
 
@@ -651,9 +651,9 @@ Package · `StandardLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.30.0
+- Version: 0.31.0
 - How it joins the graph: library
-- Its path: ../../std/releases/0.30.0
+- Its path: ../../std/releases/0.31.0
 - Serves: Documents rendered once, for every project
 
 ## Documents · Product
@@ -775,6 +775,26 @@ Port · `TerminalSyntax`
 
 - Owner: trame
 - Declared effects: 
+
+### Documents at a terminal
+
+Function · `AnswersAtATerminal` · **held**
+
+- Owner: trame
+- Parameters: { printed: rendering.TerminalRendering, media: std/web.MediaTypes }
+- Constants: { word: { value: text, meaning: The word of the format, after --format } }
+- Serves: Documents rendered once, for every project
+- Depends on: Rendering in the terminal
+
+### Documents in Markdown
+
+Function · `AnswersInMarkdown` · **held**
+
+- Owner: trame
+- Parameters: { written: rendering.FileRendering, media: std/web.MediaTypes }
+- Constants: { word: { value: md, meaning: The word of the format, after --format } }
+- Serves: Documents rendered once, for every project
+- Depends on: Rendering of the files
 
 ### Common rendering
 
@@ -900,7 +920,7 @@ Architecture decision · `HowTheScenariosRender` · **held**
 - Consequences: A change of the renderers shows in the expected documents, line by line, as a review of the documents of a project would show it.
 - Rejected: A project compiled and its documents rendered, the views would be played again here, and the API gives no documents yet
 - Serves: Documents rendered once, for every project
-- Applied by: Files in Markdown, Figures in Mermaid, The terminal in text, Figures at a terminal, as text, Read by the engine
+- Applied by: Files in Markdown, Figures in Mermaid, The terminal in text, Figures at a terminal, as text, Read by the engine, The formats of the answers
 
 ### The documents speak the engine's language
 
@@ -949,6 +969,16 @@ Technical choice · `FilesInMarkdown` · **held**
 - In: Test
 - Serves: Documents rendered once, for every project
 
+### The formats of the answers
+
+Technical choice · `FormatsOfTheAnswers` · **held**
+
+- Decided by: trame
+- Context: The scenarios play the formats of std's answers the library offers, in the order a project chooses them.
+- Chooses: Documents at a terminal, Documents in Markdown
+- In: Test
+- Serves: Documents rendered once, for every project
+
 ### The scenarios' language
 
 Technical choice · `InTheScenariosLanguage` · **held**
@@ -994,6 +1024,16 @@ Environment · `Test`
 
 - Owner: trame
 - The build evaluates here: true
+
+### Answers written in their formats
+
+Scenario · `AnswersWritten` · **held**
+
+- Owner: trame
+- Parameters: { formats: std/tooling.AnswerFormats, common: rendering.Common, samples: samples.SampleDocuments, expected: scenarios.ExpectedDocuments, text: std/text.TextFile, checks: scenarios.ScenarioWords }
+- Verifies: Documents at a terminal, Documents in Markdown
+- In: Test
+- Depends on: Common rendering, The documents the scenarios render, What the scenarios expect, What the scenarios check
 
 ### The documents, rendered
 

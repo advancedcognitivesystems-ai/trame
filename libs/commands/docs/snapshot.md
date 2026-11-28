@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 27 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 28 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Commands · Commands
 
@@ -26,6 +26,15 @@ Function · `BuildComparison` · **held**
 
 - Owner: trame
 - Parameters: { say: commands.CommandWords }
+- Serves: Commands every project runs, written once
+- Depends on: What the commands say
+
+### Why a view gives no document, said
+
+Function · `ViewRefused` · **held**
+
+- Owner: trame
+- Parameters: { say: commands.CommandWords, texts: std/algebra.Texts }
 - Serves: Commands every project runs, written once
 - Depends on: What the commands say
 
@@ -62,6 +71,17 @@ Entry point · `Snapshot` · **held**
 - Part of: The library's commands
 - Depends on: What the commands say
 
+### View
+
+Entry point · `View` · **held**
+
+- Owner: trame
+- Trigger: { type: command, name: view, help: One view of the project at hand, arguments: { name: view, meaning: the view, by its name }, { name: subject, meaning: the node or the module a view of a node or of a module is for, optional: true } }
+- Parameters: { project: std/engine.TheProject, refused: commands.ViewRefused, exit: std/system.ExitStatus }
+- Serves: Commands every project runs, written once
+- Part of: The library's commands
+- Depends on: Why a view gives no document, said
+
 ### What the commands say
 
 Message catalog · `CommandWords`
@@ -91,10 +111,10 @@ Package · `Documents`
 
 - Owner: trame
 - Name: documents
-- Version: 0.3.0
+- Version: 0.4.0
 - How it joins the graph: library
 - Where it comes from: path
-- Its path: ../documents/releases/0.3.0
+- Its path: ../documents/releases/0.4.0
 - Serves: Commands every project runs, written once
 
 ### Trame
@@ -126,9 +146,9 @@ Package · `StandardLibrary`
 
 - Owner: trame
 - Name: std
-- Version: 0.30.0
+- Version: 0.31.0
 - How it joins the graph: library
-- Its path: ../../std/releases/0.30.0
+- Its path: ../../std/releases/0.31.0
 - Serves: Commands every project runs, written once
 
 ## Commands · Product
@@ -202,6 +222,13 @@ Release · `R0_3_0`
 - Serves: Commands every project runs, written once
 
 ## Commands · Scenarios
+
+### Views the scenarios ask for
+
+Decision · `ScenarioViews`
+
+- Decided by: trame
+- Value: { unknown: nothing }
 
 ### The small project
 
@@ -350,6 +377,16 @@ Scenario · `SnapshotTaken` · **held**
 - Verifies: Snapshot, Which project the scenarios compile
 - In: Test
 - Depends on: Snapshot, What the commands say, What the scenarios check
+
+### A view answers its document
+
+Scenario · `ViewAnswersItsDocument` · **held**
+
+- Owner: trame
+- Parameters: { view: commands.View, project: std/engine.TheProject, refused: commands.ViewRefused, views: scenarios.ScenarioViews, checks: scenarios.ScenarioWords, exit: std/system.ExitStatus }
+- Verifies: View, Why a view gives no document, said, Which project the scenarios compile
+- In: Test
+- Depends on: View, Why a view gives no document, said, Views the scenarios ask for, What the scenarios check
 
 ## Commands · SDLC
 

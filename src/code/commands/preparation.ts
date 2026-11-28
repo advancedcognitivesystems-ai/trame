@@ -13,6 +13,7 @@ import type { Api as LockApi } from "../engine/lock"
 import type { Api as CommonApi } from "#documents/code/rendering/common"
 import type { Counts, Sequences, Texts } from "#std/algebra"
 import type { NodeModuleSpecifiers } from "#std/system"
+import type { LongOptions, StandardOptions } from "#std/tooling"
 import type { TrameCommands } from "../../conventions"
 import type { Uri } from "#std/web"
 import type { References } from "../../engine"
@@ -21,6 +22,9 @@ import type { Api as ProjectCommandsApi } from "./project-commands"
 import type { Api as MachineApi } from "../engine/machine"
 
 export interface Deps {
+  /** How a long option is written, and std's options of every command (since g135: --format). */
+  long: ProvidedBy<typeof LongOptions>
+  standard: ProvidedBy<typeof StandardOptions>
   line: ProvidedBy<typeof TrameCommands>
   compiler: CompilerApi
   compilationApi: CompilationApi
@@ -139,7 +143,8 @@ const body = (deps: Deps) => {
       return true
     }
     const today = take(line.at) ?? deps.clock.today()
-    const format = take(line.format)
+    // The format a command's documents are written in: std's option of every command (since g135).
+    const format = take(deps.long.prefix + deps.standard.format.name)
     const port = Number(take(line.port) ?? deps.devPort)
     const fragment = has(line.fragment)
     const envName = take(line.env)

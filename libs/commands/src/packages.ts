@@ -17,7 +17,7 @@ export const Language = pkg({ owner: "trame", packageName: "trame", version: "13
  * The library the commands are written with: the ports of the engine (the project at hand), of the files and of the
  * program's command line, its structures and standards.
  */
-export const StandardLibrary = pkg({ owner: "trame", packageName: "std", version: "0.30.0", joins: "library", at: "../../std/releases/0.30.0", serves: [WrittenOnce] })
+export const StandardLibrary = pkg({ owner: "trame", packageName: "std", version: "0.31.0", joins: "library", at: "../../std/releases/0.31.0", serves: [WrittenOnce] })
 
 /**
  * The library of continuous integration
@@ -44,6 +44,6 @@ export const People = pkg({
  * documents a command renders; at the version the library uses, by its path in Trame's repository.
  */
 export const Documents = pkg({
-  owner: "trame", packageName: "documents", version: "0.3.0", joins: "library", from: "path", at: "../documents/releases/0.3.0",
+  owner: "trame", packageName: "documents", version: "0.4.0", joins: "library", from: "path", at: "../documents/releases/0.4.0",
   serves: [WrittenOnce],
 })

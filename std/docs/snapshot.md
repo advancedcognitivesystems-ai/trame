@@ -1,6 +1,6 @@
 # Snapshot
 
-*The exact state expected on 27 November 2026, without history: the values in force, without the amendments that produced them.*
+*The exact state expected on 28 November 2026, without history: the values in force, without the amendments that produced them.*
 
 ## Standard library · Access
 
@@ -844,7 +844,7 @@ Design pattern · `Command`
 
 ### Plugin
 
-Design pattern · `Plugin`
+Design pattern · `Plugin` · **held**
 
 - Maintained by: trame
 - Source: M. Fowler, Patterns of Enterprise Application Architecture (2002), Plugin (D. Rice, M. Foemmel)
@@ -1804,6 +1804,13 @@ Acceptance criteria · `WordsOfCriteria` · **held**
 
 ## Standard library · Scenarios
 
+### A command's line, in the scenarios
+
+Decision · `ScenarioCommand`
+
+- Decided by: trame
+- Value: { trigger: { type: command, name: show, help: Shows a node, arguments: { name: node, meaning: the node shown }, { name: depth, meaning: how far, optional: true }, options: { name: lang, meaning: the language, takes: a tag } }, document: { id: show, view: show, group: summary, title: A node, blocks: { type: para, content: Shown. } }, lines: { full: Fast, --lang, fr, bare: Fast, lacking: --lang, fr, unknown: Fast, --colour, formatted: Fast, --format, json, elsewhere: Fast, --format, pdf }, read: { argument: node, given: Fast, option: lang, value: fr } }
+
 ### What the library's scenarios are given
 
 Decision · `ScenarioData`
@@ -1827,7 +1834,7 @@ Architecture decision · `HowTheScenariosRun` · **held**
 - Consequences: A project that judges harder chooses EveryWarning or one of its own (C4); the library leaves its warnings as points to watch. Reading HTML and CSS needs an engine: the library's build has one.
 - Rejected: Scenarios on the machine, they would touch the disk, a browser and GitHub at each build of the library; Strict judgment for the library itself, a library's warnings are often what its projects decide (a port nobody realizes here)
 - Serves: Ports of the platform, realized once
-- Applied by: In memory, The scenarios' settings, Judged as the language says, Judged strictly, Read by the engine that builds
+- Applied by: In memory, The scenarios' settings, Judged as the language says, Judged strictly, Read by the engine that builds, The formats of the scenarios
 
 ### How the scenarios' versions are carried
 
@@ -1855,6 +1862,17 @@ Message catalog · `ScenarioChecks`
 
 - Owner: trame
 - Written in: The language of the library's scenarios
+
+### The formats of the scenarios
+
+Technical choice · `FormatsOfTheScenarios` · **held**
+
+- Decided by: trame
+- Context: The library offers one format of its own; Markdown and text are libs/documents', which projects choose beside it.
+- Chooses: Documents in JSON
+- In: Test
+- Follows: Plugin
+- Serves: Ports of the platform, realized once
 
 ### In memory
 
@@ -1983,6 +2001,16 @@ Scenario · `LanguagesRead` · **held**
 - Verifies: Read by the engine
 - In: Test
 - Depends on: Reading a language, HTML markup, CSS style sheets, Counts, What the library's scenarios check
+
+### A command's line read, its answer written
+
+Scenario · `LinesReadAnswersWritten` · **held**
+
+- Owner: trame
+- Parameters: { lines: tooling.CommandLines, read: tooling.CommandLineRead, sample: scenarios.ScenarioCommand, json: text.JsonFormatting, long: tooling.LongOptions, standard: tooling.StandardOptions, exit: system.ExitStatus, say: tooling.LineWords, checks: scenarios.ScenarioChecks }
+- Verifies: Commands, their lines read and their answers written, A command's line, read, Documents in JSON
+- In: Test
+- Depends on: Commands, their lines read and their answers written, A command's line, read, A command's line, in the scenarios, JSON formatting, Long options, The options of every command, Exit status, What std's exposures say of a line, What the library's scenarios check
 
 ### A pull request merged once it holds
 
@@ -2290,7 +2318,24 @@ Standard · `UnifiedDiff`
 - Constants: { program: { value: diff, meaning: The program that compares }, options: { value: -ru, meaning: Recursively, in the unified format }, same: { value: 0, meaning: The exit status when nothing differs }, differ: { value: 1, meaning: The exit status when something differs }, header: { value: diff , meaning: Opens the differences of a pair of files }, onlyIn: { value: Only in , meaning: A file that only one tree holds }, oldFile: { value: ---, meaning: Names the first file of a pair }, newFile: { value: +++, meaning: Names the second file of a pair }, removed: { value: -, meaning: Begins a line of the first file that the second does not have }, added: { value: +, meaning: Begins a line of the second file that the first does not have }, hunk: { value: @@, meaning: Opens and closes the ranges of a hunk: the lines of each file it covers }, rangeSeparator: { value: ,, meaning: Separates the first line of a range from the number of its lines } }
 - Serves: A published value is cited, not copied
 
+### JSON formatting
+
+Decision · `JsonFormatting`
+
+- Decided by: trame
+- Value: { indentation: 2 }
+
 ## Standard library · Tooling
+
+### Long options
+
+Standard · `LongOptions`
+
+- Maintained by: trame
+- Source: The GNU C Library, Program Arguments, Argument Syntax (long options); POSIX.1-2017, XBD 12.2, Utility Syntax Guidelines
+- Address: https://www.gnu.org/software/libc/manual/html_node/Argument-Syntax.html
+- Constants: { prefix: { value: --, meaning: Begins a long option, before its name } }
+- Serves: A published value is cited, not copied
 
 ### Playwright's API
 
@@ -2325,6 +2370,14 @@ Decision · `HeadlessChromium`
 - Value: { args: --use-gl=angle, --use-angle=swiftshader, --enable-unsafe-swiftshader, --ignore-gpu-blocklist, width: 420, height: 900 }
 - Rejected: Chromium as it starts, without a graphics card, WebGL fails and a page that draws in three dimensions shows nothing
 
+### The options of every command
+
+Decision · `StandardOptions`
+
+- Decided by: trame
+- Value: { format: { name: format, meaning: the format the documents a command answers are written in, takes: the word of a format the project chose } }
+- Rejected: Each command its own format option, the same option declared again by every command that answers documents, written differently by each
+
 ### The SDLC's tooling is realized once
 
 Architecture decision · `ToolingAsPorts` · **held**
@@ -2334,6 +2387,14 @@ Architecture decision · `ToolingAsPorts` · **held**
 - Consequences: A check opens the delivered page through HeadlessBrowser, a deployment copies through Files, a project reaches the packages it uses through PackageSources wherever they come from; scenarios play them with the realizations kept in memory.
 - Serves: Ports of the platform, realized once
 - Applied by: Commands of a program, Node's command line, Commands run in the engine, What the machine must also have, Playwright's browser, installed, What repairs a project, Project files, Files written, The machine's files, Files kept in memory, Headless browser, Chromium, driven by Playwright, Browser script, A browser kept in memory, Where a package comes from
+
+### Formats of an answer
+
+Port · `AnswerFormats`
+
+- Owner: trame
+- Declared effects: asynchronous
+- Extension point: true
 
 ### Browser script
 
@@ -2383,7 +2444,7 @@ Port · `PackageSources`
 Port · `ProgramCommands`
 
 - Owner: trame
-- Declared effects: terminal
+- Declared effects: terminal, asynchronous
 
 ### Programs run
 
@@ -2407,6 +2468,17 @@ Port · `ProjectRepairs`
 - Declared effects: { repair: read, write }
 - Extension point: true
 
+### Documents in JSON
+
+Function · `AnswersInJson` · **held**
+
+- Owner: trame
+- Parameters: { media: web.MediaTypes, json: text.JsonFormatting, counts: algebra.Counts }
+- Constants: { word: { value: json, meaning: The word of the format, after --format } }
+- Serves: Ports of the platform, realized once
+- Implements: Formats of an answer
+- Depends on: Media types, JSON formatting, Counts
+
 ### A browser kept in memory
 
 Function · `BrowserInMemory` · **held**
@@ -2415,6 +2487,24 @@ Function · `BrowserInMemory` · **held**
 - Parameters: { counts: algebra.Counts }
 - Implements: Headless browser, Browser script
 - Depends on: Counts
+
+### A command's line, read
+
+Function · `CommandLineRead` · **held**
+
+- Owner: trame
+- Parameters: { long: tooling.LongOptions, standard: tooling.StandardOptions, sequences: algebra.Sequences, counts: algebra.Counts }
+- Serves: Ports of the platform, realized once
+- Depends on: Long options, The options of every command, Sequences, Counts
+
+### Commands, their lines read and their answers written
+
+Function · `CommandLines` · **held**
+
+- Owner: trame
+- Parameters: { read: tooling.CommandLineRead, formats: tooling.AnswerFormats, long: tooling.LongOptions, standard: tooling.StandardOptions, exit: system.ExitStatus, values: algebra.ValueTypes, sequences: algebra.Sequences, counts: algebra.Counts, say: tooling.LineWords }
+- Serves: Ports of the platform, realized once
+- Depends on: A command's line, read, Formats of an answer, Long options, The options of every command, Exit status, Types of values, Sequences, Counts, What std's exposures say of a line
 
 ### Files kept in memory
 
@@ -2435,6 +2525,13 @@ Function · `ProgramRunsInMemory` · **held**
 - Implements: Programs run, The programs a scenario keeps: the file it says a program writes is written when that program runs.
 - Depends on: Exit status, Project files
 
+### What std's exposures say of a line
+
+Message catalog · `LineWords`
+
+- Owner: trame
+- Written in: The language the library's commands and tools speak in.
+
 ### What the library's tools say
 
 Message catalog · `ToolWords`
@@ -2447,9 +2544,9 @@ Message catalog · `ToolWords`
 Implementation · `CommandsInTheEngine`
 
 - Owner: trame
-- Parameters: { exit: system.ExitStatus }
+- Parameters: { exit: system.ExitStatus, lines: tooling.CommandLines }
 - Implements: Commands of a program
-- Depends on: Exit status
+- Depends on: Exit status, Commands, their lines read and their answers written
 
 ### The machine's files
 
@@ -2465,9 +2562,9 @@ Implementation · `MachineFiles`
 Implementation · `NodeProgramCommands`
 
 - Owner: trame
-- Parameters: { argv: system.NodeArguments, exit: system.ExitStatus, values: algebra.ValueTypes }
+- Parameters: { argv: system.NodeArguments, exit: system.ExitStatus, values: algebra.ValueTypes, lines: tooling.CommandLines }
 - Implements: Commands of a program
-- Depends on: Node.js process arguments, Exit status, Types of values
+- Depends on: Node.js process arguments, Exit status, Types of values, Commands, their lines read and their answers written
 
 ### Programs run by Node
 
@@ -2546,9 +2643,9 @@ Standard · `MediaQueries5`
 Standard · `MediaTypes`
 
 - Maintained by: trame
-- Source: IANA media types registry; RFC 6838; RFC 8259, § 11 (application/json); WHATWG HTML (text/event-stream)
+- Source: IANA media types registry; RFC 6838; RFC 8259, § 11 (application/json); RFC 7763 (text/markdown); RFC 2046, § 4.1.3 (text/plain); WHATWG HTML (text/event-stream)
 - Address: https://www.iana.org/assignments/media-types/
-- Constants: { html: { value: text/html; charset=utf-8, meaning: An HTML page in UTF-8 }, json: { value: application/json, meaning: A body written in JSON }, jsonUtf8: { value: application/json; charset=utf-8, meaning: The same, its encoding said: UTF-8 }, eventStream: { value: text/event-stream, meaning: A stream of events sent by the server } }
+- Constants: { html: { value: text/html; charset=utf-8, meaning: An HTML page in UTF-8 }, json: { value: application/json, meaning: A body written in JSON }, jsonUtf8: { value: application/json; charset=utf-8, meaning: The same, its encoding said: UTF-8 }, eventStream: { value: text/event-stream, meaning: A stream of events sent by the server }, markdown: { value: text/markdown; charset=utf-8, meaning: A text written in Markdown, in UTF-8 }, plain: { value: text/plain; charset=utf-8, meaning: Plain text, in UTF-8 } }
 - Serves: A published value is cited, not copied
 
 ### Screen Wake Lock API
